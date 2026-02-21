@@ -1,0 +1,7 @@
+# Python Dependencies für Cango Empire Scripts
+
+# FTP-Verbindungen
+# (ftplib ist Teil der Standard-Bibliothek)
+
+# Keine externen Dependencies erforderlich
+# Alle Scripts verwenden nur Python Standard Library
