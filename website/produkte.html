@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Produkte | CanGo Empire</title>
+<meta content="Die besten KI-Tools für deine Automation-Workflows. OpenAI, Claude, Perplexity, BrowserAct, NeuronWriter und mehr - getestet und integriert in unsere n8n Workflows." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    /* === DESIGN TOKENS (von Startseite) === */
+    :root {
+      /* Color System - Cool Gray */
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --gray-950: #030712;
+
+      /* Primary - Sophisticated Orange */
+      --primary-50: #FFF7ED;
+      --primary-100: #FFEDD5;
+      --primary-200: #FED7AA;
+      --primary-300: #FDBA74;
+      --primary-400: #FB923C;
+      --primary-500: #F97316;
+      --primary-600: #EA580C;
+      --primary-700: #C2410C;
+
+      /* Accent - Electric Red */
+      --accent-400: #F87171;
+      --accent-500: #EF4444;
+      --accent-600: #DC2626;
+      --accent-700: #B91C1C;
+
+      /* Semantic Aliases */
+      --bg-base: var(--gray-950);
+      --bg-elevated: var(--gray-900);
+      --bg-surface: var(--gray-800);
+      --bg-hover: var(--gray-700);
+      --text-primary: var(--gray-50);
+      --text-secondary: var(--gray-400);
+      --text-muted: var(--gray-500);
+      --border-default: var(--gray-800);
+      --border-hover: var(--gray-700);
+
+      /* Typography Scale */
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.563rem;
+      --text-3xl: 1.953rem;
+      --text-4xl: 2.441rem;
+      --text-5xl: 3.052rem;
+      --text-6xl: 3.815rem;
+
+      /* Spacing Scale */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      --shadow-glow: 0 0 40px -10px;
+
+      /* Motion */
+      --duration-fast: 150ms;
+      --duration-base: 200ms;
+      --duration-slow: 300ms;
+      --duration-slower: 500ms;
+      --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+      /* Layout */
+      --nav-height: 64px;
+      --container-max: 1200px;
+      --container-narrow: 800px;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+
+      /* Z-Index */
+      --z-base: 1;
+      --z-elevated: 10;
+      --z-sticky: 100;
+      --z-modal: 200;
+    }
+
+    /* === BASE STYLES === */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100% !important;
+  scroll-behavior: smooth !important;
+}
+
+    body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+    
+    /* === PRODUKTE STYLES === */
+    .produkte-page {
+      padding: 0;
+    }
+    
+    /* Hero Section für Produkte */
+    .produkte-hero {
+      position: relative;
+      padding: calc(var(--nav-height) + var(--space-16)) 0 var(--space-20);
+      text-align: center;
+      overflow: hidden;
+    }
+    
+    .produkte-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(220, 38, 38, 0.08), transparent);
+      pointer-events: none;
+    }
+    
+    .produkte-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black, transparent);
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black, transparent);
+      pointer-events: none;
+    }
+    
+    .produkte-hero__content {
+      position: relative;
+      z-index: var(--z-base);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .produkte-header__icon {
+      font-size: 4.5rem;
+      margin-bottom: var(--space-6);
+      display: inline-block;
+      filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.3));
+      animation: fadeInUp 0.6s var(--ease-out) both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .produkte-hero__eyebrow {
+      display: inline-block;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary-400);
+      margin-bottom: var(--space-6);
+      font-family: 'JetBrains Mono', monospace;
+      padding: var(--space-2) var(--space-4);
+      background: rgba(249, 115, 22, 0.1);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      border-radius: var(--radius-full);
+      animation: fadeInUp 0.6s var(--ease-out) 0.1s both;
+    }
+    
+    .produkte-hero__title {
+      font-size: clamp(2.5rem, 8vw, var(--text-6xl));
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+      color: var(--text-primary);
+      animation: fadeInUp 0.6s var(--ease-out) 0.2s both;
+    }
+    
+    .produkte-hero__subtitle {
+      font-size: var(--text-xl);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto var(--space-8);
+      line-height: 1.7;
+      animation: fadeInUp 0.6s var(--ease-out) 0.3s both;
+    }
+    
+    .tools-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: var(--space-12) auto var(--space-16);
+      padding: var(--space-6) var(--space-8);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(249, 115, 22, 0.03) 100%);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      border-left: 4px solid var(--primary-500);
+      border-radius: var(--radius-lg);
+      position: relative;
+      animation: fadeInUp 0.6s var(--ease-out) 0.4s both;
+      transition: all var(--duration-base) var(--ease-out);
+    }
+    
+    .tools-intro:hover {
+      border-color: rgba(249, 115, 22, 0.3);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(249, 115, 22, 0.05) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+    }
+    
+    .tools-intro p {
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+      line-height: 1.8;
+      margin: 0;
+    }
+    
+    .tools-intro strong {
+      color: var(--primary-400);
+      font-weight: 600;
+    }
+    
+    .tools-container {
+      min-height: calc(9 * (var(--space-6) + 280px));
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: var(--space-6);
+      margin-top: var(--space-8);
+      border-radius: var(--radius-lg);
+      background: rgba(249, 115, 22, 0.01);
+      border: 1px solid rgba(249, 115, 22, 0.1);
+    }
+    
+    .tools-container::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    .tools-container::-webkit-scrollbar-track {
+      background: rgba(249, 115, 22, 0.05);
+      border-radius: 5px;
+      margin: var(--space-2) 0;
+    }
+    
+    .tools-container::-webkit-scrollbar-thumb {
+      background: rgba(249, 115, 22, 0.3);
+      border-radius: 5px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    
+    .tools-container::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-500);
+      background-clip: padding-box;
+    }
+    
+    .tool-card[data-category] {
+      display: block;
+    }
+    
+    .tool-card.hidden {
+      display: none;
+    }
+    
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--space-6);
+    }
+    
+    .tool-card {
+      position: relative;
+      padding: var(--space-6);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.03) 0%, rgba(249, 115, 22, 0.01) 100%);
+      border: 2px solid rgba(249, 115, 22, 0.15);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-slow) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary-500);
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+    
+    .tool-card:hover {
+      border-color: var(--primary-500);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(249, 115, 22, 0.03) 100%);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+    }
+    
+    .tool-card:hover::before {
+      opacity: 1;
+    }
+    
+    .tool-card__header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    
+    /* KRITISCH: Verstecke Icons SOFORT beim Laden - verhindert FOUC */
+    .tool-card__icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05));
+      border: 2px solid rgba(249, 115, 22, 0.2);
+      border-radius: var(--radius-md);
+      flex-shrink: 0;
+      transition: all var(--duration-base) var(--ease-out);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+      overflow: hidden;
+      
+      /* KRITISCH: EMOJIS SOFORT VERSTECKEN - BEVOR JavaScript läuft */
+      font-size: 0 !important;
+      line-height: 0 !important;
+      color: transparent !important;
+      text-indent: -9999px !important;
+      visibility: visible; /* Container sichtbar, aber Inhalt nicht */
+      
+      /* Verstecke ALLE Text-Inhalte sofort */
+      text-shadow: none !important;
+      -webkit-text-stroke: 0 !important;
+    }
+    
+    /* Verstecke ALLE Emojis/Text in Icons - STANDARD */
+    .tool-card__icon > * {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      font-size: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    
+    /* Verstecke auch Text-Content direkt - für alle Icons */
+    .tool-card__icon:not(.has-logo),
+    .tool-card__icon {
+      text-indent: -9999px;
+      overflow: hidden;
+    }
+    
+    /* Verstecke Emojis sofort, wenn Logo geladen wird */
+    .tool-card__icon.has-logo {
+      font-size: 0 !important;
+      line-height: 0 !important;
+    }
+    
+    .tool-card__icon.has-logo > * {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    
+    .tool-card__icon.has-logo {
+      background: #6B7280;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      padding: 0;
+      
+      /* Entferne ALLE Emojis/Icons komplett */
+      color: transparent !important;
+      text-indent: -9999px;
+      overflow: hidden;
+      
+      /* FHD-Optimierungen für scharfe Bilddarstellung */
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      
+      /* Für hochauflösende Displays (Retina, 4K) */
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      will-change: transform;
+      
+      /* Optimierte Interpolation für SVG */
+      -ms-interpolation-mode: bicubic;
+    }
+    
+    /* SVG-Logos: Auto-Rendering für glatte Darstellung */
+    .tool-card__icon.has-logo[style*=".svg"],
+    .tool-card__icon.has-logo[style*="data:image/svg"] {
+      image-rendering: auto;
+      -webkit-image-rendering: auto;
+    }
+    
+    /* Entferne alle Pseudo-Elemente bei Logos */
+    .tool-card__icon.has-logo::before,
+    .tool-card__icon.has-logo::after {
+      content: none !important;
+      display: none !important;
+      visibility: hidden !important;
+    }
+    
+    /* Verstecke alle Kind-Elemente (falls vorhanden) */
+    .tool-card__icon.has-logo * {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    
+    .tool-card:hover .tool-card__icon {
+      background-color: rgba(249, 115, 22, 0.1);
+      border-color: var(--primary-500);
+      transform: scale(1.1) translateZ(0);
+    }
+    
+    .tool-card:hover .tool-card__icon.has-logo {
+      background-color: #9CA3AF;
+      background-size: cover;
+      /* Behalte Schärfe beim Hover */
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+    
+    /* Retina/High-DPI Display Optimierungen */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .tool-card__icon.has-logo {
+        background-size: cover;
+        image-rendering: auto;
+      }
+    }
+    
+    /* 4K/UHD Display Optimierungen */
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+      .tool-card__icon.has-logo {
+        background-size: cover;
+        image-rendering: auto;
+      }
+    }
+    
+    .tool-card__title-group {
+      flex: 1;
+    }
+    
+    .tool-card__badge {
+      display: inline-block;
+      padding: var(--space-1) var(--space-2);
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--primary-400);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: var(--space-2);
+    }
+    
+    .tool-card__name {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+      letter-spacing: -0.01em;
+    }
+    
+    .tool-card__description {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-4);
+      flex: 1;
+    }
+    
+    .tool-card__features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    
+    .tool-card__feature {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+    
+    .tool-card__feature::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary-400);
+      font-weight: 700;
+    }
+    
+    .tool-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(249, 115, 22, 0.1);
+    }
+    
+    .tool-card__price {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--primary-400);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .tool-card__cta {
+      padding: var(--space-2) var(--space-4);
+      background: var(--primary-500);
+      color: var(--text-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      transition: all var(--duration-base) var(--ease-out);
+      cursor: pointer;
+    }
+    
+    .tool-card__cta:hover {
+      background: var(--primary-600);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    }
+    
+    .tool-card__affiliate-badge {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: var(--space-2);
+    }
+    
+    @media (max-width: 768px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tool-card__footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .tool-card__cta {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+      /* === NAVIGATION === */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: rgba(3, 7, 18, 0.8);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-default);
+      z-index: var(--z-sticky);
+      transition: background var(--duration-base) var(--ease-out);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: var(--text-lg);
+      color: var(--text-primary);
+    }
+
+    .nav__brand-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+
+    .nav__menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+
+    .nav__link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    .nav__link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      transition: all var(--duration-fast) var(--ease-out);
+      box-shadow: var(--shadow-glow) var(--primary-500);
+    }
+
+    .nav__cta:hover {
+      background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+      transform: translateY(-1px);
+      box-shadow: 0 0 50px -10px var(--primary-400);
+    }
+
+    /* Mobile Menu Toggle */
+    .nav__toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-2);
+    }
+
+    .nav__toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    /* Mobile Navigation */
+    @media (max-width: 768px) {
+      .nav__menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-base);
+        border-bottom: 1px solid var(--border-default);
+        padding: var(--space-6);
+        gap: var(--space-4);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--duration-base) var(--ease-out);
+      }
+
+      .nav__menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav__toggle {
+        display: flex;
+      }
+    }
+  
+    /* === ACCESSIBILITY: FOCUS STATES === */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary-500);
+      color: white;
+      padding: var(--space-2) var(--space-4);
+      text-decoration: none;
+      z-index: 1000;
+      border-radius: var(--radius-md);
+    }
+    
+    .skip-link:focus {
+      top: var(--space-2);
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+    
+    /* Keyboard Navigation */
+    *:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+    }
+    
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN SYSTEM
+       Mobile-First Approach mit Corporate Design
+       ============================================ */
+    
+    /* === BREAKPOINTS === */
+    /* Mobile: < 480px (Standard) */
+    /* Tablet: 481px - 768px */
+    /* Desktop: 769px - 1024px */
+    /* Large Desktop: > 1024px */
+    
+    /* === TABLET & SMALL DESKTOP (max-width: 1024px) === */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 var(--space-4);
+      }
+      
+      /* Hero Adjustments */
+      .hero__title {
+        font-size: clamp(2rem, 6vw, var(--text-5xl));
+      }
+      
+      .hero__stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+      }
+      
+      /* Grid Adjustments */
+      .industries__grid,
+      .tech__grid,
+      .arsenal__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+      }
+      
+      /* Cards */
+      .tech__card,
+      .arsenal__card,
+      .industry {
+        padding: var(--space-6);
+      }
+      
+      /* Footer */
+      .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
+      }
+    }
+    
+    /* === TABLET (max-width: 768px) === */
+    @media (max-width: 768px) {
+      :root {
+        --text-6xl: 3rem;
+        --text-5xl: 2.5rem;
+        --text-4xl: 2rem;
+        --text-3xl: 1.75rem;
+        --text-2xl: 1.5rem;
+        --space-24: 4rem;
+        --space-20: 3rem;
+        --space-16: 2.5rem;
+        --space-12: 2rem;
+      }
+      
+      .container {
+        padding: 0 var(--space-4);
+      }
+      
+      /* Navigation Mobile */
+      .nav__menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-base);
+        border-bottom: 1px solid var(--border-default);
+        padding: var(--space-6);
+        gap: var(--space-4);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--duration-base) var(--ease-out);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 99;
+      }
+      
+      .nav__menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav__toggle {
+        display: flex;
+      }
+      
+      .nav__link,
+      .nav__cta {
+        width: 100%;
+        text-align: center;
+        padding: var(--space-3) var(--space-4);
+      }
+      
+      /* Hero Section */
+      .hero {
+        padding-top: calc(var(--nav-height) + var(--space-8));
+        padding-bottom: var(--space-12);
+        min-height: auto;
+      }
+      
+      /* Produkte Hero Responsive */
+      .produkte-hero {
+        padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-12);
+      }
+      
+      .produkte-header__icon {
+        font-size: 3rem;
+        margin-bottom: var(--space-4);
+      }
+      
+      .produkte-hero__eyebrow {
+        font-size: var(--text-xs);
+        padding: var(--space-1) var(--space-3);
+        margin-bottom: var(--space-4);
+      }
+      
+      .produkte-hero__title {
+        font-size: clamp(2rem, 8vw, var(--text-4xl));
+        margin-bottom: var(--space-4);
+      }
+      
+      .produkte-hero__subtitle {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-6);
+      }
+      
+      .tools-intro {
+        padding: var(--space-4) var(--space-6);
+        margin: var(--space-8) auto var(--space-12);
+      }
+      
+      .hero__title {
+        font-size: clamp(1.75rem, 8vw, var(--text-4xl));
+        margin-bottom: var(--space-4);
+      }
+      
+      .hero__subtitle {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-6);
+      }
+      
+      .hero__stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+        margin-top: var(--space-8);
+      }
+      
+      .hero__stat {
+        padding: var(--space-4);
+      }
+      
+      .hero__stat-value {
+        font-size: var(--text-2xl);
+      }
+      
+      /* Section Headers */
+      .section__title {
+        font-size: clamp(1.75rem, 6vw, var(--text-3xl));
+        margin-bottom: var(--space-3);
+      }
+      
+      .section__subtitle {
+        font-size: var(--text-base);
+      }
+      
+      /* Grids - Single Column */
+      .industries__grid,
+      .tech__grid,
+      .arsenal__grid,
+      .manifest__grid,
+      .revolution__timeline,
+      .allianz__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Cards */
+      .tech__card,
+      .arsenal__card,
+      .manifest__card,
+      .industry {
+        padding: var(--space-5);
+      }
+      
+      /* Stats */
+      .hero__stats,
+      .tech__number,
+      .arsenal__number {
+        font-size: var(--text-3xl);
+      }
+      
+      /* Footer */
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        text-align: center;
+      }
+      
+      .footer__bottom {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+      }
+      
+      /* CTA Buttons */
+      .cta__buttons {
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      /* Founder Section */
+      .founder__content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .founder__image {
+        max-width: 250px;
+        margin: 0 auto var(--space-6);
+      }
+      
+      .founder__stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Allianz Section */
+      .allianz__intro {
+        padding: var(--space-6);
+      }
+      
+      /* Protocol Steps */
+      .protocol__step {
+        grid-template-columns: 60px 1fr;
+        gap: var(--space-4);
+      }
+      
+      .protocol__step-number {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-xl);
+      }
+      
+      /* Scenarios */
+      .scenarios {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Partner Cards */
+      .partner__card {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+      
+      /* Products Grid */
+      .products {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Qualification Cards */
+      .qualification__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      .qualification__promise-paths {
+        grid-template-columns: 1fr;
+      }
+      
+      /* Financing Banner */
+      .financing-banner__wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .financing-banner__rate-box {
+        justify-self: center;
+        margin-bottom: var(--space-4);
+      }
+      
+      .financing-banner__features {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+    
+    /* === MOBILE (max-width: 480px) === */
+    @media (max-width: 480px) {
+      :root {
+        --space-24: 3rem;
+        --space-20: 2.5rem;
+        --space-16: 2rem;
+        --space-12: 1.5rem;
+        --space-8: 1.5rem;
+        --space-6: 1rem;
+        --space-4: 0.75rem;
+      }
+      
+      .container {
+        padding: 0 var(--space-3);
+      }
+      
+      /* Typography */
+      .hero__title {
+        font-size: clamp(1.5rem, 10vw, var(--text-3xl));
+        line-height: 1.2;
+      }
+      
+      /* Produkte Hero - Sehr kleine Bildschirme */
+      .produkte-hero {
+        padding: calc(var(--nav-height) + var(--space-6)) 0 var(--space-10);
+      }
+      
+      .produkte-header__icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--space-3);
+      }
+      
+      .produkte-hero__eyebrow {
+        font-size: 0.65rem;
+        padding: var(--space-1) var(--space-2);
+        margin-bottom: var(--space-3);
+      }
+      
+      .produkte-hero__title {
+        font-size: clamp(1.75rem, 10vw, var(--text-3xl));
+        margin-bottom: var(--space-3);
+      }
+      
+      .produkte-hero__subtitle {
+        font-size: var(--text-sm);
+        margin-bottom: var(--space-4);
+      }
+      
+      .tools-intro {
+        padding: var(--space-3) var(--space-4);
+        margin: var(--space-6) auto var(--space-8);
+      }
+      
+      .tools-intro p {
+        font-size: var(--text-sm);
+        line-height: 1.6;
+      }
+      
+      .section__title {
+        font-size: clamp(1.5rem, 8vw, var(--text-2xl));
+      }
+      
+      /* Hero */
+      .hero__badge {
+        font-size: var(--text-xs);
+        padding: var(--space-2) var(--space-3);
+      }
+      
+      .hero__stat-value {
+        font-size: var(--text-xl);
+      }
+      
+      /* Cards - Compact */
+      .tech__card,
+      .arsenal__card,
+      .manifest__card,
+      .industry {
+        padding: var(--space-4);
+      }
+      
+      .tech__icon,
+      .arsenal__icon {
+        font-size: var(--text-2xl);
+      }
+      
+      /* Buttons */
+      .btn {
+        padding: var(--space-3) var(--space-5);
+        font-size: var(--text-sm);
+      }
+      
+      /* Navigation */
+      .nav__brand {
+        font-size: var(--text-base);
+      }
+      
+      .nav__brand-icon {
+        width: 28px;
+        height: 28px;
+      }
+      
+      /* Footer */
+      .footer {
+        padding: var(--space-12) 0 var(--space-6);
+      }
+      
+      /* Spacing Reductions */
+      section {
+        padding: var(--space-12) 0;
+      }
+      
+      .section__header {
+        margin-bottom: var(--space-8);
+      }
+    }
+    
+    /* === LARGE DESKTOP (min-width: 1400px) === */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1400px;
+      }
+      
+      .hero__title {
+        font-size: var(--text-6xl);
+      }
+      
+      .industries__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    /* === LANDSCAPE ORIENTATION === */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero {
+        min-height: auto;
+        padding-top: calc(var(--nav-height) + var(--space-4));
+        padding-bottom: var(--space-8);
+      }
+      
+      .hero__stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* === PRINT STYLES === */
+    @media print {
+      .nav,
+      .nav__menu,
+      .btn,
+      .skip-link {
+        display: none;
+      }
+      
+      body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+      
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+    }
+
+  
+
+
+  
+
+
+  
+/* ============================================
+   FINAL LAYOUT FIX - SECTIONS UNTEREINANDER
+   ============================================ */
+
+html, body {
+  overflow-x: hidden !important;
+}
+
+body {
+  display: block !important;
+  min-height: 100vh !important;
+}
+
+/* Sektionen MÜSSEN untereinander sein */
+section,
+.hero,
+.manifest,
+.revolution,
+.arsenal,
+.allianz,
+.founder,
+.cta,
+footer {
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+  float: none !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* Container zentrieren aber nicht nebeneinander */
+.container {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Grid-Layouts nur für INHALT, nicht für Sektionen */
+.manifest__grid { 
+  display: grid !important; 
+  grid-template-columns: repeat(2, 1fr) !important; 
+  gap: 1.5rem !important;
+}
+
+.arsenal__grid { 
+  display: grid !important; 
+  grid-template-columns: repeat(3, 1fr) !important; 
+  gap: 1.5rem !important;
+}
+
+.industries__grid { 
+  display: grid !important; 
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important; 
+  gap: 1.5rem !important;
+}
+
+.founder__content { 
+  display: grid !important; 
+  grid-template-columns: 280px 1fr !important; 
+  gap: 2rem !important;
+}
+
+/* Navigation volle Breite */
+.nav {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+}
+
+.nav__inner {
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.nav__menu {
+  display: flex !important;
+  gap: 1.5rem !important;
+}
+
+/* Scrolling erlauben */
+html {
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+}
+
+body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Responsive: Alles untereinander auf Mobile */
+@media (max-width: 1024px) {
+  .manifest__grid,
+  .arsenal__grid,
+  .industries__grid,
+  .founder__content {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+  </style>
+</head>
+<body class="produkte-page">
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__brand">
+          <div class="nav__brand-icon">CE</div>
+          <span>CanGo Empire</span>
+        </a>
+                <div class="nav__menu">
+          <a href="index.html" class="nav__link">Startseite</a>
+          <a href="produkte.html" class="nav__link">Produkte</a>
+          <a href="ueber-uns.html" class="nav__link">Über Uns</a>
+          <a href="blogs.html" class="nav__link">Blogs</a>
+          <a href="marktplatz.html" class="nav__link">Marktplatz</a>
+          <a href="kontakt.html" class="nav__link">Kontakt</a>
+          <a href="kontakt.html" class="nav__cta">Jetzt starten</a>
+        </div>
+      </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="produkte-hero">
+    <div class="container">
+      <div class="produkte-hero__content">
+        <div class="produkte-header__icon">⚡</div>
+        <div class="produkte-hero__eyebrow">KI-Tools & Automation</div>
+        <h1 class="produkte-hero__title">Die besten Tools für deine Workflows</h1>
+        <p class="produkte-hero__subtitle">
+          Getestet, integriert und optimiert für maximale Performance. Von KI-Chatbots bis zu SEO-Tools – 
+          alles was du brauchst für deine vollautomatisierten Marketing-Pipelines.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Intro -->
+  <div class="container">
+    <div class="tools-intro">
+      <p>
+        <strong>100+ Tools</strong> getestet und in unsere n8n Workflows integriert. 
+        Jedes Tool wurde auf Performance, Zuverlässigkeit und Integration geprüft.
+      </p>
+    </div>
+  </div>
+
+  <!-- Tools Grid -->
+  <div class="container">
+    <div class="tools-container">
+      <div class="tools-grid">
+        <!-- Tool Card 1 -->
+        <div class="tool-card" data-category="ai">
+          <div class="tool-card__header">
+            <div class="tool-card__icon">🤖</div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">KI</span>
+              <h3 class="tool-card__name">ChatGPT / OpenAI</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Der Standard für KI-Textgenerierung. Integriert in alle Content-Workflows.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">GPT-4 & GPT-3.5</li>
+            <li class="tool-card__feature">API-Integration</li>
+            <li class="tool-card__feature">Custom Instructions</li>
+          </ul>
+          <div class="tool-card__footer">
+            <span class="tool-card__price">Ab $20/Monat</span>
+            <a href="https://openai.com" target="_blank" class="tool-card__cta">Zum Tool</a>
+          </div>
+        </div>
+
+        <!-- Tool Card 2 -->
+        <div class="tool-card" data-category="ai">
+          <div class="tool-card__header">
+            <div class="tool-card__icon">🧠</div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">KI</span>
+              <h3 class="tool-card__name">Claude 3.5 Sonnet</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Anthropic's leistungsstärkstes Modell für komplexe Aufgaben und lange Kontexte.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">200K Token Context</li>
+            <li class="tool-card__feature">Code-Generation</li>
+            <li class="tool-card__feature">Artifacts</li>
+          </ul>
+          <div class="tool-card__footer">
+            <span class="tool-card__price">Ab $15/Monat</span>
+            <a href="https://anthropic.com" target="_blank" class="tool-card__cta">Zum Tool</a>
+          </div>
+        </div>
+
+        <!-- Tool Card 3 -->
+        <div class="tool-card" data-category="ai">
+          <div class="tool-card__header">
+            <div class="tool-card__icon">🔍</div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">KI</span>
+              <h3 class="tool-card__name">Perplexity Pro</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            KI-Suchmaschine mit Quellenangaben. Perfekt für Research und Content-Erstellung.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Live-Web-Suche</li>
+            <li class="tool-card__feature">Quellenangaben</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <span class="tool-card__price">$20/Monat</span>
+            <a href="https://perplexity.ai" target="_blank" class="tool-card__cta">Zum Tool</a>
+          </div>
+        </div>
+
+        <!-- Tool Card 4 -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon">🔧</div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">Automation</span>
+              <h3 class="tool-card__name">n8n</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Open-Source Workflow-Automation. Das Herzstück unserer Automation-Pipelines.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Self-Hosted</li>
+            <li class="tool-card__feature">1000+ Integrations</li>
+            <li class="tool-card__feature">Code-Execution</li>
+          </ul>
+          <div class="tool-card__footer">
+            <span class="tool-card__price">Open Source</span>
+            <a href="https://n8n.io" target="_blank" class="tool-card__cta">Zum Tool</a>
+          </div>
+        </div>
+
+        <!-- Tool Card 5 -->
+        <div class="tool-card" data-category="seo">
+          <div class="tool-card__header">
+            <div class="tool-card__icon">📊</div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SEO</span>
+              <h3 class="tool-card__name">NeuronWriter</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            KI-gestütztes SEO-Tool für Content-Optimierung und Keyword-Research.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Content-Scoring</li>
+            <li class="tool-card__feature">NLP-Analyse</li>
+            <li class="tool-card__feature">Competitor-Research</li>
+          </ul>
+          <div class="tool-card__footer">
+            <span class="tool-card__price">Ab €19/Monat</span>
+            <a href="https://neuronwriter.com" target="_blank" class="tool-card__cta">Zum Tool</a>
+          </div>
+        </div>
+
+        <!-- Tool Card 6 -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon">🌐</div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">Automation</span>
+              <h3 class="tool-card__name">BrowserAct</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Browser-Automation für komplexe Web-Scraping und Interaktionen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Headless Browser</li>
+            <li class="tool-card__feature">JavaScript Execution</li>
+            <li class="tool-card__feature">API-Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <span class="tool-card__price">Ab $29/Monat</span>
+            <a href="https://browseract.com" target="_blank" class="tool-card__cta">Zum Tool</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="padding: var(--space-16) 0; background: var(--bg-elevated); border-top: 1px solid var(--border-default); margin-top: var(--space-20);">
+    <div class="container">
+      <div style="text-align: center; color: var(--text-secondary);">
+        <p style="margin-bottom: var(--space-4);">© 2024 CanGo Empire. Alle Rechte vorbehalten.</p>
+        <p style="font-size: var(--text-sm);">33 Master Workflows. 30+ KI-Systeme. 7 High-CPM Branchen.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Toggle Script -->
+  <script>
+    document.querySelector('.nav__toggle')?.addEventListener('click', function() {
+      document.querySelector('.nav__menu')?.classList.toggle('active');
+    });
+  </script>
+
+<script>
+    // ============================================
+    // FINALES LOGO-SYSTEM - NUR <IMG> TAGS
+    // ============================================
+    
+    const TOOL_LOGOS = {
+      'ChatGPT / OpenAI': 'https://cdn.simpleicons.org/openai/white',
+      'Claude 3.5 Sonnet': 'https://cdn.simpleicons.org/anthropic/white',
+      'Perplexity Pro': 'https://cdn.simpleicons.org/perplexity/white',
+      'BrowserAct': 'https://cdn.simpleicons.org/googlechrome/white',
+      'NeuronWriter': 'https://cdn.simpleicons.org/notion/white',
+      'DepositPhotos': 'https://cdn.simpleicons.org/depositphotos/white',
+      'n8n': 'https://cdn.simpleicons.org/n8n/white',
+      'Katteb': 'https://cdn.simpleicons.org/wikipedia/white',
+      'Google Gemini': 'https://cdn.simpleicons.org/google/white',
+      'Grok (xAI)': 'https://cdn.simpleicons.org/xdotorg/white',
+      'Mistral AI': 'https://cdn.simpleicons.org/mistral/white',
+      'Make (Integromat)': 'https://cdn.simpleicons.org/make/white',
+      'Zapier': 'https://cdn.simpleicons.org/zapier/white',
+      'Midjourney': 'https://cdn.simpleicons.org/midjourney/white',
+      'Runway': 'https://cdn.simpleicons.org/runwayml/white',
+      'ElevenLabs': 'https://cdn.simpleicons.org/elevenlabs/white',
+      'Surfer SEO': 'https://cdn.simpleicons.org/surfshark/white',
+      'Ahrefs': 'https://cdn.simpleicons.org/ahrefs/white',
+      'Firecrawl': 'https://cdn.simpleicons.org/firecrawl/white',
+      'ScraperAPI': 'https://cdn.simpleicons.org/scraperapi/white',
+      'Descript': 'https://cdn.simpleicons.org/descript/white',
+      'Synthesia': 'https://cdn.simpleicons.org/synthesia/white',
+      'Notion AI': 'https://cdn.simpleicons.org/notion/white',
+      'Cursor': 'https://cdn.simpleicons.org/cursor/white',
+      'Frase': 'https://cdn.simpleicons.org/frase/white',
+      'Jasper AI': 'https://cdn.simpleicons.org/jasper/white',
+      'Copy.ai': 'https://cdn.simpleicons.org/copyai/white',
+      'Stable Diffusion': 'https://cdn.simpleicons.org/stablediffusion/white',
+      'Pika Labs': 'https://cdn.simpleicons.org/pika/white',
+      'Bright Data': 'https://cdn.simpleicons.org/brightdata/white',
+      'SEMrush': 'https://cdn.simpleicons.org/semrush/white',
+      'Airtable': 'https://cdn.simpleicons.org/airtable/white',
+      'Supabase': 'https://cdn.simpleicons.org/supabase/white',
+      'Pinecone': 'https://cdn.simpleicons.org/pinecone/white',
+      'LangChain': 'https://cdn.simpleicons.org/langchain/white',
+      'Hugging Face': 'https://cdn.simpleicons.org/huggingface/white',
+      'ZEP Memory': 'https://cdn.simpleicons.org/zapier/white',
+      'Opus Clip': 'https://cdn.simpleicons.org/opus/white',
+      'Yapper': 'https://cdn.simpleicons.org/twitter/white',
+      'Reap': 'https://cdn.simpleicons.org/automattic/white',
+      'Feedspace': 'https://cdn.simpleicons.org/rss/white',
+      'Greta': 'https://cdn.simpleicons.org/greta/white',
+      'Skillplate': 'https://cdn.simpleicons.org/skillplate/white',
+      'Mootion': 'https://cdn.simpleicons.org/adobepremierepro/white',
+      'TidyCal': 'https://cdn.simpleicons.org/googlecalendar/white',
+      'NoCodeBackend': 'https://cdn.simpleicons.org/nocodebackend/white',
+      'Unmixr AI': 'https://cdn.simpleicons.org/unmixr/white',
+      'GOOSE VPN': 'https://cdn.simpleicons.org/vpn/white',
+      'Sociamonials': 'https://cdn.simpleicons.org/sociamonials/white',
+      'Voilà': 'https://cdn.simpleicons.org/voila/white',
+      'Binance API': 'https://cdn.simpleicons.org/binance/white',
+      'Hostinger': 'https://cdn.simpleicons.org/hostinger/white',
+      'Luma AI': 'https://cdn.simpleicons.org/luma/white',
+      'Claude Artifacts': 'https://cdn.simpleicons.org/anthropic/white',
+      'Gamma': 'https://cdn.simpleicons.org/gamma/white',
+      'Tome': 'https://cdn.simpleicons.org/tome/white',
+      'Canva': 'https://cdn.simpleicons.org/canva/white',
+      'Murf': 'https://cdn.simpleicons.org/murf/white',
+      'PlayHT': 'https://cdn.simpleicons.org/playht/white',
+      'Headlime': 'https://cdn.simpleicons.org/headspace/white',
+      'Writesonic': 'https://cdn.simpleicons.org/writesonic/white',
+      'Grammarly': 'https://cdn.simpleicons.org/grammarly/white',
+      'Wordtune': 'https://cdn.simpleicons.org/wordtune/white',
+      'QuillBot': 'https://cdn.simpleicons.org/quillbot/white',
+      'Originality.ai': 'https://cdn.simpleicons.org/originality/white',
+      'HubSpot': 'https://cdn.simpleicons.org/hubspot/white',
+      'Pipedrive': 'https://cdn.simpleicons.org/pipedrive/white',
+      'SendGrid': 'https://cdn.simpleicons.org/sendgrid/white',
+      'Mailchimp': 'https://cdn.simpleicons.org/mailchimp/white',
+      'Calendly': 'https://cdn.simpleicons.org/calendly/white',
+      'Loom': 'https://cdn.simpleicons.org/loom/white',
+      'Otter.ai': 'https://cdn.simpleicons.org/otterai/white',
+      'Rev': 'https://cdn.simpleicons.org/rev/white',
+      'Replicate': 'https://cdn.simpleicons.org/replicate/white',
+      'Together.ai': 'https://cdn.simpleicons.org/together/white',
+      'Anthropic Bedrock': 'https://cdn.simpleicons.org/amazonaws/white',
+      'Cohere': 'https://cdn.simpleicons.org/cohere/white',
+      'Serper': 'https://cdn.simpleicons.org/serper/white',
+      'SerpAPI': 'https://cdn.simpleicons.org/google/white',
+      'ClickUp': 'https://cdn.simpleicons.org/clickup/white',
+      'Monday.com': 'https://cdn.simpleicons.org/monday/white',
+      'Asana': 'https://cdn.simpleicons.org/asana/white',
+      'Typeform': 'https://cdn.simpleicons.org/typeform/white',
+      'Stripe': 'https://cdn.simpleicons.org/stripe/white',
+      'Unsplash API': 'https://cdn.simpleicons.org/unsplash/white',
+      'Pexels API': 'https://cdn.simpleicons.org/pexels/white',
+      'Framer': 'https://cdn.simpleicons.org/framer/white',
+      'Webflow': 'https://cdn.simpleicons.org/webflow/white',
+      'Bubble': 'https://cdn.simpleicons.org/bubble/white',
+      'Vercel': 'https://cdn.simpleicons.org/vercel/white',
+      'GitHub Copilot': 'https://cdn.simpleicons.org/github/white',
+      'Tabnine': 'https://cdn.simpleicons.org/tabnine/white',
+      'Sourcegraph': 'https://cdn.simpleicons.org/sourcegraph/white'
+    };
+    
+    // FINALE Funktion - ersetzt Icon mit <img> Tag
+    function loadToolLogos() {
+      console.log('🔄 Starte Logo-Laden...');
+      const toolCards = document.querySelectorAll('.tool-card');
+      let loaded = 0;
+      
+      toolCards.forEach(card => {
+        const iconElement = card.querySelector('.tool-card__icon');
+        const toolNameElement = card.querySelector('.tool-card__name');
+        
+        if (!iconElement || !toolNameElement) return;
+        
+        const toolName = toolNameElement.textContent.trim();
+        const logoUrl = TOOL_LOGOS[toolName];
+        
+        if (logoUrl) {
+          // Erstelle <img> Tag direkt
+          const img = document.createElement('img');
+          img.src = logoUrl;
+          img.alt = toolName;
+          img.style.width = '100%';
+          img.style.height = '100%';
+          img.style.objectFit = 'contain';
+          img.style.display = 'block';
+          
+          img.onload = function() {
+            // Ersetze Icon-Inhalt mit <img>
+            iconElement.innerHTML = '';
+            iconElement.appendChild(img);
+            iconElement.style.backgroundImage = 'none';
+            iconElement.style.padding = '0';
+            iconElement.classList.add('has-logo');
+            loaded++;
+            console.log(`✅ Logo geladen: ${toolName}`);
+          };
+          
+          img.onerror = function() {
+            console.warn(`❌ Logo-Fehler: ${toolName} - ${logoUrl}`);
+          };
+        } else {
+          console.warn(`⚠️ Kein Logo für: ${toolName}`);
+        }
+      });
+      
+      setTimeout(() => {
+        console.log(`📊 Logo-Statistik: ${loaded}/${toolCards.length} geladen`);
+      }, 2000);
+    }
+    
+    // SOFORT ausführen
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadToolLogos);
+    } else {
+      loadToolLogos();
+    }
+    </script>
+</body>
+</html>

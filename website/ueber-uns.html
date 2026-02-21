@@ -1,0 +1,2679 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
+<meta content="no-cache" http-equiv="Pragma"/>
+<meta content="0" http-equiv="Expires"/>
+<title>Über Uns | CanGo Empire - Die KI-Revolution im Dienstleistungssektor</title>
+<meta content="CanGo Empire - Wir dominieren den Dienstleistungssektor durch KI-Automatisierung. 33 Workflows. 30+ KI-Systeme. Ein Netzwerk mit 380+ Versicherern und 64 Energiegesellschaften." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    /* ============================================
+       ENTERPRISE DESIGN SYSTEM
+       ============================================ */
+
+    /* === 1. DESIGN TOKENS === */
+    :root {
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --gray-950: #030712;
+
+      --primary-50: #FFF7ED;
+      --primary-100: #FFEDD5;
+      --primary-200: #FED7AA;
+      --primary-300: #FDBA74;
+      --primary-400: #FB923C;
+      --primary-500: #F97316;
+      --primary-600: #EA580C;
+      --primary-700: #C2410C;
+
+      --accent-400: #F87171;
+      --accent-500: #EF4444;
+      --accent-600: #DC2626;
+      --accent-700: #B91C1C;
+
+      --blue-400: #60A5FA;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+
+      --success: #10B981;
+      --warning: #F59E0B;
+
+      --bg-base: var(--gray-950);
+      --bg-elevated: var(--gray-900);
+      --bg-surface: var(--gray-800);
+      --bg-hover: var(--gray-700);
+      --text-primary: var(--gray-50);
+      --text-secondary: var(--gray-400);
+      --text-muted: var(--gray-500);
+      --border-default: var(--gray-800);
+      --border-hover: var(--gray-700);
+
+      --text-bright: var(--text-primary);
+      --text-dim: var(--text-secondary);
+      --accent-gold: var(--primary-400);
+      --bg-dark: var(--bg-base);
+      --border: var(--border-default);
+
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.563rem;
+      --text-3xl: 1.953rem;
+      --text-4xl: 2.441rem;
+      --text-5xl: 3.052rem;
+      --text-6xl: 3.815rem;
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      --shadow-glow: 0 0 40px -10px;
+
+      --duration-fast: 150ms;
+      --duration-base: 200ms;
+      --duration-slow: 300ms;
+      --duration-slower: 500ms;
+      --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+      --nav-height: 64px;
+      --container-max: 1200px;
+      --container-narrow: 800px;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+
+      --z-base: 1;
+      --z-elevated: 10;
+      --z-sticky: 100;
+      --z-modal: 200;
+    }
+
+    /* === 2. RESET & BASE === */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100% !important;
+  scroll-behavior: smooth !important;
+}
+
+    body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+
+    /* === 3. UTILITIES === */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* === 4. NAVIGATION === */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: rgba(3, 7, 18, 0.8);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-default);
+      z-index: var(--z-sticky);
+      transition: background var(--duration-base) var(--ease-out);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: var(--text-lg);
+      color: var(--text-primary);
+    }
+
+    .nav__brand-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: white;
+    }
+
+    .nav__menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+
+    .nav__link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    .nav__link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      transition: all var(--duration-fast) var(--ease-out);
+      box-shadow: var(--shadow-glow) var(--primary-500);
+    }
+
+    .nav__cta:hover {
+      background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+      transform: translateY(-1px);
+      box-shadow: 0 0 50px -10px var(--primary-400);
+    }
+
+    .nav__toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-2);
+    }
+
+    .nav__toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    /* === 5. HERO SECTION === */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: calc(var(--nav-height) + var(--space-16));
+      padding-bottom: var(--space-24);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.15), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(220, 38, 38, 0.1), transparent);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black, transparent);
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black, transparent);
+      pointer-events: none;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: var(--z-base);
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+      animation: fadeInUp 0.6s var(--ease-out) both;
+    }
+
+    .hero__badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero__title {
+      font-size: clamp(2.5rem, 8vw, var(--text-6xl));
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+      animation: fadeInUp 0.6s var(--ease-out) 0.1s both;
+    }
+
+    .hero__subtitle {
+      font-size: var(--text-xl);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto var(--space-8);
+      line-height: 1.7;
+      animation: fadeInUp 0.6s var(--ease-out) 0.2s both;
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+      animation: fadeInUp 0.6s var(--ease-out) 0.3s both;
+    }
+
+    .hero__stat {
+      padding: var(--space-6);
+      background: rgba(249, 115, 22, 0.05);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .hero__stat:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-500);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+    }
+
+    .hero__stat-value {
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--primary-400);
+      margin-bottom: var(--space-2);
+    }
+
+    .hero__stat-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* === 6. MANIFEST SECTION === */
+    .manifest {
+      padding: var(--space-24) 0;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border-default);
+      border-bottom: 1px solid var(--border-default);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .manifest::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(
+        ellipse 60% 60% at 50% 50%,
+        rgba(249, 115, 22, 0.08),
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .manifest__content {
+      position: relative;
+      z-index: 1;
+    
+    }
+
+    .manifest__header {
+      text-align: center;
+      margin-bottom: var(--space-16);
+    }
+
+    .section__eyebrow {
+      color: var(--accent-gold);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+
+    .section__title {
+      font-size: clamp(2rem, 5vw, var(--text-5xl));
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .section__subtitle {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+      font-size: var(--text-lg);
+      line-height: 1.7;
+    }
+
+    .manifest__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+    }
+
+    .manifest__card {
+      padding: var(--space-8);
+      background: var(--bg-base);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .manifest__card:hover {
+      border-color: var(--primary-500);
+      transform: translateY(-4px);
+    }
+
+    .manifest__card-icon {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .manifest__card-title {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+      color: var(--text-primary);
+    }
+
+    .manifest__card-text {
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .manifest__card-text strong {
+      color: var(--primary-400);
+      font-weight: 600;
+    }
+
+    /* === 7. REVOLUTION SECTION === */
+    .revolution {
+      padding: var(--space-24) 0;
+      position: relative;
+    }
+
+    .revolution__content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .revolution__timeline {
+      position: relative;
+      padding-left: var(--space-12);
+    }
+
+    .revolution__timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary-500), var(--primary-600), transparent);
+    }
+
+    .revolution__item {
+      position: relative;
+      padding-bottom: var(--space-12);
+    }
+
+    .revolution__item:last-child {
+      padding-bottom: 0;
+    }
+
+    .revolution__item::before {
+      content: '';
+      position: absolute;
+      left: calc(-1 * var(--space-12) - 6px);
+      top: 8px;
+      width: 14px;
+      height: 14px;
+      background: var(--primary-500);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--primary-500);
+    }
+
+    .revolution__era {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary-400);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: var(--space-2);
+    }
+
+    .revolution__title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+      color: var(--text-primary);
+    }
+
+    .revolution__text {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: var(--text-base);
+    }
+
+    /* === 8. ARSENAL SECTION === */
+    .arsenal {
+      padding: var(--space-24) 0;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border-default);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .arsenal__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+
+    .arsenal__card {
+      position: relative;
+      padding: var(--space-10);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(249, 115, 22, 0.02) 100%);
+      border: 2px solid rgba(249, 115, 22, 0.2);
+      border-radius: var(--radius-xl);
+      transition: all var(--duration-slow) var(--ease-out);
+      overflow: hidden;
+    }
+
+    .arsenal__card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary-500), transparent);
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+
+    .arsenal__card:hover {
+      border-color: var(--primary-500);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);
+      transform: translateY(-8px);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(249, 115, 22, 0.2);
+    }
+
+    .arsenal__card:hover::before {
+      opacity: 1;
+    }
+
+    .arsenal__icon {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-4);
+      display: block;
+      filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.3));
+    }
+
+    .arsenal__number {
+      font-size: clamp(3rem, 6vw, var(--text-6xl));
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--space-3);
+      line-height: 1;
+    }
+
+    .arsenal__label {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+
+    .arsenal__desc {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .arsenal__desc strong {
+      color: var(--primary-400);
+      font-weight: 600;
+    }
+
+    /* === 9. ALLIANZ SECTION === */
+    .allianz {
+      padding: var(--space-24) 0;
+      position: relative;
+    }
+
+    .allianz::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1000px;
+      height: 1000px;
+      background: radial-gradient(
+        ellipse 50% 50% at 50% 50%,
+        rgba(249, 115, 22, 0.1),
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .allianz__intro {
+      max-width: 800px;
+      margin: 0 auto var(--space-12);
+      padding: var(--space-8);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(220, 38, 38, 0.05));
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .allianz__intro-text {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .allianz__intro-text strong {
+      color: var(--primary-400);
+      font-weight: 600;
+    }
+
+    .industries__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+    }
+
+    .industry {
+      cursor: default;
+      padding: 2.5rem;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .industry:nth-child(2) {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.05), transparent);
+      border-color: rgba(245, 158, 11, 0.2);
+    }
+
+    .industry:nth-child(3) {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), transparent);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    .industry:nth-child(4) {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), transparent);
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .industry:nth-child(5) {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), transparent);
+      border-color: rgba(236, 72, 153, 0.2);
+    }
+
+    .industry:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+    }
+
+    .industry__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 1.5rem;
+    }
+
+    .industry__icon {
+      font-size: 2.5rem;
+      background: rgba(59, 130, 246, 0.1);
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
+
+    .industry:nth-child(2) .industry__icon {
+      background: rgba(245, 158, 11, 0.1);
+    }
+
+    .industry:nth-child(3) .industry__icon {
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .industry:nth-child(4) .industry__icon {
+      background: rgba(239, 68, 68, 0.1);
+    }
+
+    .industry:nth-child(5) .industry__icon {
+      background: rgba(236, 72, 153, 0.1);
+    }
+
+    .industry__name {
+      font-size: 1.5rem;
+      color: var(--text-bright);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .industry__cpm {
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    .partner-tags {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .partner-tag {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .partner-tag:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--text-bright);
+      color: var(--text-bright);
+      transform: translateY(-2px);
+    }
+
+    .partner-tag--static {
+      cursor: default;
+    }
+
+    .partner-tag--static:hover {
+      transform: none;
+      border-color: rgba(255, 255, 255, 0.1);
+      color: var(--text-dim);
+    }
+
+    .badge {
+      background: var(--blue-500);
+      color: white;
+      padding: 0.2rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .badge--warning {
+      background: var(--warning);
+      color: black;
+    }
+
+    .badge--success {
+      background: var(--success);
+      color: white;
+    }
+
+    .badge--accent {
+      background: var(--accent-600);
+      color: white;
+    }
+
+    .badge--pink {
+      background: #EC4899;
+      color: white;
+    }
+
+    /* === 10. FOUNDER SECTION === */
+    .founder {
+      padding: var(--space-24) 0;
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border-default);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .founder__content {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: var(--space-12);
+      align-items: start;
+    }
+
+    .founder__left-column {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .founder__image {
+      position: relative;
+      align-self: start;
+      transform: translateX(-2%);
+    }
+
+    .founder__image img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: var(--radius-xl);
+      border: none;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      transition: all var(--duration-base) var(--ease-out);
+      background: transparent;
+    }
+
+    .founder__image:hover img {
+      transform: scale(1.02);
+      box-shadow: 0 25px 50px rgba(249, 115, 22, 0.2);
+      border-color: var(--primary-500);
+    }
+
+    .founder__image-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05));
+      border: 2px solid rgba(249, 115, 22, 0.3);
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .founder__image-icon {
+      font-size: 5rem;
+      opacity: 0.8;
+    }
+
+    .founder__image-label {
+      color: var(--primary-400);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+    }
+
+    .founder__info {
+      position: relative;
+    }
+
+    .founder__name {
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+    }
+
+    .founder__role {
+      font-size: var(--text-lg);
+      color: var(--primary-400);
+      font-weight: 600;
+      margin-bottom: var(--space-6);
+    }
+
+    .founder__bio {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: var(--space-8);
+    }
+
+    .founder__stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+
+    .founder__stat {
+      text-align: center;
+      padding: var(--space-4);
+      background: var(--bg-base);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+    }
+
+    .founder__stat-value {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--primary-400);
+      margin-bottom: var(--space-1);
+    }
+
+    .founder__stat-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .founder__signature {
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: var(--primary-400);
+      font-weight: 600;
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--border-default);
+    }
+
+    /* === 11. CTA SECTION === */
+    .cta {
+      padding: var(--space-24) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(249, 115, 22, 0.2), transparent),
+        radial-gradient(ellipse 40% 30% at 20% 80%, rgba(220, 38, 38, 0.15), transparent);
+      pointer-events: none;
+    }
+
+    .cta__content {
+      position: relative;
+      z-index: var(--z-base);
+    }
+
+    .cta__title {
+      font-size: var(--text-5xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+
+    .cta__subtitle {
+      font-size: var(--text-xl);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto var(--space-8);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      font-family: inherit;
+      font-size: var(--text-base);
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .btn--accent {
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: var(--text-primary);
+      box-shadow: var(--shadow-glow) var(--primary-500);
+    }
+
+    .btn--accent:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px -10px var(--primary-400);
+    }
+
+    .btn--large {
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--text-lg);
+    }
+
+    /* === 12. FOOTER === */
+    .footer {
+      padding: var(--space-16) 0 var(--space-8);
+      border-top: 1px solid var(--border-default);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-12);
+      margin-bottom: var(--space-12);
+    }
+
+    .footer__brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-weight: 700;
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-4);
+    }
+
+    .footer__brand-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+
+    .footer__desc {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      max-width: 300px;
+    }
+
+    .footer__title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    .footer__links {
+      list-style: none;
+    }
+
+    .footer__links li {
+      margin-bottom: var(--space-2);
+    }
+
+    .footer__links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      transition: color var(--duration-fast) var(--ease-out);
+    }
+
+    .footer__links a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--space-8);
+      border-top: 1px solid var(--border-default);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .footer__tagline {
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    /* === 13. RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .hero__stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .manifest__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .arsenal__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .founder__content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .founder__image {
+        max-width: 280px;
+        margin: 0 auto var(--space-8);
+      }
+
+      .founder__image img {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+
+      .founder__left-column {
+        max-width: 100%;
+      }
+
+      .founder__left-column .manifest__header {
+        text-align: center !important;
+      }
+
+      .founder__left-column .section__title {
+        text-align: center !important;
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-8);
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --text-6xl: 3rem;
+        --text-5xl: 2.5rem;
+        --text-4xl: 2rem;
+      }
+
+      .nav__menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-base);
+        border-bottom: 1px solid var(--border-default);
+        padding: var(--space-6);
+        gap: var(--space-4);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--duration-base) var(--ease-out);
+      }
+
+      .nav__menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav__toggle {
+        display: flex;
+      }
+
+      .hero__stats {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4);
+      }
+
+      .arsenal__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .industries__grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .industry {
+        padding: 1.5rem;
+      }
+
+      .founder__stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer__bottom {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+      }
+
+      .revolution__timeline {
+        padding-left: var(--space-8);
+      }
+
+      .revolution__item::before {
+        left: calc(-1 * var(--space-8) - 6px);
+      }
+    }
+  
+    /* === ACCESSIBILITY: FOCUS STATES === */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary-500);
+      color: white;
+      padding: var(--space-2) var(--space-4);
+      text-decoration: none;
+      z-index: 1000;
+      border-radius: var(--radius-md);
+    }
+    
+    .skip-link:focus {
+      top: var(--space-2);
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+    
+    /* Keyboard Navigation */
+    *:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+    }
+    
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN SYSTEM
+       Mobile-First Approach mit Corporate Design
+       ============================================ */
+    
+    /* === BREAKPOINTS === */
+    /* Mobile: < 480px (Standard) */
+    /* Tablet: 481px - 768px */
+    /* Desktop: 769px - 1024px */
+    /* Large Desktop: > 1024px */
+    
+    /* === TABLET & SMALL DESKTOP (max-width: 1024px) === */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 var(--space-4);
+      }
+      
+      /* Hero Adjustments */
+      .hero__title {
+        font-size: clamp(2rem, 6vw, var(--text-5xl));
+      }
+      
+      .hero__stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+      }
+      
+      /* Grid Adjustments */
+      .industries__grid,
+      .tech__grid,
+      .arsenal__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+      }
+      
+      /* Cards */
+      .tech__card,
+      .arsenal__card,
+      .industry {
+        padding: var(--space-6);
+      }
+      
+      /* Footer */
+      .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
+      }
+    }
+    
+    /* === TABLET (max-width: 768px) === */
+    @media (max-width: 768px) {
+      :root {
+        --text-6xl: 3rem;
+        --text-5xl: 2.5rem;
+        --text-4xl: 2rem;
+        --text-3xl: 1.75rem;
+        --text-2xl: 1.5rem;
+        --space-24: 4rem;
+        --space-20: 3rem;
+        --space-16: 2.5rem;
+        --space-12: 2rem;
+      }
+      
+      .container {
+        padding: 0 var(--space-4);
+      }
+      
+      /* Navigation Mobile */
+      .nav__menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-base);
+        border-bottom: 1px solid var(--border-default);
+        padding: var(--space-6);
+        gap: var(--space-4);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--duration-base) var(--ease-out);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 99;
+      }
+      
+      .nav__menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav__toggle {
+        display: flex;
+      }
+      
+      .nav__link,
+      .nav__cta {
+        width: 100%;
+        text-align: center;
+        padding: var(--space-3) var(--space-4);
+      }
+      
+      /* Hero Section */
+      .hero {
+        padding-top: calc(var(--nav-height) + var(--space-8));
+        padding-bottom: var(--space-12);
+        min-height: auto;
+      }
+      
+      .hero__title {
+        font-size: clamp(1.75rem, 8vw, var(--text-4xl));
+        margin-bottom: var(--space-4);
+      }
+      
+      .hero__subtitle {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-6);
+      }
+      
+      .hero__stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+        margin-top: var(--space-8);
+      }
+      
+      .hero__stat {
+        padding: var(--space-4);
+      }
+      
+      .hero__stat-value {
+        font-size: var(--text-2xl);
+      }
+      
+      /* Section Headers */
+      .section__title {
+        font-size: clamp(1.75rem, 6vw, var(--text-3xl));
+        margin-bottom: var(--space-3);
+      }
+      
+      .section__subtitle {
+        font-size: var(--text-base);
+      }
+      
+      /* Grids - Single Column */
+      .industries__grid,
+      .tech__grid,
+      .arsenal__grid,
+      .manifest__grid,
+      .revolution__timeline,
+      .allianz__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Cards */
+      .tech__card,
+      .arsenal__card,
+      .manifest__card,
+      .industry {
+        padding: var(--space-5);
+      }
+      
+      /* Stats */
+      .hero__stats,
+      .tech__number,
+      .arsenal__number {
+        font-size: var(--text-3xl);
+      }
+      
+      /* Footer */
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        text-align: center;
+      }
+      
+      .footer__bottom {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+      }
+      
+      /* CTA Buttons */
+      .cta__buttons {
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      /* Founder Section */
+      .founder__content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .founder__image {
+        max-width: 250px;
+        margin: 0 auto var(--space-6);
+      }
+      
+      .founder__stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Allianz Section */
+      .allianz__intro {
+        padding: var(--space-6);
+      }
+      
+      /* Protocol Steps */
+      .protocol__step {
+        grid-template-columns: 60px 1fr;
+        gap: var(--space-4);
+      }
+      
+      .protocol__step-number {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-xl);
+      }
+      
+      /* Scenarios */
+      .scenarios {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Partner Cards */
+      .partner__card {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+      
+      /* Products Grid */
+      .products {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Qualification Cards */
+      .qualification__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      .qualification__promise-paths {
+        grid-template-columns: 1fr;
+      }
+      
+      /* Financing Banner */
+      .financing-banner__wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .financing-banner__rate-box {
+        justify-self: center;
+        margin-bottom: var(--space-4);
+      }
+      
+      .financing-banner__features {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+    
+    /* === MOBILE (max-width: 480px) === */
+    @media (max-width: 480px) {
+      :root {
+        --space-24: 3rem;
+        --space-20: 2.5rem;
+        --space-16: 2rem;
+        --space-12: 1.5rem;
+        --space-8: 1.5rem;
+        --space-6: 1rem;
+        --space-4: 0.75rem;
+      }
+      
+      .container {
+        padding: 0 var(--space-3);
+      }
+      
+      /* Typography */
+      .hero__title {
+        font-size: clamp(1.5rem, 10vw, var(--text-3xl));
+        line-height: 1.2;
+      }
+      
+      .section__title {
+        font-size: clamp(1.5rem, 8vw, var(--text-2xl));
+      }
+      
+      /* Hero */
+      .hero__badge {
+        font-size: var(--text-xs);
+        padding: var(--space-2) var(--space-3);
+      }
+      
+      .hero__stat-value {
+        font-size: var(--text-xl);
+      }
+      
+      /* Cards - Compact */
+      .tech__card,
+      .arsenal__card,
+      .manifest__card,
+      .industry {
+        padding: var(--space-4);
+      }
+      
+      .tech__icon,
+      .arsenal__icon {
+        font-size: var(--text-2xl);
+      }
+      
+      /* Buttons */
+      .btn {
+        padding: var(--space-3) var(--space-5);
+        font-size: var(--text-sm);
+      }
+      
+      /* Navigation */
+      .nav__brand {
+        font-size: var(--text-base);
+      }
+      
+      .nav__brand-icon {
+        width: 28px;
+        height: 28px;
+      }
+      
+      /* Footer */
+      .footer {
+        padding: var(--space-12) 0 var(--space-6);
+      }
+      
+      /* Spacing Reductions */
+      section {
+        padding: var(--space-12) 0;
+      }
+      
+      .section__header {
+        margin-bottom: var(--space-8);
+      }
+    }
+    
+    /* === LARGE DESKTOP (min-width: 1400px) === */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1400px;
+      }
+      
+      .hero__title {
+        font-size: var(--text-6xl);
+      }
+      
+      .industries__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    /* === LANDSCAPE ORIENTATION === */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero {
+        min-height: auto;
+        padding-top: calc(var(--nav-height) + var(--space-4));
+        padding-bottom: var(--space-8);
+      }
+      
+      .hero__stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* === PRINT STYLES === */
+    @media print {
+      .nav,
+      .nav__menu,
+      .btn,
+      .skip-link {
+        display: none;
+      }
+      
+      body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+      
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+    }
+
+  
+    
+    
+    body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+    
+    /* Stelle sicher, dass alle Sections sichtbar sind */
+    section {
+      position: relative !important;
+      min-height: auto !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+    
+    /* Hero sollte nicht den Rest blockieren */
+    .hero {
+      min-height: 100vh !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+    
+    .hero::before,
+    .hero::after {
+      overflow: visible !important;
+    }
+    
+    /* Container sollten nicht abschneiden */
+    .container {
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+    
+  
+    
+    
+    html, body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+    
+    body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+    
+    /* ALLE Sections sichtbar */
+    section {
+      position: relative !important;
+      min-height: auto !important;
+      height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+    
+    /* Hero blockiert nicht */
+    .hero {
+      overflow: visible !important;
+      height: auto !important;
+      min-height: 100vh !important;
+    }
+    
+    .hero::before,
+    .hero::after {
+      overflow: visible !important;
+    }
+    
+    /* Container blockieren nicht */
+    .container,
+    .manifest,
+    .revolution,
+    .arsenal,
+    .tech,
+    .cta,
+    .footer {
+      overflow: visible !important;
+      height: auto !important;
+      max-height: none !important;
+    }
+    
+  
+    
+    
+    body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+    
+  
+    
+    
+    .manifest,
+    .revolution,
+    .arsenal,
+    .tech,
+    .cta {
+      position: relative !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: block !important;
+      z-index: 1 !important;
+    }
+    
+    .manifest__content,
+    .revolution__content,
+    .arsenal__grid,
+    .tech__grid {
+      position: relative !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      z-index: 2 !important;
+    }
+    
+    footer {
+      position: relative !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: block !important;
+    }
+    
+  
+    
+    
+    body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+    
+  
+    
+    
+    body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+    
+    /* ALLE Sections sichtbar machen */
+    section {
+      position: relative !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: block !important;
+      min-height: auto !important;
+      height: auto !important;
+    }
+    
+    /* Spezifische Sections */
+    .manifest,
+    .revolution,
+    .arsenal,
+    .tech,
+    .cta,
+    .founder {
+      position: relative !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: block !important;
+      min-height: auto !important;
+      height: auto !important;
+      padding: var(--space-24) 0 !important;
+    }
+    
+    /* Content-Bereiche sichtbar */
+    .manifest__content,
+    .manifest__grid,
+    .revolution__content,
+    .revolution__timeline,
+    .arsenal__grid,
+    .tech__grid {
+      position: relative !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: block !important;
+      z-index: 10 !important;
+    }
+    
+    /* Footer sichtbar */
+    footer {
+      position: relative !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: block !important;
+      min-height: auto !important;
+      height: auto !important;
+    }
+    
+    /* Container sichtbar */
+    .container {
+      position: relative !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+  
+    
+    
+    /* Container immer sichtbar */
+    .container {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+  
+    
+    
+    body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: auto !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  display: block !important;
+}
+    
+  
+    
+    
+  
+
+
+
+
+  
+
+
+  
+
+
+  
+/* ============================================
+   FINAL LAYOUT FIX - SECTIONS UNTEREINANDER
+   ============================================ */
+
+html, body {
+  overflow-x: hidden !important;
+}
+
+body {
+  display: block !important;
+  min-height: 100vh !important;
+}
+
+/* Sektionen MÜSSEN untereinander sein */
+section,
+.hero,
+.manifest,
+.revolution,
+.arsenal,
+.allianz,
+.founder,
+.cta,
+footer {
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+  float: none !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* Container zentrieren aber nicht nebeneinander */
+.container {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Grid-Layouts nur für INHALT, nicht für Sektionen */
+.manifest__grid { 
+  display: grid !important; 
+  grid-template-columns: repeat(2, 1fr) !important; 
+  gap: 1.5rem !important;
+}
+
+.arsenal__grid { 
+  display: grid !important; 
+  grid-template-columns: repeat(3, 1fr) !important; 
+  gap: 1.5rem !important;
+}
+
+.industries__grid { 
+  display: grid !important; 
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important; 
+  gap: 1.5rem !important;
+}
+
+.founder__content { 
+  display: grid !important; 
+  grid-template-columns: 280px 1fr !important; 
+  gap: 2rem !important;
+}
+
+/* Navigation volle Breite */
+.nav {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+}
+
+.nav__inner {
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.nav__menu {
+  display: flex !important;
+  gap: 1.5rem !important;
+}
+
+/* Scrolling erlauben */
+html {
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+}
+
+body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Responsive: Alles untereinander auf Mobile */
+@media (max-width: 1024px) {
+  .manifest__grid,
+  .arsenal__grid,
+  .industries__grid,
+  .founder__content {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+  </style>
+<meta content="dark" name="color-scheme"/>
+</head>
+<body><a aria-label="Zum Hauptinhalt springen" class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
+<!-- ========================================
+       NAVIGATION
+       ======================================== -->
+<nav aria-label="Hauptnavigation" class="nav" role="navigation">
+<div class="container nav__inner">
+<a class="nav__brand" href="cango-empire-v4-monopoly.html#home">
+<span class="nav__brand-icon">C</span>
+<span>CanGo Empire</span>
+</a>
+<button aria-label="Menü öffnen" class="nav__toggle" onclick="document.querySelector('.nav__menu').classList.toggle('active')" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+        <div class="nav__menu">
+          <a href="index.html" class="nav__link">Startseite</a>
+          <a href="produkte.html" class="nav__link">Produkte</a>
+          <a href="ueber-uns.html" class="nav__link">Über Uns</a>
+          <a href="blogs.html" class="nav__link">Blogs</a>
+          <a href="marktplatz.html" class="nav__link">Marktplatz</a>
+          <a href="kontakt.html" class="nav__link">Kontakt</a>
+          <a href="kontakt.html" class="nav__cta">Jetzt starten</a>
+        </div>
+      </div>
+</nav>
+
+<!-- PARTNER BANNER -->
+<div class="partner-banner" id="partnerBanner" role="banner">
+<span class="partner-banner__icon">🎯</span>
+<span class="partner-banner__text">
+<strong>Rabattcode "Cango Empire"</strong> auf externen Partnerseiten oder <strong>"Cango Empire"</strong> im Kontaktformular angeben – so erkennt unser System, woher du kommst.
+</span>
+<button class="partner-banner__close" aria-label="Banner schließen" onclick="closePartnerBanner()" type="button">×</button>
+</div>
+
+<a aria-label="Zum Hauptinhalt springen" class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
+<!-- ========================================
+       NAVIGATION
+       ======================================== -->
+<nav aria-label="Hauptnavigation" class="nav" role="navigation">
+<div class="container nav__inner">
+<a class="nav__brand" href="cango-empire-v4-monopoly.html#home">
+<span class="nav__brand-icon">C</span>
+<span>CanGo Empire</span>
+</a>
+<button aria-label="Menü öffnen" class="nav__toggle" onclick="document.querySelector('.nav__menu').classList.toggle('active')" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+        <div class="nav__menu">
+          <a href="index.html" class="nav__link">Startseite</a>
+          <a href="produkte.html" class="nav__link">Produkte</a>
+          <a href="ueber-uns.html" class="nav__link">Über Uns</a>
+          <a href="blogs.html" class="nav__link">Blogs</a>
+          <a href="marktplatz.html" class="nav__link">Marktplatz</a>
+          <a href="kontakt.html" class="nav__link">Kontakt</a>
+          <a href="kontakt.html" class="nav__cta">Jetzt starten</a>
+        </div>
+      </div>
+
+
+<!-- ========================================
+       HERO SECTION
+       ======================================== -->
+<section class="hero">
+<div class="container">
+<div class="hero__content">
+<div class="hero__badge">
+<span class="hero__badge-dot"></span>
+<span>MISSION CONTROL · SYSTEM STATUS: OPERATIONAL</span>
+</div>
+<h1 class="hero__title">
+          Wir sind keine Agentur.<br/>
+<span class="text-gradient">Wir sind die industrielle Revolution.</span>
+</h1>
+<p class="hero__subtitle">
+          Marketing war Handwerk. Wir haben es zur Industrie gemacht. 
+          CanGo Empire dominiert den Dienstleistungssektor durch technologische Überlegenheit – 
+          mit einem Netzwerk aus <strong style="color: var(--primary-400);">380+ Versicherern</strong>, 
+          <strong style="color: var(--primary-400);">64 Energiegesellschaften</strong> und 
+          <strong style="color: var(--primary-400);">High-Ticket Immobilien</strong>.
+        </p>
+<div class="hero__stats">
+<div class="hero__stat">
+<div class="hero__stat-value">33</div>
+<div class="hero__stat-label">Master Workflows</div>
+</div>
+<div class="hero__stat">
+<div class="hero__stat-value">30+</div>
+<div class="hero__stat-label">KI-Systeme</div>
+</div>
+<div class="hero__stat">
+<div class="hero__stat-value">380+</div>
+<div class="hero__stat-label">Versicherer</div>
+</div>
+<div class="hero__stat">
+<div class="hero__stat-value">24/7</div>
+<div class="hero__stat-label">Autonomer Betrieb</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================
+       MANIFEST SECTION
+       ======================================== -->
+<section class="manifest">
+<div class="container">
+<div class="manifest__content">
+<div class="manifest__header">
+<span class="section__eyebrow">DAS MANIFEST</span>
+<h2 class="section__title">
+            Das Ende der menschlichen Latenz.<br/>
+<span class="text-gradient">Der Beginn der Maschinen-Ära.</span>
+</h2>
+<p class="section__subtitle">
+            In der alten Welt gewannen Unternehmen durch Glück, Beziehungen oder teure Mitarbeiter. 
+            In der Welt von CanGo Empire gewinnt das bessere System.
+          </p>
+</div>
+<div class="manifest__grid">
+<div class="manifest__card">
+<div class="manifest__card-icon">⚡</div>
+<h3 class="manifest__card-title">Die These</h3>
+<p class="manifest__card-text">
+              Jede Dienstleistung, die in Code übersetzt werden kann, wird in Code übersetzt werden. 
+              Die einzige Frage ist: <strong>Wer macht es zuerst?</strong>
+<br/><br/>
+              Wir haben menschliche Kreativität in Python-Code übersetzt. Wir haben Strategie in Algorithmen gegossen. 
+              Wir haben ein Netzwerk gebaut, das nicht auf Handschlägen basiert – sondern auf API-Schnittstellen.
+            </p>
+</div>
+<div class="manifest__card">
+<div class="manifest__card-icon">🎯</div>
+<h3 class="manifest__card-title">Die Mission</h3>
+<p class="manifest__card-text">
+              Wir existieren, um den Dienstleistungssektor zu automatisieren – und damit zu dominieren.
+              <br/><br/>
+              Nicht durch mehr Personal. Nicht durch härtere Arbeit. 
+              Sondern durch <strong>Systeme, die 24/7 liefern</strong>, während andere schlafen.
+              Von der Idee zum fertigen Content in unter 10 Minuten. Vollautomatisiert.
+            </p>
+</div>
+<div class="manifest__card">
+<div class="manifest__card-icon">🏭</div>
+<h3 class="manifest__card-title">Die Methode</h3>
+<p class="manifest__card-text">
+              Wir haben Dienstleistung industrialisiert. Jeder unserer 33 Workflows ist eine digitale Fabrik, 
+              die Assets am Fließband produziert.
+              <br/><br/>
+              Wenn der Trigger feuert, startet die Kette: Recherche, Skript, Voice, Schnitt, Upload. 
+              <strong>Ohne menschliche Latenz. Ohne Pause.</strong>
+</p>
+</div>
+<div class="manifest__card">
+<div class="manifest__card-icon">💎</div>
+<h3 class="manifest__card-title">Das Ergebnis</h3>
+<p class="manifest__card-text">
+              Während deine Konkurrenz <strong>10 neue Mitarbeiter einstellen muss</strong>, um den Output zu verdoppeln...
+              <br/><br/>
+              ...drückst du bei CanGo Empire nur einen Knopf. 
+              <strong>Grenzkosten für das 1000. Video: 0 Euro.</strong>
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================
+       REVOLUTION SECTION
+       ======================================== -->
+<section class="revolution">
+<div class="container">
+<div class="manifest__header" style="margin-bottom: var(--space-12);">
+<span class="section__eyebrow">DIE EVOLUTION</span>
+<h2 class="section__title">
+          Von der Werkstatt zur <span class="text-gradient">digitalen Fertigungsstraße</span>
+</h2>
+</div>
+<div class="revolution__content">
+<div class="revolution__timeline">
+<div class="revolution__item">
+<div class="revolution__era">GESTERN</div>
+<h3 class="revolution__title">Das Agentur-Modell</h3>
+<p class="revolution__text">
+              Du betreibst dein Marketing wie eine Werkstatt aus dem letzten Jahrhundert: Handarbeit. 
+              Jeder Text, jedes Video, jede Grafik wird von einem Menschen angefasst. 
+              Das ist teuer, extrem fehleranfällig und absolut nicht skalierbar. 
+              Eine Agentur vermietet menschliche Arbeitszeit gegen Geld. Das ist ineffizient.
+            </p>
+</div>
+<div class="revolution__item">
+<div class="revolution__era">HEUTE</div>
+<h3 class="revolution__title">Der Paradigmenwechsel</h3>
+<p class="revolution__text">
+              Künstliche Intelligenz hat alles verändert. Aber 99% der Unternehmen kratzen nur an der Oberfläche. 
+              Sie nutzen ChatGPT wie eine bessere Suchmaschine. Sie haben keine Infrastruktur. Keine Workflows. 
+              Keine Systeme. Sie haben Tools – aber keine Waffen.
+            </p>
+</div>
+<div class="revolution__item">
+<div class="revolution__era">CANGO EMPIRE</div>
+<h3 class="revolution__title">Die industrielle Revolution 4.0</h3>
+<p class="revolution__text">
+              Wir haben nicht eine KI-Anwendung gebaut. Wir haben einen Schwarm orchestriert. 
+              30+ KI-Systeme, fest verdrahtet in einer proprietären Infrastruktur. 
+              Das System lernt mit jedem Asset und optimiert sich selbst. 
+              Du investierst nicht in Betriebskosten – du investierst in Anlagevermögen.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================
+       ARSENAL SECTION
+       ======================================== -->
+<section class="arsenal">
+<div class="container">
+<div class="manifest__header">
+<span class="section__eyebrow">DAS ARSENAL</span>
+<h2 class="section__title">
+          Technologische <span class="text-gradient">Überlegenheit</span>
+</h2>
+<p class="section__subtitle">
+          Wir schießen nicht blind. Wir operieren chirurgisch in den lukrativsten Sektoren. 
+          Spezialisierung schlägt Generalisierung. Immer.
+        </p>
+</div>
+<div class="arsenal__grid">
+<div class="arsenal__card">
+<div class="arsenal__icon">⚡</div>
+<div class="arsenal__number">33</div>
+<div class="arsenal__label">Fertigungsstraßen</div>
+<p class="arsenal__desc">
+            Jeder Workflow ist eine digitale Fabrik. Von der Recherche bis zum Upload – 
+            <strong>alles automatisiert</strong>. Blogs, Videos, SEO-Assets, Social Media. 
+            Ein Knopfdruck. Tausend Assets.
+          </p>
+</div>
+<div class="arsenal__card">
+<div class="arsenal__icon">🤖</div>
+<div class="arsenal__number">30+</div>
+<div class="arsenal__label">KI-Systeme</div>
+<p class="arsenal__desc">
+            Wir nutzen nicht "eine KI". Wir nutzen einen Schwarm. 
+            Die besten KI-Modelle der Welt, <strong>orchestriert in einer proprietären Infrastruktur</strong>. 
+            Das System lernt und optimiert sich selbst.
+          </p>
+</div>
+<div class="arsenal__card">
+<div class="arsenal__icon">🎯</div>
+<div class="arsenal__number">9</div>
+<div class="arsenal__label">Kontrollierte Märkte</div>
+<p class="arsenal__desc">
+            Finanzen. Versicherungen. Immobilien. Trading. Crypto. Energie. KI &amp; Tech. 
+            Automationen. HR &amp; Recruiting. <strong>High-CPM Nischen mit maximaler Rendite.</strong>
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================
+       ALLIANZ SECTION
+       ======================================== -->
+<section class="allianz" id="allianz">
+<div class="container">
+<div class="manifest__header">
+<span class="section__eyebrow">VERIFIZIERTE INFRASTRUKTUR</span>
+<h2 class="section__title">
+          Ein Netzwerk.<br/>
+<span class="text-gradient">Totale Marktabdeckung.</span>
+</h2>
+<p class="section__subtitle">
+          CanGo Empire operiert nicht im Vakuum. Wir sind das technologische Rückgrat für führende Marken. 
+          Unsere Automatisierung steuert die Lead-Ströme für die größten Player im DACH-Raum.
+        </p>
+</div>
+<div class="allianz__intro">
+<p class="allianz__intro-text">
+          Wir nennen unsere Partner nicht "Kunden". Wir nennen sie <strong>Allianz</strong>. 
+          Das impliziert eine tiefe, strategische Verflechtung. 
+          Wir sind nicht deren Dienstleister – <strong>wir sind deren technisches Rückgrat</strong>.
+        </p>
+</div>
+<div class="industries__grid">
+<!-- Finanz-Allianz -->
+<div class="industry">
+<div class="industry__header">
+<div class="industry__icon">🛡️</div>
+<div class="badge">380+ GESELLSCHAFTEN</div>
+</div>
+<h3 class="industry__name">
+<a href="finanzen-versicherung.html" onmouseout="this.style.color='inherit'" onmouseover="this.style.color='var(--primary-400)'" style="color: inherit; text-decoration: none; transition: color var(--duration-fast) var(--ease-out);">Finanz-Allianz</a>
+</h3>
+<p class="industry__cpm">
+            Wir automatisieren die Vertrauensbildung. Unsere Workflows speisen Leads direkt in DIN-normierte Beratungsprozesse. 
+            Kein manueller Aufwand. Nur skalierbare Resultate.
+          </p>
+<div class="partner-tags">
+<a class="partner-tag" href="https://myvi.de/" target="_blank" rel="noopener">MyVi</a>
+<a class="partner-tag" href="https://mitnorm.de/" target="_blank" rel="noopener">mitNORM</a>
+<a class="partner-tag" href="https://mitnormfirmenberatung.de/" target="_blank" rel="noopener">Firmenberatung</a>
+</div>
+</div>
+<!-- Real Estate -->
+<div class="industry">
+<div class="industry__header">
+<div class="industry__icon">🏗️</div>
+<div class="badge badge--warning">HIGH TICKET</div>
+</div>
+<h3 class="industry__name">
+<a href="immobilien.html" onmouseout="this.style.color='inherit'" onmouseover="this.style.color='var(--primary-400)'" style="color: inherit; text-decoration: none; transition: color var(--duration-fast) var(--ease-out);">Immobilien Dominanz</a>
+</h3>
+<p class="industry__cpm">
+            Vom Eigenheim bis zum Investment-Portfolio. Unsere KI generiert qualifizierte Investoren-Leads für
+            Pflegeimmobilien, Neubau und Finanzierung. Das komplette Portfolio.
+          </p>
+<div class="partner-tags">
+<a class="partner-tag" href="immobilien.html">Partner ansehen →</a>
+<a class="partner-tag" href="http://domicil-group.de/" target="_blank" rel="noopener">Domicil Group</a>
+<a class="partner-tag" href="https://grsti.de/" target="_blank" rel="noopener">Grundstein Immobilien</a>
+</div>
+</div>
+<!-- Energie -->
+<div class="industry">
+<div class="industry__header">
+<div class="industry__icon">⚡</div>
+<div class="badge badge--success">64 VERSORGER</div>
+</div>
+<h3 class="industry__name"><a href="energie-finance.html" style="color: inherit; text-decoration: none; transition: color var(--duration-fast) var(--ease-out);" onmouseover="this.style.color='var(--primary-400)'" onmouseout="this.style.color='inherit'">Energie-Infrastruktur</a></h3>
+<p class="industry__cpm">
+            Massengeschäft automatisiert. Wir vergleichen und vermitteln Tarife von 64 Gesellschaften in Echtzeit. 
+            Während der Markt über Preise diskutiert, automatisieren wir den Wechsel.
+          </p>
+<div class="partner-tags">
+<a class="partner-tag" href="https://www.energyfinance.de/" target="_blank" rel="noopener">Energy &amp; Finance</a>
+</div>
+</div>
+<!-- Human Capital -->
+<div class="industry">
+<div class="industry__header">
+<div class="industry__icon">🤝</div>
+<div class="badge badge--accent">RECRUITING</div>
+</div>
+<h3 class="industry__name">Jobbörse</h3>
+<p class="industry__cpm">
+            Spezialisiert auf die Vermittlung von Ingenieuren. In Partnerschaft mit über 800 Unternehmen sammeln wir Bewerbungen, 
+            anonymisieren diese und ermöglichen es den Unternehmen, sich direkt bei den Talenten zu bewerben. 
+            Keine Zeitarbeit – ausschließlich direkte Vermittlung in Festanstellung.
+          </p>
+<div class="partner-tags">
+<a class="partner-tag" href="https://www.wirpersonalberater.de/" target="_blank" rel="noopener">W:P Personalberater</a>
+</div>
+</div>
+<!-- Education -->
+<div class="industry">
+<div class="industry__header">
+<div class="industry__icon">🎓</div>
+<div class="badge badge--pink">E-LEARNING</div>
+</div>
+<h3 class="industry__name">Education &amp; E-Learning</h3>
+<p class="industry__cpm">
+            Skalierbarer Vertrieb für digitale Bildungsprodukte. Automatisierte Lead-Generierung für Kurse, 
+            Zertifizierungen und Online-Akademien.
+          </p>
+<div class="partner-tags">
+<a class="partner-tag" href="https://www.daskarriereinstitut.de/" target="_blank" rel="noopener">Das Karriere Institut</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================
+       FOUNDER SECTION
+       ======================================== -->
+<section class="founder">
+<div class="container">
+<div class="founder__content">
+<div class="founder__left-column">
+<div class="manifest__header" style="margin-bottom: var(--space-4); text-align: left;">
+<span class="section__eyebrow">DER ARCHITEKT</span>
+<h2 class="section__title" style="text-align: left; margin-bottom: var(--space-4);">
+              Das System hat einen <span class="text-gradient">Erbauer</span>
+</h2>
+</div>
+<div class="founder__image">
+<img id="founder-image" alt="Canberk Kivilcim - Lead Architect &amp; Founder von CanGo Empire" loading="lazy" src="images/founder-canberk-kivilcim.jpg">
+<div class="founder__image-placeholder" id="founder-placeholder" style="display: none;">
+<div class="founder__image-icon">👨‍💻</div>
+<div class="founder__image-label">Bild wird geladen...</div>
+<div style="font-size: var(--text-xs); color: var(--text-muted); margin-top: var(--space-2); text-align: center; padding: 0 var(--space-4);">
+              Bitte füge dein Bild als<br/><code style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">assets/founder-canberk-kivilcim.jpg</code><br/>oder<br/><code style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">images/founder-canberk-kivilcim.jpg</code><br/>ein
+            </div>
+</div>
+</div>
+</div>
+<div class="founder__info">
+<span class="section__eyebrow" style="margin-top: 0;">LEAD ARCHITECT &amp; FOUNDER</span>
+<h3 class="founder__name">Canberk Kivilcim</h3>
+<div class="founder__role">Automatisierungs-Architekt | System Designer</div>
+<p class="founder__bio">
+            Ich habe CanGo Empire nicht gegründet, um eine weitere Agentur zu leiten. 
+            Ich habe es gebaut, um das Konzept "Arbeit" neu zu definieren.
+            <br/><br/>
+            Meine Expertise liegt nicht im Händeschütteln oder in langen Meetings. 
+            Meine Expertise ist die Orchestrierung von neuronalen Netzwerken, API-Clustern und Vertriebs-Logik.
+            <br/><br/>
+            Zusammen mit unserer Allianz bauen wir keine Kampagnen – wir bauen digitale Vermögenswerte. 
+            Systeme, die 24/7 arbeiten. Systeme, die nicht krank werden. Systeme, die nicht kündigen.
+          </p>
+<div class="founder__stats">
+<div class="founder__stat">
+<div class="founder__stat-value">99.9%</div>
+<div class="founder__stat-label">System Uptime</div>
+</div>
+<div class="founder__stat">
+<div class="founder__stat-value">8+</div>
+<div class="founder__stat-label">Allianz Partner</div>
+</div>
+<div class="founder__stat">
+<div class="founder__stat-value">∞</div>
+<div class="founder__stat-label">Skalierbarkeit</div>
+</div>
+</div>
+<div class="founder__signature">"Automate or Obsolete."</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================
+       CTA SECTION
+       ======================================== -->
+<section class="cta">
+<div class="container">
+<div class="cta__content">
+<h2 class="cta__title">
+          Werde Teil der <span class="text-gradient">Allianz</span>.
+        </h2>
+<p class="cta__subtitle">
+          Wir nehmen nicht jeden auf. Wir suchen Partner, die bereit sind für exponentielles Wachstum. 
+          Unternehmen, die verstehen: Die Zukunft gehört den Maschinen.
+        </p>
+<a class="btn btn--accent btn--large" href="kontakt.html">
+          Uplink anfordern
+          <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20">
+<path d="M5 12h14M12 5l7 7-7 7"></path>
+</svg>
+</a>
+</div>
+</div>
+</section>
+<!-- ========================================
+       FOOTER
+       ======================================== -->
+
+<!-- ========================================
+       JAVASCRIPT
+       ======================================== -->
+
+
+    
+
+
+
+
+
+
+
+<script>
+    // ============================================
+    // FINALES BILD-SYSTEM - DIREKTES <IMG> TAG
+    // ============================================
+    
+    function loadFounderImage() {
+      console.log('🔄 Starte Founder-Bild-Laden...');
+      const img = document.querySelector('#founder-image');
+      if (!img) {
+        console.warn('⚠️ #founder-image nicht gefunden');
+        return;
+      }
+      
+      // Basis-URL
+      const baseUrl = window.location.origin;
+      
+      // ALLE Pfade (images/ zuerst, da das Bild lokal dort liegt)
+      const paths = [
+        'images/founder-canberk-kivilcim.jpg',
+        'images/founder-canberk-kivilcim.png',
+        'images/founder-canberk-kivilcim.webp',
+        'assets/founder-canberk-kivilcim.jpg',
+        'assets/founder-canberk-kivilcim.png',
+        'assets/founder-canberk-kivilcim.webp',
+        `${baseUrl}/images/founder-canberk-kivilcim.jpg`,
+        `${baseUrl}/assets/founder-canberk-kivilcim.jpg`,
+        '/images/founder-canberk-kivilcim.jpg',
+        '/assets/founder-canberk-kivilcim.jpg'
+      ];
+      
+      let currentIndex = 0;
+      
+      function tryNext() {
+        if (currentIndex >= paths.length) {
+          console.error('❌ Kein Bild gefunden! Versuchte:', paths);
+          img.style.display = 'none';
+          const placeholder = document.querySelector('#founder-placeholder');
+          if (placeholder) placeholder.style.display = 'flex';
+          return;
+        }
+        
+        const path = paths[currentIndex];
+        console.log(`🔍 Versuche: ${path}`);
+        
+        const testImg = new Image();
+        testImg.onload = function() {
+          console.log(`✅✅✅ Bild gefunden: ${path}`);
+          img.src = path;
+          img.style.display = 'block';
+          img.style.opacity = '1';
+          img.style.visibility = 'visible';
+          const placeholder = document.querySelector('#founder-placeholder');
+          if (placeholder) placeholder.style.display = 'none';
+        };
+        testImg.onerror = function() {
+          currentIndex++;
+          tryNext();
+        };
+        testImg.src = path;
+      }
+      
+      tryNext();
+    }
+    
+    // SOFORT ausführen
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadFounderImage);
+    } else {
+      loadFounderImage();
+    }
+    </script>
+
+<!-- ========================================
+       FOOTER
+       ======================================== -->
+<footer class="footer" role="contentinfo">
+<div class="container">
+<div class="footer__grid">
+<div>
+<div class="footer__brand">
+<span class="footer__brand-icon">C</span>
+<span>CanGo Empire</span>
+</div>
+<p class="footer__desc">
+            Marketing-Automatisierung für den DACH-Markt. 
+            33 Workflows. 30+ KI-Systeme. Kein Bullshit.
+          </p>
+</div>
+<div>
+<div class="footer__title">Produkt</div>
+<ul class="footer__links">
+<li><a href="produkte.html">Produkte</a></li>
+<li><a href="blogs.html">Blogs</a></li>
+</ul>
+</div>
+<div>
+<div class="footer__title">Unternehmen</div>
+<ul class="footer__links">
+<li><a href="ueber-uns.html">Über uns</a></li>
+<li><a href="kontakt.html">Kontakt</a></li>
+</ul>
+</div>
+<div>
+<div class="footer__title">Rechtliches</div>
+<ul class="footer__links">
+<li><a href="impressum.html">Impressum</a></li>
+<li><a href="datenschutz.html">Datenschutz</a></li>
+</ul>
+</div>
+</div>
+<div class="footer__bottom">
+<div>© 2025 CanGo Empire. Alle Rechte vorbehalten.</div>
+<div class="footer__tagline">Kopieren hilft dir nicht – du brauchst die Maschine.</div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
