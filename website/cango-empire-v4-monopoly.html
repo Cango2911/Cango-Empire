@@ -457,7 +457,7 @@
 
     /* TV-Nachrichten-Style */
     .hero__news {
-      position: relative !important;
+      position: sticky;
       top: calc(var(--nav-height) + var(--space-8));
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 30, 0.98) 100%);
       border: 2px solid rgba(249, 115, 22, 0.3);
@@ -753,7 +753,7 @@
 
     /* Daily Blogs Widget - ähnlich News Widget */
     .hero__blogs {
-      position: relative !important;
+      position: sticky;
       top: calc(var(--nav-height) + var(--space-8));
       margin-top: 0;
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 30, 0.98) 100%);
@@ -3641,44 +3641,6 @@ body {
         </div>
       </div>
 </nav>
-<!-- BREAKING NEWS & DAILY BLOGS - Rechts oben positioniert -->
-<div style="position: fixed; top: 80px; right: 20px; width: 380px; z-index: 1000; display: flex; flex-direction: column; gap: 16px; max-height: calc(100vh - 120px); overflow-y: auto;">
-<div class="hero__news">
-<div class="hero__news-header">
-<div class="hero__news-icon">📺</div>
-<h3 class="hero__news-title">Breaking News</h3>
-<div class="hero__news-badge">● LIVE</div>
-</div>
-<div class="hero__news-content" id="news-feed">
-<!-- News items werden hier automatisch eingefügt -->
-<div class="hero__news-item hero__news-item--active">
-<div class="hero__news-date">Lädt...</div>
-<div class="hero__news-text">News werden geladen...</div>
-</div>
-</div>
-<div class="hero__news-footer">
-<span class="hero__news-update">Aktualisiert News via Automation Workflow • Live-Feed</span>
-</div>
-</div>
-<div class="hero__blogs">
-<div class="hero__blogs-header">
-<div class="hero__blogs-icon">📝</div>
-<h3 class="hero__blogs-title">Daily Blogs</h3>
-<div class="hero__blogs-badge">● NEU</div>
-</div>
-<div class="hero__blogs-content" id="blogs-feed">
-<!-- Blog items werden hier automatisch eingefügt -->
-<div class="hero__blogs-loading">
-<div class="hero__blogs-date">Lädt...</div>
-<div class="hero__blogs-text">Daily Blogs werden geladen...</div>
-</div>
-</div>
-<div class="hero__blogs-footer">
-<span class="hero__blogs-update">Generiert täglich 08:00 Uhr • Automatisiert • SEO-optimierte Blogs</span>
-</div>
-</div>
-</div>
-
 <!-- ========================================
        HERO
        ======================================== -->
@@ -3752,11 +3714,43 @@ body {
 <!-- Sidebar mit News und Blogs -->
 <div class="hero__sidebar">
 <!-- News Section - beginnt auf Höhe der Headline -->
-
+<div class="hero__news">
+<div class="hero__news-header">
+<div class="hero__news-icon">📺</div>
+<h3 class="hero__news-title">Breaking News</h3>
+<div class="hero__news-badge">● LIVE</div>
+</div>
+<div class="hero__news-content" id="news-feed">
+<!-- News items werden hier automatisch eingefügt -->
+<div class="hero__news-item hero__news-item--active">
+<div class="hero__news-date">Lädt...</div>
+<div class="hero__news-text">News werden geladen...</div>
+</div>
+</div>
+<div class="hero__news-footer">
+<span class="hero__news-update">Aktualisiert News via Automation Workflow • Live-Feed</span>
+</div>
+</div>
 <!-- Spacer für Daily Blogs - Alignment mit Metrik-Karten -->
 <div class="hero__sidebar-spacer"></div>
 <!-- Daily Blogs Section -->
-
+<div class="hero__blogs">
+<div class="hero__blogs-header">
+<div class="hero__blogs-icon">📝</div>
+<h3 class="hero__blogs-title">Daily Blogs</h3>
+<div class="hero__blogs-badge">● NEU</div>
+</div>
+<div class="hero__blogs-content" id="blogs-feed">
+<!-- Blog items werden hier automatisch eingefügt -->
+<div class="hero__blogs-loading">
+<div class="hero__blogs-date">Lädt...</div>
+<div class="hero__blogs-text">Daily Blogs werden geladen...</div>
+</div>
+</div>
+<div class="hero__blogs-footer">
+<span class="hero__blogs-update">Generiert täglich 08:00 Uhr • Automatisiert • SEO-optimierte Blogs</span>
+</div>
+</div>
 </div>
 </div>
 </section>
