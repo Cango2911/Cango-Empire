@@ -56,22 +56,36 @@ def sync_to_github(file_path, relative_path):
         # Wechsle ins Repository
         os.chdir(REPO_PATH)
         
-        # Git add
-        subprocess.run(['git', 'add', str(relative_path)], check=True, capture_output=True)
+        # Prüfe ob Datei im Repository ist
+        repo_file = Path(REPO_PATH) / relative_path
+        if not repo_file.exists():
+            print(f"   ⚠️  GitHub: Datei nicht im Repository, überspringe")
+            return True
         
-        # Git commit (nur wenn Änderungen vorhanden)
-        result = subprocess.run(['git', 'status', '--porcelain'], capture_output=True, text=True)
-        if result.stdout.strip():
-            subprocess.run(
+        # Git add
+        result = subprocess.run(['git', 'add', str(relative_path)], capture_output=True)
+        
+        # Prüfe ob es Änderungen gibt
+        status_result = subprocess.run(['git', 'status', '--porcelain', str(relative_path)], 
+                                      capture_output=True, text=True)
+        
+        if status_result.stdout.strip():
+            # Es gibt Änderungen, committe und pushe
+            commit_result = subprocess.run(
                 ['git', 'commit', '-m', f'Auto-sync: Update {file_path.name}'],
-                check=True,
                 capture_output=True
             )
-            # Git push
-            subprocess.run(['git', 'push', 'origin', 'main'], check=True, capture_output=True)
-            print(f"   ✅ GitHub: {file_path.name} gepusht")
+            
+            if commit_result.returncode == 0:
+                push_result = subprocess.run(['git', 'push', 'origin', 'main'], capture_output=True)
+                if push_result.returncode == 0:
+                    print(f"   ✅ GitHub: {file_path.name} gepusht")
+                else:
+                    print(f"   ⚠️  GitHub: Push fehlgeschlagen (möglicherweise bereits gepusht)")
+            else:
+                print(f"   ⚠️  GitHub: Commit fehlgeschlagen (keine Änderungen)")
         else:
-            print(f"   ⚠️  GitHub: Keine Änderungen für {file_path.name}")
+            print(f"   ✅ GitHub: {file_path.name} bereits aktuell")
         
         return True
     except Exception as e:
@@ -81,16 +95,24 @@ def sync_to_github(file_path, relative_path):
 def sync_to_pycharm(file_path, relative_path):
     """Synchronisiere Datei zu PyCharm (Repository)"""
     try:
-        # Datei sollte bereits im Repository sein
         repo_file = Path(REPO_PATH) / relative_path
+        
+        # Prüfe ob Datei bereits im Repository ist (gleicher Pfad)
+        if file_path.resolve() == repo_file.resolve():
+            print(f"   ✅ PyCharm: Bereits im Repository")
+            return True
         
         # Erstelle Verzeichnis falls nötig
         repo_file.parent.mkdir(parents=True, exist_ok=True)
         
-        # Kopiere Datei
+        # Kopiere Datei nur wenn sie sich unterscheidet
         import shutil
-        shutil.copy2(file_path, repo_file)
-        print(f"   ✅ PyCharm: {relative_path}")
+        if not repo_file.exists() or file_path.stat().st_mtime > repo_file.stat().st_mtime:
+            shutil.copy2(file_path, repo_file)
+            print(f"   ✅ PyCharm: {relative_path} aktualisiert")
+        else:
+            print(f"   ✅ PyCharm: {relative_path} bereits aktuell")
+        
         return True
     except Exception as e:
         print(f"   ❌ PyCharm Fehler: {e}")
