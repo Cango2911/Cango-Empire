@@ -2,15 +2,17 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Self Made Empire | CanGo App Empire - Deine eigene Content-Maschine</title>
   <meta name="description" content="33 vollständige Automation-Workflows für 50.000€. Komplette Fertigungsstraße für dein Unternehmen. Vollständige Kontrolle, Quellcode & Dokumentation inklusive.">
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="/cango-empire-v4-monopoly.css?v=24" rel="stylesheet">
   
-  <style>
+      <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+    <!-- FIX-2026-04-07: Phase 1.1 — KPI + Mobile-CTA-Leiste -->
+    <link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+    <style>
     /* CSS Variablen von Hauptseite übernehmen */
     :root {
       --gray-950: #030712;
@@ -24,15 +26,15 @@
       --primary-400: #FB923C;
       --accent-500: #EF4444;
       --success: #10B981;
-      --text-xs: 0.75rem;
-      --text-sm: 0.875rem;
-      --text-base: 1rem;
-      --text-lg: 1.125rem;
-      --text-xl: 1.25rem;
-      --text-2xl: 1.563rem;
-      --text-3xl: 1.953rem;
-      --text-4xl: 2.441rem;
-      --text-5xl: 3.052rem;
+      --text-xs: 0.8125rem;
+      --text-sm: 0.9375rem;
+      --text-base: 1.0625rem;
+      --text-lg: 1.25rem;
+      --text-xl: 1.375rem;
+      --text-2xl: 1.688rem;
+      --text-3xl: 2.125rem;
+      --text-4xl: 2.688rem;
+      --text-5xl: 3.375rem;
       --space-1: 0.25rem;
       --space-2: 0.5rem;
       --space-3: 0.75rem;
@@ -55,7 +57,7 @@
     }
 
     body {
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font-sans);
       font-size: var(--text-base);
       line-height: 1.6;
       color: var(--gray-50);
@@ -70,95 +72,33 @@
       padding: 0 var(--space-6);
     }
 
-    /* Navigation */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: var(--nav-height);
-      background: rgba(3, 7, 18, 0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gray-800);
-      z-index: 100;
-    }
+    /* Navigation (zentral in cango-empire-v4-monopoly.css) */
 
-    .nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100%;
-    }
-
-    .nav__brand {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: var(--text-lg);
-      color: var(--gray-50);
-    }
-
-    .nav__brand-icon {
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
-      border-radius: var(--radius-md);
-      color: white;
-      font-weight: 700;
-    }
-
-    .nav__menu {
-      display: flex;
-      align-items: center;
-      gap: var(--space-8);
-    }
-
-    .nav__link {
-      color: var(--gray-400);
-      text-decoration: none;
-      font-size: var(--text-sm);
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav__link:hover {
-      color: var(--gray-50);
-    }
-
-    .nav__cta {
-      padding: var(--space-2) var(--space-4);
-      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
-      color: white;
-      text-decoration: none;
-      font-size: var(--text-sm);
-      font-weight: 600;
-      border-radius: var(--radius-md);
-      transition: all 0.2s;
-    }
-
-    .nav__cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
-    }
-
-    /* Hero Section */
+    /* Hero Section (Airtable-Style) */
     .hero {
       padding-top: calc(var(--nav-height) + var(--space-16));
       padding-bottom: var(--space-16);
       text-align: center;
       position: relative;
+      overflow: hidden;
+      background-color: #0d0d12;
+      background-image: radial-gradient(ellipse 100% 80% at 50% -20%, rgba(249, 115, 22, 0.35) 0%, rgba(249, 115, 22, 0.08) 30%, transparent 60%), radial-gradient(ellipse 70% 50% at 70% 10%, rgba(249, 115, 22, 0.12) 0%, transparent 45%), radial-gradient(ellipse 50% 40% at 20% 20%, rgba(249, 115, 22, 0.06) 0%, transparent 40%);
     }
-
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(249, 115, 22, 0.12), transparent);
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 120% 100% at 50% 60%, transparent 35%, rgba(0,0,0,0.25) 100%);
       pointer-events: none;
     }
 
@@ -175,7 +115,7 @@
     .hero__price {
       font-size: var(--text-5xl);
       font-weight: 700;
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font-mono);
       color: var(--primary-500);
       margin: var(--space-8) 0;
     }
@@ -426,26 +366,98 @@
       }
     }
   </style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
 </head>
-<body>
+<body class="empire-sync empire-sync--landing has-primary-cta-bar">
   <!-- Navigation -->
-  <nav class="nav">
-    <div class="container nav__inner">
-      <a href="cango-empire-v4-monopoly.html" class="nav__brand">
-        <span class="nav__brand-icon">C</span>
-        <span>CanGo App Empire</span>
-      </a>
-      
-      <div class="nav__menu">
-        <a href="cango-empire-v4-monopoly.html#problem" class="nav__link">Problem</a>
-        <a href="cango-empire-v4-monopoly.html#technologie" class="nav__link">Technologie</a>
-        <a href="cango-empire-v4-monopoly.html#branchen" class="nav__link">Branchen</a>
-        <a href="cango-empire-v4-monopoly.html#preise" class="nav__link">Preise</a>
-        <a href="cango-empire-v4-monopoly.html#faq" class="nav__link">FAQ</a>
-        <a href="cango-empire-v4-monopoly.html#kontakt" class="nav__cta">Jetzt anfragen</a>
-      </div>
+  <!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -518,69 +530,69 @@
         <div class="workflow-category">
           <h5>📝 Content (8)</h5>
           <ul>
-            <li><a href="workflow-detail.html?workflow=daily-seo-blog-generator">Daily SEO-Blog Generator</a></li>
-            <li><a href="workflow-detail.html?workflow=video-script-generator">Video Script Generator</a></li>
-            <li><a href="workflow-detail.html?workflow=social-media-post-creator">Social Media Post Creator</a></li>
-            <li><a href="workflow-detail.html?workflow=newsletter-automation">Newsletter Automation</a></li>
-            <li><a href="workflow-detail.html?workflow=thumbnail-generator">Thumbnail Generator</a></li>
-            <li><a href="workflow-detail.html?workflow=content-research">Content Research</a></li>
-            <li><a href="workflow-detail.html?workflow=multi-format-converter">Multi-Format Converter</a></li>
-            <li><a href="workflow-detail.html?workflow=quality-checker">Quality Checker</a></li>
+            <li><a href="/workflow-detail.html?workflow=daily-seo-blog-generator">Daily SEO-Blog Generator</a></li>
+            <li><a href="/workflow-detail.html?workflow=video-script-generator">Video Script Generator</a></li>
+            <li><a href="/workflow-detail.html?workflow=social-media-post-creator">Social Media Post Creator</a></li>
+            <li><a href="/workflow-detail.html?workflow=newsletter-automation">Newsletter Automation</a></li>
+            <li><a href="/workflow-detail.html?workflow=thumbnail-generator">Thumbnail Generator</a></li>
+            <li><a href="/workflow-detail.html?workflow=content-research">Content Research</a></li>
+            <li><a href="/workflow-detail.html?workflow=multi-format-converter">Multi-Format Converter</a></li>
+            <li><a href="/workflow-detail.html?workflow=quality-checker">Quality Checker</a></li>
           </ul>
         </div>
 
         <div class="workflow-category">
           <h5>🎥 Video (6)</h5>
           <ul>
-            <li><a href="workflow-detail.html?workflow=youtube-upload">YouTube Upload</a></li>
-            <li><a href="workflow-detail.html?workflow=transcription-subtitles">Transcription & Subtitles</a></li>
-            <li><a href="workflow-detail.html?workflow=auto-cut-edit">Auto-Cut & Edit</a></li>
-            <li><a href="workflow-detail.html?workflow=video-seo-optimizer">Video SEO-Optimizer</a></li>
-            <li><a href="workflow-detail.html?workflow=multi-platform-distribution">Multi-Platform Distribution</a></li>
-            <li><a href="workflow-detail.html?workflow=video-analytics">Video Analytics</a></li>
+            <li><a href="/workflow-detail.html?workflow=youtube-upload">YouTube Upload</a></li>
+            <li><a href="/workflow-detail.html?workflow=transcription-subtitles">Transcription & Subtitles</a></li>
+            <li><a href="/workflow-detail.html?workflow=auto-cut-edit">Auto-Cut & Edit</a></li>
+            <li><a href="/workflow-detail.html?workflow=video-seo-optimizer">Video SEO-Optimizer</a></li>
+            <li><a href="/workflow-detail.html?workflow=multi-platform-distribution">Multi-Platform Distribution</a></li>
+            <li><a href="/workflow-detail.html?workflow=video-analytics">Video Analytics</a></li>
           </ul>
         </div>
 
         <div class="workflow-category">
           <h5>🔍 SEO (5)</h5>
           <ul>
-            <li><a href="workflow-detail.html?workflow=keyword-research">Keyword Research</a></li>
-            <li><a href="workflow-detail.html?workflow=competitor-analysis">Competitor Analysis</a></li>
-            <li><a href="workflow-detail.html?workflow=backlink-monitoring">Backlink Monitoring</a></li>
-            <li><a href="workflow-detail.html?workflow=seo-report-generator">SEO Report Generator</a></li>
-            <li><a href="workflow-detail.html?workflow=rank-tracking">Rank Tracking</a></li>
+            <li><a href="/workflow-detail.html?workflow=keyword-research">Keyword Research</a></li>
+            <li><a href="/workflow-detail.html?workflow=competitor-analysis">Competitor Analysis</a></li>
+            <li><a href="/workflow-detail.html?workflow=backlink-monitoring">Backlink Monitoring</a></li>
+            <li><a href="/workflow-detail.html?workflow=seo-report-generator">SEO Report Generator</a></li>
+            <li><a href="/workflow-detail.html?workflow=rank-tracking">Rank Tracking</a></li>
           </ul>
         </div>
 
         <div class="workflow-category">
           <h5>📊 Marketing (5)</h5>
           <ul>
-            <li><a href="workflow-detail.html?workflow=campaign-tracker">Campaign Tracker</a></li>
-            <li><a href="workflow-detail.html?workflow=lead-generation">Lead Generation</a></li>
-            <li><a href="workflow-detail.html?workflow=email-marketing">Email Marketing</a></li>
-            <li><a href="workflow-detail.html?workflow=social-analytics">Social Analytics</a></li>
-            <li><a href="workflow-detail.html?workflow=conversion-optimizer">Conversion Optimizer</a></li>
+            <li><a href="/workflow-detail.html?workflow=campaign-tracker">Campaign Tracker</a></li>
+            <li><a href="/workflow-detail.html?workflow=lead-generation">Lead Generation</a></li>
+            <li><a href="/workflow-detail.html?workflow=email-marketing">Email Marketing</a></li>
+            <li><a href="/workflow-detail.html?workflow=social-analytics">Social Analytics</a></li>
+            <li><a href="/workflow-detail.html?workflow=conversion-optimizer">Conversion Optimizer</a></li>
           </ul>
         </div>
 
         <div class="workflow-category">
           <h5>🤖 KI (4)</h5>
           <ul>
-            <li><a href="workflow-detail.html?workflow=chatbot-deployment">Chatbot Deployment</a></li>
-            <li><a href="workflow-detail.html?workflow=ai-moderation">AI Moderation</a></li>
-            <li><a href="workflow-detail.html?workflow=data-processing">Data Processing</a></li>
-            <li><a href="workflow-detail.html?workflow=ab-testing">A/B Testing</a></li>
+            <li><a href="/workflow-detail.html?workflow=chatbot-deployment">Chatbot Deployment</a></li>
+            <li><a href="/workflow-detail.html?workflow=ai-moderation">AI Moderation</a></li>
+            <li><a href="/workflow-detail.html?workflow=data-processing">Data Processing</a></li>
+            <li><a href="/workflow-detail.html?workflow=ab-testing">A/B Testing</a></li>
           </ul>
         </div>
 
         <div class="workflow-category">
           <h5>🔄 Integration (5)</h5>
           <ul>
-            <li><a href="workflow-detail.html?workflow=crm-sync">CRM Sync</a></li>
-            <li><a href="workflow-detail.html?workflow=multi-platform-sync">Multi-Platform Sync</a></li>
-            <li><a href="workflow-detail.html?workflow=backup-automation">Backup Automation</a></li>
-            <li><a href="workflow-detail.html?workflow=webhook-manager">Webhook Manager</a></li>
-            <li><a href="workflow-detail.html?workflow=notification-system">Notification System</a></li>
+            <li><a href="/workflow-detail.html?workflow=crm-sync">CRM Sync</a></li>
+            <li><a href="/workflow-detail.html?workflow=multi-platform-sync">Multi-Platform Sync</a></li>
+            <li><a href="/workflow-detail.html?workflow=backup-automation">Backup Automation</a></li>
+            <li><a href="/workflow-detail.html?workflow=webhook-manager">Webhook Manager</a></li>
+            <li><a href="/workflow-detail.html?workflow=notification-system">Notification System</a></li>
           </ul>
         </div>
       </div>
@@ -588,10 +600,35 @@
 
     <!-- CTA -->
     <div class="cta-section">
-      <a href="cango-empire-v4-monopoly.html#kontakt" class="btn">Self Made Empire anfragen</a>
+      <a href="/kontakt.html#kontaktformular" class="btn" data-cango-kpi="kpi_kontakt_cta">Self Made Empire anfragen</a>
     </div>
   </section>
 
+
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li><li><a href="/index.html#pakete" data-cango-kpi="kpi_pakete_section">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+  <script>(function(){var b=document.getElementById('navToggle');if(b)b.addEventListener('click',function(){document.body.classList.toggle('nav-open');});document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.body.classList.remove('nav-open');});});})();</script>
+  <script src="/js/kpi-events.js?v=2" defer></script>
+  <script src="/cart.js" defer></script>
+  <div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+    <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+  </div>
 </body>
 </html>
 

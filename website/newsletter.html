@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title>Newsletter | CanGo App Empire</title>
+  <meta name="description" content="Melde dich für den CanGo App Empire Newsletter an – AI, Automatisierung und Marketing-Updates für dein Business.">
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+  <link rel="stylesheet" href="/cango-empire-v4-monopoly.css?v=31">
+  <style>
+    .newsletter-page {
+      padding: calc(var(--nav-height) + var(--space-20)) 0 var(--space-12);
+      min-height: 100vh;
+    }
+    .newsletter-page .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6) var(--space-12);
+    }
+    .newsletter-header {
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+    .newsletter-header__title {
+      font-size: clamp(2.25rem, 5vw, 2.75rem) !important;
+      font-weight: 800 !important;
+      line-height: 1.15 !important;
+      margin-bottom: var(--space-4) !important;
+    }
+    .newsletter-header__title .highlight {
+      background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-600) 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.2)) !important;
+    }
+    .newsletter-header__subtitle {
+      color: var(--text-primary);
+      font-size: var(--text-lg);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    .newsletter-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.5fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      align-items: start;
+    }
+    .newsletter-section {
+      padding: clamp(1.35rem, 2.5vw, 2rem);
+      background:
+        linear-gradient(180deg, rgba(248, 250, 252, 0.12), rgba(226, 232, 240, 0.06)),
+        linear-gradient(180deg, rgba(8, 14, 28, 0.94), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(251, 146, 60, 0.28);
+      border-radius: 24px;
+      box-shadow:
+        0 28px 60px rgba(0, 0, 0, 0.3),
+        0 14px 28px rgba(15, 23, 42, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 0 28px rgba(124, 45, 18, 0.14);
+    }
+    .newsletter-section__title {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid rgba(194, 65, 12, 0.28);
+      background: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-600) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.2));
+    }
+    .newsletter-form .form-group {
+      margin-bottom: var(--space-5);
+    }
+    .newsletter-form .form-group label {
+      display: block;
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .newsletter-form .form-group input[type="email"],
+    .newsletter-form .form-group input[type="text"] {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(226, 232, 240, 0.03)),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(8, 14, 28, 0.98));
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 16px;
+      color: #fff7ed;
+      font-family: inherit;
+      font-size: var(--text-base);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .newsletter-form .form-group input:focus {
+      outline: none;
+      border-color: rgba(249, 115, 22, 0.55);
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+    }
+    .newsletter-form .form-group--checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+    .newsletter-form .form-group--checkbox input {
+      margin-top: 0.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      accent-color: var(--primary-500);
+    }
+    .newsletter-form .form-group--checkbox label {
+      margin-bottom: 0;
+      font-weight: 500;
+      font-size: var(--text-sm);
+      line-height: 1.5;
+    }
+    .newsletter-form .form-status {
+      display: none;
+      margin-bottom: var(--space-4);
+      padding: var(--space-4);
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(8, 14, 28, 0.98));
+      color: #fff7ed;
+      line-height: 1.6;
+    }
+    .newsletter-form .form-status.is-visible {
+      display: block;
+    }
+    .newsletter-form .form-status--success {
+      border-color: rgba(16, 185, 129, 0.45);
+      background: rgba(16, 185, 129, 0.12);
+    }
+    .newsletter-form .form-status--error {
+      border-color: rgba(249, 115, 22, 0.45);
+      background: rgba(249, 115, 22, 0.12);
+    }
+    .newsletter-form .submit-btn {
+      width: 100%;
+      padding: var(--space-4);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: white;
+      border: none;
+      border-radius: 16px;
+      font-size: var(--text-lg);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.25);
+    }
+    .newsletter-form .submit-btn:hover:not([disabled]) {
+      background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.5);
+    }
+    .newsletter-form .submit-btn[disabled] {
+      opacity: 0.72;
+      cursor: wait;
+    }
+    .newsletter-form .submit-btn--outline {
+      background: transparent;
+      color: var(--primary-400);
+      border: 2px solid rgba(249, 115, 22, 0.5);
+      box-shadow: none;
+    }
+    .newsletter-form .submit-btn--outline:hover:not([disabled]) {
+      background: rgba(249, 115, 22, 0.12);
+      border-color: var(--primary-500);
+    }
+    .newsletter-sidebar {
+      display: grid;
+      gap: 1rem;
+      position: sticky;
+      top: calc(var(--nav-height) + 24px);
+    }
+    .newsletter-benefit {
+      padding: var(--space-4);
+      background:
+        linear-gradient(180deg, rgba(248, 250, 252, 0.1), rgba(226, 232, 240, 0.04)),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(8, 14, 28, 0.98));
+      border: 1px solid rgba(249, 115, 22, 0.22);
+      border-radius: 18px;
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    .newsletter-benefit__title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+    }
+    .newsletter-benefit__text {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .newsletter-layout {
+        grid-template-columns: 1fr;
+      }
+      .newsletter-sidebar {
+        position: static;
+      }
+      .newsletter-page .container {
+        padding: var(--space-6) var(--space-4) var(--space-10);
+      }
+      .newsletter-header__title {
+        font-size: clamp(1.85rem, 8vw, 2.25rem);
+      }
+    }
+  </style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body class="empire-sync empire-sync--core empire-sync--navy-subpages">
+  <div class="partner-banner" id="partnerBanner" role="banner">
+    <span class="partner-banner__icon">🎯</span>
+    <span class="partner-banner__text"><strong>Rabattcode "CanGo App Empire"</strong> auf externen Partnerseiten oder <strong>"CanGo App Empire"</strong> im Kontaktformular angeben.</span>
+    <button class="partner-banner__close" aria-label="Banner schließen" onclick="closePartnerBanner()" type="button">×</button>
+  </div>
+  <!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Hero ohne Sidebar/Scarcity (nur auf Startseite) -->
+  <section class="hero hero--no-sidebar" id="home">
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge hero__block hero__block--badge">
+          <span class="hero__badge-dot"></span>
+          <span>100 Workflows aktiv · 33 Content-Maschinen</span>
+        </div>
+        <h1 class="hero__title hero__block hero__block--title">
+          <span class="hero__title-line1">Bleib auf dem Laufenden –</span>
+          <span class="hero__title-line2"><span class="highlight-bright hero__title-emphasis">Newsletter</span></span>
+        </h1>
+        <p class="hero__subtitle hero__block hero__block--subtitle-primary">
+          AI, Automatisierung und Marketing-Updates direkt in dein Postfach. Kein Spam, nur Mehrwert.
+        </p>
+        <p class="hero__tagline hero__block hero__block--subtitle-secondary">
+          Ein Klick – Updates. Kein Spam.
+        </p>
+        <div class="hero__actions hero__block hero__block--actions" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+          <a class="btn btn--accent btn--large" href="#newsletter-form">
+            Jetzt anmelden
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </a>
+          <a class="btn btn--outline btn--large" href="#abmelden" style="border-color: rgba(249,115,22,0.5); color: var(--primary-400);">Abmelden</a>
+        </div>
+        <div class="metrics hero__block hero__block--metrics">
+          <div class="metric">
+            <div class="metric__badge metric__badge--live">LIVE</div>
+            <div class="metric__icon"><div class="metric__icon-value" data-count="100" data-duration="2000">0</div></div>
+            <div class="metric__label">Workflows</div>
+          </div>
+          <div class="metric">
+            <div class="metric__badge metric__badge--armed">ARMED</div>
+            <div class="metric__icon"><div class="metric__icon-value" data-count="33" data-duration="1500">0</div></div>
+            <div class="metric__label">Content-Maschinen</div>
+          </div>
+          <div class="metric">
+            <div class="metric__badge metric__badge--confirmed">CONFIRMED</div>
+            <div class="metric__icon"><div class="metric__icon-value" data-count="1" data-duration="800">0</div></div>
+            <div class="metric__label">Personal benötigt</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter-page subpage-body">
+    <div class="container">
+      <div class="newsletter-layout">
+        <div class="newsletter-section">
+          <h2 class="newsletter-section__title">Anmeldung</h2>
+          <!-- Phase 2: Newsletter-Anmeldung an n8n-Webhook newsletter-signup angebunden -->
+          <form id="newsletter-form" class="newsletter-form">
+            <input type="hidden" name="source" value="website-newsletter">
+            <input type="hidden" name="page" value="/newsletter.html">
+            <div class="form-group">
+              <label for="newsletter-email">E-Mail *</label>
+              <input type="email" id="newsletter-email" name="email" required placeholder="deine@email.de" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="newsletter-name">Name (optional)</label>
+              <input type="text" id="newsletter-name" name="name" placeholder="Dein Name" autocomplete="name">
+            </div>
+            <div class="form-group form-group--checkbox">
+              <input type="checkbox" id="newsletter-consent" name="consent" required>
+              <label for="newsletter-consent">Ich willige ein, den Newsletter von CanGo App Empire zu erhalten und habe die <a href="/datenschutz.html">Datenschutzerklärung</a> zur Kenntnis genommen. *</label>
+            </div>
+            <div id="newsletter-status" class="form-status" role="status" aria-live="polite"></div>
+            <button type="submit" class="submit-btn" id="newsletter-submit">Anmelden</button>
+          </form>
+
+          <h2 class="newsletter-section__title" id="abmelden" style="margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid rgba(194, 65, 12, 0.28);">Abmelden</h2>
+          <p class="newsletter-section__intro" style="margin-bottom: var(--space-4); color: var(--text-secondary); font-size: var(--text-sm);">Du möchtest den Newsletter nicht mehr erhalten? Gib hier deine E-Mail-Adresse ein – die Abmeldung wird automatisch verarbeitet.</p>
+          <form id="newsletter-unsubscribe-form" class="newsletter-form">
+            <div class="form-group">
+              <label for="unsubscribe-email">E-Mail *</label>
+              <input type="email" id="unsubscribe-email" name="email" required placeholder="deine@email.de" autocomplete="email">
+            </div>
+            <div id="unsubscribe-status" class="form-status" role="status" aria-live="polite"></div>
+            <button type="submit" class="submit-btn submit-btn--outline" id="unsubscribe-submit">Abmelden</button>
+          </form>
+        </div>
+
+        <aside class="newsletter-sidebar">
+          <div class="newsletter-benefit">
+            <div class="newsletter-benefit__title">📬 Regelmäßige Updates</div>
+            <p class="newsletter-benefit__text">Breaking News, neue Workflows und Tipps aus der Fertigungsstraße.</p>
+          </div>
+          <div class="newsletter-benefit">
+            <div class="newsletter-benefit__title">🤖 AI & Automatisierung</div>
+            <p class="newsletter-benefit__text">Wie du mit CanGo App Empire dein Marketing auf Autopilot stellst.</p>
+          </div>
+          <div class="newsletter-benefit">
+            <div class="newsletter-benefit__title">🔒 Kein Spam</div>
+            <p class="newsletter-benefit__text">Abmelden jederzeit möglich. Deine Daten werden vertraulich behandelt.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      var N8N_NEWSLETTER_WEBHOOK = 'https://n8n.automation-cango-app-empire.com/webhook/newsletter-signup';
+      var form = document.getElementById('newsletter-form');
+      var submitBtn = document.getElementById('newsletter-submit');
+      var statusBox = document.getElementById('newsletter-status');
+
+      function setStatus(type, html) {
+        statusBox.className = 'form-status is-visible form-status--' + type;
+        statusBox.innerHTML = html;
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = (form.querySelector('[name="email"]').value || '').trim();
+        var consent = form.querySelector('[name="consent"]').checked;
+        if (!email) {
+          setStatus('error', 'Bitte gib eine gültige E-Mail-Adresse ein.');
+          return;
+        }
+        if (!consent) {
+          setStatus('error', 'Bitte stimme der Verarbeitung und dem Newsletter-Empfang zu.');
+          return;
+        }
+
+        submitBtn.disabled = true;
+        setStatus('success', 'Wird gesendet …');
+
+        var payload = {
+          email: email,
+          name: (form.querySelector('[name="name"]').value || '').trim(),
+          source: (form.querySelector('[name="source"]').value || 'website-newsletter'),
+          page: (form.querySelector('[name="page"]').value || '/newsletter.html'),
+          consent: true
+        };
+
+        fetch(N8N_NEWSLETTER_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function(res) {
+            if (!res.ok) throw new Error('Netzwerkfehler: ' + res.status);
+            return res.json();
+          })
+          .then(function(data) {
+            if (data && data.success) {
+              setStatus('success', 'Danke! Du bist angemeldet. Du erhältst bald News von CanGo App Empire.');
+              form.reset();
+            } else {
+              setStatus('error', (data && data.message) ? data.message : 'Etwas ist schiefgelaufen. Bitte später erneut versuchen.');
+            }
+          })
+          .catch(function(err) {
+            setStatus('error', 'Anmeldung konnte nicht gesendet werden. Bitte prüfe deine Verbindung oder versuche es später erneut.');
+          })
+          .finally(function() {
+            submitBtn.disabled = false;
+          });
+      });
+    })();
+    (function() {
+      var UNSUB_WEBHOOK = 'https://n8n.automation-cango-app-empire.com/webhook/newsletter-unsubscribe';
+      var form = document.getElementById('newsletter-unsubscribe-form');
+      if (!form) return;
+      var submitBtn = document.getElementById('unsubscribe-submit');
+      var statusBox = document.getElementById('unsubscribe-status');
+      function setStatus(type, html) {
+        statusBox.className = 'form-status is-visible form-status--' + type;
+        statusBox.innerHTML = html;
+      }
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = (form.querySelector('[name="email"]').value || '').trim();
+        if (!email) {
+          setStatus('error', 'Bitte gib deine E-Mail-Adresse ein.');
+          return;
+        }
+        submitBtn.disabled = true;
+        setStatus('success', 'Wird verarbeitet …');
+        fetch(UNSUB_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: 'website-newsletter', page: '/newsletter.html' })
+        })
+          .then(function(res) { return res.json().catch(function() { return {}; }); })
+          .then(function(data) {
+            if (data && data.success !== false) {
+              setStatus('success', 'Du wurdest abgemeldet. Du erhältst keine weiteren Newsletter von uns.');
+              form.reset();
+            } else {
+              setStatus('error', (data && data.message) ? data.message : 'Abmeldung konnte nicht durchgeführt werden. Bitte später erneut versuchen oder uns unter Kontakt ansprechen.');
+            }
+          })
+          .catch(function() {
+            setStatus('error', 'Abmeldung konnte nicht gesendet werden. Bitte prüfe deine Verbindung oder versuche es später erneut.');
+          })
+          .finally(function() { submitBtn.disabled = false; });
+      });
+    })();
+  </script>
+<script src="/cart.js"></script>
+</body>
+</html>

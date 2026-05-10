@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alle Seiten – Port – CanGo App Empire</title>
+<meta name="description" content="Alle 02- und Hybrid-3-Seiten in einem Port. Wie eine Webseite ohne Domain – von hier aus erreichst du jede Seite.">
+<link href="/fonts/fonts.css?v=2" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+<style>
+:root{
+  --navy-900:#080d1a;--navy-800:#0d1424;--navy-700:#111c30;
+  --navy-600:#162238;--navy-500:#1d2d47;
+  --border:rgba(78,99,130,0.25);--border-light:rgba(78,99,130,0.12);
+  --orange:#F97316;--orange-soft:rgba(249,115,22,0.12);
+  --white:#ffffff;--off-white:#e8eef5;
+  --muted:#7a91ab;--muted-dim:#4a607a;
+  --green:#22c55e;--gray-blue-light:#4e6382;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy-900);color:var(--off-white);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(249,115,22,.04) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(30,60,120,.15) 0%,transparent 60%);pointer-events:none;z-index:0}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(8,13,26,.88);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:center}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.logo-c{width:34px;height:34px;background:var(--orange);color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.logo-text{color:var(--white)}.logo-text span{color:var(--muted);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{color:var(--white);background:var(--navy-600)}
+.nav-links a.active{color:var(--orange);background:var(--navy-600)}
+
+section{padding:64px 24px;position:relative;z-index:1}
+.wrap{max-width:1200px;margin:0 auto}
+.ey{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+h1.port-title{font-size:clamp(32px,4.5vw,52px);font-weight:800;letter-spacing:-.025em;color:var(--white);line-height:1.1;margin-bottom:12px}
+h1.port-title .ac{color:var(--orange)}
+.port-lead{font-size:16px;color:var(--muted);max-width:640px;line-height:1.75;margin-bottom:40px}
+.div{width:48px;height:3px;background:var(--orange);border-radius:2px;margin:16px 0 24px}
+
+.port-section-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-dim);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border-light)}
+.port-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.port-card{background:var(--navy-800);border:1px solid var(--border);border-radius:18px;padding:24px 22px;text-decoration:none;color:inherit;display:flex;flex-direction:column;align-items:flex-start;transition:all .25s;position:relative;overflow:hidden}
+.port-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(249,115,22,.05) 0%,transparent 55%);opacity:0;transition:opacity .25s;border-radius:18px;pointer-events:none}
+.port-card:hover{border-color:rgba(249,115,22,.4);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.3)}
+.port-card:hover::before{opacity:1}
+.port-card-icon{font-size:26px;margin-bottom:12px}
+.port-card-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.port-card-title{font-size:17px;font-weight:800;color:var(--white);margin-bottom:6px;letter-spacing:-.01em;line-height:1.2}
+.port-card-desc{font-size:13px;color:var(--muted);line-height:1.55;flex:1;margin-bottom:12px}
+.port-card-arrow{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--orange);display:inline-flex;align-items:center;gap:6px;transition:transform .2s}
+.port-card:hover .port-card-arrow{transform:translateX(4px)}
+
+.port-hero{background:var(--navy-800);border-bottom:1px solid var(--border);padding:56px 24px 48px;position:relative;z-index:1}
+.port-hero .wrap{max-width:1200px;margin:0 auto}
+.port-hero .port-lead{margin-bottom:0}
+
+footer{background:var(--navy-900);border-top:1px solid var(--border);padding:48px 24px 32px;position:relative;z-index:1}
+.footer-wrap{max-width:1200px;margin:0 auto}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:32px}
+.fbrand p{font-size:14px;color:var(--muted);line-height:1.75;margin-top:10px;max-width:320px}
+.fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:8px}
+.fcol ul li a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--white)}
+.fbot{border-top:1px solid var(--border-light);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.fcopy{font-size:13px;color:var(--muted-dim)}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .ftop{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .port-grid{grid-template-columns:1fr}
+  .ftop{grid-template-columns:1fr}
+  .fbot{flex-direction:column;text-align:center}
+}
+</style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body>
+
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<div class="port-hero">
+  <div class="wrap">
+    <div class="ey">Port · Alle Seiten</div>
+    <h1 class="port-title">Eine <span class="ac">Webseite</span> – alle Seiten im Port</h1>
+    <div class="div"></div>
+    <p class="port-lead">Alle 02- und Hybrid-3-Seiten sind hier gebündelt. Der <strong>Tool-Shop</strong> mit 100+ KI-Tools liegt unter <a href="/produkte-3.html" style="color:var(--orange);font-weight:700">produkte-3.html</a> – Klick auf eine Karte öffnet die Produktdetailseite.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="port-section-title">Tool-Shop · KI &amp; Tech</div>
+    <div class="port-grid">
+      <a href="/produkte-3.html" class="port-card" style="border-color:rgba(249,115,22,.45)">
+        <span class="port-card-icon">🛒</span>
+        <span class="port-card-tag">Shop</span>
+        <span class="port-card-title">Produkt-Shop (100+ Tools)</span>
+        <span class="port-card-desc">Gleicher Katalog wie auf der Domain: suchen, Karten, dann zur Detailseite unter /marktplatz/tools/…</span>
+        <span class="port-card-arrow">Zum Shop →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="port-section-title">Startseiten</div>
+    <div class="port-grid">
+      <a href="/index.html" class="port-card">
+        <span class="port-card-icon">🏠</span>
+        <span class="port-card-tag">V2</span>
+        <span class="port-card-title">Hauptseite</span>
+        <span class="port-card-desc">index.html (Version 2) – Deine Konkurrenz schläft. Wir nicht. Hero, Stats, Ticker, Pakete.</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/index-3.html" class="port-card">
+        <span class="port-card-icon">🚀</span>
+        <span class="port-card-tag">Hybrid-3</span>
+        <span class="port-card-title">Startseite Hybrid-3</span>
+        <span class="port-card-desc">index-3.html – Empire-Look, gleicher Aufbau wie Hauptseite im Hybrid-Design.</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="port-section-title">Inhalte · Hybrid-3</div>
+    <div class="port-grid">
+      <a href="/ueber-uns-3.html" class="port-card">
+        <span class="port-card-icon">👥</span>
+        <span class="port-card-tag">Unternehmen</span>
+        <span class="port-card-title">Über uns</span>
+        <span class="port-card-desc">Team, Vision, Empire-Story – ueber-uns-3.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/produkte-3.html" class="port-card">
+        <span class="port-card-icon">🛍️</span>
+        <span class="port-card-tag">Produkt</span>
+        <span class="port-card-title">Produkte</span>
+        <span class="port-card-desc">KI &amp; Tech Tools, Marktplatz – produkte-3.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/workflows-3.html" class="port-card">
+        <span class="port-card-icon">⚙️</span>
+        <span class="port-card-tag">Automation</span>
+        <span class="port-card-title">Workflows</span>
+        <span class="port-card-desc">Workflow-Grid, Pakete – workflows-3.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/blogs-3.html" class="port-card">
+        <span class="port-card-icon">📝</span>
+        <span class="port-card-tag">Content</span>
+        <span class="port-card-title">Blogs</span>
+        <span class="port-card-desc">Analysen &amp; Insights, Filter – blogs-3.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/faq-3.html" class="port-card">
+        <span class="port-card-icon">❓</span>
+        <span class="port-card-tag">Support</span>
+        <span class="port-card-title">FAQ</span>
+        <span class="port-card-desc">FAQ-Accordion, Support-Chat – faq-3.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/kontakt-3.html" class="port-card">
+        <span class="port-card-icon">✉️</span>
+        <span class="port-card-tag">Kontakt</span>
+        <span class="port-card-title">Kontakt</span>
+        <span class="port-card-desc">Anfrageformular, Founder, Karte – kontakt-3.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="port-section-title">Rechtliches · Login · Kasse</div>
+    <div class="port-grid">
+      <a href="/impressum-2.html" class="port-card">
+        <span class="port-card-icon">⚖️</span>
+        <span class="port-card-tag">02</span>
+        <span class="port-card-title">Impressum</span>
+        <span class="port-card-desc">Firmenangaben, Kontakt, Steuer, Haftung – impressum-2.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/datenschutz.html" class="port-card">
+        <span class="port-card-icon">🔒</span>
+        <span class="port-card-tag">Recht</span>
+        <span class="port-card-title">Datenschutz</span>
+        <span class="port-card-desc">Datenschutzerklärung – datenschutz.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/agb-2.html" class="port-card">
+        <span class="port-card-icon">📋</span>
+        <span class="port-card-tag">Recht · 02</span>
+        <span class="port-card-title">AGB</span>
+        <span class="port-card-desc">Allgemeine Geschäftsbedingungen – agb-2.html (Port-Version)</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/widerruf-2.html" class="port-card">
+        <span class="port-card-icon">↩️</span>
+        <span class="port-card-tag">Recht · 02</span>
+        <span class="port-card-title">Widerruf</span>
+        <span class="port-card-desc">Widerrufserklärung, Muster-Formular, B2B-Garantie – widerruf-2.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/login.html" class="port-card">
+        <span class="port-card-icon">🔐</span>
+        <span class="port-card-tag">Login</span>
+        <span class="port-card-title">Login</span>
+        <span class="port-card-desc">Kunden- &amp; Partner-Login – login.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+      <a href="/kasse-3.html" class="port-card">
+        <span class="port-card-icon">🛒</span>
+        <span class="port-card-tag">Checkout</span>
+        <span class="port-card-title">Kasse</span>
+        <span class="port-card-desc">Warenkorb, Zahlung – kasse-3.html</span>
+        <span class="port-card-arrow">Öffnen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

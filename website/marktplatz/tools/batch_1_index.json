@@ -1,0 +1,31 @@
+{
+  "batch_id": 1,
+  "category": "ESSENTIAL AI & AUTOMATION",
+  "tools": [
+    {
+      "id": "chatgpt-plus",
+      "name": "ChatGPT Plus (GPT-4o)",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/chatgpt-plus.html"
+    },
+    {
+      "id": "claude-35",
+      "name": "Claude 3.5 Sonnet",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/claude-35.html"
+    },
+    {
+      "id": "perplexity-pro",
+      "name": "Perplexity Pro",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/perplexity-pro.html"
+    },
+    {
+      "id": "n8n",
+      "name": "n8n Workflow Automation",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/n8n.html"
+    },
+    {
+      "id": "browseract",
+      "name": "BrowserAct",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/browseract.html"
+    }
+  ]
+}

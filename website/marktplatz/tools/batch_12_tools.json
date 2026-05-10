@@ -1,0 +1,193 @@
+{
+  "batch_id": 12,
+  "total_batches": 22,
+  "category": "COMMUNITY & AUDIENCE OWNERSHIP",
+  "tools": [
+    {
+      "id": "beehiiv",
+      "name": "beehiiv",
+      "tagline": "Der Newsletter-Builder für Wachstum. Gebaut von den Morning Brew Machern.",
+      "badge": "NEWSLETTER",
+      "rating": { "tacos": 5, "count": 1200 },
+      "images": ["/images/tools/beehiiv-dashboard.webp"],
+      "quick_specs": {
+        "alternative_to": ["Substack", "Mailchimp"],
+        "integrations": ["Webflow", "Shopify", "Zapier"],
+        "best_for": ["Creator", "Publisher", "Marketer"]
+      },
+      "pitch_html": "<h3>Besitze deine Zielgruppe. Algorithmen ändern sich, E-Mail bleibt.</h3><p><strong>beehiiv</strong> ist die modernste Plattform für Newsletter. Eingebaute Growth-Tools (Referral-Programm, Ad-Network) helfen dir, nicht nur zu schreiben, sondern zu wachsen.</p><h4>CanGo Strategie:</h4><p>Wir nutzen beehiiv für unsere 'Sector Intel' Reports. Jeder Blogpost wird automatisch auch als Newsletter versendet. Doppelte Reichweite, halbe Arbeit.</p>",
+      "deal_terms": [
+        "Eingebautes Referral-Programm",
+        "Ad Network Access",
+        "3D Analytics",
+        "Keine Plattform-Gebühren auf Abos"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Grow",
+          "price": 42,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Bis 10.000 Abonnenten",
+            "Custom Domain",
+            "Premium Abos anbieten",
+            "Polls & Umfragen"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "skool",
+      "name": "Skool",
+      "tagline": "Community + Kurs + Kalender. Die Plattform von Sam Ovens & Alex Hormozi.",
+      "badge": "COMMUNITY",
+      "rating": { "tacos": 5, "count": 5000 },
+      "images": ["/images/tools/skool-community.webp"],
+      "quick_specs": {
+        "alternative_to": ["Facebook Groups", "Circle", "Mighty Networks"],
+        "integrations": ["Zapier", "Stripe"],
+        "best_for": ["Coaches", "Info-Produkte", "Influencer"]
+      },
+      "pitch_html": "<h3>Mach deine Community süchtig (im positiven Sinne).</h3><p><strong>Skool</strong> nutzt Gamification (Leaderboards, Level), um Mitglieder aktiv zu halten. Es ist extrem einfach, schnell und fokussiert.</p><p>Für unsere 'Mindset'-Nische bauen wir Skool-Communities auf, in denen User sich gegenseitig motivieren. Das erhöht den Customer Lifetime Value (LTV) massiv.</p>",
+      "deal_terms": [
+        "Alles inklusive (Kurse, Chat, Events)",
+        "Eine Gebühr für alles",
+        "Eingebautes Payment (niedrige Gebühr)",
+        "Mobile App"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Creator",
+          "price": 99,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Unbegrenzte Mitglieder",
+            "Unbegrenzte Kurse",
+            "1 Gruppe",
+            "Alle Features inklusive"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "circle",
+      "name": "Circle",
+      "tagline": "Die White-Label Community Plattform. Deine Marke, deine Regeln.",
+      "badge": "PREMIUM",
+      "rating": { "tacos": 5, "count": 3400 },
+      "images": ["/images/tools/circle-space.webp"],
+      "quick_specs": {
+        "alternative_to": ["Skool", "Discord"],
+        "integrations": ["SSO", "WordPress", "Memberstack"],
+        "best_for": ["Marken", "Enterprise", "Membership Sites"]
+      },
+      "pitch_html": "<h3>Wenn Facebook-Gruppen zu unprofessionell sind.</h3><p><strong>Circle</strong> lässt dich eine Community bauen, die aussieht wie deine Webseite. Perfekt integrierbar, komplett anpassbar und extrem professionell.</p><p>Wir nutzen Circle für unsere 'Enterprise'-Kunden, um ihnen einen exklusiven Support-Kanal und Austausch untereinander (Mastermind) zu bieten.</p>",
+      "deal_terms": [
+        "Custom Domain",
+        "Live Streams",
+        "Events & Spaces",
+        "White Labeling"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Professional",
+          "price": 99,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "White Labeling (Basic)",
+            "Live Streams",
+            "Advanced Analytics",
+            "CSS Customization"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "tagline": "Das Betriebssystem für Arbeit. Wo Entscheidungen getroffen werden.",
+      "badge": "OPS",
+      "rating": { "tacos": 5, "count": 50000 },
+      "images": ["/images/tools/slack-chat.webp"],
+      "quick_specs": {
+        "alternative_to": ["Teams", "Discord"],
+        "integrations": ["2000+ Apps", "n8n", "Jira"],
+        "best_for": ["Remote Teams", "Tech-Firmen"]
+      },
+      "pitch_html": "<h3>E-Mail ist für Dokumente. Slack ist für Action.</h3><p><strong>Slack</strong> ist der Standard für asynchrone Kommunikation. Aber bei CanGo ist es mehr: Es ist unser 'Human Interface' zur Maschine.</p><p>Unsere n8n-Bots posten Alerts in Slack: 'Neuer Lead (Immo)', 'Server-Last hoch', 'Video fertig gerendert'. Wir steuern das Imperium aus Slack-Channels.</p>",
+      "deal_terms": [
+        "Huddles (Audio/Video)",
+        "Workflow Builder",
+        "Connect (Externe Partner)",
+        "Verschlüsselt"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Pro",
+          "price": 7.25,
+          "original_price": 0,
+          "currency": "€/mo",
+          "billing": "monthly",
+          "features": [
+            "Unbegrenzte Message History",
+            "Unbegrenzte Integrationen",
+            "Huddles",
+            "Canvas"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "tagline": "Nicht nur für Gamer. Die Heimat von KI und Web3.",
+      "badge": "TECH HUB",
+      "rating": { "tacos": 4, "count": 80000 },
+      "images": ["/images/tools/discord-server.webp"],
+      "quick_specs": {
+        "alternative_to": ["Slack", "Telegram"],
+        "integrations": ["Midjourney", "Pika", "Webhooks"],
+        "best_for": ["KI-Communities", "Krypto-Projekte"]
+      },
+      "pitch_html": "<h3>Hier passiert die KI-Revolution.</h3><p>Midjourney, Pika, Suno – die besten KI-Tools leben in <strong>Discord</strong>. Wenn du KI meistern willst, musst du Discord meistern.</p><p>Wir nutzen Discord als 'Backend-Interface' für Bildgenerierung und als Community-Hub für unsere Krypto-Sparte.</p>",
+      "deal_terms": [
+        "Kostenlos nutzbar",
+        "Nitro für Uploads & HD Video",
+        "Mächtige Bot-API",
+        "Voice Channels"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Nitro",
+          "price": 9.99,
+          "original_price": 0,
+          "currency": "€/mo",
+          "billing": "monthly",
+          "features": [
+            "500MB Uploads",
+            "HD Video Streaming",
+            "Server Boosts",
+            "Custom Emojis"
+          ],
+          "cta_link": "https://discord.com"
+        }
+      ]
+    }
+  ]
+}
+

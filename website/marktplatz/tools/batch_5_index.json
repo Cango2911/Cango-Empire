@@ -1,0 +1,31 @@
+{
+  "batch_id": 5,
+  "category": "DEVELOPMENT & OPERATIONS",
+  "tools": [
+    {
+      "id": "cursor-editor",
+      "name": "Cursor AI Editor",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/cursor-editor.html"
+    },
+    {
+      "id": "tidycal",
+      "name": "TidyCal",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/tidycal.html"
+    },
+    {
+      "id": "nocodebackend",
+      "name": "NoCodeBackend",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/nocodebackend.html"
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/github-copilot.html"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/vercel.html"
+    }
+  ]
+}

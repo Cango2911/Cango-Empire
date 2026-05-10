@@ -1,0 +1,256 @@
+/* ============================================
+   Section Harmony – Startseite
+   Einheitlicher Aufbau: oben nach unten
+   Responsiv, harmonisch, modern, edel
+   ============================================ */
+
+:root {
+  --section-padding-y: clamp(3.5rem, 8vw, 5.5rem);
+  --section-padding-y-mobile: clamp(2.5rem, 6vw, 3.5rem);
+  --section-header-margin: clamp(2rem, 4vw, 3rem);
+  --section-radius: 20px;
+  --section-radius-mobile: 16px;
+  --section-border: 1px solid rgba(249, 115, 22, 0.22);
+  --section-border-strong: 1px solid rgba(249, 115, 22, 0.35);
+  --section-shadow: 0 20px 50px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(251, 146, 60, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --section-shadow-hover: 0 24px 56px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(251, 146, 60, 0.12),
+    0 0 32px rgba(249, 115, 22, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ---- 1. Einheitlicher Sektions-Rhythmus (alle außer Hero) ---- */
+body.page-start section:not(.hero) {
+  padding-top: var(--section-padding-y) !important;
+  padding-bottom: var(--section-padding-y) !important;
+  scroll-margin-top: calc(var(--nav-height, 64px) + var(--space-4, 1rem)) !important;
+}
+
+/* ---- 2. Einheitliche Section-Header (Eyebrow + Titel + Subtitle) ---- */
+body.page-start .section__header,
+body.page-start .partner-showcase__header,
+body.page-start .quote-pitch-section__header,
+body.page-start .arsenal-pitch__header,
+body.page-start .scarcity__header {
+  max-width: 720px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: var(--section-header-margin) !important;
+  text-align: center !important;
+}
+
+body.page-start .section__eyebrow,
+body.page-start .partner-showcase__eyebrow,
+body.page-start .quote-pitch-section__eyebrow,
+body.page-start .arsenal-pitch__eyebrow,
+body.page-start .scarcity__eyebrow {
+  display: inline-block;
+  font-size: var(--text-sm, 0.9375rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary-400, #FB923C);
+  margin-bottom: var(--space-4);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+body.page-start .section__title,
+body.page-start .partner-showcase__headline,
+body.page-start .quote-pitch-section__title,
+body.page-start .arsenal-pitch__title,
+body.page-start .scarcity__title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+  color: var(--text-primary, #F9FAFB);
+}
+
+body.page-start .section__subtitle,
+body.page-start .partner-showcase__subtitle,
+body.page-start .quote-pitch-section__subtitle,
+body.page-start .arsenal-pitch__subtitle,
+body.page-start .scarcity__subtitle {
+  font-size: var(--text-lg, 1.25rem);
+  color: var(--text-secondary, #9CA3AF);
+  line-height: 1.65;
+  max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---- 3. Einheitliche Karten/Container (Rahmen, Radius, Schatten) ---- */
+body.page-start .problem__cards-wrap,
+body.page-start .comparison__table-wrap {
+  border-radius: var(--section-radius);
+  border: var(--section-border-strong);
+  box-shadow: var(--section-shadow);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+body.page-start .problem__cards-wrap:hover,
+body.page-start .comparison__table-wrap:hover {
+  box-shadow: var(--section-shadow-hover);
+  border-color: rgba(249, 115, 22, 0.4);
+}
+
+/* Partner-Karten und Industry-Karten einheitlich ---- */
+body.page-start #partner .partner-showcase__card,
+body.page-start #branchen .industry {
+  border-radius: var(--section-radius);
+  border: var(--section-border);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+body.page-start #partner .partner-showcase__card:hover,
+body.page-start #branchen .industry:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--section-shadow-hover);
+  border-color: rgba(249, 115, 22, 0.35);
+}
+
+/* Quote-Pitch & Arsenal Slider-Karten (bereits stark gestylt, nur Angleichen) ---- */
+body.page-start .quote-pitch-slider__quote,
+body.page-start .quote-pitch-slider__body,
+body.page-start .arsenal-slider__quote,
+body.page-start .arsenal-slider__body {
+  border-radius: var(--section-radius) !important;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* FAQ Intro-Card und Kategorien ---- */
+body.page-start .faq__intro-card,
+body.page-start .faq__category {
+  border-radius: var(--section-radius);
+  border: var(--section-border);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+body.page-start .faq__intro-card:hover,
+body.page-start .faq__category:hover {
+  box-shadow: var(--section-shadow-hover);
+  border-color: rgba(249, 115, 22, 0.32);
+}
+
+/* Scarcity Pitch & Asset-Pitch ---- */
+body.page-start .scarcity__pitch-content,
+body.page-start .scarcity .asset-pitch {
+  border-radius: var(--section-radius);
+  border: var(--section-border);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ---- 4. Einheitliches Grid-Responsive (1024 → 768 → 480) ---- */
+@media (max-width: 1024px) {
+  body.page-start section:not(.hero) {
+    padding-top: var(--section-padding-y-mobile);
+    padding-bottom: var(--section-padding-y-mobile);
+  }
+
+  body.page-start .section__header,
+  body.page-start .partner-showcase__header,
+  body.page-start .quote-pitch-section__header,
+  body.page-start .arsenal-pitch__header,
+  body.page-start .scarcity__header {
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  body.page-start .problem__cards-wrap,
+  body.page-start .comparison__table-wrap,
+  body.page-start #partner .partner-showcase__card,
+  body.page-start #branchen .industry {
+    border-radius: var(--section-radius-mobile);
+  }
+
+  body.page-start .industries__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
+  body.page-start section:not(.hero) {
+    padding-top: var(--section-padding-y-mobile);
+    padding-bottom: var(--section-padding-y-mobile);
+  }
+
+  body.page-start .section__title,
+  body.page-start .partner-showcase__headline,
+  body.page-start .quote-pitch-section__title,
+  body.page-start .arsenal-pitch__title,
+  body.page-start .scarcity__title {
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+  }
+
+  body.page-start .problem__grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4);
+  }
+
+  body.page-start .industries__grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-4);
+  }
+
+  body.page-start #partner .partner-showcase__grid {
+    grid-template-columns: 1fr;
+  }
+  body.page-start #partner .alliance-grid .partner-showcase__card--wide,
+  body.page-start #partner .alliance-grid .partner-showcase__card--gold,
+  body.page-start #partner .alliance-grid .partner-showcase__card--silver,
+  body.page-start #partner .alliance-grid .partner-showcase__card--ember,
+  body.page-start #partner .alliance-grid .partner-showcase__card--tall {
+    grid-column: auto;
+  }
+
+  body.page-start .pkg-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  body.page-start .quote-pitch-slider__slide.is-active,
+  body.page-start .arsenal-slider__slide.is-active {
+    grid-template-columns: 1fr !important;
+  }
+
+  body.page-start .faq__categories {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body.page-start .section__header,
+  body.page-start .partner-showcase__header,
+  body.page-start .quote-pitch-section__header,
+  body.page-start .arsenal-pitch__header {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  body.page-start .problem__cards-wrap,
+  body.page-start .comparison__table-wrap {
+    padding: var(--space-5);
+    border-radius: var(--section-radius-mobile);
+  }
+
+  body.page-start #partner .partner-showcase__card,
+  body.page-start #branchen .industry {
+    padding: var(--space-5);
+    border-radius: var(--section-radius-mobile);
+  }
+
+  body.page-start .comparison-headline {
+    white-space: normal !important;
+    font-size: clamp(1.5rem, 5vw, 2rem) !important;
+  }
+}

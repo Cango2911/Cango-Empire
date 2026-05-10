@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Cyber Assistant | CanGo App Empire</title>
+  <meta name="description" content="Direkter Website-Zugang zum ULTIMATE Cango Cyber Assistant V2 für Workflows, Preise, Support und Einstiegspfade.">
+  <link href="/fonts/fonts.css?v=2" rel="stylesheet">
+  <!-- FIX-2026-04-07: Phase 1.1 — KPI + Mobile-CTA-Leiste -->
+  <link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+  <link href="/cango-empire-v4-monopoly.css?v=24" rel="stylesheet">
+  <link href="/master-empire-chat.css?v=2" rel="stylesheet">
+  <style>
+    .assistant-page {
+      min-height: 100vh;
+      padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-12);
+      background: linear-gradient(180deg, #030712 0%, #0f172a 100%);
+    }
+    .assistant-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+    .assistant-hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-8);
+      margin-bottom: var(--space-8);
+      align-items: start;
+    }
+    .assistant-panel,
+    .assistant-sidecard {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(249, 115, 22, 0.22);
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+    }
+    .assistant-panel {
+      padding: var(--space-8);
+    }
+    .assistant-title {
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: var(--space-4);
+    }
+    .assistant-subtitle {
+      color: var(--text-secondary);
+      font-size: var(--text-lg);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+    .assistant-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .assistant-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 115, 22, 0.28);
+      background: rgba(249, 115, 22, 0.08);
+      color: #fdba74;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .assistant-sidecard {
+      padding: var(--space-6);
+    }
+    .assistant-sidecard__title {
+      font-size: var(--text-xl);
+      font-weight: 800;
+      margin-bottom: var(--space-4);
+    }
+    .assistant-sidecard__list {
+      display: grid;
+      gap: 0.85rem;
+      margin-bottom: var(--space-6);
+      color: var(--text-secondary);
+    }
+    .assistant-sidecard__list strong {
+      color: var(--text-primary);
+    }
+    .assistant-sidecard__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.95rem 1.25rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .assistant-chat {
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(249, 115, 22, 0.22);
+      border-radius: 24px;
+      padding: var(--space-6);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    }
+    .assistant-chat__header {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      align-items: center;
+      margin-bottom: var(--space-5);
+    }
+    .assistant-chat__title {
+      font-size: var(--text-xl);
+      font-weight: 800;
+    }
+    .assistant-chat__status {
+      color: #fdba74;
+      font-size: var(--text-sm);
+      font-weight: 700;
+    }
+    .assistant-chat__messages {
+      display: grid;
+      gap: 1rem;
+      min-height: 280px;
+      max-height: 520px;
+      overflow-y: auto;
+      padding-right: 0.25rem;
+      margin-bottom: var(--space-5);
+    }
+    .assistant-message {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+    .assistant-message--user {
+      justify-content: flex-end;
+    }
+    .assistant-message__avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      flex-shrink: 0;
+      background: rgba(249, 115, 22, 0.16);
+      color: #fdba74;
+    }
+    .assistant-message__bubble {
+      max-width: min(100%, 760px);
+      border-radius: 18px;
+      padding: 1rem 1.1rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      color: var(--text-primary);
+      background: rgba(30, 41, 59, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+    }
+    .assistant-message--user .assistant-message__bubble {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.22), rgba(251, 146, 60, 0.12));
+      border-color: rgba(249, 115, 22, 0.3);
+    }
+    .assistant-message__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.85rem;
+    }
+    .assistant-message__link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      background: rgba(249, 115, 22, 0.18);
+      border: 1px solid rgba(249, 115, 22, 0.32);
+      font-size: var(--text-sm);
+      font-weight: 700;
+    }
+    .assistant-chat__composer {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .assistant-chat__prompt {
+      width: 100%;
+      min-height: 120px;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(2, 6, 23, 0.82);
+      color: var(--text-primary);
+      resize: vertical;
+      outline: none;
+    }
+    .assistant-chat__prompt:focus {
+      border-color: rgba(249, 115, 22, 0.38);
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+    }
+    .assistant-chat__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-3);
+      align-items: center;
+    }
+    .assistant-chat__examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .assistant-chat__example {
+      border: 1px solid rgba(249, 115, 22, 0.24);
+      background: rgba(249, 115, 22, 0.08);
+      color: #fdba74;
+      border-radius: 999px;
+      padding: 0.7rem 0.95rem;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .assistant-chat__submit {
+      border: none;
+      border-radius: 16px;
+      padding: 0.95rem 1.2rem;
+      background: linear-gradient(135deg, #f97316, #fb923c);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .assistant-chat__submit[disabled] {
+      opacity: 0.6;
+      cursor: wait;
+    }
+    @media (max-width: 940px) {
+      .assistant-hero {
+        grid-template-columns: 1fr;
+      }
+      .assistant-chat__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body class="empire-sync empire-sync--core has-primary-cta-bar">
+  <!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+  <main class="master-empire master-empire--assistant-page">
+    <!-- FIX-2026-03-12_035719: Assistant-Seite auf denselben Live-Stack wie Startseite und FAQ umgestellt -->
+    <div class="master-empire__shell">
+      <div class="master-empire__panel">
+        <span class="master-empire__eyebrow">Dedicated Assistant Page</span>
+        <h1 class="master-empire__title">ULTIMATE <span class="highlight-bright">CanGo App Empire Architect</span></h1>
+        <p class="master-empire__copy">Diese Seite ist die Vollansicht des Master of Empire. Sie ist nicht mehr nur ein simpler Intent-Router, sondern der sichtbare Zugang zum Live-Vertriebsleiter mit Multi-AI-Fallback, Telegram-Handoff und Founder-Lock pro Thread.</p>
+        <div class="master-empire__badges">
+          <span class="master-empire__badge">Live Vertrieb</span>
+          <span class="master-empire__badge">Founder takeover</span>
+          <span class="master-empire__badge">Thread-basierte 4h Regel</span>
+        </div>
+        <div class="master-empire__grid">
+          <div class="master-empire__info"><strong>Workflows</strong><span>Der Assistant kann Website-, Markt- und Setup-Pfade direkt einordnen.</span></div>
+          <div class="master-empire__info"><strong>Preise</strong><span>Von Starter bis Enterprise wird sauber vorqualifiziert, bevor ein Founder-Fall entsteht.</span></div>
+          <div class="master-empire__info"><strong>Support</strong><span>Offene Rückfragen bleiben nicht im Kreis, sondern laufen in FAQ-, Support- oder Sales-Handoff.</span></div>
+          <div class="master-empire__info"><strong>Fallback</strong><span>Wenn ein Provider ausfällt, übernimmt der nächste, ohne dass die Persona zerbricht.</span></div>
+        </div>
+      </div>
+      <aside class="master-empire__side">
+        <h2 class="master-empire__side-title">Was diese Seite jetzt ist</h2>
+        <p class="master-empire__side-copy">Die Vollansicht für Interessenten, die tiefer einsteigen wollen als auf der Startseite oder im FAQ-Hub. Perfekt für komplexere Fragen, Founder-Routing und längere Konversationen.</p>
+        <div class="master-empire__statusbox">
+          <strong>AUTO_PILOT solange möglich</strong>
+          <span>Der Architect antwortet sofort, solange kein aktiver Founder-Lock für diesen Thread besteht.</span>
+        </div>
+        <div class="master-empire__handoff">
+          <strong>Telegram als God-Mode</strong>
+          <span>Wenn Canberk per Telegram antwortet, wird genau dieser Thread für vier Stunden auf Watch Mode gesetzt.</span>
+        </div>
+        <div class="master-empire__actions">
+          <a class="master-empire__action" href="/faq.html"><strong>FAQ Hub</strong><span>Support-Hub</span></a>
+          <a class="master-empire__action" href="/kontakt.html?intent=sales&entry=assistant-page&topic=Founder%20Rueckfrage"><strong>Founder direkt holen</strong><span>Sales / Handoff</span></a>
+        </div>
+      </aside>
+      <section class="master-empire__chat" data-master-chat-root data-master-page="/cyber-assistant.html" data-master-scope="assistant-page-live" data-master-greeting="Willkommen. Ich bin der CanGo App Empire Architect. Frag mich nach Preisen, Workflows, Support, Founder-Handoff oder dem besten Einstieg in dein Setup.">
+        <div class="master-empire__chat-head">
+          <div>
+            <h2 class="master-empire__chat-title">Live mit dem Architect sprechen</h2>
+            <p class="master-empire__chat-subtitle">Hier läuft derselbe Master-Stack wie auf der Startseite und im FAQ-Hub, nur mit mehr Platz für längere Fragen und tiefere Qualifizierung.</p>
+          </div>
+          <div class="master-empire__chat-status" data-master-status>AUTO_PILOT aktiv</div>
+        </div>
+        <div class="master-empire__messages" data-master-messages></div>
+        <form class="master-empire__composer" data-master-form>
+          <textarea class="master-empire__prompt" data-master-prompt name="message" placeholder="Frag z. B.: Welche Workflows brauchst du für Immobilien? Wie funktioniert der Founder-Handoff? Oder: Ich will ein individuelles Enterprise Setup." required></textarea>
+          <div class="master-empire__composer-row">
+            <div class="master-empire__examples">
+              <button class="master-empire__example" data-master-example="Was kostet ein individuelles Enterprise Setup?" type="button">Enterprise Setup</button>
+              <button class="master-empire__example" data-master-example="Welche Workflows passen für Immobilien, Finanzen oder Energie?" type="button">Markt Fit</button>
+              <button class="master-empire__example" data-master-example="Bitte gib meinen Fall direkt an Canberk weiter." type="button">Founder Übergabe</button>
+            </div>
+            <button class="master-empire__submit" data-master-submit type="submit">Architect aktivieren</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li><li><a href="/index.html#pakete" data-cango-kpi="kpi_pakete_section">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/master-empire-chat.js?v=3"></script>
+  <script>(function(){var b=document.getElementById('navToggle');if(b)b.addEventListener('click',function(){document.body.classList.toggle('nav-open');});document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.body.classList.remove('nav-open');});});})();</script>
+  <script src="/js/kpi-events.js?v=2" defer></script>
+  <script src="/cart.js" defer></script>
+  <div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+    <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+  </div>
+</body>
+</html>

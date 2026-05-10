@@ -1,0 +1,386 @@
+{
+  "batch_id": 15,
+  "total_batches": 22,
+  "category": "SPECIAL AGENTS & HIDDEN GEMS",
+  "tools": [
+    {
+      "id": "voila",
+      "name": "Voila",
+      "tagline": "Der ultimative Browser-Assistent. KI auf jeder Webseite.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 5, "count": 890 },
+      "images": ["/images/tools/voila-browser.webp"],
+      "quick_specs": {
+        "alternative_to": ["Harpa AI", "Monica"],
+        "integrations": ["Chrome", "Edge", "Safari"],
+        "best_for": ["Recherche", "E-Mail", "Produktivität"]
+      },
+      "pitch_html": "<h3>KI sollte da sein, wo du bist. Im Browser.</h3><p><strong>Voila</strong> ist ein KI-Overlay für deinen Browser. Beantworte E-Mails, fasse YouTube-Videos zusammen oder korrigiere Rechtschreibung – ohne den Tab zu wechseln.</p><h4>Warum wir es nutzen:</h4><p>Es ist der schnellste Weg für unsere Operatoren, Informationen zu extrahieren, während sie manuell auf Partnerseiten surfen. Ein Klick, und die Daten sind strukturiert.</p>",
+      "deal_terms": [
+        "Lebenslanger Zugriff",
+        "GPT-4 & Claude Modelle",
+        "Web Access",
+        "Datenschutz-Fokus"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "License Tier 1",
+          "price": 29,
+          "original_price": 144,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "2.000 Requests / Monat",
+            "Alle KI-Modelle",
+            "Browser Extension",
+            "Private Mode"
+          ],
+          "cta_link": "DEIN_VOILA_LINK"
+        }
+      ]
+    },
+    {
+      "id": "katteb",
+      "name": "Katteb",
+      "tagline": "KI, die Fakten prüft. Content ohne Lügen.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 4, "count": 650 },
+      "images": ["/images/tools/katteb-editor.webp"],
+      "quick_specs": {
+        "alternative_to": ["Jasper", "Writesonic"],
+        "integrations": ["WordPress", "Blogger", "Zapier"],
+        "best_for": ["Blogger", "News-Seiten", "Faktenchecker"]
+      },
+      "pitch_html": "<h3>KI halluziniert. Katteb nicht.</h3><p>Die meisten KI-Writer erfinden Fakten. <strong>Katteb</strong> ist anders. Es prüft jeden Satz gegen echte Quellen in Echtzeit. Lokalisierte Daten, Zitate, Bilder.</p><h4>Der Compliance-Hebel:</h4><p>Im Finanz- und Versicherungsbereich (YMYL) ist Katteb unser Sicherheitsnetz. Wir veröffentlichen nichts, was nicht durch Katteb verifiziert wurde.</p>",
+      "deal_terms": [
+        "Faktencheck inklusive",
+        "GPT-4 & Claude Integration",
+        "Auto-Blogging Feature",
+        "Lokale Quellenwahl"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "AppSumo Deal",
+          "price": 39,
+          "original_price": 360,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "15.000 Wörter / Monat",
+            "Fact Checking Engine",
+            "AI Art Generator",
+            "Lang-Form Editor"
+          ],
+          "cta_link": "DEIN_KATTEB_LINK"
+        }
+      ]
+    },
+    {
+      "id": "adcreative-ai",
+      "name": "AdCreative.ai",
+      "tagline": "Werbebanner, die konvertieren. Generiert von KI, optimiert auf Klicks.",
+      "badge": "PERFORMANCE",
+      "rating": { "tacos": 4, "count": 2100 },
+      "images": ["/images/tools/adcreative-grid.webp"],
+      "quick_specs": {
+        "alternative_to": ["Canva", "Adobe Express"],
+        "integrations": ["Meta Ads", "Google Ads", "LinkedIn"],
+        "best_for": ["Media Buyer", "E-Commerce", "Agenturen"]
+      },
+      "pitch_html": "<h3>Design ist Geschmackssache. Conversion ist Wissenschaft.</h3><p><strong>AdCreative.ai</strong> generiert Hunderte von Werbebannern in Sekunden und bewertet sie nach ihrer prognostizierten Performance. Die KI weiß, welche Farben und Layouts Klicks bringen.</p><p>Wir nutzen es für unsere 'High-Volume' Kampagnen im Energie-Sektor, wo wir ständig neue Creatives testen müssen, um die CTR hochzuhalten.</p>",
+      "deal_terms": [
+        "Unbegrenzte Generierungen",
+        "Stock-Bilder inklusive",
+        "Text Generator",
+        "Creative Insights"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Startup",
+          "price": 29,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "10 Credits (Downloads) / Monat",
+            "Unbegrenzte Generierung",
+            "1 Brand",
+            "AI Text Generator"
+          ],
+          "cta_link": "DEIN_ADCREATIVE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "taskade",
+      "name": "Taskade",
+      "tagline": "AI Agenten im Team. Projektmanagement trifft auf Automation.",
+      "badge": "AI AGENTS",
+      "rating": { "tacos": 5, "count": 1200 },
+      "images": ["/images/tools/taskade-agents.webp"],
+      "quick_specs": {
+        "alternative_to": ["Notion", "Asana", "ClickUp"],
+        "integrations": ["OpenAI", "Slack", "Zapier"],
+        "best_for": ["Startups", "Remote Teams", "AI-Enthusiasten"]
+      },
+      "pitch_html": "<h3>Lass die KI für dich arbeiten, nicht nur schreiben.</h3><p><strong>Taskade</strong> sieht aus wie eine To-Do-Liste, ist aber eine Agenten-Plattform. Du kannst KI-Agenten Aufgaben zuweisen: 'Recherchiere X', 'Schreibe Y', 'Erstelle Z'.</p><p>Es ist die perfekte Brücke zwischen menschlicher Planung und maschineller Ausführung.</p>",
+      "deal_terms": [
+        "AI Agents & Personas",
+        "Mind Maps & Listen",
+        "Video Chat integriert",
+        "Multi-Plattform (Web/Mobile)"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Starter",
+          "price": 8,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "3 Mitglieder",
+            "5 GB Speicher",
+            "1.000 AI Credits",
+            "Kalender-Sync"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "hexomatic",
+      "name": "Hexomatic",
+      "tagline": "Das Web als Datenquelle. Scraping und Automation ohne Code.",
+      "badge": "DATA SCRAPER",
+      "rating": { "tacos": 4, "count": 950 },
+      "images": ["/images/tools/hexomatic-workflow.webp"],
+      "quick_specs": {
+        "alternative_to": ["BrowserAct", "Phantombuster"],
+        "integrations": ["Google Sheets", "Webhook", "Slack"],
+        "best_for": ["Growth Hacker", "Lead Gen", "Data Mining"]
+      },
+      "pitch_html": "<h3>Extrahiere Daten aus dem gesamten Internet.</h3><p><strong>Hexomatic</strong> ist ein visueller Scraper. Du baust Workflows wie: 'Gehe zu Amazon, suche X, extrahiere Preise, übersetze sie, speichere in Sheet'.</p><p>Es ist unsere Alternative zu BrowserAct für einfachere, strukturierte Scraping-Tasks, bei denen wir keine KI-Steuerung brauchen, sondern rohe Geschwindigkeit.</p>",
+      "deal_terms": [
+        "100+ Pre-built Automations",
+        "Cloud Execution",
+        "Anti-Blocking Tech",
+        "Residential Proxies (Add-on)"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Silver",
+          "price": 49,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "4.500 Credits / Monat",
+            "Unbegrenzte Workflows",
+            "Gleichzeitige Runs",
+            "Data Export"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    }
+  ]
+}
+
+  "batch_id": 15,
+  "total_batches": 22,
+  "category": "SPECIAL AGENTS & HIDDEN GEMS",
+  "tools": [
+    {
+      "id": "voila",
+      "name": "Voila",
+      "tagline": "Der ultimative Browser-Assistent. KI auf jeder Webseite.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 5, "count": 890 },
+      "images": ["/images/tools/voila-browser.webp"],
+      "quick_specs": {
+        "alternative_to": ["Harpa AI", "Monica"],
+        "integrations": ["Chrome", "Edge", "Safari"],
+        "best_for": ["Recherche", "E-Mail", "Produktivität"]
+      },
+      "pitch_html": "<h3>KI sollte da sein, wo du bist. Im Browser.</h3><p><strong>Voila</strong> ist ein KI-Overlay für deinen Browser. Beantworte E-Mails, fasse YouTube-Videos zusammen oder korrigiere Rechtschreibung – ohne den Tab zu wechseln.</p><h4>Warum wir es nutzen:</h4><p>Es ist der schnellste Weg für unsere Operatoren, Informationen zu extrahieren, während sie manuell auf Partnerseiten surfen. Ein Klick, und die Daten sind strukturiert.</p>",
+      "deal_terms": [
+        "Lebenslanger Zugriff",
+        "GPT-4 & Claude Modelle",
+        "Web Access",
+        "Datenschutz-Fokus"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "License Tier 1",
+          "price": 29,
+          "original_price": 144,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "2.000 Requests / Monat",
+            "Alle KI-Modelle",
+            "Browser Extension",
+            "Private Mode"
+          ],
+          "cta_link": "DEIN_VOILA_LINK"
+        }
+      ]
+    },
+    {
+      "id": "katteb",
+      "name": "Katteb",
+      "tagline": "KI, die Fakten prüft. Content ohne Lügen.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 4, "count": 650 },
+      "images": ["/images/tools/katteb-editor.webp"],
+      "quick_specs": {
+        "alternative_to": ["Jasper", "Writesonic"],
+        "integrations": ["WordPress", "Blogger", "Zapier"],
+        "best_for": ["Blogger", "News-Seiten", "Faktenchecker"]
+      },
+      "pitch_html": "<h3>KI halluziniert. Katteb nicht.</h3><p>Die meisten KI-Writer erfinden Fakten. <strong>Katteb</strong> ist anders. Es prüft jeden Satz gegen echte Quellen in Echtzeit. Lokalisierte Daten, Zitate, Bilder.</p><h4>Der Compliance-Hebel:</h4><p>Im Finanz- und Versicherungsbereich (YMYL) ist Katteb unser Sicherheitsnetz. Wir veröffentlichen nichts, was nicht durch Katteb verifiziert wurde.</p>",
+      "deal_terms": [
+        "Faktencheck inklusive",
+        "GPT-4 & Claude Integration",
+        "Auto-Blogging Feature",
+        "Lokale Quellenwahl"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "AppSumo Deal",
+          "price": 39,
+          "original_price": 360,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "15.000 Wörter / Monat",
+            "Fact Checking Engine",
+            "AI Art Generator",
+            "Lang-Form Editor"
+          ],
+          "cta_link": "DEIN_KATTEB_LINK"
+        }
+      ]
+    },
+    {
+      "id": "adcreative-ai",
+      "name": "AdCreative.ai",
+      "tagline": "Werbebanner, die konvertieren. Generiert von KI, optimiert auf Klicks.",
+      "badge": "PERFORMANCE",
+      "rating": { "tacos": 4, "count": 2100 },
+      "images": ["/images/tools/adcreative-grid.webp"],
+      "quick_specs": {
+        "alternative_to": ["Canva", "Adobe Express"],
+        "integrations": ["Meta Ads", "Google Ads", "LinkedIn"],
+        "best_for": ["Media Buyer", "E-Commerce", "Agenturen"]
+      },
+      "pitch_html": "<h3>Design ist Geschmackssache. Conversion ist Wissenschaft.</h3><p><strong>AdCreative.ai</strong> generiert Hunderte von Werbebannern in Sekunden und bewertet sie nach ihrer prognostizierten Performance. Die KI weiß, welche Farben und Layouts Klicks bringen.</p><p>Wir nutzen es für unsere 'High-Volume' Kampagnen im Energie-Sektor, wo wir ständig neue Creatives testen müssen, um die CTR hochzuhalten.</p>",
+      "deal_terms": [
+        "Unbegrenzte Generierungen",
+        "Stock-Bilder inklusive",
+        "Text Generator",
+        "Creative Insights"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Startup",
+          "price": 29,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "10 Credits (Downloads) / Monat",
+            "Unbegrenzte Generierung",
+            "1 Brand",
+            "AI Text Generator"
+          ],
+          "cta_link": "DEIN_ADCREATIVE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "taskade",
+      "name": "Taskade",
+      "tagline": "AI Agenten im Team. Projektmanagement trifft auf Automation.",
+      "badge": "AI AGENTS",
+      "rating": { "tacos": 5, "count": 1200 },
+      "images": ["/images/tools/taskade-agents.webp"],
+      "quick_specs": {
+        "alternative_to": ["Notion", "Asana", "ClickUp"],
+        "integrations": ["OpenAI", "Slack", "Zapier"],
+        "best_for": ["Startups", "Remote Teams", "AI-Enthusiasten"]
+      },
+      "pitch_html": "<h3>Lass die KI für dich arbeiten, nicht nur schreiben.</h3><p><strong>Taskade</strong> sieht aus wie eine To-Do-Liste, ist aber eine Agenten-Plattform. Du kannst KI-Agenten Aufgaben zuweisen: 'Recherchiere X', 'Schreibe Y', 'Erstelle Z'.</p><p>Es ist die perfekte Brücke zwischen menschlicher Planung und maschineller Ausführung.</p>",
+      "deal_terms": [
+        "AI Agents & Personas",
+        "Mind Maps & Listen",
+        "Video Chat integriert",
+        "Multi-Plattform (Web/Mobile)"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Starter",
+          "price": 8,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "3 Mitglieder",
+            "5 GB Speicher",
+            "1.000 AI Credits",
+            "Kalender-Sync"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "hexomatic",
+      "name": "Hexomatic",
+      "tagline": "Das Web als Datenquelle. Scraping und Automation ohne Code.",
+      "badge": "DATA SCRAPER",
+      "rating": { "tacos": 4, "count": 950 },
+      "images": ["/images/tools/hexomatic-workflow.webp"],
+      "quick_specs": {
+        "alternative_to": ["BrowserAct", "Phantombuster"],
+        "integrations": ["Google Sheets", "Webhook", "Slack"],
+        "best_for": ["Growth Hacker", "Lead Gen", "Data Mining"]
+      },
+      "pitch_html": "<h3>Extrahiere Daten aus dem gesamten Internet.</h3><p><strong>Hexomatic</strong> ist ein visueller Scraper. Du baust Workflows wie: 'Gehe zu Amazon, suche X, extrahiere Preise, übersetze sie, speichere in Sheet'.</p><p>Es ist unsere Alternative zu BrowserAct für einfachere, strukturierte Scraping-Tasks, bei denen wir keine KI-Steuerung brauchen, sondern rohe Geschwindigkeit.</p>",
+      "deal_terms": [
+        "100+ Pre-built Automations",
+        "Cloud Execution",
+        "Anti-Blocking Tech",
+        "Residential Proxies (Add-on)"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Silver",
+          "price": 49,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "4.500 Credits / Monat",
+            "Unbegrenzte Workflows",
+            "Gleichzeitige Runs",
+            "Data Export"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    }
+  ]
+}
+
+

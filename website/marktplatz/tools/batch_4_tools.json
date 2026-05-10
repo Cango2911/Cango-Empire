@@ -1,0 +1,193 @@
+{
+  "batch_id": 4,
+  "total_batches": 22,
+  "category": "AUDIO & VOICE SYNTHESIS",
+  "tools": [
+    {
+      "id": "unmixr-ai",
+      "name": "Unmixr AI",
+      "tagline": "Dein KI-Tonstudio. Vocals entfernen, Stimmen klonen, Dubbing.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 5, "count": 85 },
+      "images": ["/images/tools/unmixr-interface.webp"],
+      "quick_specs": {
+        "alternative_to": ["Lalal.ai", "Descript", "ElevenLabs"],
+        "integrations": ["Upload", "YouTube URL"],
+        "best_for": ["Podcaster", "Video-Editoren", "Musiker"]
+      },
+      "pitch_html": "<h3>Audio-Postproduktion war früher Hölle.</h3><p>Du hast ein perfektes Video, aber Hintergrundmusik stört die Sprache? Oder du willst aus einem Song nur die Vocals extrahieren? Früher brauchte man dafür einen Audio-Ingenieur.</p><p><strong>Unmixr</strong> erledigt das in Sekunden. Es trennt Spuren (Stems), entfernt Rauschen, generiert Text-to-Speech und dubbt Videos in andere Sprachen. Mit dem Lifetime-Deal ist es das Schweizer Taschenmesser für jeden Content Creator.</p>",
+      "deal_terms": [
+        "Lebenslanger Zugriff",
+        "Stem Splitter (Gesang/Musik trennen)",
+        "AI Text-to-Speech",
+        "Kommerzielle Nutzung"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "AppSumo License 1",
+          "price": 69,
+          "original_price": 400,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "Unbegrenzte Audio-Konvertierung",
+            "30 Std. Dubbing / Monat",
+            "Voice Cloning Feature",
+            "Keine monatlichen Kosten"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "suno-ai",
+      "name": "Suno",
+      "tagline": "Komponiere Radio-Hits ohne Instrumente. Text-to-Music Revolution.",
+      "badge": "MUSIC GEN",
+      "rating": { "tacos": 5, "count": 15000 },
+      "images": ["/images/tools/suno-player.webp"],
+      "quick_specs": {
+        "alternative_to": ["Udio", "Epidemic Sound"],
+        "integrations": ["Web", "Discord", "Download"],
+        "best_for": ["Content Creator", "Ad-Produzenten", "Künstler"]
+      },
+      "pitch_html": "<h3>GEMA-freie Musik auf Knopfdruck.</h3><p>Du brauchst einen Jingle für deinen Podcast? Einen epischen Soundtrack für deine Ad? <strong>Suno</strong> generiert komplette Songs (mit Gesang und Lyrics!) aus einem Text-Prompt.</p><p>Bei CanGo App Empire nutzen wir Suno, um einzigartige Brand-Songs für Kunden zu erstellen, die im Gedächtnis bleiben – ohne teure Lizenzen von Musikbibliotheken kaufen zu müssen.</p>",
+      "deal_terms": [
+        "Volle kommerzielle Rechte (ab Pro)",
+        "Bis zu 2 Minuten Länge pro Generierung",
+        "Eigene Lyrics oder KI-Lyrics",
+        "Download als MP3/Video"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Pro Plan",
+          "price": 10,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "2.500 Credits / Monat (500 Songs)",
+            "Kommerzielle Nutzung erlaubt",
+            "Priorisierte Generierung",
+            "Gleichzeitige Jobs"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "murf-ai",
+      "name": "Murf.ai",
+      "tagline": "Studio-Voiceover ohne Studio. Perfekt für Corporate Videos.",
+      "badge": "CORPORATE",
+      "rating": { "tacos": 4, "count": 2100 },
+      "images": ["/images/tools/murf-studio.webp"],
+      "quick_specs": {
+        "alternative_to": ["ElevenLabs", "Lovo"],
+        "integrations": ["Canva", "Google Slides"],
+        "best_for": ["E-Learning", "HR-Abteilungen", "Marketing"]
+      },
+      "pitch_html": "<h3>Wenn es seriös klingen muss.</h3><p>Während ElevenLabs auf Emotionen spezialisiert ist, ist <strong>Murf</strong> der Standard für Business. Perfekt betonte, kristallklare Stimmen für Erklärvideos, Präsentationen und E-Learning.</p><p>Du kannst Pitch, Pause und Betonung exakt steuern. Kein 'Roboter-Sound', sondern pure Professionalität für deine High-Ticket-Kunden.</p>",
+      "deal_terms": [
+        "120+ Stimmen in 20 Sprachen",
+        "Video-Sync Feature",
+        "Kommerzielle Rechte",
+        "Team-Kollaboration"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Creator",
+          "price": 29,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "24 Stunden Voice-Generation / Jahr",
+            "Zugang zu allen Pro-Stimmen",
+            "Keine Downloads limitiert",
+            "Kommerzielle Nutzung"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "otter-ai",
+      "name": "Otter.ai",
+      "tagline": "Dein KI-Sekretär für Meetings. Nie wieder Protokolle schreiben.",
+      "badge": "PRODUCTIVITY",
+      "rating": { "tacos": 4, "count": 5600 },
+      "images": ["/images/tools/otter-meeting.webp"],
+      "quick_specs": {
+        "alternative_to": ["Fireflies", "Fathom"],
+        "integrations": ["Zoom", "Google Meet", "Teams", "Slack"],
+        "best_for": ["Sales Teams", "Manager", "Agenturen"]
+      },
+      "pitch_html": "<h3>Fokussiere dich auf das Gespräch, nicht auf Notizen.</h3><p><strong>Otter.ai</strong> nimmt an deinen Meetings teil, transkribiert alles in Echtzeit und erstellt automatisch eine Zusammenfassung mit Action-Items.</p><h4>Der ROI:</h4><p>In Sales-Calls kannst du dich voll auf den Kunden konzentrieren. Otter liefert dir danach das perfekte Follow-Up-Material. Für Agenturen ein Muss, um Kunden-Briefings rechtssicher zu dokumentieren.</p>",
+      "deal_terms": [
+        "Echtzeit-Transkription (Englisch)",
+        "Automatische Slides-Erfassung",
+        "Speaker Identification",
+        "Export als PDF/DOCX"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Pro",
+          "price": 17,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "1.200 Transkriptions-Minuten / Monat",
+            "Import von Audio/Video Dateien",
+            "Advanced Search",
+            "Custom Vocabulary"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "descript",
+      "name": "Descript",
+      "tagline": "Video bearbeiten wie ein Word-Dokument. Die Revolution im Schnitt.",
+      "badge": "EDITOR CHOICE",
+      "rating": { "tacos": 5, "count": 8900 },
+      "images": ["/images/tools/descript-editor.webp"],
+      "quick_specs": {
+        "alternative_to": ["Premiere Pro", "Camtasia"],
+        "integrations": ["Zapier", "YouTube", "Podcast Hosts"],
+        "best_for": ["Podcaster", "YouTuber", "Content Marketer"]
+      },
+      "pitch_html": "<h3>Schneiden durch Löschen von Text.</h3><p><strong>Descript</strong> transkribiert dein Video. Wenn du einen Satz im Text löschst, wird er auch im Video geschnitten. 'Ähms' und 'Öhs' werden automatisch entfernt.</p><p>Das Killer-Feature: 'Overdub'. Du kannst fehlende Wörter einfach eintippen, und eine KI-Stimme (die klingt wie du) spricht sie ein. Perfekt für schnelle Korrekturen ohne Neuaufnahme.</p>",
+      "deal_terms": [
+        "Text-based Video Editing",
+        "Overdub (Voice Cloning)",
+        "Studio Sound (Entrauschen)",
+        "Screen Recording inklusive"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Creator",
+          "price": 15,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "10 Std. Transkription / Monat",
+            "Wasserzeichen-freier Export (4K)",
+            "Overdub AI Voice",
+            "Automatische 'Uh' Entfernung"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    }
+  ]
+}
+

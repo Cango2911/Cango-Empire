@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Coaching & Mindset | Karriere-Institut | CanGo App Empire</title>
+    <meta name="description" content="Deutschlands mitgliederstärkstes Karriere-Institut: 100+ Coaches, 18.000+ Mitglieder, Seminare, E-Learnings & wissenschaftliche Persönlichkeitsanalysen. Teil der MYVI Group. Ab 15 €/Monat.">
+    <link rel="canonical" href="https://automation-cango-app-empire.com/coaching-mindset.html">
+        <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+    <!-- FIX-2026-04-07: Phase 1.1 — KPI + Mobile-CTA-Leiste -->
+    <link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+    <style>
+        /* ============================================
+           CANGO APP EMPIRE – Orange wie Kontaktseite
+           ============================================ */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #0d0d0d;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #222222;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --border-color: #2a2a2a;
+            /* CanGo Orange – wie Kontaktseite */
+            --accent: #F97316;
+            --accent-dark: #EA580C;
+            --accent-light: #FB923C;
+            --gradient: linear-gradient(135deg, #FB923C, #EA580C);
+            --gradient-text: linear-gradient(135deg, #FB923C, #F97316);
+            --glow: 0 0 30px rgba(249,115,22,0.15);
+            --glow-strong: 0 0 50px rgba(249,115,22,0.2);
+            --border-accent: rgba(249,115,22,0.3);
+            --bg-accent: rgba(249,115,22,0.08);
+            --bg-accent-strong: rgba(249,115,22,0.15);
+            /* Grün – für WP Jobportal */
+            --green: #22c55e;
+            --green-light: #4ade80;
+            --gradient-green: linear-gradient(135deg, #22c55e, #16a34a);
+            --green-bg: rgba(34,197,94,0.08);
+            --green-border: rgba(34,197,94,0.3);
+            /* Blau – für mitNORM Finanzplanung */
+            --blue: #334155;
+            --blue-light: #60A5FA;
+            --gradient-blue: linear-gradient(135deg, #60A5FA, #2563EB);
+            --blue-bg: rgba(59,130,246,0.08);
+            --blue-border: rgba(59,130,246,0.3);
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box}
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: var(--accent); text-decoration: none; transition: all .3s ease }
+        a:hover { color: var(--accent-light) }
+        strong { color: var(--text-primary) }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10,10,10,0.92);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 24px;
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between; height: 64px;
+        }
+        .nav-logo {
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 800; font-size: 1.1rem; color: var(--text-primary);
+        }
+        .nav-logo-icon {
+            width: 36px; height: 36px; background: var(--gradient);
+            border-radius: 10px; display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: .9rem; color: #000;
+        }
+        .nav-links {
+            display: flex; align-items: center; gap: 28px; list-style: none;
+        }
+        .nav-links a { color: var(--text-secondary); font-size: .88rem; font-weight: 500 }
+        .nav-links a:hover { color: var(--text-primary) }
+        .nav-cta {
+            background: var(--gradient); color: #000 !important;
+            padding: 8px 20px; border-radius: 8px; font-weight: 600; font-size: .85rem;
+        }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: var(--glow) }
+        .mobile-toggle {
+            display: none; flex-direction: column; gap: 5px; cursor: pointer;
+            background: none; border: none; padding: 5px;
+        }
+        .mobile-toggle span { width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px }
+
+        @media(max-width:768px){
+            .mobile-toggle{display:flex}
+            .nav-links{
+                display:none; position:absolute; top:64px; left:0; right:0;
+                background:rgba(10,10,10,.98); flex-direction:column;
+                padding:20px 24px; gap:16px; border-bottom:1px solid var(--border-color);
+            }
+            .nav-links.active{display:flex}
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gradient); color: #000;
+            padding: 14px 32px; border-radius: 10px;
+            font-weight: 700; font-size: .95rem;
+            border: none; cursor: pointer; transition: all .3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px); box-shadow: 0 8px 30px rgba(249,115,22,.3); color: #000;
+        }
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent; color: var(--accent);
+            padding: 14px 32px; border-radius: 10px;
+            font-weight: 700; font-size: .95rem;
+            border: 2px solid var(--border-accent); cursor: pointer; transition: all .3s ease;
+        }
+        .btn-outline:hover {
+            background: var(--bg-accent); border-color: var(--accent);
+            transform: translateY(-2px); color: var(--accent-light);
+        }
+        .btn-sm { padding: 11px 22px; font-size: .85rem }
+        .btn-amber {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gradient); color: #000;
+            padding: 14px 32px; border-radius: 10px;
+            font-weight: 700; font-size: .95rem;
+            border: none; cursor: pointer; transition: all .3s ease;
+        }
+        .btn-amber:hover {
+            transform: translateY(-2px); box-shadow: 0 8px 30px rgba(249,115,22,.3); color: #000;
+        }
+        .btn-green {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gradient-green); color: #000;
+            padding: 14px 32px; border-radius: 10px;
+            font-weight: 700; font-size: .95rem;
+            border: none; cursor: pointer; transition: all .3s ease;
+        }
+        .btn-green:hover {
+            transform: translateY(-2px); box-shadow: 0 8px 30px rgba(34,197,94,.3); color: #000;
+        }
+        .btn-green-outline {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent; color: var(--green);
+            padding: 14px 32px; border-radius: 10px;
+            font-weight: 700; font-size: .95rem;
+            border: 2px solid var(--green-border); cursor: pointer; transition: all .3s ease;
+        }
+        .btn-green-outline:hover {
+            background: var(--green-bg); border-color: var(--green);
+            transform: translateY(-2px); color: var(--green-light);
+        }
+        .btn-blue-outline {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent; color: var(--blue);
+            padding: 14px 32px; border-radius: 10px;
+            font-weight: 700; font-size: .95rem;
+            border: 2px solid var(--blue-border); cursor: pointer; transition: all .3s ease;
+        }
+        .btn-blue-outline:hover {
+            background: var(--blue-bg); border-color: var(--blue);
+            transform: translateY(-2px); color: var(--blue-light);
+        }
+        .cta-group { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap }
+
+        /* ============================================
+           SECTION UTILITIES
+           ============================================ */
+        .section { padding: 90px 0 }
+        .section-alt { background: var(--bg-secondary) }
+        .section-dark { background: var(--bg-tertiary) }
+        .section-header { text-align: center; margin-bottom: 20px }
+        .section-header h2 {
+            font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 800; margin-bottom: 16px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .section-intro {
+            text-align: center; color: var(--text-secondary);
+            font-size: 1.05rem; line-height: 1.7; max-width: 750px; margin: 0 auto 50px;
+        }
+        .row-label {
+            text-align: center; font-size: .78rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px; color: var(--accent);
+            margin-bottom: 20px; margin-top: 40px;
+        }
+
+        /* ============================================
+           HERO (Airtable-Style)
+           ============================================ */
+        .hero {
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+            background-color: #0d0d12;
+            background-image: radial-gradient(ellipse 100% 80% at 50% -20%, rgba(249, 115, 22, 0.35) 0%, rgba(249, 115, 22, 0.08) 30%, transparent 60%), radial-gradient(ellipse 70% 50% at 70% 10%, rgba(249, 115, 22, 0.12) 0%, transparent 45%), radial-gradient(ellipse 50% 40% at 20% 20%, rgba(249, 115, 22, 0.06) 0%, transparent 40%);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 120% 100% at 50% 60%, transparent 35%, rgba(0,0,0,0.25) 100%);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative; z-index: 1; text-align: center; max-width: 880px; margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--bg-accent); border: 1px solid var(--border-accent);
+            padding: 6px 16px; border-radius: 100px;
+            font-size: .82rem; font-weight: 600; color: var(--accent);
+            margin-bottom: 24px; letter-spacing: .5px;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem,5vw,3.4rem); font-weight: 900; line-height: 1.1; margin-bottom: 20px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.1rem; color: var(--text-secondary); line-height: 1.7;
+            margin-bottom: 32px; max-width: 720px; margin-left: auto; margin-right: auto;
+        }
+        .hero-sub strong {
+            -webkit-text-fill-color: var(--text-primary);
+        }
+        .hero-cpm { display: inline-flex; gap: 12px; margin-bottom: 36px }
+        .cpm-tag {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            padding: 6px 14px; border-radius: 6px; font-size: .8rem; font-weight: 600; color: var(--text-secondary);
+        }
+        .cpm-tag.hl { border-color: var(--border-accent); color: var(--accent); background: var(--bg-accent) }
+
+        /* ============================================
+           HIGHLIGHT BOX
+           ============================================ */
+        .hl-box {
+            background: var(--bg-accent); border: 2px solid var(--border-accent);
+            border-radius: 16px; padding: 44px 40px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .hl-box::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient);
+        }
+        .hl-box h2 {
+            font-size: 1.6rem; font-weight: 800; margin-bottom: 16px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hl-box p {
+            color: var(--text-secondary); font-size: 1rem; line-height: 1.7;
+            margin-bottom: 24px; max-width: 680px; margin-left: auto; margin-right: auto;
+        }
+
+        /* ============================================
+           ECOSYSTEM 3 PILLARS
+           ============================================ */
+        .eco-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px }
+        @media(max-width:900px){ .eco-grid{grid-template-columns:1fr} }
+
+        .eco-card {
+            background: var(--bg-card); border: 1px solid var(--border-color);
+            border-radius: 14px; padding: 32px 28px; transition: all .3s ease;
+            position: relative; overflow: hidden;
+        }
+        .eco-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:3px;
+            background: var(--gradient); opacity:0; transition: opacity .3s ease;
+        }
+        .eco-card:hover { border-color: var(--border-accent); transform: translateY(-4px); box-shadow: var(--glow) }
+        .eco-card:hover::before { opacity:1 }
+        .eco-card.featured { border-color: var(--border-accent); background: var(--bg-accent) }
+        .eco-card.featured::before { opacity:1 }
+        .eco-card.blue:hover { border-color: var(--blue-border) }
+        .eco-card.blue:hover::before { background: var(--gradient-blue); opacity:1 }
+
+        .eco-icon { font-size: 2rem; margin-bottom: 16px }
+        .eco-label {
+            display: inline-block; background: var(--bg-accent-strong); color: var(--accent);
+            font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 4px;
+            margin-bottom: 12px; letter-spacing: .5px; text-transform: uppercase;
+        }
+        .eco-label.green { background: var(--green-bg); color: var(--green) }
+        .eco-label.blue { background: var(--blue-bg); color: var(--blue) }
+        .eco-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px }
+        .eco-card p { color: var(--text-secondary); font-size: .9rem; line-height: 1.7; margin-bottom: 20px }
+        .eco-card .btn-primary, .eco-card .btn-outline, .eco-card .btn-amber,
+        .eco-card .btn-green, .eco-card .btn-green-outline, .eco-card .btn-blue-outline {
+            width: 100%; justify-content: center; padding: 12px 20px; font-size: .88rem;
+        }
+
+        /* ============================================
+           USE CASES
+           ============================================ */
+        .uc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px }
+        @media(max-width:768px){ .uc-grid{grid-template-columns:1fr} }
+
+        .uc-card {
+            background: var(--bg-card); border:1px solid var(--border-color);
+            border-radius: 14px; padding: 36px 32px;
+        }
+        .uc-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; color: var(--accent-light) }
+        .uc-card p { color: var(--text-secondary); font-size: .92rem; line-height: 1.7; margin-bottom: 20px }
+        .uc-flow {
+            background: var(--bg-accent); border:1px solid var(--border-accent);
+            border-radius: 8px; padding: 14px 18px;
+            font-size: .82rem; font-weight: 600; color: var(--accent);
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+        }
+        .uc-flow .arr { color: var(--text-muted) }
+
+        /* ============================================
+           SERVICES 6-CARDS
+           ============================================ */
+        .srv-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px }
+        @media(max-width:900px){ .srv-grid{grid-template-columns:repeat(2,1fr)} }
+        @media(max-width:600px){ .srv-grid{grid-template-columns:1fr} }
+
+        .srv-card {
+            background: var(--bg-card); border:1px solid var(--border-color);
+            border-radius: 14px; padding: 32px 24px; text-align: center; transition: all .3s ease;
+        }
+        .srv-card:hover { border-color: var(--border-accent); transform: translateY(-3px); box-shadow: var(--glow) }
+        .srv-icon { font-size: 2.2rem; margin-bottom: 16px }
+        .srv-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px }
+        .srv-card p { color: var(--text-secondary); font-size: .88rem; line-height: 1.6 }
+
+        /* ============================================
+           SEMINAR-KATALOG
+           ============================================ */
+        .sem-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px }
+        @media(max-width:900px){ .sem-grid{grid-template-columns:repeat(2,1fr)} }
+        @media(max-width:500px){ .sem-grid{grid-template-columns:1fr} }
+
+        .sem-item {
+            background: var(--bg-card); border:1px solid var(--border-color);
+            border-radius: 10px; padding: 20px 18px;
+            transition: all .3s ease; cursor: default;
+        }
+        .sem-item:hover { border-color: var(--border-accent); background: var(--bg-accent) }
+        .sem-item .sem-emoji { font-size: 1.6rem; margin-bottom: 10px }
+        .sem-item h4 { font-size: .88rem; font-weight: 700; margin-bottom: 6px }
+        .sem-item p { font-size: .78rem; color: var(--text-muted); line-height: 1.5 }
+        .sem-item .sem-tag {
+            display: inline-block; margin-top: 10px;
+            background: var(--bg-accent-strong); color: var(--accent);
+            font-size: .68rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+            text-transform: uppercase; letter-spacing: .3px;
+        }
+
+        /* ============================================
+           ANALYSETOOLS SHOWCASE
+           ============================================ */
+        .tool-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px }
+        @media(max-width:768px){ .tool-grid{grid-template-columns:1fr} }
+
+        .tool-card {
+            background: var(--bg-card); border:1px solid var(--border-color);
+            border-radius: 14px; padding: 36px 28px; text-align: center;
+            transition: all .3s ease; position: relative; overflow: hidden;
+        }
+        .tool-card::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+            background: var(--gradient); opacity: 0; transition: opacity .3s ease;
+        }
+        .tool-card:hover { border-color: var(--border-accent); transform: translateY(-4px) }
+        .tool-card:hover::after { opacity: 1 }
+        .tool-card .tool-icon { font-size: 2.4rem; margin-bottom: 16px }
+        .tool-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px }
+        .tool-card .tool-sub {
+            font-size: .78rem; font-weight: 600; color: var(--accent);
+            margin-bottom: 12px; text-transform: uppercase; letter-spacing: .3px;
+        }
+        .tool-card p { color: var(--text-secondary); font-size: .88rem; line-height: 1.6 }
+
+        /* ============================================
+           STATS
+           ============================================ */
+        .stats-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 20px }
+        @media(max-width:900px){ .stats-grid{grid-template-columns:repeat(3,1fr)} }
+        @media(max-width:600px){ .stats-grid{grid-template-columns:repeat(2,1fr)} }
+
+        .stat { text-align: center; padding: 24px 10px }
+        .stat-num {
+            font-size: clamp(1.8rem,3vw,2.4rem); font-weight: 900;
+            background: var(--gradient-text);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: 6px;
+        }
+        .stat-label { font-size: .82rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px }
+        .stat-sub { font-size: .72rem; color: var(--text-muted) }
+
+        /* ============================================
+           PRICING / PREMIUM BOX
+           ============================================ */
+        .pricing-box {
+            max-width: 800px; margin: 0 auto;
+            background: var(--bg-card); border: 2px solid var(--border-accent);
+            border-radius: 18px; padding: 48px 40px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .pricing-box::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: var(--gradient);
+        }
+        .pricing-badge {
+            display: inline-block; background: var(--gradient);
+            color: #000; font-size: .75rem; font-weight: 800;
+            padding: 4px 14px; border-radius: 100px;
+            text-transform: uppercase; letter-spacing: .5px; margin-bottom: 20px;
+        }
+        .pricing-price {
+            font-size: 3.2rem; font-weight: 900; margin-bottom: 4px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .pricing-period {
+            font-size: .9rem; color: var(--text-muted); margin-bottom: 24px;
+        }
+        .pricing-features {
+            display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+            margin-bottom: 32px;
+        }
+        @media(max-width:600px){ .pricing-features{grid-template-columns:1fr} }
+
+        .pf-item {
+            background: var(--bg-accent); border-radius: 10px; padding: 20px 16px;
+        }
+        .pf-item .pf-icon { font-size: 1.4rem; margin-bottom: 8px }
+        .pf-item h4 { font-size: .85rem; font-weight: 700; margin-bottom: 6px; color: var(--accent-light) }
+        .pf-item p { font-size: .78rem; color: var(--text-secondary); line-height: 1.5 }
+
+        .pricing-compare {
+            font-size: .85rem; color: var(--text-muted);
+            margin-bottom: 28px; font-style: italic;
+        }
+        .pricing-compare strong {
+            color: var(--accent-light);
+            -webkit-text-fill-color: var(--accent-light);
+        }
+
+        /* ============================================
+           PROCESS / STEPS
+           ============================================ */
+        .steps { max-width: 800px; margin: 40px auto 0 }
+        .step { display: flex; gap: 24px; position: relative; padding-bottom: 36px }
+        .step:last-child { padding-bottom: 0 }
+        .step-num {
+            flex-shrink: 0; width: 48px; height: 48px;
+            background: var(--gradient); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 1.1rem; color: #000;
+            position: relative; z-index: 2;
+        }
+        .step:not(:last-child)::before {
+            content: ''; position: absolute; left: 23px; top: 48px;
+            width: 2px; bottom: 0; background: var(--border-accent);
+        }
+        .step-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px }
+        .step-content p { color: var(--text-secondary); font-size: .9rem; line-height: 1.6 }
+
+        /* ============================================
+           TESTIMONIALS
+           ============================================ */
+        .testi-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px }
+        @media(max-width:768px){ .testi-grid{grid-template-columns:1fr} }
+
+        .testi-card {
+            background: var(--bg-card); border:1px solid var(--border-color);
+            border-radius: 14px; padding: 32px 28px; position: relative;
+        }
+        .testi-card::before {
+            content: '"'; position: absolute; top: 16px; left: 24px;
+            font-size: 4rem; font-weight: 900; color: var(--border-accent);
+            line-height: 1; opacity: .5;
+        }
+        .testi-card blockquote {
+            font-size: .92rem; color: var(--text-secondary); line-height: 1.7;
+            font-style: italic; margin-bottom: 16px; padding-top: 20px;
+        }
+        .testi-author { font-size: .82rem; font-weight: 700; color: var(--accent) }
+        .testi-role { font-size: .75rem; color: var(--text-muted) }
+
+        /* ============================================
+           FAQ
+           ============================================ */
+        .faq-list { max-width: 800px; margin: 40px auto 0 }
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+        .faq-q {
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; font-size: .95rem; font-weight: 600; color: var(--text-primary);
+            transition: color .3s ease;
+        }
+        .faq-q:hover { color: var(--accent) }
+        .faq-q .faq-toggle {
+            font-size: 1.4rem; color: var(--accent); transition: transform .3s ease;
+            flex-shrink: 0; margin-left: 16px;
+        }
+        .faq-a {
+            max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s ease;
+            color: var(--text-secondary); font-size: .88rem; line-height: 1.7;
+        }
+        .faq-item.open .faq-a { max-height: 400px; padding-top: 14px }
+        .faq-item.open .faq-toggle { transform: rotate(45deg) }
+
+        /* ============================================
+           PARTNERS ROW
+           ============================================ */
+        .partner-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px }
+        @media(max-width:768px){ .partner-grid{grid-template-columns:1fr} }
+
+        .partner-card {
+            background: var(--bg-card); border:1px solid var(--border-color);
+            border-radius: 14px; padding: 32px 24px; text-align: center; transition: all .3s ease;
+        }
+        .partner-card:hover { border-color: var(--border-accent); box-shadow: var(--glow) }
+        .partner-card.blue:hover { border-color: var(--blue-border); box-shadow: 0 0 30px rgba(59,130,246,0.15) }
+        .partner-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px }
+        .partner-card p { color: var(--text-secondary); font-size: .85rem; line-height: 1.6; margin-bottom: 20px }
+        .partner-card .btn-primary, .partner-card .btn-outline,
+        .partner-card .btn-green, .partner-card .btn-green-outline, .partner-card .btn-blue-outline {
+            width: 100%; justify-content: center; padding: 11px 20px; font-size: .85rem;
+        }
+
+        /* ============================================
+           CTA FOOTER
+           ============================================ */
+        .cta-section { padding: 90px 0; text-align: center; position: relative; overflow: hidden }
+        .cta-section::before {
+            content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+            background: radial-gradient(ellipse at center, rgba(249,115,22,.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-section h2 {
+            font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 800; margin-bottom: 16px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            position: relative; z-index: 1;
+        }
+        .cta-section p {
+            color: var(--text-secondary); font-size: 1rem; margin-bottom: 32px;
+            max-width: 620px; margin-left: auto; margin-right: auto; position: relative; z-index: 1;
+        }
+        .cta-section .cta-group { position: relative; z-index: 1 }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 60px 0 30px; border-top: 1px solid var(--border-color); background: var(--bg-primary);
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px;
+        }
+        @media(max-width:768px){ .footer-grid{grid-template-columns:1fr 1fr; gap:30px} }
+
+        .footer-brand {
+            display:flex; align-items:center; gap:10px;
+            font-weight:800; font-size:1rem; margin-bottom:12px;
+        }
+        .footer-brand-icon {
+            width:32px; height:32px; background:var(--gradient); border-radius:8px;
+            display:flex; align-items:center; justify-content:center;
+            font-weight:900; font-size:.8rem; color:#000;
+        }
+        .footer-desc { color: var(--text-muted); font-size: .85rem; line-height: 1.6 }
+        .footer h4 {
+            font-size:.82rem; font-weight:700; text-transform:uppercase;
+            letter-spacing:.5px; color:var(--text-secondary); margin-bottom:16px;
+        }
+        .footer ul { list-style: none }
+        .footer ul li { margin-bottom: 10px }
+        .footer ul a { color: var(--text-muted); font-size: .85rem }
+        .footer ul a:hover { color: var(--accent) }
+        .footer-bottom {
+            border-top:1px solid var(--border-color); padding-top:24px;
+            display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+        }
+        .footer-bottom p { color: var(--text-muted); font-size: .78rem }
+        .footer-tagline { font-style: italic }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        .reveal {
+            opacity: 0; transform: translateY(32px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0) }
+        .reveal-d1 { transition-delay: .1s }
+        .reveal-d2 { transition-delay: .2s }
+        .reveal-d3 { transition-delay: .3s }
+        .reveal-d4 { transition-delay: .4s }
+        .reveal-d5 { transition-delay: .5s }
+        .reveal-d6 { transition-delay: .6s }
+
+        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+        .anim { opacity:0; animation: fadeUp .7s ease forwards }
+        .ad1{animation-delay:.1s} .ad2{animation-delay:.2s}
+        .ad3{animation-delay:.3s} .ad4{animation-delay:.4s}
+    </style>
+    <link rel="stylesheet" href="/cango-empire-v4-monopoly.css?v=24">
+    <link rel="stylesheet" href="/css/empire-cta-banner.css?v=1">
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+<style>
+/* ─── EMPIRE VISUAL LAYER (override orange theme → empire dark) ─── */
+html { background: #080d1a; }
+body {
+  background: #080d1a !important;
+  font-family: 'Instrument Sans','DM Sans','Inter',system-ui,sans-serif !important;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(59,130,246,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none; z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  top: -200px; left: 50%; transform: translateX(-50%);
+  width: 900px; height: 500px;
+  background: radial-gradient(ellipse at center, rgba(249,115,22,.08) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+/* Section/card backgrounds aligned to empire dark */
+.card, .eco-card, .uc-card, .pkg-card,
+.feature-card, .stat-card, .kpi-card,
+.tier-card, .benefit-card, .step-card {
+  background: #111827 !important;
+  border-color: rgba(78,99,130,.2) !important;
+}
+section { position: relative; z-index: 1; }
+</style>
+</head>
+<body class="empire-sync empire-sync--landing has-primary-cta-bar">
+
+    <a href="#main" style="position:absolute;top:-40px;left:0;background:var(--accent);color:#000;padding:8px 16px;z-index:9999;font-weight:600;border-radius:0 0 8px 0;" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Zum Hauptinhalt springen</a>
+
+    <!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+    <main id="main">
+
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge anim">🧠 COACHING & MINDSET</div>
+                    <h1 class="anim ad1">Dein Potenzial ist kein Zufall.<br>Dein Karriereerfolg auch nicht.</h1>
+                    <p class="hero-sub anim ad2">
+                        90 % der Menschen wissen, was sie tun sollten – aber nur 10 % tun es auch. 
+                        Der Unterschied? Kein Talent, sondern <strong>System</strong>. 
+                        Das Karriere-Institut gibt dir 100+ Coaches, wissenschaftliche Persönlichkeitsanalysen 
+                        und Seminare, die dich von „ich weiß nicht, was ich will" zu 
+                        „ich verhandle 15 % mehr Gehalt" bringen. 
+                        <strong>18.000+ Mitglieder</strong> machen es vor. Du bist dran.
+                    </p>
+                    <div class="hero-cpm anim ad3">
+                        <span class="cpm-tag">CPM: 8-25€</span>
+                        <span class="cpm-tag hl">High-CPM Nische</span>
+                    </div>
+                    <div class="cta-group anim ad4">
+                        <a href="https://www.daskarriereinstitut.de/de/e/96/9436623123/checkout" target="_blank" rel="noopener" class="btn-primary">Erstgespräch buchen →</a>
+                        <a href="https://www.daskarriereinstitut.de/de/p/karriere-analyse" target="_blank" rel="noopener" class="btn-outline">Karriere-Analyse starten →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top:0">
+            <div class="container">
+                <div class="hl-box reveal">
+                    <h2>Das Karriere-Institut – Deutschlands mitgliederstärkstes Karriere-Coaching</h2>
+                    <p>
+                        Teil der <strong>MYVI Group</strong>. Über <strong>18.000 Mitglieder</strong>, 
+                        <strong>100+ zertifizierte Coaches</strong>, <strong>900+ Partnerunternehmen</strong>.
+                        Premium-Mitgliedschaft ab <strong>15 €/Monat</strong> – persönlicher Coach, 
+                        monatliche Seminare, quartalsweises 1:1 Coaching, E-Learning-Mediathek. 
+                        Kein Motivations-Blabla, sondern wissenschaftlich fundierte Karrierebegleitung.
+                    </p>
+                    <div class="cta-group">
+                        <a href="https://www.daskarriereinstitut.de/de/p/unser-angebot" target="_blank" rel="noopener" class="btn-primary">Angebot entdecken →</a>
+                        <a href="https://www.wirpersonalberater.de/" target="_blank" rel="noopener" class="btn-green-outline btn-sm">Zum Jobportal →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Ein Netzwerk. Drei Hebel. Karriere auf Autopilot.</h2></div>
+                <p class="section-intro reveal">
+                    Andere geben dir ein Motivationsvideo und wünschen dir viel Glück. Wir geben dir Coaches, die dich vorbereiten, 
+                    ein Jobportal, das dich vermittelt, und einen Finanzplan, der dein neues Gehalt arbeiten lässt. 
+                    Drei Säulen, ein System. Kein Entkommen vor deinem eigenen Erfolg.
+                </p>
+                <div class="eco-grid">
+                    <div class="eco-card featured reveal reveal-d1">
+                        <div class="eco-icon">🧠</div>
+                        <span class="eco-label">Hauptfokus – Coaching</span>
+                        <h3>Das Karriere-Institut</h3>
+                        <p>
+                            100+ Coaches. 12+ Premiumseminare. INSIGHTS MDI® Trimetrix EQ. Structogram. 
+                            Karriere-Analyse. Bewerbungsbaukasten. Alles, was du brauchst, um zu wissen, 
+                            wer du bist, was du kannst und wo du hinwillst. 
+                            <strong>Ab 15 €/Monat</strong> – weniger als ein Netflix-Abo, aber es verändert dein Leben.
+                        </p>
+                        <a href="https://www.daskarriereinstitut.de/" target="_blank" rel="noopener" class="btn-primary">Zum Karriere-Institut →</a>
+                    </div>
+                    <div class="eco-card reveal reveal-d2">
+                        <div class="eco-icon">👔</div>
+                        <span class="eco-label green">Jobportal</span>
+                        <h3>WP wir:personalberater</h3>
+                        <p>
+                            Du weißt jetzt, was du willst. WP findet den Job, der dazu passt. 
+                            12.000 Kandidaten, 800+ Unternehmen, Active Sourcing. 
+                            Erfolgsbasiert für Unternehmen – <strong>komplett kostenlos für dich</strong>.
+                        </p>
+                        <a href="https://www.wirpersonalberater.de/" target="_blank" rel="noopener" class="btn-green-outline btn-sm">Zum Jobportal →</a>
+                    </div>
+                    <div class="eco-card blue reveal reveal-d3">
+                        <div class="eco-icon">💰</div>
+                        <span class="eco-label blue">Finanzplanung – DIN 77230</span>
+                        <h3>mitNORM GmbH</h3>
+                        <p>
+                            Neuer Job, neues Gehalt. Jetzt Finanzen ordnen: Versicherungen, Vorsorge, 
+                            Vermögensaufbau – alles nach DIN-Norm. 1,5 Mio. Algorithmen. 
+                            Zehn Berater, ein Ergebnis. <strong>Kostenloses Erstgespräch.</strong>
+                        </p>
+                        <a href="https://mitnorm.de/" target="_blank" rel="noopener" class="btn-blue-outline btn-sm">Finanzcheck starten →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Talent ohne System ist verschenktes Potenzial</h2></div>
+                <div class="uc-grid">
+                    <div class="uc-card reveal reveal-d1">
+                        <h3>Für Studenten & Berufseinsteiger</h3>
+                        <p>
+                            Du stehst vor dem Berufseinstieg, hast keine Ahnung, was du willst, und dein Lebenslauf 
+                            sieht aus wie von 2015. Das Karriere-Institut gibt dir die Karriere-Analyse, 
+                            den Bewerbungsbaukasten und einen Coach, der dich vorbereitet. WP vermittelt dich 
+                            an 800+ Unternehmen. mitNORM sorgt dafür, dass dein erstes Gehalt nicht 
+                            in falsche Verträge fließt.
+                        </p>
+                        <div class="uc-flow">
+                            <span>Karriere-Analyse</span>
+                            <span class="arr">→</span>
+                            <span>Coaching & Seminare</span>
+                            <span class="arr">→</span>
+                            <span>Job finden (WP)</span>
+                            <span class="arr">→</span>
+                            <span>Finanzen (mitNORM)</span>
+                        </div>
+                    </div>
+                    <div class="uc-card reveal reveal-d2">
+                        <h3>Für Professionals & Führungskräfte</h3>
+                        <p>
+                            Du arbeitest seit Jahren, aber stagnierst. Gehaltsverhandlungen? Keine Strategie. 
+                            Konfliktmanagement? Bauchgefühl. Netzwerken? LinkedIn-Likes zählen nicht. 
+                            Das Karriere-Institut gibt dir Einzelcoaching, INSIGHTS MDI® und Seminare, 
+                            die dich vom Mitarbeiter zum Leader machen.
+                        </p>
+                        <div class="uc-flow">
+                            <span>INSIGHTS MDI®</span>
+                            <span class="arr">→</span>
+                            <span>1:1 Coaching</span>
+                            <span class="arr">→</span>
+                            <span>Gehaltsverhandlung</span>
+                            <span class="arr">→</span>
+                            <span>Karriere-Sprung</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Werkzeuge für echten Karrierevorsprung</h2></div>
+
+                <div class="row-label reveal">Coaching & Seminare</div>
+                <div class="srv-grid" style="margin-bottom:0">
+                    <div class="srv-card reveal reveal-d1">
+                        <div class="srv-icon">🎓</div>
+                        <h3>Premium-Coaching (1:1)</h3>
+                        <p>Einzelcoaching für Gehaltsverhandlung, Rhetorik, Karriere-Orientierung, Stärken-/Schwächen-Analyse. Zertifizierte Coaches mit branchenübergreifender Praxiserfahrung. Ergebnis: <strong>10-15 % mehr Gehalt</strong>.</p>
+                    </div>
+                    <div class="srv-card reveal reveal-d2">
+                        <div class="srv-icon">📚</div>
+                        <h3>12+ Premiumseminare</h3>
+                        <p>Kommunikation, Konfliktmanagement, Selbstmotivation, Networking, Zeitmanagement, Speedreading, Work-Life-Balance, Typgerechtes Lernen, Umsetzungskraft. Online + Präsenz. <strong>Jeden Monat kostenlos für Premium-Mitglieder.</strong></p>
+                    </div>
+                    <div class="srv-card reveal reveal-d3">
+                        <div class="srv-icon">🎬</div>
+                        <h3>Masterclass / E-Learning</h3>
+                        <p>Karriere-Mediathek mit umfangreichen E-Learnings. Ortsunabhängig, jederzeit abrufbar. Übungen zur direkten Anwendung. Coaching beim Referenten buchbar. Dein Wissensvorsprung auf Abruf.</p>
+                    </div>
+                </div>
+
+                <div class="row-label reveal">Analysetools & Bewerbung</div>
+                <div class="srv-grid">
+                    <div class="srv-card reveal reveal-d1">
+                        <div class="srv-icon">🔬</div>
+                        <h3>Persönlichkeitsanalysen</h3>
+                        <p>INSIGHTS MDI® Trimetrix EQ (Motive, Werte, EQ), Karriere-Analyse (dein „Karriere-Blutbild"), Structogram (Biostruktur). Wissenschaftlich fundiert – nicht Bauchgefühl.</p>
+                    </div>
+                    <div class="srv-card reveal reveal-d2">
+                        <div class="srv-icon">📝</div>
+                        <h3>CV- & Arbeitszeugnis-Check</h3>
+                        <p>Lizenzierte Coaches prüfen deine Unterlagen. Feedback, das dich zum Vorstellungsgespräch bringt. 79 € Einzelpreis / vergünstigt als Premium-Mitglied. Auch Arbeitszeugnis-Formulierungen entschlüsseln.</p>
+                    </div>
+                    <div class="srv-card reveal reveal-d3">
+                        <div class="srv-icon">🤖</div>
+                        <h3>Bewerbungsbaukasten</h3>
+                        <p>KI-gestütztes Tool: Daten eingeben, <strong>10 individualisierte Anschreiben à 3 Versionen</strong> erhalten. Vollautomatisch. Perfekt für Vielbewerbungen – kein Copy-Paste-Chaos mehr.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Seminar-Katalog: 12+ Themen für deinen Vorsprung</h2></div>
+                <p class="section-intro reveal">
+                    Jeden Monat kostenlose Premiumseminare für Mitglieder. Online mit Kamera und Interaktion – 
+                    kein passives Webinar, sondern echtes Training. Auch als Präsenz an mehreren Standorten buchbar.
+                </p>
+                <div class="sem-grid">
+                    <div class="sem-item reveal reveal-d1">
+                        <div class="sem-emoji">🗣️</div>
+                        <h4>Kommunikation</h4>
+                        <p>Effektive Kommunikation mit Kollegen, Vorgesetzten und Geschäftspartnern.</p>
+                        <span class="sem-tag">Soft Skill</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d2">
+                        <div class="sem-emoji">⚔️</div>
+                        <h4>Konfliktmanagement</h4>
+                        <p>Strategien und Techniken zur erfolgreichen Konfliktbewältigung im Berufsalltag.</p>
+                        <span class="sem-tag">Führung</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d1">
+                        <div class="sem-emoji">🔥</div>
+                        <h4>Selbstmotivation</h4>
+                        <p>Disziplin aufbauen, langfristig an Zielen arbeiten, Leistungsfähigkeit steigern.</p>
+                        <span class="sem-tag">Mindset</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d2">
+                        <div class="sem-emoji">🤝</div>
+                        <h4>Networking</h4>
+                        <p>Berufliche Beziehungen aufbauen und pflegen. Für Fach- und Führungskräfte.</p>
+                        <span class="sem-tag">Karriere</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d3">
+                        <div class="sem-emoji">⏱️</div>
+                        <h4>Zeitmanagement</h4>
+                        <p>Bewusster Umgang mit Zeit. Priorisierung und Produktivität für langfristigen Erfolg.</p>
+                        <span class="sem-tag">Produktivität</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d4">
+                        <div class="sem-emoji">📖</div>
+                        <h4>Speedreading</h4>
+                        <p>Überdurchschnittlich schnell lesen. Mehr Informationen in weniger Zeit verarbeiten.</p>
+                        <span class="sem-tag">Skill</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d3">
+                        <div class="sem-emoji">🧠</div>
+                        <h4>Typgerechtes Lernen</h4>
+                        <p>Lernstrategien verstehen. Was motiviert dich? Warum vergisst du unterschiedlich?</p>
+                        <span class="sem-tag">Mindset</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d4">
+                        <div class="sem-emoji">⚖️</div>
+                        <h4>Work-Life-Balance</h4>
+                        <p>Ausgewogene Balance zwischen beruflichen und privaten Verpflichtungen.</p>
+                        <span class="sem-tag">Wellbeing</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d5">
+                        <div class="sem-emoji">🏠</div>
+                        <h4>Homeoffice-Strategien</h4>
+                        <p>Ausgeglichen und effektiv von zu Hause arbeiten. Struktur schaffen, Ablenkung vermeiden.</p>
+                        <span class="sem-tag">Produktivität</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d6">
+                        <div class="sem-emoji">🎯</div>
+                        <h4>Zielsetzung</h4>
+                        <p>Aus Wünschen echte Ziele machen. Konkrete Schritte definieren und umsetzen.</p>
+                        <span class="sem-tag">Mindset</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d5">
+                        <div class="sem-emoji">💪</div>
+                        <h4>Umsetzungskraft</h4>
+                        <p>Willenskraft, Beharrlichkeit, Selbstdisziplin, Fokussierung und Entscheidungsstärke trainieren.</p>
+                        <span class="sem-tag">Performance</span>
+                    </div>
+                    <div class="sem-item reveal reveal-d6">
+                        <div class="sem-emoji">📄</div>
+                        <h4>Steuersparseminar</h4>
+                        <p>Steuerrückerstattung als Student? Was absetzen? Tipps zum Jobeinstieg. Mit mitNORM.</p>
+                        <span class="sem-tag">Finanzen</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Wissenschaftliche Analysetools – Kenne dich selbst</h2></div>
+                <p class="section-intro reveal">
+                    Die Analyse deiner Persönlichkeit ist das Fundament für planbaren Karriereerfolg. 
+                    Keine Horoskope, keine Motivationsfloskeln – validierte Instrumente, 
+                    die dir zeigen, wer du bist und was dich antreibt.
+                </p>
+                <div class="tool-grid">
+                    <div class="tool-card reveal reveal-d1">
+                        <div class="tool-icon">🔮</div>
+                        <div class="tool-sub">Motive · Werte · Emotionale Intelligenz</div>
+                        <h3>INSIGHTS MDI® Trimetrix EQ</h3>
+                        <p>Kennst du deine Motive, deine Werte und den Grad deiner emotionalen Intelligenz? Dieses Tool zeigt dir, was dich wirklich antreibt – und wie du es für deinen Erfolg nutzt.</p>
+                    </div>
+                    <div class="tool-card reveal reveal-d2">
+                        <div class="tool-icon">📊</div>
+                        <div class="tool-sub">Ist-Zustand · Handlungsempfehlungen</div>
+                        <h3>Karriere-Analyse</h3>
+                        <p>Dein „Karriere-Blutbild": Fundierter Überblick über deine Karrieresituation und dein Fähigkeitenspektrum. Klare Handlungsempfehlungen, wo du ansetzen musst. 4.1/5 Sterne Bewertung.</p>
+                    </div>
+                    <div class="tool-card reveal reveal-d3">
+                        <div class="tool-icon">🧬</div>
+                        <div class="tool-sub">Biostruktur · Stärken · Schwächen</div>
+                        <h3>Structogram</h3>
+                        <p>Bewusstsein für deine Persönlichkeitsstruktur. Wer sich kennt, kann Schwächen delegieren und Stärken ausbauen. Wissenschaftliche Biostrukturanalyse.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Zahlen, die für sich sprechen</h2></div>
+                <div class="stats-grid" style="margin-top:40px">
+                    <div class="stat reveal reveal-d1">
+                        <div class="stat-num">18.000+</div>
+                        <div class="stat-label">Mitglieder</div>
+                        <div class="stat-sub">Deutschlands größtes</div>
+                    </div>
+                    <div class="stat reveal reveal-d2">
+                        <div class="stat-num">100+</div>
+                        <div class="stat-label">Coaches</div>
+                        <div class="stat-sub">Zertifiziert & praxiserfahren</div>
+                    </div>
+                    <div class="stat reveal reveal-d3">
+                        <div class="stat-num">900+</div>
+                        <div class="stat-label">Unternehmen</div>
+                        <div class="stat-sub">Im Partnernetzwerk</div>
+                    </div>
+                    <div class="stat reveal reveal-d4">
+                        <div class="stat-num">12+</div>
+                        <div class="stat-label">Seminare</div>
+                        <div class="stat-sub">Monatlich kostenlos</div>
+                    </div>
+                    <div class="stat reveal reveal-d5">
+                        <div class="stat-num">10-15%</div>
+                        <div class="stat-label">Mehr Gehalt</div>
+                        <div class="stat-sub">Ø nach Coaching</div>
+                    </div>
+                    <div class="stat reveal reveal-d6">
+                        <div class="stat-num">15 €</div>
+                        <div class="stat-label">Pro Monat</div>
+                        <div class="stat-sub">Premium-Abo</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">In 5 Schritten vom Stillstand zum Durchbruch</h2></div>
+                <div class="steps">
+                    <div class="step reveal reveal-d1">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h3>Karriere-Analyse starten</h3>
+                            <p>Dein „Karriere-Blutbild" zeigt dir schwarz auf weiß, wo du stehst. Ist-Zustand, Fähigkeitenspektrum, Handlungsempfehlungen. Der erste Schritt ist Klarheit.</p>
+                        </div>
+                    </div>
+                    <div class="step reveal reveal-d2">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h3>Persönlichen Coach wählen</h3>
+                            <p>Als Premium-Mitglied (15 €/Monat) bekommst du einen festen Ansprechpartner. Kein Callcenter – ein Mensch, der deine Situation kennt und dich begleitet.</p>
+                        </div>
+                    </div>
+                    <div class="step reveal reveal-d3">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h3>Seminare besuchen & Skills aufbauen</h3>
+                            <p>Kommunikation, Verhandlung, Zeitmanagement, Speedreading – jeden Monat kostenlose Premiumseminare. Online mit Kamera, echte Interaktion, kein passives Zuhören.</p>
+                        </div>
+                    </div>
+                    <div class="step reveal reveal-d4">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <h3>Bewerbung optimieren & Job finden</h3>
+                            <p>CV-Check, Bewerbungsbaukasten, Arbeitszeugnis-Check. Dann ab zu WP wirpersonalberater.de – 12.000 Kandidaten, 800+ Unternehmen, kostenlos für dich.</p>
+                        </div>
+                    </div>
+                    <div class="step reveal reveal-d5">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <h3>Gehalt verhandeln & Finanzen ordnen</h3>
+                            <p>Dein Coach trainiert dich für die Gehaltsverhandlung. 10-15 % mehr sind der Durchschnitt. Anschließend: Finanzfahrplan mit mitNORM nach DIN 77230. System komplett.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Premium-Mitgliedschaft: Dein Karriere-Abo</h2></div>
+                <div class="pricing-box reveal">
+                    <div class="pricing-badge">Beliebteste Option</div>
+                    <div class="pricing-price">15 €</div>
+                    <div class="pricing-period">pro Monat · inkl. MwSt.</div>
+                    <div class="pricing-features">
+                        <div class="pf-item">
+                            <div class="pf-icon">🎯</div>
+                            <h4>Persönlicher Coach</h4>
+                            <p>Dein fester Ansprechpartner für alle Karrierefragen. Kennt deine Situation, begleitet dich langfristig.</p>
+                        </div>
+                        <div class="pf-item">
+                            <div class="pf-icon">📚</div>
+                            <h4>Seminare & Mediathek</h4>
+                            <p>Monatlich kostenlose Premiumseminare. Voller Zugang zur E-Learning-Plattform und Karriere-Mediathek.</p>
+                        </div>
+                        <div class="pf-item">
+                            <div class="pf-icon">💡</div>
+                            <h4>1:1 Coaching / Quartal</h4>
+                            <p>Quartalsweises Einzelcoaching für deine individuellen Karrierethemen. Praxisorientiert & ergebnisorientiert.</p>
+                        </div>
+                    </div>
+                    <p class="pricing-compare">
+                        Netflix unterhält dich. Das Karriere-Institut <strong>verändert dein Einkommen</strong>.
+                    </p>
+                    <a href="https://www.daskarriereinstitut.de/de/p/unser-angebot" target="_blank" rel="noopener" class="btn-primary">Premium-Mitglied werden →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Was Mitglieder sagen</h2></div>
+                <div class="testi-grid" style="margin-top:40px">
+                    <div class="testi-card reveal reveal-d1">
+                        <blockquote>
+                            Das persönliche Coachinggespräch hatte eine sehr gute Struktur und einen klaren roten Faden. 
+                            Der Coach war fachlich kompetent und gab mir hilfreiche Denkanstöße für meine nächsten beruflichen Schritte.
+                        </blockquote>
+                        <div class="testi-author">Susann</div>
+                        <div class="testi-role">Teamleiterin in einem IT-Unternehmen</div>
+                    </div>
+                    <div class="testi-card reveal reveal-d2">
+                        <blockquote>
+                            Das Karriereseminar vermittelt gute Ideen, die man bei der Erstellung der Bewerbungsunterlagen 
+                            beachten sollte und regt an, über eigene Verhaltensmuster nachzudenken und sich weiterzuentwickeln.
+                        </blockquote>
+                        <div class="testi-author">Mark</div>
+                        <div class="testi-role">Ingenieur im Bereich Luft- und Raumfahrt</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Häufig gestellte Fragen</h2></div>
+                <div class="faq-list">
+                    <div class="faq-item reveal">
+                        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                            Was genau bekomme ich als Premium-Mitglied?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-a">
+                            Persönlichen Karriere-Coach als festen Ansprechpartner, monatlich kostenlose Premiumseminare zu karriererelevanten Themen, quartalsweises 1:1 Einzelcoaching, vollen Zugang zur Karriere-Mediathek mit E-Learnings und vergünstigte Preise auf Analysetools und CV-Checks. Alles für 15 € pro Monat.
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                            Was ist die Karriere-Analyse?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-a">
+                            Die Karriere-Analyse ist dein „Karriere-Blutbild" – ein fundierter Überblick über deine aktuelle Karrieresituation und dein Fähigkeitenspektrum. Du erfährst, welche Kompetenzen du mitbringst, wo du ansetzen kannst und bekommst konkrete Handlungsempfehlungen. Bewertet mit 4.1 von 5 Sternen.
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                            Was ist INSIGHTS MDI® Trimetrix EQ?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-a">
+                            Ein wissenschaftlich validiertes Persönlichkeitsanalyse-Tool, das deine Verhaltenspräferenzen, persönlichen Motive, Werte und den Grad deiner emotionalen Intelligenz misst. Es hilft dir, dein Verhalten zu verstehen und gezielt für den beruflichen Erfolg einzusetzen.
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                            Wie funktioniert der Bewerbungsbaukasten?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-a">
+                            Du gibst deine Daten, die Stellenausschreibung deiner Wunschposition und einige Anmerkungen zu deiner Person ein. Das KI-gestützte Tool erstellt dir dann bis zu 10 verschiedene, maßgeschneiderte Anschreiben mit jeweils 3 Versionen – vollautomatisch.
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                            Wie hängen Karriere-Institut, WP und mitNORM zusammen?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-a">
+                            Alle drei sind Teil der MYVI Group. Das Karriere-Institut bereitet dich vor (Coaching, Seminare, Analysen). WP wirpersonalberater vermittelt dich an Arbeitgeber (Jobportal, Active Sourcing). mitNORM ordnet deine Finanzen nach dem Jobwechsel (DIN 77230). Drei Säulen, ein Ökosystem – Karriere, Job und Finanzen aus einer Hand.
+                        </div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                            Kann ich Seminare auch vor Ort besuchen?
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-a">
+                            Ja! Neben den Online-Premiumseminaren (mit Kamera und Interaktion) bietet das Karriere-Institut auch Präsenzseminare an mehreren Standorten in Deutschland an. Einfach den gewünschten Standort und das Seminar anfragen.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header"><h2 class="reveal">Unsere Partner im MYVI-Netzwerk</h2></div>
+                <div class="partner-grid" style="margin-top:40px">
+                    <div class="partner-card reveal reveal-d1">
+                        <h3>🧠 Das Karriere-Institut</h3>
+                        <p>18.000+ Mitglieder, 100+ Coaches. Seminare, Coaching, E-Learnings, Persönlichkeitsanalysen. Premium ab 15 €/Monat.</p>
+                        <a href="https://www.daskarriereinstitut.de/" target="_blank" rel="noopener" class="btn-primary">Zum Institut →</a>
+                    </div>
+                    <div class="partner-card reveal reveal-d2">
+                        <h3>👔 WP wir:personalberater</h3>
+                        <p>Jobportal & Active Sourcing. 800+ Unternehmen, 12.000 Kandidaten. Erfolgsbasiert für Unternehmen, kostenlos für Bewerber.</p>
+                        <a href="https://www.wirpersonalberater.de/" target="_blank" rel="noopener" class="btn-green btn-sm">Zum Jobportal →</a>
+                    </div>
+                    <div class="partner-card blue reveal reveal-d3">
+                        <h3>💰 mitNORM GmbH</h3>
+                        <p>DIN 77230 Finanzplanung. 1,5 Mio. Algorithmen, 100 % objektiv. Zehn Berater, ein Ergebnis. Kostenlose Erstberatung.</p>
+                        <a href="https://mitnorm.de/" target="_blank" rel="noopener" class="btn-blue-outline btn-sm">Zur Finanzberatung →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MID-PAGE CTA -->
+        <section class="cta-banner-mid">
+          <h3>Dein Mindset skaliert nicht? Dein System schon.</h3>
+          <p>Lass uns gemeinsam deine individuelle Funnel-Architektur bauen.</p>
+          <a href="/kontakt.html?kpi=mid_mindset#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_mid_page_cta_mindset">Jetzt Strategie-Gespräch sichern</a>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="reveal">Hör auf zu warten. Fang an zu handeln.</h2>
+                <p class="reveal">
+                    Jeden Tag ohne Coaching verschenkst du Potenzial. Jeden Tag ohne Strategie verhandelst du schlechter. 
+                    Das Karriere-Institut gibt dir die Werkzeuge – für 15 € im Monat. 
+                    18.000 Mitglieder haben es vorgemacht. Du bist dran.
+                </p>
+                <div class="cta-group reveal">
+                    <a href="https://www.daskarriereinstitut.de/de/e/96/9436623123/checkout" target="_blank" rel="noopener" class="btn-primary">Erstgespräch buchen →</a>
+                    <a href="https://www.daskarriereinstitut.de/de/p/karriere-analyse" target="_blank" rel="noopener" class="btn-outline">Karriere-Analyse starten →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Navigation</h5><ul><li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li><li><a href="/index.html#pakete" data-cango-kpi="kpi_pakete_section">Preise</a></li><li><a href="/kontakt.html">Kontakt</a></li></ul></div>
+        <div class="fcol"><h5>Branchen</h5><ul><li><a href="/finanzen-versicherung.html">Finanzen &amp; Versicherung</a></li><li><a href="/karriere-hr.html">Karriere &amp; HR</a></li><li><a href="/coaching-mindset.html">Coaching &amp; Mindset</a></li><li><a href="/immobilien.html">Immobilien</a></li><li><a href="/b2b-energy.html">B2B Energy</a></li><li><a href="/energie-finance.html">Energie &amp; Finance</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+    <script>(function(){var b=document.getElementById('navToggle');if(b)b.addEventListener('click',function(){document.body.classList.toggle('nav-open');});document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.body.classList.remove('nav-open');});});})();</script>
+    <script src="/js/kpi-events.js?v=2" defer></script>
+    <script src="/cart.js" defer></script>
+    <!-- FIX-2026-04-07: Phase 1.1 — Mobile-CTA -->
+    <div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>

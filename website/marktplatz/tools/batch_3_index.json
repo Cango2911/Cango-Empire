@@ -1,0 +1,31 @@
+{
+  "batch_id": 3,
+  "category": "GROWTH & SEO WARFARE",
+  "tools": [
+    {
+      "id": "surfer-seo",
+      "name": "Surfer SEO",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/surfer-seo.html"
+    },
+    {
+      "id": "neuronwriter",
+      "name": "NeuronWriter",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/neuronwriter.html"
+    },
+    {
+      "id": "sociamonials",
+      "name": "Sociamonials",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/sociamonials.html"
+    },
+    {
+      "id": "feedspace",
+      "name": "Feedspace",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/feedspace.html"
+    },
+    {
+      "id": "greta-ai",
+      "name": "Greta.ai",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/greta-ai.html"
+    }
+  ]
+}

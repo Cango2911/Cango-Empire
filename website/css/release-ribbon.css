@@ -1,0 +1,30 @@
+/* CanGo App Empire – Release-Ribbon unter Menüleiste (Gelb-Orange-Kupfer) */
+.release-ribbon {
+  position: sticky;
+  top: 68px;
+  z-index: 99;
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 25%, #ea580c 50%, #c2410c 75%, #9a3412 100%);
+  color: #1c1917;
+  text-align: center;
+  padding: 10px 16px;
+  font-family: 'Outfit', 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid rgba(180, 83, 9, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 24px rgba(245, 158, 11, 0.25);
+}
+.ribbon-slide-text { display: inline-block; min-width: 280px; transition: opacity 0.4s ease; }
+.ribbon-slide-text.fade { opacity: 0; }
+.ribbon-countdown {
+  font-family: 'JetBrains Mono', monospace;
+  margin-left: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #78350f;
+}
+@media (max-width: 768px) {
+  .release-ribbon { font-size: 12px; padding: 8px 12px; }
+  .ribbon-slide-text { min-width: 200px; }
+}

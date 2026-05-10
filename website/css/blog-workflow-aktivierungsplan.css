@@ -1,0 +1,308 @@
+/* Interaktives Dashboard „Blog-Workflow Aktivierungsplan“ — FIX-2026-04-08 */
+/* Nur mit body.page-bwp-dashboard */
+
+body.page-bwp-dashboard {
+  --bwp-red-bg: rgba(127, 29, 29, 0.45);
+  --bwp-red-border: rgba(248, 113, 113, 0.45);
+  --bwp-card-inner: rgba(17, 24, 39, 0.85);
+  --muted: #7a91ab;
+  --off-white: #e8eef5;
+  --white: #ffffff;
+}
+
+@supports (view-transition-name: none) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.25s;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+body.page-bwp-dashboard .bwp-shell {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+body.page-bwp-dashboard .bwp-head {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+body.page-bwp-dashboard .bwp-head h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 45%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.page-bwp-dashboard .bwp-head p {
+  font-size: 15px;
+  color: var(--muted, #7a91ab);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+body.page-bwp-dashboard .bwp-tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+body.page-bwp-dashboard .bwp-tab {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(78, 99, 130, 0.35);
+  background: rgba(17, 28, 48, 0.75);
+  color: var(--muted, #7a91ab);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+body.page-bwp-dashboard .bwp-tab:hover {
+  border-color: rgba(249, 115, 22, 0.45);
+  color: var(--off-white, #e8eef5);
+}
+
+body.page-bwp-dashboard .bwp-tab[aria-selected="true"] {
+  background: rgba(249, 115, 22, 0.18);
+  border-color: rgba(249, 115, 22, 0.65);
+  color: #fb923c;
+}
+
+body.page-bwp-dashboard .bwp-panel {
+  display: none;
+  animation: bwp-fade 0.3s ease;
+}
+
+body.page-bwp-dashboard .bwp-panel.is-active {
+  display: block;
+}
+
+@keyframes bwp-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-bwp-dashboard .bwp-panel {
+    animation: none;
+  }
+}
+
+body.page-bwp-dashboard .bwp-panel h2 {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--off-white, #e8eef5);
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+body.page-bwp-dashboard .bwp-blocker {
+  border-radius: 14px;
+  border: 1px solid var(--bwp-red-border);
+  background: var(--bwp-red-bg);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+
+body.page-bwp-dashboard .bwp-blocker h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fecaca;
+  margin-bottom: 10px;
+}
+
+body.page-bwp-dashboard .bwp-blocker p {
+  font-size: 14px;
+  color: rgba(254, 242, 242, 0.92);
+  line-height: 1.55;
+}
+
+body.page-bwp-dashboard .bwp-blocker strong {
+  color: #fff;
+}
+
+body.page-bwp-dashboard .bwp-blocker code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+body.page-bwp-dashboard .bwp-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body.page-bwp-dashboard .bwp-list li {
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(78, 99, 130, 0.28);
+  background: rgba(17, 28, 48, 0.55);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--off-white, #e8eef5);
+}
+
+body.page-bwp-dashboard .bwp-list li strong {
+  color: #fb923c;
+}
+
+body.page-bwp-dashboard .bwp-timeline {
+  border-left: 2px solid rgba(249, 115, 22, 0.4);
+  margin-left: 12px;
+  padding-left: 22px;
+}
+
+body.page-bwp-dashboard .bwp-timeline dt {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: #f97316;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+body.page-bwp-dashboard .bwp-timeline dt:first-child {
+  margin-top: 0;
+}
+
+body.page-bwp-dashboard .bwp-timeline dd {
+  font-size: 14px;
+  color: var(--muted, #7a91ab);
+  line-height: 1.55;
+  margin: 0;
+}
+
+body.page-bwp-dashboard .bwp-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(78, 99, 130, 0.28);
+}
+
+body.page-bwp-dashboard .bwp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+body.page-bwp-dashboard .bwp-table th,
+body.page-bwp-dashboard .bwp-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(78, 99, 130, 0.2);
+}
+
+body.page-bwp-dashboard .bwp-table th {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f97316;
+  background: rgba(8, 13, 26, 0.9);
+}
+
+body.page-bwp-dashboard .bwp-table tr:last-child td {
+  border-bottom: none;
+}
+
+body.page-bwp-dashboard .bwp-table td {
+  color: var(--off-white, #e8eef5);
+}
+
+body.page-bwp-dashboard .bwp-statgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+body.page-bwp-dashboard .bwp-stat {
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  background: rgba(249, 115, 22, 0.08);
+  text-align: center;
+}
+
+body.page-bwp-dashboard .bwp-stat .num {
+  font-size: 28px;
+  font-weight: 800;
+  color: #f97316;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+body.page-bwp-dashboard .bwp-stat .lbl {
+  font-size: 12px;
+  color: var(--muted, #7a91ab);
+}
+
+body.page-bwp-dashboard .bwp-cta {
+  margin-top: 40px;
+  padding: 28px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  background: linear-gradient(145deg, rgba(249, 115, 22, 0.1) 0%, rgba(17, 28, 48, 0.85) 100%);
+  text-align: center;
+}
+
+body.page-bwp-dashboard .bwp-cta h2 {
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--white, #fff);
+  margin-bottom: 10px;
+}
+
+body.page-bwp-dashboard .bwp-cta p {
+  font-size: 14px;
+  color: var(--muted, #7a91ab);
+  max-width: 520px;
+  margin: 0 auto 18px;
+  line-height: 1.55;
+}
+
+body.page-bwp-dashboard .bwp-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  body.page-bwp-dashboard .bwp-statgrid {
+    grid-template-columns: 1fr;
+  }
+
+  body.page-bwp-dashboard .bwp-tablist {
+    justify-content: flex-start;
+  }
+}

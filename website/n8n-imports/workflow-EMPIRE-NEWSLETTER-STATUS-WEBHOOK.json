@@ -1,0 +1,65 @@
+{
+  "name": "EMPIRE_Newsletter_Status_Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## GET empire-newsletter-status\n\n**URL:** `https://cangoappempire.app.n8n.cloud/webhook/empire-newsletter-status`\n\n**Mac:** `export EMPIRE_NEWSLETTER_STATUS_URL='…'` → `empire-news`\n\n**Hostinger-Doku:** `/empire-editorial-squad.html`\n\nOptional: Set-Node durch **Google Sheets** ersetzen (Tab `Newsletter_Stats` in Schaltzentrale).",
+        "height": 320,
+        "width": 400
+      },
+      "id": "sticky-1",
+      "name": "Anleitung",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "path": "empire-newsletter-status",
+        "httpMethod": "GET",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "wh-get",
+      "name": "Webhook GET",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [380, 280],
+      "webhookId": "empire-newsletter-status"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Optional: Werte anpassen oder durch Google-Sheets-Node ersetzen\nreturn [{\n  json: {\n    subscribers_dach: 0,\n    open_rate_pct: null,\n    next_draft_title: '— (Sheet: nächster Entwurf)',\n    n8n_cloud: 'https://cangoappempire.app.n8n.cloud',\n    hostinger_editorial_page: 'https://automation-cango-app-empire.com/empire-editorial-squad.html',\n    webhook_path: '/webhook/empire-newsletter-status',\n    source: 'static_edit_in_code_or_add_sheets'\n  }\n}];"
+      },
+      "id": "code-payload",
+      "name": "Payload JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [600, 280]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "resp",
+      "name": "Respond JSON",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [820, 280]
+    }
+  ],
+  "connections": {
+    "Webhook GET": {
+      "main": [[{ "node": "Payload JSON", "type": "main", "index": 0 }]]
+    },
+    "Payload JSON": {
+      "main": [[{ "node": "Respond JSON", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "staticData": null,
+  "meta": { "templateCredsSetupCompleted": false },
+  "pinData": {}
+}

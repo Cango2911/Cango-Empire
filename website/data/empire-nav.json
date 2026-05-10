@@ -1,0 +1,43 @@
+{
+  "brand": { "href": "/index.html", "label": "CanGo App Empire", "icon": "C" },
+  "mainNav": [
+    { "href": "/index.html", "label": "Startseite" },
+    { "href": "/ueber-uns.html", "label": "Über Uns" },
+    { "href": "/produkte.html", "label": "Produkte" },
+    { "href": "/workflows.html", "label": "Workflows" },
+    { "href": "/nischen.html", "label": "Marktplatz" },
+    { "href": "/index.html#branchen", "label": "Branchen" },
+    { "href": "/blogs.html", "label": "Blogs" },
+    { "href": "/kontakt.html", "label": "Kontakt" },
+    { "href": "/faq.html", "label": "FAQ" },
+    { "href": "/login.html", "label": "Login", "class": "nav__login" },
+    { "href": "/kasse.html", "label": "Warenkorb", "class": "nav__cart-wrap", "cartBadge": true },
+    { "href": "/kontakt.html", "label": "Jetzt anfragen", "class": "nav__cta", "cta": true }
+  ],
+  "footerSections": [
+    {
+      "title": "Produkt",
+      "links": [
+        { "href": "/nischen.html", "label": "Marktplatz" },
+        { "href": "/index.html#preise", "label": "Preise" }
+      ]
+    },
+    {
+      "title": "Unternehmen",
+      "links": [
+        { "href": "/ueber-uns.html", "label": "Über uns" },
+        { "href": "/ueber-uns.html#karriere", "label": "Karriere" }
+      ]
+    },
+    {
+      "title": "Rechtliches",
+      "links": [
+        { "href": "/impressum.html", "label": "Impressum" },
+        { "href": "/datenschutz.html", "label": "Datenschutz" },
+        { "href": "/disclaimer.html", "label": "Disclaimer" },
+        { "href": "/agb.html", "label": "AGB" },
+        { "href": "/widerruf.html", "label": "Widerrufserklärung" }
+      ]
+    }
+  ]
+}

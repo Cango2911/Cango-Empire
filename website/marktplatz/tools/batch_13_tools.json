@@ -1,0 +1,193 @@
+{
+  "batch_id": 13,
+  "total_batches": 22,
+  "category": "NO-CODE CONSTRUCTION",
+  "tools": [
+    {
+      "id": "webflow",
+      "name": "Webflow",
+      "tagline": "Webdesign ohne Grenzen. Der Code wird für dich geschrieben.",
+      "badge": "WEB PRO",
+      "rating": { "tacos": 5, "count": 12000 },
+      "images": ["/images/tools/webflow-designer.webp"],
+      "quick_specs": {
+        "alternative_to": ["WordPress", "Framer"],
+        "integrations": ["CMS", "Logic", "Figma"],
+        "best_for": ["Designer", "Agenturen", "SaaS"]
+      },
+      "pitch_html": "<h3>Deine Webseite ist dein Verkäufer. Kleide ihn gut.</h3><p><strong>Webflow</strong> gibt Designern die Macht von Entwicklern. Pixel-perfektes Design, sauberer Code, ultraschnelles Hosting.</p><h4>CanGo Standard:</h4><p>Unsere High-End Landingpages für Domicil (Immobilien) bauen wir in Webflow. Warum? Weil die Animationen und das Premium-Feeling den hohen Preis rechtfertigen.</p>",
+      "deal_terms": [
+        "Visueller CSS Grid Builder",
+        "CMS inklusive",
+        "Globales CDN Hosting",
+        "SEO Tools integriert"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "CMS Plan",
+          "price": 23,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "2.000 CMS Items",
+            "3 Content Editors",
+            "Custom Domain",
+            "200GB Bandwidth"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "framer",
+      "name": "Framer",
+      "tagline": "Von Figma zur Webseite in Sekunden. Design ist King.",
+      "badge": "DESIGN FIRST",
+      "rating": { "tacos": 5, "count": 8000 },
+      "images": ["/images/tools/framer-canvas.webp"],
+      "quick_specs": {
+        "alternative_to": ["Webflow", "Wix"],
+        "integrations": ["Figma", "React"],
+        "best_for": ["Portfolio", "Landing Pages", "Startups"]
+      },
+      "pitch_html": "<h3>So einfach wie Malen nach Zahlen.</h3><p><strong>Framer</strong> fühlt sich an wie ein Grafik-Tool, veröffentlicht aber echte, rasend schnelle Webseiten. Die KI-Funktionen helfen beim Layouten und Texten.</p><p>Wir nutzen Framer für schnelle Kampagnen-Seiten, die 'gestern' live gehen mussten. Drag, Drop, Publish.</p>",
+      "deal_terms": [
+        "Figma Import",
+        "AI Site Generator",
+        "Eingebaute Analytics",
+        "Effekte & Animationen"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Basic",
+          "price": 15,
+          "original_price": 0,
+          "currency": "€/mo",
+          "billing": "monthly",
+          "features": [
+            "1 Domain",
+            "150 CMS Items",
+            "1.000 Besucher",
+            "Passwortschutz"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "bubble",
+      "name": "Bubble",
+      "tagline": "Baue das nächste Uber oder Airbnb. Ohne Code.",
+      "badge": "WEB APPS",
+      "rating": { "tacos": 4, "count": 9000 },
+      "images": ["/images/tools/bubble-editor.webp"],
+      "quick_specs": {
+        "alternative_to": ["FlutterFlow", "WeWeb"],
+        "integrations": ["API Connector", "SQL", "Stripe"],
+        "best_for": ["SaaS Founder", "Marktplätze"]
+      },
+      "pitch_html": "<h3>Nicht nur eine Webseite. Eine Web-Applikation.</h3><p>Wenn du komplexe Logik, Datenbanken und User-Accounts brauchst, ist <strong>Bubble</strong> der Marktführer. Du kannst ganze Software-Produkte bauen, ohne eine Zeile Code zu schreiben.</p><p>Wir nutzen Bubble für die Dashboards unserer Enterprise-Kunden, wo sie ihre Kampagnen-Performance in Echtzeit sehen.</p>",
+      "deal_terms": [
+        "Full-Stack No-Code",
+        "Datenbank inklusive",
+        "Workflow Logic",
+        "Plugin Marktplatz"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Starter",
+          "price": 29,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Live App",
+            "Custom Domain",
+            "Server Logs",
+            "API Aufrufe"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "flutterflow",
+      "name": "FlutterFlow",
+      "tagline": "Native Mobile Apps visuell bauen. iOS & Android.",
+      "badge": "MOBILE APPS",
+      "rating": { "tacos": 5, "count": 4500 },
+      "images": ["/images/tools/flutterflow-ui.webp"],
+      "quick_specs": {
+        "alternative_to": ["Adalo", "Bubble"],
+        "integrations": ["Firebase", "Supabase", "Google Maps"],
+        "best_for": ["App Entwickler", "Startups"]
+      },
+      "pitch_html": "<h3>Deine App im App Store. In Wochen, nicht Jahren.</h3><p><strong>FlutterFlow</strong> generiert echten Flutter-Code (von Google). Das heißt: Deine App ist schnell, nativ und du kannst den Code jederzeit exportieren.</p><p>Perfekt, um mobile Begleit-Apps für unsere HR- und Coaching-Partner zu bauen.</p>",
+      "deal_terms": [
+        "Code Export",
+        "APK & IPA Download",
+        "Firebase Integration",
+        "AI Gen UI"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Standard",
+          "price": 30,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "APK Download",
+            "Code Download",
+            "Core Features",
+            "2 Projekte"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "softr",
+      "name": "Softr",
+      "tagline": "Vom Airtable/Google Sheets zur App in 10 Minuten.",
+      "badge": "INTERNAL TOOLS",
+      "rating": { "tacos": 4, "count": 2100 },
+      "images": ["/images/tools/softr-studio.webp"],
+      "quick_specs": {
+        "alternative_to": ["Glide", "Stacker"],
+        "integrations": ["Airtable", "Google Sheets", "SmartSuite"],
+        "best_for": ["Interne Tools", "Portale", "Directories"]
+      },
+      "pitch_html": "<h3>Deine Daten sind schon da. Mach was draus.</h3><p>Du hast Daten in Airtable? <strong>Softr</strong> baut daraus automatisch ein Kundenportal, ein Mitgliederverzeichnis oder ein CRM. Mit Login, Rechten und Rollen.</p><p>Wir nutzen Softr, um unseren Franchise-Partnern Zugriff auf ihre Lead-Listen zu geben, ohne dass sie Airtable direkt anfassen müssen.</p>",
+      "deal_terms": [
+        "Client Portals",
+        "Mitgliederbereiche",
+        "Zahlungen integriert",
+        "Responsive Design"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Basic",
+          "price": 49,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Custom Domain",
+            "1000 App User",
+            "Mitglieder-Gruppen",
+            "Softr Branding entfernen"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    }
+  ]
+}
+

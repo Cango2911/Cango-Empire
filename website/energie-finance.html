@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Energie & Finance | CanGo App Empire - Das 360° Energie-System</title>
+  <meta name="description" content="CanGo App Empire Energy: Der komplette Energy-Stack. PV, Wärme, Speicher, Spotmarkt & Investments. Ein Partner für Privat, Gewerbe & Investoren.">
+  
+  <link href="/cango-empire-v4-monopoly.css?v=24" rel="stylesheet">
+  
+      <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+    <!-- FIX-2026-04-07: Phase 1.1 — KPI + Mobile-CTA-Leiste -->
+    <link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+    <style>
+    /* ============================================
+       DESIGN TOKENS - THE "STACK" THEME
+       ============================================ */
+    :root {
+      --bg-base: #030712;
+      --bg-elevated: #111827;
+      --border-default: #1F2937;
+      
+      --text-primary: #F9FAFB;
+      --text-secondary: #9CA3AF;
+      --text-muted: #6B7280;
+
+      /* PRODUCT CATEGORY COLORS */
+      --color-solar: #FACC15;  /* Yellow for PV */
+      --color-grid: #38BDF8;   /* Blue for Spotmarket/Grid */
+      --color-heat: #FB7185;   /* Red/Pink for Heat */
+      --color-money: #34D399;  /* Green for Investment/Profit */
+
+      --font-sans: 'Instrument Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --nav-height: 64px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--space-6); }
+
+    /* Nav */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height);
+      background: rgba(3, 7, 18, 0.9); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-default); z-index: 100;
+    }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav__brand { font-weight: 700; color: white; text-decoration: none; display: flex; gap: 8px; align-items: center; }
+    
+    /* Hero (Airtable-Style) */
+    .hero {
+      padding-top: calc(var(--nav-height) + var(--space-24));
+      padding-bottom: var(--space-12);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background-color: #0d0d12;
+      background-image: radial-gradient(ellipse 100% 80% at 50% -20%, rgba(249, 115, 22, 0.35) 0%, rgba(249, 115, 22, 0.08) 30%, transparent 60%), radial-gradient(ellipse 70% 50% at 70% 10%, rgba(249, 115, 22, 0.12) 0%, transparent 45%), radial-gradient(ellipse 50% 40% at 20% 20%, rgba(249, 115, 22, 0.06) 0%, transparent 40%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 120% 100% at 50% 60%, transparent 35%, rgba(0,0,0,0.25) 100%);
+      pointer-events: none;
+    }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px; color: var(--color-solar); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; margin-bottom: 1.5rem;
+    }
+    .hero__title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem;
+    }
+    .hero__subtitle {
+      font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;
+    }
+
+    /* THE STACK (Product Grid) */
+    .stack-section { padding: var(--space-12) 0; }
+    
+    .stack-header {
+      display: flex; justify-content: space-between; align-items: end; margin-bottom: 3rem; border-bottom: 1px solid var(--border-default); padding-bottom: 1rem;
+    }
+    .stack-title { font-size: 2rem; font-weight: 700; }
+    .stack-legend { display: flex; gap: 1rem; font-family: var(--font-mono); font-size: 0.8rem; }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-elevated); border: 1px solid var(--border-default); border-radius: var(--radius-lg);
+      padding: 1.5rem; position: relative; overflow: hidden; transition: all 0.3s ease;
+      display: flex; flex-direction: column; height: 100%;
+    }
+    
+    /* Card Interactions & Colors */
+    .card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
+    
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    }
+    .card--solar::before { background: var(--color-solar); }
+    .card--grid::before { background: var(--color-grid); }
+    .card--heat::before { background: var(--color-heat); }
+    .card--money::before { background: var(--color-money); }
+
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .card-badge {
+      position: absolute; top: 1rem; right: 1rem; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+      padding: 4px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); color: white;
+    }
+
+    .card-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
+    .card-desc { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; flex-grow: 1; }
+    
+    .spec-list {
+      list-style: none; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); margin-bottom: 1.5rem;
+    }
+    .spec-list li {
+      display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-muted);
+    }
+    .spec-list li span:last-child { color: white; font-family: var(--font-mono); }
+
+    .card-btn {
+      width: 100%; padding: 10px; text-align: center; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem;
+      background: rgba(255,255,255,0.05); color: white; transition: 0.2s;
+    }
+    .card-btn:hover { background: white; color: black; }
+
+    /* Investment Highlight (Pacht/Solarparks) */
+    .invest-section { margin-top: 4rem; padding: 4rem; background: linear-gradient(135deg, rgba(52, 211, 153, 0.05), transparent); border: 1px solid rgba(52, 211, 153, 0.2); border-radius: var(--radius-xl); text-align: center; }
+    .invest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; text-align: left; }
+    .invest-box { background: rgba(0,0,0,0.3); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--border-default); }
+
+    /* PROBLEM STYLES */
+    .section {
+      padding: var(--space-24) 0;
+    }
+    .section__header {
+      text-align: center;
+      margin-bottom: var(--space-16);
+    }
+    .section__title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: var(--space-6);
+      color: var(--text-primary);
+    }
+    .problem-grid {
+      display: grid; 
+      grid-template-columns: repeat(2, 1fr); 
+      gap: var(--space-6); 
+      margin-top: var(--space-12);
+    }
+    .problem-card {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(239, 68, 68, 0.03));
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      padding: var(--space-8); 
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-slow) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #EF4444, transparent);
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+    .problem-card:hover { 
+      border-color: rgba(239, 68, 68, 0.5); 
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+    }
+    .problem-card:hover::before {
+      opacity: 1;
+    }
+    .problem-icon { 
+      font-size: 2.5rem; 
+      margin-bottom: var(--space-4); 
+      display: block;
+      filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.3));
+    }
+    .problem-title { 
+      font-size: var(--text-xl); 
+      font-weight: 700; 
+      color: #EF4444; 
+      margin-bottom: var(--space-3);
+      line-height: 1.3;
+    }
+    .problem-text { 
+      color: var(--text-secondary); 
+      font-size: var(--text-base);
+      line-height: 1.7;
+    }
+
+    /* SOLUTION / WORKFLOW STYLES */
+    .workflow-section { 
+      background: var(--bg-elevated); 
+      border-top: 1px solid var(--border-default); 
+      border-bottom: 1px solid var(--border-default);
+      position: relative;
+    }
+    .workflow-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 40% at 50% 50%, rgba(250, 204, 21, 0.05), transparent);
+      pointer-events: none;
+    }
+    
+    .cango-algo {
+      position: relative; 
+      padding: var(--space-12); 
+      margin-top: var(--space-12);
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.08), rgba(250, 204, 21, 0.03));
+      border: 1px solid rgba(250, 204, 21, 0.2); 
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(10px);
+    }
+    .algo-steps {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: flex-start; 
+      gap: var(--space-4); 
+      position: relative;
+    }
+    .algo-steps::before {
+      content: ''; 
+      position: absolute; 
+      top: 30px; 
+      left: 60px; 
+      right: 60px; 
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-solar), var(--color-solar), transparent);
+      z-index: 0; 
+      opacity: 0.4;
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.3);
+    }
+    .algo-step { 
+      position: relative; 
+      z-index: 1; 
+      text-align: center; 
+      flex: 1;
+      transition: transform var(--duration-base) var(--ease-out);
+    }
+    .algo-step:hover {
+      transform: translateY(-4px);
+    }
+    .step-circle {
+      width: 60px; 
+      height: 60px; 
+      background: var(--bg-base); 
+      border: 3px solid var(--color-solar);
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      margin: 0 auto var(--space-4) auto; 
+      font-weight: 700; 
+      font-size: var(--text-lg);
+      color: var(--color-solar); 
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+    .algo-step:hover .step-circle {
+      box-shadow: 0 0 30px rgba(250, 204, 21, 0.5);
+      transform: scale(1.1);
+    }
+    .step-title { 
+      color: var(--text-primary); 
+      font-weight: 700; 
+      margin-bottom: var(--space-2); 
+      font-size: var(--text-lg);
+    }
+    .step-desc { 
+      font-size: var(--text-sm); 
+      color: var(--text-secondary); 
+      padding: 0 var(--space-2);
+      line-height: 1.6;
+    }
+
+    /* BENEFIT SPLIT (User vs. Advisor) */
+    .benefit-split { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 0; 
+      border: 1px solid var(--border-default); 
+      border-radius: var(--radius-xl); 
+      overflow: hidden; 
+      margin-top: var(--space-16);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    .benefit-col { 
+      padding: var(--space-12);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+    .benefit-col:hover {
+      transform: translateY(-2px);
+    }
+    
+    .benefit-col--user { 
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.08), rgba(52, 211, 153, 0.03)); 
+      border-right: 1px solid var(--border-default);
+      position: relative;
+    }
+    .benefit-col--user::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--color-money), transparent);
+    }
+    .benefit-col--advisor { 
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(56, 189, 248, 0.03));
+      position: relative;
+    }
+    .benefit-col--advisor::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--color-grid), transparent);
+    }
+    
+    .benefit-head { 
+      font-family: var(--font-mono); 
+      font-size: var(--text-xs); 
+      font-weight: 700; 
+      letter-spacing: 0.1em; 
+      margin-bottom: var(--space-4); 
+      display: block;
+      text-transform: uppercase;
+    }
+    .benefit-list { 
+      list-style: none; 
+      margin-top: var(--space-8);
+      padding: 0;
+    }
+    .benefit-list li { 
+      display: flex; 
+      gap: var(--space-3); 
+      margin-bottom: var(--space-6); 
+      color: var(--text-secondary); 
+      font-size: var(--text-base);
+      line-height: 1.7;
+      align-items: flex-start;
+    }
+    .benefit-list li strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .profile-title { 
+      font-size: var(--text-2xl); 
+      color: var(--text-primary); 
+      font-weight: 700; 
+      margin-bottom: var(--space-4);
+      line-height: 1.2;
+    }
+    .profile-desc { 
+      color: var(--text-secondary); 
+      font-size: var(--text-base); 
+      line-height: 1.7; 
+      margin-bottom: var(--space-6);
+    }
+    .eyebrow {
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+
+    @media (max-width: 1024px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .stack-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+    @media (max-width: 900px) {
+      .problem-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+      .algo-steps { flex-direction: column; gap: var(--space-8); }
+      .algo-steps::before { display: none; }
+      .step-circle { margin: 0 auto var(--space-4) auto; }
+      .algo-step { text-align: center; }
+      .benefit-split { grid-template-columns: 1fr; }
+      .benefit-col--user { border-right: none; border-bottom: 1px solid var(--border-default); }
+      .benefit-col--user::before { width: 100%; height: 4px; top: 0; left: 0; }
+      .benefit-col--advisor::before { width: 100%; height: 4px; top: 0; right: 0; }
+    }
+    @media (max-width: 700px) {
+      .grid { grid-template-columns: 1fr; }
+      .invest-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+<link href="/cango-empire-v4-monopoly.css?v=24" rel="stylesheet"/>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body class="empire-sync empire-sync--landing has-primary-cta-bar">
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+<a aria-label="Zum Hauptinhalt springen" class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
+
+
+  <nav aria-label="Hauptnavigation" class="nav" role="navigation">
+<div class="container nav__inner">
+<a class="nav__brand" href="/index.html#home">
+<span class="nav__brand-icon">C</span>
+<span>CanGo App Empire</span>
+</a>
+<button aria-label="Menü öffnen" class="nav__toggle" onclick="document.querySelector('.nav__menu').classList.toggle('active')" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="nav__menu">
+<a class="nav__link" href="/nischen.html">Marktplatz</a>
+<a class="nav__link" href="/produkte.html">Produkte</a>
+<a class="nav__link" href="/selfmade-empire.html">Workflow Kampagnen</a>
+<a class="nav__link" href="/ueber-uns.html">Über Uns</a>
+<a class="nav__link" href="/faq.html">FAQ</a>
+<a class="nav__link nav__cart-wrap" href="/kasse.html">🛒 <span id="cart-badge" class="cart-badge" aria-label="Artikel im Warenkorb">0</span></a>
+<a class="nav__cta" href="/kontakt.html">Jetzt anfragen</a>
+</div>
+</div>
+</nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero__badge">FULL STACK ENERGY</div>
+      <h1 class="hero__title">
+        WIR HABEN NICHT NUR PV.<br>
+        <span style="background: linear-gradient(to right, #FACC15, #38BDF8); -webkit-background-clip: text; color: transparent;">WIR HABEN ALLES.</span>
+      </h1>
+      <p class="hero__subtitle">
+        Von der Erzeugung auf deinem Dach bis zum Handel an der Börse. Von der einzelnen Wärmepumpe bis zum Solarpark-Investment. 
+        CanGo App Empire ist dein Zugang zum gesamten Portfolio von Energy Finance.
+      </p>
+      <div style="margin-top: var(--space-8); display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+        <a href="/private-energy.html" style="display: inline-flex; align-items: center; padding: var(--space-4) var(--space-8); background: linear-gradient(135deg, var(--color-solar), var(--color-money)); color: black; text-decoration: none; font-weight: 700; border-radius: var(--radius-md); transition: all 0.3s ease; box-shadow: 0 0 20px rgba(250, 204, 21, 0.3);">
+          Für Privatkunden →
+        </a>
+               <a href="/b2b-energy.html" style="display: inline-flex; align-items: center; padding: var(--space-4) var(--space-8); background: rgba(255,255,255,0.1); color: white; text-decoration: none; font-weight: 600; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease;">
+                 Für Gewerbliche Kunden →
+               </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack-section">
+    <div class="container">
+      
+      <div class="stack-header">
+        <h2 class="stack-title">Das Produkt-Universum</h2>
+        <div class="stack-legend">
+          <div class="legend-item"><div class="dot" style="background: var(--color-solar)"></div> Erzeugung</div>
+          <div class="legend-item"><div class="dot" style="background: var(--color-heat)"></div> Wärme</div>
+          <div class="legend-item"><div class="dot" style="background: var(--color-grid)"></div> Markt</div>
+          <div class="legend-item"><div class="dot" style="background: var(--color-money)"></div> Invest</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        
+        <div class="card card--solar">
+          <div class="card-badge">PRIVAT & GEWERBE</div>
+          <div class="card-icon">☀️</div>
+          <h3 class="card-title">Photovoltaik</h3>
+          <p class="card-desc">Maßgeschneiderte Anlagen für Eigenheime, Carports und Industriehallen. Tier-1 Hardware.</p>
+          <ul class="spec-list">
+            <li><span>Steuer (Privat)</span> <span>0% MwSt</span></li>
+            <li><span>Gewerbe</span> <span>Dachpacht mgl.</span></li>
+            <li><span>Module</span> <span>Glas-Glas</span></li>
+          </ul>
+          <a href="https://www.energyfinance.de/" class="card-btn">Angebot anfordern</a>
+        </div>
+
+        <div class="card card--solar">
+          <div class="card-badge">AUTARKIE</div>
+          <div class="card-icon">🔋</div>
+          <h3 class="card-title">Stromspeicher</h3>
+          <p class="card-desc">Mache die Nacht zum Tag. Intelligente Systeme, die deinen Eigenverbrauch maximieren.</p>
+          <ul class="spec-list">
+            <li><span>Technologie</span> <span>LiFePO4</span></li>
+            <li><span>Funktion</span> <span>Notstromfähig</span></li>
+            <li><span>Skalierbar</span> <span>5kWh - MWh</span></li>
+          </ul>
+          <a href="https://www.energyfinance.de/" class="card-btn">Speicher planen</a>
+        </div>
+
+        <div class="card card--grid">
+          <div class="card-badge">EFFIZIENZ</div>
+          <div class="card-icon">💡</div>
+          <h3 class="card-title">LED Lichttechnik</h3>
+          <p class="card-desc">Industriebeleuchtung, die Kosten sofort senkt. Lange Lebensdauer, minimale Wartung.</p>
+          <ul class="spec-list">
+            <li><span>Laufzeit</span> <span>50.000h+</span></li>
+            <li><span>Sparpotenzial</span> <span>massiv</span></li>
+            <li><span>Amortisation</span> <span>< 2 Jahre</span></li>
+          </ul>
+          <a href="https://www.energyfinance.de/" class="card-btn">Lichtkonzept</a>
+        </div>
+
+        <div class="card card--heat">
+          <div class="card-badge">B2B & MFH</div>
+          <div class="card-icon">⚙️</div>
+          <h3 class="card-title">Blockheizkraft (BHKW)</h3>
+          <p class="card-desc">Die Kraftwerks-Lösung für hohen Wärmebedarf. Strom & Wärme gleichzeitig produzieren.</p>
+          <ul class="spec-list">
+            <li><span>Wirkungsgrad</span> <span>~90%</span></li>
+            <li><span>Einsatz</span> <span>Hotel/Gewerbe</span></li>
+            <li><span>ROI</span> <span>Extrem schnell</span></li>
+          </ul>
+          <a href="https://www.energyfinance.de/" class="card-btn">BHKW berechnen</a>
+        </div>
+
+        <div class="card card--heat">
+          <div class="card-badge">BAFA FÖRDERUNG</div>
+          <div class="card-icon">🔥</div>
+          <h3 class="card-title">Wärmepumpen</h3>
+          <p class="card-desc">Heizen ohne Öl und Gas. Perfekt gekoppelt mit PV-Anlagen für maximale Effizienz.</p>
+          <ul class="spec-list">
+            <li><span>Förderung</span> <span>bis 70%</span></li>
+            <li><span>Typen</span> <span>Luft/Wasser</span></li>
+            <li><span>Service</span> <span>Antrag inkl.</span></li>
+          </ul>
+          <a href="https://www.energyfinance.de/" class="card-btn">Heizung checken</a>
+        </div>
+
+        <div class="card card--grid">
+          <div class="card-badge">INDUSTRIE ONLY</div>
+          <div class="card-icon">📈</div>
+          <h3 class="card-title">Spotmarkt Handel</h3>
+          <p class="card-desc">Strombeschaffung direkt an der Börse (EPEX/EEX). Nutze Preis-Dips für deine Produktion.</p>
+          <ul class="spec-list">
+            <li><span>Ersparnis</span> <span>bis 50%</span></li>
+            <li><span>Markt</span> <span>Intraday/Day-Ahead</span></li>
+            <li><span>Voraussetzung</span> <span>RLM-Zähler</span></li>
+          </ul>
+          <a href="https://www.energyfinance.de/energie/gewerbe-industrie" class="card-btn">Börsenzugang</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="invest-section">
+      <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-money);">
+        Der Markt für Investoren & Landbesitzer
+      </h2>
+      <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+        Du hast Fläche? Oder Kapital? Wir verwandeln beides in garantierte Einnahmequellen. 
+        Kein Aufwand für dich. Energy Finance kümmert sich um Bau, Betrieb und Wartung.
+      </p>
+
+      <div class="invest-grid">
+        
+        <div class="invest-box">
+          <div style="color: var(--color-solar); font-family: var(--font-mono); font-weight: 700; margin-bottom: 0.5rem;">FÜR GRUNDSTÜCKSBESITZER</div>
+          <h3 style="font-size: 1.5rem; color: white; margin-bottom: 1rem;">Flächen Verpachtung</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Verwandle Brachland in Cashflow. Wir pachten deine Fläche für Solarparks oder Großspeicher.
+          </p>
+          <ul class="spec-list" style="border: none;">
+            <li><span>Freiflächen PV</span> <span style="color: var(--color-money);">2-3k € / ha / Jahr</span></li>
+            <li><span>Großspeicher</span> <span style="color: var(--color-money);">10-20k € / Jahr</span></li>
+            <li><span>Laufzeit</span> <span style="color: white;">20 Jahre fest</span></li>
+          </ul>
+          <a href="https://www.energyfinance.de/" class="card-btn" style="background: var(--color-solar); color: black;">Fläche anbieten</a>
+        </div>
+
+        <div class="invest-box">
+          <div style="color: var(--color-grid); font-family: var(--font-mono); font-weight: 700; margin-bottom: 0.5rem;">FÜR INVESTOREN</div>
+          <h3 style="font-size: 1.5rem; color: white; margin-bottom: 1rem;">Solar Investments</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Kaufe Teile eines Solarparks. Nutze staatliche Abschreibungen (IAB) und profitiere vom Stromverkauf.
+          </p>
+          <ul class="spec-list" style="border: none;">
+            <li><span>Abschreibung</span> <span style="color: var(--color-money);">bis 100% (Steuer)</span></li>
+            <li><span>Rendite</span> <span style="color: var(--color-money);">6 - 10% p.a.</span></li>
+            <li><span>Sicherheit</span> <span style="color: white;">Sachwert</span></li>
+          </ul>
+          <a href="https://www.energyfinance.de/" class="card-btn" style="background: var(--color-grid); color: black;">Investment Exposé</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="eyebrow" style="color: #EF4444;">SYSTEM ERROR</span>
+        <h2 class="section__title">
+          Der Energiemarkt ist <span style="background: linear-gradient(135deg, #EF4444, #B91C1C); -webkit-background-clip: text; color: transparent;">broken</span>.
+        </h2>
+        <p class="hero__subtitle" style="max-width: 800px; margin: 0 auto;">
+          Kunden ertrinken in Bürokratie. Unternehmen verbrennen Geld im Einkauf. Landbesitzer lassen Gold auf der Straße liegen.
+        </p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <span class="problem-icon">🤯</span>
+          <h3 class="problem-title">Der Förder-Dschungel</h3>
+          <p class="problem-text">
+            KfW, BAFA, EEG, Steuerbefreiung? 80% der Interessenten geben auf, weil die Bürokratie undurchsichtig ist oder Anträge falsch gestellt werden.
+          </p>
+        </div>
+        
+        <div class="problem-card">
+          <span class="problem-icon">💸</span>
+          <h3 class="problem-title">Verbranntes Kapital</h3>
+          <p class="problem-text">
+            Industrieunternehmen zahlen starr hohe Tarife, statt Spotmarkt-Chancen zu nutzen. Flächenbesitzer lassen Hektar brachliegen, statt 20k€ Pacht zu kassieren.
+          </p>
+        </div>
+
+        <div class="problem-card">
+          <span class="problem-icon">🔌</span>
+          <h3 class="problem-title">Technik-Lotto</h3>
+          <p class="problem-text">
+            Billig-Module oder High-End? Passt der Speicher zur Wärmepumpe? Ohne Gesamtkonzept kaufen Kunden oft Hardware, die sich nie amortisiert.
+          </p>
+        </div>
+
+        <div class="problem-card">
+          <span class="problem-icon">🤠</span>
+          <h3 class="problem-title">Die "Goldgräber"</h3>
+          <p class="problem-text">
+            Der Markt ist voll von schnellen Verkäufern ohne Expertise. Schlechte Montage und fehlender Service nach dem Kauf sind der Standard.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section workflow-section">
+    <div class="container" style="position: relative; z-index: 1;">
+      <div class="section__header">
+        <span class="eyebrow" style="color: var(--color-solar);">DER WORKFLOW</span>
+        <h2 class="section__title">Wir ordnen das Chaos.</h2>
+        <p class="hero__subtitle" style="max-width: 800px; margin: 0 auto;">
+          CanGo App Empire nutzt die Infrastruktur von <strong style="color: var(--color-solar);">Energy Finance</strong> als Backend. Unser Frontend ist ein Algorithmus, der filtert, rechnet und zuweist.
+        </p>
+      </div>
+
+      <div class="cango-algo">
+        <div class="algo-steps">
+          <div class="algo-step">
+            <div class="step-circle">01</div>
+            <div class="step-content">
+              <div class="step-title">Signal-Erfassung</div>
+              <div class="step-desc">User gibt Input: "Hohe Stromrechnung", "Brachfläche" oder "Steuerlast".</div>
+            </div>
+          </div>
+          
+          <div class="algo-step">
+            <div class="step-circle">02</div>
+            <div class="step-content">
+              <div class="step-title">Profil-Weiche</div>
+              <div class="step-desc">Algorithmus trennt: <br>B2C (Eigenheim) vs. B2B (Spotmarkt/Pacht) vs. Invest.</div>
+            </div>
+          </div>
+
+          <div class="algo-step">
+            <div class="step-circle">03</div>
+            <div class="step-content">
+              <div class="step-title">Deep Match</div>
+              <div class="step-desc">Zuweisung zum spezialisierten Experten im Energy Finance Netzwerk (z.B. Solarpark-Planer).</div>
+            </div>
+          </div>
+
+          <div class="algo-step">
+            <div class="step-circle">04</div>
+            <div class="step-content">
+              <div class="step-title">Execution</div>
+              <div class="step-desc">Bau, Antragstellung & Finanzierung aus einer Hand. Schlüsselfertig.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="eyebrow" style="color: var(--color-money);">WIN-WIN SITUATION</span>
+        <h2 class="section__title">
+          Wer profitiert? <span style="background: linear-gradient(135deg, var(--color-solar), var(--color-money)); -webkit-background-clip: text; color: transparent;">Alle.</span>
+        </h2>
+      </div>
+
+      <div class="benefit-split">
+        
+        <div class="benefit-col benefit-col--user">
+          <span class="benefit-head" style="color: var(--color-money);">FÜR KUNDEN & INVESTOREN</span>
+          <h3 class="profile-title">Endlich Klarheit & Rendite.</h3>
+          <p class="profile-desc">
+            Wir nehmen dir die Komplexität ab. Du bekommst kein "Produkt", sondern ein fertiges Asset, das Geld spart oder verdient.
+          </p>
+          <ul class="benefit-list">
+            <li>
+              <span style="color: var(--color-money); font-size: 1.2rem; font-weight: 700;">✓</span>
+              <div>
+                <strong>Investitions-Schutz:</strong><br>Nur Tier-1 Hardware & geprüfte Ertragsprognosen.
+              </div>
+            </li>
+            <li>
+              <span style="color: var(--color-money); font-size: 1.2rem; font-weight: 700;">✓</span>
+              <div>
+                <strong>Bürokratie-Schild:</strong><br>Wir übernehmen Bauanträge, Netzanschlussbegehren & Förderanträge.
+              </div>
+            </li>
+            <li>
+              <span style="color: var(--color-money); font-size: 1.2rem; font-weight: 700;">✓</span>
+              <div>
+                <strong>Zugang zu Off-Market Deals:</strong><br>Investiere in Solarparks, bevor sie öffentlich werden.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="benefit-col benefit-col--advisor">
+          <span class="benefit-head" style="color: var(--color-grid);">FÜR ENERGY GUIDES (BERATER)</span>
+          <h3 class="profile-title">High-Ticket Vertrieb 2.0</h3>
+          <p class="profile-desc">
+            Arbeite mit CanGo Leads. Keine Kaltakquise. Du berätst Kunden, die bereits durch den Algorithmus vorqualifiziert wurden.
+          </p>
+          <ul class="benefit-list">
+            <li>
+              <span style="color: var(--color-grid); font-size: 1.2rem; font-weight: 700;">✓</span>
+              <div>
+                <strong>Keine "Reifen-Kicker":</strong><br>Du sprichst nur mit Kunden, die Fläche, Bonität & Bedarf haben.
+              </div>
+            </li>
+            <li>
+              <span style="color: var(--color-grid); font-size: 1.2rem; font-weight: 700;">✓</span>
+              <div>
+                <strong>Riesiges Portfolio:</strong><br>Verkaufe nicht nur PV, sondern auch Speicher, Pacht & Investments.
+              </div>
+            </li>
+            <li>
+              <span style="color: var(--color-grid); font-size: 1.2rem; font-weight: 700;">✓</span>
+              <div>
+                <strong>Automatisierte Prozesse:</strong><br>Angebots-Erstellung und Finanzierungs-Check in Rekordzeit.
+              </div>
+            </li>
+          </ul>
+          <a href="https://www.energyfinance.de/karriere" target="_blank" class="card-btn" style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.1)); color: var(--color-grid); border: 1px solid rgba(56, 189, 248, 0.3); margin-top: var(--space-6);">
+            Als Energy Guide bewerben →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Navigation</h5><ul><li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li><li><a href="/index.html#pakete" data-cango-kpi="kpi_pakete_section">Preise</a></li><li><a href="/kontakt.html">Kontakt</a></li></ul></div>
+        <div class="fcol"><h5>Branchen</h5><ul><li><a href="/finanzen-versicherung.html">Finanzen &amp; Versicherung</a></li><li><a href="/karriere-hr.html">Karriere &amp; HR</a></li><li><a href="/coaching-mindset.html">Coaching &amp; Mindset</a></li><li><a href="/immobilien.html">Immobilien</a></li><li><a href="/b2b-energy.html">B2B Energy</a></li><li><a href="/energie-finance.html">Energie &amp; Finance</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+  <script>(function(){var b=document.getElementById('navToggle');if(b)b.addEventListener('click',function(){document.body.classList.toggle('nav-open');});var n=document.querySelector('body > nav:first-of-type');if(n)n.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.body.classList.remove('nav-open');});});})();</script>
+  <script src="/js/kpi-events.js?v=2" defer></script>
+  <script src="/cart.js" defer></script>
+  <div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+    <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+  </div>
+
+</body>
+</html>

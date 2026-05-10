@@ -1,0 +1,79 @@
+/* FIX-20260407: Phase 1.1 — eine Primary-CTA, Mobil-Leiste immer erreichbar */
+/* FIX-2026-04-07: z-index unter Nav (1000), damit geöffnetes Mobil-Menü nicht verdeckt wird */
+@media (max-width: 720px) {
+  body.has-primary-cta-bar {
+    padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+  }
+  .primary-cta-mobile-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 960;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+    background: linear-gradient(180deg, rgba(8, 13, 26, 0) 0%, rgba(8, 13, 26, 0.92) 12%, rgba(8, 13, 26, 0.98) 100%);
+    border-top: 1px solid rgba(249, 115, 22, 0.4);
+    pointer-events: none;
+  }
+  .primary-cta-mobile-bar a {
+    pointer-events: auto;
+    width: 100%;
+    max-width: 420px;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media (min-width: 721px) {
+  .primary-cta-mobile-bar {
+    display: none !important;
+  }
+}
+
+/* Sekundär-Link unter Primary (kein zweiter Voll-Button) */
+.hero-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted, #7a91ab);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 8px 0;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  font-family: inherit;
+}
+.hero-cta-secondary:hover {
+  color: #fb923c;
+}
+@media (min-width: 541px) {
+  .hero-ctas--split {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .hero-ctas--split .hero-cta-secondary {
+    margin-top: 0;
+    margin-left: 4px;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-ctas--split {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-ctas--split .hero-cta-secondary {
+    margin-top: 4px;
+    margin-left: 0;
+    order: 3;
+  }
+}

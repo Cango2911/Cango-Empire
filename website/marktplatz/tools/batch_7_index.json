@@ -1,0 +1,16 @@
+{
+  "batch_id": 7,
+  "category": "DATA & SECURITY BACKBONE",
+  "tools": [
+    {
+      "id": "goose-vpn",
+      "name": "GOOSE VPN",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/goose-vpn.html"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/supabase.html"
+    }
+  ]
+}

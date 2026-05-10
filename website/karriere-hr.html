@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Karriere & HR | CanGo App Empire – 800+ Unternehmen. Ein Matching-System.</title>
+  <meta name="description" content="CanGo App Empire Karriere-Allianz: KI-gestütztes Kandidaten-Matching für 800+ Unternehmen. Partner: Wir Personalberater, Das Karriere Institut, MYVI Group. Digitale Bewerbung in 24h.">
+  <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+  <!-- FIX-2026-04-07: Phase 1.1 — KPI (kpi-events) + Mobile-CTA-Leiste -->
+  <link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+  <link rel="stylesheet" href="/css/empire-cta-banner.css?v=1">
+  <style>
+    /* ─── KARRIERE-SEITE: Blue Accent (identisch Finanz-Stil) ─── */
+    :root {
+      --hr-blue:       #3b82f6;
+      --hr-blue-dim:   #2563eb;
+      --hr-blue-glow:  rgba(59,130,246,.18);
+      --hr-blue-faint: rgba(59,130,246,.07);
+      --hr-blue-soft:  rgba(59,130,246,.12);
+      --hr-blue-mid:   rgba(59,130,246,.25);
+      --hr-gold:       #f59e0b;
+      --hr-violet:     #8b5cf6;
+      --hr-cyan:       #06b6d4;
+      --hr-emerald:    #10b981;
+      --hr-bg:         #080d1a;
+      --hr-bg1:        #0d1424;
+      --hr-bg2:        #111827;
+      --hr-bg3:        #1a2238;
+      --hr-text:       #e2e8f0;
+      --hr-muted:      #64748b;
+      --hr-muted2:     #94a3b8;
+      --hr-border:     rgba(255,255,255,.07);
+      --hr-border-b:   rgba(59,130,246,.25);
+      --grid-col:      rgba(59,130,246,.04);
+    }
+
+    body {
+      background: var(--hr-bg) !important;
+      color: var(--hr-text) !important;
+      font-family: 'DM Sans', 'Instrument Sans', system-ui, sans-serif !important;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-col) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-col) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: -200px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 500px;
+      background: radial-gradient(ellipse at center, rgba(59,130,246,.1) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ─── RIBBON ─── */
+    .hr-ribbon {
+      background: linear-gradient(90deg, var(--hr-blue-dim), var(--hr-blue));
+      color: #fff; text-align: center;
+      font-size: 12px; font-weight: 600;
+      padding: 10px 16px; position: relative; z-index: 101;
+      letter-spacing: .03em;
+    }
+
+    /* ─── HERO ─── */
+    .hr-hero {
+      position: relative; z-index: 1;
+      padding: clamp(80px,12vw,120px) 24px clamp(60px,8vw,100px);
+      text-align: center;
+      background: radial-gradient(ellipse 100% 80% at 50% -10%,
+        rgba(59,130,246,.18) 0%, rgba(59,130,246,.06) 35%, transparent 65%);
+      overflow: hidden;
+    }
+    .hr-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, black 0%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 100% 70% at 50% 0%, black 0%, transparent 80%);
+      pointer-events: none;
+    }
+    .hr-hero__inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+    .hr-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--hr-blue-faint);
+      border: 1px solid var(--hr-border-b);
+      color: var(--hr-blue);
+      font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 20px;
+      margin-bottom: 28px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .hr-hero h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 800; line-height: 1.08; color: #f1f5f9;
+      margin-bottom: 22px; letter-spacing: -.02em;
+    }
+    .hr-hero h1 .acc-blue {
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hr-hero__sub {
+      font-size: clamp(14px, 2vw, 17px); color: var(--hr-muted2);
+      max-width: 640px; margin: 0 auto 52px; line-height: 1.75;
+    }
+    .hr-hero__sub strong { color: #93c5fd; font-weight: 500; }
+
+    .hr-stats {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2px;
+      max-width: 680px; margin: 0 auto;
+    }
+    .hr-stat {
+      background: var(--hr-bg1);
+      border: 1px solid var(--hr-border);
+      padding: 22px 28px; flex: 1; min-width: 140px;
+      border-radius: 4px;
+      transition: border-color .2s, transform .2s;
+    }
+    .hr-stats .hr-stat:first-child { border-radius: 14px 4px 4px 14px; }
+    .hr-stats .hr-stat:last-child  { border-radius: 4px 14px 14px 4px; }
+    .hr-stat:hover { border-color: var(--hr-border-b); transform: translateY(-3px); }
+    .hr-stat-num {
+      font-size: 30px; font-weight: 800; color: var(--hr-blue);
+      display: block; line-height: 1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .hr-stat-label {
+      font-size: 10px; color: var(--hr-muted); margin-top: 5px;
+      text-transform: uppercase; letter-spacing: .08em;
+    }
+
+    /* ─── DIGITAL BANNER ─── */
+    .hr-banner {
+      position: relative; z-index: 1;
+      background: var(--hr-bg1);
+      border-top: 3px solid var(--hr-blue);
+      border-bottom: 1px solid var(--hr-border);
+      padding: clamp(40px,5vw,60px) 24px;
+    }
+    .hr-banner__inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 40px; align-items: center;
+    }
+    .hr-num-box {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 24px 32px;
+      background: var(--hr-bg);
+      border: 2px solid var(--hr-blue);
+      border-radius: 16px;
+      animation: pulseBlue 2.5s ease-in-out infinite;
+    }
+    @keyframes pulseBlue {
+      0%,100% { box-shadow: 0 0 30px rgba(59,130,246,.2); }
+      50%      { box-shadow: 0 0 55px rgba(59,130,246,.4); }
+    }
+    .hr-num-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--hr-blue); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
+    .hr-num-val   { font-size: clamp(3rem,6vw,4.5rem); font-weight: 800; font-family: 'JetBrains Mono', monospace; color: var(--hr-blue); line-height: 1; }
+    .hr-num-label { font-size: 12px; font-weight: 600; color: var(--hr-muted2); text-transform: uppercase; letter-spacing: .05em; margin-top: 4px; }
+    .hr-banner__text h2 { font-size: clamp(1.4rem,3vw,2rem); font-weight: 700; color: #f1f5f9; margin-bottom: 10px; }
+    .hr-banner__text h2 span { color: var(--hr-blue); }
+    .hr-banner__text p { font-size: 14px; color: var(--hr-muted2); line-height: 1.7; max-width: 480px; }
+    .hr-banner__text p strong { color: #93c5fd; font-weight: 500; }
+    .hr-chips { display: flex; flex-direction: column; gap: 10px; }
+    .hr-chip {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 16px;
+      background: var(--hr-blue-faint);
+      border: 1px solid var(--hr-border-b);
+      border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--hr-text);
+      white-space: nowrap;
+      transition: background .15s, transform .15s;
+    }
+    .hr-chip:hover { background: var(--hr-blue-soft); transform: translateX(4px); }
+    .hr-chip-icon { font-size: 18px; }
+
+    /* ─── SECTIONS ─── */
+    .hr-section { position: relative; z-index: 1; padding: clamp(60px,8vw,100px) 24px; }
+    .hr-section--alt { background: var(--hr-bg1); border-top: 1px solid var(--hr-border); border-bottom: 1px solid var(--hr-border); }
+    .hr-section__inner { max-width: 1100px; margin: 0 auto; }
+
+    .hr-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--hr-blue); margin-bottom: 14px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .hr-eyebrow::before { content:''; width:20px; height:1px; background:var(--hr-blue); }
+    .hr-h2 {
+      font-size: clamp(1.7rem,3.5vw,2.6rem); font-weight: 800;
+      color: #f1f5f9; line-height: 1.12; margin-bottom: 14px;
+      letter-spacing: -.02em;
+    }
+    .hr-lead { font-size: 15px; color: var(--hr-muted2); max-width: 600px; margin-bottom: 48px; line-height: 1.7; }
+
+    /* ─── VORTEIL GRID ─── */
+    .hr-advantage-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 2px; background: var(--hr-border);
+      border-radius: 14px; overflow: hidden;
+    }
+    .hr-advantage-cell {
+      background: var(--hr-bg1); padding: 28px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .hr-advantage-icon {
+      width: 44px; height: 44px; border-radius: 11px;
+      background: var(--hr-blue-faint); border: 1px solid var(--hr-border-b);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .hr-advantage-title { font-size: 14px; font-weight: 700; color: var(--hr-text); margin-bottom: 5px; }
+    .hr-advantage-desc  { font-size: 12.5px; color: var(--hr-muted2); line-height: 1.6; }
+
+    /* ─── PROBLEM ─── */
+    .hr-problem-intro {
+      background: var(--hr-bg2);
+      border: 1px solid var(--hr-border-b); border-left: 3px solid var(--hr-blue);
+      border-radius: 14px; padding: 28px 32px; margin-bottom: 40px;
+    }
+    .hr-problem-intro-title { font-size: 16px; font-weight: 700; color: var(--hr-blue); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .hr-problem-intro-text  { font-size: 14px; color: var(--hr-muted2); line-height: 1.75; }
+    .hr-problem-intro-text strong { color: #93c5fd; font-weight: 500; }
+
+    .hr-problem-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 14px;
+    }
+    .hr-problem-card {
+      background: var(--hr-bg2); border: 1px solid var(--hr-border);
+      border-radius: 14px; padding: 26px;
+      display: flex; gap: 18px;
+      transition: border-color .2s, transform .2s;
+      position: relative; overflow: hidden;
+    }
+    .hr-problem-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--hr-blue), transparent);
+      opacity: 0; transition: opacity .2s;
+    }
+    .hr-problem-card:hover { border-color: var(--hr-border-b); transform: translateY(-3px); }
+    .hr-problem-card:hover::before { opacity: 1; }
+    .hr-problem-pct { font-size: 34px; font-weight: 800; color: var(--hr-blue); line-height: 1; margin-bottom: 5px; font-family: 'JetBrains Mono', monospace; }
+    .hr-problem-title { font-size: 13px; font-weight: 600; color: var(--hr-text); margin-bottom: 7px; }
+    .hr-problem-desc  { font-size: 12px; color: var(--hr-muted2); line-height: 1.6; }
+
+    /* ─── SOLUTION CARDS ─── */
+    .hr-solution-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .hr-solution-card { border-radius: 16px; padding: 32px; position: relative; overflow: hidden; }
+    .hr-solution-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .hr-sc--firma {
+      background: linear-gradient(135deg, rgba(245,158,11,.1), rgba(245,158,11,.03));
+      border: 2px solid rgba(245,158,11,.3);
+    }
+    .hr-sc--firma::before { background: linear-gradient(90deg, transparent, var(--hr-gold), transparent); }
+    .hr-sc--kandidat {
+      background: linear-gradient(135deg, rgba(139,92,246,.1), rgba(139,92,246,.03));
+      border: 2px solid rgba(139,92,246,.3);
+    }
+    .hr-sc--kandidat::before { background: linear-gradient(90deg, transparent, var(--hr-violet), transparent); }
+    .hr-sc-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; border-radius: 20px;
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+      font-family: 'JetBrains Mono', monospace; margin-bottom: 18px;
+    }
+    .hr-sc--firma    .hr-sc-badge { background: rgba(245,158,11,.15); color: var(--hr-gold); border: 1px solid rgba(245,158,11,.3); }
+    .hr-sc--kandidat .hr-sc-badge { background: rgba(139,92,246,.15); color: var(--hr-violet); border: 1px solid rgba(139,92,246,.3); }
+    .hr-sc-title { font-size: 20px; font-weight: 700; color: #f1f5f9; margin-bottom: 12px; }
+    .hr-sc-text  { font-size: 14px; color: var(--hr-muted2); line-height: 1.75; margin-bottom: 22px; }
+    .hr-sc--firma    .hr-sc-text strong { color: #fbbf24; font-weight: 500; }
+    .hr-sc--kandidat .hr-sc-text strong { color: #a78bfa; font-weight: 500; }
+    .hr-benefits { display: flex; flex-direction: column; gap: 12px; }
+    .hr-benefit {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 14px 16px; background: rgba(0,0,0,.25); border-radius: 10px;
+    }
+    .hr-benefit-icon { font-size: 20px; flex-shrink: 0; }
+    .hr-sc--firma    .hr-benefit-content h4 { font-size: 13px; font-weight: 600; color: var(--hr-gold); margin-bottom: 3px; }
+    .hr-sc--kandidat .hr-benefit-content h4 { font-size: 13px; font-weight: 600; color: var(--hr-violet); margin-bottom: 3px; }
+    .hr-benefit-content p { font-size: 12px; color: var(--hr-muted2); line-height: 1.5; }
+
+    /* ─── APP SHOWCASE ─── */
+    .hr-showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hr-phone {
+      max-width: 300px; margin: 0 auto;
+      padding: 14px;
+      background: var(--hr-bg);
+      border: 2px solid var(--hr-border);
+      border-radius: 38px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 80px rgba(59,130,246,.1);
+    }
+    .hr-screen { background: var(--hr-bg1); border-radius: 28px; overflow: hidden; padding: 14px; }
+    .hr-chat-header {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--hr-bg3); border-radius: 10px;
+      padding: 10px 14px; margin-bottom: 14px;
+    }
+    .hr-chat-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--hr-blue); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; flex-shrink: 0;
+    }
+    .hr-chat-name   { font-size: 13px; font-weight: 600; color: var(--hr-text); }
+    .hr-chat-status { font-size: 11px; color: #22c55e; }
+    .hr-msgs { display: flex; flex-direction: column; gap: 9px; }
+    .hr-msg {
+      max-width: 84%; padding: 10px 13px;
+      border-radius: 12px; font-size: 12px; line-height: 1.55;
+    }
+    .hr-msg-in  { background: var(--hr-bg3); border: 1px solid var(--hr-border); align-self: flex-start; border-radius: 12px 12px 12px 3px; color: var(--hr-text); }
+    .hr-msg-out { background: var(--hr-blue); color: #fff; align-self: flex-end; border-radius: 12px 12px 3px 12px; }
+    .hr-msg-time    { font-size: 9px; color: rgba(255,255,255,.5); text-align: right; margin-top: 3px; }
+    .hr-msg-time-in { font-size: 9px; color: var(--hr-muted); margin-top: 3px; }
+
+    .hr-showcase-content h3 {
+      font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 800; color: #f1f5f9;
+      margin-bottom: 14px; letter-spacing: -.02em; line-height: 1.15;
+    }
+    .hr-showcase-content h3 span {
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hr-showcase-content p { font-size: 14px; color: var(--hr-muted2); line-height: 1.75; margin-bottom: 24px; }
+    .hr-features { display: flex; flex-direction: column; gap: 10px; }
+    .hr-feature {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      background: var(--hr-blue-faint); border: 1px solid var(--hr-border-b);
+      border-radius: 10px; font-size: 13px; font-weight: 600; color: var(--hr-text);
+      transition: background .15s, transform .15s;
+    }
+    .hr-feature:hover { background: var(--hr-blue-soft); transform: translateX(4px); }
+    .hr-feature-icon { font-size: 18px; }
+
+    /* ─── FUNNEL STEPS ─── */
+    .hr-funnel {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 2px; background: var(--hr-border);
+      border-radius: 16px; overflow: hidden;
+    }
+    .hr-funnel-step {
+      background: var(--hr-bg1); padding: 28px 20px;
+      display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;
+      position: relative;
+      transition: background .2s;
+    }
+    .hr-funnel-step:hover { background: var(--hr-bg2); }
+    .hr-funnel-step:not(:last-child)::after {
+      content: '→';
+      position: absolute; right: -13px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--hr-blue); font-size: 18px; z-index: 2;
+    }
+    .hr-funnel-num {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--hr-blue-faint); border: 1px solid var(--hr-border-b);
+      color: var(--hr-blue); font-size: 12px; font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hr-funnel-icon  { font-size: 30px; }
+    .hr-funnel-title { font-size: 13px; font-weight: 700; color: var(--hr-text); }
+    .hr-funnel-desc  { font-size: 11.5px; color: var(--hr-muted2); line-height: 1.5; }
+
+    /* ─── PARTNER CARDS ─── */
+    .hr-partners-intro {
+      text-align: center; padding: 36px;
+      background: var(--hr-bg2); border: 1px solid var(--hr-border-b);
+      border-radius: 16px; margin-bottom: 32px;
+    }
+    .hr-partners-intro-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 14px; background: var(--hr-blue-faint); border: 1px solid var(--hr-border-b);
+      border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+      color: var(--hr-blue); font-family: 'JetBrains Mono', monospace; margin-bottom: 12px;
+    }
+    .hr-partners-intro h3 { font-size: 20px; font-weight: 700; color: #f1f5f9; margin-bottom: 10px; }
+    .hr-partners-intro p  { font-size: 14px; color: var(--hr-muted2); line-height: 1.7; max-width: 680px; margin: 0 auto; }
+    .hr-partners-intro p strong { color: #93c5fd; font-weight: 500; }
+
+    .hr-partner-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .hr-partner-card {
+      padding: 30px; background: var(--hr-bg);
+      border: 2px solid var(--hr-border);
+      border-radius: 16px; position: relative; overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none; color: inherit; display: block;
+    }
+    .hr-partner-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.35); }
+    .hr-partner-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      opacity: 0; transition: opacity .2s;
+    }
+    .hr-partner-card:hover::before { opacity: 1; }
+    .hr-pc--myvi::before        { background: linear-gradient(90deg, transparent, var(--hr-gold), transparent); }
+    .hr-pc--personalberater::before { background: linear-gradient(90deg, transparent, var(--hr-blue), transparent); }
+    .hr-pc--karriere::before    { background: linear-gradient(90deg, transparent, var(--hr-violet), transparent); }
+    .hr-pc--firmen::before      { background: linear-gradient(90deg, transparent, var(--hr-cyan), transparent); }
+    .hr-pc--myvi:hover          { border-color: rgba(245,158,11,.4); }
+    .hr-pc--personalberater:hover { border-color: rgba(59,130,246,.4); }
+    .hr-pc--karriere:hover      { border-color: rgba(139,92,246,.4); }
+    .hr-pc--firmen:hover        { border-color: rgba(6,182,212,.4); }
+
+    .hr-pc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .hr-pc-badge  {
+      padding: 3px 10px; border-radius: 20px;
+      font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .hr-pc--myvi          .hr-pc-badge { background: rgba(245,158,11,.15); color: var(--hr-gold); }
+    .hr-pc--personalberater .hr-pc-badge { background: rgba(59,130,246,.15); color: var(--hr-blue); }
+    .hr-pc--karriere      .hr-pc-badge { background: rgba(139,92,246,.15); color: var(--hr-violet); }
+    .hr-pc--firmen        .hr-pc-badge { background: rgba(6,182,212,.15); color: var(--hr-cyan); }
+    .hr-pc-icon { font-size: 26px; }
+    .hr-pc-name    { font-size: 19px; font-weight: 700; color: #f1f5f9; margin-bottom: 4px; }
+    .hr-pc-tagline { font-size: 12px; margin-bottom: 12px; font-weight: 600; }
+    .hr-pc--myvi          .hr-pc-tagline { color: var(--hr-gold); }
+    .hr-pc--personalberater .hr-pc-tagline { color: var(--hr-blue); }
+    .hr-pc--karriere      .hr-pc-tagline { color: var(--hr-violet); }
+    .hr-pc--firmen        .hr-pc-tagline { color: var(--hr-cyan); }
+    .hr-pc-text  { font-size: 13px; color: var(--hr-muted2); line-height: 1.7; margin-bottom: 18px; }
+    .hr-pc--myvi          .hr-pc-text strong { color: #fbbf24; font-weight: 500; }
+    .hr-pc--personalberater .hr-pc-text strong { color: #93c5fd; font-weight: 500; }
+    .hr-pc--karriere      .hr-pc-text strong { color: #c4b5fd; font-weight: 500; }
+    .hr-pc--firmen        .hr-pc-text strong { color: #67e8f9; font-weight: 500; }
+    .hr-pc-stats {
+      display: flex; gap: 20px; padding-top: 16px;
+      border-top: 1px solid var(--hr-border);
+      margin-bottom: 18px;
+    }
+    .hr-pc-stat { flex: 1; text-align: center; }
+    .hr-pc-stat-val { font-size: 20px; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+    .hr-pc--myvi          .hr-pc-stat-val { color: var(--hr-gold); }
+    .hr-pc--personalberater .hr-pc-stat-val { color: var(--hr-blue); }
+    .hr-pc--karriere      .hr-pc-stat-val { color: var(--hr-violet); }
+    .hr-pc--firmen        .hr-pc-stat-val { color: var(--hr-cyan); }
+    .hr-pc-stat-label { font-size: 9px; color: var(--hr-muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 3px; }
+    .hr-pc-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 20px; border-radius: 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+      color: #fff;
+    }
+    .hr-pc-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.3); }
+    .hr-pc--myvi          .hr-pc-cta { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .hr-pc--personalberater .hr-pc-cta { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .hr-pc--karriere      .hr-pc-cta { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+    .hr-pc--firmen        .hr-pc-cta { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+
+    /* ─── CTA ─── */
+    .hr-cta {
+      text-align: center; max-width: 680px; margin: 0 auto;
+      padding: clamp(60px,8vw,100px) 24px;
+    }
+    .hr-cta h2 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; color: #f1f5f9; margin-bottom: 18px; letter-spacing: -.02em; }
+    .hr-cta h2 span {
+      background: linear-gradient(135deg, #60a5fa, #3b82f6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hr-cta p { font-size: 15px; color: var(--hr-muted2); line-height: 1.75; margin-bottom: 36px; }
+    .hr-cta p strong { color: #93c5fd; font-weight: 500; }
+    .hr-cta-btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    .hr-btn-primary {
+      background: linear-gradient(135deg, var(--hr-blue), var(--hr-blue-dim));
+      color: #fff; border: none; cursor: pointer;
+      font-family: inherit; font-size: 15px; font-weight: 600;
+      padding: 14px 28px; border-radius: 10px;
+      text-decoration: none; display: inline-block;
+      transition: opacity .15s, transform .15s;
+    }
+    .hr-btn-primary:hover { opacity: .9; transform: translateY(-2px); }
+    .hr-btn-secondary {
+      background: transparent; color: var(--hr-text);
+      border: 1px solid var(--hr-border); cursor: pointer;
+      font-family: inherit; font-size: 15px; font-weight: 600;
+      padding: 14px 28px; border-radius: 10px;
+      text-decoration: none; display: inline-block;
+      transition: border-color .15s, transform .15s;
+    }
+    .hr-btn-secondary:hover { border-color: var(--hr-border-b); transform: translateY(-2px); }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .hr-banner__inner { grid-template-columns: auto 1fr; gap: 24px; }
+      .hr-chips { grid-column: span 2; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; }
+    }
+    @media (max-width: 960px) {
+      .hr-advantage-grid { grid-template-columns: 1fr; }
+      .hr-problem-grid   { grid-template-columns: 1fr; }
+      .hr-solution-grid  { grid-template-columns: 1fr; }
+      .hr-showcase-grid  { grid-template-columns: 1fr; gap: 32px; }
+      .hr-funnel         { grid-template-columns: repeat(2,1fr); }
+      .hr-funnel-step:not(:last-child)::after { display: none; }
+      .hr-partner-grid   { grid-template-columns: 1fr; }
+      .hr-banner__inner  { grid-template-columns: 1fr; text-align: center; }
+      .hr-num-box        { justify-self: center; }
+      .hr-chips          { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    }
+    @media (max-width: 600px) {
+      .hr-hero h1        { font-size: 1.9rem; }
+      .hr-stats          { gap: 2px; }
+      .hr-stat           { min-width: 110px; padding: 16px 18px; }
+      .hr-stat-num       { font-size: 22px; }
+      .hr-funnel         { grid-template-columns: 1fr; }
+      .hr-cta-btns       { flex-direction: column; align-items: center; }
+      .hr-btn-primary, .hr-btn-secondary { width: 100%; text-align: center; }
+    }
+  </style>
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+.nav-toggle{display:none!important}
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+</head>
+<body class="has-primary-cta-bar">
+
+  <!-- RIBBON -->
+  <div class="hr-ribbon" role="banner">
+    👔 KARRIERE-ALLIANZ · 800+ Unternehmen · KI-gestütztes Kandidaten-Matching in 24h
+  </div>
+
+  <!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" class="active" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- HERO -->
+  <section class="hr-hero reveal" id="main-content">
+    <div class="hr-hero__inner">
+      <div class="hr-badge">👔 KARRIERE-ALLIANZ</div>
+      <h1>KARRIERE-DOMINANZ:<br><span class="acc-blue">800+ Unternehmen. Ein System.</span></h1>
+      <p class="hr-hero__sub">
+        Wir vermitteln keine Stellen. Wir betreiben <strong>algorithmisches Kandidaten-Matching</strong> —
+        vorqualifizierte Talente, <strong>perfekt geroutet</strong>, <strong>digital eingestellt</strong>,
+        mit <strong>KI-gesteuertem Karriere-Portal</strong>.
+      </p>
+      <div class="hr-stats">
+        <div class="hr-stat"><span class="hr-stat-num">800+</span><span class="hr-stat-label">Unternehmen</span></div>
+        <div class="hr-stat"><span class="hr-stat-num">94%</span><span class="hr-stat-label">Match-Quote</span></div>
+        <div class="hr-stat"><span class="hr-stat-num">100%</span><span class="hr-stat-label">Digital</span></div>
+        <div class="hr-stat"><span class="hr-stat-num">24h</span><span class="hr-stat-label">Erstreaktion</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL BANNER -->
+  <div class="hr-banner">
+    <div class="hr-banner__inner reveal">
+      <div class="hr-num-box">
+        <div class="hr-num-badge">🚀 Dein Vorteil</div>
+        <div class="hr-num-val">800+</div>
+        <div class="hr-num-label">Unternehmen</div>
+      </div>
+      <div class="hr-banner__text">
+        <h2>Der gesamte Jobmarkt.<br><span>Eine Plattform.</span></h2>
+        <p><strong>Kein Headhunter-Stress</strong>. <strong>Kein Lebenslauf-Stapel</strong>. Zugang zu <strong>800+ Unternehmen</strong> mit <strong>digitalem Bewerbungsprozess</strong> und KI-gesteuertem Match-System.</p>
+      </div>
+      <div class="hr-chips">
+        <div class="hr-chip"><span class="hr-chip-icon">🤖</span> KI-Kandidaten-Matching</div>
+        <div class="hr-chip"><span class="hr-chip-icon">🎥</span> Video-Interview on demand</div>
+        <div class="hr-chip"><span class="hr-chip-icon">📊</span> Skills-Assessment Portal</div>
+        <div class="hr-chip"><span class="hr-chip-icon">⚡</span> 24h Erstreaktion garantiert</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEIN VORTEIL -->
+  <section class="hr-section">
+    <div class="hr-section__inner reveal">
+      <div class="hr-eyebrow">Alle Vorteile</div>
+      <h2 class="hr-h2">Warum das System<br>anders ist.</h2>
+      <p class="hr-lead">Vier Gründe, warum CanGo App Empire + Wir Personalberater die HR-Branche neu definieren.</p>
+      <div class="hr-advantage-grid">
+        <div class="hr-advantage-cell">
+          <div class="hr-advantage-icon">🤖</div>
+          <div>
+            <div class="hr-advantage-title">KI-Kandidaten-Matching</div>
+            <div class="hr-advantage-desc">Unser Algorithmus analysiert Skills, Persönlichkeit und Kulturfit — nicht nur Keywords im Lebenslauf.</div>
+          </div>
+        </div>
+        <div class="hr-advantage-cell">
+          <div class="hr-advantage-icon">🎥</div>
+          <div>
+            <div class="hr-advantage-title">Video-Interview on Demand</div>
+            <div class="hr-advantage-desc">Asynchrone Video-Interviews sparen Zeit für beide Seiten. Unternehmen schauen, wenn es passt.</div>
+          </div>
+        </div>
+        <div class="hr-advantage-cell">
+          <div class="hr-advantage-icon">📊</div>
+          <div>
+            <div class="hr-advantage-title">Skills-Assessment Portal</div>
+            <div class="hr-advantage-desc">Objektive Kompetenzanalyse vor dem ersten Gespräch. Keine Überraschungen mehr im Interview.</div>
+          </div>
+        </div>
+        <div class="hr-advantage-cell">
+          <div class="hr-advantage-icon">🏆</div>
+          <div>
+            <div class="hr-advantage-title">Employer Branding System</div>
+            <div class="hr-advantage-desc">Automatisiertes Content-Marketing für deine Arbeitgebermarke — auf LinkedIn, Xing und Social Media.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAS PROBLEM -->
+  <section class="hr-section hr-section--alt">
+    <div class="hr-section__inner reveal">
+      <div class="hr-eyebrow">Das Problem</div>
+      <h2 class="hr-h2">Der Jobmarkt hat ein Effizienz-Problem.</h2>
+      <div class="hr-problem-intro">
+        <div class="hr-problem-intro-title">⚠️ Der Status Quo ist gebrochen</div>
+        <p class="hr-problem-intro-text">
+          Unternehmen <strong>warten Monate</strong> auf passende Kandidaten. Bewerber <strong>verschwinden im Bewerbungs-Black-Hole</strong>. Die Branche kämpft mit <strong>manuellen Prozessen</strong>,
+          <strong>Informationslücken</strong> und einem Matching-System, das aus dem letzten Jahrtausend stammt.
+          Das Ergebnis? <strong>73% der Unternehmen leiden unter Fachkräftemangel</strong>. Kandidaten warten <strong>45 Tage</strong> auf eine Antwort.
+        </p>
+      </div>
+      <div class="hr-problem-grid">
+        <div class="hr-problem-card">
+          <div style="font-size:26px;flex-shrink:0;margin-top:2px">😤</div>
+          <div>
+            <div class="hr-problem-pct">73%</div>
+            <div class="hr-problem-title">Unternehmen haben Fachkräftemangel</div>
+            <div class="hr-problem-desc">Fast drei Viertel aller DACH-Unternehmen kämpfen mit offenen Stellen — Monate und Jahre unbesetzt.</div>
+          </div>
+        </div>
+        <div class="hr-problem-card">
+          <div style="font-size:26px;flex-shrink:0;margin-top:2px">⏳</div>
+          <div>
+            <div class="hr-problem-pct">45</div>
+            <div class="hr-problem-title">Tage durchschnittliche Time-to-Hire</div>
+            <div class="hr-problem-desc">Eineinhalb Monate für einen einzigen Einstellungsprozess. In schnellen Branchen eine Ewigkeit.</div>
+          </div>
+        </div>
+        <div class="hr-problem-card">
+          <div style="font-size:26px;flex-shrink:0;margin-top:2px">📉</div>
+          <div>
+            <div class="hr-problem-pct">80%</div>
+            <div class="hr-problem-title">Der Bewerbungen sind unpassend</div>
+            <div class="hr-problem-desc">4 von 5 eingehenden Bewerbungen erfüllen die Mindestanforderungen nicht — massiver Zeitverlust für HR.</div>
+          </div>
+        </div>
+        <div class="hr-problem-card">
+          <div style="font-size:26px;flex-shrink:0;margin-top:2px">🧱</div>
+          <div>
+            <div class="hr-problem-pct">60%</div>
+            <div class="hr-problem-title">Fluktuation in den ersten 6 Monaten</div>
+            <div class="hr-problem-desc">Schlechtes Matching führt zu Early-Turnover. Jede Fehlbesetzung kostet bis zu 150% des Jahresgehalts.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIE LÖSUNG -->
+  <section class="hr-section">
+    <div class="hr-section__inner reveal">
+      <div class="hr-eyebrow">Die Lösung</div>
+      <h2 class="hr-h2">CanGo App Empire löst beide Seiten.<br>Unternehmen. Kandidaten.</h2>
+      <p class="hr-lead">Wir bauen die Brücke zwischen qualifizierten Talenten und den richtigen Unternehmen. Automatisiert. Datengestützt. Menschlich kuratiert.</p>
+      <div class="hr-solution-grid">
+        <!-- Für Unternehmen -->
+        <div class="hr-solution-card hr-sc--firma">
+          <div class="hr-sc-badge">🏢 Für Unternehmen</div>
+          <h3 class="hr-sc-title">Schluss mit Bewerbungs-Chaos.<br>Starte mit vorqualifizierten Talenten.</h3>
+          <p class="hr-sc-text">CanGo App Empire generiert automatisiert Kandidaten-Profile durch KI-Screening und <strong>qualifiziert sie vor dem ersten Gespräch</strong>. Du bekommst nur Talente, die wirklich passen — fachlich, persönlich und kulturell.</p>
+          <div class="hr-benefits">
+            <div class="hr-benefit">
+              <span class="hr-benefit-icon">🎯</span>
+              <div class="hr-benefit-content">
+                <h4>Vorqualifizierte Kandidaten</h4>
+                <p>KI-Analyse von Skills, Erfahrung und Kulturfit vor dem ersten Kontakt.</p>
+              </div>
+            </div>
+            <div class="hr-benefit">
+              <span class="hr-benefit-icon">⏱️</span>
+              <div class="hr-benefit-content">
+                <h4>70% kürzere Time-to-Hire</h4>
+                <p>Von 45 auf 13 Tage. Offene Stellen schneller besetzen, Produktivität sichern.</p>
+              </div>
+            </div>
+            <div class="hr-benefit">
+              <span class="hr-benefit-icon">📈</span>
+              <div class="hr-benefit-content">
+                <h4>Höhere Mitarbeiterbindung</h4>
+                <p>Besseres Matching = weniger Fluktuation = echte Kosteneinsparung.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Für Kandidaten -->
+        <div class="hr-solution-card hr-sc--kandidat">
+          <div class="hr-sc-badge">👤 Für Kandidaten</div>
+          <h3 class="hr-sc-title">Deine Karriere.<br>In deiner Hand.</h3>
+          <p class="hr-sc-text">Ein <strong>intelligentes Karriere-Portal</strong>, das deine Stärken analysiert. Ein direkter Draht zum Karriere-Coach. Zugang zu <strong>800+ Unternehmen ohne Bewerbungs-Stress</strong>.</p>
+          <div class="hr-benefits">
+            <div class="hr-benefit">
+              <span class="hr-benefit-icon">🤖</span>
+              <div class="hr-benefit-content">
+                <h4>KI-Karriereanalyse</h4>
+                <p>Objektive Stärken-Schwächen-Analyse. Wisse, wo du wirklich stehst.</p>
+              </div>
+            </div>
+            <div class="hr-benefit">
+              <span class="hr-benefit-icon">💬</span>
+              <div class="hr-benefit-content">
+                <h4>Chat zum Karriere-Coach</h4>
+                <p>Persönliche Beratung on-demand. Fragen, Feedback, Vorbereitung.</p>
+              </div>
+            </div>
+            <div class="hr-benefit">
+              <span class="hr-benefit-icon">✅</span>
+              <div class="hr-benefit-content">
+                <h4>24h Erstreaktion Garantie</h4>
+                <p>Kein Bewerbungs-Black-Hole mehr. Du bekommst immer eine Antwort.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP SHOWCASE -->
+  <section class="hr-section hr-section--alt">
+    <div class="hr-section__inner">
+      <div class="hr-showcase-grid reveal">
+        <!-- Phone Mockup -->
+        <div>
+          <div class="hr-phone">
+            <div class="hr-screen">
+              <div class="hr-chat-header">
+                <div class="hr-chat-avatar">W</div>
+                <div>
+                  <div class="hr-chat-name">Wir Personalberater</div>
+                  <div class="hr-chat-status">● Online</div>
+                </div>
+              </div>
+              <div class="hr-msgs">
+                <div class="hr-msg hr-msg-out">
+                  Bin ich für die Senior-Rolle beim Tech-Startup geeignet?
+                  <div class="hr-msg-time">10:14 ✓✓</div>
+                </div>
+                <div class="hr-msg hr-msg-in">
+                  Ja! Dein Profil matched zu 94% — 3 Jahre React-Erfahrung ist genau was gesucht wird. Soll ich den Kontakt herstellen?
+                  <div class="hr-msg-time-in">10:16</div>
+                </div>
+                <div class="hr-msg hr-msg-out">
+                  Ja bitte! Was ist das Gehaltsgefüge?
+                  <div class="hr-msg-time">10:17 ✓✓</div>
+                </div>
+                <div class="hr-msg hr-msg-in">
+                  80–95k + Equity. Ich prep dich heute noch auf das Video-Interview vor. 🚀
+                  <div class="hr-msg-time-in">10:18</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Content -->
+        <div class="hr-showcase-content">
+          <div class="hr-eyebrow">App Experience</div>
+          <h3>Dein Karriere-Coach.<br><span>Immer erreichbar.</span></h3>
+          <p>Vergiss anonyme Jobportale und Wochen ohne Rückmeldung. Mit unserem Karriere-System hast du einen persönlichen Berater, der für dich kämpft — und 800+ Unternehmen, die aktiv auf dich warten.</p>
+          <div class="hr-features">
+            <div class="hr-feature"><span class="hr-feature-icon">⚡</span> Erstreaktion in 24h garantiert</div>
+            <div class="hr-feature"><span class="hr-feature-icon">🎥</span> Video-Interviews von zuhause</div>
+            <div class="hr-feature"><span class="hr-feature-icon">📊</span> Live Match-Score zu Stellen</div>
+            <div class="hr-feature"><span class="hr-feature-icon">🔒</span> Diskrete Jobsuche möglich</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DER CANGO-EFFEKT / FUNNEL -->
+  <section class="hr-section">
+    <div class="hr-section__inner reveal">
+      <div class="hr-eyebrow">⚡ Der CanGo-Effekt</div>
+      <h2 class="hr-h2">Was CanGo App Empire<br>anders macht.</h2>
+      <p class="hr-lead" style="margin-bottom:36px;">Wir liefern keine CV-Stapel. Wir liefern vorqualifizierte Talente mit analysiertem Skillset — ready to hire.</p>
+      <div class="hr-funnel">
+        <div class="hr-funnel-step">
+          <div class="hr-funnel-num">1</div>
+          <div class="hr-funnel-icon">🧠</div>
+          <div class="hr-funnel-title">Profil-Scan</div>
+          <div class="hr-funnel-desc">KI analysiert Skills, Erfahrung, Persönlichkeit und Karriereziel</div>
+        </div>
+        <div class="hr-funnel-step">
+          <div class="hr-funnel-num">2</div>
+          <div class="hr-funnel-icon">🎯</div>
+          <div class="hr-funnel-title">KI-Matching</div>
+          <div class="hr-funnel-desc">Algorithmischer Abgleich mit 800+ Unternehmens-Anforderungen</div>
+        </div>
+        <div class="hr-funnel-step">
+          <div class="hr-funnel-num">3</div>
+          <div class="hr-funnel-icon">🎥</div>
+          <div class="hr-funnel-title">Smart Interview</div>
+          <div class="hr-funnel-desc">Asynchrones Video-Interview + Skills-Assessment vor dem Gespräch</div>
+        </div>
+        <div class="hr-funnel-step">
+          <div class="hr-funnel-num">4</div>
+          <div class="hr-funnel-icon">✅</div>
+          <div class="hr-funnel-title">Placement</div>
+          <div class="hr-funnel-desc">Digitales Onboarding mit Karriere-Coach-Begleitung in der Probezeit</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER / DIE ALLIANZ -->
+  <section class="hr-section hr-section--alt">
+    <div class="hr-section__inner reveal">
+      <div class="hr-eyebrow">Die Allianz</div>
+      <h2 class="hr-h2">Das Netzwerk hinter dem System.</h2>
+      <p class="hr-lead">CanGo App Empire ist das technische Rückgrat einer mächtigen Karriere-Allianz — gemeinsam das umfassendste HR-Ökosystem Deutschlands.</p>
+
+      <div class="hr-partners-intro">
+        <div class="hr-partners-intro-badge">🤝 Strategische Partner</div>
+        <h3>300+ Berater. 800+ Unternehmen. 4 Spezialisierungen.</h3>
+        <p>Die MYVI Group und ihre HR-Partner haben gemeinsam mit CanGo App Empire ein <strong>Karriere-Ökosystem</strong> geschaffen, das <strong>Personalvermittlung neu definiert</strong>. Von Karriere-Coaching über Executive Search bis zur KI-gestützten Talentgewinnung — <strong>alles aus einer Hand</strong>.</p>
+      </div>
+
+      <div class="hr-partner-grid">
+        <!-- MYVI -->
+        <a class="hr-partner-card hr-pc--myvi" href="https://myvi.de/" target="_blank" rel="noopener">
+          <div class="hr-pc-header">
+            <div class="hr-pc-badge">Dachgesellschaft</div>
+            <span class="hr-pc-icon">🏛️</span>
+          </div>
+          <div class="hr-pc-name">MYVI Group</div>
+          <div class="hr-pc-tagline">Financial & Career Guidance Group</div>
+          <p class="hr-pc-text">Die MYVI Group vereint <strong>sechs innovative Unternehmen</strong> unter einem Dach. Von Finanzplanung über Karriereberatung bis zur Personalvermittlung — der <strong>MYVI-Effekt</strong> schafft Synergien, die weltweit einzigartig sind.</p>
+          <div class="hr-pc-stats">
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">400+</div><div class="hr-pc-stat-label">Mitarbeiter</div></div>
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">30k+</div><div class="hr-pc-stat-label">Kunden</div></div>
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">6</div><div class="hr-pc-stat-label">Unternehmen</div></div>
+          </div>
+          <span class="hr-pc-cta">Mehr erfahren →</span>
+        </a>
+
+        <!-- Wir Personalberater -->
+        <a class="hr-partner-card hr-pc--personalberater" href="https://wir-personalberater.de/" target="_blank" rel="noopener">
+          <div class="hr-pc-header">
+            <div class="hr-pc-badge">Executive Search</div>
+            <span class="hr-pc-icon">🔍</span>
+          </div>
+          <div class="hr-pc-name">Wir Personalberater</div>
+          <div class="hr-pc-tagline">Präzises Recruiting auf Augenhöhe</div>
+          <p class="hr-pc-text">Deutschlands <strong>vertrauensbasiertes Recruiting-Netzwerk</strong>. Wir Personalberater verbinden <strong>Kandidaten und Unternehmen</strong> auf Augenhöhe — mit echter Expertise und <strong>nachhaltigem Matching</strong> statt kurzfristigem Vermittlungsdruck.</p>
+          <div class="hr-pc-stats">
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">800+</div><div class="hr-pc-stat-label">Partnerunternehmen</div></div>
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">94%</div><div class="hr-pc-stat-label">Match-Quote</div></div>
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">13</div><div class="hr-pc-stat-label">Ø Tage bis Match</div></div>
+          </div>
+          <span class="hr-pc-cta">Mehr erfahren →</span>
+        </a>
+
+        <!-- Das Karriere Institut -->
+        <a class="hr-partner-card hr-pc--karriere" href="https://daskarriereinstitut.de/" target="_blank" rel="noopener">
+          <div class="hr-pc-header">
+            <div class="hr-pc-badge">Coaching</div>
+            <span class="hr-pc-icon">🎓</span>
+          </div>
+          <div class="hr-pc-name">Das Karriere Institut</div>
+          <div class="hr-pc-tagline">Karriere-Transformation durch Coaching</div>
+          <p class="hr-pc-text">Von der Orientierungslosigkeit zur <strong>Traumkarriere</strong>. Das Karriere Institut begleitet Kandidaten mit <strong>1:1 Coaching, Assessment Center Vorbereitung</strong> und <strong>Gehaltsverhandlungs-Strategien</strong>, die wirklich funktionieren.</p>
+          <div class="hr-pc-stats">
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">5k+</div><div class="hr-pc-stat-label">Coachings</div></div>
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">4.9</div><div class="hr-pc-stat-label">⭐ Bewertung</div></div>
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">+28%</div><div class="hr-pc-stat-label">Ø Gehaltssteigerung</div></div>
+          </div>
+          <span class="hr-pc-cta">Mehr erfahren →</span>
+        </a>
+
+        <!-- mitNORM Firmenberatung -->
+        <a class="hr-partner-card hr-pc--firmen" href="https://mitnormfirmenberatung.de/" target="_blank" rel="noopener">
+          <div class="hr-pc-header">
+            <div class="hr-pc-badge">B2B HR</div>
+            <span class="hr-pc-icon">🏢</span>
+          </div>
+          <div class="hr-pc-name">mitNORM Firmenberatung</div>
+          <div class="hr-pc-tagline">Mitarbeiterbindung & Benefits nach DIN</div>
+          <p class="hr-pc-text">Die erste <strong>standardisierte HR-Analyse für KMUs</strong> nach <strong>DIN 77235</strong>. Von <strong>Mitarbeiterfindung</strong> über <strong>Bindungsstrategien</strong> bis zu attraktiven <strong>Benefits-Paketen</strong> — ganzheitliche HR-Beratung für den Mittelstand.</p>
+          <div class="hr-pc-stats">
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">8k+</div><div class="hr-pc-stat-label">Firmenkunden</div></div>
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">DIN</div><div class="hr-pc-stat-label">77235</div></div>
+            <div class="hr-pc-stat"><div class="hr-pc-stat-val">-42%</div><div class="hr-pc-stat-label">Fluktuation</div></div>
+          </div>
+          <span class="hr-pc-cta">Mehr erfahren →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MID-PAGE CTA -->
+  <section class="cta-banner-mid">
+    <h3>Fachkräftemangel oder Systemmangel?</h3>
+    <p>Hör auf, Zeit in unpassende Bewerbungen zu investieren. Wir bauen dein digitales Recruiting-Empire, das A-Player magnetisch anzieht – vollautomatisiert.</p>
+    <a href="/kontakt.html?kpi=mid_hr_recruiting#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_mid_page_cta_hr_recruiting">Jetzt Recruiting-Audit anfragen</a>
+  </section>
+
+  <!-- CTA -->
+  <section class="hr-section" id="kontakt">
+    <div class="hr-section__inner">
+      <div class="hr-cta reveal">
+        <h2>Bereit für die <span>Karriere-Revolution</span>?</h2>
+        <p>Ob Unternehmen oder Kandidat — CanGo App Empire und die <strong>Karriere-Allianz</strong> haben die Lösung. <strong>KI-gestütztes Matching</strong>, <strong>digitale Prozesse</strong> und ein <strong>Netzwerk, das für dich arbeitet</strong>.</p>
+        <div class="hr-cta-btns">
+          <a class="hr-btn-primary" href="https://wir-personalberater.de/" target="_blank" rel="noopener">Als Kandidat starten →</a>
+          <a class="hr-btn-secondary" href="https://myvi.de/karriere" target="_blank" rel="noopener">Als Unternehmen anfragen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Navigation</h5><ul><li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li><li><a href="/index.html#pakete" data-cango-kpi="kpi_pakete_section">Preise</a></li><li><a href="/kontakt.html">Kontakt</a></li></ul></div>
+        <div class="fcol"><h5>Branchen</h5><ul><li><a href="/finanzen-versicherung.html">Finanzen &amp; Versicherung</a></li><li><a href="/karriere-hr.html">Karriere &amp; HR</a></li><li><a href="/coaching-mindset.html">Coaching &amp; Mindset</a></li><li><a href="/immobilien.html">Immobilien</a></li><li><a href="/b2b-energy.html">B2B Energy</a></li><li><a href="/energie-finance.html">Energie &amp; Finance</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav toggle
+    const navToggle = document.getElementById('navToggle');
+    if (navToggle) {
+      navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
+    }
+    document.querySelectorAll('.nav-links a').forEach(l => {
+      l.addEventListener('click', () => document.body.classList.remove('nav-open'));
+    });
+
+    // Scroll reveal
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Stagger card animations
+    const staggerIo = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          staggerIo.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.hr-problem-card, .hr-partner-card, .hr-advantage-cell').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = `opacity .45s ease ${i * 0.08}s, transform .45s ease ${i * 0.08}s`;
+      staggerIo.observe(el);
+    });
+  </script>
+  <script src="/js/kpi-events.js?v=2" defer></script>
+  <script src="/cart.js" defer></script>
+  <!-- FIX-2026-04-07: Phase 1.1 — Sticky Mobile-CTA -->
+  <div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+    <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+  </div>
+
+</body>
+</html>

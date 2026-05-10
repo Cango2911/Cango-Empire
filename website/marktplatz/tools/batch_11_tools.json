@@ -1,0 +1,193 @@
+{
+  "batch_id": 11,
+  "total_batches": 22,
+  "category": "PRESENTATION & DOCUMENTS",
+  "tools": [
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "tagline": "PowerPoint ist tot. Präsentationen in Lichtgeschwindigkeit.",
+      "badge": "AI NATIVE",
+      "rating": { "tacos": 5, "count": 3200 },
+      "images": ["/images/tools/gamma-editor.webp"],
+      "quick_specs": {
+        "alternative_to": ["PowerPoint", "Google Slides"],
+        "integrations": ["PDF Export", "Embed", "Notion"],
+        "best_for": ["Gründer", "Consultants", "Sales"]
+      },
+      "pitch_html": "<h3>Niemand will deine Folien formatieren.</h3><p><strong>Gamma</strong> ist eine neue Art von Medium. Du schreibst Notizen, Gamma generiert daraus eine wunderschöne, interaktive Präsentation, Webseite oder Dokument.</p><h4>CanGo Workflow:</h4><p>Wir nutzen Gamma für unsere Kunden-Reportings. Statt langweiliger PDFs senden wir interaktive Links, die auf dem Handy perfekt aussehen. Die Erstellungszeit sinkt von 4 Stunden auf 15 Minuten.</p>",
+      "deal_terms": [
+        "Unbegrenzte AI-Credits (Pro)",
+        "Analytics (Wer hat es gelesen?)",
+        "Custom Fonts & Themes",
+        "PDF/PPTX Export"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Plus",
+          "price": 8,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Wasserzeichen entfernen",
+            "400 AI Credits / Monat",
+            "PDF Export",
+            "30 Tage History"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "tome",
+      "name": "Tome",
+      "tagline": "Storytelling mit KI. Pitch Decks, die Investoren lieben.",
+      "badge": "STORYTELLING",
+      "rating": { "tacos": 4, "count": 1500 },
+      "images": ["/images/tools/tome-slide.webp"],
+      "quick_specs": {
+        "alternative_to": ["Gamma", "Pitch.com"],
+        "integrations": ["Figma", "Miro", "Spline 3D"],
+        "best_for": ["Startups", "Kreative"]
+      },
+      "pitch_html": "<h3>Erzähl eine Geschichte, keine Stichpunkte.</h3><p><strong>Tome</strong> fokussiert sich auf narrative Strukturen. Die KI generiert nicht nur Folien, sondern ganze Handlungsbögen mit passenden (DALL-E generierten) Bildern.</p><p>Ideal für Pitch Decks, bei denen Emotionen wichtiger sind als reine Daten.</p>",
+      "deal_terms": [
+        "Generative Storytelling",
+        "Interaktive Embeds",
+        "Mobile-Responsive",
+        "AI Image Gen inklusive"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Pro",
+          "price": 16,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Unbegrenzte AI-Nutzung",
+            "PDF Export",
+            "Custom Branding",
+            "Priority Support"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "beautiful-ai",
+      "name": "Beautiful.ai",
+      "tagline": "Der Designer in der Cloud. Folien, die sich selbst layouten.",
+      "badge": "DESIGN",
+      "rating": { "tacos": 5, "count": 2100 },
+      "images": ["/images/tools/beautiful-ai.webp"],
+      "quick_specs": {
+        "alternative_to": ["Canva", "PowerPoint"],
+        "integrations": ["Slack", "Dropbox", "PowerPoint"],
+        "best_for": ["Manager", "Marketing Teams"]
+      },
+      "pitch_html": "<h3>Schluss mit verrutschten Textboxen.</h3><p>Bei <strong>Beautiful.ai</strong> kannst du nichts 'kaputt' machen. Die Smart Slides passen das Layout automatisch an, wenn du Inhalt hinzufügst oder entfernst.</p><p>Das Ergebnis: 100% Konsistenz mit deinem Corporate Design, egal wie 'unkreativ' der Ersteller ist.</p>",
+      "deal_terms": [
+        "Smart Slide Technologie",
+        "Millionen Stock-Fotos",
+        "Team-Libraries",
+        "Analytics"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Pro",
+          "price": 12,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Unbegrenzte Slides",
+            "AI Content Gen",
+            "PowerPoint Import/Export",
+            "Viewer Analytics"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "pandadoc",
+      "name": "PandaDoc",
+      "tagline": "Verträge und Angebote in Sekunden. Von Erstellung bis Unterschrift.",
+      "badge": "SALES CLOSER",
+      "rating": { "tacos": 5, "count": 5000 },
+      "images": ["/images/tools/pandadoc-flow.webp"],
+      "quick_specs": {
+        "alternative_to": ["DocuSign", "Proposify"],
+        "integrations": ["HubSpot", "Pipedrive", "Salesforce"],
+        "best_for": ["Vertriebsteams", "Agenturen"]
+      },
+      "pitch_html": "<h3>Der Vertrag ist der Abschluss. Mach ihn einfach.</h3><p><strong>PandaDoc</strong> kombiniert Dokumentenerstellung (aus Vorlagen) mit eSignatur und Tracking. Du siehst genau, wann der Kunde das Angebot öffnet und wie lange er auf der Preisseite verweilt.</p><p>Unsere Enterprise-Angebote (35.000€+) werden ausschließlich über PandaDoc versendet, um Professionalität und Rechtsgültigkeit zu garantieren.</p>",
+      "deal_terms": [
+        "Rechtsgültige eSignatur",
+        "Drag & Drop Editor",
+        "Zahlungsintegration (Stripe)",
+        "Workflow Approval"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Essentials",
+          "price": 19,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Unbegrenzte Dokumente",
+            "Unbegrenzte Signaturen",
+            "Vorlagen-Bibliothek",
+            "Echtzeit-Tracking"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "docusign",
+      "name": "DocuSign",
+      "tagline": "Der Weltmarktführer für eSignaturen. Vertrauen ist alles.",
+      "badge": "TRUST",
+      "rating": { "tacos": 5, "count": 15000 },
+      "images": ["/images/tools/docusign-sign.webp"],
+      "quick_specs": {
+        "alternative_to": ["PandaDoc", "Adobe Sign"],
+        "integrations": ["Alles"],
+        "best_for": ["Rechtsabteilungen", "Immobilien", "Finance"]
+      },
+      "pitch_html": "<h3>Wenn es vor Gericht halten muss.</h3><p>Für unsere Partner im Finanz- und Immobiliensektor (MyVi, Domicil) ist <strong>DocuSign</strong> unverzichtbar. Es ist der Standard, dem Banken und Behörden vertrauen.</p><p>Wir integrieren DocuSign via API in unsere n8n-Workflows, um Verträge automatisch zu versenden, sobald ein Lead qualifiziert ist.</p>",
+      "deal_terms": [
+        "ISO 27001 Zertifiziert",
+        "350+ Integrationen",
+        "Mobile App",
+        "Audit Trail"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Personal",
+          "price": 10,
+          "original_price": 0,
+          "currency": "€/mo",
+          "billing": "monthly",
+          "features": [
+            "5 Dokumente / Monat",
+            "Basis-Felder",
+            "Mobile App Nutzung",
+            "Mehrsprachig"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    }
+  ]
+}
+

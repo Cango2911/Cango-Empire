@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Blog-Workflow Aktivierungsplan – CanGo App Empire</title>
+<meta name="description" content="Interaktiver Plan: vier Blocker lösen, n8n-Cron, sechs Nischen parallel, Publishing und Monitoring — täglicher Blog-Output.">
+<link rel="canonical" href="https://automation-cango-app-empire.com/blog-workflow-aktivierungsplan.html">
+<link rel="stylesheet" href="/fonts/fonts.css?v=3">
+<link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+<link rel="stylesheet" href="/css/responsive-global.css?v=20">
+<link rel="stylesheet" href="/css/release-ribbon.css?v=1">
+<link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+<link rel="stylesheet" href="/css/empire-cta-banner.css?v=1">
+<link rel="stylesheet" href="/css/blog-workflow-aktivierungsplan.css?v=1">
+<style>
+html{scroll-behavior:smooth}
+body.page-bwp-dashboard{margin:0;font-family:'Outfit',sans-serif;background:#080d1a;color:#e8eef5;line-height:1.6;overflow-x:hidden}
+body.page-bwp-dashboard::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(249,115,22,.05) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(30,60,120,.12) 0%,transparent 60%);pointer-events:none;z-index:0}
+.bc-bar{padding:14px 24px;border-bottom:1px solid rgba(78,99,130,.25);background:#0d1424;position:relative;z-index:1}
+.bc-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#4a607a;flex-wrap:wrap}
+.bc-inner a{color:#7a91ab;text-decoration:none}
+.bc-inner a:hover{color:#F97316}
+</style>
+<style>
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+</style>
+<style>
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important}
+.logo-text{color:#fff!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;padding:10px 22px!important;border-radius:10px!important;text-decoration:none!important;border:none!important}
+.btn-o:hover{background:#fb923c!important}
+.nav-toggle{display:none!important}
+@media(max-width:1080px){
+  nav{height:auto!important;min-height:56px!important;padding:0 12px!important}
+  .nav-inner{flex-wrap:wrap!important;min-height:56px!important}
+  .nav-toggle{display:flex!important;width:44px!important;height:44px!important;margin-left:auto!important;align-items:center!important;justify-content:center!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important}
+  .nav-right{margin-left:8px!important}
+}
+.btn-lg{font-size:15px!important;padding:14px 28px!important;border-radius:12px!important}
+</style>
+<script src="/cart.js" defer></script>
+</head>
+<body class="page-haupt-13 page-bwp-dashboard has-primary-cta-bar">
+
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<div class="release-ribbon" id="releaseRibbon">
+  <span id="ribbon-slide-text" class="ribbon-slide-text"></span>
+  <span id="ribbon-countdown" class="ribbon-countdown"></span>
+</div>
+
+<div class="bc-bar">
+  <div class="bc-inner">
+    <a href="/index.html">Startseite</a><span>›</span>
+    <a href="/workflows.html">Workflows</a><span>›</span>
+    <span>Blog-Workflow Aktivierungsplan</span>
+  </div>
+</div>
+
+<main class="bwp-shell" id="main-content">
+  <header class="bwp-head">
+    <h1>Blog-Workflow Aktivierungsplan</h1>
+    <p>Täglich laufend — alle 6 Nischen — Ziel: hohe Automatisierung. Hier die Blocker, der 3-Tage-Fahrplan und die Konfiguration — als Checkliste, nicht als Rechtsberatung oder Garantie für Drittanbieter.</p>
+  </header>
+
+  <div class="bwp-tablist" role="tablist" aria-label="Abschnitte des Plans">
+    <button type="button" class="bwp-tab" role="tab" id="tab-b" aria-selected="true" aria-controls="panel-b">Blocker zuerst</button>
+    <button type="button" class="bwp-tab" role="tab" id="tab-s" aria-selected="false" aria-controls="panel-s">Einmalig Setup</button>
+    <button type="button" class="bwp-tab" role="tab" id="tab-d" aria-selected="false" aria-controls="panel-d">Tagesablauf</button>
+    <button type="button" class="bwp-tab" role="tab" id="tab-n" aria-selected="false" aria-controls="panel-n">Nischen-Config</button>
+    <button type="button" class="bwp-tab" role="tab" id="tab-z" aria-selected="false" aria-controls="panel-z">Ziele</button>
+  </div>
+
+  <div id="panel-b" class="bwp-panel is-active" role="tabpanel" aria-labelledby="tab-b">
+    <h2>Warum läuft der Blog noch nicht täglich?</h2>
+    <div class="bwp-blocker">
+      <h3>Blocker 1 — BrowserAct-Workflow nicht stabilisiert</h3>
+      <p><strong>Fix:</strong> Zeiträume per URL setzen (z.&nbsp;B. <code>?when=7d</code>) statt fragiler UI-Klicks. Pagination-Fehler im letzten Schritt oft ignorierbar — Daten kommen trotzdem an, wenn der Rest passt.</p>
+    </div>
+    <div class="bwp-blocker">
+      <h3>Blocker 2 — Kein automatischer n8n-Schedule-Trigger</h3>
+      <p><strong>Fix:</strong> Cron-Node in n8n — täglich z.&nbsp;B. 06:00. Alle 6 Nischen als parallele Zweige (Split in Branch / separate Execute-Workflow) starten.</p>
+    </div>
+    <div class="bwp-blocker">
+      <h3>Blocker 3 — Blog-Publishing nicht verbunden</h3>
+      <p><strong>Fix:</strong> Letzter Schritt: WordPress REST-API oder Ghost Content API. Beiträge zuerst als Entwurf, dann Freigabe oder Auto-Publish nach Regeln.</p>
+    </div>
+    <div class="bwp-blocker">
+      <h3>Blocker 4 — Kein Monitoring / keine Alerts</h3>
+      <p><strong>Fix:</strong> Slack (oder E-Mail) bei Workflow-Fehler. Google-Sheets-Log je veröffentlichtem Artikel (Timestamp, Nische, URL, Status).</p>
+    </div>
+  </div>
+
+  <div id="panel-s" class="bwp-panel" role="tabpanel" aria-labelledby="tab-s" hidden>
+    <h2>Einmalig einrichten</h2>
+    <ul class="bwp-list">
+      <li><strong>Credentials</strong> in n8n: Anthropic/OpenAI, Google Sheets, ggf. WordPress/Ghost — nur in der Instanz, nie in öffentlichen Repos.</li>
+      <li><strong>6 BrowserAct-Profile</strong> oder 6 definierte Einstiegspfade (einer pro Nische), getestet mit echten Läufen.</li>
+      <li><strong>Sheet „Publishing-Log“</strong> mit Spalten: Datum, Nische, Titel, URL, Status, Fehlercode.</li>
+      <li><strong>Kill-Switch</strong>: Manueller Deaktivierungs-Schalter im Workflow bei Compliance-Hinweis (intern dokumentiert).</li>
+    </ul>
+  </div>
+
+  <div id="panel-d" class="bwp-panel" role="tabpanel" aria-labelledby="tab-d" hidden>
+    <h2>Tagesablauf (Soll)</h2>
+    <dl class="bwp-timeline">
+      <dt>06:00 — Cron feuert</dt>
+      <dd>Master-Workflow startet; 6 Zweige parallel (oder gestaffelt, wenn Ratenlimits).</dd>
+      <dt>06:05–06:30 — Research &amp; Generation</dt>
+      <dd>BrowserAct / APIs liefern Rohdaten; KI-Schicht erzeugt Entwurf; Qualitäts-Webhook optional.</dd>
+      <dt>06:30 — Publish</dt>
+      <dd>REST: Entwurf oder Publish je nach Freigabe-Regel; Zeile ins Log.</dd>
+      <dt>Geplant — kurze Kontrolle</dt>
+      <dd>Ein Mensch prüft Stichproben; Slack nur bei Fehler.</dd>
+    </dl>
+  </div>
+
+  <div id="panel-n" class="bwp-panel" role="tabpanel" aria-labelledby="tab-n" hidden>
+    <h2>Sechs Nischen — ein Branch je Nische</h2>
+    <div class="bwp-table-wrap">
+      <table class="bwp-table">
+        <thead>
+          <tr><th>Branch</th><th>Beispiel-Keyword-Quelle</th><th>Hinweis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1 · Finanzen</td><td>Sheets / neuron</td><td>Keine individuelle Anlageberatung im Output</td></tr>
+          <tr><td>2 · Trading</td><td>Topix-Rotation</td><td>Risiko-Hinweise</td></tr>
+          <tr><td>3 · Immobilien</td><td>Lokale Cluster</td><td>Keine rechtsverbindlichen Bewertungen</td></tr>
+          <tr><td>4 · Energie</td><td>Tarif-/Solar-Themen</td><td>Sachlich, keine gewerbliche Energieberatung</td></tr>
+          <tr><td>5 · KI &amp; Tech</td><td>Tool-News</td><td>KI-Kennzeichnung nach internen Regeln</td></tr>
+          <tr><td>6 · Karriere / Coaching</td><td>HR-Themen</td><td>Kein Ersatz für Therapie / Diagnose</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:var(--muted,#7a91ab);text-align:center;line-height:1.5">Exakte Nischen-Namen an eure 9-Märkte-/Pipeline-Sheets anbinden — technische IDs siehe interne Doku.</p>
+  </div>
+
+  <div id="panel-z" class="bwp-panel" role="tabpanel" aria-labelledby="tab-z" hidden>
+    <h2>Ziele &amp; Rahmen</h2>
+    <div class="bwp-statgrid">
+      <div class="bwp-stat"><div class="num">6</div><div class="lbl">Artikel / Tag (Ziel)</div></div>
+      <div class="bwp-stat"><div class="num">~180</div><div class="lbl">pro Monat (grob)</div></div>
+      <div class="bwp-stat"><div class="num">~5 Min</div><div class="lbl">manuelle Prüfung / Tag (Richtwert)</div></div>
+    </div>
+    <ul class="bwp-list" style="margin-top:24px">
+      <li><strong>95&nbsp;% automatisiert</strong> ist ein Zielwert — abhängig von Freigabe-Prozess und Provider-Limits.</li>
+      <li><strong>Recht &amp; Compliance</strong> bleiben eure Verantwortung; CanGo-Texte auf der Website gelten ergänzend.</li>
+    </ul>
+  </div>
+
+  <section class="bwp-cta" id="json-hinweis" aria-labelledby="cta-title">
+    <h2 id="cta-title">Jetzt: Workflow-JSON vorbereiten</h2>
+    <p>Fertige n8n-JSON-Dateien werden intern aus dem Master-Export erzeugt — ohne API-Schlüssel im Klartext. Für eine konkrete Lieferung oder Anpassung: Kontakt aufnehmen und gewünschte Nischen / Ziel-CMS nennen.</p>
+    <div class="bwp-cta-actions">
+      <a href="/kontakt.html?kpi=bwp_dashboard#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_bwp_dashboard_kontakt">Kontakt: Blog-Automation</a>
+      <a href="/workflows.html" class="btn btn-o btn-lg" style="background:transparent!important;border:1px solid rgba(249,115,22,.5)!important;color:#fb923c!important">Zur Workflow-Übersicht</a>
+    </div>
+  </section>
+</main>
+
+<footer class="cango-footer">
+  <div class="footer-wrap">
+    <div class="ftop">
+      <div class="fbrand">
+        <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+        <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+      </div>
+      <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+      <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+      <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+    </div>
+    <div class="fbot">
+      <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+      <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · Rechtstexte versioniert</p>
+    </div>
+  </div>
+</footer>
+
+<div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+  <a href="/kontakt.html?kpi=bwp_mob#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_bwp_mobile_cta">Infrastruktur anfragen</a>
+</div>
+
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".bwp-tab"));
+  var panels = {
+    "tab-b": document.getElementById("panel-b"),
+    "tab-s": document.getElementById("panel-s"),
+    "tab-d": document.getElementById("panel-d"),
+    "tab-n": document.getElementById("panel-n"),
+    "tab-z": document.getElementById("panel-z")
+  };
+
+  function activate(id) {
+    var run = function () {
+      tabs.forEach(function (t) {
+        var on = t.id === id;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.setAttribute("tabindex", on ? "0" : "-1");
+        var p = panels[t.id];
+        if (p) {
+          p.classList.toggle("is-active", on);
+          p.hidden = !on;
+        }
+      });
+    };
+    if (typeof document.startViewTransition === "function") {
+      document.startViewTransition(run);
+    } else {
+      run();
+    }
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () {
+      activate(t.id);
+    });
+  });
+
+  var navBtn = document.getElementById("navToggle");
+  if (navBtn) {
+    navBtn.addEventListener("click", function () {
+      document.body.classList.toggle("nav-open");
+    });
+  }
+})();
+</script>
+<script src="/js/release-ribbon.js?v=2" defer></script>
+<script src="/js/kpi-events.js?v=2" defer></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// CanGo Empire V4.0 - MONOPOLY JavaScript
+// CanGo App Empire V4.0 - MONOPOLY JavaScript
 // Aggressive animations and interactions
 
 document.addEventListener('DOMContentLoaded', function() {

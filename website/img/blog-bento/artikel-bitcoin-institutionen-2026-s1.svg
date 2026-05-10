@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Bitcoin 2026: Institutionelle Adoption | Blog | CanGo App Empire">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="hsl(205, 80%, 52%)"/>
+<stop offset="100%" stop-color="#0b1220"/>
+</linearGradient>
+</defs>
+<rect width="1200" height="675" fill="#0b1220"/>
+<rect x="24" y="24" width="1152" height="627" rx="24" fill="url(#g)" opacity="0.95"/>
+<circle cx="1020" cy="120" r="170" fill="rgba(255,255,255,.08)"/>
+<circle cx="180" cy="560" r="220" fill="rgba(255,255,255,.06)"/>
+<text x="72" y="132" fill="white" font-size="64" font-family="Inter, Arial, sans-serif" font-weight="700">Institutionelle</text>
+<text x="72" y="210" fill="#f1f5f9" font-size="46" font-family="Inter, Arial, sans-serif" font-weight="500">Bitcoin</text>
+<text x="72" y="600" fill="#e2e8f0" font-size="34" font-family="Inter, Arial, sans-serif">CanGo Empire Magazin</text>
+</svg>

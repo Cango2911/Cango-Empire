@@ -1,0 +1,31 @@
+{
+  "batch_id": 6,
+  "category": "MARKETING & ASSET CREATION",
+  "tools": [
+    {
+      "id": "skillplate",
+      "name": "Skillplate",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/skillplate.html"
+    },
+    {
+      "id": "mootion",
+      "name": "Mootion",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/mootion.html"
+    },
+    {
+      "id": "yapper",
+      "name": "Yapper",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/yapper.html"
+    },
+    {
+      "id": "reap",
+      "name": "Reap",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/reap.html"
+    },
+    {
+      "id": "originality-ai",
+      "name": "Originality.ai",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/originality-ai.html"
+    }
+  ]
+}

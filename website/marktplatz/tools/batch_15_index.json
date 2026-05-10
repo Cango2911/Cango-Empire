@@ -1,0 +1,31 @@
+{
+  "batch_id": 15,
+  "category": "SPECIAL AGENTS & HIDDEN GEMS",
+  "tools": [
+    {
+      "id": "voila",
+      "name": "Voila",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/voila.html"
+    },
+    {
+      "id": "katteb",
+      "name": "Katteb",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/katteb.html"
+    },
+    {
+      "id": "adcreative-ai",
+      "name": "AdCreative.ai",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/adcreative-ai.html"
+    },
+    {
+      "id": "taskade",
+      "name": "Taskade",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/taskade.html"
+    },
+    {
+      "id": "hexomatic",
+      "name": "Hexomatic",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/hexomatic.html"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+/* CanGo App Empire — Mid-Page CTA Banner (shared, absolute /css/ path) */
+/* FIX-2026-04-08: zentral für Nischen, HR, Mindset, Blogs; monopoly.css enthält diese Regeln nicht mehr */
+
+.cta-banner-mid {
+  background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  margin: 4rem 1rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(249,115,22,.1);
+}
+.cta-banner-mid h3 {
+  color: #f97316;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -.02em;
+}
+.cta-banner-mid p {
+  color: #94a3b8;
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+@media (max-width: 600px) {
+  .cta-banner-mid { padding: 2rem 1.25rem; margin: 2.5rem .5rem; }
+  .cta-banner-mid h3 { font-size: 1.35rem; }
+}

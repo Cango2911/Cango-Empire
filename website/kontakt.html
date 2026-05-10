@@ -1,374 +1,1045 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakt | CanGo App Empire</title>
-  <meta name="description" content="Kontaktieren Sie uns für eine kostenlose Beratung zu unseren Marketing-Automatisierungs-Lösungen.">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="cango-empire-v4-monopoly.css">
-  
-  <style>
-    .contact-page {
-      padding: calc(var(--nav-height) + var(--space-20)) 0 var(--space-12);
-      min-height: 100vh;
-    }
-    
-    .contact-hero {
-      text-align: center;
-      margin-bottom: var(--space-16);
-      padding: var(--space-12) 0;
-    }
-    
-    .contact-hero__eyebrow {
-      display: inline-block;
-      font-size: var(--text-sm);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--primary-400);
-      margin-bottom: var(--space-4);
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    
-    .contact-hero__title {
-      font-size: clamp(2.5rem, 5vw, var(--text-5xl));
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: var(--space-4);
-      color: var(--text-primary);
-    }
-    
-    .contact-hero__subtitle {
-      font-size: var(--text-lg);
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-    
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: var(--space-12);
-      margin: var(--space-16) 0;
-    }
-    
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-8);
-    }
-    
-    .contact-info__card {
-      padding: var(--space-6);
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-      border-left: 3px solid var(--primary-500);
-    }
-    
-    .contact-info__card-title {
-      font-size: var(--text-lg);
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: var(--space-2);
-    }
-    
-    .contact-info__card-text {
-      font-size: var(--text-base);
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    
-    .contact-form {
-      padding: var(--space-8);
-      background: var(--bg-elevated);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-xl);
-    }
-    
-    .form-group {
-      margin-bottom: var(--space-6);
-    }
-    
-    .form-label {
-      display: block;
-      font-size: var(--text-sm);
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: var(--space-2);
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-    
-    .form-input,
-    .form-textarea,
-    .form-select {
-      width: 100%;
-      padding: var(--space-3) var(--space-4);
-      background: var(--bg-default);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-md);
-      font-size: var(--text-base);
-      color: var(--text-primary);
-      font-family: 'Poppins', sans-serif;
-      transition: all var(--duration-normal);
-    }
-    
-    .form-input:focus,
-    .form-textarea:focus,
-    .form-select:focus {
-      outline: none;
-      border-color: var(--primary-500);
-      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
-    }
-    
-    .form-textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-    
-    .form-select {
-      cursor: pointer;
-    }
-    
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-4);
-    }
-    
-    .form-submit {
-      width: 100%;
-      padding: var(--space-4) var(--space-8);
-      background: var(--primary-500);
-      border: none;
-      border-radius: var(--radius-md);
-      font-size: var(--text-base);
-      font-weight: 600;
-      color: white;
-      cursor: pointer;
-      transition: all var(--duration-normal);
-      font-family: 'Poppins', sans-serif;
-    }
-    
-    .form-submit:hover {
-      background: var(--primary-600);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
-    }
-    
-    .form-submit:active {
-      transform: translateY(0);
-    }
-    
-    @media (max-width: 968px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<!-- FIX-2026-04-07: Zoom nicht sperren (Barrierefreiheit / Linter) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- FIX-20260407: Phase 0.3 — kanonische URL -->
+<link rel="canonical" href="https://automation-cango-app-empire.com/kontakt.html">
+<!-- FIX-20260407: Phase 1.2 — Pflichtfelder, Impressum-Konsistenz, Ablauf-Text, Honeypot -->
+<title>Kontakt – CanGo App Empire</title>
+<link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+<link rel="stylesheet" href="/css/responsive-global.css?v=20">
+<!-- FIX-2026-03-23: HQ-Doppelrahmen 13 Hauptseiten -->
+<link rel="stylesheet" href="/css/hauptseiten-hq-frames.css?v=2">
+<link rel="stylesheet" href="/css/release-ribbon.css?v=1">
+<!-- FIX-20260407: Phase 1.1 — Primary-CTA Mobil-Leiste -->
+<link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+<style>
+:root{
+  --n9:#080d1a;--n8:#0d1424;--n7:#111c30;--n6:#162238;--n5:#1d2d47;
+  --bd:rgba(78,99,130,.22);--bdl:rgba(78,99,130,.10);
+  --or:#F97316;--ors:rgba(249,115,22,.09);
+  --wh:#fff;--ow:#e8eef5;--mu:#7a91ab;--md:#4a607a;
+  --gr:#22c55e;--rd:#ef4444;--gl:#4e6382;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--n9);color:var(--ow);font-family:'Outfit',sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 65% 55% at 8% 8%,rgba(249,115,22,.05),transparent 55%),radial-gradient(ellipse 55% 50% at 92% 92%,rgba(30,60,120,.15),transparent 55%);pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,13,26,.88);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:center}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-c{width:34px;height:34px;background:var(--or);color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.logo-text{color:var(--wh)}.logo-text span{color:var(--mu);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--mu);text-decoration:none;padding:6px 11px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{color:var(--wh);background:var(--n6)}
+.nav-links a.active{color:var(--or);background:var(--n6)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px;color:var(--mu);border:1px solid var(--bd);padding:6px 14px;border-radius:8px;cursor:pointer;background:var(--n7);transition:all .2s}
+.nav-cart:hover{border-color:var(--or);color:var(--or)}
+.nav-cart .cart-badge{background:var(--or);color:#000;font-size:10px;font-weight:800;min-width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:600;font-size:13px;padding:10px 22px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none;border:none;letter-spacing:.01em}
+.btn-o{background:var(--or);color:#000}
+.btn-o:hover{background:#fb923c;transform:translateY(-1px);box-shadow:0 8px 24px rgba(249,115,22,.3)}
+.btn-g{background:transparent;color:var(--ow);border:1px solid var(--bd)}
+.btn-g:hover{border-color:var(--gl);background:var(--n6)}
+.btn-lg{font-size:15px;padding:14px 28px;border-radius:12px}
+
+/* RELEASE RIBBON – unter Menüleiste, Gelb-Orange-Kupfer */
+.release-ribbon{position:sticky;top:68px;z-index:99;background:linear-gradient(135deg,#fcd34d 0%,#f59e0b 25%,#ea580c 50%,#c2410c 75%,#9a3412 100%);color:#1c1917;text-align:center;padding:10px 16px;font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;letter-spacing:.02em;border-bottom:2px solid rgba(180,83,9,.6);box-shadow:0 4px 20px rgba(0,0,0,.3),0 0 24px rgba(245,158,11,.25)}
+.ribbon-slide-text{display:inline-block;min-width:280px;transition:opacity .4s ease}
+.ribbon-slide-text.fade{opacity:0}
+.ribbon-countdown{font-family:'JetBrains Mono',monospace;margin-left:12px;background:rgba(0,0,0,.2);padding:2px 8px;border-radius:4px;color:#78350f}
+
+/* BREADCRUMB */
+.bc{padding:13px 24px;border-bottom:1px solid var(--bd);background:var(--n8);position:relative;z-index:1}
+.bc-i{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--md)}
+.bc-i a{color:var(--mu);text-decoration:none;transition:color .2s}
+.bc-i a:hover{color:var(--or)}
+
+/* HERO */
+.phero{background:var(--n8);border-bottom:1px solid var(--bd);padding:72px 24px 60px;position:relative;overflow:hidden;z-index:1}
+.phero-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.orb1{width:500px;height:500px;background:rgba(249,115,22,.06);top:-120px;right:-60px}
+.orb2{width:380px;height:380px;background:rgba(30,60,120,.14);bottom:-80px;left:-60px}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--n6);border:1px solid var(--bd);padding:5px 13px;border-radius:100px;font-size:12px;font-weight:500;color:var(--mu);margin-bottom:24px;width:fit-content}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--gr);animation:blink 1.6s ease-in-out infinite}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--or);animation:pls 1.4s ease-in-out infinite;display:inline-block;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pls{0%,100%{box-shadow:0 0 0 0 rgba(249,115,22,.5)}50%{box-shadow:0 0 0 5px rgba(249,115,22,0)}}
+.hero-chip strong{color:var(--ow)}
+h1.ptitle{font-size:clamp(36px,5vw,70px);font-weight:800;line-height:.98;letter-spacing:-.03em;color:var(--wh);margin-bottom:16px}
+h1.ptitle .ac{color:var(--or)}
+h1.ptitle .dm{color:var(--mu);font-weight:300}
+.hero-lead{font-size:15px;color:var(--mu);line-height:1.8;margin-bottom:28px;max-width:480px}
+.hero-lead strong{color:var(--ow)}
+.hero-quick{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+.hq{display:flex;align-items:center;gap:8px;background:var(--n7);border:1px solid var(--bd);padding:10px 16px;border-radius:11px;font-size:13px;font-weight:600;color:var(--ow);text-decoration:none;transition:all .25s;cursor:pointer}
+.hq:hover{border-color:rgba(249,115,22,.35);background:rgba(249,115,22,.05);color:var(--or)}
+.hq--primary{border-color:rgba(249,115,22,.65)!important;background:rgba(249,115,22,.12)!important;box-shadow:0 0 0 1px rgba(249,115,22,.2)}
+.hq--primary:hover{border-color:var(--or)!important;background:rgba(249,115,22,.18)!important}
+.hq span:first-child{font-size:17px}
+.hq small{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--mu);font-weight:400;display:block;margin-top:1px}
+
+/* RIGHT SIDE HERO STATS */
+.hero-stats-panel{background:var(--n7);border:1px solid var(--bd);border-radius:18px;padding:28px;position:relative;overflow:hidden}
+.hero-stats-panel::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(249,115,22,.04),transparent 60%);pointer-events:none}
+.hsp-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:18px;display:flex;align-items:center;gap:7px}
+.hsp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.hsp-item{background:var(--n6);border:1px solid var(--bdl);border-radius:11px;padding:16px}
+.hsp-num{font-size:30px;font-weight:800;color:var(--or);letter-spacing:-.02em;line-height:1;margin-bottom:3px}
+.hsp-desc{font-size:11px;color:var(--mu);line-height:1.4}
+.hsp-sep{height:1px;background:var(--bdl);margin-bottom:18px}
+.hsp-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--ow);padding:7px 0;border-bottom:1px solid var(--bdl)}
+.hsp-row:last-child{border-bottom:none}
+.hsp-row .label{color:var(--mu);font-size:13px}
+.hsp-row .val{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--or)}
+
+/* PAGE SECTIONS */
+section{padding:72px 24px;position:relative;z-index:1}
+.wrap{max-width:1200px;margin:0 auto}
+.ey{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:18px}
+h2.st{font-size:clamp(30px,4vw,52px);font-weight:800;letter-spacing:-.025em;color:var(--wh);line-height:1.05;margin-bottom:14px}
+h2.st .ac{color:var(--or)}
+h2.st .dm{color:var(--mu);font-weight:300}
+.divl{width:44px;height:3px;background:var(--or);border-radius:2px;margin:18px 0 36px}
+
+/* MAIN CONTACT LAYOUT */
+.contact-layout{display:grid;grid-template-columns:1fr 400px;gap:28px;align-items:start}
+
+/* FORM TILE */
+.form-tile{background:var(--n8);border:1px solid var(--bd);border-radius:20px;overflow:hidden}
+.ft-head{padding:24px 28px 20px;border-bottom:1px solid var(--bdl);background:linear-gradient(135deg,rgba(249,115,22,.05),transparent 60%)}
+.ft-head h3{font-size:20px;font-weight:800;color:var(--wh);letter-spacing:-.01em;margin-bottom:4px}
+.ft-head p{font-size:13px;color:var(--mu);line-height:1.6}
+/* FIX-20260407: Phase 1.2 — Erwartung nach Absendung + Formularhinweise */
+.ft-next{margin-top:14px;padding:12px 14px;border-radius:10px;border:1px solid var(--bdl);background:var(--n7);font-size:12.5px;color:var(--mu);line-height:1.65}
+.ft-next strong{color:var(--ow)}
+.form-hint{font-size:12px;color:var(--md);margin-top:10px;line-height:1.55}
+.hp-wrap{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.ft-body{padding:28px}
+
+/* FORM STYLES */
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.fg:last-of-type{margin-bottom:0}
+.fl{font-size:13px;font-weight:600;color:var(--ow);display:flex;align-items:center;gap:5px}
+.req{color:var(--rd);font-size:10px}
+.fi{width:100%;background:var(--n7);border:1px solid var(--bd);border-radius:11px;padding:12px 14px;font-family:'Outfit',sans-serif;font-size:14px;color:var(--ow);outline:none;transition:all .2s}
+.fi::placeholder{color:var(--md)}
+.fi:focus{border-color:var(--or);box-shadow:0 0 0 3px rgba(249,115,22,.07)}
+.fi.valid{border-color:var(--gr)}
+.fi.err{border-color:var(--rd);box-shadow:0 0 0 3px rgba(239,68,68,.06)}
+textarea.fi{resize:vertical;min-height:120px;font-family:'Outfit',sans-serif;line-height:1.6}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath fill='%237a91ab' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;cursor:pointer}
+.iw{position:relative}
+.iw .ii{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none}
+.iw .fi{padding-left:38px}
+.fe{font-size:11.5px;color:var(--rd);display:none;margin-top:2px}
+.fh{font-size:11.5px;color:var(--md);margin-top:2px;line-height:1.5}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* TERMIN CHIPS */
+.termin-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.tc{font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 13px;border-radius:8px;cursor:pointer;border:1px solid var(--bdl);background:var(--n7);color:var(--mu);transition:all .2s;-webkit-user-select:none;user-select:none}
+.tc:hover{border-color:rgba(249,115,22,.3);color:var(--ow)}
+.tc.sel{background:rgba(249,115,22,.1);border-color:var(--or);color:var(--or)}
+
+/* LEGAL CHECK */
+.lck{display:flex;align-items:flex-start;gap:9px;cursor:pointer;margin-bottom:16px}
+.lck input[type=checkbox]{width:15px;height:15px;accent-color:var(--or);margin-top:3px;cursor:pointer;flex-shrink:0}
+.lt{font-size:12.5px;color:var(--mu);line-height:1.65}
+.lt a{color:var(--or);text-decoration:none}
+.lt a:hover{text-decoration:underline}
+.lt strong{color:var(--ow)}
+
+/* SUBMIT BTN */
+.submit-btn{width:100%;background:var(--or);color:#000;font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;padding:15px;border:none;border-radius:12px;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px}
+.submit-btn:hover{background:#fb923c;box-shadow:0 10px 30px rgba(249,115,22,.35);transform:translateY(-1px)}
+.submit-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn-sp{width:15px;height:15px;border:2px solid rgba(0,0,0,.2);border-top-color:#000;border-radius:50%;animation:spin .65s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* SUCCESS STATE */
+.success-state{display:none;text-align:center;padding:40px 24px}
+.success-icon{font-size:60px;display:block;margin-bottom:18px;animation:bounce .6s ease}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.success-title{font-size:22px;font-weight:800;color:var(--wh);margin-bottom:8px}
+.success-desc{font-size:14px;color:var(--mu);line-height:1.75;max-width:360px;margin:0 auto 20px}
+
+/* RIGHT SIDEBAR */
+.sidebar-stack{display:flex;flex-direction:column;gap:14px;position:sticky;top:84px}
+
+/* INFO CARDS */
+.info-card{background:var(--n8);border:1px solid var(--bd);border-radius:16px;overflow:hidden;transition:border-color .25s}
+.info-card:hover{border-color:rgba(249,115,22,.25)}
+.ic-head{padding:18px 20px 14px;border-bottom:1px solid var(--bdl)}
+.ic-head h4{font-size:14px;font-weight:700;color:var(--wh);margin-bottom:2px}
+.ic-head p{font-size:12px;color:var(--mu);line-height:1.55}
+.ic-body{padding:16px 20px}
+
+/* CONTACT INFO ROWS */
+.ci-row{display:flex;align-items:flex-start;gap:12px;padding:11px 0;border-bottom:1px solid var(--bdl)}
+.ci-row:first-child{padding-top:0}
+.ci-row:last-child{border-bottom:none;padding-bottom:0}
+.ci-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:var(--n7);border:1px solid var(--bdl)}
+.ci-info h5{font-size:13px;font-weight:700;color:var(--wh);margin-bottom:2px}
+.ci-info p{font-size:12.5px;color:var(--mu);line-height:1.5}
+.ci-info a{color:var(--or);text-decoration:none;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:opacity .2s}
+.ci-info a:hover{opacity:.8}
+
+/* FOUNDER CARD */
+.founder-card{background:linear-gradient(135deg,rgba(249,115,22,.07) 0%,var(--n8) 60%);border:1px solid rgba(249,115,22,.2);border-radius:16px;overflow:hidden}
+.founder-head{padding:20px 20px 16px;display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid var(--bdl)}
+.founder-avatar{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--or),#fb923c);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:#000;flex-shrink:0;position:relative}
+.founder-avatar::after{content:'';position:absolute;bottom:-2px;right:-2px;width:14px;height:14px;background:var(--gr);border-radius:50%;border:2px solid var(--n8)}
+.founder-meta h4{font-size:15px;font-weight:800;color:var(--wh);margin-bottom:2px;letter-spacing:-.01em}
+.founder-meta p{font-size:11px;color:var(--or);font-family:'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
+.founder-phone{font-size:13px;color:var(--mu);margin-top:4px;display:flex;align-items:center;gap:5px}
+.founder-phone a{color:var(--ow);text-decoration:none;font-weight:600;transition:color .2s}
+.founder-phone a:hover{color:var(--or)}
+.founder-body{padding:16px 20px}
+.founder-desc{font-size:13px;color:var(--mu);line-height:1.75;margin-bottom:14px}
+.founder-location{display:flex;align-items:flex-start;gap:8px;background:var(--n7);border:1px solid var(--bdl);border-radius:10px;padding:12px 13px;font-size:12.5px;color:var(--mu);line-height:1.6}
+.founder-location span:first-child{font-size:16px;flex-shrink:0;margin-top:1px}
+.founder-location a{color:var(--or);text-decoration:none;font-weight:600;display:block;margin-top:4px;font-size:12px}
+.founder-location a:hover{text-decoration:underline}
+
+/* NEWSLETTER CARD */
+.nl-card{background:var(--n8);border:1px solid var(--bd);border-radius:16px;padding:22px 20px}
+.nl-icon{font-size:26px;margin-bottom:12px}
+.nl-title{font-size:16px;font-weight:800;color:var(--wh);margin-bottom:6px;letter-spacing:-.01em}
+.nl-desc{font-size:13px;color:var(--mu);line-height:1.65;margin-bottom:16px}
+.nl-row{display:flex;flex-direction:column;gap:9px}
+.nl-input{background:var(--n7);border:1px solid var(--bd);border-radius:10px;padding:11px 13px;font-family:'Outfit',sans-serif;font-size:13.5px;color:var(--ow);outline:none;transition:border-color .2s;width:100%}
+.nl-input::placeholder{color:var(--md)}
+.nl-input:focus{border-color:var(--or)}
+.nl-check{display:flex;align-items:flex-start;gap:8px;font-size:11.5px;color:var(--md);line-height:1.5}
+.nl-check input{accent-color:var(--or);margin-top:2px;flex-shrink:0;cursor:pointer}
+.nl-check a{color:var(--or);text-decoration:none}
+.nl-btn{width:100%;background:var(--or);color:#000;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;padding:12px;border:none;border-radius:10px;cursor:pointer;transition:all .2s}
+.nl-btn:hover{background:#fb923c;box-shadow:0 6px 20px rgba(249,115,22,.3)}
+.nl-unsub{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--md);text-align:center;margin-top:8px;cursor:pointer;transition:color .2s}
+.nl-unsub:hover{color:var(--mu)}
+
+/* RABATTCODE BANNER */
+.discount-banner{background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(249,115,22,.04));border:1px solid rgba(249,115,22,.25);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:11px;font-size:13px;color:var(--mu);line-height:1.65}
+.discount-banner strong{color:var(--ow)}
+.discount-banner span:first-child{font-size:20px;flex-shrink:0;margin-top:1px}
+
+/* MAP SECTION */
+.map-section{background:var(--n8);border-top:1px solid var(--bd)}
+.map-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:20px;overflow:hidden;border:1px solid var(--bd)}
+.map-frame{position:relative;min-height:340px;background:var(--n7);overflow:hidden}
+.map-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,var(--n7),var(--n6));position:relative;cursor:pointer;text-decoration:none}
+.map-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(78,99,130,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(78,99,130,.08) 1px,transparent 1px);background-size:32px 32px}
+.map-center{position:relative;z-index:1;text-align:center}
+.map-pin{font-size:44px;display:block;margin-bottom:8px;filter:drop-shadow(0 4px 12px rgba(249,115,22,.4))}
+.map-addr{font-size:14px;font-weight:700;color:var(--wh);margin-bottom:4px}
+.map-sub{font-size:12px;color:var(--mu);font-family:'JetBrains Mono',monospace}
+.map-open-btn{margin-top:14px;background:var(--or);color:#000;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;padding:10px 20px;border-radius:9px;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.map-open-btn:hover{background:#fb923c;box-shadow:0 6px 20px rgba(249,115,22,.3)}
+.map-info{padding:36px 32px;background:var(--n8);display:flex;flex-direction:column;justify-content:center;gap:18px}
+.map-info h3{font-size:22px;font-weight:800;color:var(--wh);letter-spacing:-.01em;margin-bottom:4px}
+.map-info p{font-size:14px;color:var(--mu);line-height:1.75}
+.map-details{display:flex;flex-direction:column;gap:11px}
+.md-row{display:flex;align-items:flex-start;gap:11px}
+.md-icon{width:36px;height:36px;border-radius:9px;background:var(--n7);border:1px solid var(--bdl);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.md-info h5{font-size:13px;font-weight:700;color:var(--wh);margin-bottom:2px}
+.md-info p{font-size:12.5px;color:var(--mu);line-height:1.5}
+.map-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+
+/* CTA BAND */
+.cta-band{background:var(--n7);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:64px 24px;position:relative;z-index:1}
+.cta-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-left h2{font-size:clamp(26px,3.5vw,42px);font-weight:800;color:var(--wh);letter-spacing:-.025em;line-height:1.1;margin-bottom:8px}
+.cta-left h2 span{color:var(--or)}
+.cta-left p{font-size:15px;color:var(--mu)}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+
+/* FOOTER */
+footer{background:var(--n9);border-top:1px solid var(--bd);padding:64px 24px 36px;position:relative;z-index:1}
+.ftop{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.fbrand p{font-size:14px;color:var(--mu);line-height:1.75;margin-top:12px;max-width:260px}
+.fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:16px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:9px}
+.fcol ul li a{font-size:14px;color:var(--mu);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--wh)}
+.fbot{max-width:1200px;margin:0 auto;border-top:1px solid var(--bdl);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.fcopy{font-size:13px;color:var(--md)}
+.fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+.fcmd{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--or);display:flex;align-items:center;gap:8px;background:var(--n7);border:1px solid var(--bd);padding:9px 16px;border-radius:10px;cursor:pointer;transition:all .2s}
+.fcmd:hover{border-color:var(--or);background:rgba(249,115,22,.08)}
+
+/* TOAST */
+#toast{position:fixed;bottom:22px;right:22px;z-index:300;background:var(--n7);border:1px solid rgba(34,197,94,.3);border-radius:12px;padding:12px 18px;font-size:13px;color:var(--ow);display:flex;align-items:center;gap:9px;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;max-width:300px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv2{opacity:0;transform:translateY(16px);transition:opacity .6s .1s ease,transform .6s .1s ease}
+.rv2.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:960px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  section,.phero,.cta-band{padding-left:16px;padding-right:16px}
+  .phero-in{grid-template-columns:1fr;gap:36px}
+  .contact-layout{grid-template-columns:1fr}
+  .sidebar-stack{position:static}
+  .map-layout{grid-template-columns:1fr}
+  .map-frame{min-height:260px}
+  .cta-inner{flex-direction:column;text-align:center}
+  .cta-btns{justify-content:center}
+  .ftop{grid-template-columns:1fr 1fr}
+  .fbot{flex-direction:column;gap:12px;text-align:center}
+  h1.ptitle{font-size:40px}
+}
+@media(max-width:600px){
+  .g2{grid-template-columns:1fr}
+  .ftop{grid-template-columns:1fr}
+  .hero-quick{flex-direction:column}
+  .map-info{padding:24px 20px}
+}
+</style>
+<style>
+
+/* ─── CANGO FOOTER (Startseiten-Stil) ─── */
+.cango-footer{background:#080d1a !important;border-top:1px solid rgba(78,99,130,.25) !important;padding:72px 24px 40px !important;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#f1f5f9;font-weight:700;font-size:15px}
+.cango-footer .footer-logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0}
+.cango-footer .footer-logo-text{display:flex;flex-direction:column;line-height:1}
+.cango-footer .footer-logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px;font-weight:700}
+.cango-footer .fcol ul{list-style:none;padding:0;margin:0}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#f1f5f9}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;-webkit-backdrop-filter:blur(20px)!important;backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
 </head>
-<body>
-  <!-- Navigation -->
-  <nav class="nav" role="navigation" aria-label="Hauptnavigation">
-    <div class="container nav__inner">
-      <a href="index.html" class="nav__brand">
-        <span class="nav__brand-icon">C</span>
-        <span>CanGo App Empire</span>
-      </a>
-      
-      <button class="nav__toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav__menu').classList.toggle('active')">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+<body class="page-haupt-13 has-primary-cta-bar">
 
-      <div class="nav__menu">
-        <a href="index.html#problem" class="nav__link">Problem</a>
-        <a href="index.html#technologie" class="nav__link">Technologie</a>
-        <a href="index.html#branchen" class="nav__link">Branchen</a>
-        <a href="marktplatz.html" class="nav__link">Marktplatz</a>
-        <a href="selfmade-empire.html" class="nav__link">Workflow Kampagnen</a>
-        <a href="index.html#faq" class="nav__link">FAQ</a>
-        <a href="kontakt.html" class="nav__cta">Jetzt anfragen</a>
+<!-- NAV -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html" class="active">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<div class="release-ribbon" id="releaseRibbon">
+  <span id="ribbon-slide-text" class="ribbon-slide-text"></span>
+  <span id="ribbon-countdown" class="ribbon-countdown"></span>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="bc">
+  <div class="bc-i">
+    <a href="/index.html">Startseite</a>
+    <span style="color:var(--md)">›</span>
+    <span style="color:var(--ow)">Kontakt</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="phero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="phero-in">
+    <div class="rv">
+      <div class="hero-chip"><span class="dot"></span><strong>100 Workflows aktiv</strong>&nbsp;·&nbsp;33 Content-Maschinen</div>
+      <h1 class="ptitle">Was wäre, wenn dein<br>Business von alleine <span class="ac">läuft?</span><br><span class="dm">Bereit für Autopilot.</span></h1>
+      <p class="hero-lead">Kostenlose Erstberatung für dein Unternehmen. Wir analysieren deine Anforderungen und zeigen dir, wie <strong>CanGo App Empire</strong> dein Marketing automatisieren kann.</p>
+      <div class="hero-quick">
+        <a href="#kontaktformular" class="hq hq--primary" data-cango-kpi="kpi_kontakt_cta"><span>✉️</span><div><div>Anfrage senden</div><small>Formular unten</small></div></a>
+        <a href="tel:+491632177606" class="hq"><span>📞</span><div><div>Direkt anrufen</div><small>+49 163 217 7606</small></div></a>
+        <a href="faq.html#support-chat" class="hq"><span>💬</span><div><div>Support Chat</div><small>Jetzt starten</small></div></a>
       </div>
     </div>
-  </nav>
+    <div class="hero-stats-panel rv2">
+      <div class="hsp-label"><span class="dot"></span> Beratungs-Übersicht</div>
+      <div class="hsp-grid">
+        <div class="hsp-item"><div class="hsp-num">&lt;24h</div><div class="hsp-desc">Antwortzeit auf alle Anfragen</div></div>
+        <div class="hsp-item"><div class="hsp-num">100%</div><div class="hsp-desc">Kostenlose Erstberatung</div></div>
+        <div class="hsp-item"><div class="hsp-num">9</div><div class="hsp-desc">Branchen-Expertise</div></div>
+        <div class="hsp-item"><div class="hsp-num">20</div><div class="hsp-desc">Enterprise Slots verfügbar</div></div>
+      </div>
+      <div class="hsp-sep"></div>
+      <div class="hsp-row"><span class="label">E-Mail</span><span class="val"><a href="mailto:kontakt@cango-empire.de">kontakt@cango-empire.de</a></span></div>
+      <div class="hsp-row"><span class="label">Telefon</span><span class="val">+49 163 217 7606</span></div>
+      <div class="hsp-row"><span class="label">Geschäftsadresse</span><span class="val">MYVI Group · Hannoversche Str. 99, 30916 Isernhagen</span></div>
+      <div class="hsp-row"><span class="label">Erreichbar</span><span class="val">Mo–Fr · 9–18 Uhr</span></div>
+    </div>
+  </div>
+</div>
 
-  <!-- Contact Page -->
-  <section class="contact-page">
-    <div class="container">
-      <!-- Hero Section -->
-      <div class="contact-hero">
-        <span class="contact-hero__eyebrow">KOSTENLOSE BERATUNG</span>
-        <h1 class="contact-hero__title">
-          Jetzt <span class="text-gradient">Kontakt aufnehmen</span>
-        </h1>
-        <p class="contact-hero__subtitle">
-          Erfahren Sie, wie unsere Marketing-Automatisierung Ihre Workflows revolutioniert. 
-          Wir zeigen Ihnen, wie Sie 24/7 hochwertigen Content produzieren – ohne menschliche Latenz.
-        </p>
+<!-- CONTACT SECTION -->
+<section id="kontaktformular" style="background:var(--n9)">
+  <div class="wrap">
+    <div class="rv"><div class="ey">✉ Anfrage &amp; Kontakt</div></div>
+    <div class="contact-layout">
+
+      <!-- FORM -->
+      <div class="form-tile rv">
+        <div class="ft-head">
+          <h3>Anfrage senden</h3>
+          <p>Pflichtfelder sind mit * gekennzeichnet. Deine Daten nutzen wir nur zur Bearbeitung dieser Anfrage (siehe <a href="/datenschutz.html">Datenschutz</a>).</p>
+          <div class="ft-next" role="region" aria-label="Ablauf nach dem Absenden">
+            <p><strong>Was passiert nach dem Absenden?</strong> Wir prüfen deine Nachricht und melden uns in der Regel <strong>werktags innerhalb von 24 Stunden</strong> (Mo–Fr, Feiertage ausgenommen), per E-Mail oder telefonisch, sofern du eine Rufnummer angegeben hast. Mit dem Absenden entsteht noch <strong>kein Vertrag</strong> — es liegt keine verbindliche Zusage von Preisen, Kapazität oder Lieferfrist vor.</p>
+          </div>
+        </div>
+        <div class="ft-body" id="formBody">
+          <!-- KPI Source Tracking -->
+          <input type="hidden" id="kpi_source" name="kpi_source" value="direct">
+          <!-- n8n-Honeypot — Bots füllen es aus, Menschen nicht; IF-Node in n8n filtert dieses Feld -->
+          <div style="display:none;" aria-hidden="true">
+            <label for="empire_hp_check">Lassen Sie dieses Feld leer</label>
+            <input type="text" id="empire_hp_check" name="empire_hp_check" value="" tabindex="-1" autocomplete="off" oninput="updBtn()">
+          </div>
+          <!-- Honeypot (Spam) — nicht ausfüllen -->
+          <div class="hp-wrap" aria-hidden="true">
+            <label for="hp_company">Firma</label>
+            <input type="text" id="hp_company" name="company_hp" tabindex="-1" autocomplete="off" oninput="updBtn()">
+          </div>
+          <!-- NAME ROW -->
+          <div class="g2">
+            <div class="fg">
+              <div class="fl">Vorname <span class="req">*</span></div>
+              <input class="fi" type="text" id="fname" placeholder="Max" autocomplete="given-name" required aria-required="true" aria-describedby="fname-err" oninput="valField(this)">
+              <div class="fe" id="fname-err" role="alert">Pflichtfeld — bitte Vornamen eintragen.</div>
+            </div>
+            <div class="fg">
+              <div class="fl">Nachname <span class="req">*</span></div>
+              <input class="fi" type="text" id="lname" placeholder="Mustermann" autocomplete="family-name" required aria-required="true" aria-describedby="lname-err" oninput="valField(this)">
+              <div class="fe" id="lname-err" role="alert">Pflichtfeld — bitte Nachnamen eintragen.</div>
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="fg">
+            <div class="fl">E-Mail <span class="req">*</span></div>
+            <div class="iw">
+              <span class="ii">✉️</span>
+              <input class="fi" type="email" id="email" placeholder="deine@email.de" autocomplete="email" required aria-required="true" aria-describedby="email-err" oninput="valEmail(this)">
+            </div>
+            <div class="fe" id="email-err" role="alert">Bitte eine gültige E-Mail-Adresse eingeben.</div>
+          </div>
+
+          <!-- FIRMA + TELEFON -->
+          <div class="g2">
+            <div class="fg">
+              <div class="fl">Firma</div>
+              <div class="iw">
+                <span class="ii">🏢</span>
+                <input class="fi" type="text" id="company" placeholder="CanGo GmbH" autocomplete="organization">
+              </div>
+              <div class="fh">Optional – für B2B-Anfragen</div>
+            </div>
+            <div class="fg">
+              <div class="fl">Telefon</div>
+              <div class="iw">
+                <span class="ii">📞</span>
+                <input class="fi" type="tel" id="phone" placeholder="+49 170 000 0000" autocomplete="tel">
+              </div>
+              <div class="fh">Optional – für Rückruf</div>
+            </div>
+          </div>
+
+          <!-- TERMIN -->
+          <div class="fg">
+            <div class="fl">Terminwunsch</div>
+            <div class="termin-row" id="terminRow">
+              <div class="tc" onclick="togTC(this)">Noch offen</div>
+              <div class="tc" onclick="togTC(this)">So schnell wie möglich</div>
+              <div class="tc" onclick="togTC(this)">Diese Woche</div>
+              <div class="tc" onclick="togTC(this)">Nächste Woche</div>
+              <div class="tc" onclick="togTC(this)">Vormittags</div>
+              <div class="tc" onclick="togTC(this)">Nachmittags</div>
+            </div>
+          </div>
+
+          <!-- BEDARF -->
+          <div class="fg">
+            <div class="fl">Bedarf / Interesse <span class="req">*</span></div>
+            <select class="fi" id="interest" name="interest" required aria-required="true" aria-describedby="interest-err" aria-label="Bedarf und Interesse (Pflichtfeld)" onchange="valField(this)">
+              <option value="">Bitte wählen...</option>
+              <option value="starter">Starter (5 Workflows · 497€/Mo)</option>
+              <option value="professional">Professional (12 Workflows · 2.497€/Mo)</option>
+              <option value="enterprise">Enterprise (33 Maschinen · 5.997€/Mo)</option>
+              <option value="selfmade">Self Made Empire (Voll-Lizenz · 49.997€)</option>
+              <option value="beratung">Kostenlose Erstberatung</option>
+              <option value="partnership">Allianzpartnerschaft</option>
+              <option value="sonstiges">Sonstiges</option>
+            </select>
+            <div class="fe" id="interest-err" role="alert">Bitte einen Bedarf / ein Interesse wählen.</div>
+          </div>
+
+          <!-- NACHRICHT -->
+          <div class="fg">
+            <div class="fl">Nachricht <span class="req">*</span></div>
+            <textarea class="fi" id="message" placeholder="Beschreibe kurz dein Business, deine Ziele und was du automatisieren möchtest. Oder frag einfach direkt." required aria-required="true" aria-describedby="message-err" minlength="20" oninput="valMessage(this)"></textarea>
+            <div class="fe" id="message-err" role="alert">Bitte eine Nachricht eingeben (mindestens 20 Zeichen).</div>
+            <div style="display:flex;justify-content:space-between;margin-top:3px">
+              <div class="fh">Tipp: Gib "CanGo App Empire" in deiner Nachricht an für den Rabattcode!</div>
+              <div class="fh" id="msg-count" style="flex-shrink:0;margin-left:8px">0 / 20+</div>
+            </div>
+          </div>
+
+          <!-- DATENSCHUTZ -->
+          <label class="lck">
+            <input type="checkbox" id="priv" required aria-required="true" aria-describedby="priv-err" onchange="valPriv()">
+            <span class="lt"><strong>Datenschutz <span style="color:var(--rd)">*</span></strong><br>Ich habe die <a href="/datenschutz.html">Datenschutzerklärung</a> zur Kenntnis genommen und willige ein, dass meine Angaben zur Bearbeitung der Anfrage verarbeitet werden.</span>
+          </label>
+          <div class="fe" id="priv-err" role="alert">Bitte bestätige die Kenntnisnahme der Datenschutzerklärung.</div>
+
+          <!-- SUBMIT -->
+          <button class="submit-btn" id="submitBtn" type="button" onclick="submitForm()" disabled aria-label="Anfrage absenden">
+            <span id="btnIcon">📤</span>
+            <span id="btnText">Anfrage senden</span>
+            <div class="btn-sp" id="btnSp"></div>
+          </button>
+          <p class="form-hint" id="formHint">Senden ist möglich, sobald Name, E-Mail und Datenschutz-Zustimmung ausgefüllt sind.</p>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="success-state" id="successState">
+          <span class="success-icon">🚀</span>
+          <div class="success-title">Anfrage erfolgreich gesendet!</div>
+          <p class="success-desc">Vielen Dank! Wir haben deine Anfrage erhalten und melden uns <strong>in der Regel werktags innerhalb von 24 Stunden</strong> bei dir. Prüfe gegebenenfalls auch den Spam-Ordner.</p>
+          <a href="/index.html" class="btn btn-o" style="font-size:14px">Zur Startseite</a>
+          <div style="margin-top:10px">
+            <button onclick="resetForm()" style="background:transparent;border:none;color:var(--mu);font-size:13px;cursor:pointer;font-family:'Outfit',sans-serif">Neue Anfrage senden</button>
+          </div>
+        </div>
       </div>
 
-      <!-- Contact Grid -->
-      <div class="contact-grid">
-        <!-- Contact Info -->
-        <div class="contact-info">
-          <div class="contact-info__card">
-            <h3 class="contact-info__card-title">📧 E-Mail</h3>
-            <p class="contact-info__card-text">
-              <a href="mailto:kontakt@cango-empire.de" style="color: var(--primary-400); text-decoration: none;">
-                kontakt@cango-empire.de
-              </a>
-            </p>
+      <!-- SIDEBAR -->
+      <div class="sidebar-stack">
+
+        <!-- KONTAKTINFO -->
+        <div class="info-card rv">
+          <div class="ic-head">
+            <h4>Kontaktinformationen</h4>
+            <p>Direkte Kontaktwege zum Team</p>
           </div>
-          
-          <div class="contact-info__card">
-            <h3 class="contact-info__card-title">⚡ Antwortzeit</h3>
-            <p class="contact-info__card-text">
-              Wir antworten innerhalb von <strong style="color: var(--primary-400);">24 Stunden</strong> auf alle Anfragen.
-            </p>
-          </div>
-          
-          <div class="contact-info__card">
-            <h3 class="contact-info__card-title">💬 Beratungsgespräch</h3>
-            <p class="contact-info__card-text">
-              Kostenloses Erstgespräch zur Analyse Ihrer Anforderungen und individueller Lösungsvorschlag.
-            </p>
+          <div class="ic-body">
+            <div class="ci-row">
+              <div class="ci-icon">✉️</div>
+              <div class="ci-info">
+                <h5>E-Mail</h5>
+                <p><a href="mailto:kontakt@cango-empire.de">kontakt@cango-empire.de</a></p>
+              </div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-icon">📍</div>
+              <div class="ci-info">
+                <h5>Anschrift (wie Impressum)</h5>
+                <p><strong style="color:var(--ow)">CanGo App Empire</strong> · Canberk Kivilcim<br>An der Legde 9, 29339 Wathlingen (Postanschrift)<br>Geschäftsadresse Beratung: MYVI Group, Hannoversche Str. 99, 30916 Isernhagen</p>
+              </div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-icon">📞</div>
+              <div class="ci-info">
+                <h5>Telefon</h5>
+                <a href="tel:+491632177606">+49 163 217 7606 ↗</a>
+              </div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-icon">⏱️</div>
+              <div class="ci-info">
+                <h5>Antwortzeit</h5>
+                <p>Innerhalb von 24 Stunden auf alle Anfragen.</p>
+              </div>
+            </div>
+            <div class="ci-row">
+              <div class="ci-icon">🎯</div>
+              <div class="ci-info">
+                <h5>Beratung</h5>
+                <p>Kostenlose Erstberatung – keine versteckten Kosten.</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Contact Form -->
-        <div class="contact-form">
-          <form id="contact-form" action="#" method="POST">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="vorname" class="form-label">Vorname *</label>
-                <input type="text" id="vorname" name="vorname" class="form-input" required>
+        <!-- RABATTCODE BANNER -->
+        <div class="rv" style="background:var(--n8);border:1px solid var(--bd);border-radius:14px;padding:18px 20px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--or);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px">🎁 Rabattcode</div>
+          <p style="font-size:13.5px;color:var(--ow);font-weight:700;margin-bottom:6px">„CanGo App Empire" in die Nachricht</p>
+          <p style="font-size:12.5px;color:var(--mu);line-height:1.65">Gib unseren Namen in deiner Nachricht an – so erkennt unser System, woher du kommst und du erhältst deinen persönlichen Rabattcode.</p>
+        </div>
+
+        <!-- FOUNDER CARD -->
+        <div class="founder-card rv">
+          <div class="founder-head">
+            <div class="founder-avatar">CK</div>
+            <div class="founder-meta">
+              <h4>Canberk Kivilcim</h4>
+              <p>Founder &amp; Automatisierungs-Architekt</p>
+              <div class="founder-phone">📞 <a href="tel:+491632177606">+49 163 217 7606</a></div>
+            </div>
+          </div>
+          <div class="founder-body">
+            <p class="founder-desc">Unter der Woche erreichst du mich bei der <strong style="color:var(--ow)">MYVI GROUP</strong>, am Hannoverschen Platz. Für Automatisierungs-Anfragen schreib mir direkt — ich antworte innerhalb von 24 Stunden.</p>
+            <div class="founder-location">
+              <span>📍</span>
+              <div>
+                <strong style="color:var(--ow)">MYVI Group</strong><br>
+                Hannoversche Str. 99, 30916 Isernhagen
+                <a href="https://maps.google.com/?q=Hannoversche+Str+99+30916+Isernhagen" target="_blank" rel="noopener noreferrer">Google Maps öffnen →</a>
               </div>
-              
-              <div class="form-group">
-                <label for="nachname" class="form-label">Nachname *</label>
-                <input type="text" id="nachname" name="nachname" class="form-input" required>
-              </div>
             </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label">E-Mail *</label>
-              <input type="email" id="email" name="email" class="form-input" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="firma" class="form-label">Firma</label>
-              <input type="text" id="firma" name="firma" class="form-input">
-            </div>
-            
-            <div class="form-group">
-              <label for="interesse" class="form-label">Interesse *</label>
-              <select id="interesse" name="interesse" class="form-select" required>
-                <option value="">Bitte wählen...</option>
-                <option value="starter">Starter (5 Workflows)</option>
-                <option value="professional">Professional (12 Workflows)</option>
-                <option value="enterprise">Enterprise (19 Workflows)</option>
-                <option value="selfmade">Selfmade Empire</option>
-                <option value="beratung">Kostenlose Beratung</option>
-                <option value="sonstiges">Sonstiges</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="nachricht" class="form-label">Nachricht *</label>
-              <textarea id="nachricht" name="nachricht" class="form-textarea" required placeholder="Beschreiben Sie kurz Ihr Anliegen..."></textarea>
-            </div>
-            
-            <button type="submit" class="form-submit">
-              Anfrage senden →
+          </div>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="nl-card rv">
+          <div class="nl-icon">📧</div>
+          <div class="nl-title">Newsletter</div>
+          <p class="nl-desc">Bleib auf dem Laufenden – AI &amp; Automatisierung direkt ins Postfach.</p>
+          <div class="nl-row">
+            <input class="nl-input" type="email" placeholder="deine@email.de" id="nlEmail">
+            <label class="nl-check">
+              <input type="checkbox" id="nlPriv">
+              <span>Einwilligung <a href="/datenschutz.html">Datenschutz</a>. <span style="color:var(--rd)">*</span></span>
+            </label>
+            <button class="nl-btn" onclick="nlSubmit()">Anmelden</button>
+            <div class="nl-unsub" onclick="toast('📧','Abmelde-E-Mail wurde gesendet.')">Abmelden? E-Mail hier abmelden.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+  <div class="wrap">
+    <div class="rv"><div class="ey">📍 Standort &amp; Beratung</div></div>
+    <div class="map-layout rv">
+      <!-- MAP PLACEHOLDER -->
+      <div class="map-frame">
+        <a class="map-placeholder" href="https://maps.google.com/?q=Hannoversche+Str+99+30916+Isernhagen" target="_blank" rel="noopener noreferrer">
+          <div class="map-bg-grid"></div>
+          <div class="map-center">
+            <span class="map-pin">📍</span>
+            <div class="map-addr">MYVI Group · Hannoversche Str. 99</div>
+            <div class="map-sub">30916 Isernhagen · Niedersachsen</div>
+            <button type="button" class="map-open-btn" onclick="event.preventDefault();var w=window.open('https://maps.google.com/?q=Hannoversche+Str+99+30916+Isernhagen','_blank','noopener,noreferrer');if(w)w.opener=null;">
+              🗺️ Google Maps öffnen
             </button>
-          </form>
+          </div>
+        </a>
+      </div>
+      <!-- MAP INFO -->
+      <div class="map-info">
+        <div>
+          <h3>Beratung vor Ort</h3>
+          <p>Persönliche Beratungsgespräche am Standort der MYVI Group in Isernhagen bei Hannover. Termine nach Vereinbarung.</p>
+        </div>
+        <div class="map-details">
+          <div class="md-row">
+            <div class="md-icon">🏢</div>
+            <div class="md-info"><h5>MYVI Group</h5><p>Hannoversche Str. 99, 30916 Isernhagen</p></div>
+          </div>
+          <div class="md-row">
+            <div class="md-icon">📞</div>
+            <div class="md-info"><h5>Direktlinie</h5><p><a href="tel:+491632177606" style="color:var(--or);text-decoration:none;font-weight:600">+49 163 217 7606</a></p></div>
+          </div>
+          <div class="md-row">
+            <div class="md-icon">🕐</div>
+            <div class="md-info"><h5>Erreichbarkeit</h5><p>Montag – Freitag · 9:00 – 18:00 Uhr</p></div>
+          </div>
+          <div class="md-row">
+            <div class="md-icon">🚗</div>
+            <div class="md-info"><h5>Anfahrt</h5><p>Parkplätze direkt am Gebäude · 12 Min. vom Hannover HBF</p></div>
+          </div>
+        </div>
+        <div class="map-cta">
+          <a href="https://maps.google.com/?q=Hannoversche+Str+99+30916+Isernhagen" target="_blank" rel="noopener noreferrer" class="btn btn-o" style="font-size:13px;padding:10px 18px">🗺️ Route planen</a>
+          <a href="tel:+491632177606" class="btn btn-g" style="font-size:13px;padding:10px 18px">📞 Anrufen</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <div class="footer__brand-name">CanGo App Empire</div>
-          <p class="footer__brand-description">
-            Marketing-Automatisierung für den DACH-Markt. 
-            19 Workflows. 30 KI-Systeme. Kein Bullshit.
-          </p>
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--rd);display:flex;align-items:center;gap:7px;margin-bottom:10px"><span class="pulse"></span>Begrenzte Enterprise-Slots · Nur 20 verfügbar</div>
+      <h2>Noch Fragen? <span>Wir antworten.</span></h2>
+      <p>Kein Ticket-System. Kein Warten. Direkt zum Founder.</p>
+    </div>
+    <div class="cta-btns" style="flex-wrap:wrap;align-items:center;gap:12px 20px">
+      <a href="#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Anfrage senden</a>
+      <a href="/faq.html" class="hero-cta-secondary">FAQ &amp; Chat →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<!-- FOOTER -->
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
         </div>
-        
-        <div>
-          <div class="footer__column-title">Produkt</div>
-          <ul class="footer__links">
-            <li><a href="index.html#technologie" class="footer__link">Technologie</a></li>
-            <li><a href="index.html#branchen" class="footer__link">Branchen</a></li>
-            <li><a href="index.html#preise" class="footer__link">Preise</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <div class="footer__column-title">Unternehmen</div>
-          <ul class="footer__links">
-            <li><a href="#" class="footer__link">Über uns</a></li>
-            <li><a href="domicil-grundstein.html" class="footer__link">Partner</a></li>
-            <li><a href="#" class="footer__link">Karriere</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <div class="footer__column-title">Rechtliches</div>
-          <ul class="footer__links">
-            <li><a href="impressum.html" class="footer__link">Impressum</a></li>
-            <li><a href="datenschutz.html" class="footer__link">Datenschutz</a></li>
-            <li><a href="agb.html" class="footer__link">AGB</a></li>
-            <li><a href="widerruf.html" class="footer__link">Widerrufserklärung</a></li>
-          </ul>
-        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
       </div>
-      
-      <div class="footer__bottom">
-        <div>© 2025 CanGo App Empire. Alle Rechte vorbehalten.</div>
-        <div>Kopieren hilft dir nicht – du brauchst die Maschine.</div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
       </div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Hier würde später die n8n-Integration kommen
-      const formData = new FormData(this);
-      const data = Object.fromEntries(formData);
-      
-      console.log('Formular-Daten:', data);
-      
-      // Temporäre Erfolgsmeldung
-      alert('Vielen Dank für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
-      this.reset();
-    });
-    
-    document.querySelectorAll('.nav__link, .nav__cta').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('.nav__menu').classList.remove('active');
-      });
-    });
-  </script>
-</body>
-</html>
+<div id="toast"><span id="ti">✓</span><span id="tm"></span></div>
 
+<script>
+// REVEAL
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target)}});},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv,.rv2').forEach(el=>obs.observe(el));
 
+// TERMIN CHIPS
+function togTC(el){el.classList.toggle('sel');}
+
+// VALIDATION (Phase 1.2 — Pflichtfelder, aria-kompatible Fehleranzeige)
+var contactFormDirty=false;
+function touchContactForm(){contactFormDirty=true;}
+(function(){
+  var fb=document.getElementById('formBody');
+  if(!fb)return;
+  fb.addEventListener('focusin',function(){touchContactForm();},{once:true});
+  fb.addEventListener('change',touchContactForm);
+  fb.addEventListener('input',touchContactForm);
+})();
+function showFieldErr(id,show){
+  var e=document.getElementById(id);
+  if(e)e.style.display=show?'block':'none';
+}
+function valField(inp){
+  var ok=inp.tagName==='SELECT'?inp.value!=='':inp.value.trim().length>0;
+  inp.classList.toggle('valid',ok);
+  inp.classList.toggle('err',!ok);
+  var errId=inp.id==='fname'?'fname-err':inp.id==='lname'?'lname-err':inp.id==='interest'?'interest-err':null;
+  if(errId)showFieldErr(errId,contactFormDirty&&!ok);
+  updBtn();
+}
+function valEmail(inp){
+  var ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value);
+  inp.classList.toggle('valid',ok);
+  inp.classList.toggle('err',!ok&&inp.value.length>0);
+  showFieldErr('email-err',contactFormDirty&&(!ok&&inp.value.length>0));
+  updBtn();
+}
+function valMessage(inp){
+  var len=inp.value.trim().length;
+  document.getElementById('msg-count').textContent=len+' / 20+';
+  var ok=len>=20;
+  inp.classList.toggle('valid',ok);
+  inp.classList.toggle('err',!ok&&len>0);
+  showFieldErr('message-err',contactFormDirty&&!ok&&len>0);
+  updBtn();
+}
+function valPriv(){
+  var ok=document.getElementById('priv').checked;
+  showFieldErr('priv-err',contactFormDirty&&!ok);
+  updBtn();
+}
+function updBtn(){
+  var hpEl=document.getElementById('hp_company');
+  var hpOk=!hpEl||hpEl.value.trim()==='';
+  var hp2=document.getElementById('empire_hp_check');
+  var hp2Ok=!hp2||hp2.value.trim()==='';
+  var fn=document.getElementById('fname').value.trim().length>0;
+  var ln=document.getElementById('lname').value.trim().length>0;
+  var em=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value);
+  var it=document.getElementById('interest').value!=='';
+  var msg=document.getElementById('message').value.trim().length>=20;
+  var prv=document.getElementById('priv').checked;
+  showFieldErr('interest-err',contactFormDirty&&!it);
+  showFieldErr('priv-err',contactFormDirty&&!prv);
+  document.getElementById('submitBtn').disabled=!(fn&&ln&&em&&prv&&hpOk&&hp2Ok);
+}
+
+// SUBMIT
+function submitForm(){
+  touchContactForm();
+  valField(document.getElementById('fname'));
+  valField(document.getElementById('lname'));
+  valEmail(document.getElementById('email'));
+  valField(document.getElementById('interest'));
+  valMessage(document.getElementById('message'));
+  valPriv();
+  var hpEl=document.getElementById('hp_company');
+  if(hpEl&&hpEl.value.trim()!==''){
+    toast('⚠️','Übermittlung konnte nicht verarbeitet werden. Bitte versuche es erneut.');
+    return;
+  }
+  var hp2El=document.getElementById('empire_hp_check');
+  if(hp2El&&hp2El.value.trim()!==''){
+    toast('⚠️','Übermittlung konnte nicht verarbeitet werden. Bitte versuche es erneut.');
+    return;
+  }
+  var btn=document.getElementById('submitBtn');
+  if(btn.disabled)return;
+  var sp=document.getElementById('btnSp');
+  var txt=document.getElementById('btnText');
+  var ico=document.getElementById('btnIcon');
+  btn.disabled=true;sp.style.display='block';txt.textContent='Wird gesendet…';ico.style.display='none';
+  setTimeout(()=>{
+    document.getElementById('formBody').style.display='none';
+    document.getElementById('successState').style.display='block';
+    toast('🚀','Anfrage erfolgreich gesendet!');
+    if(window.CANGO_emitKpi){
+      var kpiSrcEl=document.getElementById('kpi_source');
+      var submitExtra={cango_placement:'form_submit',cango_content_bereich:'kontaktformular'};
+      if(kpiSrcEl&&kpiSrcEl.value)submitExtra.cango_kpi_source=kpiSrcEl.value;
+      window.CANGO_emitKpi('kpi_kontakt_submit',submitExtra);
+    }
+  },1800);
+}
+function resetForm(){
+  contactFormDirty=false;
+  document.getElementById('formBody').style.display='block';
+  document.getElementById('successState').style.display='none';
+  document.querySelectorAll('.fe').forEach(function(n){n.style.display='none';});
+  document.querySelectorAll('.fi').forEach(f=>{f.value='';f.classList.remove('valid','err');});
+  var hp=document.getElementById('hp_company');if(hp)hp.value='';
+  var hp2=document.getElementById('empire_hp_check');if(hp2)hp2.value='';
+  document.getElementById('priv').checked=false;
+  document.getElementById('submitBtn').disabled=true;
+  const btn=document.getElementById('submitBtn');
+  document.getElementById('btnSp').style.display='none';
+  document.getElementById('btnText').textContent='Anfrage senden';
+  document.getElementById('btnIcon').style.display='';
+  document.getElementById('msg-count').textContent='0 / 20+';
+  btn.disabled=true;
+}
+
+// NEWSLETTER
+function nlSubmit(){
+  const em=document.getElementById('nlEmail').value;
+  const prv=document.getElementById('nlPriv').checked;
+  if(!em||!em.includes('@')){toast('⚠️','Bitte gültige E-Mail eingeben.');return;}
+  if(!prv){toast('⚠️','Bitte Datenschutz bestätigen.');return;}
+  toast('✓',em+' – erfolgreich angemeldet!');
+  document.getElementById('nlEmail').value='';
+  document.getElementById('nlPriv').checked=false;
+}
+function toast(i,m){const t=document.getElementById('toast');document.getElementById('ti').textContent=i;document.getElementById('tm').textContent=m;t.style.transform='translateY(0)';t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(()=>{t.style.transform='translateY(80px)';t.style.opacity='0';},2500);}
+</script>
+<script>
+(function(){
+  var messages = ['🔥 RELEASE START: 75% auf alle Workflow-Dateien – Nur 12 Monate · Selbst einrichten · API-Keys eigenständig anbinden','🚀 75% Rabatt auf n8n Workflows – Konzipierte Vorlagen, API-Keys selbst anbinden','⚡ Limitierte Aktion: Workflow-Dateien zum Viertelpreis – 12 Monate gültig','📦 Fertige JSON-Workflows kaufen · Kein Full-Service · Du bindest API-Schlüssel selbst an'];
+  var el = document.getElementById('ribbon-slide-text');
+  if (!el) return;
+  var idx = 0;
+  el.textContent = messages[0];
+  function next() { el.classList.add('fade'); setTimeout(function(){ idx = (idx + 1) % messages.length; el.textContent = messages[idx]; el.classList.remove('fade'); }, 400); }
+  setInterval(next, 10000);
+})();
+</script>
+<script>
+(function(){
+  var KEY = 'cango_release_start';
+  var start = localStorage.getItem(KEY);
+  if (!start) { start = Date.now().toString(); localStorage.setItem(KEY, start); }
+  var end = parseInt(start, 10) + (365 * 24 * 60 * 60 * 1000);
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function update() {
+    var diff = Math.max(0, end - Date.now());
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var rEl = document.getElementById('ribbon-countdown');
+    if (rEl) rEl.textContent = d + ' T ' + pad(h) + ':' + pad(m);
+  }
+  update();
+  setInterval(update, 60000);
+})();
+</script>
+<script>(function(){var btn=document.getElementById('navToggle');if(btn)btn.addEventListener('click',function(){document.body.classList.toggle('nav-open');});})();</script>
+<script src="/js/release-ribbon.js?v=2" defer></script>
+<!-- FIX-2026-04-07: Phase 0.2 KPI — siehe /js/kpi-events.js -->
+<script src="/js/kpi-events.js?v=2" defer></script>
+<script src="/cart.js" defer></script>
+<div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+  <a href="#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Zum Formular</a>
+</div>
+<!-- KPI Source Capture: liest ?kpi= URL-Param und document.referrer, schreibt in kpi_source -->
+<!-- Bonus: Pre-Select Interesse-Dropdown basierend auf KPI-Quelle -->
+<script>
+(function(){
+  try {
+    var field = document.getElementById('kpi_source');
+    if (!field) return;
+    var params = new URLSearchParams(window.location.search);
+    var kpiParam = params.get('kpi');
+    var source = '';
+    if (kpiParam) {
+      source = kpiParam;
+    } else {
+      var ref = document.referrer;
+      if (!ref) { source = 'direct'; }
+      else if (ref.indexOf('google.') !== -1) { source = 'seo_google'; }
+      else if (ref.indexOf('bing.') !== -1)  { source = 'seo_bing'; }
+      else if (ref.indexOf('instagram.') !== -1 || ref.indexOf('ig.me') !== -1) { source = 'social_instagram'; }
+      else if (ref.indexOf('facebook.') !== -1 || ref.indexOf('fb.com') !== -1) { source = 'social_facebook'; }
+      else if (ref.indexOf('linkedin.') !== -1) { source = 'social_linkedin'; }
+      else if (ref.indexOf('tiktok.') !== -1) { source = 'social_tiktok'; }
+      else if (ref.indexOf('youtube.') !== -1) { source = 'social_youtube'; }
+      else if (ref.indexOf('automation-cango-app-empire.com') !== -1) {
+        var page = ref.split('/').pop().replace('.html','') || 'index';
+        source = 'internal_' + page;
+      } else { source = 'referral_external'; }
+    }
+    field.value = source;
+
+    // Pre-Select Interesse-Dropdown je nach KPI-Quelle
+    var interestMap = {
+      'mid_hr_recruiting':    'beratung',
+      'mid_nischen':          'beratung',
+      'mid_mindset':          'beratung',
+      'mid_blog':             'beratung',
+      'mid_blog_finanzen':    'beratung',
+      'mid_blog_immobilien':  'beratung',
+      'mid_blog_energie':     'beratung',
+      'mid_blog_crypto':      'beratung',
+      'mid_blog_trading':     'beratung',
+      'mid_blog_ki':          'beratung',
+      'mid_blog_automationen':'beratung',
+      'mid_blog_hr':          'beratung',
+      'mid_blog_mindset':     'beratung',
+      'internal_karriere-hr': 'beratung',
+      'internal_nischen':     'beratung',
+      'internal_coaching-mindset': 'beratung',
+      'internal_blogs':       'beratung',
+      'internal_finanzen-versicherung': 'beratung',
+      'internal_immobilien':  'beratung',
+      'internal_energie-solar': 'beratung',
+      'internal_crypto-web3': 'beratung',
+      'internal_trading':     'beratung',
+      'internal_ki-tech':     'beratung',
+      'internal_automationen':'beratung'
+    };
+    var preSelect = interestMap[source];
+    if (preSelect) {
+      var sel = document.getElementById('interest');
+      if (sel) {
+        sel.value = preSelect;
+        if (typeof valField === 'function') valField(sel);
+        if (typeof updBtn === 'function') updBtn();
+      }
+    }
+  } catch(e) {}
+})();
+</script>
+<!-- FIX-20260408_003619: Submit-Event sendet cango_kpi_source an dataLayer (Mid-CTA via ?kpi=) -->
+<!-- FIX-2026-04-08: empire_hp_check wie hp_company in updBtn/submit/reset; Pre-Select triggert valField+updBtn -->
+</body></html>

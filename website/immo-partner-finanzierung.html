@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Immobilien-Partner &amp; Finanzierung | CanGo App Empire</title>
+  <meta name="description" content="Geschlossene Immobilien-Routen (Sicherheit &amp; Wachstum), Finanzierung und Automatisierung – für anspruchsvolle Investoren.">
+  
+  
+  <link rel="stylesheet" href="/cango-empire-v4-monopoly.css?v=24">
+  
+      <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+    <!-- FIX-2026-04-07: Phase 1.1 — KPI + Mobile-CTA-Leiste -->
+    <link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+    <style>
+    .partner-page {
+      padding: calc(var(--nav-height) + var(--space-20)) 0 var(--space-12);
+      min-height: 100vh;
+    }
+    
+    .partner-hero {
+      text-align: center;
+      margin-bottom: var(--space-16);
+      padding: var(--space-12) 0;
+    }
+    
+    .partner-hero__icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      border-radius: var(--radius-lg);
+      filter: drop-shadow(0 4px 12px rgba(249, 115, 22, 0.2));
+    }
+    
+    .partner-hero__icon svg {
+      width: 48px;
+      height: 48px;
+      fill: white;
+    }
+    
+    .partner-hero__eyebrow {
+      display: inline-block;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary-400);
+      margin-bottom: var(--space-4);
+      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    .workflow-pitch {
+      margin: var(--space-16) 0;
+      padding: var(--space-8);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      border-radius: var(--radius-xl);
+      border-left: 4px solid var(--primary-500);
+    }
+    
+    .workflow-pitch__title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--primary-400);
+      margin-bottom: var(--space-4);
+    }
+    
+    .workflow-pitch__text {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    .partner-hero__title {
+      font-size: clamp(2.5rem, 5vw, var(--text-5xl));
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+    
+    .partner-hero__subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    
+    .partners-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: var(--space-8);
+      margin: var(--space-16) 0;
+    }
+    
+    .partner-card {
+      padding: var(--space-8);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-xl);
+      transition: all var(--duration-normal) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .partner-card--safety {
+      border-left: 4px solid #EF4444;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(239, 68, 68, 0.02) 100%);
+    }
+    
+    .partner-card--safety::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #EF4444, #DC2626);
+      opacity: 1;
+    }
+    
+    .partner-card--growth {
+      border-left: 4px solid #334155;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.05) 0%, rgba(30, 41, 59, 0.02) 100%);
+    }
+    
+    .partner-card--growth::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #334155, #1e293b);
+      opacity: 1;
+    }
+    
+    .partner-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .partner-card--safety:hover {
+      border-color: #EF4444;
+      box-shadow: 0 8px 24px rgba(239, 68, 68, 0.2);
+    }
+    
+    .partner-card--growth:hover {
+      border-color: #334155;
+      box-shadow: 0 8px 24px rgba(30, 41, 59, 0.2);
+    }
+    
+    .partner-card__logo {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    .partner-card--safety .partner-card__logo {
+      color: #EF4444;
+    }
+    
+    .partner-card--growth .partner-card__logo {
+      color: #334155;
+    }
+    
+    .partner-card__name {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+    }
+    
+    .partner-card__category {
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin-bottom: var(--space-4);
+    }
+    
+    .partner-card--safety .partner-card__category {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #EF4444;
+    }
+    
+    .partner-card--growth .partner-card__category {
+      background: rgba(30, 41, 59, 0.15);
+      border: 1px solid rgba(30, 41, 59, 0.3);
+      color: #334155;
+    }
+    
+    .partner-card__description {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+    
+    .partner-card__features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .partner-card__feature {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+    
+    .partner-card__feature::before {
+      content: '✓';
+      color: var(--success);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    
+    .target-groups {
+      margin: var(--space-16) 0;
+    }
+    
+    .target-groups__header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+    
+    .target-groups__title {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+    
+    .target-groups__subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .target-groups__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-6);
+    }
+    
+    .target-group-card {
+      padding: var(--space-8);
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.08) 0%, rgba(30, 41, 59, 0.03) 100%);
+      border: 2px solid rgba(30, 41, 59, 0.2);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-normal) var(--ease-out);
+      text-align: center;
+    }
+    
+    .target-group-card:hover {
+      border-color: #334155;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(30, 41, 59, 0.2);
+    }
+    
+    .target-group-card__icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(30, 41, 59, 0.1);
+      border: 2px solid rgba(30, 41, 59, 0.3);
+      border-radius: var(--radius-lg);
+    }
+    
+    .target-group-card__icon svg {
+      width: 32px;
+      height: 32px;
+      fill: #334155;
+    }
+    
+    .target-group-card__title {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+    }
+    
+    .target-group-card__description {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: var(--space-4);
+    }
+    
+    .target-group-card__benefits {
+      list-style: none;
+      padding: 0;
+      margin: var(--space-4) 0 0;
+      text-align: left;
+    }
+    
+    .target-group-card__benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-2);
+      padding: var(--space-2) 0;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+    
+    .target-group-card__benefit::before {
+      content: '→';
+      color: #334155;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    
+    .cta-section {
+      text-align: center;
+      margin: var(--space-16) 0;
+      padding: var(--space-12);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(249, 115, 22, 0.03) 100%);
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      border-radius: var(--radius-xl);
+    }
+    
+    .cta-section__title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+    
+    .cta-section__text {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-6);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    @media (max-width: 768px) {
+      .partners-showcase {
+        grid-template-columns: 1fr;
+      }
+      
+      .target-groups__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body class="empire-sync empire-sync--landing has-primary-cta-bar">
+  <!-- Navigation -->
+  <!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+  <!-- Partner Page -->
+  <section class="partner-page">
+    <div class="container">
+      <!-- Hero Section -->
+      <div class="partner-hero">
+        <div class="partner-hero__icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12L5 10M5 10L12 3L19 10M5 10V20C5 20.5523 5.44772 21 6 21H9M19 10L21 12M19 10V20C19 20.5523 18.5523 21 18 21H15M9 21C9.55228 21 10 20.5523 10 20V16C10 15.4477 10.4477 15 11 15H13C13.5523 15 14 15.4477 14 16V20C14 20.5523 14.4477 21 15 21M9 21H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="partner-hero__eyebrow">EXKLUSIVE PARTNERSCHAFTEN</span>
+        <h1 class="partner-hero__title">
+          Route <span class="text-gradient">Sicherheit</span> &amp; <span class="text-gradient">Wachstum</span>
+        </h1>
+        <p class="partner-hero__subtitle">
+          <strong class="text-gradient">Premium-Immobilien-Investments</strong> über geschlossene Allianzkanäle. 
+          Fokus auf Rendite, Substanz und nachhaltige Wertsteigerung.
+        </p>
+      </div>
+
+      <!-- Partners Showcase -->
+      <div class="partners-showcase">
+        <!-- Route Sicherheit -->
+        <div class="partner-card partner-card--safety">
+          <div class="partner-card__logo">SICHERHEIT</div>
+          <div class="partner-card__name">Route Sicherheit</div>
+          <div class="partner-card__category">Sozial- &amp; Pflegeimmobilien</div>
+          <p class="partner-card__description">
+            <strong style="color: #EF4444;">Exklusive Pflege- und Sozialimmobilien</strong> und 
+            High-Ticket-Strukturen mit <strong style="color: #EF4444;">planbaren Rendite-Perspektiven</strong> über einen dedizierten Partnerkanal.
+          </p>
+          <ul class="partner-card__features">
+            <li class="partner-card__feature"><strong style="color: #EF4444;">Exklusive Pflegeimmobilien-Portfolio</strong></li>
+            <li class="partner-card__feature"><strong style="color: #EF4444;">High-Ticket</strong> Investments ab 100.000€</li>
+            <li class="partner-card__feature">Langfristige Wertsteigerung</li>
+            <li class="partner-card__feature">Professionelle Betreuung & Verwaltung</li>
+            <li class="partner-card__feature">DSGVO-konform</li>
+          </ul>
+        </div>
+
+        <!-- Route Wachstum -->
+        <div class="partner-card partner-card--growth">
+          <div class="partner-card__logo">WACHSTUM</div>
+          <div class="partner-card__name">Route Wachstum</div>
+          <div class="partner-card__category">Denkmal, Neubau &amp; Bestand</div>
+          <p class="partner-card__description">
+            <strong style="color: #334155;">Strategische Immobilien-Entwicklung</strong> mit Fokus auf 
+            <strong style="color: #334155;">nachhaltige Investments</strong> und strukturierte Steuerlogik im Beraterpfad.
+          </p>
+          <ul class="partner-card__features">
+            <li class="partner-card__feature"><strong style="color: #334155;">Strategische Immobilien-Entwicklung</strong></li>
+            <li class="partner-card__feature"><strong style="color: #334155;">Nachhaltige</strong> Investment-Strategien</li>
+            <li class="partner-card__feature">Portfolio-Diversifikation</li>
+            <li class="partner-card__feature">Langfristige Partnerschaften</li>
+            <li class="partner-card__feature">Transparente Kommunikation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Workflow Pitch Section (Orange) -->
+      <div class="workflow-pitch">
+        <h3 class="workflow-pitch__title">Vollautomatisierte Marketing-Automatisierung</h3>
+        <p class="workflow-pitch__text">
+          Unsere geschlossenen Immobilien-Routen werden durch 
+          unsere vollautomatisierten Marketing-Workflows unterstützt. Wir generieren automatisch 
+          hochwertige Immobilien-Inhalte, Lead-Generierung und Conversion-Optimierung – 
+          <strong class="text-gradient">24/7 ohne menschliche Latenz.</strong>
+        </p>
+        <ul style="list-style: none; padding: 0; margin: var(--space-4) 0 0;">
+          <li style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-2) 0; color: var(--text-secondary);">
+            <span style="color: var(--primary-400); font-weight: 600;">→</span>
+            <span>Automatisierte Objektbeschreibungen & Exposés</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-2) 0; color: var(--text-secondary);">
+            <span style="color: var(--primary-400); font-weight: 600;">→</span>
+            <span>SEO-optimierte Content-Produktion</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-2) 0; color: var(--text-secondary);">
+            <span style="color: var(--primary-400); font-weight: 600;">→</span>
+            <span>Lead-Generierung & Nurturing für Zielgruppen</span>
+          </li>
+          <li style="display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-2) 0; color: var(--text-secondary);">
+            <span style="color: var(--primary-400); font-weight: 600;">→</span>
+            <span>Social Media Automation & Video-Content</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Target Groups Section -->
+      <div class="target-groups">
+        <div class="target-groups__header">
+          <h2 class="target-groups__title">Unsere Zielgruppen</h2>
+          <p class="target-groups__subtitle">
+            Wir sprechen gezielt anspruchsvolle Investoren an, die Wert auf 
+            Qualität, Sicherheit und langfristige Rendite legen.
+          </p>
+        </div>
+
+        <div class="target-groups__grid">
+          <!-- Singles Card -->
+          <div class="target-group-card">
+            <div class="target-group-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="target-group-card__title">Singles</h3>
+            <p class="target-group-card__description">
+              Für <strong style="color: #334155;">selbstständige, erfolgreiche Singles</strong>, die in 
+              <strong style="color: #334155;">wertstabile Immobilien</strong> investieren möchten.
+            </p>
+            <div style="background: rgba(30, 41, 59, 0.1); border-left: 3px solid #334155; padding: var(--space-4); margin: var(--space-4) 0; border-radius: var(--radius-md);">
+              <div style="font-size: var(--text-sm); font-weight: 600; color: #334155; margin-bottom: var(--space-2); font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;">ZIELVERDIENST</div>
+              <div style="font-size: var(--text-base); color: var(--text-primary); line-height: 1.6;">
+                <strong style="color: #334155;">2.900€/Monat</strong> Nettoeinkommen<br>
+                <strong style="color: #334155;">15.000€</strong> Startkapital<br>
+                Selbstständige, Freiberufler, Führungskräfte
+              </div>
+            </div>
+            <ul class="target-group-card__benefits">
+              <li class="target-group-card__benefit">Finanzielle Unabhängigkeit aufbauen</li>
+              <li class="target-group-card__benefit">Altersvorsorge durch Immobilien</li>
+              <li class="target-group-card__benefit">Steuerliche Vorteile nutzen</li>
+              <li class="target-group-card__benefit">Vermögensaufbau mit Premium-Objekten</li>
+            </ul>
+          </div>
+
+          <!-- Paare Card -->
+          <div class="target-group-card">
+            <div class="target-group-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="target-group-card__title">Paare</h3>
+            <p class="target-group-card__description">
+              Für <strong style="color: #334155;">Paare</strong>, die gemeinsam in 
+              <strong style="color: #334155;">hochwertige Immobilien</strong> investieren und langfristig Vermögen aufbauen.
+            </p>
+            <div style="background: rgba(30, 41, 59, 0.1); border-left: 3px solid #334155; padding: var(--space-4); margin: var(--space-4) 0; border-radius: var(--radius-md);">
+              <div style="font-size: var(--text-sm); font-weight: 600; color: #334155; margin-bottom: var(--space-2); font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;">ZIELVERDIENST</div>
+              <div style="font-size: var(--text-base); color: var(--text-primary); line-height: 1.6;">
+                <strong style="color: #334155;">4.000€/Monat</strong> Haushaltsnetto<br>
+                <strong style="color: #334155;">10.000€</strong> Startkapital (mit Nachweis)<br>
+                Doppelverdiener, Ehepaare, Lebenspartner
+              </div>
+            </div>
+            <ul class="target-group-card__benefits">
+              <li class="target-group-card__benefit">Gemeinsame Vermögensplanung</li>
+              <li class="target-group-card__benefit">Immobilien als Familienerbe</li>
+              <li class="target-group-card__benefit">Doppelte Einkommensbasis nutzen</li>
+              <li class="target-group-card__benefit">Nachhaltige Investments für die Zukunft</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financing Pitch Section (GRÜN) -->
+      <div class="cta-section" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.08) 100%); border: 2px solid #10B981;">
+        <div style="font-size: var(--text-sm); font-weight: 600; color: #10B981; margin-bottom: var(--space-4); font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif; text-transform: uppercase; letter-spacing: 0.1em;">
+          EXKLUSIVES FINANZIERUNGSANGEBOT
+        </div>
+        <h3 class="cta-section__title" style="font-size: clamp(1.75rem, 4vw, var(--text-3xl));">
+          Ab <span style="color: #10B981; font-size: 1.5em;">2%</span> Finanzierung möglich
+        </h3>
+        <p class="cta-section__text" style="font-size: var(--text-lg); max-width: 800px;">
+          Über unser Finanzierungsnetzwerk (u.&nbsp;a. nach DIN&nbsp;77230) erhalten Sie Zugang zu attraktiven Modellen – Zinsangaben sind 
+          <strong>illustrativ</strong> (z.&nbsp;B. ab 2&nbsp;%); verbindlich nur über lizenzierte Partner. Langfristige Finanzierungen für Immobilien-Investments nach Prüfung.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); margin: var(--space-8) 0; text-align: left;">
+          <div style="padding: var(--space-4); background: rgba(16, 185, 129, 0.1); border-radius: var(--radius-lg); border: 1px solid rgba(16, 185, 129, 0.2);">
+            <div style="font-size: var(--text-2xl); font-weight: 700; color: #10B981; margin-bottom: var(--space-2);">Ab 2%</div>
+            <div style="font-size: var(--text-sm); color: var(--text-secondary);">Effektiver Jahreszins</div>
+          </div>
+          <div style="padding: var(--space-4); background: rgba(16, 185, 129, 0.1); border-radius: var(--radius-lg); border: 1px solid rgba(16, 185, 129, 0.2);">
+            <div style="font-size: var(--text-2xl); font-weight: 700; color: #10B981; margin-bottom: var(--space-2);">Bis 100%</div>
+            <div style="font-size: var(--text-sm); color: var(--text-secondary);">Finanzierung möglich</div>
+          </div>
+          <div style="padding: var(--space-4); background: rgba(16, 185, 129, 0.1); border-radius: var(--radius-lg); border: 1px solid rgba(16, 185, 129, 0.2);">
+            <div style="font-size: var(--text-2xl); font-weight: 700; color: #10B981; margin-bottom: var(--space-2);">Langfristig</div>
+            <div style="font-size: var(--text-sm); color: var(--text-secondary);">Zinsbindung bis 30 Jahre</div>
+          </div>
+        </div>
+        <a href="/kontakt.html" class="btn btn--primary btn--lg">
+          Finanzierungsangebot anfragen →
+        </a>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <h3 class="cta-section__title">Bereit für Ihr Immobilien-Investment?</h3>
+        <p class="cta-section__text">
+          Kontaktieren Sie uns für ein unverbindliches Gespräch und erfahren Sie, 
+          wie wir Ihnen über geschlossene Routen Zugang zu qualifizierten Premium-Immobilien-Investments ermöglichen – Details im persönlichen Austausch.
+        </p>
+        <a href="/kontakt.html#kontaktformular" class="btn btn--primary btn--lg" data-cango-kpi="kpi_kontakt_cta">
+          Jetzt unverbindlich anfragen →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li><li><a href="/index.html#pakete" data-cango-kpi="kpi_pakete_section">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>(function(){var b=document.getElementById('navToggle');if(b)b.addEventListener('click',function(){document.body.classList.toggle('nav-open');});document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.body.classList.remove('nav-open');});});})();</script>
+  <script src="/js/kpi-events.js?v=2" defer></script>
+  <script src="/cart.js" defer></script>
+  <div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+    <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+  </div>
+</body>
+</html>
+

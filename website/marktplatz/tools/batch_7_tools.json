@@ -1,0 +1,84 @@
+{
+  "batch_id": 7,
+  "total_batches": 22,
+  "category": "DATA & SECURITY BACKBONE",
+  "tools": [
+    {
+      "id": "goose-vpn",
+      "name": "GOOSE VPN",
+      "tagline": "Unsichtbar bleiben. Militärische Verschlüsselung für deine Automationen.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 4, "count": 450 },
+      "images": ["/images/tools/goose-shield.webp"],
+      "quick_specs": {
+        "alternative_to": ["NordVPN", "ExpressVPN"],
+        "integrations": ["Windows", "Mac", "Linux (Server)"],
+        "best_for": ["Data Scraper", "Remote Teams", "Security"]
+      },
+      "pitch_html": "<h3>Deine Bots brauchen Schutz.</h3><p>Wenn du Web-Scraping oder Automatisierung im großen Stil betreibst (z.B. mit BrowserAct), werden deine IPs schnell verbrannt. <strong>GOOSE VPN</strong> ist das Schutzschild deiner Infrastruktur.</p><h4>CanGo Taktik:</h4><p>Wir nutzen es auf unseren Hostinger-Servern, um Traffic durch verschiedene Länder zu routen und Geo-Blocking zu umgehen. Keine Logs, pure Anonymität. Einmal zahlen, für immer geschützt.</p>",
+      "deal_terms": [
+        "Lebenslanger Zugriff",
+        "Unbegrenzte Geräte",
+        "Cyber Alarm inklusive",
+        "P2P unterstützt"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Lifetime Subscription",
+          "price": 39,
+          "original_price": 499,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "Unbegrenzte Bandbreite",
+            "Smart Safe Server",
+            "24/7 Support",
+            "Werbeblocker"
+          ],
+          "cta_link": "DEIN_GOOSEVPN_LINK"
+        }
+      ]
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "tagline": "Die Datenbank für die Zukunft. Open Source Firebase Alternative.",
+      "badge": "DATA CORE",
+      "rating": { "tacos": 5, "count": 2300 },
+      "images": ["/images/tools/supabase-dashboard.webp"],
+      "quick_specs": {
+        "alternative_to": ["Firebase", "AWS RDS"],
+        "integrations": ["n8n", "Vercel", "Stripe"],
+        "best_for": ["Entwickler", "SaaS-Gründer"]
+      },
+      "pitch_html": "<h3>Speichere Daten wie ein Tech-Gigant.</h3><p><strong>Supabase</strong> ist mehr als eine Datenbank. Es ist ein komplettes Backend-as-a-Service mit PostgreSQL, Real-time Subscriptions, Authentication und Storage. Alles Open Source und selbst-hostbar.</p><h4>Der CanGo Vorteil:</h4><p>Wir nutzen Supabase als zentrale Datenbank für alle unsere n8n-Workflows. Die Vector Store Integration macht es perfekt für RAG-Systeme und AI-Agenten.</p>",
+      "deal_terms": [
+        "PostgreSQL Database",
+        "Real-time Subscriptions",
+        "Row Level Security",
+        "Vector Store für AI/ML"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Pro",
+          "price": 25,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "8 GB Database",
+            "100 GB Bandwidth",
+            "2 Projekte",
+            "Daily Backups"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    }
+  ]
+}
+
+
+

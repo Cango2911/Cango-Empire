@@ -1,0 +1,31 @@
+{
+  "batch_id": 4,
+  "category": "AUDIO & VOICE SYNTHESIS",
+  "tools": [
+    {
+      "id": "unmixr-ai",
+      "name": "Unmixr AI",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/unmixr-ai.html"
+    },
+    {
+      "id": "suno-ai",
+      "name": "Suno",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/suno-ai.html"
+    },
+    {
+      "id": "murf-ai",
+      "name": "Murf.ai",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/murf-ai.html"
+    },
+    {
+      "id": "otter-ai",
+      "name": "Otter.ai",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/otter-ai.html"
+    },
+    {
+      "id": "descript",
+      "name": "Descript",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/descript.html"
+    }
+  ]
+}

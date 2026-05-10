@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- FIX-20260407: Vollversion aus Snapshot 20260312 (Problem/Lösung/Partner/Cango-Advantage); Nav+Footer an Empire-Standard (nischen, kasse, cango-footer) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Finanzen & Versicherung | CanGo App Empire - 380+ Gesellschaften. Ein System.</title>
+  <meta name="description" content="CanGo App Empire Finanz-Allianz: Automatisierte Lead-Generierung für Versicherungsberater. 380+ Gesellschaften, digitaler Vertragsabschluss, WhatsApp-Chat zum Berater. Partner: MYVI, mitNORM, myNORM.">
+  
+  
+      <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+    <style>
+    /* ============================================
+       DESIGN TOKENS
+       ============================================ */
+    :root {
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --gray-950: #030712;
+
+      --primary-400: #FB923C;
+      --primary-500: #F97316;
+      --primary-600: #EA580C;
+      --primary-700: #C2410C;
+
+      --accent-500: #EF4444;
+      --accent-600: #DC2626;
+
+      --blue-400: #60A5FA;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+
+      --gold-400: #FBBF24;
+      --gold-500: #F59E0B;
+      --gold-600: #D97706;
+
+      --emerald-400: #34D399;
+      --emerald-500: #10B981;
+      --emerald-600: #059669;
+
+      --purple-400: #A78BFA;
+      --purple-500: #8B5CF6;
+      --purple-600: #7C3AED;
+
+      --cyan-400: #22D3EE;
+      --cyan-500: #06B6D4;
+      --cyan-600: #0891B2;
+
+      --success: #10B981;
+      --warning: #F59E0B;
+
+      --bg-base: var(--gray-950);
+      --bg-elevated: var(--gray-900);
+      --bg-surface: var(--gray-800);
+      --text-primary: var(--gray-50);
+      --text-secondary: var(--gray-400);
+      --text-muted: var(--gray-500);
+      --border-default: var(--gray-800);
+
+      --text-xs: 0.8125rem;
+      --text-sm: 0.9375rem;
+      --text-base: 1.0625rem;
+      --text-lg: 1.25rem;
+      --text-xl: 1.375rem;
+      --text-2xl: 1.688rem;
+      --text-3xl: 2.125rem;
+      --text-4xl: 2.688rem;
+      --text-5xl: 3.375rem;
+      --text-6xl: 4.25rem;
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+
+      --shadow-glow: 0 0 40px -10px;
+      --duration-fast: 150ms;
+      --duration-base: 200ms;
+      --duration-slow: 300ms;
+      --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+
+      --nav-height: 64px;
+      --container-max: 1200px;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+      --z-sticky: 100;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-base);
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, var(--blue-400), var(--blue-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-gradient--gold {
+      background: linear-gradient(135deg, var(--gold-400), var(--gold-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .text-gradient--emerald {
+      background: linear-gradient(135deg, var(--emerald-400), var(--emerald-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* === NAVIGATION === (zentral in cango-empire-v4-monopoly.css) */
+
+    /* === HERO (Airtable-Style) === */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding-top: calc(var(--nav-height) + var(--space-16));
+      padding-bottom: var(--space-24);
+      position: relative;
+      overflow: hidden;
+      background-color: #0d0d12;
+      background-image: radial-gradient(ellipse 100% 80% at 50% -20%, rgba(249, 115, 22, 0.35) 0%, rgba(249, 115, 22, 0.08) 30%, transparent 60%), radial-gradient(ellipse 70% 50% at 70% 10%, rgba(249, 115, 22, 0.12) 0%, transparent 45%), radial-gradient(ellipse 50% 40% at 20% 20%, rgba(249, 115, 22, 0.06) 0%, transparent 40%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 120% 100% at 50% 60%, transparent 35%, rgba(0,0,0,0.25) 100%);
+      pointer-events: none;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-6);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.1));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      color: var(--blue-400);
+      margin-bottom: var(--space-8);
+      animation: fadeInUp 0.6s var(--ease-out) both;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .hero__badge-icon {
+      font-size: var(--text-xl);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero__title {
+      font-size: clamp(2.5rem, 7vw, var(--text-6xl));
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+      animation: fadeInUp 0.6s var(--ease-out) 0.1s both;
+    }
+
+    .hero__subtitle {
+      font-size: var(--text-xl);
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto var(--space-10);
+      line-height: 1.8;
+      animation: fadeInUp 0.6s var(--ease-out) 0.2s both;
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+      animation: fadeInUp 0.6s var(--ease-out) 0.3s both;
+    }
+
+    .hero__stat {
+      padding: var(--space-6);
+      background: rgba(59, 130, 246, 0.05);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .hero__stat:hover {
+      transform: translateY(-4px);
+      border-color: var(--blue-500);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+    }
+
+    .hero__stat-value {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--blue-400);
+      margin-bottom: var(--space-2);
+    }
+
+    .hero__stat-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* === SECTION HEADERS === */
+    .section {
+      padding: var(--space-24) 0;
+    }
+
+    .section--elevated {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border-default);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .section__header {
+      text-align: center;
+      margin-bottom: var(--space-16);
+    }
+
+    .section__eyebrow {
+      display: inline-block;
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue-400);
+      margin-bottom: var(--space-4);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .section__title {
+      font-size: clamp(2rem, 5vw, var(--text-5xl));
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-4);
+    }
+
+    .section__subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* === DIGITAL ADVANTAGE BANNER === */
+    .digital-banner {
+      padding: var(--space-10) 0;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0.05));
+      border-top: 3px solid var(--blue-500);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .digital-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .digital-banner__wrapper {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: var(--space-10);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .digital-banner__number-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--space-6) var(--space-8);
+      background: var(--bg-base);
+      border: 2px solid var(--blue-500);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.3); }
+      50% { box-shadow: 0 0 60px rgba(59, 130, 246, 0.5); }
+    }
+
+    .digital-banner__number-badge {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue-400);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: var(--space-2);
+    }
+
+    .digital-banner__number {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--blue-400);
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+    }
+
+    .digital-banner__number-label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .digital-banner__content {
+      padding: 0 var(--space-6);
+    }
+
+    .digital-banner__title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+
+    .digital-banner__title span {
+      color: var(--blue-400);
+    }
+
+    .digital-banner__text {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    .digital-banner__features {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .digital-banner__feature {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .digital-banner__feature:hover {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: rgba(59, 130, 246, 0.4);
+      transform: translateX(4px);
+    }
+
+    .digital-banner__feature-icon {
+      font-size: var(--text-lg);
+    }
+
+    /* === PROBLEM SECTION === */
+    .problem__intro {
+      max-width: 900px;
+      margin: 0 auto var(--space-16);
+      padding: var(--space-10);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(59, 130, 246, 0.02));
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-left: 3px solid var(--blue-500);
+      border-radius: var(--radius-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem__intro::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+    }
+
+    .problem__intro-title {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--blue-400);
+      margin-bottom: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .problem__intro-text {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: var(--text-base);
+    }
+
+    .problem__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .problem__card {
+      padding: var(--space-8);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.03), rgba(59, 130, 246, 0.01));
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-radius: var(--radius-xl);
+      transition: all var(--duration-slow) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem__card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--blue-500), transparent);
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+
+    .problem__card:hover {
+      border-color: rgba(59, 130, 246, 0.3);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(59, 130, 246, 0.02));
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
+    }
+
+    .problem__card:hover::before {
+      opacity: 1;
+    }
+
+    .problem__card-icon {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-6);
+      opacity: 0.9;
+      filter: grayscale(20%);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .problem__card:hover .problem__card-icon {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    .problem__card-stat {
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--blue-400);
+      margin-bottom: var(--space-3);
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .problem__card:hover .problem__card-stat {
+      color: var(--blue-500);
+      text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+    }
+
+    .problem__card-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+      line-height: 1.4;
+    }
+
+    .problem__card-text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* === SOLUTION SECTION === */
+    .solution {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .solution__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+    }
+
+    .solution__card {
+      padding: var(--space-8);
+      border-radius: var(--radius-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution__card--berater {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.03));
+      border: 2px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .solution__card--kunde {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.03));
+      border: 2px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .solution__card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .solution__card--berater::before {
+      background: linear-gradient(90deg, transparent, var(--gold-500), transparent);
+    }
+
+    .solution__card--kunde::before {
+      background: linear-gradient(90deg, transparent, var(--emerald-500), transparent);
+    }
+
+    .solution__card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: var(--space-6);
+    }
+
+    .solution__card--berater .solution__card-badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold-400);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .solution__card--kunde .solution__card-badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald-400);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .solution__card-title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+
+    .solution__card-text {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: var(--space-6);
+    }
+
+    .solution__benefits {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .solution__benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-md);
+    }
+
+    .solution__benefit-icon {
+      font-size: var(--text-xl);
+      flex-shrink: 0;
+    }
+
+    .solution__benefit-content h4 {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      margin-bottom: var(--space-1);
+    }
+
+    .solution__card--berater .solution__benefit-content h4 {
+      color: var(--gold-400);
+    }
+
+    .solution__card--kunde .solution__benefit-content h4 {
+      color: var(--emerald-400);
+    }
+
+    .solution__benefit-content p {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* === APP SHOWCASE === */
+    .app-showcase {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .app-showcase__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+
+    .app-showcase__mockup {
+      position: relative;
+    }
+
+    .app-showcase__phone {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      padding: var(--space-4);
+      background: var(--bg-base);
+      border: 2px solid var(--border-default);
+      border-radius: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .app-showcase__screen {
+      background: var(--bg-elevated);
+      border-radius: 32px;
+      overflow: hidden;
+      padding: var(--space-4);
+    }
+
+    .app-showcase__chat {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .app-showcase__message {
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      max-width: 85%;
+    }
+
+    .app-showcase__message--user {
+      background: var(--blue-500);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .app-showcase__message--berater {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .app-showcase__message-time {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-top: var(--space-1);
+    }
+
+    .app-showcase__message--user .app-showcase__message-time {
+      color: rgba(255, 255, 255, 0.7);
+      text-align: right;
+    }
+
+    .app-showcase__content h3 {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      margin-bottom: var(--space-6);
+      color: var(--text-primary);
+    }
+
+    .app-showcase__content p {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: var(--space-8);
+    }
+
+    .app-showcase__features {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .app-showcase__feature {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      background: rgba(59, 130, 246, 0.05);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .app-showcase__feature:hover {
+      border-color: var(--blue-500);
+      transform: translateX(4px);
+    }
+
+    .app-showcase__feature-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .app-showcase__feature-text {
+      font-size: var(--text-base);
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* === PARTNER SECTION === */
+    .partners {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .partners__intro {
+      text-align: center;
+      padding: var(--space-8);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.03));
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-12);
+    }
+
+    .partners__intro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue-400);
+      margin-bottom: var(--space-4);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .partners__intro-title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+
+    .partners__intro-text {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .partners__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+
+    .partner-card {
+      padding: var(--space-8);
+      background: var(--bg-base);
+      border: 2px solid var(--border-default);
+      border-radius: var(--radius-xl);
+      transition: all var(--duration-slow) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .partner-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+
+    .partner-card:hover::before {
+      opacity: 1;
+    }
+
+    .partner-card--myvi::before { background: linear-gradient(90deg, var(--gold-400), var(--gold-600)); }
+    .partner-card--mitnorm::before { background: linear-gradient(90deg, var(--blue-400), var(--blue-600)); }
+    .partner-card--mynorm::before { background: linear-gradient(90deg, var(--emerald-400), var(--emerald-600)); }
+    .partner-card--firmen::before { background: linear-gradient(90deg, var(--cyan-400), var(--cyan-600)); }
+
+    .partner-card:hover {
+      border-color: var(--border-default);
+    }
+
+    .partner-card--myvi:hover { border-color: rgba(245, 158, 11, 0.5); }
+    .partner-card--mitnorm:hover { border-color: rgba(59, 130, 246, 0.5); }
+    .partner-card--mynorm:hover { border-color: rgba(16, 185, 129, 0.5); }
+    .partner-card--firmen:hover { border-color: rgba(34, 211, 238, 0.5); }
+
+    .partner-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-4);
+    }
+
+    .partner-card__badge {
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .partner-card--myvi .partner-card__badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--gold-400);
+    }
+
+    .partner-card--mitnorm .partner-card__badge {
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--blue-400);
+    }
+
+    .partner-card--mynorm .partner-card__badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald-400);
+    }
+
+    .partner-card--firmen .partner-card__badge {
+      background: rgba(34, 211, 238, 0.15);
+      color: var(--cyan-400);
+    }
+
+    .partner-card__icon {
+      font-size: var(--text-2xl);
+    }
+
+    .partner-card__name {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+    }
+
+    .partner-card__tagline {
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-4);
+    }
+
+    .partner-card--myvi .partner-card__tagline { color: var(--gold-400); }
+    .partner-card--mitnorm .partner-card__tagline { color: var(--blue-400); }
+    .partner-card--mynorm .partner-card__tagline { color: var(--emerald-400); }
+    .partner-card--firmen .partner-card__tagline { color: var(--cyan-400); }
+
+    .partner-card__text {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .partner-card__stats {
+      display: flex;
+      gap: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-default);
+      margin-bottom: var(--space-4);
+    }
+
+    .partner-card__stat {
+      flex: 1;
+      text-align: center;
+    }
+
+    .partner-card__stat-value {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .partner-card--myvi .partner-card__stat-value { color: var(--gold-400); }
+    .partner-card--mitnorm .partner-card__stat-value { color: var(--blue-400); }
+    .partner-card--mynorm .partner-card__stat-value { color: var(--emerald-400); }
+    .partner-card--firmen .partner-card__stat-value { color: var(--cyan-400); }
+
+    .partner-card__stat-label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .partner-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .partner-card--myvi .partner-card__cta {
+      background: linear-gradient(135deg, var(--gold-500), var(--gold-600));
+      color: white;
+    }
+
+    .partner-card--mitnorm .partner-card__cta {
+      background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
+      color: white;
+    }
+
+    .partner-card--mynorm .partner-card__cta {
+      background: linear-gradient(135deg, var(--emerald-500), var(--emerald-600));
+      color: white;
+    }
+
+    .partner-card--firmen .partner-card__cta {
+      background: linear-gradient(135deg, var(--cyan-500), var(--cyan-600));
+      color: white;
+    }
+
+    .partner-card__cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* === CANGO ADVANTAGE === */
+    .cango-advantage {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: var(--space-12);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.03));
+      border: 2px solid rgba(59, 130, 246, 0.3);
+      border-radius: var(--radius-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cango-advantage::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue-400), var(--blue-600), var(--blue-400));
+    }
+
+    .cango-advantage__header {
+      text-align: center;
+      margin-bottom: var(--space-10);
+    }
+
+    .cango-advantage__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--blue-400);
+      margin-bottom: var(--space-4);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .cango-advantage__title {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+
+    .cango-advantage__subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cango-advantage__flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+    }
+
+    .cango-advantage__step {
+      text-align: center;
+      padding: var(--space-6);
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-lg);
+      position: relative;
+    }
+
+    .cango-advantage__step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: calc(var(--space-4) * -1);
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: var(--text-xl);
+      color: var(--blue-400);
+    }
+
+    .cango-advantage__step-number {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue-500);
+      color: white;
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      margin: 0 auto var(--space-4);
+    }
+
+    .cango-advantage__step-icon {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-3);
+    }
+
+    .cango-advantage__step-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--blue-400);
+      margin-bottom: var(--space-2);
+    }
+
+    .cango-advantage__step-text {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* === CTA SECTION === */
+    .cta {
+      text-align: center;
+      padding: var(--space-16) 0;
+    }
+
+    .cta__title {
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      margin-bottom: var(--space-6);
+      color: var(--text-primary);
+    }
+
+    .cta__text {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto var(--space-8);
+      line-height: 1.8;
+    }
+
+    .cta__buttons {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+    }
+
+    .cta__button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-md);
+      font-size: var(--text-base);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .cta__button--primary {
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: white;
+    }
+
+    .cta__button--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+    }
+
+    .cta__button--secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-default);
+    }
+
+    .cta__button--secondary:hover {
+      border-color: var(--blue-500);
+      color: var(--blue-400);
+    }
+
+    /* === FOOTER === */
+    .footer {
+      padding: var(--space-12) 0;
+      border-top: 1px solid var(--border-default);
+      text-align: center;
+    }
+
+    .footer__text {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .footer__text a {
+      color: var(--blue-400);
+      text-decoration: none;
+    }
+
+    .footer__text a:hover {
+      text-decoration: underline;
+    }
+
+    /* === ACCESSIBILITY: FOCUS STATES === */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--blue-500);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--blue-500);
+      color: white;
+      padding: var(--space-2) var(--space-4);
+      text-decoration: none;
+      z-index: 1000;
+      border-radius: var(--radius-md);
+    }
+    
+    .skip-link:focus {
+      top: var(--space-2);
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+    
+    *:focus-visible {
+      outline: 2px solid var(--blue-500);
+      outline-offset: 2px;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN SYSTEM
+       Mobile-First Approach mit Corporate Design
+       ============================================ */
+    
+    /* === TABLET & SMALL DESKTOP (max-width: 1024px) === */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 var(--space-4);
+      }
+      
+      .hero__stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+      }
+      
+      .digital-banner__wrapper {
+        grid-template-columns: auto 1fr;
+        gap: var(--space-6);
+      }
+      
+      .digital-banner__features {
+        grid-column: span 2;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .problem__grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .solution__grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .app-showcase__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+      
+      .app-showcase__mockup {
+        order: -1;
+      }
+      
+      .partners__grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cango-advantage__flow {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .cango-advantage__step:nth-child(2)::after {
+        display: none;
+      }
+    }
+    
+    /* === TABLET (max-width: 768px) === */
+    @media (max-width: 768px) {
+      :root {
+        --text-6xl: 3rem;
+        --text-5xl: 2.5rem;
+        --text-4xl: 2rem;
+        --text-3xl: 1.75rem;
+        --text-2xl: 1.5rem;
+        --space-24: 4rem;
+        --space-20: 3rem;
+        --space-16: 2.5rem;
+        --space-12: 2rem;
+      }
+      
+      .container {
+        padding: 0 var(--space-4);
+      }
+      
+      /* Navigation Mobile */
+      .nav__menu {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-base);
+        border-bottom: 1px solid var(--border-default);
+        padding: var(--space-6);
+        gap: var(--space-4);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--duration-base) var(--ease-out);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        z-index: 99;
+      }
+      
+      .nav__menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .nav__toggle {
+        display: flex;
+      }
+      
+      .nav__link,
+      .nav__cta {
+        width: 100%;
+        text-align: center;
+        padding: var(--space-3) var(--space-4);
+      }
+      
+      /* Hero Section */
+      .hero {
+        padding-top: calc(var(--nav-height) + var(--space-8));
+        padding-bottom: var(--space-12);
+        min-height: auto;
+      }
+      
+      .hero__title {
+        font-size: clamp(1.75rem, 8vw, var(--text-4xl));
+        margin-bottom: var(--space-4);
+      }
+      
+      .hero__subtitle {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-6);
+      }
+      
+      .hero__stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+        margin-top: var(--space-8);
+      }
+      
+      .hero__stat {
+        padding: var(--space-4);
+      }
+      
+      .hero__stat-value {
+        font-size: var(--text-2xl);
+      }
+      
+      /* Section Headers */
+      .section__title {
+        font-size: clamp(1.75rem, 6vw, var(--text-3xl));
+        margin-bottom: var(--space-3);
+      }
+      
+      .section__subtitle {
+        font-size: var(--text-base);
+      }
+      
+      .digital-banner {
+        padding: var(--space-8) 0;
+      }
+      
+      .digital-banner__wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .digital-banner__number-box {
+        justify-self: center;
+        margin-bottom: var(--space-4);
+      }
+      
+      .digital-banner__content {
+        padding: 0;
+      }
+      
+      .digital-banner__text {
+        margin: 0 auto;
+      }
+      
+      .digital-banner__features {
+        grid-column: auto;
+        justify-content: center;
+      }
+      
+      .cango-advantage {
+        padding: var(--space-8);
+      }
+      
+      .cango-advantage__flow {
+        grid-template-columns: 1fr;
+      }
+      
+      .cango-advantage__step::after {
+        display: none;
+      }
+      
+      .cta__buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .cta__button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    /* === MOBILE (max-width: 480px) === */
+    @media (max-width: 480px) {
+      :root {
+        --space-24: 3rem;
+        --space-20: 2.5rem;
+        --space-16: 2rem;
+        --space-12: 1.5rem;
+        --space-8: 1.5rem;
+        --space-6: 1rem;
+        --space-4: 0.75rem;
+      }
+      
+      .container {
+        padding: 0 var(--space-3);
+      }
+      
+      .hero__title {
+        font-size: clamp(1.5rem, 10vw, var(--text-3xl));
+        line-height: 1.2;
+      }
+      
+      .section__title {
+        font-size: clamp(1.5rem, 8vw, var(--text-2xl));
+      }
+      
+      .hero__badge {
+        font-size: var(--text-xs);
+        padding: var(--space-2) var(--space-3);
+      }
+      
+      .hero__stat-value {
+        font-size: var(--text-xl);
+      }
+      
+      .problem__card,
+      .solution__card,
+      .partner-card {
+        padding: var(--space-4);
+      }
+      
+      .app-showcase__phone {
+        max-width: 280px;
+      }
+    }
+  </style>
+
+<link href="/cango-empire-v4-monopoly.css?v=24" rel="stylesheet"/>
+  <style>
+    .cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+    .cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+    .cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+    .cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+    .cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+    .cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+    .cango-footer .logo-text{color:#ffffff}
+    .cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+    .cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+    .cango-footer .fcol ul{list-style:none}
+    .cango-footer .fcol ul li{margin-bottom:10px}
+    .cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+    .cango-footer .fcol ul li a:hover{color:#ffffff}
+    .cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+    .cango-footer .fcopy{font-size:13px;color:#4a607a}
+    .cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+    @media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+    @media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+  </style>
+</head>
+<body class="empire-sync empire-sync--landing">
+  <a href="#main-content" class="skip-link" aria-label="Zum Hauptinhalt springen">Zum Hauptinhalt springen</a>
+
+  <!-- ========================================
+       NAVIGATION
+       ======================================== -->
+  <nav aria-label="Hauptnavigation" class="nav" role="navigation">
+<div class="container nav__inner">
+<a class="nav__brand" href="/index.html#home">
+<span class="nav__brand-icon">C</span>
+<span>CanGo App Empire</span>
+</a>
+<button aria-label="Menü öffnen" class="nav__toggle" onclick="document.querySelector('.nav__menu').classList.toggle('active')" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+        <div class="nav__menu">
+          <a href="/index.html" class="nav__link">Startseite</a>
+          <a href="/ueber-uns.html" class="nav__link">Über Uns</a>
+          <a href="/produkte.html" class="nav__link">Produkte</a>
+          <a href="/workflows.html" class="nav__link">Workflows</a>
+          <a href="/nischen.html" class="nav__link">Marktplatz</a>
+          <a href="/index.html#branchen" class="nav__link">Branchen</a>
+          <a href="/blogs.html" class="nav__link">Blogs</a>
+          <a href="/kontakt.html" class="nav__link">Kontakt</a>
+          <a href="/faq.html" class="nav__link">FAQ</a>
+          <a href="/login.html" class="nav__link nav__login">Login</a>
+          <a href="/kasse.html" class="nav__link nav__cart-wrap">🛒 <span id="cart-badge" class="cart-badge" aria-label="Artikel im Warenkorb">0</span></a>
+          <a href="/kontakt.html" class="nav__cta">Jetzt anfragen</a>
+        </div>
+      </div>
+</nav>
+
+  <!-- ========================================
+       HERO
+       ======================================== -->
+  <section class="hero" id="main-content" role="main">
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="hero__badge-icon">🏦</span>
+          FINANZ-ALLIANZ
+        </div>
+        
+        <h1 class="hero__title">
+          FINANZ-DOMINANZ:<br>
+          <span class="text-gradient">380+ Gesellschaften. Ein System.</span>
+        </h1>
+        
+        <p class="hero__subtitle">
+          Wir verkaufen keine Versicherungen. Wir betreiben <strong style="color: var(--blue-400); font-weight: 500;">algorithmische Lead-Allokation</strong>. 
+          CanGo App Empire generiert <strong style="color: var(--blue-400); font-weight: 500;">vorqualifizierte Interessenten</strong> und routet sie zum perfekten Berater – 
+          mit <strong style="color: var(--blue-400); font-weight: 500;">digitalem Vertragsabschluss</strong> und <strong style="color: var(--blue-400); font-weight: 500;">WhatsApp-ähnlichem Kundenportal</strong>.
+        </p>
+
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <div class="hero__stat-value">380+</div>
+            <div class="hero__stat-label">Gesellschaften</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-value">100%</div>
+            <div class="hero__stat-label">Verbraucherschutz</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-value">100%</div>
+            <div class="hero__stat-label">Digital</div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-value">24/7</div>
+            <div class="hero__stat-label">Kundenportal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       DIGITAL ADVANTAGE BANNER
+       ======================================== -->
+  <section class="digital-banner" id="digital">
+    <div class="container">
+      <div class="digital-banner__wrapper">
+        <div class="digital-banner__number-box">
+          <div class="digital-banner__number-badge">🚀 DEIN VORTEIL</div>
+          <div class="digital-banner__number">380+</div>
+          <div class="digital-banner__number-label">Gesellschaften</div>
+        </div>
+        
+        <div class="digital-banner__content">
+          <h2 class="digital-banner__title">
+            Der gesamte Markt.<br>
+            <span>Eine Plattform.</span>
+          </h2>
+          <p class="digital-banner__text">
+            <strong style="color: var(--blue-400); font-weight: 500;">Kein Gesellschaftszwang</strong>. <strong style="color: var(--blue-400); font-weight: 500;">Kein Strukturvertrieb</strong>. Zugang zu <strong style="color: var(--blue-400); font-weight: 500;">380+ Versicherungsgesellschaften</strong> 
+            mit <strong style="color: var(--blue-400); font-weight: 500;">digitalem Vertragsabschluss</strong> und persönlichem Berater in der Tasche.
+          </p>
+        </div>
+        
+        <div class="digital-banner__features">
+          <div class="digital-banner__feature">
+            <span class="digital-banner__feature-icon">📱</span>
+            <span>Digitaler Finanzordner</span>
+          </div>
+          <div class="digital-banner__feature">
+            <span class="digital-banner__feature-icon">💬</span>
+            <span>WhatsApp-Chat zum Berater</span>
+          </div>
+          <div class="digital-banner__feature">
+            <span class="digital-banner__feature-icon">✍️</span>
+            <span>Digitaler Vertragsabschluss</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       PROBLEM STATEMENT
+       ======================================== -->
+  <section class="section section--elevated">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">DAS PROBLEM</span>
+        <h2 class="section__title">
+          Die Versicherungsbranche hat ein <span class="text-gradient">Vertrauensproblem</span>
+        </h2>
+      </div>
+
+      <div class="problem__intro">
+        <h3 class="problem__intro-title">
+          ⚠️ Der Status Quo ist gebrochen
+        </h3>
+        <p class="problem__intro-text">
+          Kunden <strong style="color: var(--blue-400); font-weight: 500;">misstrauen</strong>. Berater <strong style="color: var(--blue-400); font-weight: 500;">verbrennen</strong>. Die Branche kämpft mit <strong style="color: var(--blue-400); font-weight: 500;">veralteten Systemen</strong>, 
+          <strong style="color: var(--blue-400); font-weight: 500;">mangelnder Transparenz</strong> und einem <strong style="color: var(--blue-400); font-weight: 500;">Image-Problem</strong>, das Jahrzehnte alt ist. 
+          Das Ergebnis? <strong style="color: var(--blue-400); font-weight: 500;">40% der Kunden sind wechselwillig</strong>. 
+          Berater verschwenden <strong style="color: var(--blue-400); font-weight: 500;">80% ihrer Zeit mit Kaltakquise</strong> statt Beratung.
+        </p>
+      </div>
+
+      <div class="problem__grid">
+        <div class="problem__card">
+          <div class="problem__card-icon">😤</div>
+          <div class="problem__card-stat">6%</div>
+          <div class="problem__card-title">Bewerten Beratungsqualität als "sehr gut"</div>
+          <div class="problem__card-text">
+            Die überwiegende Mehrheit der Kunden ist mit der Qualität der Beratung <strong style="color: var(--blue-400); font-weight: 500;">unzufrieden</strong>. 
+            <strong style="color: var(--blue-400); font-weight: 500;">Zu viel Verkauf</strong>, zu wenig echte Bedarfsanalyse.
+          </div>
+        </div>
+
+        <div class="problem__card">
+          <div class="problem__card-icon">🤷</div>
+          <div class="problem__card-stat">54%</div>
+          <div class="problem__card-title">Haben nur mittleres Vertrauen</div>
+          <div class="problem__card-text">
+            Mehr als die Hälfte aller Kunden <strong style="color: var(--blue-400); font-weight: 500;">vertraut Versicherungsprodukten nicht vollständig</strong>. 
+            <strong style="color: var(--blue-400); font-weight: 500;">Intransparenz</strong> und Kleingedrucktes zerstören das Vertrauen.
+          </div>
+        </div>
+
+        <div class="problem__card">
+          <div class="problem__card-icon">📉</div>
+          <div class="problem__card-stat">39%</div>
+          <div class="problem__card-title">Schlechte Schadenregulierung erlebt</div>
+          <div class="problem__card-text">
+            Fast 4 von 10 Kunden haben <strong style="color: var(--blue-400); font-weight: 500;">negative Erfahrungen</strong> gemacht, wenn es darauf ankam. 
+            Das zerstört jede Kundenbeziehung.
+          </div>
+        </div>
+
+        <div class="problem__card">
+          <div class="problem__card-icon">🧱</div>
+          <div class="problem__card-stat">68%</div>
+          <div class="problem__card-title">Sehen Altsysteme als größtes Hindernis</div>
+          <div class="problem__card-text">
+            Zwei Drittel der Versicherer kämpfen mit <strong style="color: var(--blue-400); font-weight: 500;">veralteter IT</strong>. 
+            <strong style="color: var(--blue-400); font-weight: 500;">Digitalisierung scheitert</strong> an Legacy-Systemen aus den 90ern.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SOLUTION SECTION
+       ======================================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">DIE LÖSUNG</span>
+        <h2 class="section__title">
+          CanGo App Empire löst beide Seiten.<br>
+          <span class="text-gradient--gold">Berater.</span> <span class="text-gradient--emerald">Kunden.</span>
+        </h2>
+        <p class="section__subtitle">
+          Wir bauen die Brücke zwischen qualifizierten Interessenten und erstklassigen Beratern. 
+          Automatisiert. Transparent. Verbraucherschutzkonform.
+        </p>
+      </div>
+
+      <div class="solution">
+        <div class="solution__grid">
+          <!-- Für Berater -->
+          <div class="solution__card solution__card--berater">
+            <div class="solution__card-badge">
+              <span>🎯</span> FÜR BERATER
+            </div>
+            <h3 class="solution__card-title">
+              Schluss mit Kaltakquise.<br>
+              Starte mit warmen Leads.
+            </h3>
+            <p class="solution__card-text">
+              CanGo App Empire generiert automatisiert Interessenten durch Content-Marketing 
+              und <strong style="color: var(--gold-400); font-weight: 500;">qualifiziert sie vor dem ersten Gespräch</strong>. Du bekommst nur Leads, 
+              die bereits Bedarf haben und handlungsbereit sind.
+            </p>
+            <div class="solution__benefits">
+              <div class="solution__benefit">
+                <span class="solution__benefit-icon">📊</span>
+                <div class="solution__benefit-content">
+                  <h4>Vorqualifizierte Leads</h4>
+                  <p>KI analysiert <strong style="color: var(--gold-400); font-weight: 500;">Bedarf vor dem Gespräch</strong>. Du weißt, was der Kunde braucht.</p>
+                </div>
+              </div>
+              <div class="solution__benefit">
+                <span class="solution__benefit-icon">⏱️</span>
+                <div class="solution__benefit-content">
+                  <h4>80% weniger Akquise-Zeit</h4>
+                  <p>Fokus auf <strong style="color: var(--gold-400); font-weight: 500;">Beratung statt Klinkenputzen</strong>. Mehr Abschlüsse pro Woche.</p>
+                </div>
+              </div>
+              <div class="solution__benefit">
+                <span class="solution__benefit-icon">📈</span>
+                <div class="solution__benefit-content">
+                  <h4>Höhere Abschlussquoten</h4>
+                  <p>Warme Leads = bessere Gespräche = mehr Abschlüsse.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Für Kunden -->
+          <div class="solution__card solution__card--kunde">
+            <div class="solution__card-badge">
+              <span>👤</span> FÜR KUNDEN
+            </div>
+            <h3 class="solution__card-title">
+              Deine Finanzen.<br>
+              In deiner Tasche.
+            </h3>
+            <p class="solution__card-text">
+              Ein <strong style="color: var(--emerald-400); font-weight: 500;">digitaler Finanzordner</strong>, der alle Verträge bündelt. 
+              Ein Chat zu deinem persönlichen Berater wie bei WhatsApp. 
+              Zugang zu <strong style="color: var(--emerald-400); font-weight: 500;">380+ Gesellschaften ohne Gesellschaftszwang</strong>.
+            </p>
+            <div class="solution__benefits">
+              <div class="solution__benefit">
+                <span class="solution__benefit-icon">📱</span>
+                <div class="solution__benefit-content">
+                  <h4>Digitaler Finanzordner</h4>
+                  <p>Alle Verträge an einem Ort. Übersicht statt Chaos.</p>
+                </div>
+              </div>
+              <div class="solution__benefit">
+                <span class="solution__benefit-icon">💬</span>
+                <div class="solution__benefit-content">
+                  <h4>Chat zum Berater</h4>
+                  <p><strong style="color: var(--emerald-400); font-weight: 500;">WhatsApp-ähnlich</strong>. Fragen stellen. Antworten bekommen. Einfach.</p>
+                </div>
+              </div>
+              <div class="solution__benefit">
+                <span class="solution__benefit-icon">✅</span>
+                <div class="solution__benefit-content">
+                  <h4>DIN 77230 Garantie</h4>
+                  <p>Objektive Bedarfsanalyse nach <strong style="color: var(--emerald-400); font-weight: 500;">Verbraucherschutz-Standards</strong>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       APP SHOWCASE
+       ======================================== -->
+  <section class="section section--elevated">
+    <div class="container">
+      <div class="app-showcase">
+        <div class="app-showcase__grid">
+          <div class="app-showcase__mockup">
+            <div class="app-showcase__phone">
+              <div class="app-showcase__screen">
+                <div class="app-showcase__chat">
+                  <div class="app-showcase__message app-showcase__message--user">
+                    Hey, ich hab eine Frage zu meiner BU-Versicherung. Bin ich auch im Homeoffice abgesichert?
+                    <div class="app-showcase__message-time">✓✓ 14:31</div>
+                  </div>
+                  <div class="app-showcase__message app-showcase__message--berater">
+                    Hi! Ja, deine BU greift unabhängig vom Arbeitsort. Soll ich dir die relevanten Klauseln schicken?
+                    <div class="app-showcase__message-time">✓✓ 14:37</div>
+                  </div>
+                  <div class="app-showcase__message app-showcase__message--user">
+                    Ja bitte! Und kannst du mal schauen, ob es günstigere Optionen gibt?
+                    <div class="app-showcase__message-time">✓✓ 14:38</div>
+                  </div>
+                  <div class="app-showcase__message app-showcase__message--berater">
+                    Klar! Ich check das bei unseren 380+ Gesellschaften und melde mich heute noch. 👍
+                    <div class="app-showcase__message-time">✓✓ 14:39</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-showcase__content">
+            <h3>
+              Dein Berater.<br>
+              <span class="text-gradient">Immer erreichbar.</span>
+            </h3>
+            <p>
+              Vergiss Call-Center und Warteschleifen. Mit mitNORM hast du deinen persönlichen Finanzberater direkt in der Tasche – wie ein Freund, den du jederzeit fragen kannst.
+            </p>
+            <div class="app-showcase__features">
+              <div class="app-showcase__feature">
+                <span class="app-showcase__feature-icon">⚡</span>
+                <span class="app-showcase__feature-text">Antworten in Minuten, nicht Tagen</span>
+              </div>
+              <div class="app-showcase__feature">
+                <span class="app-showcase__feature-icon">📎</span>
+                <span class="app-showcase__feature-text">Dokumente direkt im Chat teilen</span>
+              </div>
+              <div class="app-showcase__feature">
+                <span class="app-showcase__feature-icon">🔔</span>
+                <span class="app-showcase__feature-text">Erinnerungen für wichtige Termine</span>
+              </div>
+              <div class="app-showcase__feature">
+                <span class="app-showcase__feature-icon">🔒</span>
+                <span class="app-showcase__feature-text">Ende-zu-Ende verschlüsselt</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       PARTNER SECTION
+       ======================================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">DIE ALLIANZ</span>
+        <h2 class="section__title">
+          Das Netzwerk hinter dem <span class="text-gradient">System</span>
+        </h2>
+        <p class="section__subtitle">
+          CanGo App Empire ist das technische Rückgrat einer mächtigen Allianz. 
+          Gemeinsam bilden wir das umfassendste Finanzberatungs-Ökosystem Deutschlands.
+        </p>
+      </div>
+
+      <div class="partners">
+        <div class="partners__intro">
+          <div class="partners__intro-badge">
+            <span>🤝</span> STRATEGISCHE PARTNER
+          </div>
+          <h3 class="partners__intro-title">
+            300+ Mitarbeiter. 30.000+ Kunden. 6 Unternehmen.
+          </h3>
+          <p class="partners__intro-text">
+            Die MYVI Group und ihre Partner haben gemeinsam mit CanGo App Empire ein <strong style="color: var(--blue-400); font-weight: 500;">Ökosystem</strong> geschaffen, 
+            das <strong style="color: var(--blue-400); font-weight: 500;">Finanzberatung neu definiert</strong>. Von der Karriereentwicklung über die Firmenberatung 
+            bis zum digitalen Finanzmanager – <strong style="color: var(--blue-400); font-weight: 500;">alles aus einer Hand</strong>.
+          </p>
+        </div>
+
+        <div class="partners__grid">
+          <!-- MYVI Group -->
+          <div class="partner-card partner-card--myvi">
+            <div class="partner-card__header">
+              <div class="partner-card__badge">DACHGESELLSCHAFT</div>
+              <span class="partner-card__icon">🏛️</span>
+            </div>
+            <h4 class="partner-card__name">MYVI Group</h4>
+            <p class="partner-card__tagline">Financial Guidance Group</p>
+            <p class="partner-card__text">
+              Die MYVI Group vereint <strong style="color: var(--gold-400); font-weight: 500;">sechs innovative Unternehmen</strong> unter einem Dach. 
+              Von Finanzplanung über Karriereberatung bis zur Personalvermittlung – 
+              der <strong style="color: var(--gold-400); font-weight: 500;">MYVI-Effekt</strong> schafft Synergien, die weltweit einzigartig sind.
+            </p>
+            <div class="partner-card__stats">
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">400+</div>
+                <div class="partner-card__stat-label">Mitarbeiter</div>
+              </div>
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">30k+</div>
+                <div class="partner-card__stat-label">Kunden</div>
+              </div>
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">6</div>
+                <div class="partner-card__stat-label">Unternehmen</div>
+              </div>
+            </div>
+            <a href="https://myvi.de/" target="_blank" class="partner-card__cta" aria-label="Mehr über MYVI Group erfahren">
+              Mehr erfahren →
+            </a>
+          </div>
+
+          <!-- mitNORM -->
+          <div class="partner-card partner-card--mitnorm">
+            <div class="partner-card__header">
+              <div class="partner-card__badge">DIN 77230</div>
+              <span class="partner-card__icon">📋</span>
+            </div>
+            <h4 class="partner-card__name">mitNORM</h4>
+            <p class="partner-card__tagline">Qualitätsgeprüfte Finanzplanung</p>
+            <p class="partner-card__text">
+              Finanzberatung nach <strong style="color: var(--blue-400); font-weight: 500;">DIN 77230</strong> – <strong style="color: var(--blue-400); font-weight: 500;">objektiv, transparent und 100% verbraucherschutzkonform</strong>. 
+              mitNORM hat das <strong style="color: var(--blue-400); font-weight: 500;">Image der Branche verändert</strong> und setzt den Qualitätsstandard, 
+              an dem sich andere messen müssen.
+            </p>
+            <div class="partner-card__stats">
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">36k+</div>
+                <div class="partner-card__stat-label">Mandanten</div>
+              </div>
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">4.75</div>
+                <div class="partner-card__stat-label">⭐ Bewertung</div>
+              </div>
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">2.6k</div>
+                <div class="partner-card__stat-label">Bewertungen</div>
+              </div>
+            </div>
+            <a href="https://mitnorm.de/" target="_blank" class="partner-card__cta" aria-label="Mehr über mitNORM erfahren">
+              Mehr erfahren →
+            </a>
+          </div>
+
+          <!-- myNORM -->
+          <div class="partner-card partner-card--mynorm">
+            <div class="partner-card__header">
+              <div class="partner-card__badge">DIGITAL</div>
+              <span class="partner-card__icon">📱</span>
+            </div>
+            <h4 class="partner-card__name">myNORM</h4>
+            <p class="partner-card__tagline">Dein digitaler Finanzmanager</p>
+            <p class="partner-card__text">
+              Die App, die <strong style="color: var(--emerald-400); font-weight: 500;">alles verändert</strong>. <strong style="color: var(--emerald-400); font-weight: 500;">Alle Verträge an einem Ort</strong>, 
+              Zugang zu <strong style="color: var(--emerald-400); font-weight: 500;">500+ Versicherern</strong>, <strong style="color: var(--emerald-400); font-weight: 500;">WhatsApp-ähnlicher Chat zum Berater</strong> 
+              und <strong style="color: var(--emerald-400); font-weight: 500;">DIN-basierte Bedarfsanalyse</strong> – direkt auf deinem Smartphone.
+            </p>
+            <div class="partner-card__stats">
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">500+</div>
+                <div class="partner-card__stat-label">Versicherungen</div>
+              </div>
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">100%</div>
+                <div class="partner-card__stat-label">Verbraucherschutz</div>
+              </div>
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">1</div>
+                <div class="partner-card__stat-label">Check Portal</div>
+              </div>
+            </div>
+            <a href="https://mynorm.de/" target="_blank" class="partner-card__cta" aria-label="Mehr über myNORM erfahren">
+              Mehr erfahren →
+            </a>
+          </div>
+
+          <!-- mitNORM Firmenberatung -->
+          <div class="partner-card partner-card--firmen">
+            <div class="partner-card__header">
+              <div class="partner-card__badge">B2B</div>
+              <span class="partner-card__icon">🏢</span>
+            </div>
+            <h4 class="partner-card__name">mitNORM Firmenberatung</h4>
+            <p class="partner-card__tagline">DIN 77235 für Unternehmen</p>
+            <p class="partner-card__text">
+              Die erste <strong style="color: var(--cyan-400); font-weight: 500;">standardisierte Finanzanalyse für KMUs</strong> nach <strong style="color: var(--cyan-400); font-weight: 500;">DIN 77235</strong>. 
+              Von Mitarbeiterfindung über -bindung bis zur Unternehmensabsicherung – 
+              <strong style="color: var(--cyan-400); font-weight: 500;">ganzheitliche Beratung für den Mittelstand</strong>.
+            </p>
+            <div class="partner-card__stats">
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">8k+</div>
+                <div class="partner-card__stat-label">Firmenkunden</div>
+              </div>
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">DIN</div>
+                <div class="partner-card__stat-label">77235</div>
+              </div>
+              <div class="partner-card__stat">
+                <div class="partner-card__stat-value">6</div>
+                <div class="partner-card__stat-label">Bereiche</div>
+              </div>
+            </div>
+            <a href="https://mitnormfirmenberatung.de/" target="_blank" class="partner-card__cta" aria-label="Mehr über mitNORM Firmenberatung erfahren">
+              Mehr erfahren →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       CANGO ADVANTAGE
+       ======================================== -->
+  <section class="section section--elevated">
+    <div class="container">
+      <div class="cango-advantage">
+        <div class="cango-advantage__header">
+          <div class="cango-advantage__badge">
+            <span>⚡</span> DER CANGO-EFFEKT
+          </div>
+          <h3 class="cango-advantage__title">
+            Was CanGo App Empire anders macht
+          </h3>
+          <p class="cango-advantage__subtitle">
+            Wir liefern <strong style="color: var(--blue-400); font-weight: 500;">keine kalten Leads</strong>. Wir liefern <strong style="color: var(--blue-400); font-weight: 500;">vorqualifizierte Interessenten</strong> 
+            mit <strong style="color: var(--blue-400); font-weight: 500;">analysiertem Bedarf</strong> – ready to close.
+          </p>
+        </div>
+
+        <div class="cango-advantage__flow">
+          <div class="cango-advantage__step">
+            <div class="cango-advantage__step-number">1</div>
+            <div class="cango-advantage__step-icon">🎯</div>
+            <div class="cango-advantage__step-title">Content-Trigger</div>
+            <div class="cango-advantage__step-text">
+              KI-generierter Content erreicht die Zielgruppe über Social Media und SEO
+            </div>
+          </div>
+
+          <div class="cango-advantage__step">
+            <div class="cango-advantage__step-number">2</div>
+            <div class="cango-advantage__step-icon">📊</div>
+            <div class="cango-advantage__step-title">Bedarfsanalyse</div>
+            <div class="cango-advantage__step-text">
+              <strong style="color: var(--blue-400); font-weight: 500;">Automatisierte Vorqualifizierung</strong> nach DIN 77230 Standards
+            </div>
+          </div>
+
+          <div class="cango-advantage__step">
+            <div class="cango-advantage__step-number">3</div>
+            <div class="cango-advantage__step-icon">🔀</div>
+            <div class="cango-advantage__step-title">Smart Routing</div>
+            <div class="cango-advantage__step-text">
+              Lead wird zum <strong style="color: var(--blue-400); font-weight: 500;">passenden Berater im MYVI-Netzwerk</strong> geroutet
+            </div>
+          </div>
+
+          <div class="cango-advantage__step">
+            <div class="cango-advantage__step-number">4</div>
+            <div class="cango-advantage__step-icon">✅</div>
+            <div class="cango-advantage__step-title">Abschluss</div>
+            <div class="cango-advantage__step-text">
+              <strong style="color: var(--blue-400); font-weight: 500;">Digitaler Vertragsabschluss</strong> mit Onboarding in myNORM App
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       CTA SECTION
+       ======================================== -->
+  <section class="section" id="kontakt">
+    <div class="container">
+      <div class="cta">
+        <h2 class="cta__title">
+          Bereit für die <span class="text-gradient">Finanz-Revolution</span>?
+        </h2>
+        <p class="cta__text">
+          Ob Berater oder Kunde – CanGo App Empire und die <strong style="color: var(--blue-400); font-weight: 500;">MYVI-Allianz</strong> haben die Lösung. 
+          <strong style="color: var(--blue-400); font-weight: 500;">Transparente Beratung</strong>, <strong style="color: var(--blue-400); font-weight: 500;">digitale Tools</strong> und ein <strong style="color: var(--blue-400); font-weight: 500;">Netzwerk, das für dich arbeitet</strong>.
+        </p>
+        <div class="cta__buttons">
+          <a href="https://mynorm.de/" target="_blank" class="cta__button cta__button--primary" aria-label="Als Kunde bei myNORM starten">
+            Als Kunde starten →
+          </a>
+          <a href="https://myvi.de/karriere" target="_blank" class="cta__button cta__button--secondary" aria-label="Als Berater bei MYVI beitreten">
+            Als Berater beitreten
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Navigation</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li><li><a href="/kontakt.html">Kontakt</a></li></ul></div>
+        <div class="fcol"><h5>Branchen</h5><ul><li><a href="/finanzen-versicherung.html">Finanzen &amp; Versicherung</a></li><li><a href="/karriere-hr.html">Karriere &amp; HR</a></li><li><a href="/coaching-mindset.html">Coaching &amp; Mindset</a></li><li><a href="/immobilien.html">Immobilien</a></li><li><a href="/b2b-energy.html">B2B Energy</a></li><li><a href="/energie-finance.html">Energie &amp; Finance</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/disclaimer.html">Disclaimer</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelectorAll('.nav__link, .nav__cta').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav__menu').classList.remove('active');
+      });
+    });
+
+    // Animate elements on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.problem__card, .solution__card, .partner-card, .cango-advantage__step').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s cubic-bezier(0.33, 1, 0.68, 1)';
+      observer.observe(el);
+    });
+  </script>
+  <script>
+(function(){var C="cango_empire_cart";var u=function(){try{var r=localStorage.getItem(C);var i=r?JSON.parse(r):[];var n=i.reduce(function(s,x){return s+(x.quantity||1);},0);document.querySelectorAll(".cart-badge").forEach(function(b){b.textContent=n;b.style.display=n>0?"flex":"none";});}catch(e){}};if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",u);else u();window.addEventListener("load",u);setTimeout(u,100);setTimeout(u,500);})();
+</script>
+<script src="/cart.js"></script>
+</body>
+</html>
+

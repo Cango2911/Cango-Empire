@@ -1,0 +1,65 @@
+/**
+ * Matrix-Container – wie Problem-Cards (OpEx-Falle, Latenz, etc.)
+ */
+body #home .metrics .metric,
+body #home .metric,
+#home .metrics .metric,
+#home .metric {
+  background: var(--gradient-container) !important;
+  border: 1px solid rgba(75, 85, 99, 0.4) !important;
+  border-left: 3px solid rgba(249, 115, 22, 0.5) !important;
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1) !important;
+  overflow: hidden !important;
+}
+
+body #home .metrics .metric:hover,
+body #home .metric:hover,
+#home .metrics .metric:hover,
+#home .metric:hover {
+  border-color: rgba(249, 115, 22, 0.5) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 24px rgba(249, 115, 22, 0.1) !important;
+}
+
+body #home .metrics .metric::before,
+body #home .metric::before,
+#home .metrics .metric::before,
+#home .metric::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, transparent, #F97316, transparent) !important;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+body #home .metrics .metric:hover::before,
+body #home .metric:hover::before,
+#home .metrics .metric:hover::before,
+#home .metric:hover::before {
+  opacity: 1 !important;
+}
+
+/* ::after entfernen */
+body #home .metrics .metric::after,
+body #home .metric::after,
+#home .metrics .metric::after,
+#home .metric::after {
+  display: none !important;
+}
+
+/* CanGo-Spalte Vergleichstabelle: Orange sichtbar (auch Inkognito) */
+.comparison__table td.comparison__cango-cell,
+.comparison__table td:nth-child(3) {
+  color: #FB923C !important;
+  font-weight: 700 !important;
+}
+.comparison__table .cango-bullet {
+  color: #FB923C !important;
+  margin-right: 0.5em;
+}

@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
+<title>Trading School | Chart-Analysen &amp; Prognosen | CanGo App Empire</title>
+<meta content="Tägliche Chart-Analysen, Prognosen und Trading-Strategien. CPM: 12-30€" name="description"/>
+    <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+    <style>
+    /* === DESIGN TOKENS === */
+    :root {
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --gray-950: #030712;
+
+      --primary-50: #FFF7ED;
+      --primary-100: #FFEDD5;
+      --primary-200: #FED7AA;
+      --primary-300: #FDBA74;
+      --primary-400: #FB923C;
+      --primary-500: #F97316;
+      --primary-600: #EA580C;
+      --primary-700: #C2410C;
+
+      --accent-400: #F87171;
+      --accent-500: #EF4444;
+      --accent-600: #DC2626;
+      --accent-700: #B91C1C;
+
+      --blue-400: #60A5FA;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+
+      --success: #10B981;
+      --warning: #F59E0B;
+
+      --bg-base: #050810;
+      --bg-elevated: #0a0f1a;
+      --bg-surface: #080d18;
+      --bg-hover: #0d1220;
+      --text-primary: var(--gray-50);
+      --text-secondary: var(--gray-400);
+      --text-muted: var(--gray-500);
+      --border-default: rgba(220, 228, 240, 0.12);
+      --border-hover: rgba(220, 228, 240, 0.2);
+      --empire-gradient: linear-gradient(135deg, #0a0f1a 0%, #080d18 35%, #060a14 70%, #050810 100%);
+      --empire-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+      --text-xs: 0.8125rem;
+      --text-sm: 0.9375rem;
+      --text-base: 1.0625rem;
+      --text-lg: 1.25rem;
+      --text-xl: 1.375rem;
+      --text-2xl: 1.688rem;
+      --text-3xl: 2.125rem;
+      --text-4xl: 2.688rem;
+      --text-5xl: 3.375rem;
+      --text-6xl: 4.25rem;
+
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      --shadow-glow: 0 0 40px -10px;
+
+      --duration-fast: 150ms;
+      --duration-base: 200ms;
+      --duration-slow: 300ms;
+      --duration-slower: 500ms;
+      --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+      --nav-height: 64px;
+      --container-max: 1200px;
+      --container-narrow: 800px;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+
+      --z-base: 1;
+      --z-elevated: 10;
+      --z-sticky: 100;
+      --z-modal: 200;
+    }
+
+    /* === RESET & BASE === */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-base);
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.2));
+    }
+
+    /* === NAVIGATION === (zentral in cango-empire-v4-monopoly.css) */
+
+    /* === TRADING SCHOOL PAGE === */
+    .trading-page {
+      padding: calc(var(--nav-height) + var(--space-20)) 0 var(--space-24);
+      min-height: 100vh;
+    }
+
+    .trading-header {
+      text-align: center;
+      margin-bottom: var(--space-16);
+      padding-bottom: var(--space-12);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .trading-header__category {
+      display: inline-block;
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(249, 115, 22, 0.1));
+      border: 2px solid rgba(249, 115, 22, 0.3);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--primary-400);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-6);
+    }
+
+    .trading-header__title {
+      font-size: clamp(2.5rem, 5vw, var(--text-5xl));
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+      color: var(--text-primary);
+    }
+
+    .trading-header__subtitle {
+      font-size: var(--text-xl);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .trading-header__meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .trading-header__cpm {
+      padding: var(--space-2) var(--space-4);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--primary-400);
+      font-weight: 600;
+    }
+
+    /* === CHART ANALYSES === */
+    .analyses-section {
+      margin-top: var(--space-16);
+    }
+
+    .analyses-section__title {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-8);
+      text-align: center;
+    }
+
+    .analyses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-6);
+    }
+
+    .analysis-card {
+      padding: var(--space-8);
+      background: var(--bg-elevated);
+      border: 2px solid rgba(249, 115, 22, 0.15);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+
+    .analysis-card:hover {
+      border-color: var(--primary-500);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+    }
+
+    .analysis-card__date {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .analysis-card__title {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+    }
+
+    .analysis-card__description {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-6);
+    }
+
+    .analysis-card__link {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-3) var(--space-6);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      transition: all var(--duration-fast) var(--ease-out);
+    }
+
+    .analysis-card__link:hover {
+      background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .analyses-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    /* === ACCESSIBILITY: FOCUS STATES === */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary-500);
+      color: white;
+      padding: var(--space-2) var(--space-4);
+      text-decoration: none;
+      z-index: 1000;
+      border-radius: var(--radius-md);
+    }
+    
+    .skip-link:focus {
+      top: var(--space-2);
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+    
+    /* Keyboard Navigation */
+    *:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+    }
+    
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE DESIGN SYSTEM
+       Mobile-First Approach mit Corporate Design
+       ============================================ */
+    
+    /* === BREAKPOINTS === */
+    /* Mobile: < 480px (Standard) */
+    /* Tablet: 481px - 768px */
+    /* Desktop: 769px - 1024px */
+    /* Large Desktop: > 1024px */
+    
+    /* === TABLET & SMALL DESKTOP (max-width: 1024px) === */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 var(--space-4);
+      }
+      
+      /* Hero Adjustments */
+      .hero__title {
+        font-size: clamp(2rem, 6vw, var(--text-5xl));
+      }
+      
+      .hero__stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+      }
+      
+      /* Grid Adjustments */
+      .industries__grid,
+      .tech__grid,
+      .arsenal__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-4);
+      }
+      
+      /* Cards */
+      .tech__card,
+      .arsenal__card,
+      .industry {
+        padding: var(--space-6);
+      }
+      
+      /* Footer */
+      .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-8);
+      }
+    }
+    
+    /* === TABLET (max-width: 768px) === */
+    @media (max-width: 768px) {
+      :root {
+        --text-6xl: 3rem;
+        --text-5xl: 2.5rem;
+        --text-4xl: 2rem;
+        --text-3xl: 1.75rem;
+        --text-2xl: 1.5rem;
+        --space-24: 4rem;
+        --space-20: 3rem;
+        --space-16: 2.5rem;
+        --space-12: 2rem;
+      }
+      
+      .container {
+        padding: 0 var(--space-4);
+      }
+      
+      /* Hero Section */
+      .hero {
+        padding-top: calc(var(--nav-height) + var(--space-8));
+        padding-bottom: var(--space-12);
+        min-height: auto;
+      }
+      
+      .hero__title {
+        font-size: clamp(1.75rem, 8vw, var(--text-4xl));
+        margin-bottom: var(--space-4);
+      }
+      
+      .hero__subtitle {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-6);
+      }
+      
+      .hero__stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+        margin-top: var(--space-8);
+      }
+      
+      .hero__stat {
+        padding: var(--space-4);
+      }
+      
+      .hero__stat-value {
+        font-size: var(--text-2xl);
+      }
+      
+      /* Section Headers */
+      .section__title {
+        font-size: clamp(1.75rem, 6vw, var(--text-3xl));
+        margin-bottom: var(--space-3);
+      }
+      
+      .section__subtitle {
+        font-size: var(--text-base);
+      }
+      
+      /* Grids - Single Column */
+      .industries__grid,
+      .tech__grid,
+      .arsenal__grid,
+      .manifest__grid,
+      .revolution__timeline,
+      .allianz__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Cards */
+      .tech__card,
+      .arsenal__card,
+      .manifest__card,
+      .industry {
+        padding: var(--space-5);
+      }
+      
+      /* Stats */
+      .hero__stats,
+      .tech__number,
+      .arsenal__number {
+        font-size: var(--text-3xl);
+      }
+      
+      /* Footer */
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        text-align: center;
+      }
+      
+      .footer__bottom {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+      }
+      
+      /* CTA Buttons */
+      .cta__buttons {
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      /* Founder Section */
+      .founder__content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .founder__image {
+        max-width: 250px;
+        margin: 0 auto var(--space-6);
+      }
+      
+      .founder__stats {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Allianz Section */
+      .allianz__intro {
+        padding: var(--space-6);
+      }
+      
+      /* Protocol Steps */
+      .protocol__step {
+        grid-template-columns: 60px 1fr;
+        gap: var(--space-4);
+      }
+      
+      .protocol__step-number {
+        width: 60px;
+        height: 60px;
+        font-size: var(--text-xl);
+      }
+      
+      /* Scenarios */
+      .scenarios {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Partner Cards */
+      .partner__card {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+      
+      /* Products Grid */
+      .products {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      /* Qualification Cards */
+      .qualification__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      .qualification__promise-paths {
+        grid-template-columns: 1fr;
+      }
+      
+      /* Financing Banner */
+      .financing-banner__wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .financing-banner__rate-box {
+        justify-self: center;
+        margin-bottom: var(--space-4);
+      }
+      
+      .financing-banner__features {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+    
+    /* === MOBILE (max-width: 480px) === */
+    @media (max-width: 480px) {
+      :root {
+        --space-24: 3rem;
+        --space-20: 2.5rem;
+        --space-16: 2rem;
+        --space-12: 1.5rem;
+        --space-8: 1.5rem;
+        --space-6: 1rem;
+        --space-4: 0.75rem;
+      }
+      
+      .container {
+        padding: 0 var(--space-3);
+      }
+      
+      /* Typography */
+      .hero__title {
+        font-size: clamp(1.5rem, 10vw, var(--text-3xl));
+        line-height: 1.2;
+      }
+      
+      .section__title {
+        font-size: clamp(1.5rem, 8vw, var(--text-2xl));
+      }
+      
+      /* Hero */
+      .hero__badge {
+        font-size: var(--text-xs);
+        padding: var(--space-2) var(--space-3);
+      }
+      
+      .hero__stat-value {
+        font-size: var(--text-xl);
+      }
+      
+      /* Cards - Compact */
+      .tech__card,
+      .arsenal__card,
+      .manifest__card,
+      .industry {
+        padding: var(--space-4);
+      }
+      
+      .tech__icon,
+      .arsenal__icon {
+        font-size: var(--text-2xl);
+      }
+      
+      /* Buttons */
+      .btn {
+        padding: var(--space-3) var(--space-5);
+        font-size: var(--text-sm);
+      }
+      
+      /* Navigation */
+      .nav__brand {
+        font-size: var(--text-base);
+      }
+      
+      .nav__brand-icon {
+        width: 28px;
+        height: 28px;
+      }
+      
+      /* Footer */
+      .footer {
+        padding: var(--space-12) 0 var(--space-6);
+      }
+      
+      /* Spacing Reductions */
+      section {
+        padding: var(--space-12) 0;
+      }
+      
+      .section__header {
+        margin-bottom: var(--space-8);
+      }
+    }
+    
+    /* === LARGE DESKTOP (min-width: 1400px) === */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1400px;
+      }
+      
+      .hero__title {
+        font-size: var(--text-6xl);
+      }
+      
+      .industries__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    /* === LANDSCAPE ORIENTATION === */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero {
+        min-height: auto;
+        padding-top: calc(var(--nav-height) + var(--space-4));
+        padding-bottom: var(--space-8);
+      }
+      
+      .hero__stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* === PRINT STYLES === */
+    @media print {
+      .nav,
+      .nav__menu,
+      .btn,
+      .skip-link {
+        display: none;
+      }
+      
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+    }
+
+  </style>
+<meta content="dark" name="color-scheme"/>
+<link href="/cango-empire-v4-monopoly.css?v=24" rel="stylesheet"/>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body class="empire-sync empire-sync--landing"><a aria-label="Zum Hauptinhalt springen" class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+<main class="trading-page" id="main-content" role="main" tabindex="-1">
+<div class="container">
+<header class="trading-header" role="banner">
+<div class="trading-header__category">📈 TRADING SCHOOL</div>
+<h1 class="trading-header__title">
+          Tägliche Chart-Analysen &amp; <span class="text-gradient">Trading-Prognosen</span>
+</h1>
+<p class="trading-header__subtitle">
+          Die besten Trading-Plattformen und Analysetools im Detail. Täglich aktualisierte 
+          Chart-Analysen und Prognosen für deine Trading-Strategie.
+        </p>
+<div class="trading-header__meta">
+<span>CPM: 12-30€</span>
+<span class="trading-header__cpm">High-CPM Nische</span>
+</div>
+</header>
+<section class="analyses-section">
+<h2 class="analyses-section__title">Tägliche Chart-Analysen</h2>
+<div class="analyses-grid">
+<div class="analysis-card">
+<div class="analysis-card__date">Heute, 08:00 Uhr</div>
+<h3 class="analysis-card__title">Bitcoin: Wale im Shopping-Rausch!</h3>
+<p class="analysis-card__description">
+              Krypto-Forscher fassungslos: „Sie kaufen im Rekord-Tempo"! 
+              Prognose: Kommt der Sommer-Bullrun jetzt?
+            </p>
+<a class="analysis-card__link" data-affiliate="true" href="#">
+              Vollständige Analyse lesen →
+            </a>
+</div>
+<div class="analysis-card">
+<div class="analysis-card__date">Gestern, 18:00 Uhr</div>
+<h3 class="analysis-card__title">DAX: Unterstützung bei 18.000 Punkten</h3>
+<p class="analysis-card__description">
+              Technische Analyse zeigt starke Unterstützung. 
+              Erwartung: Bounce oder Breakdown?
+            </p>
+<a class="analysis-card__link" data-affiliate="true" href="#">
+              Vollständige Analyse lesen →
+            </a>
+</div>
+<div class="analysis-card">
+<div class="analysis-card__date">Vor 2 Tagen</div>
+<h3 class="analysis-card__title">EUR/USD: Zinsentscheidung steht bevor</h3>
+<p class="analysis-card__description">
+              Vorbereitung auf die EZB-Entscheidung. 
+              Welche Positionen sind jetzt sinnvoll?
+            </p>
+<a class="analysis-card__link" data-affiliate="true" href="#">
+              Vollständige Analyse lesen →
+            </a>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+<script>
+    document.querySelectorAll('.nav__link, .nav__cta').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav__menu').classList.remove('active');
+      });
+    });
+
+    document.querySelectorAll('[data-affiliate="true"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        console.log('Affiliate Link clicked:', this.href);
+      });
+    });
+  </script>
+</body>
+</html>

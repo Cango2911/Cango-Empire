@@ -1,0 +1,31 @@
+{
+  "batch_id": 17,
+  "category": "COMMUNICATION GRID",
+  "tools": [
+    {
+      "id": "brevo",
+      "name": "Brevo (Sendinblue)",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/brevo.html"
+    },
+    {
+      "id": "resend",
+      "name": "Resend",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/resend.html"
+    },
+    {
+      "id": "twilio",
+      "name": "Twilio",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/twilio.html"
+    },
+    {
+      "id": "manychat",
+      "name": "ManyChat",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/manychat.html"
+    },
+    {
+      "id": "chatfuel",
+      "name": "Chatfuel",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/chatfuel.html"
+    }
+  ]
+}

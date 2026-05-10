@@ -1,0 +1,979 @@
+/* ================================================================
+   CANGO EMPIRE — ÜBER UNS PAGE VISUAL UPGRADE v1
+   Einbinden als LETZTES stylesheet in ueber-uns.html,
+   NACH cango-empire-global.css:
+   <link rel="stylesheet" href="/cango-empire-global.css?v=1">
+   <link rel="stylesheet" href="/cango-empire-ueber-uns.css?v=1">
+
+   Berührt NICHTS an Inhalt, Links oder JS.
+   pkg-card (4 Pakete) komplett unberührt.
+   Fonts: Self-hosted (Instrument Sans, JetBrains Mono).
+   ================================================================ */
+
+/* ================================================================
+   0. PAGE CANVAS
+   ================================================================ */
+body.empire-sync--about-body {
+  background: #07070b !important;
+  background-image: none !important;
+  font-family: var(--ce-font-body) !important;
+}
+
+/* Globales Grid-Overlay */
+body.empire-sync--about-body::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px) !important;
+  background-size: 52px 52px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Ambient Orange-Glow oben */
+body.empire-sync--about-body::after {
+  content: '' !important;
+  position: fixed !important;
+  top: 0; left: 0; right: 0 !important;
+  height: 420px !important;
+  background: radial-gradient(
+    ellipse 75% 65% at 50% -15%,
+    rgba(249,115,22,.16) 0%,
+    rgba(249,115,22,.05) 45%,
+    transparent 70%
+  ) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+body.empire-sync--about-body section,
+body.empire-sync--about-body footer,
+body.empire-sync--about-body nav {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* ================================================================
+   1. HERO — CINEMATISCH WIE STARTSEITE
+   ================================================================ */
+body.empire-sync--about-body .hero {
+  background-color: #0d0d12 !important;
+  background-image:
+    radial-gradient(ellipse 110% 90% at 50% -20%,
+      rgba(249,115,22,.42) 0%,
+      rgba(249,115,22,.1) 28%,
+      transparent 55%),
+    radial-gradient(ellipse 65% 55% at 82% 5%,
+      rgba(249,115,22,.1) 0%,
+      transparent 45%),
+    radial-gradient(ellipse 45% 40% at 12% 18%,
+      rgba(249,115,22,.06) 0%,
+      transparent 40%) !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* Grid-Muster */
+body.empire-sync--about-body .hero::before {
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px) !important;
+  background-size: 40px 40px !important;
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 80% at 50% 0%,
+    black 0%, black 40%, transparent 70%
+  ) !important;
+  mask-image: radial-gradient(
+    ellipse 100% 80% at 50% 0%,
+    black 0%, black 40%, transparent 70%
+  ) !important;
+}
+
+body.empire-sync--about-body .hero__badge {
+  background: rgba(11,15,28,.9) !important;
+  border: 1px solid rgba(59,130,246,.2) !important;
+  border-radius: 999px !important;
+  padding: .5rem 1.1rem !important;
+  font-family: var(--ce-font-mono) !important;
+  font-size: .72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  color: rgba(249,115,22,.9) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+body.empire-sync--about-body .hero__badge-dot {
+  width: 8px !important;
+  height: 8px !important;
+  background: var(--ce-green) !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+  animation: aboutDot 2s ease-in-out infinite !important;
+}
+
+@keyframes aboutDot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .4; }
+}
+
+/* Hero-Headline: gleiche Schrift und Größe wie Startseite (Instrument Sans, clamp wie #home) */
+body.empire-sync--about-body .hero__title {
+  font-family: 'Instrument Sans', var(--ce-font-display, sans-serif) !important;
+  font-size: clamp(2.75rem, 7vw, 4.25rem) !important;
+  letter-spacing: .04em !important;
+  line-height: 1.05 !important;
+  color: var(--ce-text) !important;
+  font-weight: 700 !important;
+}
+
+body.empire-sync--about-body .hero__title .text-gradient {
+  background: linear-gradient(135deg, #FB923C 0%, #F97316 45%, #EA580C 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: drop-shadow(0 0 28px rgba(249,115,22,.35)) !important;
+}
+
+body.empire-sync--about-body .hero__subtitle {
+  color: rgba(240,237,232,.55) !important;
+  font-size: clamp(1rem, 2vw, 1.2rem) !important;
+  line-height: 1.72 !important;
+  max-width: 680px !important;
+}
+
+body.empire-sync--about-body .hero__subtitle .text-gradient {
+  background: linear-gradient(135deg, #FB923C, #EA580C) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-weight: 700 !important;
+}
+
+body.empire-sync--about-body .hero__stats {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1rem !important;
+  margin-top: 3rem !important;
+}
+
+body.empire-sync--about-body .hero__stat {
+  background: rgba(11,15,28,.85) !important;
+  border: 1px solid rgba(59,130,246,.12) !important;
+  border-left: 2px solid rgba(59,130,246,.35) !important;
+  border-radius: 12px !important;
+  padding: 1.25rem 1rem !important;
+  text-align: center !important;
+  transition: transform .2s ease, border-color .2s ease !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3) !important;
+}
+
+body.empire-sync--about-body .hero__stat:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(59,130,246,.2) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.4) !important;
+}
+
+body.empire-sync--about-body .hero__stat-value {
+  font-family: var(--ce-font-display) !important;
+  font-size: clamp(2.2rem, 4vw, 3rem) !important;
+  letter-spacing: .05em !important;
+  color: #FB923C !important;
+  line-height: 1.05 !important;
+  margin-bottom: .35rem !important;
+}
+
+body.empire-sync--about-body .hero__stat-label {
+  font-family: var(--ce-font-mono) !important;
+  font-size: .65rem !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: rgba(240,237,232,.45) !important;
+}
+
+/* ================================================================
+   2. SECTION GLOBALS
+   ================================================================ */
+body.empire-sync--about-body section:not(.hero) {
+  background: transparent !important;
+  background-image: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  padding-top: clamp(3.5rem, 7vw, 5.5rem) !important;
+  padding-bottom: clamp(3.5rem, 7vw, 5.5rem) !important;
+}
+
+body.empire-sync--about-body section:not(.hero):not(:last-of-type)::after {
+  display: none !important;
+}
+
+body.empire-sync--about-body .manifest__header {
+  text-align: center !important;
+  max-width: 720px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem) !important;
+}
+
+body.empire-sync--about-body .section__eyebrow {
+  font-family: var(--ce-font-mono) !important;
+  font-size: .72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .22em !important;
+  text-transform: uppercase !important;
+  color: rgba(249,115,22,.9) !important;
+  margin-bottom: .9rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+body.empire-sync--about-body .section__eyebrow::before {
+  content: '' !important;
+  display: inline-block !important;
+  width: 20px !important;
+  height: 1px !important;
+  background: rgba(249,115,22,.7) !important;
+  flex-shrink: 0 !important;
+}
+
+body.empire-sync--about-body .section__title {
+  font-family: var(--ce-font-display) !important;
+  font-size: clamp(2.4rem, 5vw, 3.8rem) !important;
+  letter-spacing: .04em !important;
+  line-height: .97 !important;
+  color: var(--ce-text) !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  margin-bottom: 1rem !important;
+}
+
+body.empire-sync--about-body .section__title .text-gradient {
+  background: linear-gradient(135deg, #FB923C 0%, #F97316 45%, #EA580C 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: drop-shadow(0 0 22px rgba(249,115,22,.28)) !important;
+}
+
+body.empire-sync--about-body .section__subtitle {
+  color: rgba(240,237,232,.5) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.72 !important;
+  max-width: 680px !important;
+  margin: 0 auto !important;
+}
+
+/* ================================================================
+   3. FOUNDER SECTION
+   ================================================================ */
+body.empire-sync--about-body .founder__content {
+  display: grid !important;
+  grid-template-columns: 280px 1fr !important;
+  gap: 3rem !important;
+  align-items: start !important;
+  background: rgba(11,15,28,.85) !important;
+  border: 1px solid rgba(59,130,246,.12) !important;
+  border-left: 2px solid rgba(59,130,246,.35) !important;
+  border-radius: 12px !important;
+  padding: 2.5rem !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.35) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+body.empire-sync--about-body .founder__content::before {
+  display: none !important;
+}
+
+body.empire-sync--about-body .founder__left-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.25rem !important;
+}
+
+body.empire-sync--about-body .founder__left-column .manifest__header {
+  text-align: left !important;
+  margin-bottom: .5rem !important;
+  max-width: 100% !important;
+}
+
+body.empire-sync--about-body .founder__left-column .section__title {
+  text-align: left !important;
+  font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
+}
+
+body.empire-sync--about-body .founder__left-column .section__eyebrow {
+  justify-content: flex-start !important;
+}
+
+/* Überschreibt monopoly: ein Rand, ein Schatten (kein Doppelrahmen/Glow) */
+body.empire-sync.empire-sync--about-body .founder__image img,
+body.empire-sync--about-body .founder__image img {
+  width: 100% !important;
+  max-width: 260px !important;
+  height: auto !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(59,130,246,.15) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.35) !important;
+  transition: transform .2s ease, border-color .2s ease !important;
+  display: block !important;
+}
+
+body.empire-sync--about-body .founder__image:hover img {
+  transform: scale(1.01) !important;
+  border-color: rgba(59,130,246,.25) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.4) !important;
+}
+
+body.empire-sync--about-body .founder__image-placeholder {
+  max-width: 260px !important;
+  border-radius: 18px !important;
+  background: rgba(249,115,22,.06) !important;
+  border: 1px solid rgba(249,115,22,.2) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,.5) !important;
+}
+
+body.empire-sync--about-body .founder__info .section__eyebrow {
+  margin-top: 0 !important;
+}
+
+body.empire-sync--about-body .founder__name {
+  font-family: var(--ce-font-display) !important;
+  font-size: clamp(2.5rem, 5vw, 3.8rem) !important;
+  letter-spacing: .05em !important;
+  line-height: 1 !important;
+  color: var(--ce-text) !important;
+  margin-bottom: .4rem !important;
+}
+
+body.empire-sync--about-body .founder__role {
+  font-family: var(--ce-font-mono) !important;
+  font-size: .78rem !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: rgba(249,115,22,.8) !important;
+  font-weight: 700 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+body.empire-sync--about-body .founder__bio {
+  color: rgba(240,237,232,.55) !important;
+  font-size: .98rem !important;
+  line-height: 1.78 !important;
+  margin-bottom: 1.8rem !important;
+}
+
+body.empire-sync--about-body .founder__stats {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: .85rem !important;
+  margin-bottom: 1.8rem !important;
+}
+
+body.empire-sync--about-body .founder__stat {
+  background: rgba(11,15,28,.85) !important;
+  border: 1px solid rgba(59,130,246,.12) !important;
+  border-radius: 12px !important;
+  padding: 1rem !important;
+  text-align: center !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3) !important;
+  transition: transform .2s ease, border-color .2s ease !important;
+}
+
+body.empire-sync--about-body .founder__stat:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(59,130,246,.2) !important;
+}
+
+body.empire-sync--about-body .founder__stat-value {
+  font-family: var(--ce-font-display) !important;
+  font-size: 1.9rem !important;
+  letter-spacing: .06em !important;
+  color: #FB923C !important;
+  margin-bottom: .25rem !important;
+}
+
+body.empire-sync--about-body .founder__stat-label {
+  font-family: var(--ce-font-mono) !important;
+  font-size: .6rem !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: rgba(240,237,232,.38) !important;
+}
+
+body.empire-sync--about-body .founder__signature {
+  font-family: var(--ce-font-display) !important;
+  font-size: 1.6rem !important;
+  letter-spacing: .08em !important;
+  color: rgba(249,115,22,.75) !important;
+  font-style: normal !important;
+  padding-top: 1.2rem !important;
+  border-top: 1px solid rgba(59,130,246,.12) !important;
+}
+
+/* ================================================================
+   4. MANIFEST SECTION
+   ================================================================ */
+body.empire-sync--about-body .manifest::before {
+  opacity: .6 !important;
+}
+
+body.empire-sync--about-body .manifest__grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.2rem !important;
+}
+
+body.empire-sync--about-body .manifest__card {
+  background: rgba(11,15,28,.85) !important;
+  border: 1px solid rgba(59,130,246,.12) !important;
+  border-left: 2px solid rgba(59,130,246,.35) !important;
+  border-radius: 12px !important;
+  padding: 2rem !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.35) !important;
+  transition: transform .2s ease, border-color .2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+body.empire-sync--about-body .manifest__card::before {
+  display: none !important;
+}
+
+body.empire-sync--about-body .manifest__card:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(59,130,246,.22) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.4) !important;
+}
+
+body.empire-sync--about-body .manifest__card-icon {
+  font-size: 2.2rem !important;
+  margin-bottom: 1rem !important;
+  display: block !important;
+}
+
+body.empire-sync--about-body .manifest__card-title {
+  font-family: var(--ce-font-display) !important;
+  font-size: 1.5rem !important;
+  letter-spacing: .06em !important;
+  background: linear-gradient(135deg, #FB923C, #EA580C) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  margin-bottom: .85rem !important;
+}
+
+body.empire-sync--about-body .manifest__card-text {
+  color: rgba(240,237,232,.55) !important;
+  font-size: .92rem !important;
+  line-height: 1.78 !important;
+}
+
+body.empire-sync--about-body .manifest__card-text strong {
+  color: rgba(249,115,22,.85) !important;
+  font-weight: 700 !important;
+  -webkit-text-fill-color: rgba(249,115,22,.85) !important;
+}
+
+/* ================================================================
+   5. REVOLUTION SECTION
+   ================================================================ */
+body.empire-sync--about-body .revolution__content {
+  max-width: 860px !important;
+  margin: 0 auto !important;
+}
+
+body.empire-sync--about-body .revolution__timeline {
+  padding-left: 3rem !important;
+  position: relative !important;
+}
+
+body.empire-sync--about-body .revolution__timeline::before {
+  background: linear-gradient(180deg,
+    rgba(249,115,22,.7) 0%,
+    rgba(249,115,22,.3) 60%,
+    transparent 100%
+  ) !important;
+  width: 2px !important;
+}
+
+body.empire-sync--about-body .revolution__item::before {
+  background: rgba(59,130,246,.6) !important;
+  width: 10px !important;
+  height: 10px !important;
+  border: none !important;
+  box-shadow: none !important;
+  left: calc(-3rem - 4px) !important;
+}
+
+body.empire-sync--about-body .revolution__item {
+  padding-bottom: 3.5rem !important;
+}
+
+body.empire-sync--about-body .revolution__item:last-child {
+  padding-bottom: 0 !important;
+}
+
+body.empire-sync--about-body .revolution__era {
+  font-family: var(--ce-font-mono) !important;
+  font-size: .68rem !important;
+  letter-spacing: .22em !important;
+  color: rgba(249,115,22,.8) !important;
+  text-transform: uppercase !important;
+  margin-bottom: .5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+body.empire-sync--about-body .revolution__era::after {
+  content: '' !important;
+  display: inline-block !important;
+  width: 30px !important;
+  height: 1px !important;
+  background: rgba(249,115,22,.4) !important;
+}
+
+body.empire-sync--about-body .revolution__title {
+  font-family: var(--ce-font-display) !important;
+  font-size: 2rem !important;
+  letter-spacing: .05em !important;
+  color: var(--ce-text) !important;
+  font-weight: 400 !important;
+  margin-bottom: .85rem !important;
+  line-height: 1.05 !important;
+}
+
+body.empire-sync--about-body .revolution__text {
+  color: rgba(240,237,232,.52) !important;
+  font-size: .95rem !important;
+  line-height: 1.8 !important;
+  max-width: 720px !important;
+}
+
+/* ================================================================
+   6. ARSENAL SECTION
+   ================================================================ */
+body.empire-sync--about-body .arsenal__grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.25rem !important;
+}
+
+body.empire-sync--about-body .arsenal__card {
+  background: rgba(11,15,28,.85) !important;
+  border: 1px solid rgba(59,130,246,.12) !important;
+  border-left: 2px solid rgba(59,130,246,.35) !important;
+  border-radius: 12px !important;
+  padding: 2rem 1.75rem !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,.35) !important;
+  transition: transform .2s ease, border-color .2s ease !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+body.empire-sync--about-body .arsenal__card::before {
+  display: none !important;
+}
+
+body.empire-sync--about-body .arsenal__card:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(59,130,246,.22) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.4) !important;
+}
+
+body.empire-sync--about-body .arsenal__icon {
+  font-size: 2.2rem !important;
+  margin-bottom: 1rem !important;
+  display: block !important;
+  animation: arsenalFloat 4s ease-in-out infinite !important;
+}
+
+body.empire-sync--about-body .arsenal__card:nth-child(2) .arsenal__icon { animation-delay: .7s !important; }
+body.empire-sync--about-body .arsenal__card:nth-child(3) .arsenal__icon { animation-delay: 1.4s !important; }
+
+@keyframes arsenalFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+body.empire-sync--about-body .arsenal__number {
+  font-family: var(--ce-font-display) !important;
+  font-size: clamp(3.5rem, 6vw, 5.5rem) !important;
+  letter-spacing: .04em !important;
+  line-height: .9 !important;
+  background: linear-gradient(135deg, #FB923C, #EA580C) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: drop-shadow(0 0 22px rgba(249,115,22,.45)) !important;
+  margin-bottom: .4rem !important;
+}
+
+body.empire-sync--about-body .arsenal__label {
+  font-family: var(--ce-font-display) !important;
+  font-size: 1.35rem !important;
+  letter-spacing: .07em !important;
+  color: var(--ce-text) !important;
+  font-weight: 400 !important;
+  margin-bottom: 1rem !important;
+}
+
+body.empire-sync--about-body .arsenal__desc {
+  color: rgba(240,237,232,.52) !important;
+  font-size: .9rem !important;
+  line-height: 1.72 !important;
+}
+
+body.empire-sync--about-body .arsenal__desc strong {
+  color: rgba(249,115,22,.82) !important;
+  font-weight: 700 !important;
+  -webkit-text-fill-color: rgba(249,115,22,.82) !important;
+}
+
+/* ================================================================
+   7. ALLIANZ SECTION
+   ================================================================ */
+body.empire-sync--about-body .allianz__intro {
+  background: rgba(249,115,22,.06) !important;
+  border: 1px solid rgba(249,115,22,.2) !important;
+  border-radius: 16px !important;
+  padding: 1.8rem 2.2rem !important;
+  max-width: 780px !important;
+  text-align: center !important;
+  margin: 0 auto 2.5rem !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+
+body.empire-sync--about-body .allianz__intro-text {
+  color: rgba(240,237,232,.6) !important;
+  font-size: 1rem !important;
+  line-height: 1.75 !important;
+}
+
+body.empire-sync--about-body .allianz__intro-text strong {
+  color: rgba(249,115,22,.85) !important;
+  -webkit-text-fill-color: rgba(249,115,22,.85) !important;
+  font-weight: 700 !important;
+}
+
+body.empire-sync--about-body .industries__grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.2rem !important;
+}
+
+body.empire-sync--about-body .industry {
+  background: rgba(10,10,18,.88) !important;
+  border: 1px solid rgba(249,115,22,.15) !important;
+  border-left: 2px solid rgba(249,115,22,.48) !important;
+  border-radius: 18px !important;
+  padding: 1.8rem !important;
+  cursor: default !important;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+
+body.empire-sync--about-body .industry:nth-child(1) { border-left-color: rgba(59,130,246,.6) !important; }
+body.empire-sync--about-body .industry:nth-child(2) { border-left-color: rgba(245,158,11,.6) !important; }
+body.empire-sync--about-body .industry:nth-child(3) { border-left-color: rgba(16,185,129,.6) !important; }
+body.empire-sync--about-body .industry:nth-child(4) { border-left-color: rgba(239,68,68,.6) !important; }
+body.empire-sync--about-body .industry:nth-child(5) { border-left-color: rgba(236,72,153,.6) !important; }
+
+body.empire-sync--about-body .industry:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(249,115,22,.3) !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,.6), 0 0 24px rgba(249,115,22,.1) !important;
+}
+
+body.empire-sync--about-body .industry:nth-child(5):last-child {
+  grid-column: 1 / -1 !important;
+}
+
+body.empire-sync--about-body .industry__header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 1rem !important;
+}
+
+body.empire-sync--about-body .industry__icon {
+  width: 52px !important;
+  height: 52px !important;
+  font-size: 1.6rem !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(249,115,22,.1) !important;
+  border: 1px solid rgba(249,115,22,.2) !important;
+}
+
+body.empire-sync--about-body .industry__name {
+  font-family: var(--ce-font-display) !important;
+  font-size: 1.55rem !important;
+  letter-spacing: .06em !important;
+  color: var(--ce-text) !important;
+  font-weight: 400 !important;
+  margin-bottom: .6rem !important;
+}
+
+body.empire-sync--about-body .industry__name a {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: color .2s !important;
+}
+
+body.empire-sync--about-body .industry__name a:hover {
+  color: var(--ce-orange-bright) !important;
+  -webkit-text-fill-color: var(--ce-orange-bright) !important;
+}
+
+body.empire-sync--about-body .industry__cpm {
+  color: rgba(240,237,232,.5) !important;
+  font-size: .88rem !important;
+  line-height: 1.7 !important;
+}
+
+body.empire-sync--about-body .badge {
+  font-family: var(--ce-font-mono) !important;
+  font-size: .6rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  padding: .28rem .65rem !important;
+  border-radius: 6px !important;
+}
+
+body.empire-sync--about-body .partner-tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: .5rem !important;
+  margin-top: 1rem !important;
+}
+
+body.empire-sync--about-body .partner-tag {
+  font-family: var(--ce-font-mono) !important;
+  font-size: .66rem !important;
+  letter-spacing: .07em !important;
+  padding: .3rem .7rem !important;
+  background: rgba(249,115,22,.07) !important;
+  border: 1px solid rgba(249,115,22,.18) !important;
+  border-radius: 6px !important;
+  color: rgba(249,115,22,.75) !important;
+  text-decoration: none !important;
+  transition: background .2s, border-color .2s, transform .2s !important;
+}
+
+body.empire-sync--about-body .partner-tag:hover {
+  background: rgba(249,115,22,.14) !important;
+  border-color: rgba(249,115,22,.38) !important;
+  transform: translateY(-1px) !important;
+  color: var(--ce-orange-bright) !important;
+}
+
+body.empire-sync--about-body .partner-tag--static:hover {
+  transform: none !important;
+  background: rgba(249,115,22,.07) !important;
+  border-color: rgba(249,115,22,.18) !important;
+}
+
+/* ================================================================
+   8. PACKAGES SECTION (pkg-card NICHT ANFASSEN)
+   ================================================================ */
+body.empire-sync--about-body .pkg-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 1.25rem !important;
+  max-width: 960px !important;
+  margin: 2rem auto 0 !important;
+}
+
+/* ================================================================
+   9. CTA SECTION
+   ================================================================ */
+body.empire-sync--about-body .cta {
+  background: transparent !important;
+  border-top: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+body.empire-sync--about-body .cta::before {
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 110%, rgba(249,115,22,.25), transparent 65%),
+    radial-gradient(ellipse 35% 30% at 15% 85%, rgba(234,88,12,.1), transparent 65%) !important;
+}
+
+body.empire-sync--about-body .cta__title {
+  font-family: var(--ce-font-display) !important;
+  font-size: clamp(3rem, 7vw, 5.5rem) !important;
+  letter-spacing: .04em !important;
+  line-height: .95 !important;
+  color: var(--ce-text) !important;
+  font-weight: 400 !important;
+}
+
+body.empire-sync--about-body .cta__title .text-gradient {
+  background: linear-gradient(135deg, #FB923C 0%, #F97316 45%, #EA580C 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: drop-shadow(0 0 28px rgba(249,115,22,.35)) !important;
+}
+
+body.empire-sync--about-body .cta__subtitle {
+  color: rgba(240,237,232,.5) !important;
+  font-size: 1.1rem !important;
+  line-height: 1.7 !important;
+}
+
+body.empire-sync--about-body .btn--accent {
+  background: linear-gradient(135deg, #F97316, #EA580C) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  box-shadow: 0 4px 24px rgba(249,115,22,.38), 0 0 0 1px rgba(249,115,22,.18) !important;
+  transition: transform .2s ease, box-shadow .2s ease !important;
+}
+
+body.empire-sync--about-body .btn--accent:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 36px rgba(249,115,22,.55), 0 0 0 1px rgba(249,115,22,.3) !important;
+}
+
+/* ================================================================
+   10. RESPONSIVE
+   ================================================================ */
+@media (max-width: 1024px) {
+  body.empire-sync--about-body .hero__stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  body.empire-sync--about-body .manifest__grid {
+    grid-template-columns: 1fr !important;
+  }
+  body.empire-sync--about-body .arsenal__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  body.empire-sync--about-body .industries__grid {
+    grid-template-columns: 1fr !important;
+  }
+  body.empire-sync--about-body .industry:nth-child(5):last-child {
+    grid-column: 1 !important;
+  }
+  body.empire-sync--about-body .founder__content {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+  }
+  body.empire-sync--about-body .founder__left-column .section__title {
+    text-align: center !important;
+  }
+  body.empire-sync--about-body .founder__left-column .section__eyebrow {
+    justify-content: center !important;
+  }
+  body.empire-sync--about-body .founder__image {
+    max-width: 260px !important;
+    margin: 0 auto !important;
+  }
+  body.empire-sync--about-body .founder__stats {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  body.empire-sync--about-body .pkg-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body.empire-sync--about-body .hero__title {
+    font-size: clamp(2.75rem, 7vw, 4.25rem) !important;
+  }
+  body.empire-sync--about-body .hero__stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: .75rem !important;
+  }
+  body.empire-sync--about-body .hero__stat {
+    padding: 1rem .85rem !important;
+  }
+  body.empire-sync--about-body .founder__content {
+    padding: 1.5rem !important;
+    gap: 1.75rem !important;
+  }
+  body.empire-sync--about-body .founder__stats {
+    grid-template-columns: 1fr !important;
+  }
+  body.empire-sync--about-body .arsenal__grid {
+    grid-template-columns: 1fr !important;
+  }
+  body.empire-sync--about-body .revolution__timeline {
+    padding-left: 2rem !important;
+  }
+  body.empire-sync--about-body .revolution__item::before {
+    left: calc(-2rem - 6px) !important;
+  }
+  body.empire-sync--about-body .revolution__title {
+    font-size: 1.65rem !important;
+  }
+  body.empire-sync--about-body .manifest__grid {
+    grid-template-columns: 1fr !important;
+  }
+  body.empire-sync--about-body .cta__title {
+    font-size: clamp(2.5rem, 9vw, 3.8rem) !important;
+  }
+  body.empire-sync--about-body .pkg-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body.empire-sync--about-body .hero__title {
+    font-size: clamp(2.75rem, 7vw, 4.25rem) !important;
+  }
+  body.empire-sync--about-body .hero__stats {
+    grid-template-columns: 1fr 1fr !important;
+    gap: .6rem !important;
+  }
+  body.empire-sync--about-body .hero__stat-value {
+    font-size: 1.9rem !important;
+  }
+  body.empire-sync--about-body .founder__content {
+    padding: 1.2rem !important;
+  }
+  body.empire-sync--about-body .founder__stats {
+    grid-template-columns: 1fr !important;
+    gap: .6rem !important;
+  }
+  body.empire-sync--about-body .manifest__card {
+    padding: 1.4rem !important;
+  }
+  body.empire-sync--about-body .arsenal__card {
+    padding: 1.5rem 1.3rem !important;
+  }
+  body.empire-sync--about-body .industries__grid {
+    grid-template-columns: 1fr !important;
+  }
+  body.empire-sync--about-body .section__title {
+    font-size: clamp(2rem, 9vw, 2.8rem) !important;
+  }
+  body.empire-sync--about-body .cta__title {
+    font-size: clamp(2.2rem, 10vw, 3rem) !important;
+  }
+}
+
+/* ================================================================
+   11. REDUCED MOTION
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  body.empire-sync--about-body .arsenal__icon {
+    animation: none !important;
+  }
+  body.empire-sync--about-body .hero__badge-dot {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "batch_id": 3,
+  "total_batches": 22,
+  "category": "GROWTH & SEO WARFARE",
+  "tools": [
+    {
+      "id": "surfer-seo",
+      "name": "Surfer SEO",
+      "tagline": "Schluss mit SEO-Voodoo. Ranking-Garantie durch Daten.",
+      "badge": "MARKET LEADER",
+      "rating": { "tacos": 5, "count": 4500 },
+      "images": ["/images/tools/surfer-editor.webp"],
+      "quick_specs": {
+        "alternative_to": ["Clearscope", "MarketMuse"],
+        "integrations": ["Jasper", "WordPress", "Google Docs"],
+        "best_for": ["SEO-Strategen", "Content Manager", "Affiliates"]
+      },
+      "pitch_html": "<h3>Google ist keine Magie. Google ist Mathematik.</h3><p><strong>Surfer SEO</strong> analysiert über 500 Ranking-Faktoren der Top 10 Suchergebnisse für dein Keyword. Es sagt dir nicht 'schreib guten Content'. Es sagt dir: 'Benutze das Wort X genau 4 mal, schreibe 1.400 Wörter und nutze 3 Bilder'.</p><h4>Der CanGo Prozess:</h4><p>Wir schreiben keinen Satz, bevor der Surfer-Score nicht grün ist. Das ist der Unterschied zwischen 'hoffen auf Traffic' und 'Traffic erzwingen'.</p>",
+      "deal_terms": [
+        "Content Editor Access",
+        "Keyword Research Tool",
+        "Audit für bestehende Seiten",
+        "Grow Flow (Wöchentliche Tasks)"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Essential Plan",
+          "price": 89,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "15 Artikel / Monat (Editor)",
+            "100 Keyword-Recherchen / Tag",
+            "Plagiats-Check",
+            "WordPress Integration"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "neuronwriter",
+      "name": "NeuronWriter",
+      "tagline": "Semantische Dominanz. Die Geheimwaffe für Google Rankings.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 5, "count": 1200 },
+      "images": ["/images/tools/neuron-dashboard.webp"],
+      "quick_specs": {
+        "alternative_to": ["Surfer SEO", "Frase"],
+        "integrations": ["WordPress", "Chrome", "G-Docs"],
+        "best_for": ["SEO-Agenturen", "Blogger", "KMUs"]
+      },
+      "pitch_html": "<h3>Verstehe, was Google wirklich will.</h3><p>Google sucht nicht mehr nach Keywords, sondern nach Kontext (NLP). <strong>NeuronWriter</strong> nutzt NLP-Algorithmen, um Themen-Cluster zu identifizieren, die deine Konkurrenz übersieht.</p><p>Es ist die kosteneffiziente Alternative zu Surfer SEO. Mit dem Lifetime-Deal zahlst du einmal und optimierst für immer. Ideal, um 'Content-Silos' zu bauen, die eine Nische komplett besetzen.</p>",
+      "deal_terms": [
+        "Lebenslanger Zugriff",
+        "GPT-4 Integration (Credits)",
+        "Content Planning Kalender",
+        "Competitor Analysis"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Bronze Plan (LTD)",
+          "price": 89,
+          "original_price": 750,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "25 Content Analysen / Monat",
+            "15.000 AI Credits / Monat",
+            "Content Sharing",
+            "Alle NLP Features"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "sociamonials",
+      "name": "Sociamonials",
+      "tagline": "Social Media Warfare. Kampagnen, die viral gehen müssen.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 5, "count": 650 },
+      "images": ["/images/tools/sociamonials-campaigns.webp"],
+      "quick_specs": {
+        "alternative_to": ["Hootsuite", "Buffer", "Gleam"],
+        "integrations": ["Facebook", "LinkedIn", "Instagram", "Twitter"],
+        "best_for": ["Growth Hacker", "Social Media Manager"]
+      },
+      "pitch_html": "<h3>Posten reicht nicht. Du brauchst Engagement.</h3><p>Die meisten Tools posten nur. <strong>Sociamonials</strong> ist auf Viralität ausgelegt. Es integriert komplette Gewinnspiel-Mechaniken (Sweepstakes), User-Generated-Content Kampagnen und detailliertes ROI-Tracking.</p><p>Wir nutzen es, um nicht nur 'Likes' zu zählen, sondern exakt zu wissen, welcher Post wie viel Umsatz gebracht hat.</p>",
+      "deal_terms": [
+        "Lebenslanger Zugriff",
+        "Unbegrenzte Posts",
+        "Viral Sweepstakes inklusive",
+        "Advanced Reporting"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "AppSumo License 1",
+          "price": 69,
+          "original_price": 1788,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "10 Social Profiles",
+            "Unbegrenzte Planung",
+            "CRM Integration",
+            "Video Testimonials Feature"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "feedspace",
+      "name": "Feedspace",
+      "tagline": "Automatisierter Social Proof. Sammle Video-Testimonials im Schlaf.",
+      "badge": "TRUST BUILDER",
+      "rating": { "tacos": 4, "count": 120 },
+      "images": ["/images/tools/feedspace-wall.webp"],
+      "quick_specs": {
+        "alternative_to": ["VideoAsk", "Testimonial.to"],
+        "integrations": ["Webseite", "Notion", "Social Media"],
+        "best_for": ["E-Commerce", "Coaches", "Agenturen"]
+      },
+      "pitch_html": "<h3>Text-Bewertungen glaubt niemand mehr.</h3><p>In einer Welt von Fake-Reviews ist Video die einzige Währung für Vertrauen. <strong>Feedspace</strong> automatisiert das Einsammeln von authentischen Video-Feedbacks deiner Kunden.</p><p>Du sendest einen Link, der Kunde nimmt mit einem Klick auf (ohne App), und das Video landet direkt auf deiner Landing Page. Conversion-Boost garantiert.</p>",
+      "deal_terms": [
+        "Video, Audio & Text Feedback",
+        "Wall of Love (Embed)",
+        "QR Code Generator",
+        "DSGVO Optionen"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Lifetime License",
+          "price": 49,
+          "original_price": 500,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "5 Workspaces",
+            "5GB Speicher",
+            "Unbegrenzte Video-Dauer (Upload)",
+            "Custom Domain (CNAME)"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "greta-ai",
+      "name": "Greta.ai",
+      "tagline": "Die Lead-Magnet Fabrik. Whitepaper und E-Books in Minuten.",
+      "badge": "LEAD GEN",
+      "rating": { "tacos": 4, "count": 85 },
+      "images": ["/images/tools/greta-builder.webp"],
+      "quick_specs": {
+        "alternative_to": ["Designer", "Copywriter", "Canva"],
+        "integrations": ["PDF Export", "Web View"],
+        "best_for": ["B2B Marketing", "Consultants"]
+      },
+      "pitch_html": "<h3>Leads brauchen einen Grund, ihre E-Mail zu geben.</h3><p>Früher hast du Wochen gebraucht, um ein E-Book oder Whitepaper zu schreiben. <strong>Greta.ai</strong> erledigt das in Minuten. Gib ein Thema ein, und die KI schreibt den Inhalt, strukturiert die Kapitel und designt das Layout.</p><p>Perfekt für unsere 'High-Ticket' Funnels in der Finanz- und Immobilienbranche, wo Kunden tiefe Informationen erwarten, bevor sie kaufen.</p>",
+      "deal_terms": [
+        "KI-Textgenerierung inklusive",
+        "Professionelle PDF-Templates",
+        "Automatische Inhaltsverzeichnisse",
+        "Lead-Form Integration"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Starter Lifetime",
+          "price": 39,
+          "original_price": 240,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "50 Dokumente / Monat",
+            "Alle Templates",
+            "KI-Schreibassistent",
+            "Kommerzielle Rechte"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    }
+  ]
+}
+

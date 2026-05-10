@@ -1,0 +1,31 @@
+{
+  "batch_id": 21,
+  "category": "HEAVY INFRASTRUCTURE",
+  "tools": [
+    {
+      "id": "hetzner",
+      "name": "Hetzner Cloud",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/hetzner.html"
+    },
+    {
+      "id": "digitalocean",
+      "name": "DigitalOcean",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/digitalocean.html"
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/cloudflare.html"
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/docker.html"
+    },
+    {
+      "id": "portainer",
+      "name": "Portainer",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/portainer.html"
+    }
+  ]
+}

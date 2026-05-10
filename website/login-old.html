@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login – CanGo App Empire</title>
+<link href="/fonts/fonts.css?v=2" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+<link href="/css/empire-v2-common.css?v=1" rel="stylesheet"/>
+<style>
+:root{
+  --navy-900:#080d1a;--navy-800:#0d1424;--navy-700:#111c30;
+  --navy-600:#162238;--navy-500:#1d2d47;
+  --border:rgba(78,99,130,0.25);--border-light:rgba(78,99,130,0.12);
+  --orange:#F97316;--orange-soft:rgba(249,115,22,0.10);
+  --white:#ffffff;--off-white:#e8eef5;
+  --muted:#7a91ab;--muted-dim:#4a607a;
+  --green:#22c55e;--red:#ef4444;--blue:#3b82f6;
+  --gray-blue-light:#4e6382;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;height:100%}
+body{background:var(--navy-900);color:var(--off-white);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;line-height:1.6;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 60% at 15% 15%,rgba(249,115,22,.05) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 85% 85%,rgba(30,60,120,.18) 0%,transparent 55%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(78,99,130,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(78,99,130,.04) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,13,26,.88);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:center}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.logo-c{width:32px;height:32px;background:var(--orange);color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px}
+.logo-text{color:var(--white)}.logo-text span{color:var(--muted);font-weight:400}
+.nav-back{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--orange)}
+
+.hero-band{padding:88px 24px 0;position:relative;z-index:1;text-align:center}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--navy-600);border:1px solid var(--border);padding:5px 14px;border-radius:100px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:20px}
+.hero-chip .dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 1.6s ease-in-out infinite}
+.hero-chip strong{color:var(--off-white)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1.ptitle{font-size:clamp(32px,4.5vw,58px);font-weight:800;letter-spacing:-.025em;color:var(--white);line-height:1.05;margin-bottom:12px}
+h1.ptitle .ac{color:var(--orange)}
+h1.ptitle .dm{color:var(--muted);font-weight:300}
+.hero-lead{font-size:15px;color:var(--muted);max-width:480px;margin:0 auto 36px;line-height:1.75}
+.hero-lead strong{color:var(--off-white)}
+
+.soon-band{background:linear-gradient(90deg,rgba(249,115,22,.06),rgba(249,115,22,.12),rgba(249,115,22,.06));border:1px solid rgba(249,115,22,.25);border-radius:12px;padding:14px 24px;display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--off-white);margin-bottom:48px}
+.soon-band .pulse{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:pulse-a 1.4s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse-a{0%,100%{box-shadow:0 0 0 0 rgba(249,115,22,.5)}50%{box-shadow:0 0 0 6px rgba(249,115,22,0)}}
+
+.type-switch{display:inline-flex;background:var(--navy-700);border:1px solid var(--border);border-radius:14px;padding:5px;gap:4px;margin-bottom:40px}
+.ts-btn{font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:600;padding:10px 28px;border-radius:10px;cursor:pointer;border:none;transition:all .25s;color:var(--muted);background:transparent;display:flex;align-items:center;gap:8px}
+.ts-btn.active{background:var(--navy-500);color:var(--white);box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.ts-btn.active.b2c{background:var(--orange);color:#000}
+.ts-btn.active.b2b{background:linear-gradient(135deg,#1e3a5f,#253d5e);color:var(--off-white);border:1px solid rgba(59,130,246,.3)}
+.ts-badge{font-family:'JetBrains Mono',monospace;font-size:9px;padding:2px 6px;border-radius:3px;margin-left:4px}
+.ts-btn.active.b2c .ts-badge{background:rgba(0,0,0,.15)}
+.ts-btn.b2b .ts-badge{background:rgba(255,255,255,.1)}
+
+.login-stage{position:relative;z-index:1;padding:0 24px 80px;display:flex;justify-content:center}
+.login-card{width:100%;max-width:480px;background:var(--navy-800);border:1px solid var(--border);border-radius:24px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5);position:relative}
+.b2c-card{display:block}
+.b2b-card{display:none}
+
+.card-header{padding:32px 36px 28px;border-bottom:1px solid var(--border-light);position:relative}
+.card-header.b2c-header{background:linear-gradient(135deg,rgba(249,115,22,.07) 0%,transparent 60%)}
+.card-header.b2b-header{background:linear-gradient(135deg,rgba(59,130,246,.07) 0%,transparent 60%)}
+.card-header-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.card-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.b2c-icon{background:var(--orange-soft);border:1px solid rgba(249,115,22,.2)}
+.b2b-icon{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2)}
+.card-header h2{font-size:22px;font-weight:800;color:var(--white);letter-spacing:-.01em;margin-bottom:2px}
+.card-header p{font-size:13px;color:var(--muted);line-height:1.5}
+.coming-soon-pill{position:absolute;top:24px;right:24px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.08em;padding:4px 10px;border-radius:6px}
+.b2c-pill{background:rgba(249,115,22,.15);color:var(--orange);border:1px solid rgba(249,115,22,.3)}
+.b2b-pill{background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.3)}
+
+.card-body{padding:32px 36px}
+.form-group{margin-bottom:18px}
+.form-label{font-size:13px;font-weight:600;color:var(--off-white);margin-bottom:7px;display:flex;align-items:center;justify-content:space-between}
+.form-label a{font-size:12px;color:var(--orange);text-decoration:none;font-weight:500;transition:opacity .2s}
+.form-label a:hover{opacity:.8}
+.form-input{width:100%;background:var(--navy-700);border:1px solid var(--border);border-radius:12px;padding:13px 16px;font-family:'Instrument Sans',sans-serif;font-size:14px;color:var(--off-white);outline:none;transition:all .2s;position:relative}
+.form-input::placeholder{color:var(--muted-dim)}
+.form-input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(249,115,22,.08)}
+.b2b-card .form-input:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.08)}
+.input-wrap{position:relative}
+.input-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;pointer-events:none}
+.input-wrap .form-input{padding-left:42px}
+.input-toggle{position:absolute;right:14px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--muted-dim);font-size:13px;font-family:'JetBrains Mono',monospace;transition:color .2s;-webkit-user-select:none;user-select:none}
+.input-toggle:hover{color:var(--orange)}
+
+.role-select{width:100%;background:var(--navy-700);border:1px solid var(--border);border-radius:12px;padding:13px 16px;font-family:'Instrument Sans',sans-serif;font-size:14px;color:var(--off-white);outline:none;cursor:pointer;transition:all .2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237a91ab' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.role-select:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.08)}
+
+.form-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.check-wrap{display:flex;align-items:center;gap:8px;cursor:pointer}
+.check-wrap input[type=checkbox]{width:16px;height:16px;accent-color:var(--orange);cursor:pointer}
+.check-label{font-size:13px;color:var(--muted)}
+
+.login-btn{width:100%;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:700;padding:14px;border:none;border-radius:12px;cursor:pointer;transition:all .25s;margin-bottom:16px;position:relative;overflow:hidden}
+.b2c-login-btn{background:var(--orange);color:#000}
+.b2c-login-btn:hover{background:#fb923c;box-shadow:0 8px 28px rgba(249,115,22,.35);transform:translateY(-1px)}
+.b2b-login-btn{background:linear-gradient(135deg,#1e4080,#2563eb);color:var(--white)}
+.b2b-login-btn:hover{background:linear-gradient(135deg,#2563eb,#3b82f6);box-shadow:0 8px 28px rgba(59,130,246,.3);transform:translateY(-1px)}
+.btn-loading{display:none;position:absolute;inset:0;background:inherit;align-items:center;justify-content:center;gap:8px;font-size:13px}
+.spinner{width:16px;height:16px;border:2px solid rgba(0,0,0,.2);border-top-color:#000;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.or-divider{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.or-line{flex:1;height:1px;background:var(--border-light)}
+.or-text{font-size:12px;color:var(--muted-dim);font-family:'JetBrains Mono',monospace}
+
+.social-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.social-btn{background:var(--navy-700);border:1px solid var(--border);border-radius:11px;padding:11px;font-size:13px;font-weight:600;color:var(--off-white);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Instrument Sans',sans-serif}
+.social-btn:hover{border-color:var(--gray-blue-light);background:var(--navy-600)}
+.social-icon{font-size:16px}
+
+.card-footer{border-top:1px solid var(--border-light);padding:20px 36px;text-align:center}
+.card-footer p{font-size:13px;color:var(--muted)}
+.card-footer a{color:var(--orange);text-decoration:none;font-weight:600;transition:opacity .2s}
+.card-footer a:hover{opacity:.8}
+
+.b2b-info{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.15);border-radius:10px;padding:14px 16px;margin-bottom:18px;font-size:13px;color:var(--muted);line-height:1.65}
+.b2b-info strong{color:var(--off-white)}
+.b2b-badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.b2b-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:#60a5fa;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);padding:3px 8px;border-radius:4px}
+
+.cs-overlay{position:absolute;inset:0;background:rgba(8,13,26,.82);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);border-radius:24px;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:36px}
+.cs-icon{font-size:52px;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.cs-title{font-size:22px;font-weight:800;color:var(--white);text-align:center;letter-spacing:-.01em}
+.cs-desc{font-size:14px;color:var(--muted);text-align:center;line-height:1.75;max-width:300px}
+.cs-btn{background:var(--orange);color:#000;font-family:'Instrument Sans',sans-serif;font-size:14px;font-weight:700;padding:12px 28px;border:none;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none}
+.cs-btn:hover{background:#fb923c;transform:translateY(-1px);box-shadow:0 8px 24px rgba(249,115,22,.3)}
+.cs-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim)}
+.cs-progress{width:240px;height:4px;background:var(--navy-600);border-radius:2px;overflow:hidden;margin-top:4px}
+.cs-bar{height:100%;background:linear-gradient(90deg,var(--orange),#fb923c);border-radius:2px;width:0;animation:progress 2s ease forwards 0.5s}
+@keyframes progress{to{width:72%}}
+.cs-bar.b2b-bar{animation:progressB2b 2s ease forwards 0.8s}
+@keyframes progressB2b{to{width:58%}}
+
+.login-outer{display:grid;grid-template-columns:1fr 420px;gap:28px;max-width:900px;margin:0 auto;align-items:start}
+.login-info{position:sticky;top:80px}
+.info-section{background:var(--navy-800);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.info-header{padding:24px 24px 20px;border-bottom:1px solid var(--border-light)}
+.info-header.b2b-header-bg{background:linear-gradient(135deg,rgba(59,130,246,.07) 0%,transparent 60%)}
+.info-header h3{font-size:17px;font-weight:800;color:var(--white);margin-bottom:4px;letter-spacing:-.01em}
+.info-header p{font-size:13px;color:var(--muted);line-height:1.6}
+.info-body{padding:20px 24px}
+.info-feature{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-light)}
+.info-feature:last-child{border-bottom:none}
+.info-feat-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;background:var(--navy-700);border:1px solid var(--border-light)}
+.info-feat-icon.b2b-icon{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.2)}
+.info-feat-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px}
+.info-feat-desc{font-size:12px;color:var(--muted);line-height:1.55}
+
+.b2b-features{display:none}
+.b2c-features{display:block}
+
+.notify-section{background:var(--navy-800);border:1px solid var(--border);border-radius:16px;padding:24px;margin-top:16px}
+.notify-section h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:6px}
+.notify-section p{font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.notify-form{display:flex;gap:8px}
+.notify-input{flex:1;background:var(--navy-700);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-family:'Instrument Sans',sans-serif;font-size:13px;color:var(--off-white);outline:none;transition:border-color .2s}
+.notify-input::placeholder{color:var(--muted-dim)}
+.notify-input:focus{border-color:var(--orange)}
+.notify-btn{background:var(--orange);color:#000;font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:700;padding:10px 16px;border:none;border-radius:10px;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.notify-btn:hover{background:#fb923c}
+
+#toast{position:fixed;bottom:24px;right:24px;z-index:300;background:var(--navy-700);border:1px solid rgba(34,197,94,.3);border-radius:12px;padding:12px 20px;font-size:13px;color:var(--off-white);display:flex;align-items:center;gap:10px;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;max-width:300px}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+
+footer{background:var(--navy-900);border-top:1px solid var(--border);padding:56px 24px 32px;position:relative;z-index:1;margin-top:0}
+.footer-wrap{max-width:1200px;margin:0 auto}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.fbrand p{font-size:14px;color:var(--muted);line-height:1.75;margin-top:14px;max-width:260px}
+.fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:10px}
+.fcol ul li a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--white)}
+.fbot{border-top:1px solid var(--border-light);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.fcopy{font-size:13px;color:var(--muted-dim)}
+.fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+.fcmd{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange);display:inline-flex;align-items:center;gap:8px;background:var(--navy-700);border:1px solid var(--border);padding:10px 18px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none}
+.fcmd:hover{border-color:var(--orange);background:rgba(249,115,22,.08)}
+
+@media(max-width:860px){
+  .login-outer{grid-template-columns:1fr;max-width:480px}
+  .login-info{position:static}
+}
+@media(max-width:600px){
+  .hero-band{padding-top:76px}
+  .type-switch{flex-direction:column;width:calc(100% - 48px)}
+  .ts-btn{justify-content:center}
+  .social-row{grid-template-columns:1fr}
+  .card-body,.card-header,.card-footer{padding-left:24px;padding-right:24px}
+  .ftop{grid-template-columns:1fr}
+  .fbot{flex-direction:column;gap:14px;text-align:center}
+  .notify-form{flex-direction:column}
+}
+</style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body class="empire-v2">
+
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero-band rv">
+  <div class="hero-chip"><span class="dot"></span><strong>100 Workflows aktiv</strong>&nbsp;·&nbsp;33 Content-Maschinen</div>
+  <h1 class="ptitle">Login <span class="ac">Kundenbereich</span><br><span class="dm">in Kürze.</span></h1>
+  <p class="hero-lead">Kunden-Login ist in Kürze verfügbar. Bis dahin erreichst du uns über <strong>Kontakt</strong>. Weitere Infos folgen.</p>
+  <div class="soon-band">
+    <div class="pulse"></div>
+    Kundenbereich in Entwicklung · Launch Q2 2026
+  </div>
+
+  <div class="type-switch">
+    <button class="ts-btn active b2c" id="btn-b2c" onclick="switchType('b2c')">
+      <span>👤</span> Kunden-Login <span class="ts-badge">B2C</span>
+    </button>
+    <button class="ts-btn b2b" id="btn-b2b" onclick="switchType('b2b')">
+      <span>🏢</span> Allianzpartner-Login <span class="ts-badge">B2B</span>
+    </button>
+  </div>
+</div>
+
+<div class="login-stage">
+  <div class="login-outer">
+
+    <div class="login-info rv">
+
+      <div class="info-section b2c-features" id="b2c-info">
+        <div class="info-header">
+          <h3>👤 Was dich im Kundenbereich erwartet</h3>
+          <p>Vollständiger Zugang zu deinen Workflows, Assets und Analytics.</p>
+        </div>
+        <div class="info-body">
+          <div class="info-feature">
+            <div class="info-feat-icon">⚙️</div>
+            <div>
+              <div class="info-feat-title">Workflow-Dashboard</div>
+              <div class="info-feat-desc">Alle deine aktiven Workflows auf einen Blick – Status, Performance, Letzte Runs.</div>
+            </div>
+          </div>
+          <div class="info-feature">
+            <div class="info-feat-icon">📊</div>
+            <div>
+              <div class="info-feat-title">Analytics &amp; Reporting</div>
+              <div class="info-feat-desc">CPM-Daten, Content-Output-Statistiken, Lead-Volumes – alles live.</div>
+            </div>
+          </div>
+          <div class="info-feature">
+            <div class="info-feat-icon">📦</div>
+            <div>
+              <div class="info-feat-title">Meine Käufe</div>
+              <div class="info-feat-desc">Zugang zu allen gekauften Workflows, Dokumentation und Download-Links.</div>
+            </div>
+          </div>
+          <div class="info-feature">
+            <div class="info-feat-icon">💬</div>
+            <div>
+              <div class="info-feat-title">Support &amp; Tickets</div>
+              <div class="info-feat-desc">Direkter Draht zum Support-Team mit Ticket-Tracking und Chat-History.</div>
+            </div>
+          </div>
+          <div class="info-feature">
+            <div class="info-feat-icon">🔔</div>
+            <div>
+              <div class="info-feat-title">Benachrichtigungen</div>
+              <div class="info-feat-desc">Workflow-Alerts, System-Updates und neue Asset-Releases direkt im Dashboard.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-section b2b-features" id="b2b-info" style="display:none">
+        <div class="info-header b2b-header-bg">
+          <h3>🏢 Was dich im Partner-Portal erwartet</h3>
+          <p>Exklusiver Zugang für verifizierte CanGo-Allianzpartner.</p>
+        </div>
+        <div class="info-body">
+          <div class="info-feature">
+            <div class="info-feat-icon b2b-icon">🔗</div>
+            <div>
+              <div class="info-feat-title">Lead-Routing-Panel</div>
+              <div class="info-feat-desc">Eingehende Leads aus deiner Nische in Echtzeit – mit Scoring, Status und Routing-Optionen.</div>
+            </div>
+          </div>
+          <div class="info-feature">
+            <div class="info-feat-icon b2b-icon">📋</div>
+            <div>
+              <div class="info-feat-title">Kampagnen-Verwaltung</div>
+              <div class="info-feat-desc">Eigene Kampagnen starten, tracken und optimieren – direkt im Partner-Portal.</div>
+            </div>
+          </div>
+          <div class="info-feature">
+            <div class="info-feat-icon b2b-icon">💰</div>
+            <div>
+              <div class="info-feat-title">Provisions-Tracking</div>
+              <div class="info-feat-desc">Echtzeit-Überblick über Affiliate-Provisionen, Conversions und Auszahlungsstatus.</div>
+            </div>
+          </div>
+          <div class="info-feature">
+            <div class="info-feat-icon b2b-icon">🤝</div>
+            <div>
+              <div class="info-feat-title">Co-Branding Assets</div>
+              <div class="info-feat-desc">Branded Content-Templates, White-Label-Dokumente und gemeinsame Marketing-Materialien.</div>
+            </div>
+          </div>
+          <div class="info-feature">
+            <div class="info-feat-icon b2b-icon">📡</div>
+            <div>
+              <div class="info-feat-title">API-Zugang</div>
+              <div class="info-feat-desc">Direkter API-Zugriff für Enterprise-Partner zur Integration in eigene Systeme.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notify-section rv">
+        <h4>🔔 Benachrichtigt werden</h4>
+        <p>Trag dich ein und wir informieren dich sofort wenn der Kundenbereich live geht.</p>
+        <div class="notify-form">
+          <input class="notify-input" type="email" placeholder="deine@email.de" id="notifyEmail">
+          <button class="notify-btn" onclick="submitNotify()">Benachrichtigen</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+
+      <div class="login-card b2c-card" id="card-b2c">
+        <div class="cs-overlay" id="cs-b2c">
+          <div class="cs-icon">🚀</div>
+          <div class="cs-title">Kundenbereich<br>kommt bald!</div>
+          <p class="cs-desc">Wir bauen gerade deinen persönlichen Dashboard-Bereich. Launch ist für Q2 2026 geplant.</p>
+          <div class="cs-progress"><div class="cs-bar"></div></div>
+          <div class="cs-note">72% abgeschlossen · ETA Q2 2026</div>
+          <a href="#" class="cs-btn" onclick="dismissOverlay('b2c');return false">Vorschau ansehen</a>
+        </div>
+
+        <div class="card-header b2c-header">
+          <div class="coming-soon-pill b2c-pill">COMING SOON</div>
+          <div class="card-header-top">
+            <div class="card-icon b2c-icon">👤</div>
+            <div>
+              <h2>Kunden-Login</h2>
+              <p>Zugang zu deinem persönlichen Dashboard</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="form-group">
+            <div class="form-label">E-Mail-Adresse</div>
+            <div class="input-wrap">
+              <span class="input-icon">✉️</span>
+              <input class="form-input" type="email" placeholder="deine@email.de" id="b2c-email">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label">
+              Passwort
+              <a href="#">Vergessen?</a>
+            </div>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input class="form-input" type="password" placeholder="••••••••••" id="b2c-password">
+              <span class="input-toggle" onclick="togglePw('b2c-password',this)">Zeigen</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="check-wrap">
+              <input type="checkbox" id="b2c-remember">
+              <span class="check-label">Angemeldet bleiben</span>
+            </label>
+          </div>
+          <button class="login-btn b2c-login-btn" onclick="handleLogin('b2c')" id="b2c-btn">
+            Einloggen →
+            <div class="btn-loading" id="b2c-loading">
+              <div class="spinner"></div> Wird geladen...
+            </div>
+          </button>
+          <div class="or-divider">
+            <div class="or-line"></div>
+            <span class="or-text">ODER</span>
+            <div class="or-line"></div>
+          </div>
+          <div class="social-row">
+            <button class="social-btn" onclick="socialLogin('Google')"><span class="social-icon">🌐</span> Google</button>
+            <button class="social-btn" onclick="socialLogin('Microsoft')"><span class="social-icon">🪟</span> Microsoft</button>
+          </div>
+        </div>
+        <div class="card-footer">
+          <p>Noch kein Konto? <a href="#">Jetzt registrieren</a> &nbsp;·&nbsp; <a href="/faq.html">Hilfe &amp; FAQ</a></p>
+        </div>
+      </div>
+
+      <div class="login-card b2b-card" id="card-b2b" style="display:none">
+        <div class="cs-overlay" id="cs-b2b">
+          <div class="cs-icon" style="animation-delay:.3s">🏢</div>
+          <div class="cs-title">Partner-Portal<br>in Entwicklung!</div>
+          <p class="cs-desc">Das Allianzpartner-Portal wird gerade aufgebaut. Bestehende Partner kontaktieren uns direkt über den Founder.</p>
+          <div class="cs-progress"><div class="cs-bar b2b-bar"></div></div>
+          <div class="cs-note">58% abgeschlossen · ETA Q2 2026</div>
+          <a href="#" class="cs-btn" style="background:linear-gradient(135deg,#2563eb,#3b82f6);color:var(--white)" onclick="dismissOverlay('b2b');return false">Vorschau ansehen</a>
+        </div>
+
+        <div class="card-header b2b-header">
+          <div class="coming-soon-pill b2b-pill">PARTNER-ONLY</div>
+          <div class="card-header-top">
+            <div class="card-icon b2b-icon">🏢</div>
+            <div>
+              <h2>Allianzpartner-Login</h2>
+              <p>Exklusiver Zugang für verifizierte Partner</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="b2b-info">
+            <strong>Nur für verifizierte CanGo-Allianzpartner.</strong> Partneranfragen bitte über den Founder-Kanal einreichen. Zugang wird manuell freigeschaltet.
+            <div class="b2b-badge-row">
+              <span class="b2b-badge">WP wir:personalberater</span>
+              <span class="b2b-badge">mitNORM GmbH</span>
+              <span class="b2b-badge">Das Karriere-Institut</span>
+              <span class="b2b-badge">+ weitere</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label">Partner-E-Mail</div>
+            <div class="input-wrap">
+              <span class="input-icon">✉️</span>
+              <input class="form-input" type="email" placeholder="partner@unternehmen.de" id="b2b-email">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label">Partner-Passwort</div>
+            <div class="input-wrap">
+              <span class="input-icon">🔒</span>
+              <input class="form-input" type="password" placeholder="••••••••••" id="b2b-password">
+              <span class="input-toggle" onclick="togglePw('b2b-password',this)">Zeigen</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label">Partner-Rolle</div>
+            <select class="role-select" id="b2b-role">
+              <option value="">Rolle auswählen...</option>
+              <option value="finanz">💰 Finanz-Allianz Partner</option>
+              <option value="immobilien">🏠 Immobilien Partner</option>
+              <option value="karriere">👔 Karriere &amp; HR Partner</option>
+              <option value="coaching">🧠 Coaching Partner</option>
+              <option value="energie">⚡ Energie &amp; Solar Partner</option>
+              <option value="enterprise">🏢 Enterprise Partner</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="check-wrap">
+              <input type="checkbox" id="b2b-remember">
+              <span class="check-label">Sitzung merken</span>
+            </label>
+            <a href="/kontakt.html" style="font-size:12px;color:#60a5fa;text-decoration:none">Zugang anfragen</a>
+          </div>
+          <button class="login-btn b2b-login-btn" onclick="handleLogin('b2b')" id="b2b-btn">
+            Partner-Login →
+            <div class="btn-loading" id="b2b-loading">
+              <div class="spinner" style="border-top-color:var(--white)"></div> Wird authentifiziert...
+            </div>
+          </button>
+          <div class="or-divider">
+            <div class="or-line"></div>
+            <span class="or-text">KEIN ZUGANG?</span>
+            <div class="or-line"></div>
+          </div>
+          <div class="social-row">
+            <button class="social-btn" onclick="window.location.href='/faq.html'">💬 Support Chat</button>
+            <button class="social-btn" onclick="showToast('📧','Founder-Kontakt wird geöffnet...');window.location.href='/kontakt.html'">🚀 Founder kontaktieren</button>
+          </div>
+        </div>
+        <div class="card-footer">
+          <p>Neuer Partner werden? <a href="/kontakt.html">Partnerschaft anfragen</a> &nbsp;·&nbsp; <a href="/faq.html">FAQ</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+<div id="toast"><span id="toastI">✓</span><span id="toastM"></span></div>
+
+<script>
+var obs = new IntersectionObserver(function(e){
+  e.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); obs.unobserve(x.target); } });
+},{threshold:0.06});
+document.querySelectorAll('.rv').forEach(function(el){ obs.observe(el); });
+
+function switchType(type) {
+  var isBtc = type === 'b2c';
+  document.getElementById('btn-b2c').className = 'ts-btn' + (isBtc ? ' active b2c' : '');
+  document.getElementById('btn-b2b').className = 'ts-btn' + (!isBtc ? ' active b2b' : '');
+  document.getElementById('card-b2c').style.display = isBtc ? 'block' : 'none';
+  document.getElementById('card-b2b').style.display = !isBtc ? 'block' : 'none';
+  document.getElementById('b2c-info').style.display = isBtc ? 'block' : 'none';
+  document.getElementById('b2b-info').style.display = !isBtc ? 'block' : 'none';
+}
+
+function dismissOverlay(type) {
+  var el = document.getElementById('cs-' + type);
+  el.style.transition = 'opacity .4s ease';
+  el.style.opacity = '0';
+  setTimeout(function(){ el.style.display = 'none'; }, 400);
+  showToast('👀', 'Vorschau-Modus aktiviert');
+}
+
+function togglePw(id, btn) {
+  var input = document.getElementById(id);
+  var isHidden = input.type === 'password';
+  input.type = isHidden ? 'text' : 'password';
+  btn.textContent = isHidden ? 'Verbergen' : 'Zeigen';
+}
+
+function handleLogin(type) {
+  var email = document.getElementById(type + '-email').value;
+  var pw = document.getElementById(type + '-password').value;
+  if(!email || !pw) { showToast('⚠️', 'Bitte alle Felder ausfüllen.'); return; }
+  var btn = document.getElementById(type + '-btn');
+  var loading = document.getElementById(type + '-loading');
+  btn.style.pointerEvents = 'none';
+  loading.style.display = 'flex';
+  setTimeout(function(){
+    loading.style.display = 'none';
+    btn.style.pointerEvents = '';
+    showToast('🚀', 'Kundenbereich ist noch nicht live. Wir informieren dich per E-Mail sobald er verfügbar ist!');
+  }, 1800);
+}
+
+function socialLogin(provider) {
+  showToast('⏳', provider + '-Login wird eingerichtet...');
+}
+
+function submitNotify() {
+  var email = document.getElementById('notifyEmail').value;
+  if(!email || email.indexOf('@') === -1) { showToast('⚠️', 'Bitte gültige E-Mail eingeben.'); return; }
+  showToast('✓', email + ' – wir melden uns sobald der Login live ist!');
+  document.getElementById('notifyEmail').value = '';
+}
+
+function showToast(icon, msg) {
+  var t = document.getElementById('toast');
+  document.getElementById('toastI').textContent = icon;
+  document.getElementById('toastM').textContent = msg;
+  t.style.transform = 'translateY(0)';
+  t.style.opacity = '1';
+  clearTimeout(t._to);
+  t._to = setTimeout(function(){ t.style.transform = 'translateY(80px)'; t.style.opacity = '0'; }, 3500);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+/* Marktplatz nischen.html – sichtbarer HQ-Doppelrahmen (ohne tools-detail.css) */
+.page-seo-nischen .phero-inner,
+.page-seo-nischen .cta-inner,
+.page-seo-nischen footer .footer-wrap {
+  position: relative !important;
+  isolation: isolate !important;
+  width: calc(100% - 8px) !important;
+  max-width: 1200px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 1.35rem 1.5rem !important;
+  border: 3px solid rgba(249, 115, 22, 0.88) !important;
+  border-radius: 16px !important;
+  background: linear-gradient(155deg, rgba(8, 20, 39, 0.98) 0%, rgba(13, 32, 58, 0.97) 42%, rgba(9, 23, 42, 0.97) 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.18),
+    0 0 36px rgba(249, 115, 22, 0.36),
+    0 0 60px rgba(249, 115, 22, 0.18),
+    0 14px 44px rgba(0, 0, 0, 0.38) !important;
+  box-sizing: border-box !important;
+}
+
+.page-seo-nischen .phero-inner::before,
+.page-seo-nischen .cta-inner::before,
+.page-seo-nischen footer .footer-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  border: 1px solid rgba(255, 178, 76, 0.58) !important;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.page-seo-nischen .phero-inner > *,
+.page-seo-nischen .cta-inner > *,
+.page-seo-nischen footer .footer-wrap > * {
+  position: relative;
+  z-index: 1;
+}
+
+.page-seo-nischen section.nischen-bg,
+.page-seo-nischen section.why-bg,
+.page-seo-nischen section.cpm-table-section {
+  position: relative !important;
+  isolation: isolate !important;
+  width: calc(100% - 48px) !important;
+  max-width: 1224px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: 3px solid rgba(249, 115, 22, 0.88) !important;
+  border-radius: 18px !important;
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.18),
+    0 0 36px rgba(249, 115, 22, 0.36),
+    0 0 60px rgba(249, 115, 22, 0.18),
+    0 14px 44px rgba(0, 0, 0, 0.38) !important;
+  box-sizing: border-box !important;
+}
+
+.page-seo-nischen section.nischen-bg::before,
+.page-seo-nischen section.why-bg::before,
+.page-seo-nischen section.cpm-table-section::before {
+  content: '';
+  position: absolute;
+  inset: 13px;
+  border: 1px solid rgba(255, 178, 76, 0.58) !important;
+  border-radius: 14px;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.page-seo-nischen section.nischen-bg > *,
+.page-seo-nischen section.why-bg > *,
+.page-seo-nischen section.cpm-table-section > * {
+  position: relative;
+  z-index: 1;
+}

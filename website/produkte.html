@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- FIX-20260407: Phase 0.3 — kanonische URL -->
+<link rel="canonical" href="https://automation-cango-app-empire.com/produkte.html">
+<!-- FIX-2026-04-06: Tool-Karten mit orangem HQ-Leuchtrahmen wie Section-Rahmen -->
+<!-- FIX-2026-03-29: Tool-Logos lokal — meist /images/tools/*.png (Fetch-Skript); Ausnahmen: grok.svg, unmixr-ai.svg -->
+<title>Produkte | KI & Tech Tools – CanGo App Empire</title>
+<link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+<link rel="stylesheet" href="/css/responsive-global.css?v=26">
+<!-- FIX-2026-03-23: HQ-Doppelrahmen 13 Hauptseiten -->
+<link rel="stylesheet" href="/css/hauptseiten-hq-frames.css?v=2">
+<link rel="stylesheet" href="/css/release-ribbon.css?v=1">
+<!-- FIX-20260407: Phase 1.1 — Primary-CTA Mobil-Leiste -->
+<link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+<style>
+:root{
+  --navy-900:#080d1a;--navy-800:#0d1424;--navy-700:#111c30;
+  --navy-600:#162238;--navy-500:#1d2d47;--navy-400:#253652;
+  --gray-blue:#3a4f6b;--gray-blue-light:#4e6382;
+  --border:rgba(78,99,130,0.25);--border-light:rgba(78,99,130,0.12);
+  --orange:#F97316;--orange-soft:rgba(249,115,22,0.12);
+  --white:#ffffff;--off-white:#e8eef5;
+  --muted:#7a91ab;--muted-dim:#4a607a;
+  --green:#22c55e;--red:#ef4444;--purple:#a855f7;--blue:#3b82f6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy-900);color:var(--off-white);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(249,115,22,.04) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(30,60,120,.15) 0%,transparent 60%);pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,13,26,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:center}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-c{width:34px;height:34px;background:var(--orange);color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.logo-text{color:var(--white)}.logo-text span{color:var(--muted);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{color:var(--white);background:var(--navy-600)}
+.nav-links a.active{color:var(--orange);background:var(--navy-600)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px;color:var(--muted);border:1px solid var(--border);padding:6px 14px;border-radius:8px;cursor:pointer;background:var(--navy-700);transition:all .2s}
+.nav-cart:hover{border-color:var(--orange);color:var(--orange)}
+.cart-badge{background:var(--orange);color:#000;font-size:10px;font-weight:800;min-width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13px;padding:10px 22px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none;border:none;letter-spacing:.01em}
+.btn-o{background:var(--orange);color:#000}
+.btn-o:hover{background:#fb923c;transform:translateY(-1px);box-shadow:0 8px 24px rgba(249,115,22,.3)}
+.btn-g{background:transparent;color:var(--off-white);border:1px solid var(--border)}
+.btn-g:hover{border-color:var(--gray-blue-light);background:var(--navy-600)}
+.btn-lg{font-size:15px;padding:14px 28px;border-radius:12px}
+
+/* BREADCRUMB */
+.breadcrumb-bar{padding:14px 24px;border-bottom:1px solid var(--border);background:var(--navy-800);position:relative;z-index:1}
+.breadcrumb-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim)}
+.breadcrumb-inner a{color:var(--muted);text-decoration:none;transition:color .2s}
+.breadcrumb-inner a:hover{color:var(--orange)}
+.breadcrumb-inner span{color:var(--off-white)}
+
+/* PAGE HERO */
+.page-hero{background:var(--navy-800);border-bottom:1px solid var(--border);padding:64px 24px 56px;position:relative;overflow:hidden;z-index:1}
+.page-hero-inner{max-width:1200px;margin:0 auto}
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.orb1{width:500px;height:500px;background:rgba(249,115,22,.06);top:-150px;right:-50px}
+.orb2{width:350px;height:350px;background:rgba(30,60,120,.15);bottom:-100px;left:-60px}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--navy-600);border:1px solid var(--border);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:24px;width:fit-content}
+.hero-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.6s ease-in-out infinite}
+.hero-chip strong{color:var(--off-white)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1.page-title{font-size:clamp(38px,5.5vw,72px);font-weight:800;line-height:1.0;letter-spacing:-.025em;color:var(--white);margin-bottom:16px}
+h1.page-title .ac{color:var(--orange)}
+h1.page-title .dm{color:var(--muted);font-weight:300}
+.hero-lead{font-size:16px;color:var(--muted);max-width:680px;line-height:1.8;margin-bottom:20px}
+.hero-lead strong{color:var(--off-white)}
+.hero-notice{background:var(--navy-700);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:14px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);max-width:680px;line-height:1.65;margin-bottom:28px}
+.hero-notice strong{color:var(--off-white)}
+.hero-stats-row{display:flex;gap:32px;flex-wrap:wrap;align-items:center}
+.hstat{display:flex;align-items:center;gap:10px}
+.hstat-num{font-size:28px;font-weight:800;color:var(--orange);letter-spacing:-.02em;line-height:1}
+.hstat-lbl{font-size:12px;color:var(--muted);line-height:1.4}
+.hstat-sep{width:1px;height:36px;background:var(--border)}
+.hero-link{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgba(249,115,22,.3);border-radius:8px;background:rgba(249,115,22,.06);transition:all .2s}
+.hero-link:hover{background:rgba(249,115,22,.12);border-color:var(--orange)}
+
+/* STICKY FILTER BAR */
+.filter-bar{position:sticky;top:68px;z-index:90;background:rgba(8,13,26,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:16px 24px}
+.filter-inner{max-width:1200px;margin:0 auto;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.search-wrap{position:relative;flex:1;min-width:220px;max-width:360px}
+.search-wrap input{width:100%;background:var(--navy-700);border:1px solid var(--border);border-radius:10px;padding:10px 16px 10px 40px;font-family:'Instrument Sans',sans-serif;font-size:14px;color:var(--off-white);outline:none;transition:border-color .2s}
+.search-wrap input::placeholder{color:var(--muted-dim)}
+.search-wrap input:focus{border-color:var(--orange)}
+.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted-dim);font-size:15px;pointer-events:none}
+.filter-cats{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.fcat{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.04em;padding:7px 14px;border-radius:8px;cursor:pointer;border:1px solid var(--border);background:var(--navy-700);color:var(--muted);transition:all .2s;white-space:nowrap}
+.fcat:hover{border-color:var(--gray-blue-light);color:var(--off-white)}
+.fcat.active{background:var(--orange);border-color:var(--orange);color:#000;font-weight:700}
+.filter-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim);white-space:nowrap;padding:7px 12px;background:var(--navy-700);border:1px solid var(--border);border-radius:8px}
+.filter-count span{color:var(--orange)}
+
+/* TOOLS GRID */
+.tools-section{padding:48px 24px 80px;position:relative;z-index:1}
+.tools-inner{max-width:1200px;margin:0 auto}
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+
+/* TOOL CARD — orangener Leuchtrahmen wie HQ-Außenrahmen (hauptseiten-hq-frames.css) */
+.tool-card{
+  background:var(--navy-700);
+  border:2px solid rgba(249,115,22,.78);
+  border-radius:16px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  overflow:hidden;
+  transition:all .3s;
+  cursor:default;
+  box-shadow:
+    0 0 0 1px rgba(249,115,22,.2),
+    0 0 28px rgba(249,115,22,.32),
+    0 0 48px rgba(249,115,22,.14),
+    0 10px 32px rgba(0,0,0,.3);
+}
+.tool-card:hover{
+  border-color:rgba(249,115,22,.95);
+  transform:translateY(-3px);
+  box-shadow:
+    0 0 0 1px rgba(249,115,22,.28),
+    0 0 36px rgba(249,115,22,.45),
+    0 0 64px rgba(249,115,22,.22),
+    0 16px 48px rgba(0,0,0,.38);
+}
+.tool-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(249,115,22,.06) 0%,transparent 50%);opacity:0;transition:opacity .3s;border-radius:14px;pointer-events:none}
+.tool-card:hover::before{opacity:1}
+
+/* LIFETIME: violetter Leuchtrahmen (Lifetime-Deals) */
+.tool-card.lifetime{
+  border-color:rgba(168,85,247,.65);
+  box-shadow:
+    0 0 0 1px rgba(168,85,247,.22),
+    0 0 28px rgba(168,85,247,.28),
+    0 0 48px rgba(168,85,247,.12),
+    0 10px 32px rgba(0,0,0,.3);
+}
+.tool-card.lifetime:hover{
+  border-color:rgba(192,132,252,.95);
+  box-shadow:
+    0 0 0 1px rgba(168,85,247,.35),
+    0 0 36px rgba(168,85,247,.4),
+    0 0 56px rgba(168,85,247,.18),
+    0 16px 48px rgba(0,0,0,.36);
+}
+.lifetime-badge{position:absolute;top:14px;right:14px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:linear-gradient(135deg,#a855f7,#7c3aed);color:#fff;padding:3px 8px;border-radius:4px;letter-spacing:.06em}
+
+/* card header */
+.tool-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.tool-avatar{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0;font-family:'JetBrains Mono',monospace;background:var(--navy-600);border:1px solid var(--border-light);color:var(--orange);letter-spacing:0}
+.tool-avatar--logo{padding:5px;font-size:0;line-height:0}
+.tool-avatar--logo img{width:100%;height:100%;object-fit:contain;display:block;border-radius:7px}
+.tool-card.lifetime .tool-avatar--logo{border-color:rgba(168,85,247,.38)}
+.tool-meta{}
+.tool-cat-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:3px}
+.tool-name{font-size:16px;font-weight:700;color:var(--white);line-height:1.2}
+
+/* tags */
+.tool-tags{display:flex;flex-direction:column;gap:4px;margin-bottom:14px;flex:1}
+.tool-tag{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;line-height:1.45}
+.tool-tag::before{content:'→';color:var(--orange);font-size:10px;flex-shrink:0}
+
+/* desc */
+.tool-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px}
+
+/* footer */
+.tool-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:14px;border-top:1px solid var(--border-light)}
+.tool-price{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim)}
+.tool-price.free{color:var(--green)}
+.tool-price.lifetime-price{color:#a855f7}
+.tool-btn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border:1px solid rgba(249,115,22,.3);border-radius:7px;background:rgba(249,115,22,.06);transition:all .2s;white-space:nowrap}
+.tool-btn:hover{background:rgba(249,115,22,.15);border-color:var(--orange)}
+.tool-btn.lifetime-btn{color:#a855f7;border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.06)}
+.tool-btn.lifetime-btn:hover{background:rgba(168,85,247,.15);border-color:#a855f7}
+
+/* NO RESULTS */
+.no-results{grid-column:1/-1;text-align:center;padding:80px 20px;color:var(--muted)}
+.no-results h3{font-size:24px;font-weight:700;color:var(--white);margin-bottom:8px}
+.no-results p{font-size:14px}
+
+/* SECTION DIVIDER */
+.section-sep{max-width:1200px;margin:0 auto 36px;display:flex;align-items:center;gap:16px}
+.section-sep-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);white-space:nowrap}
+.section-sep-line{flex:1;height:1px;background:var(--border-light)}
+.section-sep-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim)}
+
+/* CTA BAND */
+.cta-band{background:var(--navy-700);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 24px;position:relative;z-index:1}
+.cta-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.cta-left h2{font-size:36px;font-weight:800;color:var(--white);letter-spacing:-.025em;line-height:1.15;margin-bottom:8px}
+.cta-left h2 span{color:var(--orange)}
+.cta-left p{font-size:15px;color:var(--muted)}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+
+/* FOOTER */
+footer{background:var(--navy-900);border-top:1px solid var(--border);padding:72px 24px 40px;position:relative;z-index:1}
+.footer-wrap{max-width:1200px;margin:0 auto}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.fbrand p{font-size:14px;color:var(--muted);line-height:1.75;margin-top:14px;max-width:260px}
+.fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:10px}
+.fcol ul li a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--white)}
+.fbot{border-top:1px solid var(--border-light);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.fcopy{font-size:13px;color:var(--muted-dim)}
+.fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+.fcmd{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange);display:flex;align-items:center;gap:8px;background:var(--navy-700);border:1px solid var(--border);padding:10px 18px;border-radius:10px;cursor:pointer;transition:all .2s}
+.fcmd:hover{border-color:var(--orange);background:rgba(249,115,22,.08)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+
+/* HIDDEN */
+.hidden{display:none!important}
+
+@media(max-width:1100px){.tools-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:960px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  .page-hero,.tools-section{padding-left:16px;padding-right:16px}
+  .filter-bar{padding:12px 16px}
+  .tools-grid{grid-template-columns:repeat(2,1fr)}
+  .ftop{grid-template-columns:1fr 1fr}
+  .fbot{flex-direction:column;gap:16px;text-align:center}
+  .cta-inner{flex-direction:column;text-align:center}
+  .cta-btns{justify-content:center}
+  .hero-stats-row{gap:20px}
+}
+@media(max-width:600px){
+  .tools-grid{grid-template-columns:1fr}
+  .filter-cats{gap:4px}
+  .fcat{font-size:10px;padding:6px 10px}
+  .ftop{grid-template-columns:1fr}
+  h1.page-title{font-size:36px}
+}
+@media(max-width:480px){
+  .filter-bar .filter-inner{flex-wrap:wrap;gap:8px}
+  .filter-cats{width:100%}
+  .fcat{width:100%;justify-content:center}
+}
+</style>
+<style>
+
+/* ─── CANGO FOOTER (Startseiten-Stil) ─── */
+.cango-footer{background:#080d1a !important;border-top:1px solid rgba(78,99,130,.25) !important;padding:72px 24px 40px !important;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#f1f5f9;font-weight:700;font-size:15px}
+.cango-footer .footer-logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0}
+.cango-footer .footer-logo-text{display:flex;flex-direction:column;line-height:1}
+.cango-footer .footer-logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px;font-weight:700}
+.cango-footer .fcol ul{list-style:none;padding:0;margin:0}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#f1f5f9}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body class="page-haupt-13 has-primary-cta-bar">
+
+<!-- NAV -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html" class="active">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<div class="release-ribbon" id="releaseRibbon">
+  <span id="ribbon-slide-text" class="ribbon-slide-text"></span>
+  <span id="ribbon-countdown" class="ribbon-countdown"></span>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <div class="breadcrumb-inner">
+    <a href="/index.html">Startseite</a>
+    <span style="color:var(--muted-dim)">›</span>
+    <a href="/produkte.html">Produkte</a>
+    <span style="color:var(--muted-dim)">›</span>
+    <span>KI &amp; Tech Tools</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="page-hero-inner rv">
+    <div class="hero-chip"><span class="dot"></span><strong>100+ Tools</strong>&nbsp;·&nbsp;Täglich im Einsatz</div>
+    <h1 class="page-title">KI &amp; Tech Tools<br><span class="dm">für deine</span> <span class="ac">Automation</span></h1>
+    <p class="hero-lead">Getestet, integriert und täglich eingesetzt in unseren n8n Workflows. <strong>Alle Tools sind Affiliate-Partner</strong> und unterstützen unsere Infrastruktur.</p>
+    <div class="hero-notice">
+      <strong>Wichtig:</strong> Diese Tools sind alle in unseren 33 Master-Workflows integriert. Über unsere Affiliate-Links erhältst du Zugang zu den besten Deals (inkl. AppSumo Lifetime-Deals) und unterstützt gleichzeitig unsere Infrastruktur.
+    </div>
+    <!-- FIX-20260407_224340: Phase 8.4 — Kooperationspreise fix, Erklärung unter Nachweis (Tool-Preise ≠ Partnerpakete) -->
+    <p class="hero-lead" style="margin-top:4px;margin-bottom:18px;font-size:15px">Die <strong>Kooperations- und Lizenzpreise</strong> für unsere Infrastruktur sind auf der Startseite <strong>fix ausgewiesen</strong> — ohne „Preis auf Anfrage“-Spiel. Warum es keine Verhandlungsrabatte gibt und wie rechtliche Rollen getrennt bleiben, steht unter <a href="/nachweis-grenzen.html#preis-klarheit" style="color:var(--orange);text-decoration:underline;text-underline-offset:3px;font-weight:600" data-cango-kpi="kpi_nachweis_from_produkte">Nachweis &amp; Grenzen</a> (Tool-Tarife hier sind Anbieterpreise der jeweiligen Partner, nicht unsere Pakete).</p>
+    <div class="hero-ctas--split" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-bottom:20px">
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg">Infrastruktur anfragen</a>
+      <a href="/workflows.html" class="hero-cta-secondary">Workflow-Katalog ansehen →</a>
+    </div>
+    <div class="hero-stats-row">
+      <div class="hstat">
+        <div class="hstat-num">100<span style="font-size:18px">+</span></div>
+        <div class="hstat-lbl">Tools<br>getestet</div>
+      </div>
+      <div class="hstat-sep"></div>
+      <div class="hstat">
+        <div class="hstat-num">33</div>
+        <div class="hstat-lbl">Master-<br>Workflows</div>
+      </div>
+      <div class="hstat-sep"></div>
+      <div class="hstat">
+        <div class="hstat-num" style="color:#a855f7">⭐</div>
+        <div class="hstat-lbl">Lifetime<br>Deals</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search" placeholder="Tools durchsuchen..." oninput="filterTools()">
+    </div>
+    <div class="filter-cats">
+      <div class="fcat active" onclick="setFilter('all',this)">Alle (100+)</div>
+      <div class="fcat" onclick="setFilter('lifetime',this)">⭐ Lifetime Deals</div>
+      <div class="fcat" onclick="setFilter('ai',this)">AI Intelligence</div>
+      <div class="fcat" onclick="setFilter('automation',this)">Automation</div>
+      <div class="fcat" onclick="setFilter('visual',this)">Visual &amp; Media</div>
+      <div class="fcat" onclick="setFilter('seo',this)">SEO &amp; Content</div>
+      <div class="fcat" onclick="setFilter('research',this)">Research</div>
+    </div>
+    <div class="filter-count">Zeige <span id="count">100+</span> Tools</div>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="tools-section">
+  <div class="tools-inner">
+    <div class="tools-grid" id="toolsGrid">
+
+      <!-- AHREFS -->
+      <div class="tool-card rv" data-cat="seo" data-name="ahrefs seo suite backlink keyword">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/ahrefs.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">SEO Suite</div>
+            <div class="tool-name">Ahrefs</div>
+          </div>
+        </div>
+        <p class="tool-desc">All-in-one SEO-Toolkit. Backlink-Analyse, Keyword-Tracking, Competitor-Research und Content-Gaps.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Backlink-Analyse</span>
+          <span class="tool-tag">Keyword Explorer</span>
+          <span class="tool-tag">Rank Tracking</span>
+          <span class="tool-tag">Content Explorer</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 99$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- AIRTABLE -->
+      <div class="tool-card rv" data-cat="automation" data-name="airtable database flexible api">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/airtable.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Database</div>
+            <div class="tool-name">Airtable</div>
+          </div>
+        </div>
+        <p class="tool-desc">Flexible Datenbank-Plattform mit Automation. Spreadsheet meets Database. Starke API für Workflows.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Flexible Schemas</span>
+          <span class="tool-tag">Automation Builder</span>
+          <span class="tool-tag">API Integration</span>
+          <span class="tool-tag">Team-Kollaboration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 20$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- ANTHROPIC BEDROCK -->
+      <div class="tool-card rv" data-cat="ai" data-name="anthropic bedrock aws claude enterprise llm">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/claude.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">AWS LLM</div>
+            <div class="tool-name">Anthropic Bedrock</div>
+          </div>
+        </div>
+        <p class="tool-desc">AWS-basierte Claude API für Enterprise. Hohe Skalierbarkeit und AWS-Integration.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Claude via AWS</span>
+          <span class="tool-tag">Enterprise Scale</span>
+          <span class="tool-tag">AWS Integration</span>
+          <span class="tool-tag">Security &amp; Compliance</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Pay-per-token</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- ASANA -->
+      <div class="tool-card rv" data-cat="automation" data-name="asana project management tasks">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/asana.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Project Mgmt</div>
+            <div class="tool-name">Asana</div>
+          </div>
+        </div>
+        <p class="tool-desc">Team-Project-Management mit Automation. Tasks, Timelines und Workflows für effiziente Zusammenarbeit.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Task Management</span>
+          <span class="tool-tag">Timeline View</span>
+          <span class="tool-tag">Automation Rules</span>
+          <span class="tool-tag">API Integration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 11$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- BINANCE -->
+      <div class="tool-card rv" data-cat="research" data-name="binance crypto api trading market">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/binance-api.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Crypto API</div>
+            <div class="tool-name">Binance API</div>
+          </div>
+        </div>
+        <p class="tool-desc">Cryptocurrency Trading API. Real-time Market Data, Trading-Bots und Portfolio-Management für Automation.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Real-time Market Data</span>
+          <span class="tool-tag">Trading API</span>
+          <span class="tool-tag">WebSocket Streams</span>
+          <span class="tool-tag">Futures &amp; Spot</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price free">Kostenlos</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- BRIGHT DATA -->
+      <div class="tool-card rv" data-cat="research" data-name="bright data proxy scraping residential">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/bright-data.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Proxy Network</div>
+            <div class="tool-name">Bright Data</div>
+          </div>
+        </div>
+        <p class="tool-desc">Enterprise Proxy-Netzwerk für Web-Scraping. Residential, Datacenter und Mobile Proxies mit globaler Abdeckung.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Residential Proxies</span>
+          <span class="tool-tag">Global Coverage</span>
+          <span class="tool-tag">CAPTCHA Solving</span>
+          <span class="tool-tag">Enterprise Support</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Pay-per-GB</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- BROWSERACT -->
+      <div class="tool-card lifetime rv" data-cat="automation lifetime" data-name="browseract headless scraping n8n automation agent">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/browseract.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Agent</div>
+            <div class="tool-name">BrowserAct</div>
+          </div>
+        </div>
+        <p class="tool-desc">Ghost-Agent für Headless Automation. Essenziell für Scraper ohne API. Der Automations-Engine unserer Workflows.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Headless Browser Automation</span>
+          <span class="tool-tag">API-freie Web-Scraping</span>
+          <span class="tool-tag">n8n Native Integration</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- BUBBLE -->
+      <div class="tool-card rv" data-cat="automation" data-name="bubble no-code web app builder">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/bubble.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">No-Code</div>
+            <div class="tool-name">Bubble</div>
+          </div>
+        </div>
+        <p class="tool-desc">No-code Plattform für Web-Apps. Vollständige Anwendungen ohne Code schreiben.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Visual Builder</span>
+          <span class="tool-tag">Database &amp; Logic</span>
+          <span class="tool-tag">API Integration</span>
+          <span class="tool-tag">Responsive Design</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 29$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- CALENDLY -->
+      <div class="tool-card rv" data-cat="automation" data-name="calendly scheduling meeting calendar">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/calendly.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Scheduling</div>
+            <div class="tool-name">Calendly</div>
+          </div>
+        </div>
+        <p class="tool-desc">Automatisiertes Meeting-Scheduling. Integration mit Kalendern und CRM für nahtlose Terminplanung.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Auto-Scheduling</span>
+          <span class="tool-tag">Calendar Sync</span>
+          <span class="tool-tag">CRM Integration</span>
+          <span class="tool-tag">Custom Branding</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 10$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- CANVA -->
+      <div class="tool-card rv" data-cat="visual" data-name="canva design social media presentation">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/canva.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Design</div>
+            <div class="tool-name">Canva</div>
+          </div>
+        </div>
+        <p class="tool-desc">Design-Tool für Social Media, Präsentationen und Marketing-Materialien. AI-Features inklusive.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">AI-Design-Assistant</span>
+          <span class="tool-tag">Template-Library</span>
+          <span class="tool-tag">Brand Kit</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 15$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- CHATGPT -->
+      <div class="tool-card rv" data-cat="ai" data-name="chatgpt openai gpt-4o vision content">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/chatgpt.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Market Leader</div>
+            <div class="tool-name">ChatGPT / OpenAI</div>
+          </div>
+        </div>
+        <p class="tool-desc">GPT-4o für Datenanalyse, Vision-Tasks und Content-Generierung. Der Allrounder unserer Workflows.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">GPT-4o für komplexe Aufgaben</span>
+          <span class="tool-tag">Vision API für Bildanalyse</span>
+          <span class="tool-tag">DALL-E 3 für Image-Generation</span>
+          <span class="tool-tag">Perfekte n8n Integration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 20$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- CLAUDE -->
+      <div class="tool-card rv" data-cat="ai" data-name="claude anthropic coding python automation">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/claude-35.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Coding King</div>
+            <div class="tool-name">Claude 3.5 Sonnet</div>
+          </div>
+        </div>
+        <p class="tool-desc">Das Gehirn unserer Python-Skripte. Schreibt besseren Code als GPT-4 und ist essentiell für unsere Automation-Workflows.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Überlegene Code-Qualität</span>
+          <span class="tool-tag">200K Token Context</span>
+          <span class="tool-tag">Perfekte API-Integration</span>
+          <span class="tool-tag">Premium Support inklusive</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 20$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- CLAUDE ARTIFACTS -->
+      <div class="tool-card rv" data-cat="ai" data-name="claude artifacts code preview react html">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/claude-artifacts.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Code Gen</div>
+            <div class="tool-name">Claude Artifacts</div>
+          </div>
+        </div>
+        <p class="tool-desc">Interaktive Code-Generierung in Claude. Live-Preview von HTML, React und Python-Code direkt im Chat.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Live Code-Preview</span>
+          <span class="tool-tag">Multi-Language Support</span>
+          <span class="tool-tag">Iterative Editing</span>
+          <span class="tool-tag">Export-Funktionen</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Inkl. Claude Pro</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- CLICKUP -->
+      <div class="tool-card rv" data-cat="automation" data-name="clickup project management ai tasks">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/clickup.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Project Mgmt</div>
+            <div class="tool-name">ClickUp</div>
+          </div>
+        </div>
+        <p class="tool-desc">All-in-one Projektmanagement mit AI-Features. Tasks, Docs, Goals und Automation in einer Plattform.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">AI-Assistant</span>
+          <span class="tool-tag">Task Management</span>
+          <span class="tool-tag">Automation</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 10$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- COHERE -->
+      <div class="tool-card rv" data-cat="ai" data-name="cohere llm api embeddings classification">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/cohere.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">LLM API</div>
+            <div class="tool-name">Cohere</div>
+          </div>
+        </div>
+        <p class="tool-desc">Enterprise LLM API für Text-Generierung, Klassifikation und Embeddings.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Text Generation</span>
+          <span class="tool-tag">Classification</span>
+          <span class="tool-tag">Embeddings</span>
+          <span class="tool-tag">Enterprise Ready</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Pay-per-use</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- COPY.AI -->
+      <div class="tool-card rv" data-cat="seo" data-name="copy.ai copywriting marketing blog email">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/copy-ai.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Copywriting</div>
+            <div class="tool-name">Copy.ai</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-Copywriting für Marketing. Blog-Posts, Product Descriptions, Social Media und E-Mail-Kampagnen.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">90+ Templates</span>
+          <span class="tool-tag">Multi-Language</span>
+          <span class="tool-tag">Workflow Builder</span>
+          <span class="tool-tag">Brand Voice</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 36$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- CURSOR -->
+      <div class="tool-card rv" data-cat="ai" data-name="cursor ai code editor ide vscode">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/cursor.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">AI IDE</div>
+            <div class="tool-name">Cursor</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-powered Code-Editor. GPT-4 integriert für Code-Completion, Refactoring und Debugging.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">AI Code Completion</span>
+          <span class="tool-tag">Chat mit Codebase</span>
+          <span class="tool-tag">Auto-Refactoring</span>
+          <span class="tool-tag">VS Code basiert</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 20$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- DEPOSITPHOTOS -->
+      <div class="tool-card lifetime rv" data-cat="visual lifetime" data-name="depositphotos stock images videos assets">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/depositphotos.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Stock Assets</div>
+            <div class="tool-name">DepositPhotos</div>
+          </div>
+        </div>
+        <p class="tool-desc">320 Mio. Bilder/Videos. Lifetime-Zugriff via AppSumo. Unser Asset-Pool für alle Video- und Blog-Produktionen.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">320+ Millionen Assets</span>
+          <span class="tool-tag">Lifetime Zugriff</span>
+          <span class="tool-tag">Kommerzielle Nutzung</span>
+          <span class="tool-tag">HD/4K verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- DESCRIPT -->
+      <div class="tool-card rv" data-cat="visual" data-name="descript audio video editing transcription">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/descript.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Audio Editor</div>
+            <div class="tool-name">Descript</div>
+          </div>
+        </div>
+        <p class="tool-desc">Text-basiertes Audio/Video-Editing. Überdub Voice Cloning und automatische Transkription für schnelle Produktion.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Text-basiertes Editing</span>
+          <span class="tool-tag">Overdub Voice Cloning</span>
+          <span class="tool-tag">Auto-Transcription</span>
+          <span class="tool-tag">Multi-Track Editing</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 12$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- ELEVENLABS -->
+      <div class="tool-card rv" data-cat="visual ai" data-name="elevenlabs voice tts text speech cloning">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/elevenlabs.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Voice Gen</div>
+            <div class="tool-name">ElevenLabs</div>
+          </div>
+        </div>
+        <p class="tool-desc">Realistische Text-to-Speech mit Voice Cloning. Unser Standard für Voice-Over in allen Video-Produktionen.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Natural Voice Synthesis</span>
+          <span class="tool-tag">Voice Cloning</span>
+          <span class="tool-tag">29+ Sprachen</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 5$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- FEEDSPACE -->
+      <div class="tool-card lifetime rv" data-cat="seo lifetime" data-name="feedspace content management distribution">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/feedspace.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Content</div>
+            <div class="tool-name">Feedspace</div>
+          </div>
+        </div>
+        <p class="tool-desc">Content-Management und Distribution-Plattform. Optimiert deine Content-Strategie mit Analytics.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Content-Management</span>
+          <span class="tool-tag">Distribution-Tools</span>
+          <span class="tool-tag">Analytics &amp; Insights</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- FIRECRAWL -->
+      <div class="tool-card rv" data-cat="research automation" data-name="firecrawl scraping markdown api crawler">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/firecrawl.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Web Crawler</div>
+            <div class="tool-name">Firecrawl</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-powered Web Scraper. Konvertiert jede Website in strukturierte Markdown-Daten. API-first für Automation.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Website zu Markdown</span>
+          <span class="tool-tag">Sitemap Crawling</span>
+          <span class="tool-tag">API Integration</span>
+          <span class="tool-tag">JavaScript Rendering</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 20$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- FRAMER -->
+      <div class="tool-card rv" data-cat="visual" data-name="framer design prototyping code">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/framer.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Design Tool</div>
+            <div class="tool-name">Framer</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-powered Design- und Prototyping-Tool. Von Design zu Code ohne Entwickler.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">AI Design Assistant</span>
+          <span class="tool-tag">Code Export</span>
+          <span class="tool-tag">Interactive Prototypes</span>
+          <span class="tool-tag">Team Collaboration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 15$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- FRASE -->
+      <div class="tool-card rv" data-cat="seo" data-name="frase seo content research generation">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/frase.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Content AI</div>
+            <div class="tool-name">Frase</div>
+          </div>
+        </div>
+        <p class="tool-desc">SEO-Content-Recherche und -Generierung. Analysiert Top-Ranking-Content und generiert optimierte Artikel.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Content-Recherche</span>
+          <span class="tool-tag">SEO-Optimierung</span>
+          <span class="tool-tag">AI-Content-Generierung</span>
+          <span class="tool-tag">Competitor-Analyse</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 45$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- GAMMA -->
+      <div class="tool-card rv" data-cat="visual" data-name="gamma ai presentation slides design">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/gamma.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Presentation</div>
+            <div class="tool-name">Gamma</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-generierte Präsentationen und Dokumente. Von der Idee zum fertigen Design in Sekunden.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">AI-Präsentationen</span>
+          <span class="tool-tag">Auto-Design</span>
+          <span class="tool-tag">Export als PDF/PPT</span>
+          <span class="tool-tag">Team-Kollaboration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price free">Kostenlos / Pro</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- GITHUB COPILOT -->
+      <div class="tool-card rv" data-cat="ai" data-name="github copilot coding ai vscode completion">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/github-copilot.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">AI Coding</div>
+            <div class="tool-name">GitHub Copilot</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-Pair-Programmierer für VS Code. Code-Completion und -Generierung basierend auf Kontext.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">AI Code Completion</span>
+          <span class="tool-tag">Context-Aware</span>
+          <span class="tool-tag">Multi-Language</span>
+          <span class="tool-tag">VS Code Integration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 10$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- GEMINI -->
+      <div class="tool-card rv" data-cat="ai" data-name="google gemini multimodal text image video">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/gemini.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Multimodal</div>
+            <div class="tool-name">Google Gemini</div>
+          </div>
+        </div>
+        <p class="tool-desc">Googles multimodales AI-Modell für Text, Bilder, Audio und Video. Starke API für komplexe Multimodal-Aufgaben.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Multimodale Verarbeitung</span>
+          <span class="tool-tag">Gemini Pro API</span>
+          <span class="tool-tag">Video-Analyse</span>
+          <span class="tool-tag">Kostenlos verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price free">Kostenlos / API</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- GOOSE VPN -->
+      <div class="tool-card lifetime rv" data-cat="lifetime" data-name="goose vpn privacy security">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/goose-vpn.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">VPN</div>
+            <div class="tool-name">GOOSE VPN</div>
+          </div>
+        </div>
+        <p class="tool-desc">VPN-Service für sichere Verbindungen. Globales Server-Netzwerk für Privacy und Sicherheit.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Global Server Network</span>
+          <span class="tool-tag">Privacy Protection</span>
+          <span class="tool-tag">High Speed</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- GRAMMARLY -->
+      <div class="tool-card rv" data-cat="seo" data-name="grammarly writing grammar style">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/grammarly.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Writing Assistant</div>
+            <div class="tool-name">Grammarly</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-Schreibassistent für Grammatik, Stil und Klarheit. Integration in Browser, Word und mehr.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Grammatik-Check</span>
+          <span class="tool-tag">Stil-Optimierung</span>
+          <span class="tool-tag">Plagiarism Check</span>
+          <span class="tool-tag">Browser-Integration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 12$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- GRETA -->
+      <div class="tool-card lifetime rv" data-cat="visual lifetime" data-name="greta ai avatar video generation">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/greta-ai.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">AI Avatar</div>
+            <div class="tool-name">Greta</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-Avatar-Generierung für Video-Content. Professionelle Avatare für Erklärvideos und Präsentationen.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">AI-Avatare</span>
+          <span class="tool-tag">Video-Generierung</span>
+          <span class="tool-tag">Multi-Language</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- GROK -->
+      <div class="tool-card rv" data-cat="ai research" data-name="grok xai twitter realtime trends">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/grok.svg" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Real-Time</div>
+            <div class="tool-name">Grok (xAI)</div>
+          </div>
+        </div>
+        <p class="tool-desc">Echtzeit-Informationen via X/Twitter. Ideal für Trend-Analysen und aktuelle Marktdaten.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">X/Twitter Integration</span>
+          <span class="tool-tag">Echtzeit-Daten</span>
+          <span class="tool-tag">Trend-Analysen</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 16$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- HEADLIME -->
+      <div class="tool-card rv" data-cat="seo" data-name="headlime copywriting landing page ads">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/headlime.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Copywriting</div>
+            <div class="tool-name">Headlime</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-Copywriting für Landing Pages, E-Mails und Ads. Conversion-optimierte Texte basierend auf Best Practices.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Landing Page Copy</span>
+          <span class="tool-tag">Email Templates</span>
+          <span class="tool-tag">A/B Testing</span>
+          <span class="tool-tag">Conversion-Fokus</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 49$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- HOSTINGER -->
+      <div class="tool-card rv" data-cat="automation" data-name="hostinger vps hosting server n8n">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/hostinger.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Hosting</div>
+            <div class="tool-name">Hostinger</div>
+          </div>
+        </div>
+        <p class="tool-desc">VPS-Hosting für n8n Self-Hosted. Unser Standard-Hosting für alle Workflow-Instanzen und APIs.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">VPS Hosting</span>
+          <span class="tool-tag">Global Locations</span>
+          <span class="tool-tag">SSD Storage</span>
+          <span class="tool-tag">24/7 Support</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 3.99$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- HUBSPOT -->
+      <div class="tool-card rv" data-cat="automation" data-name="hubspot crm marketing email sales">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/hubspot.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">CRM</div>
+            <div class="tool-name">HubSpot</div>
+          </div>
+        </div>
+        <p class="tool-desc">All-in-one CRM mit Marketing, Sales und Service. Automation, Email-Marketing und Lead-Management.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">CRM &amp; Marketing</span>
+          <span class="tool-tag">Email Automation</span>
+          <span class="tool-tag">Lead Scoring</span>
+          <span class="tool-tag">API Integration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 45$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- HUGGING FACE -->
+      <div class="tool-card rv" data-cat="ai" data-name="hugging face open source models ai">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/hugging-face.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">AI Hub</div>
+            <div class="tool-name">Hugging Face</div>
+          </div>
+        </div>
+        <p class="tool-desc">Die größte Open-Source AI-Model-Bibliothek. Models, Datasets und Spaces für alle AI-Anwendungen.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">100k+ Models</span>
+          <span class="tool-tag">Inference API</span>
+          <span class="tool-tag">Model Hosting</span>
+          <span class="tool-tag">Free Tier verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price free">Kostenlos / Pro</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- JASPER -->
+      <div class="tool-card rv" data-cat="seo" data-name="jasper ai content enterprise blog ads">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/jasper-ai.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Content Gen</div>
+            <div class="tool-name">Jasper AI</div>
+          </div>
+        </div>
+        <p class="tool-desc">Enterprise Content-Generierung. Blog-Posts, Social Media, Ads und E-Mails in 29 Sprachen.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Multi-Language Support</span>
+          <span class="tool-tag">Brand Voice Training</span>
+          <span class="tool-tag">Team-Kollaboration</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 39$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- KATTEB -->
+      <div class="tool-card rv" data-cat="research" data-name="katteb fact check verification content">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/katteb.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Fact-Check</div>
+            <div class="tool-name">Katteb</div>
+          </div>
+        </div>
+        <p class="tool-desc">Fact-Shield für verifizierte Informationen. Unser Layer 2 der Dual-Layer-Validation neben Perplexity.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Automatische Faktenprüfung</span>
+          <span class="tool-tag">Quellenverifikation</span>
+          <span class="tool-tag">Content-Validierung</span>
+          <span class="tool-tag">API-Integration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Auf Anfrage</span>
+          <a href="#" class="tool-btn">Mehr erfahren →</a>
+        </div>
+      </div>
+
+      <!-- LANGCHAIN -->
+      <div class="tool-card rv" data-cat="ai" data-name="langchain framework llm agents rag memory">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/langchain.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Framework</div>
+            <div class="tool-name">LangChain</div>
+          </div>
+        </div>
+        <p class="tool-desc">Framework für LLM-Anwendungen. Chains, Agents und Memory-Management für komplexe AI-Workflows.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">LLM Orchestration</span>
+          <span class="tool-tag">Agent Framework</span>
+          <span class="tool-tag">RAG Integration</span>
+          <span class="tool-tag">Open-Source</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price free">Open Source</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- LUMA AI -->
+      <div class="tool-card rv" data-cat="visual" data-name="luma ai 3d model generation image">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/luma-ai.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">3D Gen</div>
+            <div class="tool-name">Luma AI</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-basierte 3D-Modell-Generierung. Text-to-3D und Image-to-3D für immersive Visuals.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Text-to-3D</span>
+          <span class="tool-tag">Image-to-3D</span>
+          <span class="tool-tag">High-Quality Output</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price free">Kostenlos / Pro</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- MIDJOURNEY -->
+      <div class="tool-card rv" data-cat="visual" data-name="midjourney image generation ai art">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/midjourney.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Image Gen</div>
+            <div class="tool-name">Midjourney</div>
+          </div>
+        </div>
+        <p class="tool-desc">Premium Image-Generation. Beste Qualität für kreative Visuals. Discord-basierte Community.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Premium Qualität</span>
+          <span class="tool-tag">Künstlerische Styles</span>
+          <span class="tool-tag">High-Resolution Output</span>
+          <span class="tool-tag">Community-Features</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 10$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- MISTRAL -->
+      <div class="tool-card rv" data-cat="ai" data-name="mistral open source llm europe batch">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/mistral-ai.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Open Source</div>
+            <div class="tool-name">Mistral AI</div>
+          </div>
+        </div>
+        <p class="tool-desc">Europäische Open-Source Alternative. Hohe Performance bei niedrigeren Kosten. Ideal für Batch-Processing.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Open-Source Modelle</span>
+          <span class="tool-tag">Kosteneffizient</span>
+          <span class="tool-tag">Self-hosted möglich</span>
+          <span class="tool-tag">EU-Datenschutz</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Pay-per-use</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- MOOTION -->
+      <div class="tool-card lifetime rv" data-cat="visual lifetime" data-name="mootion ai video editing effects">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/mootion.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Video Editing</div>
+            <div class="tool-name">Mootion</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-basierte Video-Bearbeitung. Automatisiertes Editing und Effekte für professionelle Videos.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">AI Video Editing</span>
+          <span class="tool-tag">Auto-Effekte</span>
+          <span class="tool-tag">Export-Optionen</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- MURF -->
+      <div class="tool-card rv" data-cat="visual" data-name="murf voice tts text speech languages">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/murf.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Voice Gen</div>
+            <div class="tool-name">Murf</div>
+          </div>
+        </div>
+        <p class="tool-desc">Text-to-Speech mit natürlichen Stimmen. 120+ Stimmen in 20+ Sprachen für professionelle Voice-Over.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">120+ Stimmen</span>
+          <span class="tool-tag">20+ Sprachen</span>
+          <span class="tool-tag">Voice Cloning</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 19$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- N8N -->
+      <div class="tool-card rv" data-cat="automation" data-name="n8n workflow automation self-hosted open source">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/n8n.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Workflow Engine</div>
+            <div class="tool-name">n8n</div>
+          </div>
+        </div>
+        <p class="tool-desc">Die Workflow-Engine unserer gesamten Infrastruktur. Self-hosted für maximale Kontrolle und Unabhängigkeit.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Self-hosted Option</span>
+          <span class="tool-tag">Open-Source Basis</span>
+          <span class="tool-tag">1000+ Integrations</span>
+          <span class="tool-tag">Unser Core-System</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price free">Open Source</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- NEURONWRITER -->
+      <div class="tool-card lifetime rv" data-cat="seo lifetime" data-name="neuronwriter nlp seo content cluster ranking">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/neuronwriter.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Semantics</div>
+            <div class="tool-name">NeuronWriter</div>
+          </div>
+        </div>
+        <p class="tool-desc">NLP-Analyse für Content-Cluster und Rankings. SEO-optimierte Blog-Generierung mit semantischer Analyse.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">SEO-Semantik-Analyse</span>
+          <span class="tool-tag">Content-Optimierung</span>
+          <span class="tool-tag">Keyword-Clustering</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- NOCODEBACKEND -->
+      <div class="tool-card lifetime rv" data-cat="automation lifetime" data-name="nocodebackend no code backend api database">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/nocode-backend.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Backend</div>
+            <div class="tool-name">NoCodeBackend</div>
+          </div>
+        </div>
+        <p class="tool-desc">No-Code Backend-Infrastructure. Erstelle APIs und Datenbanken ohne Code zu schreiben.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">No-Code Backend</span>
+          <span class="tool-tag">API-Generierung</span>
+          <span class="tool-tag">Database Management</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- NOTION -->
+      <div class="tool-card rv" data-cat="automation seo" data-name="notion ai workspace content docs">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/notion.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Workspace</div>
+            <div class="tool-name">Notion AI</div>
+          </div>
+        </div>
+        <p class="tool-desc">All-in-one Workspace mit integrierter AI. Content-Planung, Dokumentation und Team-Kollaboration in einem.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">AI-Content-Generierung</span>
+          <span class="tool-tag">Database &amp; Wikis</span>
+          <span class="tool-tag">Team-Kollaboration</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 10$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- OPUS CLIP -->
+      <div class="tool-card rv" data-cat="visual" data-name="opus clip video shorts clipping auto">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/opus-clip.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Video Clipper</div>
+            <div class="tool-name">Opus Clip</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-basierte Video-Klip-Generierung. Automatisches Clipping von Long-Form-Videos in viral-würdige Shorts.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Auto-Video-Clipping</span>
+          <span class="tool-tag">Viral-Moment Detection</span>
+          <span class="tool-tag">Auto-Captions</span>
+          <span class="tool-tag">Multi-Format Export</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 19$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- PERPLEXITY -->
+      <div class="tool-card rv" data-cat="research" data-name="perplexity research web search fact check">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/perplexity-pro.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Research</div>
+            <div class="tool-name">Perplexity Pro</div>
+          </div>
+        </div>
+        <p class="tool-desc">Echtzeit-Websuche mit Quellen. Ersetzt Google für Business-Research. Unser Layer 1 für Faktenverifikation.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Echtzeit-Web-Recherche</span>
+          <span class="tool-tag">Quellenangaben inklusive</span>
+          <span class="tool-tag">Faktenverifikation</span>
+          <span class="tool-tag">Dual-Layer-Validation</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">20$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- PINECONE -->
+      <div class="tool-card rv" data-cat="ai" data-name="pinecone vector database rag semantic search">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/pinecone.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Vector DB</div>
+            <div class="tool-name">Pinecone</div>
+          </div>
+        </div>
+        <p class="tool-desc">Managed Vector Database für AI-Anwendungen. Semantic Search, RAG und LLM-Context-Management.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Vector Similarity Search</span>
+          <span class="tool-tag">Managed Service</span>
+          <span class="tool-tag">Real-time Updates</span>
+          <span class="tool-tag">Enterprise Scale</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 70$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- REAP -->
+      <div class="tool-card lifetime rv" data-cat="automation lifetime" data-name="reap workflow automation ai integration">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/reap.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Automation</div>
+            <div class="tool-name">Reap</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-powered Workflow-Automation. Vereinfacht komplexe Prozesse mit intelligenter Automation.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Workflow-Automation</span>
+          <span class="tool-tag">AI-Integration</span>
+          <span class="tool-tag">Multi-Platform</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- RUNWAY -->
+      <div class="tool-card rv" data-cat="visual" data-name="runway video generation ai text-to-video">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/runway.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Video Gen</div>
+            <div class="tool-name">Runway</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-Video-Generierung und -Bearbeitung. Text-to-Video, Inpainting, Motion Tracking für professionelle Produktionen.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Text-to-Video</span>
+          <span class="tool-tag">Video Editing AI</span>
+          <span class="tool-tag">Motion Tracking</span>
+          <span class="tool-tag">Professional Tools</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 15$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- SEMRUSH -->
+      <div class="tool-card rv" data-cat="seo" data-name="semrush seo marketing ppc content">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/semrush.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">SEO Suite</div>
+            <div class="tool-name">SEMrush</div>
+          </div>
+        </div>
+        <p class="tool-desc">All-in-one Marketing-Toolkit. SEO, PPC, Social Media und Content-Marketing in einer Plattform.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Keyword Research</span>
+          <span class="tool-tag">Competitor Analysis</span>
+          <span class="tool-tag">Backlink Audit</span>
+          <span class="tool-tag">Content Marketing</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 120$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- SKILLPLATE -->
+      <div class="tool-card lifetime rv" data-cat="lifetime" data-name="skillplate learning platform skills team">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/skillplate.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Learning</div>
+            <div class="tool-name">Skillplate</div>
+          </div>
+        </div>
+        <p class="tool-desc">Online-Lernplattform für Skills-Training. Erstelle und verwalte Lerninhalte für Teams.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Lernplattform</span>
+          <span class="tool-tag">Content-Erstellung</span>
+          <span class="tool-tag">Team-Management</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- SOCIAMONIALS -->
+      <div class="tool-card lifetime rv" data-cat="lifetime seo" data-name="sociamonials social proof testimonials widgets">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/sociamonials.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Social Proof</div>
+            <div class="tool-name">Sociamonials</div>
+          </div>
+        </div>
+        <p class="tool-desc">Social Proof Widgets und Testimonials. Zeige Kundenbewertungen und Social Signals auf deiner Website.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Testimonial Widgets</span>
+          <span class="tool-tag">Social Proof</span>
+          <span class="tool-tag">Customizable Design</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- STABLE DIFFUSION -->
+      <div class="tool-card rv" data-cat="visual" data-name="stable diffusion open source image generation self-hosted">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/stable-diffusion.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Open Source</div>
+            <div class="tool-name">Stable Diffusion</div>
+          </div>
+        </div>
+        <p class="tool-desc">Open-Source Image-Generation. Self-hosted für volle Kontrolle. Community-Modelle und Fine-Tuning möglich.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Open-Source</span>
+          <span class="tool-tag">Self-hosted</span>
+          <span class="tool-tag">Custom Models</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price free">Kostenlos / Self-hosted</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- STRIPE -->
+      <div class="tool-card rv" data-cat="automation" data-name="stripe payment processing subscriptions invoicing">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/stripe.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Payment</div>
+            <div class="tool-name">Stripe</div>
+          </div>
+        </div>
+        <p class="tool-desc">Payment-Processing API für Online-Zahlungen. Subscriptions, Invoicing und mehr.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Payment API</span>
+          <span class="tool-tag">Subscriptions</span>
+          <span class="tool-tag">Invoicing</span>
+          <span class="tool-tag">Webhooks</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">2.9% + 0.30$ / Transaction</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- SUPABASE -->
+      <div class="tool-card rv" data-cat="automation" data-name="supabase backend postgresql database auth">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/supabase.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Backend</div>
+            <div class="tool-name">Supabase</div>
+          </div>
+        </div>
+        <p class="tool-desc">Open-Source Firebase-Alternative. PostgreSQL-Datenbank, Auth, Storage und Real-time Features.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">PostgreSQL Database</span>
+          <span class="tool-tag">Real-time Subscriptions</span>
+          <span class="tool-tag">Auth &amp; Storage</span>
+          <span class="tool-tag">Open-Source</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">Kostenlos / Pro ab 25$</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- SURFER SEO -->
+      <div class="tool-card rv" data-cat="seo" data-name="surfer seo content editor keyword lsi">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/surfer-seo.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">SEO Optimizer</div>
+            <div class="tool-name">Surfer SEO</div>
+          </div>
+        </div>
+        <p class="tool-desc">Content Editor mit real-time SEO-Daten. Keyword-Dichte, LSI-Topic-Cluster und SERP-Analysen.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Real-time SEO-Score</span>
+          <span class="tool-tag">Content Editor</span>
+          <span class="tool-tag">Keyword Research</span>
+          <span class="tool-tag">Competitor Analysis</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 89$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- SYNTHESIA -->
+      <div class="tool-card rv" data-cat="visual" data-name="synthesia ai avatar video text languages">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/synthesia.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">AI Avatar</div>
+            <div class="tool-name">Synthesia</div>
+          </div>
+        </div>
+        <p class="tool-desc">AI-Avatar-Videos aus Text. 140+ Avatare, 120+ Sprachen. Ideal für Erklärvideos ohne Kamera.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">140+ AI Avatare</span>
+          <span class="tool-tag">120+ Sprachen</span>
+          <span class="tool-tag">Text-to-Video</span>
+          <span class="tool-tag">Custom Avatars</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 29$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- TIDYCAL -->
+      <div class="tool-card lifetime rv" data-cat="automation lifetime" data-name="tidycal scheduling calendar meeting ai">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/tidycal.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Scheduling</div>
+            <div class="tool-name">TidyCal</div>
+          </div>
+        </div>
+        <p class="tool-desc">Meeting-Scheduling mit AI. Automatisiertes Kalender-Management und Terminbuchung.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Meeting-Scheduling</span>
+          <span class="tool-tag">Calendar-Sync</span>
+          <span class="tool-tag">AI-Optimierung</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- UNMIXR AI -->
+      <div class="tool-card lifetime rv" data-cat="visual lifetime" data-name="unmixr audio tts speech dubbing">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/unmixr-ai.svg" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Audio AI</div>
+            <div class="tool-name">Unmixr AI</div>
+          </div>
+        </div>
+        <p class="tool-desc">Text-to-Speech, Speech-to-Text und Audio/Video Dubbing. Vollständige Audio-Produktion mit AI.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Text-to-Speech</span>
+          <span class="tool-tag">Speech-to-Text</span>
+          <span class="tool-tag">Audio/Video Dubbing</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- VOILÀ -->
+      <div class="tool-card lifetime rv" data-cat="visual lifetime" data-name="voila design visuals ai template">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/voila.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Design</div>
+            <div class="tool-name">Voilà</div>
+          </div>
+        </div>
+        <p class="tool-desc">Design-Tool für kreative Visuals. Erstelle professionelle Designs mit AI-Unterstützung.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Design-Tools</span>
+          <span class="tool-tag">AI-Assistant</span>
+          <span class="tool-tag">Template-Library</span>
+          <span class="tool-tag">Lifetime Deal verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- YAPPER -->
+      <div class="tool-card lifetime rv" data-cat="automation lifetime" data-name="yapper social automation twitter x posting">
+        <div class="lifetime-badge">LIFETIME DEAL</div>
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/yapper.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label" style="color:#a855f7">Social Automation</div>
+            <div class="tool-name">Yapper</div>
+          </div>
+        </div>
+        <p class="tool-desc">Social Media Automation für X/Twitter. Auto-Posting, Thread-Generierung und Engagement-Management.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Auto-Posting</span>
+          <span class="tool-tag">Thread-Generierung</span>
+          <span class="tool-tag">Engagement Tracking</span>
+          <span class="tool-tag">API Integration</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price lifetime-price">LIFETIME DEAL</span>
+          <a href="#" class="tool-btn lifetime-btn">Zum Deal →</a>
+        </div>
+      </div>
+
+      <!-- ZAPIER -->
+      <div class="tool-card rv" data-cat="automation" data-name="zapier automation no-code integrations workflows">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/zapier.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Automation</div>
+            <div class="tool-name">Zapier</div>
+          </div>
+        </div>
+        <p class="tool-desc">Die bekannteste Automation-Plattform. Einfache Workflows ohne Code. Massiver App-Marktplatz.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">6000+ App-Integrationen</span>
+          <span class="tool-tag">No-Code Builder</span>
+          <span class="tool-tag">Multi-Step Zaps</span>
+          <span class="tool-tag">Enterprise Features</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price">ab 20$ / Monat</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+      <!-- ZEP MEMORY -->
+      <div class="tool-card rv" data-cat="ai" data-name="zep memory ai agents chatbot context long-term">
+        <div class="tool-header">
+          <div class="tool-avatar tool-avatar--logo"><img src="/images/tools/zep-memory.png" alt="" width="44" height="44" loading="lazy" decoding="async"/></div>
+          <div class="tool-meta">
+            <div class="tool-cat-label">Memory API</div>
+            <div class="tool-name">ZEP Memory</div>
+          </div>
+        </div>
+        <p class="tool-desc">Langzeit-Memory für AI-Agents. Kontextuelle Erinnerungen für Chatbots und Conversational AI.</p>
+        <div class="tool-tags">
+          <span class="tool-tag">Long-term Memory</span>
+          <span class="tool-tag">Context Management</span>
+          <span class="tool-tag">Session Handling</span>
+          <span class="tool-tag">API verfügbar</span>
+        </div>
+        <div class="tool-footer">
+          <span class="tool-price free">Kostenlos / Pro</span>
+          <a href="#" class="tool-btn">Zum Tool →</a>
+        </div>
+      </div>
+
+    </div><!-- /tools-grid -->
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <h2>Alle Tools in deinen<br><span>Workflows integriert?</span></h2>
+      <p>Lass uns deine Infrastruktur aufbauen – mit den richtigen Tools, richtig eingesetzt.</p>
+    </div>
+    <!-- FIX-2026-04-07: Phase 1.1 — Primär = Kontakt; Workflows als sekundärer Text-Link -->
+    <div class="cta-btns" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px">
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+      <a href="/workflows.html" class="hero-cta-secondary">Workflow-Katalog ansehen →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<!-- FOOTER -->
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+// Reveal
+const obs = new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target)}})},{threshold:.06,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+let currentFilter = 'all';
+
+function setFilter(cat, el) {
+  currentFilter = cat;
+  document.querySelectorAll('.fcat').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  filterTools();
+}
+
+function filterTools() {
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.tool-card');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const cats = card.dataset.cat || '';
+    const name = card.dataset.name || '';
+    const matchCat = currentFilter === 'all' || cats.includes(currentFilter);
+    const matchQ = !q || name.includes(q) || card.textContent.toLowerCase().includes(q);
+    if (matchCat && matchQ) {
+      card.classList.remove('hidden');
+      visible++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+
+  document.getElementById('count').textContent = visible;
+
+  // No results
+  let nr = document.querySelector('.no-results');
+  if (visible === 0) {
+    if (!nr) {
+      nr = document.createElement('div');
+      nr.className = 'no-results';
+      nr.innerHTML = '<h3>Keine Tools gefunden</h3><p>Versuche einen anderen Suchbegriff oder Filter.</p>';
+      document.getElementById('toolsGrid').appendChild(nr);
+    }
+  } else if (nr) {
+    nr.remove();
+  }
+}
+
+// Tool-Karten → Produktdetailseiten marktplatz/tools/*.html
+(function(){
+  var slugMap = {
+    "Ahrefs":"ahrefs","Airtable":"airtable","Anthropic Bedrock":"claude","Asana":"asana","Binance API":"binance-api","Bright Data":"bright-data","BrowserAct":"browseract","Bubble":"bubble","Calendly":"calendly","Canva":"canva","ChatGPT / OpenAI":"chatgpt","Claude 3.5 Sonnet":"claude-35","Claude Artifacts":"claude-artifacts","ClickUp":"clickup","Cohere":"cohere","Copy.ai":"copy-ai","Cursor":"cursor","DepositPhotos":"depositphotos","Descript":"descript","ElevenLabs":"elevenlabs","Feedspace":"feedspace","Firecrawl":"firecrawl","Framer":"framer","Frase":"frase","Gamma":"gamma","GitHub Copilot":"github-copilot","Google Gemini":"gemini","GOOSE VPN":"goose-vpn","Grammarly":"grammarly","Greta":"greta-ai","Grok (xAI)":"grok","Headlime":"headlime","Hostinger":"hostinger","HubSpot":"hubspot","Hugging Face":"hugging-face","Jasper AI":"jasper-ai","Katteb":"katteb","LangChain":"langchain","Luma AI":"luma-ai","Midjourney":"midjourney","Mistral AI":"mistral-ai","Mootion":"mootion","Murf":"murf","n8n":"n8n","NeuronWriter":"neuronwriter","NoCodeBackend":"nocode-backend","Notion AI":"notion","Opus Clip":"opus-clip","Perplexity Pro":"perplexity-pro","Pinecone":"pinecone","Reap":"reap","Runway":"runway","SEMrush":"semrush","Skillplate":"skillplate","Sociamonials":"sociamonials","Stable Diffusion":"stable-diffusion","Stripe":"stripe","Supabase":"supabase","Surfer SEO":"surfer-seo","Synthesia":"synthesia","TidyCal":"tidycal","Unmixr AI":"unmixr-ai","Voilà":"voila","Yapper":"yapper","Zapier":"zapier","ZEP Memory":"zep-memory"
+  };
+  document.querySelectorAll('#toolsGrid .tool-card').forEach(function(card){
+    var nameEl = card.querySelector('.tool-name');
+    var btn = card.querySelector('a.tool-btn');
+    if (!nameEl || !btn) return;
+    var name = nameEl.textContent.trim();
+    var slug = slugMap[name];
+    if (slug) btn.setAttribute('href', '/marktplatz/tools/' + slug + '.html');
+  });
+})();
+</script>
+<script>(function(){var btn=document.getElementById('navToggle');if(btn)btn.addEventListener('click',function(){document.body.classList.toggle('nav-open');});})();</script>
+<script src="/js/release-ribbon.js?v=2" defer></script>
+<script src="/js/kpi-events.js?v=2" defer></script>
+<script src="/cart.js" defer></script>
+<div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+  <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+</div>
+</body>
+</html>

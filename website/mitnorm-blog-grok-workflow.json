@@ -1,0 +1,350 @@
+{
+  "name": "My workflow 4 (Fixed)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "create-blog",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "cb69b05b-3376-4e4e-b95b-dff075669a41",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-1872, 320],
+      "webhookId": "mitnorm-blog-grok"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse & Validate Input\nconst body = $input.item.json.body || {};\n\nif (!body.instruction && !body.topic) {\n  throw new Error('❌ Bitte gib eine Anweisung (instruction) oder ein Thema (topic) an!');\n}\n\nreturn {\n  json: {\n    user_instruction: body.instruction || `Schreibe einen umfassenden Blog über ${body.topic}`,\n    custom_topic: body.topic || null,\n    target_audience: body.audience || null,\n    style_preferences: body.style || 'professionell und zugänglich',\n    workflow_started: new Date().toISOString(),\n    execution_id: $execution.id\n  }\n};"
+      },
+      "id": "7940a0c2-ab05-475f-a279-ee74a5521028",
+      "name": "Parse Input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-1664, 320]
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Cloud Version - Inline Style-Definition\nconst mitnormStyleGuide = {\n  tone: 'Professionell aber zugänglich, vertrauenswürdig',\n  characteristics: [\n    'Klare, strukturierte Abschnitte mit H2/H3',\n    'Praktische Beispiele und konkrete Zahlen',\n    'Checklisten und Aufzählungen für Lesbarkeit',\n    'Call-to-Action zu mitNORM Beratung',\n    'SEO-optimiert mit natürlicher Keyword-Integration'\n  ],\n  typical_structure: [\n    'Hook-Einleitung mit Problem-Statement',\n    'Mehrere H2-Abschnitte (5-7) mit Unterpunkten',\n    'Praktische Tipps und Handlungsempfehlungen',\n    'Zusammenfassung mit starkem CTA'\n  ]\n};\n\nreturn {\n  json: {\n    ...$json,\n    style_analysis: mitnormStyleGuide,\n    posts_loaded: 0,\n    from_cache: false\n  }\n};"
+      },
+      "id": "f9774c87-50c2-4b43-bdd2-82c00accf7fb",
+      "name": "Load mitNORM Style",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-1472, 320]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4o"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=# USER-ANFRAGE\n{{ $json.user_instruction }}\n{{ $json.custom_topic ? '\\nGewünschtes Thema: ' + $json.custom_topic : '' }}\n{{ $json.target_audience ? '\\nZielgruppe: ' + $json.target_audience : '' }}\n\n# MITNORM STIL\n- Ton: {{ $json.style_analysis.tone }}\n- Merkmale: {{ $json.style_analysis.characteristics.join(', ') }}\n- Struktur: {{ $json.style_analysis.typical_structure.join(', ') }}\n\n# AUFGABE\nErstelle eine Content-Strategie als JSON:\n\n{\n  \"content_strategy\": {\n    \"title\": \"SEO-Titel (max 60 Zeichen)\",\n    \"meta_description\": \"Meta-Description mit CTA (150-160 Zeichen)\",\n    \"main_keyword\": \"Haupt-Keyword\",\n    \"secondary_keywords\": [\"Keyword 2\", \"Keyword 3\", \"Keyword 4\"],\n    \"longtail_keywords\": [\"Longtail 1\", \"Longtail 2\"],\n    \"target_audience\": \"Zielgruppe\",\n    \"outline\": [\"H2: Einleitung\", \"H2: Hauptteil 1\", \"H2: Hauptteil 2\", \"H2: Fazit (kurz)\"]\n  }\n}\n\nNUR JSON!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90283451-761d-4b32-ae34-9bc65dac6ccf",
+      "name": "Content Strategy (OpenAI)",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [-1328, 320],
+      "credentials": {
+        "openAiApi": {
+          "id": "54P0FhCJD7kp0sUU",
+          "name": "Online Agentur Cango"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Strategy mit Markdown-Bereinigung\nlet response = $input.item.json.message?.content || $input.item.json.text || '{}';\n\n// Entferne Markdown-Code-Blöcke (```json ... ```)\nresponse = response.replace(/```json\\s*/g, '').replace(/```\\s*$/g, '').trim();\n\n// Versuche JSON zu parsen\nlet data;\ntry {\n  data = JSON.parse(response);\n} catch (e) {\n  // Fallback: Versuche, das erste JSON-Objekt zu extrahieren\n  const jsonMatch = response.match(/\\{[\\s\\S]*\\}/);\n  if (jsonMatch) {\n    data = JSON.parse(jsonMatch[0]);\n  } else {\n    throw new Error(`❌ Konnte JSON nicht parsen: ${e.message}\\n\\nResponse:\\n${response}`);\n  }\n}\n\nconst strategy = data.content_strategy;\n\nreturn {\n  json: {\n    ...$('Load mitNORM Style').item.json,\n    title: strategy.title,\n    meta_description: strategy.meta_description,\n    seo: {\n      main_keyword: strategy.main_keyword,\n      secondary_keywords: strategy.secondary_keywords,\n      longtail_keywords: strategy.longtail_keywords\n    },\n    outline: strategy.outline,\n    target_audience: strategy.target_audience\n  }\n};"
+      },
+      "id": "97732ef3-c4a8-4d70-a76a-44bbf9250fec",
+      "name": "Parse Strategy",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-1072, 320]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4o"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=# BLOG-ARTIKEL SCHREIBEN\n\nDu bist der mitNORM Blog-Autor.\n\n**Vorgaben:**\n- Titel: {{ $json.title }}\n- Meta-Description: {{ $json.meta_description }}\n- Haupt-Keyword: {{ $json.seo.main_keyword }}\n- Sekundär-Keywords: {{ $json.seo.secondary_keywords.join(', ') }}\n- Zielgruppe: {{ $json.target_audience }}\n- Outline: {{ $json.outline.join(' → ') }}\n\n**Anforderungen:**\n✅ Länge: 800-1500 Wörter (kompakt und präzise!)\n✅ Stil: mitNORM (professionell, zugänglich)\n✅ Struktur: 3-5 H2-Abschnitte, Listen, konkrete Beispiele\n✅ SEO: Haupt-Keyword in Titel, erstem Absatz, 2-3 H2s\n✅ Bilder: 2-3 Platzhalter [BILD: Beschreibung]\n✅ CTA: Kurzer, prägnanter Call-to-Action\n\n**Format (Markdown mit YAML):**\n---\ntitle: \"{{ $json.title }}\"\nmeta_description: \"{{ $json.meta_description }}\"\nkeywords:\n  - {{ $json.seo.main_keyword }}\nauthor: \"mitNORM Team\"\ndate: \"{{ new Date().toISOString().split('T')[0] }}\"\n---\n\n# {{ $json.title }}\n\n[Einleitung mit Hook]\n\n[BILD: Hero-Image - professionelles Finanz-Thema]\n\n## {{ $json.outline[0] }}\n[Content]\n\nSCHREIBE DEN KOMPLETTEN ARTIKEL!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3abcf5d-4d00-4634-95cb-53f95bc4569b",
+      "name": "Generate Content (OpenAI)",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [-928, 320],
+      "credentials": {
+        "openAiApi": {
+          "id": "54P0FhCJD7kp0sUU",
+          "name": "Online Agentur Cango"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Content & Extract Image Prompts\nconst response = $input.item.json.message?.content || $input.item.json.text || '';\nconst blogContent = response.trim();\n\n// Extrahiere Bild-Platzhalter\nconst imageMatches = [...blogContent.matchAll(/\\[BILD: (.+?)\\]/g)];\nconst imagePrompts = imageMatches.map((match, i) => ({\n  index: i,\n  description: match[1],\n  placeholder: match[0]\n}));\n\n// Filename\nconst today = new Date().toISOString().split('T')[0];\nconst slug = $('Load mitNORM Style').item.json.title\n  .toLowerCase()\n  .replace(/[äöü]/g, c => ({ä:'ae',ö:'oe',ü:'ue'}[c]||c))\n  .replace(/ß/g, 'ss')\n  .replace(/[^a-z0-9]+/g, '-')\n  .replace(/^-|-$/g, '')\n  .substring(0, 60);\n\nconsole.log(`📝 Blog: ${blogContent.split(/\\s+/).length} Wörter, ${imagePrompts.length} Bilder`);\n\nreturn {\n  json: {\n    ...$('Parse Strategy').item.json,\n    blog_content: blogContent,\n    filename_base: `${today}_${slug}`,\n    image_prompts: imagePrompts,\n    word_count: blogContent.split(/\\s+/).length\n  }\n};"
+      },
+      "id": "fe0f4043-f929-481a-94a3-b6c7c1367d22",
+      "name": "Parse Content",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-672, 320]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.kie.ai/api/v1/jobs/createTask",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"grok-imagine/text-to-image\",\n  \"input\": {\n    \"prompt\": \"Professional financial blog cover image for mitNORM. Modern corporate design, clean, trustworthy, high-quality photography style. {{ $json.image_prompts[0]?.description || 'Financial planning and consulting concept' }}\",\n    \"aspect_ratio\": \"16:9\"\n  }\n}",
+        "options": {}
+      },
+      "id": "65eb3492-92cb-4e64-8d6e-50e1843d0d33",
+      "name": "Grok Imagine - Create Task",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [-464, 320],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KlKSxE0qptOAFJl6",
+          "name": "Lcchtv"
+        }
+      },
+      "notes": "Erstellt Grok Imagine Task"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract Task ID\nconst response = $input.item.json;\n\nif (response.code !== 200 || !response.data?.taskId) {\n  throw new Error(`Grok Imagine Task fehlgeschlagen: ${response.message}`);\n}\n\nconst taskId = response.data.taskId;\nconsole.log(`🎨 Grok Imagine Task erstellt: ${taskId}`);\n\nreturn {\n  json: {\n    ...$('Parse Content').item.json,\n    grok_task_id: taskId,\n    grok_task_created: new Date().toISOString()\n  }\n};"
+      },
+      "id": "ed029ed1-aa3e-4845-98ef-b67695132d1a",
+      "name": "Extract Task ID",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-288, 320]
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "id": "0b3aef01-1e33-4da5-8d63-5ae05c6f92be",
+      "name": "Wait 10 Seconds",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [-128, 320],
+      "webhookId": "wait-grok-image",
+      "notes": "Warte auf Bildgenerierung"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.kie.ai/api/v1/jobs/recordInfo?taskId={{ $json.grok_task_id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": []
+        },
+        "options": {}
+      },
+      "id": "d674602f-f021-4610-9d7b-58e59b36d78e",
+      "name": "Grok Imagine - Get Result",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [48, 320],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "KlKSxE0qptOAFJl6",
+          "name": "Lcchtv"
+        }
+      },
+      "notes": "Holt das generierte Bild via /api/v1/jobs/recordInfo"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data.state }}",
+              "value2": "success"
+            }
+          ]
+        }
+      },
+      "id": "063ab466-9e6e-4f11-8e54-5a9829f27d49",
+      "name": "Check Status",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [220, 320],
+      "notes": "Prüft ob Bild fertig ist"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Grok Result\nconst response = $input.item.json;\nconst blogData = $('Parse Content').item.json;\n\n// Parse Result JSON\nconst taskData = response.data;\nconst state = taskData.state;\n\n// Wenn wir hier ankommen, garantiert der 'Check Status' Node, dass state === 'success' ist\n\n// Extract Image URL\nconst resultJson = JSON.parse(taskData.resultJson || '{}');\nconst imageUrl = resultJson.resultUrls?.[0] || 'https://placehold.co/1792x1024';\n\nconsole.log(`✅ Grok Imagine erfolgreich: ${imageUrl}`);\n\n// Merge Image into Content\nlet blogContent = blogData.blog_content;\n\nif (blogData.image_prompts.length > 0) {\n  // Ersetze erstes Bild\n  blogContent = blogContent.replace(\n    blogData.image_prompts[0].placeholder,\n    `![Cover Image](${imageUrl})`\n  );\n  \n  // Entferne restliche Platzhalter\n  for (let i = 1; i < blogData.image_prompts.length; i++) {\n    blogContent = blogContent.replace(blogData.image_prompts[i].placeholder, '');\n  }\n}\n\nreturn {\n  json: {\n    ...blogData,\n    blog_content: blogContent,\n    cover_image_url: imageUrl,\n    images_generated: 1,\n    grok_cost_time: taskData.costTime,\n    grok_credits_consumed: taskData.consumeCredits\n  }\n};"
+      },
+      "id": "b16c8e75-1015-43c1-bfcf-27b985ae1244",
+      "name": "Merge Grok Image into Content",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 320]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4o-mini"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Bewerte diesen Artikel (0-100):\n\n{{ $json.blog_content.substring(0, 3000) }}...\n\nBewerte nach:\n1. Keyword-Optimierung (0-20)\n2. Content-Qualität (0-20)\n3. Meta-Daten (0-20)\n4. Struktur (0-20)\n5. User Value (0-20)\n\nJSON:\n{\n  \"total_score\": 0-100,\n  \"grade\": \"A+/A/B/C/D/F\",\n  \"feedback\": \"Kurzes Feedback\",\n  \"improvements\": [\"Top 3\"]\n}\n\nNur JSON!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e09e0e2e-fbf6-408f-b153-683b5b3b5185",
+      "name": "Quality Check (GPT-4o-mini)",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [680, 320],
+      "credentials": {
+        "openAiApi": {
+          "id": "54P0FhCJD7kp0sUU",
+          "name": "Online Agentur Cango"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Quality Score mit Markdown-Bereinigung\nlet response = $input.item.json.message?.content || $input.item.json.text || '{}';\n\n// Entferne Markdown-Code-Blöcke\nresponse = response.replace(/```json\\s*/g, '').replace(/```\\s*$/g, '').trim();\n\n// Versuche JSON zu parsen\nlet quality;\ntry {\n  quality = JSON.parse(response);\n} catch (e) {\n  // Fallback\n  const jsonMatch = response.match(/\\{[\\s\\S]*\\}/);\n  if (jsonMatch) {\n    quality = JSON.parse(jsonMatch[0]);\n  } else {\n    throw new Error(`❌ Konnte Quality JSON nicht parsen: ${e.message}`);\n  }\n}\n\nconsole.log(`📊 Quality: ${quality.total_score}/100 (${quality.grade})`);\n\nreturn {\n  json: {\n    ...$('Merge Grok Image into Content').item.json,\n    quality: quality\n  }\n};"
+      },
+      "id": "2c7d797f-c251-4210-b8f8-77d2ecdeb221",
+      "name": "Parse Quality Score",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [880, 320]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Final Response\nconst inputData = $('Parse Input').item.json;\n\nconst summary = {\n  success: true,\n  status: '✅ Blog erfolgreich erstellt mit Grok Imagine',\n  execution_id: inputData.execution_id,\n  timestamp: new Date().toISOString(),\n  \n  blog: {\n    title: $json.title,\n    filename: $json.filename_base,\n    word_count: $json.word_count\n  },\n  \n  quality: {\n    total_score: $json.quality.total_score,\n    grade: $json.quality.grade,\n    feedback: $json.quality.feedback\n  },\n  \n  seo: {\n    main_keyword: $json.seo.main_keyword,\n    secondary_keywords: $json.seo.secondary_keywords,\n    target_audience: $json.target_audience\n  },\n  \n  media: {\n    cover_image_url: $json.cover_image_url,\n    images_generated: $json.images_generated,\n    image_fallback: $json.image_fallback || false,\n    grok_credits_consumed: $json.grok_credits_consumed || 0\n  },\n  \n  content: {\n    markdown: $json.blog_content\n  }\n};\n\nconsole.log('\\n' + '='.repeat(70));\nconsole.log('✅ BLOG MIT GROK IMAGINE ERSTELLT!');\nconsole.log('='.repeat(70));\nconsole.log(`📝 Titel: ${summary.blog.title}`);\nconsole.log(`📊 Score: ${summary.quality.total_score}/100 (${summary.quality.grade})`);\nconsole.log(`📄 Wörter: ${summary.blog.word_count}`);\nconsole.log(`🎨 Grok Credits: ${summary.media.grok_credits_consumed}`);\nconsole.log('='.repeat(70) + '\\n');\n\nreturn { json: summary };"
+      },
+      "id": "163cc837-638c-41cd-9823-bab2753aed10",
+      "name": "Final Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1080, 320]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json, null, 2) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "e8873661-0c06-44f0-872a-cd15158d1612",
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1280, 320]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook Trigger": {
+      "main": [[{"node": "Parse Input", "type": "main", "index": 0}]]
+    },
+    "Parse Input": {
+      "main": [[{"node": "Load mitNORM Style", "type": "main", "index": 0}]]
+    },
+    "Load mitNORM Style": {
+      "main": [[{"node": "Content Strategy (OpenAI)", "type": "main", "index": 0}]]
+    },
+    "Content Strategy (OpenAI)": {
+      "main": [[{"node": "Parse Strategy", "type": "main", "index": 0}]]
+    },
+    "Parse Strategy": {
+      "main": [[{"node": "Generate Content (OpenAI)", "type": "main", "index": 0}]]
+    },
+    "Generate Content (OpenAI)": {
+      "main": [[{"node": "Parse Content", "type": "main", "index": 0}]]
+    },
+    "Parse Content": {
+      "main": [[{"node": "Grok Imagine - Create Task", "type": "main", "index": 0}]]
+    },
+    "Grok Imagine - Create Task": {
+      "main": [[{"node": "Extract Task ID", "type": "main", "index": 0}]]
+    },
+    "Extract Task ID": {
+      "main": [[{"node": "Wait 10 Seconds", "type": "main", "index": 0}]]
+    },
+    "Wait 10 Seconds": {
+      "main": [[{"node": "Grok Imagine - Get Result", "type": "main", "index": 0}]]
+    },
+    "Grok Imagine - Get Result": {
+      "main": [[{"node": "Check Status", "type": "main", "index": 0}]]
+    },
+    "Check Status": {
+      "main": [
+        [{"node": "Merge Grok Image into Content", "type": "main", "index": 0}],
+        [{"node": "Wait 10 Seconds", "type": "main", "index": 0}]
+      ]
+    },
+    "Merge Grok Image into Content": {
+      "main": [[{"node": "Quality Check (GPT-4o-mini)", "type": "main", "index": 0}]]
+    },
+    "Quality Check (GPT-4o-mini)": {
+      "main": [[{"node": "Parse Quality Score", "type": "main", "index": 0}]]
+    },
+    "Parse Quality Score": {
+      "main": [[{"node": "Final Response", "type": "main", "index": 0}]]
+    },
+    "Final Response": {
+      "main": [[{"node": "Webhook Response", "type": "main", "index": 0}]]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "fixed-version-1",
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "fixed"
+  }
+}

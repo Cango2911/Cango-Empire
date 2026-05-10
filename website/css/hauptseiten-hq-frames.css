@@ -1,0 +1,214 @@
+/* ================================================================
+   13 Hauptseiten – HQ-Doppelrahmen (body.page-haupt-13)
+   section.hero: nur .hero-inner rahmen (kein doppelter Ring um die Section).
+   ================================================================ */
+
+body.page-haupt-13 section:not(.hero) {
+  position: relative !important;
+  isolation: isolate !important;
+  width: calc(100% - 48px) !important;
+  max-width: 1224px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: 3px solid rgba(249, 115, 22, 0.88) !important;
+  border-radius: 18px !important;
+  box-sizing: border-box !important;
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.18),
+    0 0 36px rgba(249, 115, 22, 0.34),
+    0 0 60px rgba(249, 115, 22, 0.16),
+    0 14px 44px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.page-haupt-13 section:not(.hero) + section:not(.hero) {
+  margin-top: 1.25rem !important;
+}
+
+body.page-haupt-13 section:not(.hero)::before {
+  content: '';
+  position: absolute;
+  inset: 13px;
+  border: 1px solid rgba(255, 178, 76, 0.58) !important;
+  border-radius: 14px;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+body.page-haupt-13 section:not(.hero) > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero-Innenbereiche & Content-Panels (leichter Verlauf) */
+body.page-haupt-13 .hero-inner,
+body.page-haupt-13 .page-hero .page-hero-inner,
+body.page-haupt-13 .phero .phero-inner,
+body.page-haupt-13 .phero .phero-in,
+body.page-haupt-13 .phero > .wrap,
+body.page-haupt-13 .filter-bar .filter-inner,
+body.page-haupt-13 .tools-section .tools-inner,
+body.page-haupt-13 .main-wrap .main-inner,
+body.page-haupt-13 .release-banner-wrap .release-banner,
+body.page-haupt-13 .blog-wrap .blog-inner,
+body.page-haupt-13 .cta-band .cta-inner,
+body.page-haupt-13 .page .sec,
+body.page-haupt-13 .page .legal-notice,
+body.page-haupt-13 .subpage-body .container,
+body.page-haupt-13 .hero-band {
+  position: relative !important;
+  isolation: isolate !important;
+  max-width: 1224px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: clamp(1rem, 2.5vw, 1.5rem) !important;
+  border: 3px solid rgba(249, 115, 22, 0.88) !important;
+  border-radius: 16px !important;
+  box-sizing: border-box !important;
+  background: linear-gradient(
+    155deg,
+    rgba(8, 20, 39, 0.92) 0%,
+    rgba(13, 32, 58, 0.9) 42%,
+    rgba(9, 23, 42, 0.92) 100%
+  ) !important;
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.18),
+    0 0 36px rgba(249, 115, 22, 0.32),
+    0 0 56px rgba(249, 115, 22, 0.14),
+    0 14px 40px rgba(0, 0, 0, 0.34) !important;
+}
+
+body.page-haupt-13 .filter-bar .filter-inner,
+body.page-haupt-13 .release-banner-wrap .release-banner {
+  max-width: 1188px !important;
+}
+
+body.page-haupt-13 .hero-inner,
+body.page-haupt-13 .page-hero .page-hero-inner,
+body.page-haupt-13 .phero .phero-inner,
+body.page-haupt-13 .phero .phero-in,
+body.page-haupt-13 .phero > .wrap {
+  width: 100% !important;
+}
+
+/* Checkout: nur dort body.checkout-page setzen */
+body.page-haupt-13.checkout-page .page {
+  position: relative !important;
+  isolation: isolate !important;
+  max-width: 1340px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: clamp(1rem, 2.5vw, 1.5rem) !important;
+  border: 3px solid rgba(249, 115, 22, 0.88) !important;
+  border-radius: 16px !important;
+  box-sizing: border-box !important;
+  background: linear-gradient(
+    155deg,
+    rgba(8, 20, 39, 0.92) 0%,
+    rgba(13, 32, 58, 0.9) 48%,
+    rgba(9, 23, 42, 0.92) 100%
+  ) !important;
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.18),
+    0 0 36px rgba(249, 115, 22, 0.32),
+    0 14px 40px rgba(0, 0, 0, 0.34) !important;
+}
+
+body.page-haupt-13.checkout-page .page::before {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  border: 1px solid rgba(255, 178, 76, 0.58) !important;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+body.page-haupt-13.checkout-page .page > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Login-Karte: schmale Max-Breite, Innenrahmen sichtbar */
+body.page-haupt-13 .login-card {
+  position: relative !important;
+  isolation: isolate !important;
+  max-width: 480px !important;
+  width: calc(100% - 24px) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: 3px solid rgba(249, 115, 22, 0.88) !important;
+  border-radius: 20px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.18),
+    0 0 32px rgba(249, 115, 22, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.45) !important;
+}
+
+body.page-haupt-13 .login-card::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(255, 178, 76, 0.55) !important;
+  border-radius: 14px;
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+body.page-haupt-13 .login-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+body.page-haupt-13 .hero-inner::before,
+body.page-haupt-13 .page-hero .page-hero-inner::before,
+body.page-haupt-13 .phero .phero-inner::before,
+body.page-haupt-13 .phero .phero-in::before,
+body.page-haupt-13 .phero > .wrap::before,
+body.page-haupt-13 .filter-bar .filter-inner::before,
+body.page-haupt-13 .tools-section .tools-inner::before,
+body.page-haupt-13 .main-wrap .main-inner::before,
+body.page-haupt-13 .release-banner-wrap .release-banner::before,
+body.page-haupt-13 .blog-wrap .blog-inner::before,
+body.page-haupt-13 .cta-band .cta-inner::before,
+body.page-haupt-13 .page .sec::before,
+body.page-haupt-13 .page .legal-notice::before,
+body.page-haupt-13 .subpage-body .container::before,
+body.page-haupt-13 .hero-band::before {
+  content: '';
+  position: absolute;
+  inset: 11px;
+  border: 1px solid rgba(255, 178, 76, 0.58) !important;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+body.page-haupt-13 .hero-inner > *,
+body.page-haupt-13 .page-hero .page-hero-inner > *,
+body.page-haupt-13 .phero .phero-inner > *,
+body.page-haupt-13 .phero .phero-in > *,
+body.page-haupt-13 .phero > .wrap > *,
+body.page-haupt-13 .filter-bar .filter-inner > *,
+body.page-haupt-13 .tools-section .tools-inner > *,
+body.page-haupt-13 .main-wrap .main-inner > *,
+body.page-haupt-13 .release-banner-wrap .release-banner > *,
+body.page-haupt-13 .blog-wrap .blog-inner > *,
+body.page-haupt-13 .cta-band .cta-inner > *,
+body.page-haupt-13 .page .sec > *,
+body.page-haupt-13 .page .legal-notice > *,
+body.page-haupt-13 .subpage-body .container > *,
+body.page-haupt-13 .hero-band > * {
+  position: relative;
+  z-index: 1;
+}
+
+body.page-haupt-13 .page .sec + .sec,
+body.page-haupt-13 .page .legal-notice + .sec {
+  margin-top: 1.25rem !important;
+}

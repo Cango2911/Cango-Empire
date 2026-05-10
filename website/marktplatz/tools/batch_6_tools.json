@@ -1,0 +1,193 @@
+{
+  "batch_id": 6,
+  "total_batches": 22,
+  "category": "MARKETING & ASSET CREATION",
+  "tools": [
+    {
+      "id": "skillplate",
+      "name": "Skillplate",
+      "tagline": "Die All-in-One Plattform für digitale Imperien. Kurse, Memberships, Coaching.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 5, "count": 70 },
+      "images": ["/images/tools/skillplate-dashboard.webp"],
+      "quick_specs": {
+        "alternative_to": ["Kajabi", "Teachable", "ClickFunnels"],
+        "integrations": ["Stripe", "PayPal", "Zapier"],
+        "best_for": ["Course Creators", "Coaches", "Digitalunternehmer"]
+      },
+      "pitch_html": "<h3>Verkaufe Wissen, keine Zeit.</h3><p>Die meisten Kurs-Plattformen (Kajabi, Teachable) fressen deine Marge mit monatlichen Gebühren. <strong>Skillplate</strong> ist anders. Es ist eine komplette Suite für digitale Produkte: Landing Pages, Checkout, Mitgliederbereich und Email-Marketing in einem.</p><h4>Der CanGo Hebel:</h4><p>Wir nutzen Skillplate, um für unsere Franchise-Partner (Nische Mindset & Karriere) vollautomatische Kurs-Funnels aufzubauen. Content rein, Payment dran, fertig.</p>",
+      "deal_terms": [
+        "Lebenslanger Zugriff",
+        "0% Transaktionsgebühren (mit Add-on)",
+        "Unbegrenzte Kurse & Produkte",
+        "White-Label Optionen"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "License Tier 1",
+          "price": 79,
+          "original_price": 948,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "1 Business / Brand",
+            "Unbegrenzte User",
+            "Video-Hosting inklusive",
+            "AI Content Generator"
+          ],
+          "cta_link": "DEIN_SKILLPLATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "mootion",
+      "name": "Mootion",
+      "tagline": "3D-Animation für Nicht-Animatoren. Pixar-Qualität im Browser.",
+      "badge": "3D REVOLUTION",
+      "rating": { "tacos": 5, "count": 45 },
+      "images": ["/images/tools/mootion-editor.webp"],
+      "quick_specs": {
+        "alternative_to": ["Blender", "Cinema 4D", "Maya"],
+        "integrations": ["Discord", "VRM Import"],
+        "best_for": ["YouTuber", "Game Devs", "Ad-Creatives"]
+      },
+      "pitch_html": "<h3>3D war früher teuer und kompliziert. Mootion ändert das.</h3><p>Du willst einen tanzenden Roboter für deine Tech-Ad? Oder einen 3D-Avatar, der dein Produkt erklärt? <strong>Mootion</strong> nutzt KI, um Text-Prompts in komplexe 3D-Animationen zu verwandeln. Keine Keyframes, kein Rigging.</p><p>Ideal für unsere 'High-Tech' Nischen-Videos, wo Stock-Footage einfach nicht futuristisch genug aussieht.</p>",
+      "deal_terms": [
+        "Text-to-3D-Motion",
+        "Eigene 3D-Modelle importieren (FBX/GLB)",
+        "Kommerzielle Rechte",
+        "Discord Community Access"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "AppSumo Lifetime",
+          "price": 49,
+          "original_price": 360,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "1200 Credits / Monat",
+            "Unbegrenzte Projekte",
+            "4K Video Export",
+            "Kein Wasserzeichen"
+          ],
+          "cta_link": "DEIN_MOOTION_LINK"
+        }
+      ]
+    },
+    {
+      "id": "yapper",
+      "name": "Yapper",
+      "tagline": "Viralität ist planbar. Der KI-Generator für Social Media Hooks.",
+      "badge": "VIRAL ENGINE",
+      "rating": { "tacos": 5, "count": 320 },
+      "images": ["/images/tools/yapper-ui.webp"],
+      "quick_specs": {
+        "alternative_to": ["Hypefury", "Tweethunter"],
+        "integrations": ["Twitter/X", "LinkedIn"],
+        "best_for": ["Influencer", "Social Media Manager"]
+      },
+      "pitch_html": "<h3>Niemand liest deinen Content, wenn die erste Zeile langweilig ist.</h3><p><strong>Yapper</strong> ist spezialisiert auf 'Hooks' – die ersten 3 Sekunden eines Videos oder die erste Zeile eines Posts. Es analysiert Millionen viraler Posts und generiert Skripte, die Aufmerksamkeit erzwingen.</p><p>Für CanGo App Empire ist das der erste Schritt in jedem Distributions-Workflow: Bevor wir produzieren, optimiert Yapper den Angle.</p>",
+      "deal_terms": [
+        "Viral Hook Generator",
+        "LinkedIn & X Scheduler",
+        "Kommentar-Autopilot",
+        "Analytics Dashboard"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Growth Plan",
+          "price": 39,
+          "original_price": 348,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "Unbegrenzte Content-Ideen",
+            "3 Social Accounts",
+            "KI-Kommentare",
+            "Auto-DM Feature"
+          ],
+          "cta_link": "DEIN_YAPPER_LINK"
+        }
+      ]
+    },
+    {
+      "id": "reap",
+      "name": "Reap",
+      "tagline": "Video-Recycling auf Steroiden. Mach aus einem Video 10 Blogposts.",
+      "badge": "REPURPOSING",
+      "rating": { "tacos": 4, "count": 110 },
+      "images": ["/images/tools/reap-workflow.webp"],
+      "quick_specs": {
+        "alternative_to": ["Repurpose.io", "Munch"],
+        "integrations": ["YouTube", "WordPress", "Medium"],
+        "best_for": ["Content Marketer", "SEO-Teams"]
+      },
+      "pitch_html": "<h3>Verschwende deinen Content nicht.</h3><p>Du hast ein tolles YouTube-Video gemacht. Und dann? <strong>Reap</strong> extrahiert den Inhalt und verwandelt ihn automatisch in SEO-optimierte Blogartikel, Twitter-Threads, LinkedIn-Posts und Newsletter.</p><p>Das ist der Schlüssel zu unserer 'Dominance Doctrine': Einmal produzieren, überall stattfinden. Maximale Sichtbarkeit bei minimalem Aufwand.</p>",
+      "deal_terms": [
+        "Video-to-Article KI",
+        "Automatische Kapitel-Erkennung",
+        "Social Media Snippets",
+        "SEO-Metadaten Generierung"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Tier 1 Lifetime",
+          "price": 59,
+          "original_price": 480,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "5 Stunden Video-Verarbeitung / Monat",
+            "Unbegrenzte Text-Generierung",
+            "Alle Export-Formate",
+            "Mehrsprachiger Support"
+          ],
+          "cta_link": "DEIN_REAP_LINK"
+        }
+      ]
+    },
+    {
+      "id": "originality-ai",
+      "name": "Originality.ai",
+      "tagline": "Die Versicherung gegen Google-Abstrafung. Bester AI-Content-Detektor.",
+      "badge": "QUALITY CONTROL",
+      "rating": { "tacos": 4, "count": 230 },
+      "images": ["/images/tools/originality-scan.webp"],
+      "quick_specs": {
+        "alternative_to": ["Copyleaks", "GPTZero"],
+        "integrations": ["API", "Chrome", "Google Docs"],
+        "best_for": ["SEO-Profis", "Publisher", "Agenturen"]
+      },
+      "pitch_html": "<h3>Google hasst faulen KI-Content.</h3><p>Wenn du einfach ChatGPT-Texte kopierst und einfügst, wird dein Ranking abstürzen. <strong>Originality.ai</strong> ist der genaueste Detektor am Markt. Er zeigt dir, ob dein Text als 'KI' oder 'Mensch' erkannt wird.</p><h4>Unser Protokoll:</h4><p>Kein Text verlässt die CanGo-Fabrik, ohne einen 'Human Score' von >80% bei Originality zu erreichen. Wir nutzen es auch, um Fakten-Checks durchzuführen.</p>",
+      "deal_terms": [
+        "AI Detection (GPT-4, Claude, Llama)",
+        "Plagiats-Prüfung",
+        "Faktencheck-Funktion",
+        "Team-Management"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Pay-as-you-go",
+          "price": 30,
+          "original_price": 30,
+          "currency": "$",
+          "billing": "one-time",
+          "features": [
+            "3000 Credits (300k Wörter)",
+            "API Zugriff inklusive",
+            "Full Site Scan",
+            "Shareable Reports"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    }
+  ]
+}
+

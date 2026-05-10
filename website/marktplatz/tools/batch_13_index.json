@@ -1,0 +1,31 @@
+{
+  "batch_id": 13,
+  "category": "NO-CODE CONSTRUCTION",
+  "tools": [
+    {
+      "id": "webflow",
+      "name": "Webflow",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/webflow.html"
+    },
+    {
+      "id": "framer",
+      "name": "Framer",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/framer.html"
+    },
+    {
+      "id": "bubble",
+      "name": "Bubble",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/bubble.html"
+    },
+    {
+      "id": "flutterflow",
+      "name": "FlutterFlow",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/flutterflow.html"
+    },
+    {
+      "id": "softr",
+      "name": "Softr",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/softr.html"
+    }
+  ]
+}

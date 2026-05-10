@@ -1,0 +1,72 @@
+/* Einzelartikel /blogs/artikel-*.html — gleiche Corporate-Orange-Headlines + engere Passagen wie Blog-Listing */
+/* Lädt nach allen Inline-Styles im Artikel-Head — FIX-2026-04-08 */
+
+main.blog-page .blog-header__title {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 42%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+main.blog-page .blog-header__title .text-gradient {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 42%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: none;
+}
+
+main.blog-page .blog-content__section-title {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 45%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+main.blog-page .product-showcase__title {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 45%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+main.blog-page .product-card__title {
+  color: #f97316;
+}
+
+/* Engere Abstände zwischen Absätzen / Sektionen */
+main.blog-page .blog-header {
+  margin-bottom: var(--space-12, 3rem);
+  padding-bottom: var(--space-8, 2rem);
+}
+
+main.blog-page .blog-header__meta {
+  margin-top: var(--space-5, 1.25rem);
+}
+
+main.blog-page .blog-content__intro {
+  margin-bottom: var(--space-8, 2rem);
+  line-height: 1.55;
+  padding: var(--space-6, 1.5rem);
+}
+
+main.blog-page .blog-content__section {
+  margin-bottom: var(--space-8, 2rem);
+}
+
+main.blog-page .blog-content__section-title {
+  margin-bottom: var(--space-3, 0.75rem);
+}
+
+main.blog-page .blog-content__section-text {
+  line-height: 1.55;
+  margin-bottom: var(--space-3, 0.75rem);
+}
+
+main.blog-page .blog-header__subtitle {
+  line-height: 1.55;
+}

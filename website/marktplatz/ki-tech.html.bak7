@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KI & Tech Tools | Marktplatz | CanGo Empire</title>
+  <title>KI & Tech Tools | Marktplatz | CanGo App Empire</title>
   <meta name="description" content="Die besten KI-Tools für deine Automation-Workflows. OpenAI, Claude, Perplexity, BrowserAct, NeuronWriter und mehr - getestet und integriert in unsere n8n Workflows.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -329,7 +329,7 @@
     <div class="container nav__inner">
       <a href="../cango-empire-v4-monopoly.html" class="nav__brand">
         <span class="nav__brand-icon">C</span>
-        <span>CanGo Empire</span>
+        <span>CanGo App Empire</span>
       </a>
       
       <button class="nav__toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav__menu').classList.toggle('active')">
@@ -2880,7 +2880,7 @@
         <div>
           <div class="footer__brand">
             <span class="footer__brand-icon">C</span>
-            <span>CanGo Empire</span>
+            <span>CanGo App Empire</span>
           </div>
           <p class="footer__desc">
             Marketing-Automatisierung für den DACH-Markt. 
@@ -2918,7 +2918,7 @@
       </div>
       
       <div class="footer__bottom">
-        <div>© 2025 CanGo Empire. Alle Rechte vorbehalten.</div>
+        <div>© 2025 CanGo App Empire. Alle Rechte vorbehalten.</div>
         <div class="footer__tagline">Kopieren hilft dir nicht – du brauchst die Maschine.</div>
       </div>
     </div>

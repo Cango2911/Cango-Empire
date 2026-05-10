@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- FIX-20260407: Phase 0.3 — kanonische URL -->
+<link rel="canonical" href="https://automation-cango-app-empire.com/nischen.html">
+<title>9 Kontrollierte Märkte – CanGo App Empire</title>
+<link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+<link rel="stylesheet" href="/css/responsive-global.css?v=20">
+<link rel="stylesheet" href="/css/release-ribbon.css?v=1">
+<!-- FIX-2026-03-23: Marktplatz – HQ-Doppelrahmen pro Hauptbereich -->
+<link rel="stylesheet" href="/css/seo-empire-frames.css?v=1">
+<!-- FIX-20260407: Phase 1.1 — Primary-CTA Mobil-Leiste -->
+<link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+<!-- FIX-2026-04-08: Mid-Page CTA — zentral, vorher fehlende Styles auf Marktplatz -->
+<link rel="stylesheet" href="/css/empire-cta-banner.css?v=1">
+<style>
+:root{
+  --navy-900:#080d1a;--navy-800:#0d1424;--navy-700:#111c30;
+  --navy-600:#162238;--navy-500:#1d2d47;--navy-400:#253652;
+  --gray-blue:#3a4f6b;--gray-blue-light:#4e6382;
+  --border:rgba(78,99,130,0.25);--border-light:rgba(78,99,130,0.12);
+  --orange:#F97316;--orange-soft:rgba(249,115,22,0.12);
+  --white:#ffffff;--off-white:#e8eef5;
+  --muted:#7a91ab;--muted-dim:#4a607a;
+  --green:#22c55e;--red:#ef4444;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy-900);color:var(--off-white);font-family:'Outfit',sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(249,115,22,.04) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(30,60,120,.15) 0%,transparent 60%);pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,13,26,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:center}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-c{width:34px;height:34px;background:var(--orange);color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.logo-text{color:var(--white)}.logo-text span{color:var(--muted);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{color:var(--white);background:var(--navy-600)}
+.nav-links a.active{color:var(--orange);background:var(--navy-600)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px;color:var(--muted);border:1px solid var(--border);padding:6px 14px;border-radius:8px;cursor:pointer;background:var(--navy-700);transition:all .2s;text-decoration:none}
+.nav-cart:hover{border-color:var(--orange);color:var(--orange)}
+.nav-cart .cart-badge{background:var(--orange);color:#000;font-size:10px;font-weight:800;min-width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:600;font-size:13px;padding:10px 22px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none;border:none}
+.btn-o{background:var(--orange);color:#000}
+.btn-o:hover{background:#fb923c;transform:translateY(-1px);box-shadow:0 8px 24px rgba(249,115,22,.3)}
+.btn-g{background:transparent;color:var(--off-white);border:1px solid var(--border)}
+.btn-g:hover{border-color:var(--gray-blue-light);background:var(--navy-600)}
+.btn-lg{font-size:15px;padding:14px 28px;border-radius:12px}
+
+/* BREADCRUMB */
+.bc-bar{padding:14px 24px;border-bottom:1px solid var(--border);background:var(--navy-800);position:relative;z-index:1}
+.bc-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim)}
+.bc-inner a{color:var(--muted);text-decoration:none;transition:color .2s}
+.bc-inner a:hover{color:var(--orange)}
+.bc-inner span{color:var(--off-white)}
+
+/* SECTIONS BASE */
+section{padding:80px 24px;position:relative;z-index:1}
+section > *{max-width:1200px;margin-left:auto;margin-right:auto}
+.ey{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+h2.st{font-size:clamp(34px,4.5vw,60px);font-weight:800;letter-spacing:-.025em;color:var(--white);line-height:1.05;margin-bottom:16px}
+h2.st .ac{color:var(--orange)}
+h2.st .dm{color:var(--muted);font-weight:300}
+.sdesc{font-size:16px;color:var(--muted);max-width:660px;line-height:1.75}
+.div{width:48px;height:3px;background:var(--orange);border-radius:2px;margin:20px 0 40px}
+
+/* PAGE HERO */
+.phero{background:var(--navy-800);border-bottom:1px solid var(--border);padding:80px 24px 64px;position:relative;overflow:hidden;z-index:1}
+.phero-inner{max-width:1200px;margin:0 auto}
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.orb1{width:600px;height:600px;background:rgba(249,115,22,.06);top:-150px;right:-80px}
+.orb2{width:400px;height:400px;background:rgba(30,60,120,.15);bottom:-100px;left:-80px}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--navy-600);border:1px solid var(--border);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:28px;width:fit-content}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-chip strong{color:var(--off-white)}
+h1.ptitle{font-size:clamp(42px,6vw,88px);font-weight:800;line-height:.98;letter-spacing:-.03em;color:var(--white);margin-bottom:20px}
+h1.ptitle .ac{color:var(--orange)}
+h1.ptitle .dm{color:var(--muted);font-weight:300}
+.hero-sub{font-size:17px;color:var(--muted);max-width:640px;line-height:1.8;margin-bottom:36px}
+.hero-sub strong{color:var(--off-white)}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+
+/* HERO MARKET PILLS */
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px}
+.hpill{display:flex;align-items:center;gap:8px;background:var(--navy-700);border:1px solid var(--border);padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;color:var(--off-white);transition:all .25s;cursor:pointer;text-decoration:none}
+.hpill:hover{border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.06)}
+.hpill span{font-size:16px}
+.hpill .cpm{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);margin-left:4px}
+
+/* NISCHEN GRID */
+.nischen-bg{background:var(--navy-900)}
+.nischen-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:56px}
+.nischen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* NISCHEN CARD */
+.nc{background:var(--navy-700);border:1px solid var(--border);border-radius:20px;padding:32px 28px;position:relative;overflow:hidden;transition:all .35s;cursor:default}
+.nc:hover{border-color:rgba(249,115,22,.4);transform:translateY(-5px);box-shadow:0 20px 56px rgba(0,0,0,.35)}
+.nc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--c-soft,rgba(249,115,22,.05)) 0%,transparent 55%);opacity:0;transition:opacity .35s;pointer-events:none;border-radius:20px}
+.nc:hover::before{opacity:1}
+.nc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px}
+.nc-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--navy-600);border:1px solid var(--border-light);flex-shrink:0}
+.nc-badges{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.cpm-badge{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(249,115,22,.12);color:var(--orange);border:1px solid rgba(249,115,22,.25);letter-spacing:.04em}
+.workflows-badge{font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 10px;border-radius:6px;background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.2)}
+.nc-cat{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.nc-title{font-size:22px;font-weight:800;color:var(--white);letter-spacing:-.01em;line-height:1.15;margin-bottom:10px}
+.nc-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:20px}
+.nc-features{display:flex;flex-direction:column;gap:7px;margin-bottom:24px}
+.ncf{font-size:13px;color:var(--off-white);display:flex;align-items:center;gap:8px;line-height:1.4}
+.ncf::before{content:'→';color:var(--orange);font-size:11px;flex-shrink:0}
+.nc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:18px;border-top:1px solid var(--border-light)}
+.nc-affiliate{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:6px}
+.nc-affiliate::before{content:'💡';font-size:12px}
+.nc-btn{font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;color:var(--orange);text-decoration:none;display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border:1px solid rgba(249,115,22,.3);border-radius:8px;background:rgba(249,115,22,.06);transition:all .2s}
+.nc-btn:hover{background:rgba(249,115,22,.15);border-color:var(--orange)}
+.cpm-meter{margin:16px 0 0;height:4px;background:var(--navy-600);border-radius:2px;overflow:hidden}
+.cpm-fill{height:100%;background:linear-gradient(90deg,var(--orange),#fb923c);border-radius:2px;transition:width .6s ease}
+
+/* FEATURED CARD – Workflows */
+.nc.featured{background:linear-gradient(135deg,rgba(249,115,22,.08) 0%,var(--navy-700) 60%);border-color:rgba(249,115,22,.3)}
+.nc.featured:hover{border-color:var(--orange)}
+
+/* WHY SECTION */
+.why-bg{background:var(--navy-800)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.why-right{display:flex;flex-direction:column;gap:14px}
+.why-card{background:var(--navy-700);border:1px solid var(--border);border-radius:14px;padding:22px 24px;display:flex;align-items:flex-start;gap:16px;transition:all .3s}
+.why-card:hover{border-color:rgba(249,115,22,.3);transform:translateX(4px)}
+.why-icon{width:44px;height:44px;background:var(--orange-soft);border:1px solid rgba(249,115,22,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.why-card h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.why-card p{font-size:13px;color:var(--muted);line-height:1.65}
+.why-desc{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:28px}
+.blockquote{background:var(--navy-700);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:0 14px 14px 0;padding:24px 28px;font-size:17px;font-weight:600;color:var(--white);line-height:1.5;position:relative;margin-bottom:28px}
+.bq-mark{font-size:72px;font-weight:900;color:rgba(249,115,22,.08);position:absolute;top:4px;right:16px;line-height:1}
+
+/* CPM TABLE */
+.cpm-table-section{background:var(--navy-900)}
+.cpm-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:48px;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.cpm-table thead{background:var(--navy-700)}
+.cpm-table thead th{padding:16px 24px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border)}
+.cpm-table thead th:last-child{color:var(--orange)}
+.cpm-table tbody tr{border-bottom:1px solid var(--border-light);transition:background .2s}
+.cpm-table tbody tr:hover{background:rgba(249,115,22,.03)}
+.cpm-table tbody tr:last-child{border-bottom:none}
+.cpm-table tbody td{padding:15px 24px;color:var(--muted);font-size:14px}
+.cpm-table tbody td:first-child{color:var(--off-white);font-weight:700;font-size:15px}
+.cpm-table .cpm-val{color:var(--orange);font-family:'JetBrains Mono',monospace;font-weight:700}
+.cpm-bar-cell{min-width:160px}
+.cpm-bar-wrap{height:6px;background:var(--navy-600);border-radius:3px;overflow:hidden}
+.cpm-bar-inner{height:100%;background:linear-gradient(90deg,var(--orange),#fb923c);border-radius:3px}
+.cpm-rank{font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 8px;border-radius:4px}
+.rank-1{background:rgba(249,115,22,.2);color:var(--orange)}
+.rank-2{background:rgba(249,115,22,.13);color:#fb923c}
+.rank-3{background:rgba(249,115,22,.08);color:var(--muted)}
+
+/* CTA FINAL */
+.cta-section{background:var(--navy-700);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 24px;position:relative;overflow:hidden;z-index:1}
+.cta-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:48px}
+.cta-left h2{font-size:clamp(28px,3.5vw,48px);font-weight:800;color:var(--white);letter-spacing:-.025em;line-height:1.1;margin-bottom:8px}
+.cta-left h2 span{color:var(--orange)}
+.cta-left p{font-size:15px;color:var(--muted)}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 1.4s ease-in-out infinite;display:inline-block}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}50%{box-shadow:0 0 0 5px rgba(239,68,68,0)}}
+.urg-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);display:flex;align-items:center;gap:6px;margin-bottom:12px}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+
+/* FOOTER */
+footer{background:var(--navy-900);border-top:1px solid var(--border);padding:72px 24px 40px;position:relative;z-index:1}
+.footer-wrap{max-width:1200px;margin:0 auto}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.fbrand p{font-size:14px;color:var(--muted);line-height:1.75;margin-top:14px;max-width:260px}
+.fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:10px}
+.fcol ul li a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--white)}
+.fbot{border-top:1px solid var(--border-light);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.fcopy{font-size:13px;color:var(--muted-dim)}
+.fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+.fcmd{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange);display:flex;align-items:center;gap:8px;background:var(--navy-700);border:1px solid var(--border);padding:10px 18px;border-radius:10px;cursor:pointer;transition:all .2s}
+.fcmd:hover{border-color:var(--orange);background:rgba(249,115,22,.08)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv2{opacity:0;transform:translateY(20px);transition:opacity .6s .1s ease,transform .6s .1s ease}
+.rv2.in{opacity:1;transform:translateY(0)}
+.rv3{opacity:0;transform:translateY(20px);transition:opacity .6s .2s ease,transform .6s .2s ease}
+.rv3.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:960px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  section,.phero,.cta-section{padding-left:16px;padding-right:16px}
+  h1.ptitle{font-size:42px}
+  .nischen-header{grid-template-columns:1fr}
+  .nischen-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr}
+  .cta-inner{flex-direction:column;text-align:center}
+  .cta-btns{justify-content:center}
+  .ftop{grid-template-columns:1fr 1fr}
+  .fbot{flex-direction:column;gap:16px;text-align:center}
+}
+@media(max-width:768px){
+  .nischen-grid{grid-template-columns:1fr 1fr}
+  .nc{min-height:auto;padding:20px 16px}
+}
+@media(max-width:600px){
+  .nischen-grid{grid-template-columns:1fr}
+  .ftop{grid-template-columns:1fr}
+  h1.ptitle{font-size:36px}
+  .hero-pills{gap:6px}
+  .hpill{font-size:12px;padding:6px 12px}
+}
+@media(max-width:480px){
+  .nc{padding:20px 16px}
+}
+</style>
+<style>
+
+/* ─── CANGO FOOTER (Startseiten-Stil) ─── */
+.cango-footer{background:#080d1a !important;border-top:1px solid rgba(78,99,130,.25) !important;padding:72px 24px 40px !important;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#f1f5f9;font-weight:700;font-size:15px}
+.cango-footer .footer-logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0}
+.cango-footer .footer-logo-text{display:flex;flex-direction:column;line-height:1}
+.cango-footer .footer-logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px;font-weight:700}
+.cango-footer .fcol ul{list-style:none;padding:0;margin:0}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#f1f5f9}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body class="page-seo-nischen has-primary-cta-bar">
+
+<!-- NAV -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" class="active" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="bc-bar">
+  <div class="bc-inner">
+    <a href="/index.html">Startseite</a>
+    <span style="color:var(--muted-dim)">›</span>
+    <span>Marktplatz</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="phero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="phero-inner">
+    <div class="hero-chip rv"><span class="dot"></span><strong>100 Workflows aktiv</strong>&nbsp;·&nbsp;33 Content-Maschinen</div>
+    <h1 class="ptitle rv">9 Kontrollierte<br><span class="ac">Märkte.</span><br><span class="dm">Maximale Rendite.</span></h1>
+    <p class="hero-sub rv">Wir operieren chirurgisch in den lukrativsten Sektoren mit <strong>hohen CPMs und klarer Zielgruppe.</strong> Jeder Markt mit eigenem Blog-Bereich und Affiliate-Potenzial.</p>
+    <!-- FIX-2026-04-07: Phase 1.1 — eine Primär-CTA (orange), CPM als Text-Link -->
+    <div class="hero-ctas rv hero-ctas--split">
+      <a href="#nischen" class="btn btn-o btn-lg">Märkte entdecken</a>
+      <a href="#cpm-tabelle" class="hero-cta-secondary">CPM-Vergleich ansehen →</a>
+    </div>
+    <div class="hero-pills rv">
+      <a class="hpill" href="/finanzen-versicherung.html"><span>💰</span> Finanzen &amp; Versicherung <span class="cpm">CPM 15–35€</span></a>
+      <!-- FIX-2026-03-23_212902: Immobilien auf inhaltlich vollständige Branchen-Unterseite verlinkt -->
+      <a class="hpill" href="/immobilien.html"><span>🏠</span> Immobilien <span class="cpm">CPM 12–28€</span></a>
+      <a class="hpill" href="/marktplatz/trading.html"><span>📈</span> Trading <span class="cpm">CPM 12–30€</span></a>
+      <a class="hpill" href="/marktplatz/crypto-web3.html"><span>₿</span> Crypto &amp; Web3 <span class="cpm">CPM 10–25€</span></a>
+      <!-- FIX-2026-03-23_213732: Energie auf inhaltlich vollständige Branchen-Unterseite verlinkt -->
+      <a class="hpill" href="/energie-finance.html"><span>⚡</span> Energie &amp; Solar <span class="cpm">CPM 8–22€</span></a>
+      <a class="hpill" href="/marktplatz/ki-tech.html"><span>🤖</span> KI &amp; Tech <span class="cpm">CPM 8–20€</span></a>
+      <a class="hpill" href="/automationen-workflows.html"><span>⚙️</span> Automationen <span class="cpm">CPM 7–18€</span></a>
+      <a class="hpill" href="/karriere-hr.html"><span>👔</span> Karriere &amp; HR <span class="cpm">CPM 6–18€</span></a>
+      <a class="hpill" href="/coaching-mindset.html"><span>🧠</span> Coaching &amp; Mindset <span class="cpm">CPM 5–15€</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- NISCHEN CARDS -->
+<section class="nischen-bg" id="nischen">
+  <div class="rv">
+    <div class="ey">◈ High-CPM Nischen</div>
+    <div class="nischen-header">
+      <div>
+        <h2 class="st">Deine Zielgruppe.<br><span class="ac">Unser System.</span></h2>
+        <div class="div"></div>
+        <p class="sdesc">Jeder Markt wurde nach CPM-Potenzial, Zielgruppen-Klarheit und Automatisierbarkeit ausgewählt. Wir liefern nicht nur Traffic – wir liefern qualifizierten Zufluss in den lukrativsten Sektoren des DACH-Raums.</p>
+      </div>
+      <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:16px;padding:28px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:16px">Warum diese 9 Märkte?</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:14px;color:var(--off-white);display:flex;gap:10px"><span style="color:var(--orange)">01</span> Höchste CPM-Werte im DACH-Raum</div>
+          <div style="font-size:14px;color:var(--off-white);display:flex;gap:10px"><span style="color:var(--orange)">02</span> Klare, zahlungskräftige Zielgruppen</div>
+          <div style="font-size:14px;color:var(--off-white);display:flex;gap:10px"><span style="color:var(--orange)">03</span> Hohe Affiliate-Provisionen verfügbar</div>
+          <div style="font-size:14px;color:var(--off-white);display:flex;gap:10px"><span style="color:var(--orange)">04</span> Vollständig automatisierbar via n8n</div>
+          <div style="font-size:14px;color:var(--off-white);display:flex;gap:10px"><span style="color:var(--orange)">05</span> Bewährte Lead-Routing-Strukturen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nischen-grid">
+
+    <!-- FINANZEN -->
+    <div class="nc rv" style="--c-soft:rgba(249,115,22,.07)">
+      <div class="nc-top">
+        <div class="nc-icon">💰</div>
+        <div class="nc-badges">
+          <span class="cpm-badge">CPM 15–35€</span>
+          <span class="workflows-badge">28 Workflows</span>
+        </div>
+      </div>
+      <div class="nc-cat">High-CPM · Sektor 01</div>
+      <div class="nc-title">Finanzen &amp; Versicherung</div>
+      <p class="nc-desc">Der lukrativste Sektor im DACH-Markt. Versicherungen, Kredite und Investments bieten die höchsten CPMs und Affiliate-Provisionen. Lead-Routing zu 380+ Gesellschaften automatisiert.</p>
+      <div class="nc-features">
+        <span class="ncf">Versicherungen &amp; Vorsorge</span>
+        <span class="ncf">Kredit &amp; Finanzierungen</span>
+        <span class="ncf">Investments &amp; ETF-Beratung</span>
+        <span class="ncf">Lead-Routing zu 380+ Gesellschaften</span>
+        <span class="ncf">DIN-normierte Beratungsprozesse</span>
+      </div>
+      <div class="cpm-meter"><div class="cpm-fill" style="width:98%"></div></div>
+      <div class="nc-footer">
+        <span class="nc-affiliate">Affiliate-Provision bis 500€/Lead</span>
+        <a href="/finanzen-versicherung.html" class="nc-btn">Mehr erfahren →</a>
+      </div>
+    </div>
+
+    <!-- IMMOBILIEN -->
+    <div class="nc rv2" style="--c-soft:rgba(251,146,60,.06)">
+      <div class="nc-top">
+        <div class="nc-icon">🏠</div>
+        <div class="nc-badges">
+          <span class="cpm-badge">CPM 12–28€</span>
+          <span class="workflows-badge">14 Workflows</span>
+        </div>
+      </div>
+      <div class="nc-cat">High-CPM · Sektor 02</div>
+      <div class="nc-title">Immobilien</div>
+      <p class="nc-desc">Pflegeimmobilien, Neubau und Investment-Portfolios. Qualifizierte Investoren-Leads ohne Streuverluste. Unsere Infrastruktur dominiert diesen Markt mit automatisiertem Lead-Scoring.</p>
+      <div class="nc-features">
+        <span class="ncf">Pflegeimmobilien &amp; Betreutes Wohnen</span>
+        <span class="ncf">Neubau &amp; Finanzierungsvermittlung</span>
+        <span class="ncf">Investment-Portfolios</span>
+        <span class="ncf">FSBO &amp; Makler-Automation</span>
+        <span class="ncf">Zillow AI Integration</span>
+      </div>
+      <div class="cpm-meter"><div class="cpm-fill" style="width:80%"></div></div>
+      <div class="nc-footer">
+        <span class="nc-affiliate">Affiliate-Provision bis 2.500€</span>
+        <a href="/immobilien.html" class="nc-btn">Mehr erfahren →</a>
+      </div>
+    </div>
+
+    <!-- TRADING -->
+    <div class="nc rv3" style="--c-soft:rgba(52,211,153,.05)">
+      <div class="nc-top">
+        <div class="nc-icon">📈</div>
+        <div class="nc-badges">
+          <span class="cpm-badge">CPM 12–30€</span>
+          <span class="workflows-badge">16 Workflows</span>
+        </div>
+      </div>
+      <div class="nc-cat">High-CPM · Sektor 03</div>
+      <div class="nc-title">Trading</div>
+      <p class="nc-desc">Trading-Kurse, Signale und Strategien mit enormem Affiliate-Potenzial. Automatisierte Content-Produktion liefert täglich SEO-optimierten Output für eine der kaufkräftigsten Zielgruppen.</p>
+      <div class="nc-features">
+        <span class="ncf">Trading-Kurse &amp; Akademien</span>
+        <span class="ncf">Signal-Dienste &amp; Alerts</span>
+        <span class="ncf">Broker-Affiliate (bis 1.200€/CPA)</span>
+        <span class="ncf">Marktanalyse-Automation</span>
+        <span class="ncf">Chart-Content-Pipeline</span>
+      </div>
+      <div class="cpm-meter"><div class="cpm-fill" style="width:85%"></div></div>
+      <div class="nc-footer">
+        <span class="nc-affiliate">Affiliate-Provision bis 1.200€/CPA</span>
+        <a href="/marktplatz/trading.html" class="nc-btn">Mehr erfahren →</a>
+      </div>
+    </div>
+
+    <!-- CRYPTO -->
+    <div class="nc rv" style="--c-soft:rgba(168,85,247,.05)">
+      <div class="nc-top">
+        <div class="nc-icon">₿</div>
+        <div class="nc-badges">
+          <span class="cpm-badge">CPM 10–25€</span>
+          <span class="workflows-badge">12 Workflows</span>
+        </div>
+      </div>
+      <div class="nc-cat">High-CPM · Sektor 04</div>
+      <div class="nc-title">Crypto &amp; Web3</div>
+      <p class="nc-desc">DeFi, NFTs, Krypto-Assets – eine der volatilsten und profitabelsten Nischen. Binance API-Integration für Echtzeit-Marktdaten und automatisierte Trading-Bot-Dokumentation.</p>
+      <div class="nc-features">
+        <span class="ncf">DeFi &amp; Yield Farming Content</span>
+        <span class="ncf">NFT-Marktplatz-Automation</span>
+        <span class="ncf">Binance API Echtzeit-Daten</span>
+        <span class="ncf">Exchange-Affiliate-Programme</span>
+        <span class="ncf">Crypto-News-Pipeline (24/7)</span>
+      </div>
+      <div class="cpm-meter"><div class="cpm-fill" style="width:72%"></div></div>
+      <div class="nc-footer">
+        <span class="nc-affiliate">Affiliate-Provision bis 800€/Lead</span>
+        <a href="/marktplatz/crypto-web3.html" class="nc-btn">Mehr erfahren →</a>
+      </div>
+    </div>
+
+    <!-- ENERGIE -->
+    <div class="nc rv2" style="--c-soft:rgba(250,204,21,.04)">
+      <div class="nc-top">
+        <div class="nc-icon">⚡</div>
+        <div class="nc-badges">
+          <span class="cpm-badge">CPM 8–22€</span>
+          <span class="workflows-badge">10 Workflows</span>
+        </div>
+      </div>
+      <div class="nc-cat">High-CPM · Sektor 05</div>
+      <div class="nc-title">Energie &amp; Solar</div>
+      <p class="nc-desc">64 Energieversorger automatisiert verwaltet. Tarifwechsel in Echtzeit dominiert – während der Markt noch über Preise diskutiert. Geschwindigkeit wird hier zur Marge.</p>
+      <div class="nc-features">
+        <span class="ncf">Solaranlagen-Lead-Generierung</span>
+        <span class="ncf">Tarifwechsel-Automation (64 Versorger)</span>
+        <span class="ncf">Fördermittel-Beratungs-Content</span>
+        <span class="ncf">Strom- &amp; Gas-Vergleichsportale</span>
+        <span class="ncf">Einsparrechner &amp; Widgets</span>
+      </div>
+      <div class="cpm-meter"><div class="cpm-fill" style="width:62%"></div></div>
+      <div class="nc-footer">
+        <span class="nc-affiliate">Affiliate-Provision bis 300€/Abschluss</span>
+        <a href="/energie-finance.html" class="nc-btn">Mehr erfahren →</a>
+      </div>
+    </div>
+
+    <!-- KI & TECH -->
+    <div class="nc rv3" style="--c-soft:rgba(59,130,246,.05)">
+      <div class="nc-top">
+        <div class="nc-icon">🤖</div>
+        <div class="nc-badges">
+          <span class="cpm-badge">CPM 8–20€</span>
+          <span class="workflows-badge">22 Workflows</span>
+        </div>
+      </div>
+      <div class="nc-cat">High-CPM · Sektor 06</div>
+      <div class="nc-title">KI &amp; Tech</div>
+      <p class="nc-desc">SaaS-Tools, AI-Lösungen und Tech-Produkte mit hohen Affiliate-Provisionen. Unser eigener Kernmarkt – hier sind wir nicht nur Publisher, sondern auch Produkt.</p>
+      <div class="nc-features">
+        <span class="ncf">SaaS-Tool-Reviews &amp; Vergleiche</span>
+        <span class="ncf">AI-Tutorial-Content-Pipeline</span>
+        <span class="ncf">AppSumo Lifetime-Deal-Content</span>
+        <span class="ncf">Tech-Stack-Empfehlungen</span>
+        <span class="ncf">100+ Affiliate-Programme integriert</span>
+      </div>
+      <div class="cpm-meter"><div class="cpm-fill" style="width:58%"></div></div>
+      <div class="nc-footer">
+        <span class="nc-affiliate">Affiliate-Provision bis 500€/Sale</span>
+        <a href="/marktplatz/ki-tech.html" class="nc-btn">Mehr erfahren →</a>
+      </div>
+    </div>
+
+    <!-- WORKFLOWS / AUTOMATIONEN – FEATURED -->
+    <div class="nc featured rv" style="--c-soft:rgba(249,115,22,.1)">
+      <div class="nc-top">
+        <div class="nc-icon" style="background:rgba(249,115,22,.12);border-color:rgba(249,115,22,.3);color:var(--orange)">⚙️</div>
+        <div class="nc-badges">
+          <span class="cpm-badge" style="background:rgba(249,115,22,.2);font-size:11px">33 n8n-Workflows</span>
+          <span class="workflows-badge">Core-Produkt</span>
+        </div>
+      </div>
+      <div class="nc-cat" style="font-size:11px;letter-spacing:.12em">⭐ Unser Kernprodukt · Sektor 07</div>
+      <div class="nc-title">Automationen &amp; Workflows</div>
+      <p class="nc-desc">Unser eigenes Herzstück. 33 Master-Workflows, 416 einsatzbereite Automatisierungen. n8n, Zapier, BrowserAct – vollständig dokumentiert und sofort deploybar. Täglich produktiv, nie schläft.</p>
+      <div class="nc-features">
+        <span class="ncf">33 Master Content-Maschinen</span>
+        <span class="ncf">416 Workflows in 11 Kategorien</span>
+        <span class="ncf">n8n Self-Hosted Infrastruktur</span>
+        <span class="ncf">Affiliate-Provisionen: 7–18€ CPM</span>
+        <span class="ncf">B2B Lizenzierung &amp; Reselling</span>
+      </div>
+      <div class="cpm-meter"><div class="cpm-fill" style="width:52%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+      <div class="nc-footer">
+        <span class="nc-affiliate">Ab 250€ pro Workflow-Lizenz</span>
+        <a href="/automationen-workflows.html" class="nc-btn">Workflow-Shop →</a>
+      </div>
+    </div>
+
+    <!-- KARRIERE -->
+    <div class="nc rv2" style="--c-soft:rgba(99,102,241,.05)">
+      <div class="nc-top">
+        <div class="nc-icon">👔</div>
+        <div class="nc-badges">
+          <span class="cpm-badge">CPM 6–18€</span>
+          <span class="workflows-badge">8 Workflows</span>
+        </div>
+      </div>
+      <div class="nc-cat">Mid-CPM · Sektor 08</div>
+      <div class="nc-title">Karriere &amp; HR</div>
+      <p class="nc-desc">Direktvermittlung, Bewerbungs-Coaching und Recruiter-Tools. Anonymisierte Hochgeschwindigkeits-Bewerbungen und algorithmische Ansprache. Festanstellung statt Zeitarbeit.</p>
+      <div class="nc-features">
+        <span class="ncf">Direktvermittlung (Ingenieur-Fokus)</span>
+        <span class="ncf">Bewerbungs-Coaching-Content</span>
+        <span class="ncf">Karriere Vertrieb Workflow</span>
+        <span class="ncf">HR-Tech &amp; ATS-Affiliate</span>
+        <span class="ncf">Allianz: Das Karriere-Institut</span>
+      </div>
+      <div class="cpm-meter"><div class="cpm-fill" style="width:44%"></div></div>
+      <div class="nc-footer">
+        <span class="nc-affiliate">Affiliate-Provision bis 200€/Platzierung</span>
+        <a href="/karriere-hr.html" class="nc-btn">Mehr erfahren →</a>
+      </div>
+    </div>
+
+    <!-- COACHING -->
+    <div class="nc rv3" style="--c-soft:rgba(34,197,94,.04)">
+      <div class="nc-top">
+        <div class="nc-icon">🧠</div>
+        <div class="nc-badges">
+          <span class="cpm-badge">CPM 5–15€</span>
+          <span class="workflows-badge">10 Workflows</span>
+        </div>
+      </div>
+      <div class="nc-cat">Mid-CPM · Sektor 09</div>
+      <div class="nc-title">Coaching &amp; Mindset</div>
+      <p class="nc-desc">Kurse, Mentoring und Transformation – ein Markt mit loyal zahlenden Kunden und hoher Lifetime-Value. Content-Maschinen produzieren täglich Artikel, Shorts und E-Mail-Sequenzen.</p>
+      <div class="nc-features">
+        <span class="ncf">Online-Kurse &amp; Akademien</span>
+        <span class="ncf">Mentoring-Programme</span>
+        <span class="ncf">Daily-Motivator-Workflow (Telegram)</span>
+        <span class="ncf">E-Learning-Affiliate bis 40% Provision</span>
+        <span class="ncf">Allianz: mitNORM &amp; WP wir:personalberater</span>
+      </div>
+      <div class="cpm-meter"><div class="cpm-fill" style="width:36%"></div></div>
+      <div class="nc-footer">
+        <span class="nc-affiliate">Affiliate-Provision bis 150€/Sale</span>
+        <a href="/coaching-mindset.html" class="nc-btn">Mehr erfahren →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY THESE MARKETS -->
+<section class="why-bg">
+  <div class="why-grid">
+    <div class="rv">
+      <div class="ey">🎯 Warum diese Märkte?</div>
+      <h2 class="st">Nicht alle Märkte<br>sind gleich <span class="ac">profitabel.</span></h2>
+      <div class="div"></div>
+      <p class="why-desc">Wir haben hunderte Nischen analysiert und uns bewusst auf die neun mit dem höchsten Monetarisierungspotenzial konzentriert. Spezialisierung schlägt Generalisierung – immer.</p>
+      <div class="blockquote">
+        <div class="bq-mark">"</div>
+        Wer in allem ist, ist in nichts stark. Wir kontrollieren 9 Märkte mit chirurgischer Präzision – nicht 100 mit Gießkanne.
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="/kontakt.html#kontaktformular" class="btn btn-o">Infrastruktur anfragen</a>
+        <a href="/workflows.html" class="btn btn-g">Workflow-Shop</a>
+      </div>
+    </div>
+    <div class="rv2">
+      <div class="why-card">
+        <div class="why-icon">💎</div>
+        <div><h4>Maximale CPM-Rendite</h4><p>Finanzen, Immobilien und Trading bieten CPMs bis 35€ – bis zu 10x mehr als durchschnittliche Nischen.</p></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div><h4>Klare Zielgruppen</h4><p>Jede Nische hat klar definierte, kaufkräftige Zielgruppen mit bewährten Conversion-Pfaden.</p></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <div><h4>Vollautomatisierbar</h4><p>Alle 9 Märkte sind vollständig mit unseren n8n-Workflows abdeckbar – von Content bis Distribution.</p></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔗</div>
+        <div><h4>Affiliate-Ökosystem</h4><p>In allen 9 Märkten existieren etablierte Affiliate-Programme mit Provisionen von 50€ bis 2.500€.</p></div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <div><h4>Bewährte Allianzen</h4><p>WP wir:personalberater, mitNORM, Das Karriere-Institut – bewährte Partner in den wichtigsten Märkten.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID-PAGE CTA -->
+<section class="cta-banner-mid">
+  <h3>Dominant in deiner Nische?</h3>
+  <p>Hör auf zu raten. Lass uns dein System so bauen, dass du den Markt nicht nur besuchst, sondern besitzt.</p>
+  <a href="/kontakt.html?kpi=mid_nischen#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_mid_page_cta_nischen">Jetzt Strategie-Gespräch sichern</a>
+</section>
+
+<!-- CPM COMPARISON TABLE -->
+<section class="cpm-table-section" id="cpm-tabelle">
+  <div class="rv"><div class="ey">📊 CPM-Vergleich</div></div>
+  <h2 class="st rv">Alle 9 Märkte.<br><span class="ac">Ein Blick.</span></h2>
+  <div class="div rv"></div>
+  <p class="sdesc rv">Vollständiger CPM-Vergleich aller kontrollierten Märkte. Je höher der CPM, desto mehr Einnahmen pro 1.000 Seitenaufrufe.</p>
+
+  <div class="rv">
+    <table class="cpm-table">
+      <thead>
+        <tr>
+          <th>Markt</th>
+          <th>CPM-Spanne</th>
+          <th>CPM-Potenzial</th>
+          <th>Workflows</th>
+          <th>Affiliate</th>
+          <th>Priorität</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>💰 Finanzen &amp; Versicherung</td>
+          <td class="cpm-val">15–35€</td>
+          <td class="cpm-bar-cell"><div class="cpm-bar-wrap"><div class="cpm-bar-inner" style="width:100%"></div></div></td>
+          <td style="color:var(--off-white);font-weight:600">28</td>
+          <td style="color:var(--green)">bis 500€/Lead</td>
+          <td><span class="cpm-rank rank-1">S-Tier</span></td>
+        </tr>
+        <tr>
+          <td>📈 Trading</td>
+          <td class="cpm-val">12–30€</td>
+          <td class="cpm-bar-cell"><div class="cpm-bar-wrap"><div class="cpm-bar-inner" style="width:88%"></div></div></td>
+          <td style="color:var(--off-white);font-weight:600">16</td>
+          <td style="color:var(--green)">bis 1.200€/CPA</td>
+          <td><span class="cpm-rank rank-1">S-Tier</span></td>
+        </tr>
+        <tr>
+          <td>🏠 Immobilien</td>
+          <td class="cpm-val">12–28€</td>
+          <td class="cpm-bar-cell"><div class="cpm-bar-wrap"><div class="cpm-bar-inner" style="width:82%"></div></div></td>
+          <td style="color:var(--off-white);font-weight:600">14</td>
+          <td style="color:var(--green)">bis 2.500€</td>
+          <td><span class="cpm-rank rank-1">S-Tier</span></td>
+        </tr>
+        <tr>
+          <td>₿ Crypto &amp; Web3</td>
+          <td class="cpm-val">10–25€</td>
+          <td class="cpm-bar-cell"><div class="cpm-bar-wrap"><div class="cpm-bar-inner" style="width:74%"></div></div></td>
+          <td style="color:var(--off-white);font-weight:600">12</td>
+          <td style="color:var(--green)">bis 800€/Lead</td>
+          <td><span class="cpm-rank rank-2">A-Tier</span></td>
+        </tr>
+        <tr>
+          <td>⚡ Energie &amp; Solar</td>
+          <td class="cpm-val">8–22€</td>
+          <td class="cpm-bar-cell"><div class="cpm-bar-wrap"><div class="cpm-bar-inner" style="width:64%"></div></div></td>
+          <td style="color:var(--off-white);font-weight:600">10</td>
+          <td style="color:var(--green)">bis 300€/Abschluss</td>
+          <td><span class="cpm-rank rank-2">A-Tier</span></td>
+        </tr>
+        <tr>
+          <td>🤖 KI &amp; Tech</td>
+          <td class="cpm-val">8–20€</td>
+          <td class="cpm-bar-cell"><div class="cpm-bar-wrap"><div class="cpm-bar-inner" style="width:59%"></div></div></td>
+          <td style="color:var(--off-white);font-weight:600">22</td>
+          <td style="color:var(--green)">bis 500€/Sale</td>
+          <td><span class="cpm-rank rank-2">A-Tier</span></td>
+        </tr>
+        <tr>
+          <td>⚙️ Automationen</td>
+          <td class="cpm-val">7–18€</td>
+          <td class="cpm-bar-cell"><div class="cpm-bar-wrap"><div class="cpm-bar-inner" style="width:53%"></div></div></td>
+          <td style="color:var(--off-white);font-weight:600">33</td>
+          <td style="color:var(--orange)">Kernprodukt</td>
+          <td><span class="cpm-rank rank-2">A-Tier</span></td>
+        </tr>
+        <tr>
+          <td>👔 Karriere &amp; HR</td>
+          <td class="cpm-val">6–18€</td>
+          <td class="cpm-bar-cell"><div class="cpm-bar-wrap"><div class="cpm-bar-inner" style="width:48%"></div></div></td>
+          <td style="color:var(--off-white);font-weight:600">8</td>
+          <td style="color:var(--green)">bis 200€/Platzierung</td>
+          <td><span class="cpm-rank rank-3">B-Tier</span></td>
+        </tr>
+        <tr>
+          <td>🧠 Coaching &amp; Mindset</td>
+          <td class="cpm-val">5–15€</td>
+          <td class="cpm-bar-cell"><div class="cpm-bar-wrap"><div class="cpm-bar-inner" style="width:38%"></div></div></td>
+          <td style="color:var(--off-white);font-weight:600">10</td>
+          <td style="color:var(--green)">bis 150€/Sale</td>
+          <td><span class="cpm-rank rank-3">B-Tier</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <div class="urg-tag"><span class="pulse"></span>Begrenzte Enterprise-Slots · Nur 20 verfügbar</div>
+      <h2>Welchen Markt willst du<br><span>dominieren?</span></h2>
+      <p>Jetzt anfragen – wir analysieren deine Nische und bauen die passende Infrastruktur.</p>
+    </div>
+    <div class="cta-btns" style="flex-wrap:wrap;align-items:center;gap:12px 20px">
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+      <a href="/workflows.html" class="hero-cta-secondary">Workflow-Katalog ansehen →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<!-- FOOTER -->
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+const obs = new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target)}});
+},{threshold:.07,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.rv,.rv2,.rv3').forEach(el=>obs.observe(el));
+</script>
+<script>(function(){var btn=document.getElementById('navToggle');if(btn)btn.addEventListener('click',function(){document.body.classList.toggle('nav-open');});})();</script>
+<script src="/js/release-ribbon.js?v=2" defer></script>
+<script src="/js/kpi-events.js?v=2" defer></script>
+<script src="/cart.js" defer></script>
+<div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+  <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+</div>
+</body>
+</html>
+

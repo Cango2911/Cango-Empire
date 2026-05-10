@@ -1,0 +1,45 @@
+{
+  "week": "2026-W12",
+  "updated": "2026-03-15",
+  "pitches": [
+    {
+      "quote": "Hör auf, laufende Belastung zu finanzieren. Bau dir lieber eine Maschine, die 24/7 für dich produziert.",
+      "foot": "Founder Pitch 01 · Infrastruktur statt Retainer",
+      "kicker": "Vom Aufwand zum Apparat",
+      "title": "Verwandle laufende Belastung in messbaren Output.",
+      "body": "Durch automatisierte Assets, Master-Workflows und eine KI-gesteuerte Lead-Sortierung wird dein Unternehmen zu einem skalierbaren Apparat, der 24/7 präzise Ergebnisse liefert.",
+      "points": [
+        { "strong": "Statt Retainer", "text": "eine digitale Produktionsstraße mit wiederholbarem Output." },
+        { "strong": "Statt Handarbeit", "text": "automatisierte Assets, Routing und präzise Lead-Sortierung." }
+      ],
+      "ctaPrimary": { "label": "Infrastruktur aufbauen", "href": "/kontakt.html?intent=sales&entry=quote-pitch-home&topic=Infrastruktur%20statt%20Agentur" },
+      "ctaSecondary": { "label": "Workflows ansehen", "href": "/automationen-workflows.html" }
+    },
+    {
+      "quote": "Wenn andere Feierabend machen, sollte dein System weiter qualifizieren, sortieren und in Geschäft verwandeln.",
+      "foot": "Founder Pitch 02 · 24/7 Ergebnislogik",
+      "kicker": "24/7 Qualifizierung",
+      "title": "Dein Vertrieb darf nicht an manuellen Prozessen hängen bleiben.",
+      "body": "Lead-Qualifizierung, Routing, Content-Maschinen und Founder-Handoff greifen wie Zahnräder ineinander. So landet nur das bei dir, was wirklich Abschluss-Potenzial hat.",
+      "points": [
+        { "strong": "Lead Filter", "text": "Nur relevante Fälle gehen in deinen Founder-Kanal." },
+        { "strong": "Founder Fokus", "text": "Du reagierst nur auf tiefe Sonderfälle und Abschlussmomente." }
+      ],
+      "ctaPrimary": { "label": "Vertrieb automatisieren", "href": "/kontakt.html?intent=sales&entry=quote-pitch-home&topic=Vertrieb%2024-7%20automatisieren" },
+      "ctaSecondary": { "label": "KI-Assistant ansehen", "href": "/cyber-assistant.html" }
+    },
+    {
+      "quote": "Wer weiter Kampagnen einkauft, bleibt abhängig. Wer Infrastruktur baut, kontrolliert Output, Timing und Schlagkraft.",
+      "foot": "Founder Pitch 03 · Kontrolle statt Abhängigkeit",
+      "kicker": "System Ownership",
+      "title": "Der Unterschied ist nicht nur Marketing. Der Unterschied ist Besitz am System.",
+      "body": "Ob Managed Service oder Infrastructure Transfer: Das Ziel bleibt dieselbe Maschine. Du kaufst nicht mehr nur Sichtbarkeit ein, sondern baust den skalierbaren Kern für Content, Prozesse und Vertrieb.",
+      "points": [
+        { "strong": "Managed Service", "text": "Schnell live, null Setup-Stress für dich." },
+        { "strong": "Infrastructure Transfer", "text": "Code, Logik und Unabhängigkeit bleiben in deinem Haus." }
+      ],
+      "ctaPrimary": { "label": "System aufbauen", "href": "/kontakt.html?intent=sales&entry=quote-pitch-home&topic=System%20Ownership" },
+      "ctaSecondary": { "label": "Marktplatz öffnen", "href": "/marktplatz.html" }
+    }
+  ]
+}

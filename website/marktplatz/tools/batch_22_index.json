@@ -1,0 +1,31 @@
+{
+  "batch_id": 22,
+  "category": "SECRET WEAPONS & UTILITIES",
+  "tools": [
+    {
+      "id": "pabbly",
+      "name": "Pabbly Connect",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/pabbly.html"
+    },
+    {
+      "id": "activepieces",
+      "name": "ActivePieces",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/activepieces.html"
+    },
+    {
+      "id": "gumroad",
+      "name": "Gumroad",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/gumroad.html"
+    },
+    {
+      "id": "carrd",
+      "name": "Carrd",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/carrd.html"
+    },
+    {
+      "id": "systeme-io",
+      "name": "Systeme.io",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/systeme-io.html"
+    }
+  ]
+}

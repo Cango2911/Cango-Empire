@@ -1,0 +1,69 @@
+{
+  "articles": [
+    {
+      "title": "Warum Marketing als digitale Fertigungsstraße skaliert und Agenturmodelle bremst",
+      "metaDescription": "Ein Blick auf das CanGo-Modell: weniger Reibung, mehr System und deutlich höherer Output pro Kampagne.",
+      "publishedAt": "2026-03-11T08:00:00Z",
+      "url": "blogs.html",
+      "slug": "marketing-fertigungsstrasse",
+      "nicheName": "Strategie",
+      "secondaryKeywords": [
+        "Marketing Automatisierung",
+        "digitale Fertigungsstraße",
+        "CanGo Empire"
+      ]
+    },
+    {
+      "title": "Online = Inkognito: Wie lokale Fonts und absolute Pfade echte Produktionssicherheit schaffen",
+      "metaDescription": "Technische Hygiene klingt unsichtbar, verhindert aber genau die Fehler, die Vertrauen, Conversion und Debug-Zeit kosten.",
+      "publishedAt": "2026-03-11T08:10:00Z",
+      "url": "blogs.html",
+      "slug": "online-gleich-inkognito",
+      "nicheName": "Infrastruktur",
+      "secondaryKeywords": [
+        "lokale Assets",
+        "absolute Pfade",
+        "DSGVO Frontend"
+      ]
+    },
+    {
+      "title": "Vom Lead bis zum Support-Thread: Die neue operative Website-Strecke im CanGo-Setup",
+      "metaDescription": "Wie Kontaktformular, FAQ-Eskalation und Checkout jetzt sauber an die operative Logik der Website andocken.",
+      "publishedAt": "2026-03-11T08:20:00Z",
+      "url": "kontakt.html",
+      "slug": "lead-support-strecke",
+      "nicheName": "Sales & Support",
+      "secondaryKeywords": [
+        "Lead Intake",
+        "Support Threads",
+        "Website Automation"
+      ]
+    },
+    {
+      "title": "Marktplatz-Sanierung auf V2: Was technische Konsistenz für Conversion und Pflege bedeutet",
+      "metaDescription": "Ein einheitlicher Marktplatz spart nicht nur Debug-Zeit, sondern macht jede spätere KI-Iteration deutlich sicherer.",
+      "publishedAt": "2026-03-11T08:30:00Z",
+      "url": "marktplatz.html",
+      "slug": "marktplatz-v2",
+      "nicheName": "Marktplatz",
+      "secondaryKeywords": [
+        "Marktplatz Sweep",
+        "Tool Standardisierung",
+        "Frontend Konsistenz"
+      ]
+    },
+    {
+      "title": "Admin-Core, Website und Rollback: Warum operative Systeme nur mit sauberer Dokumentation skalieren",
+      "metaDescription": "Die Kombination aus Deploy, Snapshot, Change-Report und klarer Rechtematrix macht echte Geschwindigkeit erst kontrollierbar.",
+      "publishedAt": "2026-03-11T08:40:00Z",
+      "url": "ueber-uns.html",
+      "slug": "admin-core-rollback",
+      "nicheName": "Operations",
+      "secondaryKeywords": [
+        "Rollback System",
+        "Admin Core",
+        "Change Reports"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-// CanGo Empire - Modern SaaS JavaScript
+// CanGo App Empire - Modern SaaS JavaScript
 // Smooth scrolling and interactions
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -45,7 +45,7 @@ async function loadEmpireData() {
         // Update hero section if needed
         if (data.hero_section) {
             // Content is already in HTML, but we can enhance it
-            console.log('CanGo Empire data loaded:', data);
+            console.log('CanGo App Empire data loaded:', data);
         }
         
     } catch (error) {

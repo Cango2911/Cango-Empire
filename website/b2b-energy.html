@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>B2B Energy | CanGo App Empire - Industrie & Gewerbe</title>
+  <meta name="description" content="CanGo App Empire B2B: Energie-Kosten senken um 30-70%. Spotmarkt-Zugang, Dachpacht ohne Investition & Großspeicher-Erlöse. Powered by Energy Finance.">
+  
+  
+      <link rel="stylesheet" href="/fonts/fonts.css">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+    <!-- FIX-2026-04-07: Phase 1.1 — KPI + Mobile-CTA-Leiste -->
+    <link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+    <style>
+    /* ============================================
+       ENTERPRISE DESIGN SYSTEM - CORPORATE DESIGN
+       ============================================ */
+    :root {
+      /* Color System - Cool Gray */
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --gray-950: #030712;
+
+      /* TECH BLUE (B2B/Spotmarket) - HAUPTFARBE */
+      --tech-400: #38BDF8;
+      --tech-500: #0EA5E9;
+      --tech-600: #0284C7;
+      --tech-glow: rgba(56, 189, 248, 0.2);
+
+      /* VOLT GOLD (Energy/Yield) */
+      --volt-400: #FACC15;
+      --volt-500: #EAB308;
+
+      /* PROFIT GREEN */
+      --profit-400: #34D399;
+      --profit-500: #10B981;
+
+      /* Accent Red (Problems) */
+      --accent-400: #F87171;
+      --accent-500: #EF4444;
+      --accent-600: #DC2626;
+
+      /* Semantic Aliases */
+      --bg-base: #050810;
+      --bg-elevated: #0a0f1a;
+      --bg-surface: #080d18;
+      --bg-hover: #0d1220;
+      --text-primary: var(--gray-50);
+      --text-secondary: var(--gray-400);
+      --text-muted: var(--gray-500);
+      --border-default: rgba(220, 228, 240, 0.12);
+      --border-hover: rgba(220, 228, 240, 0.2);
+      --empire-gradient: linear-gradient(135deg, #0a0f1a 0%, #080d18 35%, #060a14 70%, #050810 100%);
+      --empire-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+      /* Typography Scale */
+      --text-xs: 0.8125rem;
+      --text-sm: 0.9375rem;
+      --text-base: 1.0625rem;
+      --text-lg: 1.25rem;
+      --text-xl: 1.375rem;
+      --text-2xl: 1.688rem;
+      --text-3xl: 2.125rem;
+      --text-4xl: 2.688rem;
+      --text-5xl: 3.375rem;
+      --text-6xl: 4.25rem;
+
+      /* Spacing Scale */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      --shadow-glow: 0 0 40px -10px;
+
+      /* Motion */
+      --duration-fast: 150ms;
+      --duration-base: 200ms;
+      --duration-slow: 300ms;
+      --duration-slower: 500ms;
+      --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+      /* Layout */
+      --nav-height: 64px;
+      --container-max: 1200px;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+
+      /* Z-Index */
+      --z-base: 1;
+      --z-elevated: 10;
+      --z-sticky: 100;
+      --z-modal: 200;
+
+      --font-sans: 'Instrument Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-base);
+      overflow-x: hidden;
+    }
+
+    .container { 
+      width: 100%; 
+      max-width: var(--container-max); 
+      margin: 0 auto; 
+      padding: 0 var(--space-6); 
+    }
+
+    /* Gradients */
+    .text-gradient {
+      background: linear-gradient(135deg, var(--tech-400), var(--tech-600));
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      background-clip: text;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      height: var(--nav-height);
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-default); 
+      z-index: var(--z-sticky);
+      transition: background var(--duration-base) var(--ease-out);
+    }
+    .nav__inner { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      height: 100%; 
+    }
+    .nav__brand { 
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-weight: 700; 
+      font-size: var(--text-lg);
+      color: var(--text-primary); 
+      text-decoration: none; 
+    }
+    .nav__brand-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--tech-500), var(--tech-600));
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: white;
+    }
+
+    /* Hero (Airtable-Style) */
+    .hero {
+      padding-top: calc(var(--nav-height) + var(--space-24));
+      padding-bottom: var(--space-16);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background-color: #0d0d12;
+      background-image: radial-gradient(ellipse 100% 80% at 50% -20%, rgba(249, 115, 22, 0.35) 0%, rgba(249, 115, 22, 0.08) 30%, transparent 60%), radial-gradient(ellipse 70% 50% at 70% 10%, rgba(249, 115, 22, 0.12) 0%, transparent 45%), radial-gradient(ellipse 50% 40% at 20% 20%, rgba(249, 115, 22, 0.06) 0%, transparent 40%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, black 0%, black 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 120% 100% at 50% 60%, transparent 35%, rgba(0,0,0,0.25) 100%);
+      pointer-events: none;
+    }
+    .hero__content {
+      position: relative;
+      z-index: var(--z-base);
+    }
+    .hero__badge {
+      display: inline-flex; 
+      align-items: center; 
+      gap: var(--space-2); 
+      padding: var(--space-2) var(--space-4);
+      background: var(--bg-elevated); 
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: var(--radius-full); 
+      color: var(--tech-400); 
+      font-family: var(--font-mono); 
+      font-size: var(--text-xs); 
+      font-weight: 700; 
+      margin-bottom: var(--space-8);
+      animation: fadeInUp 0.6s var(--ease-out) both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero__title {
+      font-size: clamp(2.5rem, 8vw, var(--text-6xl)); 
+      font-weight: 700; 
+      line-height: 1.1; 
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+      animation: fadeInUp 0.6s var(--ease-out) 0.1s both;
+    }
+    .hero__subtitle {
+      font-size: var(--text-xl); 
+      color: var(--text-secondary); 
+      max-width: 800px; 
+      margin: 0 auto;
+      line-height: 1.7;
+      animation: fadeInUp 0.6s var(--ease-out) 0.2s both;
+    }
+
+    /* KPI Ticker */
+    .kpi-bar {
+      margin-top: var(--space-12);
+      border-top: 1px solid var(--border-default);
+      border-bottom: 1px solid var(--border-default);
+      background: var(--bg-elevated);
+      padding: var(--space-8) 0;
+    }
+    .kpi-grid { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: var(--space-6); 
+      text-align: center; 
+    }
+    .kpi-item {
+      padding: var(--space-4);
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-base) var(--ease-out);
+    }
+    .kpi-item:hover {
+      border-color: var(--tech-500);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+    }
+    .kpi-val { 
+      font-family: var(--font-mono); 
+      font-size: var(--text-4xl); 
+      font-weight: 700; 
+      color: var(--tech-400); 
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .kpi-lbl { 
+      font-size: var(--text-xs); 
+      text-transform: uppercase; 
+      color: var(--text-muted); 
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    /* Section Styles */
+    .section { 
+      padding: var(--space-24) 0; 
+    }
+    .section__header {
+      text-align: center;
+      margin-bottom: var(--space-16);
+    }
+    .section__eyebrow {
+      color: var(--tech-400);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-4);
+      display: block;
+    }
+    .section__title { 
+      font-size: clamp(2rem, 5vw, var(--text-5xl));
+      font-weight: 700; 
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-6);
+      color: var(--text-primary);
+    }
+    .section__subtitle {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+      font-size: var(--text-lg);
+      line-height: 1.7;
+    }
+
+    /* STRATEGY GRID */
+    .strategy-grid { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: var(--space-8); 
+      margin-top: var(--space-12); 
+    }
+    .strategy-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-xl);
+      padding: var(--space-10);
+      position: relative;
+      overflow: hidden;
+      transition: all var(--duration-slow) var(--ease-out);
+    }
+    .strategy-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+    .strategy-card--consume::before {
+      background: linear-gradient(90deg, var(--tech-500), var(--tech-400));
+    }
+    .strategy-card--asset::before {
+      background: linear-gradient(90deg, var(--volt-500), var(--volt-400));
+    }
+    .strategy-card:hover {
+      border-color: var(--tech-500);
+      transform: translateY(-8px);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(56, 189, 248, 0.2);
+    }
+    .strategy-card:hover::before {
+      opacity: 1;
+    }
+    .card-head { 
+      font-size: var(--text-2xl); 
+      font-weight: 700; 
+      margin-bottom: var(--space-4); 
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .card-head-icon {
+      font-size: var(--text-4xl);
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.3));
+    }
+    .list-item { 
+      display: flex; 
+      gap: var(--space-3); 
+      margin-bottom: var(--space-4); 
+      color: var(--text-secondary); 
+      font-size: var(--text-base);
+      line-height: 1.7;
+    }
+    .check { 
+      color: var(--profit-400); 
+      font-weight: 700;
+      font-size: var(--text-lg);
+    }
+
+    /* PRODUCT GRID */
+    .product-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: var(--space-6); 
+      margin-top: var(--space-12); 
+    }
+    .prod-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      transition: all var(--duration-slow) var(--ease-out);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .prod-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--tech-500);
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+    .prod-card:hover {
+      border-color: var(--tech-500);
+      transform: translateY(-8px);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(56, 189, 248, 0.2);
+    }
+    .prod-card:hover::before {
+      opacity: 1;
+    }
+    .badge { 
+      font-family: var(--font-mono); 
+      font-size: var(--text-xs); 
+      padding: var(--space-1) var(--space-3); 
+      border-radius: var(--radius-sm); 
+      font-weight: 700; 
+      display: inline-block; 
+      margin-bottom: var(--space-4);
+    }
+    .badge--invest { 
+      background: rgba(234, 179, 8, 0.15); 
+      color: var(--volt-400); 
+      border: 1px solid rgba(234, 179, 8, 0.3); 
+    }
+    .badge--save { 
+      background: rgba(56, 189, 248, 0.15); 
+      color: var(--tech-400); 
+      border: 1px solid rgba(56, 189, 248, 0.3); 
+    }
+
+    /* PITCH SECTION */
+    .pitch-section {
+      background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-elevated) 100%);
+      padding: var(--space-32) 0;
+      position: relative;
+    }
+    .pitch-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 40% at 50% 50%, rgba(56, 189, 248, 0.05), transparent);
+      pointer-events: none;
+    }
+    .pitch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      margin-bottom: var(--space-16);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Pitch A: The Pain */
+    .pain-box {
+      border-left: 4px solid var(--accent-500);
+      padding-left: var(--space-8);
+      position: relative;
+    }
+    .pain-box::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--accent-500), var(--accent-600));
+      border-radius: var(--radius-sm);
+    }
+    .pain-badge {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--accent-500);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: inline-block;
+      margin-bottom: var(--space-6);
+    }
+    .pain-title {
+      font-size: clamp(1.75rem, 4vw, var(--text-4xl));
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-6);
+      line-height: 1.2;
+    }
+    .pain-text {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+      line-height: 1.7;
+    }
+    .quote-box {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-left: 4px solid var(--accent-500);
+      padding: var(--space-6);
+      border-radius: var(--radius-lg);
+      font-style: italic;
+      color: #FCA5A5;
+      font-size: var(--text-base);
+      line-height: 1.7;
+      transition: all var(--duration-base) var(--ease-out);
+    }
+    .quote-box:hover {
+      border-color: rgba(239, 68, 68, 0.5);
+      box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15);
+    }
+
+    /* Pitch B: The Gain */
+    .gain-box {
+      border-left: 4px solid var(--tech-500);
+      padding-left: var(--space-8);
+      position: relative;
+    }
+    .gain-box::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--tech-500), var(--tech-400));
+      border-radius: var(--radius-sm);
+    }
+    .gain-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--tech-400);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: inline-block;
+      margin-bottom: var(--space-6);
+    }
+    .gain-title {
+      font-size: clamp(1.75rem, 4vw, var(--text-4xl));
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-6);
+      line-height: 1.2;
+    }
+    .gain-text {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+      line-height: 1.7;
+    }
+    .stat-highlight {
+      display: flex;
+      gap: var(--space-8);
+      margin-top: var(--space-8);
+    }
+    .stat-item {
+      flex: 1;
+    }
+    .stat-item h4 {
+      font-family: var(--font-mono);
+      font-size: var(--text-4xl);
+      color: var(--tech-400);
+      font-weight: 700;
+      margin: 0;
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .stat-item p {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    /* The Bridge */
+    .bridge-text {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(1.25rem, 3vw, var(--text-2xl));
+      font-weight: 600;
+      color: var(--text-primary);
+      padding: var(--space-12);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(250, 204, 21, 0.05));
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-xl);
+      position: relative;
+      z-index: 1;
+      transition: all var(--duration-base) var(--ease-out);
+    }
+    .bridge-text:hover {
+      border-color: var(--tech-500);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
+    }
+    .highlight-tech {
+      color: var(--tech-400);
+      font-weight: 700;
+    }
+    .highlight-volt {
+      color: var(--volt-400);
+      font-weight: 700;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding: var(--space-4) var(--space-6);
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: var(--space-6);
+      transition: all var(--duration-fast) var(--ease-out);
+      font-size: var(--text-base);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--tech-500), var(--tech-600));
+      color: black;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--tech-400), var(--tech-500));
+    }
+    .btn-volt {
+      background: linear-gradient(135deg, var(--volt-500), var(--volt-400));
+      color: black;
+    }
+    .btn-volt:hover {
+      background: linear-gradient(135deg, var(--volt-400), var(--volt-500));
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: var(--space-24);
+      border-top: 1px solid var(--border-default);
+      padding: var(--space-12) 0;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 1024px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .strategy-grid { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .pitch-grid { grid-template-columns: 1fr; gap: var(--space-8); }
+      .stat-highlight { flex-direction: column; gap: var(--space-4); }
+    }
+    @media (max-width: 700px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: 1fr; }
+      .pitch-section { padding: var(--space-16) 0; }
+    }
+  </style>
+
+<link href="/cango-empire-v4-monopoly.css?v=24" rel="stylesheet"/>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body class="empire-sync empire-sync--landing has-primary-cta-bar">
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+<a aria-label="Zum Hauptinhalt springen" class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
+
+
+  <nav aria-label="Hauptnavigation" class="nav" role="navigation">
+<div class="container nav__inner">
+<a class="nav__brand" href="/index.html#home">
+<span class="nav__brand-icon">C</span>
+<span>CanGo App Empire</span>
+</a>
+<button aria-label="Menü öffnen" class="nav__toggle" onclick="document.querySelector('.nav__menu').classList.toggle('active')" type="button">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<div class="nav__menu">
+<a class="nav__link" href="/nischen.html">Marktplatz</a>
+<a class="nav__link" href="/produkte.html">Produkte</a>
+<a class="nav__link" href="/selfmade-empire.html">Workflow Kampagnen</a>
+<a class="nav__link" href="/ueber-uns.html">Über Uns</a>
+<a class="nav__link" href="/faq.html">FAQ</a>
+<a class="nav__link nav__cart-wrap" href="/kasse.html">🛒 <span id="cart-badge" class="cart-badge" aria-label="Artikel im Warenkorb">0</span></a>
+<a class="nav__cta" href="/kontakt.html">Jetzt anfragen</a>
+</div>
+</div>
+</nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge">⚡ CORPORATE ENERGY INTELLIGENCE</div>
+        <h1 class="hero__title">
+          VOM KOSTENFAKTOR<br>
+          <span class="text-gradient">ZUM PROFIT-CENTER.</span>
+        </h1>
+        <p class="hero__subtitle">
+          Industrie & Gewerbe zahlen zu viel. Wir korrigieren das. 
+          Durch <strong style="color: var(--tech-400);">Spotmarkt-Arbitrage</strong>, <strong style="color: var(--tech-400);">Dachpacht-Modelle ohne Investition</strong> und Compliance-sichere Audits.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="kpi-bar">
+    <div class="container">
+      <div class="kpi-grid">
+        <div class="kpi-item">
+          <div class="kpi-val">0 €</div>
+          <div class="kpi-lbl">Investition (Pacht)</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-val">-50%</div>
+          <div class="kpi-lbl">Stromkosten (Spot)</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-val">24/7</div>
+          <div class="kpi-lbl">Ausfallsicherheit</div>
+        </div>
+        <div class="kpi-item">
+          <div class="kpi-val">DIN</div>
+          <div class="kpi-lbl">16247 Audit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">STRATEGIE</span>
+        <h2 class="section__title">Wähle deine Strategie</h2>
+        <p class="section__subtitle">
+          Zwei Wege, um Energie von einem Kostenfaktor in einen <strong style="color: var(--tech-400);">Wettbewerbsvorteil</strong> zu verwandeln.
+        </p>
+      </div>
+      
+      <div class="strategy-grid">
+        <div class="strategy-card strategy-card--consume">
+          <div class="card-head">
+            <span class="card-head-icon">📉</span>
+            <span>KOSTEN SENKEN</span>
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-8); font-size: var(--text-base); line-height: 1.7;">
+            Du hast hohen Verbrauch (<strong style="color: var(--tech-400);">>100k kWh</strong>) und willst die P&L optimieren.
+          </p>
+          <ul style="list-style: none;">
+            <li class="list-item">
+              <span class="check">✓</span>
+              <span><strong style="color: var(--tech-400);">Spotmarkt-Zugang</strong> (EPEX/EEX)</span>
+            </li>
+            <li class="list-item">
+              <span class="check">✓</span>
+              <span><strong style="color: var(--tech-400);">LED- & Spannungsoptimierung</strong></span>
+            </li>
+            <li class="list-item">
+              <span class="check">✓</span>
+              <span><strong style="color: var(--tech-400);">Energie-Audit</strong> (Pflicht >250 MA)</span>
+            </li>
+            <li class="list-item">
+              <span class="check">✓</span>
+              <span><strong style="color: var(--tech-400);">Spitzenlast-Management</strong></span>
+            </li>
+          </ul>
+          <a href="https://www.energyfinance.de/energie/gewerbe-industrie" target="_blank" class="btn btn-primary">Verbrauch optimieren</a>
+        </div>
+
+        <div class="strategy-card strategy-card--asset">
+          <div class="card-head">
+            <span class="card-head-icon">💰</span>
+            <span>FLÄCHEN VERGOLDEN</span>
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: var(--space-8); font-size: var(--text-base); line-height: 1.7;">
+            Du besitzt <strong style="color: var(--volt-400);">Hallendächer oder Freiflächen</strong>? Lass sie für dich arbeiten.
+          </p>
+          <ul style="list-style: none;">
+            <li class="list-item">
+              <span class="check">✓</span>
+              <span><strong style="color: var(--volt-400);">Dachpacht:</strong> 0€ Invest, günstiger Strom</span>
+            </li>
+            <li class="list-item">
+              <span class="check">✓</span>
+              <span><strong style="color: var(--volt-400);">Freiflächen:</strong> 2-3k € / ha garantiert</span>
+            </li>
+            <li class="list-item">
+              <span class="check">✓</span>
+              <span><strong style="color: var(--volt-400);">Großspeicher:</strong> 10-20k € / Jahr Pacht</span>
+            </li>
+            <li class="list-item">
+              <span class="check">✓</span>
+              <span><strong style="color: var(--volt-400);">Sanierung</strong> oft inklusive</span>
+            </li>
+          </ul>
+          <a href="https://www.energyfinance.de/" target="_blank" class="btn btn-volt">Pacht-Einnahmen prüfen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-elevated); border-top: 1px solid var(--border-default);">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">PORTFOLIO</span>
+        <h2 class="section__title">Das B2B Portfolio</h2>
+        <p class="section__subtitle">
+          Von <strong style="color: var(--tech-400);">Spotmarkt-Arbitrage</strong> bis <strong style="color: var(--volt-400);">Dachpacht-Modellen</strong> – 
+          wir bieten Lösungen für jeden Bedarf.
+        </p>
+      </div>
+      
+      <div class="product-grid">
+        <div class="prod-card">
+          <span class="badge badge--invest">KERNPRODUKT</span>
+          <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">Dachpacht Modell</h3>
+          <p style="color: var(--text-secondary); font-size: var(--text-base); line-height: 1.7;">
+            Wir mieten dein Dach. Wir bauen die PV-Anlage (auf unsere Kosten). Du bekommst <strong style="color: var(--volt-400);">Pacht + günstigen Strom</strong>.
+            <br><br>
+            <strong style="color: var(--volt-400);">Vorteil:</strong> Kein Risiko, sofortiger Cashflow.
+          </p>
+        </div>
+
+        <div class="prod-card">
+          <span class="badge badge--save">FINANCE</span>
+          <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">Spotmarkt Arbitrage</h3>
+          <p style="color: var(--text-secondary); font-size: var(--text-base); line-height: 1.7;">
+            Kaufe Strom dynamisch (Day-Ahead/Intraday). Nutze Preisschwankungen. Für Verbraucher ab <strong style="color: var(--tech-400);">100.000 kWh</strong>.
+            <br><br>
+            <strong style="color: var(--tech-400);">Vorteil:</strong> 30-50% günstiger als Festpreis.
+          </p>
+        </div>
+
+        <div class="prod-card">
+          <span class="badge badge--invest">YIELD KING</span>
+          <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">Großspeicher Pacht</h3>
+          <p style="color: var(--text-secondary); font-size: var(--text-base); line-height: 1.7;">
+            Hast du Fläche am Umspannwerk? Wir stellen Container-Speicher auf. Du kassierst <strong style="color: var(--volt-400);">extrem hohe Pacht</strong>.
+            <br><br>
+            <strong style="color: var(--volt-400);">Yield:</strong> bis zu 20.000 € / Jahr.
+          </p>
+        </div>
+
+        <div class="prod-card">
+          <span class="badge badge--save">EFFIZIENZ</span>
+          <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">BHKW (Kraft-Wärme)</h3>
+          <p style="color: var(--text-secondary); font-size: var(--text-base); line-height: 1.7;">
+            Strom & Wärme gleichzeitig. <strong style="color: var(--tech-400);">90% Wirkungsgrad</strong>. Amortisation in 2-4 Jahren bei Schichtbetrieb.
+            <br><br>
+            <strong style="color: var(--tech-400);">Ideal für:</strong> Hotel, Produktion, Pflege.
+          </p>
+        </div>
+
+        <div class="prod-card">
+          <span class="badge badge--save">COMPLIANCE</span>
+          <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">Audit DIN 16247</h3>
+          <p style="color: var(--text-secondary); font-size: var(--text-base); line-height: 1.7;">
+            Pflicht für Nicht-KMU. Wir decken Einsparpotenziale bei <strong style="color: var(--tech-400);">Druckluft, Wärme und Licht</strong> auf.
+            <br><br>
+            <strong style="color: var(--tech-400);">Vorteil:</strong> BAFA-Förderung & Rechtssicherheit.
+          </p>
+        </div>
+
+        <div class="prod-card">
+          <span class="badge badge--invest">FLEET</span>
+          <h3 style="font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-3); color: var(--text-primary);">E-Mobility Flotte</h3>
+          <p style="color: var(--text-secondary); font-size: var(--text-base); line-height: 1.7;">
+            PV-Carports mit Schnellladern. Laden der Firmenflotte mit <strong style="color: var(--volt-400);">eigenem Sonnenstrom</strong>.
+            <br><br>
+            <strong style="color: var(--volt-400);">Vorteil:</strong> Mitarbeiterbindung & Image.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pitch-section">
+    <div class="container">
+      <div class="pitch-grid">
+        <div class="pain-box">
+          <span class="pain-badge">DAS PROBLEM</span>
+          <h2 class="pain-title">
+            "Du verhandelst jeden Cent beim Rohstoff-Einkauf.<br>
+            <span style="color: var(--accent-500);">Warum verbrennst du Geld beim Strom?</span>"
+          </h2>
+          <p class="pain-text">
+            Die meisten deutschen Mittelständler stecken in <strong style="color: var(--accent-500);">starren Versorger-Verträgen</strong> fest. 
+            Du zahlst den "Listenpreis" für Energie, während deine Wettbewerber im Ausland <strong style="color: var(--accent-500);">dynamisch an der Börse einkaufen</strong>.
+            <br><br>
+            Jede Kilowattstunde, die du zu teuer einkaufst, frisst direkt deine Marge. Das ist kein "Fixkosten-Problem". 
+            Das ist ein <strong style="color: var(--accent-500);">Management-Fehler</strong>.
+          </p>
+          <div class="quote-box">
+            "Wer heute noch Festpreis-Verträge unterschreibt, finanziert die Risiko-Aufschläge der Energiekonzerne."
+          </div>
+        </div>
+        
+        <div class="gain-box" style="border-left-color: var(--tech-400);">
+          <span class="gain-badge">DIE LÖSUNG</span>
+          <h2 class="gain-title">
+            Der Einkauf der Zukunft:<br>
+            <span style="color: var(--tech-400);">Spotmarkt-Arbitrage.</span>
+          </h2>
+          <p class="gain-text">
+            Stell dir vor, du kaufst Strom nur dann, wenn er günstig ist. <strong style="color: var(--tech-400);">Automatisiert</strong>.
+            <br><br>
+            Über Energy Finance erhältst du direkten Zugang zur Strombörse (EPEX Spot). Wenn der Wind weht und die Preise fallen, 
+            füllen wir deine Speicher oder fahren deine Produktion hoch. Wenn die Preise steigen, <strong style="color: var(--tech-400);">nutzt du deine Reserven</strong>.
+          </p>
+          <div class="stat-highlight">
+            <div class="stat-item">
+              <h4 style="color: var(--tech-400);">-40%</h4>
+              <p>Ø Energiekosten</p>
+            </div>
+            <div class="stat-item">
+              <h4 style="color: var(--tech-400);">15 Min</h4>
+              <p>Taktung (Intraday)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pitch-grid" style="margin-bottom: var(--space-12);">
+        <div class="pain-box">
+          <span class="pain-badge">DAS PROBLEM</span>
+          <h2 class="pain-title">
+            "Dein Hallendach ist<br>
+            <span style="color: var(--accent-500);">totes Kapital.</span>"
+          </h2>
+          <p class="pain-text">
+            Schau auf Google Earth auf deine Firma. Was siehst du? <strong style="color: var(--accent-500);">Hunderte Quadratmeter graue Fläche</strong>. 
+            Ungenutzt. Wartungsintensiv. Kostenintensiv.
+            <br><br>
+            Viele Unternehmer scheuen die Investition in PV (€200.000+), weil sie <strong style="color: var(--accent-500);">Liquidität für das Kerngeschäft</strong> brauchen. 
+            Also tust du nichts. Und lässt jedes Jahr <strong style="color: var(--accent-500);">fünfstellige Gewinne liegen</strong>.
+          </p>
+        </div>
+        
+        <div class="gain-box">
+          <span class="gain-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--profit-400); border-color: rgba(16, 185, 129, 0.3);">DIE LÖSUNG</span>
+          <h2 class="gain-title">
+            Zero-CapEx Strategie:<br>
+            <span style="color: var(--profit-400);">Wir investieren. Du profitierst.</span>
+          </h2>
+          <p class="gain-text">
+            Behalt dein Geld. Wir (bzw. unsere institutionellen Partner) <strong style="color: var(--profit-400);">mieten dein Dach</strong>. 
+            Wir bezahlen die Anlage. Wir bezahlen die Wartung. Wir bezahlen das Risiko.
+            <br><br>
+            <strong style="color: var(--profit-400);">Dein Deal:</strong> Du bekommst eine sanierte Dachfläche, Pachteinnahmen und Zugriff auf 
+            <strong style="color: var(--profit-400);">günstigen Solarstrom direkt von deinem Dach</strong>. Ohne einen Cent Investition.
+          </p>
+          <div class="stat-highlight">
+            <div class="stat-item">
+              <h4>0 €</h4>
+              <p>Dein Kapital</p>
+            </div>
+            <div class="stat-item">
+              <h4>20 J</h4>
+              <p>Planungssicherheit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bridge-text">
+        <p>
+          CanGo App Empire liefert nicht nur Technik.<br>
+          Wir liefern dir <span class="highlight-tech">Liquidität</span> und <span class="highlight-volt">Wettbewerbsvorteile</span>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="text-align: center;">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">
+          Starte das <span class="text-gradient">Audit</span>.
+        </h2>
+        <p class="section__subtitle">
+          Sende uns deine Lastgangdaten oder Flächendaten. Unser Algorithmus berechnet dein Potenzial in <strong style="color: var(--tech-400);">48h</strong>.
+        </p>
+      </div>
+      <a href="https://www.energyfinance.de/" target="_blank" class="btn btn-primary" style="display: inline-block; width: auto; padding: var(--space-4) var(--space-8); font-size: var(--text-lg); max-width: 500px;">
+        Potenzial-Analyse anfordern
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Navigation</h5><ul><li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li><li><a href="/index.html#pakete" data-cango-kpi="kpi_pakete_section">Preise</a></li><li><a href="/kontakt.html">Kontakt</a></li></ul></div>
+        <div class="fcol"><h5>Branchen</h5><ul><li><a href="/finanzen-versicherung.html">Finanzen &amp; Versicherung</a></li><li><a href="/karriere-hr.html">Karriere &amp; HR</a></li><li><a href="/coaching-mindset.html">Coaching &amp; Mindset</a></li><li><a href="/immobilien.html">Immobilien</a></li><li><a href="/b2b-energy.html">B2B Energy</a></li><li><a href="/energie-finance.html">Energie &amp; Finance</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+  <script>(function(){var b=document.getElementById('navToggle');if(b)b.addEventListener('click',function(){document.body.classList.toggle('nav-open');});var n=document.querySelector('body > nav:first-of-type');if(n)n.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.body.classList.remove('nav-open');});});})();</script>
+  <script src="/js/kpi-events.js?v=2" defer></script>
+  <script src="/cart.js" defer></script>
+  <div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+    <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+  </div>
+
+</body>
+</html>
+

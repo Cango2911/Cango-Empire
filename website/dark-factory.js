@@ -527,7 +527,7 @@ function initAffiliateTracking() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('⚡ CanGo Automation Empire - Dark Factory Initialized');
+    console.log('⚡ CanGo App Empire - Dark Factory Initialized');
     console.log('🔧 System Config: Dark Industrial v2');
     console.log('🏭 Operating System Mode: ACTIVE');
     initSystemRequirements();

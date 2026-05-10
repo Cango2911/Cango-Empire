@@ -1,0 +1,31 @@
+{
+  "batch_id": 8,
+  "category": "COMMERCE & MONETIZATION",
+  "tools": [
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/stripe.html"
+    },
+    {
+      "id": "lemon-squeezy",
+      "name": "Lemon Squeezy",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/lemon-squeezy.html"
+    },
+    {
+      "id": "typeform",
+      "name": "Typeform",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/typeform.html"
+    },
+    {
+      "id": "shopify",
+      "name": "Shopify",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/shopify.html"
+    },
+    {
+      "id": "woocommerce",
+      "name": "WooCommerce",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/woocommerce.html"
+    }
+  ]
+}

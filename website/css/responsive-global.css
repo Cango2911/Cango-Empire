@@ -1,0 +1,1100 @@
+/* ============================================================
+   CanGo App Empire – responsive-global.css v40
+   Mobile-First für Android & iOS – Corporate Design
+   Primary: #F97316 | Navy: #0d1424 | Text: #e8eef5
+   Breakpoints (einheitlich): 1080 (Mobile-Layout) | 1024 | 768 | 600 | 480 | 360 | 320px
+   v45: index ?v=45 — nur Cache-Zeile bei Bedarf.
+   v44: Ribbon wieder body> unter Nav; sw-bg Ribbon-Override entfernt.
+   v43: Kopf ?v=43 = index; gleicher Stand wie v42.
+   v42: FINAL FIX — sw-ctas margin-left auto; Ribbon body>60px; .sw-bg Ribbon 0 (Index Band unter Headline).
+   v40: sw-head Desktop wieder eine Zeile + Promo margin-top 0 (index); Mobile Titel nicht 100% force.
+   v39: sw-head-row SWITCH — Titel 100% Zeile, CTAs margin-top 1rem; gap 0.
+   v38: sw-ctas--head margin-right 0 ≤1080 (Desktop margin-right aus index nicht auf Mobile).
+   v37: Kopf v37 = index ?v=37; inhaltlich v36.
+   v36: gleiche Basis wie v35; Feintuning nur index (CTAs/Promo/Zitat).
+   v35: sw-head CTAs margin-left 0 ≤1080 (kein clamp); sonst index-inline.
+   v34: sw-fusion 1 Spalte — sw-fusion__main dann Promo; margin-top Promo nur Desktop (index).
+   v32: sw-fusion__promo padding-top 0 ≤1080 (Desktop-Offset nur index-inline).
+   v31: sw-fusion ≤1080: swtext → promo → swbq (wie index 720); Desktop-Grid wieder in index-inline.
+   v30: sw-fusion ≤1080: swtext → swbq → promo (Promo unten); Desktop: Promo nur Zeile 2 in index-inline.
+   v29: sw-fusion Grid-Areas (Zitat unter Text, Promo rechts); ≤1080 einspaltig swtext/promo/swbq.
+   v28: sw-lead mehrzeilig ≤1080px; Promo-Spotlight Mindesthöhe (Wechsel ohne Sprung).
+   v27: sw-fusion einspaltig ≤1080px (Promo unter Text).
+   v26: sw-layout Promo nur noch index-inline; Regel v25 bleibt harmlos (kein aside).
+   v25: sw-bg: sw-layout einspaltig ≤1080px, Promo sticky auf Desktop nur global.
+   v24: sw-bg: Headline + kompakte CTAs (sw-head-row), Mobile-Button-Ausnahme.
+   v23: cmp-compare: größere thead auf Mobile (clamp), Tabelle-Verlauf-kompatibel.
+   v20: Karten + Fließtext – proportional größer (Android/iOS/Desktop), Lesespalte max ~36rem,
+        höhere Mindestgrößen in .ec/.icard/.nc; Desktop-Basis 17px für Einleitungen.
+   v18: Vergleichstabelle cmp-compare: 100% Breite, Umbruch (iOS nicht breiter als Sektion).
+   v17: Mobile-/Android-Layout ab max-width 1080px (statt 1200px).
+   v16: Startseite Agentur-vs-CanGo-Tabelle: .cmp-scroll horizontal (iOS = Android).
+   v13: Radikaler Mobile-Reset (Desktop-Zoom Fix); alle Container 100%; Padding 16px.
+   v12: Texte größer skaliert; Hero/FAQ Handy vergrößert; Footer neu designen (Website-Look).
+   v11: Breakpoints/Typo konsolidiert; Zoom-in Bereiche; Grids/Rechtstexte/FAQ angepasst.
+   v10: Matrix (100/33/1) auf Mobile wieder 3 nebeneinander; Hero-Bereich harmonischer.
+   v9: Mobile Felder einspaltig (faq-cats, pkg-grid, ig, ng, nischen, wf-grid, bento, page, ftop).
+   v8: Lesbarkeit/Barrierefreiheit – Mindest 14–16px, html 16px, alle Fließtexte 16px.
+   v5: Alle Regeln in Media Queries mit !important (überschreibt inline Desktop-Styles).
+   ============================================================ */
+
+/* ── 0. iOS & Android Basis-Fixes ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;   /* iOS verhindert Auto-Zoom */
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; /* iOS Momentum-Scroll */
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  -webkit-appearance: none;          /* iOS entfernt native Styles */
+  appearance: none;
+  border-radius: 0;
+}
+
+/* Hamburger-Button: Standardmäßig ausblenden (verhindert weißes Quadrat auf Desktop) */
+.nav-toggle {
+  display: none !important;
+}
+
+/* Touch-Targets minimal 44×44px (Apple HIG / Google Material) */
+button, .btn, a.btn,
+.fcat, .filter-btn {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Safe Area für iPhone X+ Notch & Home-Indicator */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-left:   env(safe-area-inset-left);
+    padding-right:  env(safe-area-inset-right);
+  }
+  footer {
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  }
+  nav {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* ── 1. Breakpoint 1080px (Mobile-/Android-Layout, z. B. Tablet quer & große Phones) ── */
+@media (max-width: 1080px) {
+
+  /* Radikaler Mobile-Reset – Desktop-Zoom beheben */
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  .wrap, .page, .bento, .footer-wrap, .tv-below-inner, .urg-inner,
+  .nav-inner, .hero-inner, .bc-i, .bc-inner, .phero-inner, .main-inner,
+  .filter-inner, .steps-inner, .login-outer, .pkg-inner, .roi-inner,
+  .kontakt-grid, .contact-grid, section, main,
+  section > *, .sys-bg > *, .infra-bg > *, .ars-bg > *, .nisch-bg > *,
+  .sw-bg > *, .cmp-bg > *, .av-bg > *, .faq-bg > *, .pr-bg > *, .opex-bg > * {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .wrap, .page, .bento, .footer-wrap, .tv-below-inner, .urg,
+  section, .sys-bg, .infra-bg, .nisch-bg, .sw-bg, .cmp-bg, .av-bg, .faq-bg, .pr-bg, .opex-bg {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* NAV – !important gegen inline <style> in HTML */
+  nav {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    height: auto !important;
+    min-height: 56px !important;
+    padding: 0 12px !important;
+    background: #0d1424 !important;
+    border-bottom: 1px solid rgba(78,99,130,0.3) !important;
+  }
+  .nav-inner {
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    min-height: 56px !important;
+    gap: 0 !important;
+  }
+  .nav-toggle {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    margin-left: auto !important;
+    margin-right: 4px !important;
+    border: 1px solid rgba(78,99,130,0.4) !important;
+    background: #111c30 !important;
+    color: #e8eef5 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    font-size: 20px !important;
+    flex-shrink: 0 !important;
+    transition: border-color 0.2s, color 0.2s !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+  }
+  .nav-toggle:hover,
+  .nav-toggle:active { border-color: #F97316 !important; color: #F97316 !important; }
+
+  .nav-links {
+    display: none !important;
+    width: 100% !important;
+    order: 3 !important;
+    flex-direction: column !important;
+    background: #111c30 !important;
+    margin: 0 -12px !important;
+    padding: 8px 0 12px !important;
+    gap: 2px !important;
+    border-top: 1px solid rgba(78,99,130,0.25) !important;
+  }
+  body.nav-open .nav-links { display: flex !important; }
+  .nav-links li { width: 100% !important; list-style: none !important; }
+  .nav-links a {
+    display: flex !important;
+    align-items: center !important;
+    padding: 13px 20px !important;
+    font-size: 15px !important;
+    color: #e8eef5 !important;
+    text-decoration: none !important;
+    border-left: 3px solid transparent !important;
+    transition: background 0.15s, border-color 0.15s, color 0.15s !important;
+  }
+  .nav-links a:hover,
+  .nav-links a:active {
+    background: rgba(249,115,22,0.1) !important;
+    border-left-color: #F97316 !important;
+    color: #F97316 !important;
+  }
+  .nav-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-left: 8px !important;
+  }
+  .nav-right .btn {
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+    width: auto !important;
+    min-height: 44px !important;
+  }
+
+  /* SECTIONS & HERO – volle Nutzbreite, klare Abstände (16px seitlich) */
+  section, .hero { padding: 48px 16px !important; }
+  .hero {
+    padding-top: 72px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+  .hero-inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    gap: 2rem !important;
+  }
+  /* Hero-Textbereich an Seite anpassen, größere Texte */
+  .hero-sub { margin-bottom: 20px !important; font-size: 18px !important; line-height: 1.75 !important; max-width: 100% !important; width: 100% !important; }
+  .hero-sub2 { margin-bottom: 28px !important; padding: 20px 20px !important; font-size: 18px !important; line-height: 1.75 !important; max-width: 100% !important; width: 100% !important; }
+  .hero-ctas { margin-bottom: 22px !important; gap: 14px !important; }
+  .hero-inner { padding-left: 0 !important; padding-right: 0 !important; }
+  section > * { max-width: 100% !important; }
+
+  /* Gleicher Seitenrand wie Hero (16px) – keine Sektion breiter als Hero */
+  .wrap, .page, .bento, .footer-wrap, .tv-below-inner, .urg, .sys-bg, .infra-bg,
+  .nisch-bg, .sw-bg, .cmp-bg, .av-bg, .faq-bg, .pr-bg, .opex-bg {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Agentur vs. CanGo: gleiche Breite wie Überschrift/Body – kein horizontales Scrollen (iOS-Breiten-Bug) */
+  .cmp-bg .cmp-scroll {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-top: 8px !important;
+    padding-bottom: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .cmp-bg .cmp-scroll table.cmp-compare {
+    display: table !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+    margin-top: 24px !important;
+    font-size: clamp(11px, 3.1vw, 14px) !important;
+    background:
+      linear-gradient(165deg, rgba(20,32,54,.98) 0%, rgba(8,13,26,1) 42%, rgba(14,22,42,.98) 100%),
+      radial-gradient(ellipse 95% 55% at 50% 0%, rgba(249,115,22,.15) 0%, transparent 52%) !important;
+    background-color: #0a1020 !important;
+    border: 1px solid rgba(249,115,22,.32) !important;
+    box-shadow: 0 20px 52px rgba(0,0,0,.42), 0 0 40px rgba(249,115,22,.1), inset 0 1px 0 rgba(255,255,255,.06) !important;
+  }
+  .cmp-bg .cmp-scroll table.cmp-compare thead {
+    background: linear-gradient(180deg, rgba(48,62,92,.96) 0%, rgba(28,40,68,.92) 48%, rgba(17,24,39,.9) 100%) !important;
+    border-bottom: 1px solid rgba(249,115,22,.22) !important;
+  }
+  .cmp-bg .cmp-scroll table.cmp-compare th,
+  .cmp-bg .cmp-scroll table.cmp-compare td {
+    padding: 10px 7px !important;
+    vertical-align: top !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    -webkit-hyphens: auto !important;
+  }
+  .cmp-bg .cmp-scroll table.cmp-compare thead th {
+    font-size: clamp(11px, 2.85vw, 14px) !important;
+    letter-spacing: 0.09em !important;
+    line-height: 1.35 !important;
+    padding: 14px 8px !important;
+    font-weight: 600 !important;
+  }
+  .cmp-bg .cmp-scroll table.cmp-compare tbody td:first-child {
+    font-size: clamp(11px, 2.9vw, 13px) !important;
+    width: 30% !important;
+  }
+
+  /* TYPOGRAFIE – größer skaliert für bessere Lesbarkeit */
+  h1, h1.ht { font-size: clamp(40px, 9.5vw, 60px) !important; line-height: 1.15 !important; max-width: 100% !important; width: 100% !important; }
+  h2, h2.st { font-size: clamp(30px, 6.5vw, 44px) !important; line-height: 1.2 !important; }
+  h3 { font-size: clamp(22px, 5.2vw, 32px) !important; line-height: 1.35 !important; }
+  p  { font-size: clamp(17px, 4.5vw, 19px) !important; line-height: 1.75 !important; }
+
+  /* GRIDS – Mobile-Android: immer 1 Spalte (kein Nebeneinander) */
+  .eg, .ars-lay { grid-template-columns: 1fr !important; }
+  .ig, .ng { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .sw-cards, .avcards, .opcards { grid-template-columns: 1fr !important; }
+  /* Matrix (100 / 33 / 1) als 3 nebeneinander (aber ohne “zu breit” zu werden) */
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr) !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /* Hero-Inner: Desktop-Grid sicher vermeiden (kein “Desktop-Zoom”) */
+  .hero-inner {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .faq-lay, .faq-layout { grid-template-columns: 1fr !important; }
+  .faq-cats { grid-template-columns: 1fr !important; width: 100% !important; }
+  /* Pakete: nicht “flach breit”, sondern angenehm lesbar (premium wie TV-Panels) */
+  .pkg-grid { grid-template-columns: 1fr !important; max-width: 560px !important; margin-left: auto !important; margin-right: auto !important; }
+  .nischen-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .wf-grid, .pgrid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .tools-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .bento { grid-template-columns: 1fr !important; }
+  .page { grid-template-columns: 1fr !important; }
+
+  /* RELEASE RIBBON */
+  .release-ribbon {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+    top: 56px !important;
+  }
+  .ribbon-slide-text { min-width: 180px !important; }
+  .ribbon-countdown { font-size: 11px !important; margin-left: 8px !important; }
+
+  /* Stat-Karten (Matrix) – TV-Panel-Optik: mehr Höhe statt Breite */
+  .hero-stats {
+    max-width: 100% !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+  .stat-c {
+    padding: 18px 10px !important;
+    min-width: 0 !important;
+    min-height: 118px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  .stat-c .snum { font-size: 2.1rem !important; }
+  .stat-c .slbl { font-size: 0.9rem !important; line-height: 1.2 !important; }
+  .hero__news, .hero__blogs {
+    min-height: 220px !important;
+    padding: 0 !important;
+  }
+  .hero__news-content, .hero__blogs-content { min-height: 120px !important; }
+  .hero__news-header, .hero__blogs-header { padding: 16px 14px !important; }
+  .hero__news-title, .hero__blogs-title { font-size: 1.05rem !important; }
+  .hero__news-item, .hero__blogs-item { padding: 16px !important; }
+  .hero__news-text, .hero__blogs-text { font-size: 16px !important; line-height: 1.5 !important; }
+  .hero__news-snippet, .hero__blogs-excerpt { font-size: 15px !important; line-height: 1.5 !important; }
+  .hero__news-update, .hero__blogs-update { font-size: 14px !important; }
+  .tv-below-wrap { padding-left: 10px !important; padding-right: 10px !important; }
+  .tv-below-ttxt, .tv-below-sub { font-size: 13px !important; }
+  .tv-below-tinner span, .tv-below-binner span { font-size: 14px !important; }
+
+  /* TV-Widgets (Breaking News / Daily Blogs) – Mobile untereinander, volle Breite */
+  .hero__sidebar { width: 100% !important; margin-top: 1rem !important; display: flex !important; flex-direction: column !important; gap: 1rem !important; }
+  .hero__news, .hero__blogs { width: 100% !important; min-width: 0 !important; }
+
+  /* AI-Chat (FAQ): iPhone-Rahmen volle Breite, Buttons fingerfreundlich */
+  .iphone-wrap { position: static !important; width: 100% !important; max-width: 100% !important; align-items: stretch !important; }
+  .iphone { width: 100% !important; max-width: 100% !important; height: 520px !important; margin: 0 auto !important; }
+  .chat-tab { min-height: 48px !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+  .chat-input { font-size: 16px !important; min-height: 48px !important; }
+
+  /* Checkout-Bento: Kacheln untereinander, gleiche Breite wie Hero */
+  .bento > * { grid-column: 1 / -1 !important; }
+
+  /* ── Lesbarkeit: Texte größer skaliert (WCAG / Sehschwäche) ── */
+  html { font-size: 18px !important; }
+  p, .hero-sub, .hero-sub2, .sdesc, .sys-intro, .infra-lead, .ars-desc, .sw-body,
+  .ec p, .af p, .avc p, .opc p, .swc p, .faq-desc, .faq-box p, .fa, .fa-inline,
+  .urgl p, .faq-tt, .faq-box ul li, .idesc, .itag {
+    font-size: 18px !important;
+    line-height: 1.75 !important;
+  }
+  .hlimit, .istat-lbl, .ptag, .swtag, .fcat-lbl, .faq-box h4, .ey, .ars-sub, .ars-rnote {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+  .stat-c .slbl, .sbadge, .iname, .isector, .istat-alt, .nc p, .bq {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+  .nc h4, .opc h4, .avc h4, .swc h4, .ec h3 {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+  .hero-chip { font-size: 15px !important; }
+  .urgw { font-size: 16px !important; }
+  .fcmd { font-size: 16px !important; }
+
+  /* FAQ-Bereiche auf Handy vergrößern */
+  .faq-core-section { padding: 40px 12px 48px !important; }
+  .faq-header { margin-bottom: 32px !important; }
+  .faq-header .st { font-size: clamp(26px, 6vw, 36px) !important; }
+  .faq-subtitle { font-size: 17px !important; line-height: 1.75 !important; }
+  .faq-q { font-size: 18px !important; padding: 22px 0 !important; line-height: 1.45 !important; }
+  .faq-a { font-size: 17px !important; line-height: 1.8 !important; padding: 0 0 26px 0 !important; }
+  .faq-a .highlight { font-size: 16px !important; padding: 14px 18px !important; }
+
+  /* Footer neu designen – Website-Look (klar, groß, luftig) */
+  footer {
+    padding: 48px 12px 32px !important;
+    border-top: 2px solid rgba(249, 115, 22, 0.25) !important;
+    background: linear-gradient(180deg, #0d1424 0%, #080d1a 100%) !important;
+  }
+  .footer-wrap { padding-left: 0 !important; padding-right: 0 !important; }
+  .ftop { grid-template-columns: 1fr !important; gap: 32px !important; margin-bottom: 36px !important; }
+  .fbrand p { font-size: 17px !important; line-height: 1.75 !important; margin-top: 16px !important; max-width: 100% !important; }
+  .fcol h5 { font-size: 12px !important; letter-spacing: .1em !important; margin-bottom: 14px !important; }
+  .fcol ul li { margin-bottom: 12px !important; }
+  .fcol ul li a { font-size: 16px !important; }
+  .fbot { padding-top: 24px !important; border-top: 1px solid rgba(78, 99, 130, 0.35) !important; }
+  .fcopy { font-size: 16px !important; line-height: 1.6 !important; }
+  .fcopy em { font-size: 14px !important; margin-top: 6px !important; }
+  table, thead th, tbody td, tbody td:first-child, tbody td:last-child {
+    font-size: 15px !important;
+  }
+  .nav-right .btn { font-size: 14px !important; }
+  .btn, .btn-lg { font-size: 16px !important; min-height: 48px !important; padding: 14px 20px !important; }
+
+  /* FAQ & Rechtstexte – 16px, gute Abstände, einspaltig */
+  .page p, .faq-a, .faq-box p, .legal-content p, .impressum-content p, .agb-content p, .widerruf-content p, .datenschutz-content p,
+  section.legal p, .ftop p {
+    font-size: 16px !important;
+    line-height: 1.75 !important;
+    margin-bottom: 24px !important;
+  }
+  .faq-lay, .faq-layout, .page.legal { grid-template-columns: 1fr !important; }
+}
+
+/* ── 2. Breakpoint 768px ── */
+@media (max-width: 768px) {
+
+  nav { padding: 0 12px !important; }
+
+  /* Bereiche auf Tablets etwas größer und luftiger */
+  section, .hero { padding: 52px 14px !important; }
+  .hero {
+    padding-top: 78px !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    min-height: auto !important;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+  }
+  section > * { max-width: 100% !important; }
+  .wrap, .page, .bento, .footer-wrap, .tv-below-inner, .urg { padding-left: 14px !important; padding-right: 14px !important; }
+
+  /* Deutlich größere Headlines für bessere Lesbarkeit */
+  h1, h1.ht { font-size: clamp(32px, 8.5vw, 46px) !important; max-width: 100% !important; width: 100% !important; }
+  h2, h2.st { font-size: clamp(24px, 6.5vw, 36px) !important; }
+
+  /* GRIDS – 2 Spalten bis 360px
+     Mobile soll "harmonischer" und lesbarer sein: Branchenkarten und Start-InfraCards
+     werden auf 1 Spalte reduziert (sonst wirkt es wie "Desktop-Zoom" und Text wird abgeschnitten). */
+  .ig, .ng { grid-template-columns: 1fr !important; }
+  .nischen-grid { grid-template-columns: 1fr !important; }
+  .wf-grid, .tools-grid { grid-template-columns: 1fr !important; }
+
+  /* Startseite: Verifizierte Infrastruktur – 1 Spalte, damit der Text nicht abgeschnitten wirkt */
+  .infra-bg .ig { grid-template-columns: 1fr !important; gap: 12px !important; }
+
+  /* Android/<=768px: Karten in nischen.html sind .nc mit overflow:hidden.
+     Wenn die Karten breiter werden, soll der Text trotzdem komplett sichtbar bleiben. */
+  .nischen-grid .nc {
+    overflow: visible !important;
+    padding: 20px 16px !important;
+  }
+  .nischen-grid .nc p,
+  .nischen-grid .nc .nc-desc {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* TABELLEN – horizontal scrollbar (nicht .cmp-compare: die bleibt 100% Breite) */
+  [class*="compare"]:not(.cmp-compare),
+  section table:not(.cmp-compare),
+  .table-wrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    display: block !important;
+  }
+  section table:not(.cmp-compare) {
+    display: block !important;
+    min-width: 520px !important;
+    width: max-content !important;
+  }
+  .cmp-bg .cmp-scroll table.cmp-compare {
+    display: table !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+  }
+  .cmp-bg .cmp-scroll {
+    overflow-x: visible !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* CPM-Tabelle (nischen.html): Font/Padding reduzieren, damit nichts abgeschnitten wirkt */
+  .cpm-table {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    max-width: 100% !important;
+  }
+  .cpm-table thead th {
+    font-size: 10px !important;
+    padding: 12px 14px !important;
+  }
+  .cpm-table tbody td {
+    font-size: 13px !important;
+    padding: 12px 14px !important;
+  }
+
+  /* FOOTER – einspaltig, zentriert unten */
+  .ftop { gap: 28px !important; }
+  .fbrand { text-align: center !important; }
+  .fbrand p { margin-left: auto !important; margin-right: auto !important; }
+  .fcol { text-align: center !important; }
+  .fbot {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+  }
+  .fcopy { text-align: center !important; }
+}
+
+/* ── 3. Breakpoint 600px ── */
+@media (max-width: 600px) {
+
+  nav { padding: 0 12px !important; }
+
+  /* Bereiche und Textblöcke sichtbar vergrößern */
+  section { padding: 44px 12px !important; }
+  .hero {
+    padding: 80px 12px 52px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    min-height: auto !important;
+  }
+  .hero-inner {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  section > * { max-width: 100% !important; }
+  .wrap, .page, .bento, .footer-wrap, .tv-below-inner, .urg { padding-left: 12px !important; padding-right: 12px !important; }
+
+  /* Noch größere Typo auf klassischen Smartphones */
+  h1, h1.ht { font-size: clamp(32px, 10vw, 40px) !important; max-width: 100% !important; width: 100% !important; }
+  h2, h2.st { font-size: clamp(24px, 8vw, 32px) !important; }
+  h3 { font-size: clamp(18px, 5.5vw, 26px) !important; }
+  p  { font-size: 17px !important; line-height: 1.8 !important; }
+
+  /* HERO STATS (Matrix) – 3 nebeneinander, aber “Panel”-mäßig (mehr Höhe) */
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .stat-c .snum { font-size: 1.85rem !important; }
+  .stat-c {
+    padding: 14px 8px !important;
+    min-width: 0 !important;
+    min-height: 108px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  .stat-c .slbl { font-size: 0.88rem !important; line-height: 1.3 !important; }
+
+  /* PKG GRID */
+  .pkg-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    gap: 1rem !important;
+  }
+
+  /* BUTTONS – Full-Width auf Mobile */
+  .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 52px !important;
+    font-size: 15px !important;
+    padding: 14px 20px !important;
+    border-radius: 10px !important;
+  }
+  .hero-ctas,
+  .sw-ctas,
+  .faq-ctas,
+  .urg-ctas,
+  [class*="-ctas"] {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+  .hero-ctas .btn,
+  .sw-ctas .btn,
+  .faq-ctas .btn,
+  .urg-ctas .btn,
+  [class*="-ctas"] .btn {
+    width: 100% !important;
+  }
+  /* SWITCH: ≤1080 Headline + CTAs untereinander; Desktop-Logik in index */
+  .sw-bg .sw-head-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .sw-bg .sw-head-row .sw-ctas--head {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    align-self: stretch !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .sw-bg .sw-head-row .sw-ctas--head .btn {
+    width: auto !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    min-height: 44px !important;
+    font-size: 13px !important;
+    padding: 10px 14px !important;
+  }
+  .sw-bg .sw-fusion {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    grid-template-areas: none !important;
+    row-gap: 14px !important;
+    column-gap: 0 !important;
+    margin-top: 10px !important;
+  }
+  .sw-bg .sw-fusion__main {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+  .sw-bg .sw-fusion__promo {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    width: 100% !important;
+  }
+  .sw-bg .sw-fusion__text .sw-lead {
+    white-space: normal !important;
+  }
+  .sw-bg .sw-head-row .sw-head-row__title {
+    white-space: normal !important;
+    flex: 1 1 auto !important;
+    max-width: 100% !important;
+  }
+  .sw-bg .sw-fusion__promo .sw-promo-spotlight {
+    min-height: 140px !important;
+  }
+  .nav-right .btn {
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    width: auto !important;
+    min-height: 44px !important;
+  }
+  .urg-inner {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .urg { padding: 36px 14px !important; }
+
+  /* NISCHEN – 9 Bereiche sollen auf Mobile klar lesbar sein (keine abgeschnittenen Karten) */
+  .nischen-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+  /* Karten in nischen.html haben overflow:hidden (damit bleibt Text sonst abgeschnitten) */
+  .nischen-grid .nc { overflow: visible !important; padding: 20px 16px !important; }
+  .nischen-grid .nc p,
+  .nischen-grid .nc .nc-desc { font-size: 16px !important; line-height: 1.72 !important; }
+
+  /* Startseite: Verifizierte Infrastruktur – Cards auf Mobile lesbar */
+  .infra-bg .ig { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .infra-bg .icard { padding: 22px 16px !important; overflow: visible !important; }
+  .infra-bg .idesc { font-size: 16px !important; line-height: 1.72 !important; }
+  .infra-bg .itag { font-size: 13px !important; line-height: 1.55 !important; }
+  .infra-bg .iname { font-size: 16px !important; }
+  .infra-bg .isector { font-size: 11px !important; }
+  .infra-bg .istat { font-size: 34px !important; }
+  .infra-bg .istat-alt { font-size: 14px !important; }
+  .infra-bg .istat-lbl { font-size: 12px !important; }
+  .nc { min-height: auto !important; padding: 20px 16px !important; }
+
+  /* BLOGS */
+  .blog-grid,
+  .blog-grid.full { grid-template-columns: 1fr !important; }
+
+  /* FILTER-BAR */
+  .filter-bar .filter-inner {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  .filter-cats { width: 100% !important; }
+  .fcat {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 48px !important;
+  }
+
+  /* KONTAKT – Formular 100 %, Termin-Chips 2 Spalten, Map nicht zu hoch */
+  .kontakt-grid,
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .kontakt-grid input,
+  .kontakt-grid textarea,
+  .contact-grid input,
+  .contact-grid textarea {
+    width: 100% !important;
+    font-size: 16px !important; /* verhindert iOS Auto-Zoom */
+  }
+  .termin-row {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  .termin-row .tc { min-height: 48px !important; }
+  .kontakt-grid iframe[title*="Map"],
+  .contact-grid iframe[title*="Map"] { max-height: 220px !important; }
+
+  /* FAQ */
+  .faq-lay { grid-template-columns: 1fr !important; }
+  .faq-cats {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+}
+
+/* ── 4. Breakpoint 480px ── */
+@media (max-width: 480px) {
+
+  nav { padding: 0 10px !important; }
+  .nav-links { margin: 0 -8px !important; padding: 6px 0 10px !important; }
+
+  /* Sektionen größer, mehr Weißraum – gleicher Rand wie Hero */
+  section { padding: 36px 10px !important; }
+  .hero { padding: 72px 10px 40px !important; }
+  .wrap, .page, .bento, .footer-wrap, .tv-below-inner, .urg { padding-left: 10px !important; padding-right: 10px !important; }
+
+  /* Deutlich größere Headlines, angenehme Lesbarkeit */
+  h1, h1.ht { font-size: clamp(28px, 11vw, 36px) !important; max-width: 100% !important; width: 100% !important; }
+  h2, h2.st { font-size: clamp(22px, 8vw, 28px) !important; }
+
+  /* LOGO TEXT bei sehr kleinen Bildschirmen */
+  .logo-text span { display: none !important; }
+
+  /* RIBBON */
+  .release-ribbon {
+    font-size: 11px !important;
+    padding: 6px 8px !important;
+  }
+  .ribbon-countdown { display: none !important; }
+
+  /* Matrix weiterhin 3 nebeneinander, kompakt + lesbar */
+  .hero-stats { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; max-width: 100% !important; width: 100% !important; }
+  .stat-c {
+    padding: 12px 6px !important;
+    min-width: 0 !important;
+    min-height: 96px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  .stat-c .snum { font-size: 1.35rem !important; }
+  .stat-c .slbl { font-size: 0.82rem !important; line-height: 1.35 !important; }
+
+  /* CARDS */
+  .sw-cards > *,
+  .avcards > *,
+  .opcards > * {
+    padding: 20px 14px !important;
+  }
+
+  /* FORM INPUTS – iOS kein Zoom */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* ── 5. Breakpoint 360px (kleine Android-Geräte) ── */
+@media (max-width: 360px) {
+
+  nav { padding: 0 8px !important; }
+  section { padding: 24px 8px !important; }
+  .hero { padding: 60px 8px 28px !important; }
+  .wrap, .page, .bento, .footer-wrap, .tv-below-inner, .urg { padding-left: 8px !important; padding-right: 8px !important; }
+
+  h1, h1.ht { font-size: 26px !important; max-width: 100% !important; width: 100% !important; }
+  h2, h2.st { font-size: 20px !important; }
+  h3 { font-size: 17px !important; }
+  p  { font-size: 16px !important; line-height: 1.75 !important; }
+
+  .btn {
+    font-size: 15px !important;
+    padding: 14px 18px !important;
+    min-height: 48px !important;
+  }
+
+  /* NAV – Lesbarkeit beibehalten */
+  .nav-links a { padding: 12px 16px !important; font-size: 16px !important; }
+  .logo-text { font-size: 15px !important; }
+
+  /* Sehr schmale Viewports: Grids einspaltig */
+  .ig, .ng, .nischen-grid, .wf-grid, .tools-grid, .pgrid { grid-template-columns: 1fr !important; }
+}
+
+/* ── 6. iOS-spezifische Fixes ── */
+
+/* Verhindern dass iOS Buttons blau färbt */
+a, button { color: inherit; }
+
+/* iOS Scroll-Bounce nur vertikal */
+@supports (-webkit-overflow-scrolling: touch) {
+  .nav-links {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+}
+
+/* iPhone SE / kleine Bildschirme (320px) – Lesbarkeit beibehalten */
+@media (max-width: 320px) {
+  html { font-size: 16px !important; }
+  .btn { min-height: 44px !important; font-size: 15px !important; }
+  h1, h1.ht { font-size: 24px !important; max-width: 100% !important; width: 100% !important; }
+  p { font-size: 16px !important; line-height: 1.75 !important; }
+}
+
+/* ── 7. Android Chrome – Overscroll ── */
+@media (pointer: coarse) {
+  /* Größere Klick-Targets auf Touch-Geräten */
+  .btn, button, a.btn {
+    min-height: 48px;
+  }
+  /* Kein Hover-Effekt auf Touch (sieht sauber aus) */
+  .nav-links a:hover { background: transparent; border-left-color: transparent; }
+  .nav-links a:active {
+    background: rgba(249,115,22,0.1);
+    border-left-color: #F97316;
+    color: #F97316;
+  }
+}
+
+/* ── 8. Landscape-Mode Phones ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto !important;
+    padding: 48px 16px 32px !important;
+  }
+  .hero-stats { grid-template-columns: repeat(3, 1fr) !important; max-width: 100% !important; width: 100% !important; }
+  nav { min-height: 48px !important; }
+  .nav-toggle { width: 40px !important; height: 40px !important; }
+}
+
+/* ── 9. High-DPI / Retina (2x Displays) ── */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Schärfere Borders auf Retina */
+  nav { border-bottom-width: 0.5px; }
+  .nav-links { border-top-width: 0.5px; }
+}
+
+/* ── 10. Barrierefreiheit – Reduce Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Startseite TV-Laufband: universeller *-Reset würde 0,01 ms + 1× = stehend wirken.
+     Höhere Spezifität als *: langsam + loop = dezent, aber sichtbar (WCAG: bewegter Inhalt optional reduzieren). */
+  .tv-below-tinner,
+  .tv-below-binner {
+    animation-duration: 180s !important;
+    animation-iteration-count: infinite !important;
+  }
+}
+
+/* ── 11. Mobile: Layout hart auf Viewportbreite (kein Rauszoomen, keine schmale Spalte) ── */
+@media (max-width: 1080px) {
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  .wrap,
+  .nav-inner,
+  .hero-inner,
+  .footer-wrap,
+  .tv-below-inner,
+  .urg-inner,
+  section > *,
+  .sys-bg > *,
+  .infra-bg > *,
+  .ars-bg > *,
+  .nisch-bg > *,
+  .sw-bg > *,
+  .cmp-bg > *,
+  .av-bg > *,
+  .faq-bg > *,
+  .pr-bg > *,
+  .opex-bg > * {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* v20: Lesespalte ~36rem – alle Sektions-Blöcke (nicht nur section > *) */
+  .wrap,
+  .footer-wrap,
+  .tv-below-inner,
+  .urg-inner,
+  section > *,
+  .sys-bg > *,
+  .infra-bg > *,
+  .ars-bg > *,
+  .nisch-bg > *,
+  .sw-bg > *,
+  .cmp-bg > *,
+  .av-bg > *,
+  .faq-bg > *,
+  .pr-bg > *,
+  .opex-bg > * {
+    max-width: min(100%, 36rem) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Android: Menüleiste (nav-inner) soll volle Seitenbreite nutzen */
+  .nav-inner {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Hero: gleiche optische Lesespalte wie Content (nicht über die ganze Viewport-Breite ziehen) */
+  .hero-inner {
+    max-width: min(100%, 36rem) !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* v20: Karten – mehr Innenabstand, Fließtext min. 16px (Android-Chrome wirkt sonst „amateurhaft“) */
+  .ec,
+  .icard,
+  .af,
+  .nc,
+  .swc,
+  .avc,
+  .opc,
+  .stat-c {
+    padding: 1.5rem 1.35rem !important;
+  }
+  .ec p,
+  .icard .idesc,
+  .infra-bg .idesc,
+  .nischen-grid .nc p,
+  .nischen-grid .nc .nc-desc,
+  .af p,
+  .avc p,
+  .opc p,
+  .swc p {
+    font-size: clamp(16px, 4vw, 18px) !important;
+    line-height: 1.72 !important;
+  }
+  .ec h3,
+  .iname {
+    font-size: clamp(1.05rem, 3.8vw, 1.2rem) !important;
+  }
+  .infra-bg .itag {
+    font-size: 0.875rem !important;
+    line-height: 1.55 !important;
+  }
+  .infra-bg .isector,
+  .infra-bg .istat-lbl {
+    font-size: 0.8rem !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  .trust-bar-inner {
+    max-width: min(100%, 36rem) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ── 12. Desktop (≥1081px): Fließtext nicht „zu klein“ zur Containerbreite ── */
+@media (min-width: 1081px) {
+  html {
+    font-size: 17px;
+  }
+  /* !important: Startseite index.html nutzt starkes Inline-<style> nach diesem Sheet */
+  .sdesc,
+  .sys-intro,
+  .infra-lead,
+  .ars-desc,
+  .sw-body,
+  .ec p,
+  .icard .idesc,
+  .af p,
+  .avc p,
+  .opc p,
+  .faq-desc {
+    font-size: clamp(1.02rem, 0.95rem + 0.2vw, 1.125rem) !important;
+    line-height: 1.78 !important;
+  }
+  .hero-sub {
+    font-size: clamp(1.05rem, 1rem + 0.25vw, 1.15rem) !important;
+  }
+  .hero-sub2 {
+    font-size: clamp(0.88rem, 0.82rem + 0.2vw, 0.95rem) !important;
+  }
+  h2.st {
+    font-size: clamp(2.1rem, 1.5rem + 2vw, 3.2rem) !important;
+  }
+  .ey {
+    font-size: 0.8rem !important;
+    letter-spacing: 0.14em !important;
+  }
+}
+
+/* FIX-20260406-CC: Headline links wächst (flex:1 1 auto + min-content), CTAs rechts mit margin-left:auto; flex-wrap:wrap als Sicherheit */
+@media (min-width: 1081px) {
+  .sw-bg .sw-head-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: clamp(12px, 1.5vw, 20px) !important;
+  }
+  .sw-bg .sw-head-row__title {
+    flex: 1 1 auto !important;
+    min-width: min-content !important;
+    white-space: normal !important;
+  }
+  .sw-bg .sw-ctas--head {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    align-self: center !important;
+  }
+}
+/* Rabattband direkt unter Menü (body > …) — kein extra Nav-Abstand */
+body > #releaseRibbon,
+body > .release-ribbon {
+  margin-top: 0 !important;
+}
+#partnerBanner, .partner-banner {
+  margin-top: 60px !important;
+}
+
+/* FIX-20260406-CC: Tool-Avatar Logo — Grauer Hintergrund für transparente Logos */
+.tool-avatar--logo {
+  background: #F2F4F7 !important;
+  border-radius: 10px !important;
+  padding: 4px !important;
+}
+.tool-avatar--logo img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  border-radius: 7px !important;
+}

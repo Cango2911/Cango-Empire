@@ -1,0 +1,36 @@
+/* FIX-2026-04-07: Footer Meta-Proof — öffentlicher DOK-Build + Footprint (kein personenbezogener Hash) */
+.cango-footer .fbot,
+footer .fbot {
+  flex-wrap: wrap !important;
+  gap: 12px 24px !important;
+  align-items: flex-start !important;
+}
+.cango-footer .f-meta-proof,
+footer .f-meta-proof {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #5a718d;
+  text-align: right;
+  max-width: min(100%, 440px);
+}
+footer .f-meta-proof {
+  color: var(--muted-dim, #5a718d);
+}
+.cango-footer .f-meta-proof a,
+footer .f-meta-proof a {
+  color: #7a91ab;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cango-footer .f-meta-proof a:hover,
+footer .f-meta-proof a:hover {
+  color: #f97316;
+}
+.cango-footer .f-meta-proof__tag,
+footer .f-meta-proof__tag {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: #94a3b8;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}

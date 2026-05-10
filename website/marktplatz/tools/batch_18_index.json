@@ -1,0 +1,31 @@
+{
+  "batch_id": 18,
+  "category": "LEGAL & FINANCE OPS",
+  "tools": [
+    {
+      "id": "iubenda",
+      "name": "iubenda",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/iubenda.html"
+    },
+    {
+      "id": "termly",
+      "name": "Termly",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/termly.html"
+    },
+    {
+      "id": "wise",
+      "name": "Wise (TransferWise)",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/wise.html"
+    },
+    {
+      "id": "revolut-business",
+      "name": "Revolut Business",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/revolut-business.html"
+    },
+    {
+      "id": "xero",
+      "name": "Xero",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/xero.html"
+    }
+  ]
+}

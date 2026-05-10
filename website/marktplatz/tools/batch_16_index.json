@@ -1,0 +1,31 @@
+{
+  "batch_id": 16,
+  "category": "NEXT-GEN VISUALS",
+  "tools": [
+    {
+      "id": "luma-dream-machine",
+      "name": "Luma Dream Machine",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/luma-dream-machine.html"
+    },
+    {
+      "id": "leonardo-ai",
+      "name": "Leonardo.ai",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/leonardo-ai.html"
+    },
+    {
+      "id": "clipdrop",
+      "name": "Clipdrop",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/clipdrop.html"
+    },
+    {
+      "id": "vectorizer-ai",
+      "name": "Vectorizer.ai",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/vectorizer-ai.html"
+    },
+    {
+      "id": "pika-labs",
+      "name": "Pika Labs",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/pika-labs.html"
+    }
+  ]
+}

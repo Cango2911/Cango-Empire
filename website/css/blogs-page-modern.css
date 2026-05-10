@@ -1,0 +1,458 @@
+/* Blog-Übersicht (blogs.html / blogs-3.html): Tools-Atmosphäre + Nischen-Kartenlogik */
+/* Corporate + Responsive (Web / Mobil / PWA-Viewport) — FIX-2026-04-08 */
+
+body.page-blogs {
+  /* Design-Tokens — gleiche Werte wie Inline-:root, für konsistente Overrides */
+  --blog-nav-h-desktop: 68px;
+  --blog-nav-h-mobile: 56px;
+  --blog-radius-hero: 18px;
+  --blog-radius-card: 16px;
+  --blog-touch-min: 44px;
+}
+
+/* ── Safe Area: Rand nicht unter Punch-Hole / Home-Indicator (WebView & Safari) ── */
+body.page-blogs .bc-bar,
+body.page-blogs .phero,
+body.page-blogs .filter-bar,
+body.page-blogs .blog-wrap,
+body.page-blogs .cta-band {
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+}
+
+@media (max-width: 960px) {
+  body.page-blogs .bc-bar,
+  body.page-blogs .phero,
+  body.page-blogs .filter-bar,
+  body.page-blogs .blog-wrap,
+  body.page-blogs .cta-band {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+}
+
+body.page-blogs::before {
+  background:
+    radial-gradient(ellipse 100% 70% at 50% -12%, rgba(249, 115, 22, 0.11) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(249, 115, 22, 0.045) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(30, 60, 120, 0.15) 0%, transparent 60%);
+}
+
+/* Hero: radiale Orange-Verläufe + feines Grid (an tools-detail .hero angelehnt) */
+body.page-blogs .phero {
+  background-color: #0d0d12;
+  background-image:
+    radial-gradient(ellipse 100% 80% at 50% -20%, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.06) 28%, transparent 58%),
+    radial-gradient(ellipse 70% 50% at 70% 10%, rgba(249, 115, 22, 0.09) 0%, transparent 45%),
+    radial-gradient(ellipse 50% 40% at 20% 20%, rgba(249, 115, 22, 0.05) 0%, transparent 40%),
+    linear-gradient(180deg, var(--navy-800) 0%, #0a0f18 100%);
+  border-bottom-color: rgba(249, 115, 22, 0.14);
+}
+
+body.page-blogs .phero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.034) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.034) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, #000 0%, #000 45%, transparent 72%);
+  mask-image: radial-gradient(ellipse 100% 80% at 50% 0%, #000 0%, #000 45%, transparent 72%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+body.page-blogs .phero .orb {
+  z-index: 0;
+}
+
+/* HQ-ähnlicher, aber weicherer Rahmen um den Hero-Inhalt */
+body.page-blogs .phero-inner {
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: var(--blog-radius-hero);
+  border: 1px solid rgba(249, 115, 22, 0.28);
+  background: linear-gradient(
+    155deg,
+    rgba(8, 20, 39, 0.58) 0%,
+    rgba(13, 32, 58, 0.42) 50%,
+    rgba(9, 23, 42, 0.48) 100%
+  );
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.07),
+    0 12px 40px rgba(0, 0, 0, 0.35),
+    0 0 48px rgba(249, 115, 22, 0.1);
+}
+
+body.page-blogs .phero-inner::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(255, 178, 76, 0.32);
+  border-radius: 14px;
+  pointer-events: none;
+  z-index: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+body.page-blogs .phero-inner > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Corporate-Headlines: durchgängig Orange-Gradient (H1, Karten, Newsletter, CTA-Band) */
+body.page-blogs h1.ptitle,
+body.page-blogs h1.ptitle .ac,
+body.page-blogs h1.ptitle .dm {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 42%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+body.page-blogs h1.ptitle .dm {
+  font-weight: 500;
+}
+
+body.page-blogs .af-title,
+body.page-blogs .ac-title {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 45%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+body.page-blogs .nl-title {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+body.page-blogs .cta-band .cta-left h2,
+body.page-blogs .cta-band .cta-left h2 span {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 45%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+body.page-blogs .blog-sidebar-cta > div:nth-of-type(2) {
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 45%, #ea580c 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Passagen / vertikaler Rhythmus — enger (Hero + Listing) */
+body.page-blogs .phero {
+  padding-top: 52px;
+  padding-bottom: 44px;
+}
+
+body.page-blogs .phero-inner {
+  gap: 40px;
+}
+
+body.page-blogs .hero-chip {
+  margin-bottom: 12px;
+}
+
+body.page-blogs h1.ptitle {
+  margin-bottom: 8px;
+}
+
+body.page-blogs .hero-lead {
+  margin-bottom: 10px;
+  line-height: 1.52;
+}
+
+body.page-blogs .hero-lead + .hero-lead {
+  margin-top: 0 !important;
+  margin-bottom: 14px !important;
+}
+
+body.page-blogs .hero-stat-panel .hsp-label {
+  margin-bottom: 10px;
+}
+
+body.page-blogs .hero-stat-panel .hsp-grid {
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+body.page-blogs .hero-stat-panel .hsp-divider {
+  margin-bottom: 10px;
+}
+
+body.page-blogs .hero-stat-panel .hsp-cats {
+  gap: 5px;
+}
+
+body.page-blogs .blog-wrap {
+  padding-top: 28px;
+  padding-bottom: 56px;
+}
+
+body.page-blogs .blog-inner {
+  gap: 22px;
+}
+
+body.page-blogs .blog-grid {
+  gap: 12px;
+}
+
+body.page-blogs .af-body {
+  padding: 22px 26px;
+}
+
+body.page-blogs .af-excerpt {
+  margin-bottom: 12px;
+  line-height: 1.58;
+}
+
+body.page-blogs .ac-excerpt {
+  margin-bottom: 10px;
+  line-height: 1.52;
+}
+
+body.page-blogs .ac-body {
+  padding: 16px 18px;
+}
+
+body.page-blogs .cta-banner-mid {
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
+  padding: 1.75rem 1.25rem;
+}
+
+body.page-blogs .cta-banner-mid h3 {
+  margin-bottom: 0.65rem;
+}
+
+body.page-blogs .cta-banner-mid p {
+  margin-bottom: 1.1rem;
+  line-height: 1.55;
+}
+
+body.page-blogs .cta-band {
+  padding: 48px 24px;
+}
+
+body.page-blogs .cta-inner {
+  gap: 24px;
+}
+
+/* Stat-Panel rechts im Hero */
+body.page-blogs .hero-stat-panel {
+  border: 1px solid rgba(249, 115, 22, 0.22);
+  background: linear-gradient(145deg, rgba(17, 28, 48, 0.92) 0%, var(--navy-700) 100%);
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.06),
+    0 16px 40px rgba(0, 0, 0, 0.32);
+}
+
+/* Filter: glasiges Innen-Panel — Sticky top = Nav-Höhe (Desktop/Mobil getrennt) */
+body.page-blogs .filter-bar {
+  top: var(--blog-nav-h-desktop);
+  background: rgba(8, 13, 26, 0.82);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.1);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+}
+
+body.page-blogs .filter-inner {
+  padding: 6px 10px;
+  border-radius: 14px;
+  background: rgba(17, 28, 48, 0.42);
+  border: 1px solid rgba(78, 99, 130, 0.22);
+  gap: 8px;
+  align-items: center;
+}
+
+/* Mobil-Navigation (CANGO NAV ≤1080px): min-height 56px — Filter darf nicht „schweben“ */
+@media (max-width: 1080px) {
+  body.page-blogs .filter-bar {
+    top: var(--blog-nav-h-mobile);
+  }
+}
+
+/* Tablet: Filter-Controls umbrechen, Abstand */
+@media (max-width: 900px) {
+  body.page-blogs .filter-inner {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  body.page-blogs .cats {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* Touch: Mindesthöhe Suche + Kategorie-Chips (WCAG 2.5.5 / App-Feeling) */
+@media (max-width: 720px) {
+  body.page-blogs .search-wrap input {
+    min-height: var(--blog-touch-min);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 16px; /* verhindert iOS-Zoom bei Focus */
+  }
+
+  body.page-blogs .cat {
+    min-height: var(--blog-touch-min);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  body.page-blogs .count-lbl {
+    min-height: var(--blog-touch-min);
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Primary-CTA: Abstand liefert primary-cta-mobile-bar.css am body.has-primary-cta-bar — kein extra .blog-wrap */
+
+/* Kleines Phone / schmales WebView: Hero-Rahmen dichter, weniger Doppelrand */
+@media (max-width: 520px) {
+  body.page-blogs .phero-inner {
+    padding: clamp(14px, 4vw, 22px);
+    border-radius: 14px;
+  }
+
+  body.page-blogs .phero-inner::before {
+    inset: 6px;
+    border-radius: 10px;
+  }
+
+  body.page-blogs .hero-stat-panel {
+    padding: 22px 18px;
+  }
+}
+
+/* Landscape klein: Hero nicht zu hoch */
+@media (max-height: 520px) and (orientation: landscape) {
+  body.page-blogs .phero {
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  body.page-blogs .phero-inner {
+    padding: 16px 18px;
+  }
+}
+
+/* Featured: wie .nc.featured auf nischen.html */
+body.page-blogs .article-featured {
+  border-radius: var(--blog-radius-hero);
+  border: 1px solid rgba(249, 115, 22, 0.28) !important;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, var(--navy-700) 60%) !important;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.28) !important;
+}
+
+body.page-blogs .article-featured:hover {
+  border-color: var(--orange) !important;
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.34) !important;
+}
+
+/* Karten: 1px + Hover-Gradient wie .nc */
+body.page-blogs .article-card {
+  border-radius: var(--blog-radius-card);
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+body.page-blogs .article-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.06) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+body.page-blogs .article-card:hover::before {
+  opacity: 1;
+}
+
+body.page-blogs .article-card:hover {
+  border-color: rgba(249, 115, 22, 0.4) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.32) !important;
+}
+
+body.page-blogs .article-card .ac-thumb,
+body.page-blogs .article-card .ac-body {
+  position: relative;
+  z-index: 2;
+}
+
+/* Touch-Geräte: kein starker Hover-Lift (nur leichte Border-Änderung) */
+@media (hover: none) and (pointer: coarse) {
+  body.page-blogs .article-card:hover {
+    transform: translateY(-2px);
+  }
+
+  body.page-blogs .article-featured:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* Barrierefreiheit: Bewegung reduzieren */
+@media (prefers-reduced-motion: reduce) {
+  body.page-blogs .article-card,
+  body.page-blogs .article-featured,
+  body.page-blogs .article-card::before {
+    transition: none;
+  }
+
+  body.page-blogs .article-card:hover,
+  body.page-blogs .article-featured:hover {
+    transform: none;
+  }
+}
+
+/* blogs-3: Sidebar-Karten harmonisieren */
+body.page-blogs .sb-card {
+  border-radius: var(--blog-radius-card);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+body.page-blogs .sb-card:hover {
+  border-color: rgba(249, 115, 22, 0.32);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+}
+
+/* blog-aside (blogs.html): Newsletter — gleiche Rundung wie Karten */
+body.page-blogs .blog-aside .newsletter-card {
+  border-radius: var(--blog-radius-card);
+}
+
+@media (max-width: 720px) {
+  body.page-blogs .blog-aside .nl-input,
+  body.page-blogs .blog-aside .nl-btn {
+    min-height: var(--blog-touch-min);
+  }
+
+  body.page-blogs .blog-aside .nl-input {
+    font-size: 16px;
+  }
+}

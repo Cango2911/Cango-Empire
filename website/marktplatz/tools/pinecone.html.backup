@@ -199,7 +199,7 @@
     <div class="container nav__inner">
       <a href="../../index.html" class="nav__brand">
         <span class="nav__brand-icon">C</span>
-        <span>CanGo Empire</span>
+        <span>CanGo App Empire</span>
       </a>
       
       <button class="nav__toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav__menu').classList.toggle('active')">
@@ -623,7 +623,7 @@
         <div>
           <div class="footer__brand">
             <span class="footer__brand-icon">C</span>
-            <span>CanGo Empire</span>
+            <span>CanGo App Empire</span>
           </div>
           <p class="footer__desc">
             Marketing-Automatisierung für den DACH-Markt. 
@@ -661,7 +661,7 @@
       </div>
       
       <div class="footer__bottom">
-        <div>© 2025 CanGo Empire. Alle Rechte vorbehalten.</div>
+        <div>© 2025 CanGo App Empire. Alle Rechte vorbehalten.</div>
         <div class="footer__tagline">Kopieren hilft dir nicht – du brauchst die Maschine.</div>
       </div>
     </div>

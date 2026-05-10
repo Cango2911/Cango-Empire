@@ -1,0 +1,54 @@
+{
+  "articles": [
+    {
+      "title": "CanGo baut die Website konsequent auf lokale Assets und absolute Pfade um.",
+      "publisher": "CanGo Operations",
+      "date": "2026-03-11T18:20:00Z",
+      "url": "marktplatz.html",
+      "snippet": "Das Frontend läuft jetzt durchgängig im V2-Standard: lokal, konsistent und inkognito-ready.",
+      "niche": "automationen",
+      "nicheName": "Automationen",
+      "relevanceScore": 98
+    },
+    {
+      "title": "Der Marktplatz ist jetzt über alle Kategorien und Tools hinweg technisch vereinheitlicht.",
+      "publisher": "CanGo Factory",
+      "date": "2026-03-11T17:45:00Z",
+      "url": "marktplatz.html",
+      "snippet": "Von Finanzen bis KI & Tech greifen jetzt dieselben Design-, Pfad- und Asset-Regeln.",
+      "niche": "marktplatz",
+      "nicheName": "Marktplatz",
+      "relevanceScore": 95
+    },
+    {
+      "title": "Hero-Feeds auf der Startseite wurden auf stabile Same-Origin-Datenquellen umgestellt.",
+      "publisher": "CanGo Infra",
+      "date": "2026-03-11T18:35:00Z",
+      "url": "index.html",
+      "snippet": "Die Startseite zieht ihre News nicht mehr aus verwaisten Fremd-Webhooks, sondern direkt aus deploybaren Live-Dateien.",
+      "niche": "infrastruktur",
+      "nicheName": "Infrastruktur",
+      "relevanceScore": 97
+    },
+    {
+      "title": "Kontakt, Checkout und Support-Eskalationen sind jetzt sauber in die operative Website-Strecke integriert.",
+      "publisher": "CanGo Ops",
+      "date": "2026-03-11T16:10:00Z",
+      "url": "kontakt.html",
+      "snippet": "Leads, Orders und Support-Pfade laufen über die neue Produktionslogik statt über lose Platzhalter.",
+      "niche": "sales",
+      "nicheName": "Sales & Support",
+      "relevanceScore": 92
+    },
+    {
+      "title": "Die Wartungs- und Sonderseiten folgen jetzt demselben Live-Standard wie Startseite und Marktplatz.",
+      "publisher": "CanGo Release Desk",
+      "date": "2026-03-11T18:00:00Z",
+      "url": "maintenance-index.html",
+      "snippet": "Selbst Fallback- und Maintenance-Seiten nutzen jetzt lokale Fonts, absolute Pfade und konsistente UI-Bausteine.",
+      "niche": "betrieb",
+      "nicheName": "Betrieb",
+      "relevanceScore": 90
+    }
+  ]
+}

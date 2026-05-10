@@ -1,0 +1,31 @@
+{
+  "batch_id": 19,
+  "category": "AI AGENT BUILDERS",
+  "tools": [
+    {
+      "id": "flowise",
+      "name": "Flowise",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/flowise.html"
+    },
+    {
+      "id": "stack-ai",
+      "name": "Stack AI",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/stack-ai.html"
+    },
+    {
+      "id": "retool",
+      "name": "Retool",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/retool.html"
+    },
+    {
+      "id": "glide",
+      "name": "Glide",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/glide.html"
+    },
+    {
+      "id": "adalo",
+      "name": "Adalo",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/adalo.html"
+    }
+  ]
+}

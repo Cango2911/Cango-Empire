@@ -1,0 +1,31 @@
+{
+  "batch_id": 10,
+  "category": "SALES INTELLIGENCE & CRM",
+  "tools": [
+    {
+      "id": "hubspot",
+      "name": "HubSpot",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/hubspot.html"
+    },
+    {
+      "id": "pipedrive",
+      "name": "Pipedrive",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/pipedrive.html"
+    },
+    {
+      "id": "apollo-io",
+      "name": "Apollo.io",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/apollo-io.html"
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/clay.html"
+    },
+    {
+      "id": "instantly",
+      "name": "Instantly.ai",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/instantly.html"
+    }
+  ]
+}

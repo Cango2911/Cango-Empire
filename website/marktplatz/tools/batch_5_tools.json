@@ -1,0 +1,193 @@
+{
+  "batch_id": 5,
+  "total_batches": 22,
+  "category": "DEVELOPMENT & OPERATIONS",
+  "tools": [
+    {
+      "id": "cursor-editor",
+      "name": "Cursor AI Editor",
+      "tagline": "Der Code-Editor der Zukunft. Programmiere 10x schneller.",
+      "badge": "DEV FAVORITE",
+      "rating": { "tacos": 5, "count": 2500 },
+      "images": ["/images/tools/cursor-ui.webp"],
+      "quick_specs": {
+        "alternative_to": ["VS Code", "JetBrains"],
+        "integrations": ["GitHub", "OpenAI", "Claude"],
+        "best_for": ["Entwickler", "Automation Engineers", "Gründer"]
+      },
+      "pitch_html": "<h3>Programmierst du noch oder generierst du schon?</h3><p><strong>Cursor</strong> ist ein Fork von VS Code mit integrierter KI. Du kannst mit deiner gesamten Codebasis chatten. 'Finde den Fehler in der n8n-Integration' oder 'Schreibe mir ein Python-Script für MoviePy'.</p><h4>CanGo Tech Stack:</h4><p>Unsere gesamte Infrastruktur wurde mit Cursor gebaut. Es ermöglicht es einem einzigen Entwickler, die Arbeit eines ganzen Dev-Teams zu leisten.</p>",
+      "deal_terms": [
+        "Natives GPT-4 & Claude 3.5",
+        "Codebase Indexing (RAG)",
+        "Privacy Mode (Kein Training)",
+        "VS Code Extension kompatibel"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Pro Subscription",
+          "price": 20,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Unbegrenzte GPT-4/Claude Anfragen",
+            "Fast Context Window",
+            "Copilot++ (Vorausschauendes Coden)",
+            "Priority Support"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "tidycal",
+      "name": "TidyCal",
+      "tagline": "Der Calendly-Killer. Einmal zahlen, für immer buchen.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 5, "count": 1800 },
+      "images": ["/images/tools/tidycal-booking.webp"],
+      "quick_specs": {
+        "alternative_to": ["Calendly", "Acuity"],
+        "integrations": ["Google Calendar", "Zoom", "Stripe"],
+        "best_for": ["Freelancer", "Agenturen", "Consultants"]
+      },
+      "pitch_html": "<h3>Warum 15€ im Monat für einen Kalender zahlen?</h3><p><strong>TidyCal</strong> bietet fast alle Funktionen von Calendly, aber für eine einmalige Zahlung von 29€. Automatische Zeitzonen, Zoom-Integration, Zahlungen via Stripe – alles drin.</p><p>Wir nutzen es für alle Sales-Calls unserer Franchise-Partner. Einfach, sauber und extrem kosteneffizient.</p>",
+      "deal_terms": [
+        "Lebenslanger Zugriff",
+        "Unbegrenzte Booking-Types",
+        "Zoom & Google Meet Integration",
+        "Kein Branding (in Tier 1)"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Lifetime Plan",
+          "price": 29,
+          "original_price": 300,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "Alle Kalender-Integrationen",
+            "Bezahlte Bookings",
+            "Automatisierte E-Mails",
+            "Embed auf Webseite"
+          ],
+          "cta_link": "DEIN_TIDYCAL_LINK"
+        }
+      ]
+    },
+    {
+      "id": "nocodebackend",
+      "name": "NoCodeBackend",
+      "tagline": "Erstelle APIs und Datenbanken in Sekunden. Ohne Server.",
+      "badge": "LIFETIME DEAL",
+      "rating": { "tacos": 4, "count": 450 },
+      "images": ["/images/tools/nocodebackend-ui.webp"],
+      "quick_specs": {
+        "alternative_to": ["Xano", "Supabase", "Bubble"],
+        "integrations": ["REST API", "n8n", "Frontend Apps"],
+        "best_for": ["No-Code Entwickler", "MVPs", "Daten-Logistik"]
+      },
+      "pitch_html": "<h3>Dein Backend steht in 5 Minuten.</h3><p>Für viele Automatisierungen brauchst du einen Ort, um Daten zu speichern, aber eine SQL-Datenbank ist Overkill. <strong>NoCodeBackend</strong> gibt dir fertige API-Endpunkte, Authentifizierung und Datenspeicherung per Klick.</p><p>Ideal als Zwischenspeicher für unsere n8n-Workflows, um Status-Updates von BrowserAct zu loggen.</p>",
+      "deal_terms": [
+        "Visueller Schema Builder",
+        "API Dokumentation auto-generiert",
+        "Serverless Hosting inklusive",
+        "Daten-Export"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "License Tier 2",
+          "price": 59,
+          "original_price": 400,
+          "currency": "$",
+          "billing": "lifetime",
+          "features": [
+            "Unbegrenzte Endpunkte",
+            "5 GB Datenspeicher",
+            "20.000 API Calls / Monat",
+            "Custom Domains"
+          ],
+          "cta_link": "DEIN_NOCODEBACKEND_LINK"
+        }
+      ]
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot",
+      "tagline": "Dein KI Pair-Programmer. Code-Vervollständigung in Echtzeit.",
+      "badge": "STANDARD",
+      "rating": { "tacos": 5, "count": 12000 },
+      "images": ["/images/tools/copilot-action.webp"],
+      "quick_specs": {
+        "alternative_to": ["Tabnine", "Codeium"],
+        "integrations": ["VS Code", "JetBrains", "Visual Studio"],
+        "best_for": ["Software Teams", "Enterprise Devs"]
+      },
+      "pitch_html": "<h3>Lass die KI tippen.</h3><p><strong>GitHub Copilot</strong> liest deine Gedanken. Du schreibst einen Kommentar `// Funktion um DepositPhotos API aufzurufen`, und Copilot schreibt den restlichen Code. Es beschleunigt die Entwicklung von Standard-Funktionen massiv.</p><p>Während Cursor für komplexe Refactorings gut ist, ist Copilot der König der Geschwindigkeit beim Tippen.</p>",
+      "deal_terms": [
+        "Basiert auf OpenAI Codex",
+        "Lernt aus deinem Projekt",
+        "Unterstützt alle großen Sprachen (Python, JS, Go)",
+        "Chat-Funktion in der IDE"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Individual",
+          "price": 10,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Unbegrenzte Completions",
+            "Chat im Editor",
+            "CLI Unterstützung",
+            "Public Code Filter"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "tagline": "Frontend Cloud. Deploye Webseiten in Sekunden.",
+      "badge": "HOSTING",
+      "rating": { "tacos": 5, "count": 8000 },
+      "images": ["/images/tools/vercel-deploy.webp"],
+      "quick_specs": {
+        "alternative_to": ["Netlify", "Cloudflare Pages"],
+        "integrations": ["GitHub", "Next.js", "React"],
+        "best_for": ["Frontend Devs", "E-Commerce", "Agenturen"]
+      },
+      "pitch_html": "<h3>Vom Localhost zur Welt in einem Git-Push.</h3><p><strong>Vercel</strong> ist die beste Plattform, um moderne Webseiten (wie diese hier) zu hosten. Extrem schnell (Edge Network), sicher und kostenlos für Hobby-Projekte.</p><p>Unsere Landing Pages laufen auf Vercel, weil die Ladezeit (Time to First Byte) unschlagbar ist – wichtig für SEO und Google Ads Quality Score.</p>",
+      "deal_terms": [
+        "Globales Edge Network",
+        "DDoS Protection inklusive",
+        "Automatische SSL Zertifikate",
+        "Instant Rollbacks"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Pro",
+          "price": 20,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "1 TB Bandwidth",
+            "Unbegrenzte Projekte",
+            "Team Kollaboration",
+            "Analytics inklusive"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    }
+  ]
+}
+

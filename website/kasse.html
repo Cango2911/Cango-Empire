@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- FIX-2026-04-07: Phase 0.3 — kanonische URL (Nav-Kasse) -->
+<link rel="canonical" href="https://automation-cango-app-empire.com/kasse.html">
+<title>Kasse – CanGo App Empire</title>
+<link href="/fonts/fonts.css?v=2" rel="stylesheet"/>
+<style>
+:root{
+  --n9:#080d1a;--n8:#0d1424;--n7:#111c30;--n6:#162238;--n5:#1d2d47;
+  --bd:rgba(78,99,130,.22);--bdl:rgba(78,99,130,.10);
+  --or:#F97316;--ors:rgba(249,115,22,.09);
+  --wh:#fff;--ow:#e8eef5;--mu:#7a91ab;--md:#4a607a;
+  --gr:#22c55e;--rd:#ef4444;--bl:#3b82f6;
+  --r:16px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--n9);color:var(--ow);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 55% at 5% 5%,rgba(249,115,22,.05),transparent 55%),radial-gradient(ellipse 55% 50% at 95% 95%,rgba(30,60,120,.16),transparent 55%);pointer-events:none;z-index:0}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(8,13,26,.9);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);height:60px;display:flex;align-items:center;justify-content:center;padding:0 20px}
+.nav-inner{max-width:1340px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:17px;font-weight:800;display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit}
+.logo-c{width:30px;height:30px;background:var(--or);color:#000;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px}
+.logo-text{color:var(--wh)}.logo-text span{color:var(--mu);font-weight:400}
+.nav-sec{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gr);display:flex;align-items:center;gap:5px}
+.nav-back{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mu);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--or)}
+
+.steps{background:var(--n8);border-bottom:1px solid var(--bd);padding:12px 20px;display:flex;justify-content:center}
+.steps-inner{max-width:1340px;width:100%;display:flex;align-items:center}
+.step{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600}
+.sn{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;flex-shrink:0}
+.s-done .sn{background:var(--gr);color:#000}
+.s-active .sn{background:var(--or);color:#000}
+.s-off .sn{background:var(--n6);color:var(--md);border:1px solid var(--bd)}
+.s-done .sl{color:var(--gr)}.s-active .sl{color:var(--ow)}.s-off .sl{color:var(--md)}
+.s-line{flex:1;height:1px;background:var(--bdl);margin:0 10px}
+
+.page{padding:20px 20px 64px;position:relative;z-index:1;max-width:1340px;margin:0 auto}
+.bento{display:grid;gap:12px;grid-template-columns:repeat(12,1fr);grid-template-rows:auto}
+.tile{background:var(--n8);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;position:relative;transition:border-color .25s}
+.tile:hover{border-color:rgba(78,99,130,.38)}
+.c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}
+.c7{grid-column:span 7}.c8{grid-column:span 8}.c9{grid-column:span 9}.c12{grid-column:span 12}
+.th{padding:16px 20px 14px;border-bottom:1px solid var(--bdl);display:flex;align-items:center;gap:10px}
+.th-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.th-icon.or{background:var(--ors);border:1px solid rgba(249,115,22,.2)}
+.th-icon.bl{background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2)}
+.th-icon.gr{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2)}
+.th-icon.pu{background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2)}
+.th-title{font-size:14px;font-weight:700;color:var(--wh)}
+.th-sub{font-size:11px;color:var(--mu);margin-top:1px}
+.th-extra{margin-left:auto;font-size:11px}
+.th-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px}
+.b-or{background:rgba(249,115,22,.15);color:var(--or);border:1px solid rgba(249,115,22,.25)}
+.b-gr{background:rgba(34,197,94,.12);color:var(--gr);border:1px solid rgba(34,197,94,.2)}
+.b-rd{background:rgba(239,68,68,.12);color:var(--rd);border:1px solid rgba(239,68,68,.2)}
+.tb{padding:18px 20px}.tb-sm{padding:14px 18px}
+
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.fg:last-child{margin-bottom:0}
+.fl{font-size:12.5px;font-weight:600;color:var(--ow);display:flex;align-items:center;gap:5px}
+.fl .req{color:var(--rd);font-size:10px}
+.iw{position:relative}
+.iw .ii{position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:13px;pointer-events:none}
+.fi{width:100%;background:var(--n7);border:1px solid var(--bd);border-radius:10px;padding:10px 13px;font-family:'Instrument Sans',sans-serif;font-size:13.5px;color:var(--ow);outline:none;transition:all .2s}
+.fi::placeholder{color:var(--md)}
+.fi:focus{border-color:var(--or);box-shadow:0 0 0 3px rgba(249,115,22,.06)}
+.fi.valid{border-color:var(--gr)}
+.fi.err{border-color:var(--rd);box-shadow:0 0 0 3px rgba(239,68,68,.06)}
+.iw .fi{padding-left:34px}
+.iw .ic{position:absolute;right:11px;top:50%;transform:translateY(-50%);font-size:12px;pointer-events:none}
+.iw .itog{position:absolute;right:11px;top:50%;transform:translateY(-50%);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--md);cursor:pointer;-webkit-user-select:none;user-select:none;transition:color .2s}
+.iw .itog:hover{color:var(--or)}
+.fe{font-size:11px;color:var(--rd);display:none;margin-top:2px}
+.fh{font-size:11px;color:var(--md);line-height:1.55;margin-top:2px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath fill='%237a91ab' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer}
+
+.email-notice{background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:9px;padding:10px 13px;font-size:11.5px;color:var(--mu);line-height:1.65;margin-top:8px}
+.email-notice strong{color:var(--ow)}
+
+.ci{background:var(--n7);border:1px solid var(--bdl);border-radius:11px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:11px;transition:border-color .2s}
+.ci:hover{border-color:rgba(249,115,22,.2)}
+.ci-ic{width:38px;height:38px;background:var(--ors);border:1px solid rgba(249,115,22,.2);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.ci-in{flex:1;min-width:0}
+.ci-cat{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--or);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.ci-nm{font-size:12.5px;font-weight:700;color:var(--wh);line-height:1.3;margin-bottom:5px}
+.ci-n8n{font-family:'JetBrains Mono',monospace;font-size:10px;margin-bottom:6px}.ci-n8n a{color:var(--or);text-decoration:none}.ci-n8n a:hover{text-decoration:underline}
+.ci-tgs{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:7px}
+.ci-tg{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--mu);background:var(--n6);border:1px solid var(--bdl);padding:1px 5px;border-radius:3px}
+.ci-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.qty{display:flex;align-items:center;background:var(--n6);border:1px solid var(--bdl);border-radius:7px;overflow:hidden}
+.qb{width:25px;height:25px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--mu);font-weight:700;border:none;background:transparent;transition:all .2s;font-family:'Instrument Sans',sans-serif}
+.qb:hover{background:var(--n5);color:var(--or)}
+.qv{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ow);min-width:22px;text-align:center}
+.ci-pr{font-size:16px;font-weight:800;color:var(--or);letter-spacing:-.01em}
+.ci-prb{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--md);text-align:right}
+.ci-rm{font-size:17px;color:var(--md);cursor:pointer;border:none;background:none;transition:color .2s;padding:2px;flex-shrink:0}
+.ci-rm:hover{color:var(--rd)}
+
+.pm-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.pm{background:var(--n7);border:2px solid var(--bdl);border-radius:10px;padding:10px 8px;cursor:pointer;transition:all .2s;text-align:center;flex:1;min-width:70px;position:relative}
+.pm:hover{border-color:rgba(249,115,22,.3)}
+.pm.sel{border-color:var(--or);background:rgba(249,115,22,.05)}
+.pm.sel::after{content:'✓';position:absolute;top:4px;right:5px;font-size:9px;color:var(--or);font-family:'JetBrains Mono',monospace;font-weight:700}
+.pm-ic{font-size:18px;display:block;margin-bottom:4px}
+.pm-lb{font-size:10px;font-weight:600;color:var(--ow);font-family:'JetBrains Mono',monospace}
+.pm-sb{font-size:9px;color:var(--md);margin-top:1px}
+.ppanel{display:none;animation:fin .2s ease}
+.ppanel.on{display:block}
+@keyframes fin{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.card-row{display:grid;grid-template-columns:1fr 78px 72px;gap:8px}
+.iban-note{background:var(--n7);border:1px solid var(--bdl);border-radius:9px;padding:11px 13px;font-size:12px;color:var(--mu);line-height:1.65;margin-top:8px}
+.iban-note strong{color:var(--ow);display:block;margin-bottom:3px}
+.crypto-coins{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:10px}
+.cc{background:var(--n7);border:1px solid var(--bdl);border-radius:8px;padding:8px 4px;text-align:center;cursor:pointer;transition:all .2s}
+.cc:hover{border-color:rgba(249,115,22,.3)}.cc.sel{border-color:var(--or);background:var(--ors)}
+.cc span:first-child{font-size:16px;display:block;margin-bottom:2px}
+.cc span:last-child{font-size:9px;color:var(--mu);font-family:'JetBrains Mono',monospace}
+.crypto-addr{background:var(--n7);border:1px solid var(--bdl);border-radius:9px;padding:11px 13px;display:none}
+.crypto-addr.on{display:block}
+.addr-lb{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--or);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.addr-v{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ow);word-break:break-all;background:var(--n6);padding:8px 10px;border-radius:6px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.copy{font-size:14px;cursor:pointer;opacity:.7;transition:opacity .2s;flex-shrink:0}
+.copy:hover{opacity:1}
+.klarna-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}
+.ko{background:var(--n7);border:1px solid var(--bdl);border-radius:9px;padding:10px;text-align:center;cursor:pointer;transition:all .2s}
+.ko:hover{border-color:var(--or)}.ko.sel{border-color:var(--or);background:var(--ors)}
+.ko span:first-child{font-size:18px;display:block;margin-bottom:3px}
+.ko span:last-child{font-size:10px;font-weight:600;color:var(--ow);display:block}
+.ko small{font-size:9px;color:var(--md)}
+.paypal-box,.stripe-box{background:rgba(59,130,246,.05);border:1px solid rgba(59,130,246,.15);border-radius:10px;padding:14px;text-align:center;font-size:13px;color:var(--mu);line-height:1.65}
+.paypal-box strong,.stripe-box strong{color:var(--ow);display:block;margin-bottom:4px;font-size:15px}
+
+.up{background:var(--n7);border:1px solid rgba(249,115,22,.15);border-radius:10px;padding:11px 13px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:all .25s;margin-bottom:7px}
+.up:hover{border-color:var(--or);background:rgba(249,115,22,.04)}
+.up.added{border-color:var(--gr);background:rgba(34,197,94,.03)}
+.up-info{flex:1}
+.up-title{font-size:13px;font-weight:700;color:var(--wh);margin-bottom:2px}
+.up-desc{font-size:11px;color:var(--mu);line-height:1.5}
+.up-pr{font-size:15px;font-weight:800;color:var(--or);white-space:nowrap}
+.up-add{font-size:17px;color:var(--md);transition:color .2s;flex-shrink:0}
+.up.added .up-add{color:var(--gr)}
+
+.coupon-row{display:flex;gap:7px}
+.coupon-i{flex:1;background:var(--n7);border:1px solid var(--bdl);border-radius:10px;padding:9px 12px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ow);outline:none;transition:border-color .2s}
+.coupon-i::placeholder{color:var(--md)}
+.coupon-i:focus{border-color:var(--or)}
+.coupon-btn{background:var(--n6);border:1px solid var(--bdl);color:var(--ow);font-family:'Instrument Sans',sans-serif;font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:10px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.coupon-btn:hover{border-color:var(--or);color:var(--or)}
+.coupon-ok{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gr);display:none;align-items:center;gap:4px;margin-top:5px}
+
+.lck{display:flex;align-items:flex-start;gap:8px;cursor:pointer;margin-bottom:9px}
+.lck:last-child{margin-bottom:0}
+.lck input[type=checkbox]{width:14px;height:14px;accent-color:var(--or);margin-top:3px;cursor:pointer;flex-shrink:0}
+.lt{font-size:12px;color:var(--mu);line-height:1.65}
+.lt a{color:var(--or);text-decoration:none}
+.lt a:hover{text-decoration:underline}
+.lt strong{color:var(--ow)}
+.legal-warn{background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.18);border-radius:8px;padding:10px 12px;font-size:11.5px;color:var(--mu);line-height:1.6;margin-top:12px}
+.legal-warn strong{color:var(--ow)}
+
+.sum-tile{background:linear-gradient(155deg,rgba(249,115,22,.06) 0%,var(--n8) 55%);border:1px solid rgba(249,115,22,.2)!important}
+.sum-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
+.sum-row .sl{color:var(--mu)}
+.sum-row .sv{color:var(--ow);font-weight:600}
+.sum-divider{height:1px;background:var(--bdl);margin:10px 0}
+.sum-total{display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px}
+.sum-total-label{font-size:15px;font-weight:700;color:var(--ow)}
+.sum-total-val{font-size:28px;font-weight:800;color:var(--or);letter-spacing:-.03em;line-height:1}
+.sum-tax{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--md);text-align:right;margin-top:2px}
+.sum-discount{color:var(--gr)!important}
+
+.cta-btn{width:100%;background:var(--or);color:#000;font-family:'Instrument Sans',sans-serif;font-size:16px;font-weight:800;padding:15px;border:none;border-radius:12px;cursor:pointer;transition:all .25s;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px}
+.cta-btn:hover:not(:disabled){background:#fb923c;box-shadow:0 10px 30px rgba(249,115,22,.35);transform:translateY(-1px)}
+.cta-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.btn-sp{width:15px;height:15px;border:2px solid rgba(0,0,0,.2);border-top-color:#000;border-radius:50%;animation:spin .65s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.trust{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.tb2{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--md);display:flex;align-items:center;gap:4px}
+.sec-row{border-top:1px solid var(--bdl);padding:11px 18px;display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+.sb2{font-size:10.5px;color:var(--md);display:flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace}
+.b2b-tog{display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;color:var(--mu);font-family:'JetBrains Mono',monospace;margin-left:auto}
+.b2b-tog input{accent-color:var(--or);cursor:pointer}
+.help-tile{text-align:center}
+.help-tile .big-icon{font-size:32px;display:block;margin-bottom:10px}
+
+.confirm-screen{display:none;position:fixed;inset:0;background:rgba(8,13,26,.96);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+.confirm-screen.show{display:flex}
+.cc-card{background:var(--n8);border:1px solid rgba(34,197,94,.3);border-radius:20px;padding:44px 36px;max-width:500px;width:100%;text-align:center;animation:popIn .4s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+.cc-icon{font-size:64px;display:block;margin-bottom:20px;animation:fl 3s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.cc-title{font-size:26px;font-weight:800;color:var(--wh);letter-spacing:-.02em;margin-bottom:8px}
+.cc-id{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--gr);background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);padding:7px 14px;border-radius:7px;display:inline-block;margin-bottom:14px}
+.cc-desc{font-size:14px;color:var(--mu);line-height:1.8;margin-bottom:24px;max-width:380px}
+.cc-desc strong{color:var(--ow)}
+.cc-steps{display:flex;flex-direction:column;gap:8px;margin-bottom:28px;text-align:left;background:var(--n7);border-radius:11px;padding:18px;border:1px solid var(--bdl)}
+.cc-s{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--mu)}
+.cc-s span:first-child{color:var(--gr);flex-shrink:0;font-size:14px}
+.cc-btns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.cc-bp{background:var(--or);color:#000;font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:700;padding:11px 22px;border:none;border-radius:9px;cursor:pointer;transition:all .2s;text-decoration:none}
+.cc-bp:hover{background:#fb923c}
+.cc-bs{background:transparent;color:var(--ow);font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:600;padding:11px 22px;border:1px solid var(--bdl);border-radius:9px;cursor:pointer;transition:all .2s;text-decoration:none}
+.cc-bs:hover{border-color:var(--or);color:var(--or)}
+
+#toast{position:fixed;bottom:20px;right:20px;z-index:300;background:var(--n7);border:1px solid rgba(34,197,94,.3);border-radius:11px;padding:11px 16px;font-size:13px;color:var(--ow);display:flex;align-items:center;gap:9px;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;max-width:280px}
+
+footer{background:var(--n9);border-top:1px solid var(--bd);padding:44px 20px 24px;position:relative;z-index:1}
+.ftop{max-width:1340px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:36px}
+.fbrand p{font-size:13px;color:var(--mu);line-height:1.75;margin-top:10px;max-width:240px}
+.fcol h5{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:14px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:8px}
+.fcol ul li a{font-size:13px;color:var(--mu);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--wh)}
+.fbot{max-width:1340px;margin:0 auto;border-top:1px solid var(--bdl);padding-top:20px;display:flex;justify-content:space-between;align-items:center}
+.fcopy{font-size:12px;color:var(--md)}
+.fcopy em{display:block;font-style:italic;font-size:11px;margin-top:1px;opacity:.6}
+
+.rv{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+#cartList::-webkit-scrollbar{width:4px}
+#cartList::-webkit-scrollbar-track{background:rgba(17,28,48,.6);border-radius:4px}
+#cartList::-webkit-scrollbar-thumb{background:rgba(249,115,22,.35);border-radius:4px}
+#cartList::-webkit-scrollbar-thumb:hover{background:rgba(249,115,22,.6)}
+.cart-scroll-wrap{position:relative}
+.cart-scroll-wrap::after{content:'';position:absolute;bottom:0;left:0;right:6px;height:52px;background:linear-gradient(transparent,var(--n8));pointer-events:none;border-radius:0 0 8px 8px;opacity:0;transition:opacity .3s}
+.cart-scroll-wrap.overflow::after{opacity:1}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--gr);animation:blink 1.6s ease-in-out infinite;display:inline-block}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+@media(max-width:1100px){
+  .c3{grid-column:span 6}.c4{grid-column:span 6}.c5{grid-column:span 12}.c6{grid-column:span 12}
+  .c7{grid-column:span 12}.c8{grid-column:span 12}.c9{grid-column:span 12}
+}
+@media(max-width:720px){
+  nav{padding:0 14px}
+  .page{padding:14px 14px 48px}
+  .bento{gap:10px}
+  .c3,.c4,.c5,.c6,.c7,.c8,.c9,.c12{grid-column:span 12}
+  .crypto-coins{grid-template-columns:repeat(3,1fr)}
+  .pm-row{gap:5px}.pm{min-width:60px}
+  .card-row{grid-template-columns:1fr 70px 65px}
+  .ftop{grid-template-columns:1fr 1fr}
+  .fbot{flex-direction:column;gap:10px;text-align:center}
+  .g2,.g3{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .ftop{grid-template-columns:1fr}
+  .pm{flex:1;min-width:50px}
+  .klarna-opts{grid-template-columns:1fr 1fr 1fr}
+}
+</style>
+<style>
+
+/* ─── CANGO FOOTER (Startseiten-Stil) ─── */
+.cango-footer{background:#080d1a !important;border-top:1px solid rgba(78,99,130,.25) !important;padding:72px 24px 40px !important;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#f1f5f9;font-weight:700;font-size:15px}
+.cango-footer .footer-logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0}
+.cango-footer .footer-logo-text{display:flex;flex-direction:column;line-height:1}
+.cango-footer .footer-logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px;font-weight:700}
+.cango-footer .fcol ul{list-style:none;padding:0;margin:0}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#f1f5f9}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body>
+
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" data-cango-kpi="kpi_marktplatz_entry">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<div class="steps">
+  <div class="steps-inner">
+    <div class="step s-done"><div class="sn">✓</div><span class="sl">Warenkorb</span></div>
+    <div class="s-line"></div>
+    <div class="step s-active"><div class="sn">2</div><span class="sl">Kasse</span></div>
+    <div class="s-line"></div>
+    <div class="step s-off"><div class="sn">3</div><span class="sl">Bestätigung</span></div>
+  </div>
+</div>
+
+<div class="page">
+<div class="bento rv">
+
+  <div class="tile c8">
+    <div class="th">
+      <div class="th-icon or">🛒</div>
+      <div><div class="th-title">Dein Warenkorb</div><div class="th-sub" id="cart-sub">0 digitale Produkte</div></div>
+      <a href="/workflows.html" class="th-extra" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--or);text-decoration:none;cursor:pointer">Bearbeiten</a>
+    </div>
+    <div class="tb">
+      <div class="cart-scroll-wrap" id="cartScrollWrap">
+        <div id="cartList" style="max-height:320px;overflow-y:auto;padding-right:4px;scrollbar-width:thin;scrollbar-color:rgba(249,115,22,.3) rgba(17,28,48,.6)"></div>
+      </div>
+      <div style="border-top:1px solid var(--bdl);padding-top:12px;margin-top:4px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--or);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">⭐ Wird oft dazugekauft</div>
+        <div class="up" onclick="addUp(this,'n8n Setup Onboarding',490)"><span style="font-size:20px">🚀</span><div class="up-info"><div class="up-title">n8n Setup Onboarding</div><div class="up-desc">90-Min Guided Setup · Golden-State-Backup · Doku</div></div><div class="up-pr">490€</div><div class="up-add">⊕</div></div>
+        <div class="up" onclick="addUp(this,'Priority Support 3 Mon.',297)"><span style="font-size:20px">💬</span><div class="up-info"><div class="up-title">Priority Support (3 Monate)</div><div class="up-desc">Antwort in 4h · Slack-Zugang · Direktkanal</div></div><div class="up-pr">297€</div><div class="up-add">⊕</div></div>
+      </div>
+      <div style="border-top:1px solid var(--bdl);padding-top:12px;margin-top:8px">
+        <div style="font-size:12px;color:var(--mu);margin-bottom:7px">Rabattcode</div>
+        <div class="coupon-row">
+          <input class="coupon-i" type="text" placeholder="z.B. CANGO2026" id="cCode">
+          <button class="coupon-btn" onclick="doCoupon()">Einlösen</button>
+        </div>
+        <div class="coupon-ok" id="cOk">✓&nbsp;10% Rabatt aktiviert</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tile c4 sum-tile" style="grid-row:span 4;align-self:start;position:sticky;top:68px">
+    <div class="th">
+      <div class="th-icon or">📋</div>
+      <div><div class="th-title">Bestellübersicht</div><div class="th-sub" id="sum-sub">0 Artikel</div></div>
+    </div>
+    <div class="tb">
+      <div id="sum-items" style="margin-bottom:12px"></div>
+      <div class="sum-divider"></div>
+      <div class="sum-row"><span class="sl">Artikel (<span id="sum-qty">0</span> Stück)</span><span class="sv" id="sum-st">0€</span></div>
+      <div class="sum-row" id="s-disc-row" style="display:none"><span class="sl">Rabatt (10%)</span><span class="sv sum-discount" id="s-disc">−362€</span></div>
+      <div class="sum-row"><span class="sl">Upsells</span><span class="sv" id="s-up">0€</span></div>
+      <div class="sum-divider"></div>
+      <div class="sum-row"><span class="sl">Netto</span><span class="sv" id="s-net">—</span></div>
+      <div class="sum-row"><span class="sl">MwSt. (19%)</span><span class="sv" id="s-tax">—</span></div>
+      <div class="sum-total">
+        <div><div class="sum-total-label">Gesamt</div><div class="sum-tax">inkl. 19% MwSt.</div></div>
+        <div style="text-align:right"><div class="sum-total-val" id="s-tot">0€</div></div>
+      </div>
+      <button class="cta-btn" id="ctaBtn" onclick="doCheckout()">
+        <span id="btnLock">🔒</span>
+        <span id="btnTxt">Jetzt kaufen</span>
+        <span id="btnPr">· 0€</span>
+        <div class="btn-sp" id="btnSp"></div>
+      </button>
+      <div class="trust">
+        <span class="tb2"><span>🔒</span>SSL</span>
+        <span class="tb2"><span>💳</span>Stripe</span>
+        <span class="tb2"><span>📧</span>Sofortlieferung</span>
+        <span class="tb2"><span>🛡️</span>Käuferschutz</span>
+      </div>
+    </div>
+    <div class="sec-row">
+      <span class="sb2"><span>🅿️</span>PayPal</span>
+      <span class="sb2"><span>🛍️</span>Klarna</span>
+      <span class="sb2"><span>₿</span>Krypto</span>
+      <span class="sb2"><span>🏦</span>SEPA</span>
+    </div>
+  </div>
+
+  <div class="tile c5">
+    <div class="th">
+      <div class="th-icon bl">✉️</div>
+      <div><div class="th-title">E-Mail &amp; Lieferung</div><div class="th-sub">Pflicht für digitale Produkte</div></div>
+    </div>
+    <div class="tb">
+      <div class="fg">
+        <div class="fl">E-Mail-Adresse <span class="req">★ PFLICHT</span></div>
+        <div class="iw">
+          <span class="ii">✉️</span>
+          <input class="fi" type="email" id="email" placeholder="deine@email.de" oninput="valEmail(this)" autocomplete="email">
+          <span class="ic" id="em-ic" style="display:none;color:var(--gr)">✓</span>
+        </div>
+        <div class="fe" id="em-err">Bitte gültige E-Mail eingeben.</div>
+      </div>
+      <div class="fg">
+        <div class="fl">E-Mail bestätigen <span class="req">★ PFLICHT</span></div>
+        <div class="iw">
+          <span class="ii">✉️</span>
+          <input class="fi" type="email" id="email2" placeholder="Erneut eingeben" oninput="valEmail2()" autocomplete="off">
+          <span class="ic" id="em2-ic" style="display:none;color:var(--gr)">✓</span>
+        </div>
+        <div class="fe" id="em2-err">E-Mail-Adressen stimmen nicht überein.</div>
+      </div>
+      <div class="email-notice">
+        <strong>📦 Digitale Lieferung ausschließlich per E-Mail:</strong> Alle Workflow-Dateien, Zugangsdaten und Dokumentation werden sofort nach dem Kauf an diese Adresse gesendet. <strong>Bitte sorgfältig prüfen.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="tile c3">
+    <div class="th">
+      <div class="th-icon or">👤</div>
+      <div><div class="th-title">Kontakt</div><div class="th-sub">Name &amp; Rückfragen</div></div>
+    </div>
+    <div class="tb">
+      <div class="fg">
+        <div class="fl">Vorname <span class="req">*</span></div>
+        <input class="fi" type="text" id="fn" placeholder="Max" autocomplete="given-name">
+      </div>
+      <div class="fg">
+        <div class="fl">Nachname <span class="req">*</span></div>
+        <input class="fi" type="text" id="ln" placeholder="Mustermann" autocomplete="family-name">
+      </div>
+      <div class="fg">
+        <div class="fl">Telefon <span style="font-size:10px;color:var(--md);font-weight:400">(optional)</span></div>
+        <div class="iw">
+          <span class="ii">📞</span>
+          <input class="fi" type="tel" id="phone" placeholder="+49 170 000 0000">
+        </div>
+        <div class="fh">Für schnelle Rückfragen nach dem Kauf.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tile c4">
+    <div class="th">
+      <div class="th-icon or">🏢</div>
+      <div><div class="th-title">Rechnungsadresse</div><div class="th-sub">PDF-Rechnung per E-Mail</div></div>
+      <label class="b2b-tog"><input type="checkbox" id="b2bChk" onchange="toggleB2B()"> B2B</label>
+    </div>
+    <div class="tb">
+      <div id="b2b-fields" style="display:none">
+        <div class="fg">
+          <div class="fl">Firma <span class="req">*</span></div>
+          <input class="fi" type="text" id="company" placeholder="CanGo GmbH" autocomplete="organization">
+        </div>
+        <div class="fg">
+          <div class="fl">USt-IdNr. <span style="font-size:10px;color:var(--md);font-weight:400">(EU Reverse Charge)</span></div>
+          <input class="fi" type="text" id="vat" placeholder="DE123456789">
+          <div class="fh">Bei gültiger USt-IdNr. entfällt die 19% MwSt.</div>
+        </div>
+      </div>
+      <div class="fg">
+        <div class="fl">Straße &amp; Nr. <span class="req">*</span></div>
+        <input class="fi" type="text" id="street" placeholder="Musterstraße 12" autocomplete="address-line1">
+      </div>
+      <div class="g3" style="margin-bottom:12px">
+        <div class="fg" style="margin-bottom:0">
+          <div class="fl">PLZ <span class="req">*</span></div>
+          <input class="fi" type="text" id="zip" placeholder="10115" maxlength="10">
+        </div>
+        <div class="fg" style="margin-bottom:0;grid-column:span 2">
+          <div class="fl">Stadt <span class="req">*</span></div>
+          <input class="fi" type="text" id="city" placeholder="Berlin">
+        </div>
+      </div>
+      <div class="fg">
+        <div class="fl">Land <span class="req">*</span></div>
+        <select class="fi" id="country">
+          <option value="DE">🇩🇪 Deutschland</option>
+          <option value="AT">🇦🇹 Österreich</option>
+          <option value="CH">🇨🇭 Schweiz</option>
+          <option value="EU">🇪🇺 Anderes EU-Land</option>
+          <option value="OTHER">🌍 Sonstiges</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="tile c4">
+    <div class="th">
+      <div class="th-icon gr">💳</div>
+      <div><div class="th-title">Zahlungsmethode</div><div class="th-sub">6 Optionen verfügbar</div></div>
+    </div>
+    <div class="tb">
+      <div class="pm-row">
+        <div class="pm sel" onclick="selPm('card',this)"><span class="pm-ic">💳</span><div class="pm-lb">Kreditkarte</div><div class="pm-sb">Visa/Master</div></div>
+        <div class="pm" onclick="selPm('sepa',this)"><span class="pm-ic">🏦</span><div class="pm-lb">SEPA</div><div class="pm-sb">Lastschrift</div></div>
+        <div class="pm" onclick="selPm('paypal',this)"><span class="pm-ic">🅿️</span><div class="pm-lb">PayPal</div><div class="pm-sb">Sofort</div></div>
+        <div class="pm" onclick="selPm('klarna',this)"><span class="pm-ic">🛍️</span><div class="pm-lb">Klarna</div><div class="pm-sb">Flex</div></div>
+        <div class="pm" onclick="selPm('crypto',this)"><span class="pm-ic">₿</span><div class="pm-lb">Krypto</div><div class="pm-sb">BTC/ETH…</div></div>
+        <div class="pm" onclick="selPm('stripe',this)"><span class="pm-ic">⚡</span><div class="pm-lb">Stripe</div><div class="pm-sb">1-Click</div></div>
+      </div>
+      <div class="ppanel on" id="pp-card">
+        <div class="fg"><div class="fl">Karteninhaber</div><div class="iw"><span class="ii">👤</span><input class="fi" type="text" placeholder="Max Mustermann"></div></div>
+        <div class="fg"><div class="fl">Kartennummer</div><div class="iw"><span class="ii">💳</span><input class="fi" type="text" id="cNum" placeholder="0000 0000 0000 0000" maxlength="19" oninput="fmtCard(this)"><span class="ic" id="cBrand" style="color:var(--or)"></span></div></div>
+        <div class="card-row">
+          <div class="fg" style="margin-bottom:0"><div class="fl">Ablauf</div><input class="fi" type="text" placeholder="MM / JJ" maxlength="7" oninput="fmtExp(this)"></div>
+          <div class="fg" style="margin-bottom:0"><div class="fl">CVV</div><input class="fi" type="password" placeholder="•••" maxlength="4"></div>
+        </div>
+      </div>
+      <div class="ppanel" id="pp-sepa">
+        <div class="fg"><div class="fl">Kontoinhaber</div><input class="fi" type="text" placeholder="Max Mustermann"></div>
+        <div class="fg"><div class="fl">IBAN</div><div class="iw"><span class="ii">🏦</span><input class="fi" type="text" placeholder="DE00 0000 0000 0000 0000 00" maxlength="34" oninput="fmtIban(this)"></div></div>
+        <div class="iban-note"><strong>SEPA-Lastschriftmandat</strong>Abbuchung innerhalb 1–2 Werktagen nach Bestellung.</div>
+      </div>
+      <div class="ppanel" id="pp-paypal">
+        <div class="paypal-box"><span style="font-size:28px;display:block;margin-bottom:6px">🅿️</span><strong>PayPal</strong>Nach dem Kauf wirst du zu PayPal weitergeleitet. Sofortzahlung, Käuferschutz inklusive.</div>
+      </div>
+      <div class="ppanel" id="pp-klarna">
+        <div style="font-size:12.5px;color:var(--mu);margin-bottom:4px">Zahlungsart wählen:</div>
+        <div class="klarna-opts">
+          <div class="ko sel" onclick="togKo(this)"><span>💳</span><span>Sofort</span><small>0% Extra</small></div>
+          <div class="ko" onclick="togKo(this)"><span>📅</span><span>Raten</span><small>3–36 Mon.</small></div>
+          <div class="ko" onclick="togKo(this)"><span>🧾</span><span>Rechnung</span><small>30 Tage</small></div>
+        </div>
+      </div>
+      <div class="ppanel" id="pp-crypto">
+        <div class="crypto-coins">
+          <div class="cc" onclick="selCoin(this,'BTC','bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh')"><span>₿</span><span>BTC</span></div>
+          <div class="cc" onclick="selCoin(this,'ETH','0x71C7656EC7ab88b098defB751B7401B5f6d8976F')"><span>⟠</span><span>ETH</span></div>
+          <div class="cc" onclick="selCoin(this,'USDT','TYDzsUFHpbBMGmEJ3JFp3YBpJZ9E8EtDkB')"><span>₮</span><span>USDT</span></div>
+          <div class="cc" onclick="selCoin(this,'BNB','bnb1grpf0955h0ykzq3ar5nmum7y6gdfl6lxfn46h2')"><span>🔶</span><span>BNB</span></div>
+          <div class="cc" onclick="selCoin(this,'SOL','DRpbCBMxVnDK7maPM5tGv6MvB3v1sRMC73APLd7k')"><span>◎</span><span>SOL</span></div>
+          <div class="cc" onclick="selCoin(this,'LTC','LcDmELSyZbFSJkJwGidyoLyqaJSbfTRZX3')"><span>Ł</span><span>LTC</span></div>
+        </div>
+        <div class="crypto-addr" id="cAddr">
+          <div class="addr-lb" id="cLbl">ADRESSE</div>
+          <div class="addr-v"><span id="cAddrV" style="word-break:break-all;font-size:10px"></span><span class="copy" onclick="cpAddr()">📋</span></div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--md);margin-top:7px;line-height:1.6">Betrag: <strong style="color:var(--or)" id="cAmt">—</strong><br>Nach Eingang: Lieferung per E-Mail (max. 2h)</div>
+        </div>
+      </div>
+      <div class="ppanel" id="pp-stripe">
+        <div class="stripe-box"><span style="font-size:28px;display:block;margin-bottom:6px">⚡</span><strong>Stripe Link – 1-Click</strong>Alle gespeicherten Karten, Apple Pay und Google Pay. Sicherer Redirect zu Stripe.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tile c8">
+    <div class="th">
+      <div class="th-icon pu">📋</div>
+      <div><div class="th-title">Rechtliche Bestätigungen</div><div class="th-sub">Alle 4 Felder für den Kauf erforderlich</div></div>
+    </div>
+    <div class="tb">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">
+        <div>
+          <label class="lck"><input type="checkbox" id="agb" onchange="updBtn()"><span class="lt"><strong>AGB akzeptieren ★</strong><br>Ich habe die <a href="/agb.html">Allgemeinen Geschäftsbedingungen</a> gelesen und akzeptiere diese.</span></label>
+          <label class="lck"><input type="checkbox" id="priv" onchange="updBtn()"><span class="lt"><strong>Datenschutz ★</strong><br>Ich stimme der <a href="/datenschutz.html">Datenschutzerklärung</a> zu. Meine Daten werden nur für die Vertragsabwicklung genutzt.</span></label>
+        </div>
+        <div>
+          <label class="lck"><input type="checkbox" id="dig" onchange="updBtn()"><span class="lt"><strong>Widerrufsverzicht – Digitale Produkte ★</strong><br>Ich bestätige, dass digitale Inhalte sofort geliefert werden und das <a href="/widerruf.html">Widerrufsrecht</a> damit erlischt.</span></label>
+          <label class="lck"><input type="checkbox" id="lic" onchange="updBtn()"><span class="lt"><strong>Lizenzvereinbarung ★</strong><br>Ich akzeptiere die <a href="/agb.html">Lizenzvereinbarung</a>. Weiterverkauf nur mit schriftlicher Genehmigung.</span></label>
+        </div>
+      </div>
+      <label class="lck" style="border-top:1px solid var(--bdl);padding-top:10px;margin-top:6px"><input type="checkbox" id="nl"><span class="lt" style="color:var(--md)">Optional: Ich möchte über neue Workflows &amp; Updates per E-Mail informiert werden. (Jederzeit abbestellbar)</span></label>
+      <div class="legal-warn"><strong>⚠️ Digitale Produkte:</strong> Sofortlieferung an deine E-Mail. Kein physischer Versand. Keine Rücksendung möglich. Bitte E-Mail-Adresse vor dem Kauf prüfen.</div>
+    </div>
+  </div>
+
+  <div class="tile c3">
+    <div class="tb" style="text-align:center;padding:28px 20px">
+      <span style="font-size:30px;display:block;margin-bottom:10px">💬</span>
+      <div style="font-size:14px;font-weight:700;color:var(--wh);margin-bottom:6px">Fragen zum Kauf?</div>
+      <p style="font-size:12px;color:var(--mu);line-height:1.65;margin-bottom:14px">Unser Support ist da – per Chat oder E-Mail.</p>
+      <a href="/faq-3.html" style="display:block;background:var(--n7);border:1px solid var(--bdl);border-radius:9px;padding:9px;font-size:12.5px;font-weight:600;color:var(--ow);text-decoration:none;transition:all .2s;margin-bottom:7px" onmouseover="this.style.borderColor='var(--or)'" onmouseout="this.style.borderColor='var(--bdl)'">FAQ &amp; Support Chat →</a>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--md)">support@cango-empire.com</div>
+    </div>
+  </div>
+
+  <div class="tile c5">
+    <div class="tb-sm">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--or);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px">🔒 Sicherheit &amp; Vertrauen</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="display:flex;align-items:flex-start;gap:9px"><span style="font-size:18px;flex-shrink:0">🔒</span><div><div style="font-size:13px;font-weight:700;color:var(--wh);margin-bottom:2px">SSL-Verschlüsselung</div><div style="font-size:11px;color:var(--mu)">256-bit AES · TLS 1.3 · alle Daten verschlüsselt</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:9px"><span style="font-size:18px;flex-shrink:0">⚡</span><div><div style="font-size:13px;font-weight:700;color:var(--wh);margin-bottom:2px">Stripe Payments</div><div style="font-size:11px;color:var(--mu)">PCI-DSS Level 1 · keine Kartendaten auf unseren Servern</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:9px"><span style="font-size:18px;flex-shrink:0">📧</span><div><div style="font-size:13px;font-weight:700;color:var(--wh);margin-bottom:2px">Sofortlieferung</div><div style="font-size:11px;color:var(--mu)">Dateien und Zugangsdaten innerhalb von 5 Minuten</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:9px"><span style="font-size:18px;flex-shrink:0">🧾</span><div><div style="font-size:13px;font-weight:700;color:var(--wh);margin-bottom:2px">Automatische Rechnung</div><div style="font-size:11px;color:var(--mu)">PDF-Rechnung sofort per E-Mail · GDPR-konform</div></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="confirm-screen" id="confirmScreen">
+  <div class="cc-card">
+    <span class="cc-icon">🎉</span>
+    <div class="cc-title">Bestellung erfolgreich!</div>
+    <div class="cc-id" id="ccId">Bestellnr. #CGE-2026-00847</div>
+    <p class="cc-desc">Alle Dateien, Zugangsdaten und Rechnung wurden sofort an <strong id="ccEmail">deine@email.de</strong> gesendet.</p>
+    <div class="cc-steps">
+      <div class="cc-s"><span>✅</span><span>Zahlung erfolgreich verarbeitet</span></div>
+      <div class="cc-s"><span>📦</span><span>Workflow-Dateien per E-Mail (max. 5 Min.)</span></div>
+      <div class="cc-s"><span>🧾</span><span>PDF-Rechnung wird zugesendet</span></div>
+      <div class="cc-s"><span>📚</span><span>Setup-Guide &amp; Dokumentation aktiv</span></div>
+      <div class="cc-s"><span>💬</span><span>Support-Ticket automatisch angelegt</span></div>
+    </div>
+    <div class="cc-btns">
+      <a href="/index.html" class="cc-bp">Zur Startseite</a>
+      <a href="/faq-3.html" class="cc-bs">Support</a>
+    </div>
+  </div>
+</div>
+
+<div id="toast"><span id="ti">✓</span><span id="tm"></span></div>
+
+<!-- FOOTER -->
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+<script src="/cart.js"></script>
+<script>(function(){var btn=document.getElementById('navToggle');if(btn)btn.addEventListener('click',function(){document.body.classList.toggle('nav-open');});})();</script>
+<script src="/js/kpi-events.js?v=2" defer></script>
+<script>
+var cart=[];
+var ups=[];var disc=false;var selPmVal='card';var selCryptoVal=null;
+
+function toKasseItem(it){
+  return {
+    id:it.id||it.workflowId||it.toolId||('pkg-'+it.tier),
+    n:it.name||it.n||'',
+    cat:it.cat||'Master',
+    price:it.price||it._price||0,
+    qty:it.quantity||it.qty||1,
+    ic:it.emoji||it.ic||'🎯',
+    tgs:Array.isArray(it.tags)?it.tags:(Array.isArray(it.tgs)?it.tgs:[]),
+    n8nWorkflowId: it.n8nWorkflowId || undefined
+  };
+}
+function toCartJsItem(it){
+  var isPkg = it.cat === 'paket';
+  return {
+    type: isPkg ? 'package' : 'workflow',
+    id: it.id,
+    workflowId: isPkg ? undefined : it.id,
+    name: it.n,
+    price: it.price,
+    quantity: it.qty,
+    emoji: it.ic,
+    tags: it.tgs,
+    cat: it.cat,
+    tier: isPkg ? (it.n || it.id) : undefined,
+    n8nWorkflowId: it.n8nWorkflowId
+  };
+}
+
+function loadCart(){
+  try{
+    var raw=sessionStorage.getItem('cango_checkout_cart');
+    if(raw){
+      var data=JSON.parse(raw);
+      sessionStorage.removeItem('cango_checkout_cart');
+      if(Array.isArray(data)&&data.length){
+        cart=data.map(function(it){
+          return {
+            id:it.id,
+            n:it.name||it.n||'',
+            cat:it.cat||'Master',
+            price:it._price!=null?it._price:(it.price||0),
+            qty:it.qty||it.quantity||1,
+            ic:it.emoji||it.ic||'🎯',
+            tgs:Array.isArray(it.tags)?it.tags:(Array.isArray(it.tgs)?it.tgs:[]),
+            n8nWorkflowId: it.n8nWorkflowId
+          };
+        });
+      }
+    }
+    if(cart.length===0&&window.CanGoCart&&window.CanGoCart.getCart){
+      var stored=window.CanGoCart.getCart();
+      if(Array.isArray(stored)&&stored.length){
+        cart=stored.map(toKasseItem);
+      }
+    }
+    syncCartToStorage();
+  }catch(e){}
+}
+function syncCartToStorage(){
+  try{
+    if(window.CanGoCart&&window.CanGoCart.setCart){
+      var forStorage=cart.map(toCartJsItem);
+      window.CanGoCart.setCart(forStorage);
+    }
+  }catch(e){}
+}
+loadCart();
+
+function renderCart(){
+  var el=document.getElementById('cartList');
+  if(!cart.length){
+    el.innerHTML='<div style="text-align:center;padding:20px;color:var(--mu);font-size:13px">Warenkorb leer</div>';
+    renderSum();
+    checkOverflow();
+    return;
+  }
+  el.innerHTML=cart.map(function(it,i){
+    var n8nL = it.n8nWorkflowId ? '<div class="ci-n8n"><a href="https://n8n.automation-cango-app-empire.com/workflow/'+it.n8nWorkflowId+'" target="_blank" rel="noopener noreferrer">↗ n8n-Workflow</a></div>' : '';
+    return '<div class="ci"><div class="ci-ic">'+it.ic+'</div><div class="ci-in"><div class="ci-cat">'+it.cat+'</div><div class="ci-nm">'+it.n+'</div>'+n8nL+'<div class="ci-tgs">'+it.tgs.map(function(t){return '<span class="ci-tg">'+t+'</span>';}).join('')+'</div><div class="ci-bot"><div class="qty"><button class="qb" onclick="chQty('+i+',-1)">−</button><span class="qv">'+it.qty+'</span><button class="qb" onclick="chQty('+i+',1)">+</button></div><div style="text-align:right"><div class="ci-pr">'+(it.price*it.qty).toLocaleString('de-DE')+'€</div><div class="ci-prb">'+it.qty+'×'+it.price.toLocaleString('de-DE')+'€</div></div></div></div><button class="ci-rm" onclick="rmItem('+i+')">×</button></div>';
+  }).join('');
+  renderSum();checkOverflow();
+}
+function checkOverflow(){
+  var el=document.getElementById('cartList');var wrap=document.getElementById('cartScrollWrap');
+  if(!el||!wrap) return;
+  requestAnimationFrame(function(){
+    if(el.scrollHeight>el.clientHeight+4){wrap.classList.add('overflow');el.onscroll=function(){var atBottom=el.scrollTop+el.clientHeight>=el.scrollHeight-8;wrap.classList.toggle('overflow',!atBottom);};}
+    else{wrap.classList.remove('overflow');el.onscroll=null;}
+  });
+}
+function chQty(i,d){cart[i].qty=Math.max(1,cart[i].qty+d);renderCart();syncCartToStorage();}
+function rmItem(i){cart.splice(i,1);renderCart();syncCartToStorage();toast('🗑️','Artikel entfernt');}
+
+function renderSum(){
+  var sub=cart.reduce(function(s,c){return s+c.price*c.qty;},0);
+  var qty=cart.reduce(function(s,c){return s+c.qty;},0)+ups.length;
+  var upT=ups.reduce(function(s,u){return s+u.p;},0);
+  var d=disc?Math.round(sub*.1):0;
+  var tot=sub+upT-d;
+  var net=tot/1.19;var tax=tot-net;
+  document.getElementById('sum-qty').textContent=qty;
+  document.getElementById('sum-st').textContent=sub.toLocaleString('de-DE')+'€';
+  document.getElementById('s-up').textContent=upT?upT.toLocaleString('de-DE')+'€':'0€';
+  document.getElementById('s-net').textContent=net.toFixed(2).replace('.',',')+'€';
+  document.getElementById('s-tax').textContent=tax.toFixed(2).replace('.',',')+'€';
+  document.getElementById('s-tot').textContent=tot.toLocaleString('de-DE')+'€';
+  document.getElementById('btnPr').textContent='· '+tot.toLocaleString('de-DE')+'€';
+  document.getElementById('s-disc-row').style.display=disc?'flex':'none';
+  document.getElementById('s-disc').textContent='−'+d.toLocaleString('de-DE')+'€';
+  document.getElementById('cart-sub').textContent=qty+' digitale Produkte';
+  document.getElementById('sum-sub').textContent=qty+' Artikel';
+  document.getElementById('sum-items').innerHTML=
+    cart.map(function(c){return '<div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--bdl)"><span style="color:var(--mu);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+c.n.slice(0,24)+'…</span><span style="color:var(--ow);font-weight:600">'+(c.price*c.qty).toLocaleString('de-DE')+'€</span></div>';}).join('')+
+    ups.map(function(u){return '<div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--bdl)"><span style="color:var(--gr)">'+u.n.slice(0,24)+'</span><span style="color:var(--ow);font-weight:600">'+u.p.toLocaleString('de-DE')+'€</span></div>';}).join('');
+  if(selCryptoVal) updCryptoAmt(tot);
+}
+function doCoupon(){
+  var code=document.getElementById('cCode').value.trim().toUpperCase();
+  if(['CANGO2026','CANGO','EMPIRE10'].indexOf(code)!==-1){disc=true;document.getElementById('cOk').style.display='flex';document.getElementById('cCode').classList.add('valid');renderSum();toast('✓','10% Rabatt aktiviert!');}
+  else if(code){toast('⚠️','Ungültiger Code.');document.getElementById('cCode').classList.add('err');setTimeout(function(){document.getElementById('cCode').classList.remove('err');},2000);}
+}
+function addUp(el,n,p){
+  if(el.classList.contains('added')){ups=ups.filter(function(u){return u.n!==n;});el.classList.remove('added');el.querySelector('.up-add').textContent='⊕';toast('🗑️',n+' entfernt');}
+  else{ups.push({n:n,p:p});el.classList.add('added');el.querySelector('.up-add').textContent='✓';toast('✓',n+' hinzugefügt');}
+  renderSum();
+}
+function selPm(pm,el){selPmVal=pm;document.querySelectorAll('.pm').forEach(function(c){c.classList.remove('sel');});el.classList.add('sel');document.querySelectorAll('.ppanel').forEach(function(p){p.classList.remove('on');});document.getElementById('pp-'+pm).classList.add('on');}
+function togKo(el){document.querySelectorAll('.ko').forEach(function(k){k.classList.remove('sel');});el.classList.add('sel');}
+function selCoin(el,coin,addr){document.querySelectorAll('.cc').forEach(function(c){c.classList.remove('sel');});el.classList.add('sel');selCryptoVal={coin:coin,addr:addr};document.getElementById('cLbl').textContent=coin+' ADRESSE';document.getElementById('cAddrV').textContent=addr;document.getElementById('cAddr').classList.add('on');var tot=parseInt((document.getElementById('s-tot').textContent||'0').replace(/[^\d]/g,''),10);updCryptoAmt(tot);}
+function updCryptoAmt(tot){if(!selCryptoVal) return;var r={BTC:'≈'+((tot/59000).toFixed(5))+' BTC',ETH:'≈'+((tot/2020).toFixed(4))+' ETH',USDT:tot+'.00 USDT',BNB:'≈'+((tot/380).toFixed(3))+' BNB',SOL:'≈'+((tot/98).toFixed(2))+' SOL',LTC:'≈'+((tot/90).toFixed(3))+' LTC'};var el=document.getElementById('cAmt');if(el) el.textContent=r[selCryptoVal.coin]||tot+'€';}
+function cpAddr(){navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('cAddrV').textContent).then(function(){toast('📋','Adresse kopiert!');});}
+function fmtCard(i){var v=i.value.replace(/\D/g,'').slice(0,16);i.value=v.replace(/(.{4})/g,'$1 ').trim();var b=document.getElementById('cBrand');if(v.indexOf('4')===0)b.textContent='VISA';else if(v.indexOf('5')===0)b.textContent='MC';else if(v.indexOf('3')===0)b.textContent='AMEX';else b.textContent='';}
+function fmtExp(i){var v=i.value.replace(/\D/g,'').slice(0,4);if(v.length>=2)v=v.slice(0,2)+' / '+v.slice(2);i.value=v;}
+function fmtIban(i){var v=i.value.replace(/\s/g,'').toUpperCase().slice(0,22);i.value=v.replace(/(.{4})/g,'$1 ').trim();}
+function valEmail(inp){var ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value);var ic=document.getElementById('em-ic'),err=document.getElementById('em-err');if(ok){inp.classList.add('valid');inp.classList.remove('err');ic.style.display='block';err.style.display='none';}else{inp.classList.remove('valid');ic.style.display='none';}valEmail2();updBtn();}
+function valEmail2(){var e1=document.getElementById('email').value,e2=document.getElementById('email2').value;var ic=document.getElementById('em2-ic'),err=document.getElementById('em2-err'),inp=document.getElementById('email2');if(!e2) return;if(e1===e2&&e2.length>4){inp.classList.add('valid');inp.classList.remove('err');ic.style.display='block';err.style.display='none';}else{inp.classList.add('err');inp.classList.remove('valid');ic.style.display='none';err.style.display='block';}updBtn();}
+function toggleB2B(){var s=document.getElementById('b2bChk').checked;document.getElementById('b2b-fields').style.display=s?'block':'none';}
+function updBtn(){var ok=document.getElementById('agb').checked&&document.getElementById('priv').checked&&document.getElementById('dig').checked&&document.getElementById('lic').checked&&/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value)&&document.getElementById('email').value===document.getElementById('email2').value;document.getElementById('ctaBtn').disabled=!ok;}
+function doCheckout(){
+  if(!document.getElementById('fn').value.trim()||!document.getElementById('ln').value.trim()){toast('⚠️','Bitte Namen ausfüllen.');return;}
+  if(!document.getElementById('street').value.trim()){toast('⚠️','Bitte Rechnungsadresse ausfüllen.');return;}
+  var btn=document.getElementById('ctaBtn'),sp=document.getElementById('btnSp'),txt=document.getElementById('btnTxt'),lk=document.getElementById('btnLock'),pr=document.getElementById('btnPr');
+  btn.disabled=true;sp.style.display='block';txt.textContent='Verarbeitung…';lk.style.display='none';pr.style.display='none';
+  setTimeout(function(){var id='CGE-2026-'+String(Math.floor(Math.random()*90000)+10000);document.getElementById('ccId').textContent='Bestellnr. #'+id;document.getElementById('ccEmail').textContent=document.getElementById('email').value;document.getElementById('confirmScreen').classList.add('show');document.querySelectorAll('.step').forEach(function(s){s.className='step s-done';});},2200);
+}
+function toast(i,m){var t=document.getElementById('toast');document.getElementById('ti').textContent=i;document.getElementById('tm').textContent=m;t.style.transform='translateY(0)';t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(function(){t.style.transform='translateY(80px)';t.style.opacity='0';},3200);}
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target);}});},{threshold:0.04});
+document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+renderCart();updBtn();
+</script>
+</body>
+</html>

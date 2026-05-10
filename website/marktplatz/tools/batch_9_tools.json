@@ -1,0 +1,193 @@
+{
+  "batch_id": 9,
+  "total_batches": 22,
+  "category": "PRODUCTIVITY & OPS OS",
+  "tools": [
+    {
+      "id": "notion",
+      "name": "Notion",
+      "tagline": "Das Betriebssystem für dein Business. Wiki, Docs & Projekte.",
+      "badge": "TEAM BRAIN",
+      "rating": { "tacos": 5, "count": 25000 },
+      "images": ["/images/tools/notion-workspace.webp"],
+      "quick_specs": {
+        "alternative_to": ["Google Docs", "Evernote", "Trello"],
+        "integrations": ["Slack", "n8n", "Zapier"],
+        "best_for": ["Startups", "Creator", "Wissensarbeiter"]
+      },
+      "pitch_html": "<h3>Chaos tötet Skalierung. Notion tötet Chaos.</h3><p>Du hast Dokumente in Google Drive, Tasks in Trello und Notizen auf dem iPhone? Das ist Amateur-Niveau. <strong>Notion</strong> vereint dein gesamtes Unternehmenswissen an einem Ort.</p><h4>Unser Setup:</h4><p>Jeder unserer 100 Workflows ist in Notion dokumentiert. Wenn ein neuer Franchise-Partner startet, bekommt er Zugriff auf sein Notion-Portal und hat sofort alle SOPs (Standard Operating Procedures) griffbereit.</p>",
+      "deal_terms": [
+        "Notion AI Integration",
+        "Unbegrenzte Seiten & Blöcke",
+        "Team-Spaces",
+        "Gast-Zugänge für Kunden"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Plus Plan",
+          "price": 8,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Unbegrenzte File Uploads",
+            "30 Tage Version History",
+            "100 Gäste",
+            "API Zugriff"
+          ],
+          "cta_link": "DEIN_NOTION_LINK"
+        }
+      ]
+    },
+    {
+      "id": "clickup",
+      "name": "ClickUp",
+      "tagline": "One app to replace them all. Projektmanagement auf Steroiden.",
+      "badge": "FEATURE KING",
+      "rating": { "tacos": 4, "count": 18000 },
+      "images": ["/images/tools/clickup-tasks.webp"],
+      "quick_specs": {
+        "alternative_to": ["Jira", "Monday", "Asana"],
+        "integrations": ["GitHub", "Slack", "Toggl"],
+        "best_for": ["Agile Teams", "Entwickler", "Agenturen"]
+      },
+      "pitch_html": "<h3>Hör auf, für 5 verschiedene Tools zu zahlen.</h3><p><strong>ClickUp</strong> kann alles: Docs, Tasks, Whiteboards, Time-Tracking, Chat. Es ist komplex, aber mächtig.</p><p>Wir nutzen ClickUp, um die Produktion unserer 'Content Factory' zu steuern. Wenn ein n8n-Workflow ein Video erstellt, legt er automatisch einen Task in ClickUp an: 'Review durch Human Operator'. So kombinieren wir Automation mit Qualitätskontrolle.</p>",
+      "deal_terms": [
+        "KI-Assistent (ClickUp Brain)",
+        "Whiteboards inklusive",
+        "E-Mail in ClickUp",
+        "Automations (Native)"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Unlimited",
+          "price": 7,
+          "original_price": 0,
+          "currency": "$/mo",
+          "billing": "monthly",
+          "features": [
+            "Unbegrenzter Speicher",
+            "Unbegrenzte Integrationen",
+            "Gantt Charts",
+            "E-Mail ClickApp"
+          ],
+          "cta_link": "DEIN_CLICKUP_LINK"
+        }
+      ]
+    },
+    {
+      "id": "monday",
+      "name": "Monday.com",
+      "tagline": "Work OS. Bunt, einfach und extrem anpassbar.",
+      "badge": "VISUAL OPS",
+      "rating": { "tacos": 5, "count": 12000 },
+      "images": ["/images/tools/monday-board.webp"],
+      "quick_specs": {
+        "alternative_to": ["Asana", "Excel"],
+        "integrations": ["Zoom", "Dropbox", "Salesforce"],
+        "best_for": ["Kreativ-Teams", "HR", "Sales"]
+      },
+      "pitch_html": "<h3>Projektmanagement, das Spaß macht (wirklich).</h3><p>Die meisten PM-Tools sind grau und langweilig. <strong>Monday.com</strong> ist visuell. Du siehst sofort, wo der Flaschenhals ist. Ampel-Systeme, Timelines und Dashboards geben dir die Kontrolle zurück.</p><p>Perfekt für unsere 'Enterprise'-Kunden, die visuelle Reports wollen, statt durch Code-Zeilen zu wühlen.</p>",
+      "deal_terms": [
+        "Automations & Integrations",
+        "Gantt & Kanban Views",
+        "Formulare für Briefings",
+        "iOS & Android App"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Standard",
+          "price": 10,
+          "original_price": 0,
+          "currency": "€/mo",
+          "billing": "monthly",
+          "features": [
+            "Timeline & Gantt",
+            "Gast-Zugang",
+            "250 Automations / Monat",
+            "Dashboard (5 Boards)"
+          ],
+          "cta_link": "DEIN_MONDAY_LINK"
+        }
+      ]
+    },
+    {
+      "id": "asana",
+      "name": "Asana",
+      "tagline": "Der Enterprise-Standard für Team-Kollaboration.",
+      "badge": "CORPORATE",
+      "rating": { "tacos": 4, "count": 20000 },
+      "images": ["/images/tools/asana-list.webp"],
+      "quick_specs": {
+        "alternative_to": ["Microsoft Project", "Wrike"],
+        "integrations": ["Microsoft 365", "Salesforce", "Jira"],
+        "best_for": ["Großunternehmen", "Marketing-Teams"]
+      },
+      "pitch_html": "<h3>Wer macht was bis wann?</h3><p>Diese einfache Frage tötet Projekte. <strong>Asana</strong> beantwortet sie. Es ist weniger 'verspielt' als Monday und strukturierter als Notion. Wenn du mit großen Holdings arbeitest (wie wir), ist Asana oft das Tool der Wahl.</p><p>Wir synchronisieren unsere n8n-Status-Updates direkt in die Asana-Boards unserer Enterprise-Kunden.</p>",
+      "deal_terms": [
+        "Portfolio-Management",
+        "Workload-Steuerung",
+        "Genehmigungs-Prozesse",
+        "Private Teams"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Premium",
+          "price": 10.99,
+          "original_price": 0,
+          "currency": "€/mo",
+          "billing": "monthly",
+          "features": [
+            "Timeline",
+            "Workflow Builder",
+            "Unbegrenzte Dashboards",
+            "Erweiterte Suche"
+          ],
+          "cta_link": "DEIN_ASANA_LINK"
+        }
+      ]
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "tagline": "Ein zweites Gehirn, das dir gehört. Lokales Wissensmanagement.",
+      "badge": "PRIVACY FIRST",
+      "rating": { "tacos": 5, "count": 5000 },
+      "images": ["/images/tools/obsidian-graph.webp"],
+      "quick_specs": {
+        "alternative_to": ["Roam Research", "Notion"],
+        "integrations": ["Community Plugins", "Git"],
+        "best_for": ["Researcher", "Coder", "Denker"]
+      },
+      "pitch_html": "<h3>Deine Gedanken gehören nicht in die Cloud.</h3><p><strong>Obsidian</strong> speichert alles als Markdown-Dateien lokal auf deinem Gerät. Es ist rasend schnell, funktioniert offline und verbindet deine Notizen wie ein neuronales Netz.</p><p>Für CanGo App Empire nutzen wir es als 'Secret Vault'. Hier liegen die Prompts für unsere KIs, sicher verschlüsselt und offline verfügbar, falls das Internet mal ausfällt.</p>",
+      "deal_terms": [
+        "100% Kostenlos für private Nutzung",
+        "Sync (Optional, Paid)",
+        "Publish (Optional, Paid)",
+        "Endless Plugins"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Commercial License",
+          "price": 50,
+          "original_price": 0,
+          "currency": "$/yr",
+          "billing": "yearly",
+          "features": [
+            "Für gewerbliche Nutzung",
+            "Supportet die Entwickler",
+            "Priorisierter Support",
+            "Kein Cloud-Zwang"
+          ],
+          "cta_link": "https://obsidian.md"
+        }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,31 @@
+{
+  "batch_id": 12,
+  "category": "COMMUNITY & AUDIENCE OWNERSHIP",
+  "tools": [
+    {
+      "id": "beehiiv",
+      "name": "beehiiv",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/beehiiv.html"
+    },
+    {
+      "id": "skool",
+      "name": "Skool",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/skool.html"
+    },
+    {
+      "id": "circle",
+      "name": "Circle",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/circle.html"
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/slack.html"
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/discord.html"
+    }
+  ]
+}

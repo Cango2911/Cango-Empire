@@ -1,0 +1,31 @@
+{
+  "batch_id": 11,
+  "category": "PRESENTATION & DOCUMENTS",
+  "tools": [
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/gamma.html"
+    },
+    {
+      "id": "tome",
+      "name": "Tome",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/tome.html"
+    },
+    {
+      "id": "beautiful-ai",
+      "name": "Beautiful.ai",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/beautiful-ai.html"
+    },
+    {
+      "id": "pandadoc",
+      "name": "PandaDoc",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/pandadoc.html"
+    },
+    {
+      "id": "docusign",
+      "name": "DocuSign",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/docusign.html"
+    }
+  ]
+}

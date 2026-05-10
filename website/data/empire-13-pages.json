@@ -1,0 +1,29 @@
+{
+  "title": "CanGo App Empire – 13 Hauptseiten",
+  "version": "1",
+  "updated": "2026-03-16",
+  "mainPage": "/index.html",
+  "mainPageNote": "Hauptseite = Version 2 (index.html). Bei allen 13 Seiten Startseiten-Links auf /index.html.",
+  "pages": [
+    { "path": "/index.html", "title": "CanGo App Empire | Startseite", "navLabel": "Startseite", "order": 1 },
+    { "path": "/ueber-uns.html", "title": "Über uns", "navLabel": "Über Uns", "order": 2 },
+    { "path": "/produkte.html", "title": "Produkte", "navLabel": "Produkte", "order": 3 },
+    { "path": "/workflows.html", "title": "Workflows", "navLabel": "Workflows", "order": 4 },
+    { "path": "/marktplatz.html", "title": "Marktplatz", "navLabel": "Marktplatz", "order": 5 },
+    { "path": "/blogs.html", "title": "Blogs", "navLabel": "Blogs", "order": 6 },
+    { "path": "/kontakt.html", "title": "Kontakt", "navLabel": "Kontakt", "order": 7 },
+    { "path": "/faq.html", "title": "FAQ", "navLabel": "FAQ", "order": 8 },
+    { "path": "/login.html", "title": "Login", "navLabel": "Login", "order": 9 },
+    { "path": "/checkout.html", "title": "Checkout", "navLabel": "Checkout", "order": 10 },
+    { "path": "/impressum.html", "title": "Impressum", "navLabel": "Impressum", "order": 11 },
+    { "path": "/datenschutz.html", "title": "Datenschutz", "navLabel": "Datenschutz", "order": 12 },
+    { "path": "/agb.html", "title": "AGB", "navLabel": "AGB", "order": 13 }
+  ],
+  "footerPages": [
+    { "path": "/impressum.html", "label": "Impressum" },
+    { "path": "/datenschutz.html", "label": "Datenschutz" },
+    { "path": "/disclaimer.html", "label": "Disclaimer" },
+    { "path": "/agb.html", "label": "AGB" },
+    { "path": "/widerruf.html", "label": "Widerrufserklärung" }
+  ]
+}

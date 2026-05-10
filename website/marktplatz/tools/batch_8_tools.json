@@ -1,0 +1,193 @@
+{
+  "batch_id": 8,
+  "total_batches": 22,
+  "category": "COMMERCE & MONETIZATION",
+  "tools": [
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "tagline": "Die Finanz-Infrastruktur des Internets. Payments für Profis.",
+      "badge": "PAYMENT STANDARD",
+      "rating": { "tacos": 5, "count": 50000 },
+      "images": ["/images/tools/stripe-dashboard.webp"],
+      "quick_specs": {
+        "alternative_to": ["PayPal", "Adyen"],
+        "integrations": ["n8n", "WooCommerce", "Skillplate"],
+        "best_for": ["SaaS", "Agenturen", "E-Commerce"]
+      },
+      "pitch_html": "<h3>Akzeptiere Zahlungen, nicht Ausreden.</h3><p><strong>Stripe</strong> ist der Goldstandard. Wenn du professionell wirken willst, nutzt du Stripe. Es bietet die sauberste API, die besten Checkout-Flows und integriert sich nahtlos in unsere n8n-Automatisierungen.</p><h4>CanGo Use-Case:</h4><p>Wir nutzen Stripe Webhooks, um nach einem erfolgreichen Kauf automatisch den Zugang zu unseren Kursen und Tools freizuschalten – ohne menschliches Zutun.</p>",
+      "deal_terms": [
+        "Keine monatlichen Fixkosten",
+        "135+ Währungen",
+        "Radar (Betrugsschutz)",
+        "Atlas (Firmengründung)"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Standard",
+          "price": 0,
+          "original_price": 0,
+          "currency": "€",
+          "billing": "per-transaction",
+          "features": [
+            "1.5% + 0.25€ pro Karte (EU)",
+            "Checkout Page inklusive",
+            "Abo-Verwaltung",
+            "Reporting Dashboard"
+          ],
+          "cta_link": "https://stripe.com"
+        }
+      ]
+    },
+    {
+      "id": "lemon-squeezy",
+      "name": "Lemon Squeezy",
+      "tagline": "SaaS & Digital Products verkaufen ohne Steuer-Kopfschmerz.",
+      "badge": "MERCHANT OF RECORD",
+      "rating": { "tacos": 5, "count": 1200 },
+      "images": ["/images/tools/lemonsqueezy-checkout.webp"],
+      "quick_specs": {
+        "alternative_to": ["Paddle", "Gumroad"],
+        "integrations": ["Webhooks", "Zapier", "React"],
+        "best_for": ["Software-Verkäufer", "Creator"]
+      },
+      "pitch_html": "<h3>Weltweit verkaufen, Steuern vergessen.</h3><p>Umsatzsteuer in 100 Ländern abzuführen ist ein Albtraum. <strong>Lemon Squeezy</strong> ist ein 'Merchant of Record'. Sie verkaufen das Produkt für dich und kümmern sich um die Steuer-Abführung weltweit.</p><p>Ideal für unsere Franchise-Partner, die digitale Produkte (Lizenzen, E-Books) global verkaufen wollen, ohne eine Buchhaltungs-Abteilung zu brauchen.</p>",
+      "deal_terms": [
+        "Automatische Steuerberechnung & Abführung",
+        "SaaS Subscription Management",
+        "Lizenzschlüssel-Verwaltung",
+        "Affiliate-Netzwerk inklusive"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Standard",
+          "price": 0,
+          "original_price": 0,
+          "currency": "€",
+          "billing": "per-transaction",
+          "features": [
+            "5% + 50¢ pro Transaktion",
+            "Keine monatlichen Gebühren",
+            "Globale Tax Compliance",
+            "E-Mail Marketing Basic"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "typeform",
+      "name": "Typeform",
+      "tagline": "Formulare, die Menschen wirklich ausfüllen.",
+      "badge": "HIGH CONVERSION",
+      "rating": { "tacos": 4, "count": 8900 },
+      "images": ["/images/tools/typeform-builder.webp"],
+      "quick_specs": {
+        "alternative_to": ["Tally", "Google Forms", "Jotform"],
+        "integrations": ["n8n", "Slack", "Notion"],
+        "best_for": ["Marketer", "Sales Teams", "HR"]
+      },
+      "pitch_html": "<h3>Der erste Eindruck zählt. Auch beim Formular.</h3><p>Niemand mag langweilige Formulare. <strong>Typeform</strong> macht aus Datenerfassung eine Konversation. Ein Frage nach der anderen, flüssig animiert, mobil perfekt.</p><h4>Der ROI:</h4><p>Wir haben unsere Lead-Conversion-Rate bei 'High-Ticket' Anfragen (Immobilien) um 40% gesteigert, nur durch den Wechsel von Standard-Formularen zu Typeform. Es wirkt premium.</p>",
+      "deal_terms": [
+        "Logik-Sprünge (Wenn A dann B)",
+        "Rechner-Funktion",
+        "Versteckte Felder (Tracking)",
+        "Video-Integration"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Basic",
+          "price": 25,
+          "original_price": 0,
+          "currency": "€/mo",
+          "billing": "monthly",
+          "features": [
+            "100 Antworten / Monat",
+            "Unbegrenzte Formulare",
+            "Datenspeicherung",
+            "Zapier Integration"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "shopify",
+      "name": "Shopify",
+      "tagline": "Die E-Commerce Macht. Bau deinen Store, skalier ihn zum Mond.",
+      "badge": "ECOMMERCE KING",
+      "rating": { "tacos": 5, "count": 45000 },
+      "images": ["/images/tools/shopify-admin.webp"],
+      "quick_specs": {
+        "alternative_to": ["WooCommerce", "BigCommerce"],
+        "integrations": ["Klaviyo", "TikTok", "Meta Ads"],
+        "best_for": ["D2C Brands", "Dropshipper"]
+      },
+      "pitch_html": "<h3>Verkaufen ohne Technik-Frust.</h3><p>Wenn du physische Produkte (oder Merchandise für deine Brand) verkaufen willst, gibt es keinen Weg vorbei an <strong>Shopify</strong>. Es ist das stabilste, sicherste und am besten integrierte E-Commerce System der Welt.</p><p>Unsere 'Brand-Building' Workflows sind darauf optimiert, Traffic von TikTok direkt auf Shopify-Landingpages zu lenken.</p>",
+      "deal_terms": [
+        "Hosting inklusive",
+        "SSL Zertifikat",
+        "1-Click Checkout",
+        "App Store Zugriff"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Basic",
+          "price": 36,
+          "original_price": 0,
+          "currency": "€/mo",
+          "billing": "monthly",
+          "features": [
+            "Online Store",
+            "Unbegrenzte Produkte",
+            "2 Mitarbeiter-Konten",
+            "24/7 Support"
+          ],
+          "cta_link": "DEIN_AFFILIATE_LINK"
+        }
+      ]
+    },
+    {
+      "id": "woocommerce",
+      "name": "WooCommerce",
+      "tagline": "E-Commerce ohne Limits. Open Source auf WordPress.",
+      "badge": "FLEXIBILITY",
+      "rating": { "tacos": 4, "count": 30000 },
+      "images": ["/images/tools/woo-dashboard.webp"],
+      "quick_specs": {
+        "alternative_to": ["Shopify", "Magento"],
+        "integrations": ["WordPress", "Stripe", "n8n"],
+        "best_for": ["Developer", "WordPress User", "SEO Profis"]
+      },
+      "pitch_html": "<h3>Dein Shop. Deine Daten. Deine Regeln.</h3><p><strong>WooCommerce</strong> verwandelt jede WordPress-Seite in einen Shop. Im Gegensatz zu Shopify gehört der Shop dir (Self-Hosted). Keine Transaktionsgebühren an die Plattform, volle Kontrolle über den Code.</p><p>Da wir Hostinger nutzen, können wir WooCommerce-Instanzen für Kunden in Sekunden deployen – extrem kosteneffizient.</p>",
+      "deal_terms": [
+        "Open Source (Kostenlos)",
+        "Volle Kontrolle",
+        "Riesiges Plugin-Ökosystem",
+        "SEO-freundlich"
+      ],
+      "plans": [
+        {
+          "id": "tier1",
+          "name": "Self-Hosted",
+          "price": 0,
+          "original_price": 0,
+          "currency": "€",
+          "billing": "forever",
+          "features": [
+            "Basis-Software kostenlos",
+            "Unbegrenzte Produkte",
+            "Freie Wahl des Hostings",
+            "Keine Plattform-Gebühren"
+          ],
+          "cta_link": "DEIN_HOSTINGER_LINK"
+        }
+      ]
+    }
+  ]
+}
+

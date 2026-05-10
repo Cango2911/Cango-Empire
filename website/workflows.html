@@ -1,755 +1,1099 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workflow Marketplace | CanGo App Empire</title>
-    <meta name="description" content="100+ getestete n8n Workflows. Kauf sie einzeln oder kombiniere sie zu deiner Content-Maschine.">
-    <link rel="stylesheet" href="cango-empire-v4-monopoly.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        .workflows-page {
-            padding-top: 100px;
-        }
-        .workflow-hero {
-            text-align: center;
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .workflow-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-bright), var(--accent-power));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .workflow-hero p {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-        }
-        .workflow-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-        .workflow-stat {
-            text-align: center;
-        }
-        .workflow-stat-value {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--accent-power);
-            display: block;
-        }
-        .workflow-stat-label {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        .workflow-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        .workflow-category-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .workflow-category-card:hover {
-            border-color: var(--accent-power);
-            box-shadow: var(--glow-orange);
-            transform: translateY(-5px);
-        }
-        .workflow-category-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .workflow-category-card p {
-            color: var(--text-dim);
-            margin-bottom: 1rem;
-        }
-        .workflow-category-count {
-            display: inline-block;
-            background: var(--accent-power);
-            color: var(--text-bright);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .workflows-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        .workflow-product-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-        .workflow-product-card:hover {
-            border-color: var(--accent-power);
-            box-shadow: var(--glow-orange);
-            transform: translateY(-5px);
-        }
-        .workflow-product-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent-power);
-            color: var(--text-bright);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        .workflow-product-name {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            margin-top: 0.5rem;
-        }
-        .workflow-product-description {
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        .workflow-product-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-        .workflow-product-features li {
-            padding: 0.5rem 0;
-            color: var(--text-dim);
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        .workflow-product-features li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent-power);
-            font-weight: 700;
-        }
-        .workflow-product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-        .workflow-product-price {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--accent-power);
-            line-height: 1.4;
-        }
-        .workflow-product-price-usd {
-            display: block;
-            font-size: 1.8rem;
-        }
-        .workflow-product-price-eur {
-            display: block;
-            font-size: 1.4rem;
-            color: var(--text-dim);
-            font-weight: 600;
-        }
-        .workflow-product-cta {
-            background: var(--accent-power);
-            color: var(--text-bright);
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            box-shadow: var(--glow-orange);
-        }
-        .workflow-product-cta:hover {
-            box-shadow: 0 0 40px rgba(255, 153, 0, 0.6);
-            transform: scale(1.05);
-        }
-        .workflow-filter-section {
-            margin: 3rem 0;
-        }
-        .workflow-filters {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-        .workflow-filter-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--text-dim);
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-        .workflow-filter-btn:hover,
-        .workflow-filter-btn.active {
-            border-color: var(--accent-power);
-            color: var(--accent-power);
-            box-shadow: var(--glow-orange);
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--accent-power);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .back-link:hover {
-            color: var(--text-bright);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- FIX-20260407: Phase 0.3 — kanonische URL -->
+<link rel="canonical" href="https://automation-cango-app-empire.com/workflows.html">
+<title>Workflows – CanGo App Empire</title>
+<link rel="stylesheet" href="/fonts/fonts.css?v=3">
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+<link rel="stylesheet" href="/css/responsive-global.css?v=20">
+<!-- FIX-2026-03-23: HQ-Doppelrahmen 13 Hauptseiten -->
+<link rel="stylesheet" href="/css/hauptseiten-hq-frames.css?v=2">
+<link rel="stylesheet" href="/css/release-ribbon.css?v=1">
+<!-- FIX-2026-04-07: Phase 1.1 — Mobile primäre CTA-Leiste -->
+<link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2">
+<style>
+:root{
+  --navy-900:#080d1a;--navy-800:#0d1424;--navy-700:#111c30;
+  --navy-600:#162238;--navy-500:#1d2d47;--navy-400:#253652;
+  --gray-blue:#3a4f6b;--gray-blue-light:#4e6382;
+  --border:rgba(78,99,130,0.25);--border-light:rgba(78,99,130,0.12);
+  --orange:#F97316;--orange-soft:rgba(249,115,22,0.12);
+  --white:#ffffff;--off-white:#e8eef5;
+  --muted:#7a91ab;--muted-dim:#4a607a;
+  --green:#22c55e;--red:#ef4444;--blue:#3b82f6;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy-900);color:var(--off-white);font-family:'Outfit',sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(249,115,22,.04) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(30,60,120,.15) 0%,transparent 60%);pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,13,26,.88);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:center}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-c{width:34px;height:34px;background:var(--orange);color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.logo-text{color:var(--white)}.logo-text span{color:var(--muted);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{color:var(--white);background:var(--navy-600)}
+.nav-links a.active{color:var(--orange);background:var(--navy-600)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart-btn{font-size:13px;color:var(--muted);border:1px solid var(--border);padding:6px 14px;border-radius:8px;cursor:pointer;background:var(--navy-700);transition:all .2s;position:relative;display:flex;align-items:center;gap:6px}
+.nav-cart-btn:hover{border-color:var(--orange);color:var(--orange)}
+.cart-badge{background:var(--orange);color:#000;font-size:10px;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:600;font-size:13px;padding:10px 22px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none;border:none;letter-spacing:.01em}
+.btn-o{background:var(--orange);color:#000}
+.btn-o:hover{background:#fb923c;transform:translateY(-1px);box-shadow:0 8px 24px rgba(249,115,22,.3)}
+.btn-g{background:transparent;color:var(--off-white);border:1px solid var(--border)}
+.btn-g:hover{border-color:var(--gray-blue-light);background:var(--navy-600)}
+.btn-lg{font-size:15px;padding:14px 28px;border-radius:12px}
+
+/* BREADCRUMB */
+.bc-bar{padding:14px 24px;border-bottom:1px solid var(--border);background:var(--navy-800);position:relative;z-index:1}
+.bc-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim)}
+.bc-inner a{color:var(--muted);text-decoration:none;transition:color .2s}
+.bc-inner a:hover{color:var(--orange)}
+
+/* PAGE HERO */
+.phero{background:var(--navy-800);border-bottom:1px solid var(--border);padding:56px 24px 48px;position:relative;overflow:hidden;z-index:1}
+.phero-inner{max-width:1200px;margin:0 auto}
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.orb1{width:500px;height:500px;background:rgba(249,115,22,.06);top:-150px;right:-50px}
+.orb2{width:350px;height:350px;background:rgba(30,60,120,.15);bottom:-80px;left:-60px}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--navy-600);border:1px solid var(--border);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:22px;width:fit-content}
+.hero-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.6s ease-in-out infinite}
+.hero-chip strong{color:var(--off-white)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1.ptitle{font-size:clamp(36px,5vw,68px);font-weight:800;line-height:1.0;letter-spacing:-.025em;color:var(--white);margin-bottom:14px}
+h1.ptitle .ac{color:var(--orange)}
+h1.ptitle .dm{color:var(--muted);font-weight:300}
+.hero-lead{font-size:16px;color:var(--muted);max-width:660px;line-height:1.8;margin-bottom:28px}
+.hero-lead strong{color:var(--off-white)}
+.hero-stats-row{display:flex;gap:0;flex-wrap:wrap;margin-bottom:28px;border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:fit-content}
+.hstat{padding:16px 28px;background:var(--navy-700);border-right:1px solid var(--border)}
+.hstat:last-child{border-right:none}
+.hstat-num{font-size:32px;font-weight:800;color:var(--orange);letter-spacing:-.02em;line-height:1;margin-bottom:2px}
+.hstat-lbl{font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:.05em;text-transform:uppercase}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+
+/* STICKY FILTER */
+.filter-bar{position:sticky;top:108px;z-index:90;background:rgba(8,13,26,.96);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 24px}
+.filter-inner{max-width:1200px;margin:0 auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search-wrap{position:relative;min-width:200px;max-width:300px;flex-shrink:0}
+.search-wrap input{width:100%;background:var(--navy-700);border:1px solid var(--border);border-radius:10px;padding:9px 14px 9px 38px;font-family:'Outfit',sans-serif;font-size:13px;color:var(--off-white);outline:none;transition:border-color .2s}
+.search-wrap input::placeholder{color:var(--muted-dim)}
+.search-wrap input:focus{border-color:var(--orange)}
+.si{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted-dim);font-size:14px;pointer-events:none}
+.cats{display:flex;gap:5px;flex-wrap:wrap;flex:1}
+.cat{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.03em;padding:7px 12px;border-radius:8px;cursor:pointer;border:1px solid var(--border);background:var(--navy-700);color:var(--muted);transition:all .2s;white-space:nowrap;user-select:none}
+.cat:hover{border-color:var(--gray-blue-light);color:var(--off-white)}
+.cat.active{background:var(--orange);border-color:var(--orange);color:#000;font-weight:700}
+.filter-right{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.sort-sel{background:var(--navy-700);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted);outline:none;cursor:pointer;transition:border-color .2s}
+.sort-sel:focus{border-color:var(--orange)}
+.count-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim);padding:7px 12px;background:var(--navy-700);border:1px solid var(--border);border-radius:8px;white-space:nowrap}
+.count-lbl span{color:var(--orange)}
+
+/* MAIN LAYOUT */
+.main-wrap{padding:32px 24px 80px;position:relative;z-index:1}
+.main-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:24px}
+
+/* WORKFLOWS GRID */
+.wf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+
+/* WORKFLOW CARD */
+.wf-card{background:var(--navy-700);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:all .3s}
+.wf-card:hover{border-color:rgba(249,115,22,.35);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.wf-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(249,115,22,.04) 0%,transparent 50%);opacity:0;transition:opacity .3s;pointer-events:none}
+.wf-card:hover::before{opacity:1}
+.wf-card.in-cart{border-color:rgba(34,197,94,.3)}
+.wf-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;gap:8px}
+.wf-emoji{font-size:22px;flex-shrink:0;line-height:1}
+.wf-cat-badge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px;flex-shrink:0}
+.cat-master{background:rgba(249,115,22,.15);color:var(--orange);border:1px solid rgba(249,115,22,.25)}
+.cat-content{background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.25)}
+.cat-video{background:rgba(168,85,247,.15);color:#c084fc;border:1px solid rgba(168,85,247,.25)}
+.cat-spezial{background:rgba(234,179,8,.12);color:#facc15;border:1px solid rgba(234,179,8,.2)}
+.cat-assistenten{background:rgba(34,197,94,.12);color:#4ade80;border:1px solid rgba(34,197,94,.2)}
+.cat-leads{background:rgba(20,184,166,.15);color:#2dd4bf;border:1px solid rgba(20,184,166,.25)}
+.cat-immobilien{background:rgba(249,115,22,.12);color:#fb923c;border:1px solid rgba(249,115,22,.2)}
+.cat-distribution{background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.25)}
+.cat-research{background:rgba(239,68,68,.12);color:#f87171;border:1px solid rgba(239,68,68,.2)}
+.cat-analytics{background:rgba(6,182,212,.15);color:#22d3ee;border:1px solid rgba(6,182,212,.25)}
+.wf-name{font-size:13px;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:8px;flex:1}
+.wf-desc{font-size:12px;color:var(--muted);margin-bottom:12px;line-height:1.5}
+.wf-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:14px}
+.wf-tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);background:var(--navy-600);border:1px solid var(--border-light);padding:2px 7px;border-radius:4px}
+.wf-tag.t-ba{color:var(--orange);border-color:rgba(249,115,22,.2);background:rgba(249,115,22,.06)}
+.wf-tag.t-tg{color:#60a5fa;border-color:rgba(59,130,246,.2);background:rgba(59,130,246,.06)}
+.wf-tag.t-ai{color:#c084fc;border-color:rgba(168,85,247,.2);background:rgba(168,85,247,.06)}
+.wf-tag.t-sc{color:#4ade80;border-color:rgba(34,197,94,.2);background:rgba(34,197,94,.06)}
+.wf-footer{margin-top:auto;display:flex;flex-direction:column;gap:10px}
+.wf-price-row{display:flex;align-items:flex-end;justify-content:space-between}
+.wf-price{font-size:22px;font-weight:800;color:var(--orange);letter-spacing:-.02em;line-height:1}
+.wf-nodes{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-dim);margin-top:2px}
+.wf-replace{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);display:flex;align-items:center;gap:4px}
+.wf-replace::before{content:'↑';font-size:11px}
+.wf-n8n{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:#93c5fd;text-decoration:none;margin-top:10px;padding:7px 12px;border:1px solid rgba(59,130,246,.35);border-radius:8px;background:rgba(59,130,246,.1);transition:all .2s;align-self:flex-start}
+.wf-n8n:hover{border-color:#60a5fa;color:#bfdbfe}
+.wf-cart-row{display:flex;gap:8px;align-items:center}
+.qty-ctrl{display:flex;align-items:center;gap:0;background:var(--navy-600);border:1px solid var(--border);border-radius:8px;overflow:hidden;flex-shrink:0}
+.qty-btn{width:28px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--muted);transition:all .2s;font-weight:700;background:transparent;border:none;font-family:'Outfit',sans-serif}
+.qty-btn:hover{background:var(--navy-500);color:var(--orange)}
+.qty-val{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--off-white);min-width:24px;text-align:center;line-height:32px}
+.add-btn{flex:1;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;background:var(--orange);color:#000;border:none;border-radius:8px;padding:0 12px;height:32px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.add-btn:hover{background:#fb923c}
+.add-btn.added{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3)}
+
+/* NO RESULTS */
+.no-res{grid-column:1/-1;text-align:center;padding:80px 20px}
+.no-res h3{font-size:22px;font-weight:700;color:var(--white);margin-bottom:8px}
+.no-res p{font-size:14px;color:var(--muted)}
+
+/* CART DRAWER */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100vw;background:var(--navy-800);border-left:1px solid var(--border);z-index:201;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column}
+.cart-drawer.open{transform:translateX(0)}
+.cd-head{padding:24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.cd-title{font-size:18px;font-weight:700;color:var(--white)}
+.cd-close{width:32px;height:32px;background:var(--navy-700);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--muted);transition:all .2s}
+.cd-close:hover{border-color:var(--orange);color:var(--orange)}
+.cd-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--muted);font-size:14px;padding:40px}
+.cd-items{flex:1;overflow-y:auto;padding:16px}
+.cd-item{background:var(--navy-700);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.cd-item-info{flex:1;min-width:0}
+.cd-item-cat{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.cd-item-name{font-size:13px;font-weight:700;color:var(--white);line-height:1.3;margin-bottom:6px}
+.cd-item-nodes{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-dim)}
+.cd-item-price{font-size:16px;font-weight:800;color:var(--orange);white-space:nowrap;flex-shrink:0}
+.cd-item-remove{font-size:18px;color:var(--muted-dim);cursor:pointer;transition:color .2s;line-height:1}
+.cd-item-remove:hover{color:var(--red)}
+.cd-footer{padding:20px;border-top:1px solid var(--border);flex-shrink:0}
+.cd-total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.cd-total-label{font-size:15px;color:var(--muted)}
+.cd-total-val{font-size:28px;font-weight:800;color:var(--orange);letter-spacing:-.02em}
+.cd-checkout{width:100%;background:var(--orange);color:#000;font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;padding:14px;border:none;border-radius:12px;cursor:pointer;transition:all .2s}
+.cd-checkout:hover{background:#fb923c;box-shadow:0 8px 24px rgba(249,115,22,.3)}
+.cd-clear{width:100%;background:transparent;color:var(--muted);font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;padding:10px;border:none;cursor:pointer;margin-top:8px;transition:color .2s}
+.cd-clear:hover{color:var(--red)}
+
+/* PACKAGES */
+.pkg-section{padding:80px 24px;background:var(--navy-800);position:relative;z-index:1}
+.pkg-inner{max-width:1200px;margin:0 auto}
+.ey{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+h2.st{font-size:clamp(34px,4.5vw,56px);font-weight:800;letter-spacing:-.025em;color:var(--white);line-height:1.05;margin-bottom:16px}
+h2.st .ac{color:var(--orange)}.h2.st .dm{color:var(--muted);font-weight:300}
+.div{width:48px;height:3px;background:var(--orange);border-radius:2px;margin:20px 0 40px}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.prc{background:var(--navy-700);border:1px solid var(--border);border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;transition:all .3s;position:relative;overflow:hidden}
+.prc:hover{border-color:rgba(249,115,22,.3);transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,.3)}
+.prc.feat{border-color:var(--orange);background:linear-gradient(160deg,rgba(249,115,22,.08) 0%,var(--navy-700) 60%)}
+.prc.feat::before{content:'BELIEBT';position:absolute;top:14px;right:14px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:var(--orange);color:#000;padding:3px 8px;border-radius:4px}
+.plbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.pname{font-size:20px;font-weight:800;color:var(--white);margin-bottom:4px}
+.pprice{font-size:36px;font-weight:800;color:var(--orange);letter-spacing:-.025em;line-height:1;margin:8px 0 4px}
+.pprice sub{font-size:14px;color:var(--muted);font-weight:400;vertical-align:middle}
+.ponetime{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-dim);margin-bottom:6px}
+.ptagline{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:12px}
+.pavail{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-dim);margin-bottom:16px}
+.pavail span{color:var(--orange)}
+.pdiv{height:1px;background:var(--border-light);margin-bottom:16px}
+.pfeats{list-style:none;flex:1;display:flex;flex-direction:column;gap:8px}
+.pfeats li{font-size:12.5px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.pfeats li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0}
+.pctas{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+.pkg-add-btn{width:100%;background:var(--navy-600);color:var(--off-white);font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;padding:10px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s}
+.pkg-add-btn:hover{background:var(--orange);color:#000;border-color:var(--orange)}
+.pkg-cta-btn{width:100%;background:var(--orange);color:#000;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;padding:11px;border:none;border-radius:10px;cursor:pointer;transition:all .2s}
+.pkg-cta-btn:hover{background:#fb923c}
+
+/* ROI SECTION */
+.roi-section{padding:80px 24px;background:var(--navy-900);position:relative;z-index:1}
+.roi-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.roi-left{}
+.roi-desc{font-size:16px;color:var(--muted);line-height:1.8;margin-bottom:28px}
+.roi-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+.roi-stat{background:var(--navy-700);border:1px solid var(--border);border-radius:12px;padding:20px}
+.roi-stat-num{font-size:36px;font-weight:800;color:var(--orange);letter-spacing:-.02em;line-height:1;margin-bottom:4px}
+.roi-stat-lbl{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.roi-quote{background:var(--navy-700);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:0 14px 14px 0;padding:24px 28px;font-size:17px;font-weight:600;color:var(--white);line-height:1.5}
+
+/* FOOTER */
+footer{background:var(--navy-900);border-top:1px solid var(--border);padding:72px 24px 40px;position:relative;z-index:1}
+.footer-wrap{max-width:1200px;margin:0 auto}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.fbrand p{font-size:14px;color:var(--muted);line-height:1.75;margin-top:14px;max-width:260px}
+.fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:10px}
+.fcol ul li a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--white)}
+.fbot{border-top:1px solid var(--border-light);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.fcopy{font-size:13px;color:var(--muted-dim)}
+.fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+.fcmd{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange);display:flex;align-items:center;gap:8px;background:var(--navy-700);border:1px solid var(--border);padding:10px 18px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none}
+.fcmd:hover{border-color:var(--orange);background:rgba(249,115,22,.08)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.hidden{display:none!important}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;z-index:300;background:var(--navy-700);border:1px solid rgba(34,197,94,.3);border-radius:12px;padding:14px 20px;font-size:13px;color:var(--off-white);display:flex;align-items:center;gap:10px;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;max-width:320px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-icon{font-size:16px;flex-shrink:0}
+
+/* RELEASE START – Ribbon direkt unter Menüleiste (top:68px), Gelb-Orange-Kupfer-Verlauf */
+.release-ribbon{position:sticky;top:68px;z-index:99;background:linear-gradient(135deg,#fcd34d 0%,#f59e0b 25%,#ea580c 50%,#c2410c 75%,#9a3412 100%);color:#1c1917;text-align:center;padding:10px 16px;font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;letter-spacing:.02em;border-bottom:2px solid rgba(180,83,9,.6);box-shadow:0 4px 20px rgba(0,0,0,.3),0 0 24px rgba(245,158,11,.25)}
+.ribbon-slide-text{display:inline-block;min-width:280px;transition:opacity .4s ease}
+.ribbon-slide-text.fade{opacity:0}
+.ribbon-countdown{font-family:'JetBrains Mono',monospace;margin-left:12px;background:rgba(0,0,0,.2);padding:2px 8px;border-radius:4px;color:#78350f}
+
+.release-banner{background:linear-gradient(135deg,#2a1505 0%,#1a0e04 50%,#0f0802 100%);border:2px solid rgba(249,115,22,.35);border-left:4px solid #F97316;border-radius:14px;padding:28px 32px;margin:24px auto;max-width:1200px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;position:relative;box-shadow:0 10px 28px rgba(0,0,0,.35),0 0 24px rgba(249,115,22,.2),inset 0 0 0 1px rgba(251,146,60,.18);overflow:hidden}
+.release-banner::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.03) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;border-radius:14px}
+.release-banner .badge-tr{position:absolute;top:14px;right:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#F97316;background:rgba(249,115,22,.15);padding:4px 10px;border-radius:6px}
+.release-banner-left .eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#F97316;margin-bottom:8px}
+.release-banner-left .big-price{font-size:48px;font-weight:900;color:#F97316;line-height:1;margin-bottom:8px}
+.release-banner-left .sub{font-size:15px;color:#e8eef5;font-weight:600;margin-bottom:6px}
+.release-banner-left .disclaimer{font-size:12px;color:#7a91ab;line-height:1.7;max-width:520px}
+.release-countdown-wrap{text-align:center;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:12px;padding:20px 28px}
+.release-countdown-wrap .label{font-family:'JetBrains Mono',monospace;font-size:11px;color:#7a91ab;margin-bottom:12px;text-transform:uppercase;letter-spacing:.1em}
+.release-countdown-inner{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+.release-cd-box{text-align:center}
+.release-cd-box .val{font-family:'JetBrains Mono',monospace;font-size:36px;font-weight:700;line-height:1.2}
+.release-cd-box .val--days{color:#F97316}
+.release-cd-box .val--time{color:#e8eef5}
+.release-cd-box .unit{font-size:10px;color:#7a91ab}
+.release-cd-sep{color:#F97316;font-size:28px;font-weight:700}
+.wf-price-original{font-size:12px;color:#7a91ab;text-decoration:line-through;margin-bottom:2px}
+.wf-price-action{font-size:20px;font-weight:800;color:#F97316;letter-spacing:-.02em;line-height:1}
+.wf-price-badge-75{font-size:11px;background:rgba(249,115,22,.15);border-radius:4px;padding:2px 6px;margin-left:4px;font-weight:600;color:#F97316}
+@media(max-width:768px){.release-banner{flex-direction:column;align-items:flex-start}.release-banner .badge-tr{position:static;margin-bottom:8px}}
+@media(max-width:1100px){.wf-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:960px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  .phero,.main-wrap,.pkg-section,.roi-section{padding-left:16px;padding-right:16px}
+  .filter-bar{padding:10px 16px}
+  .wf-grid{grid-template-columns:repeat(2,1fr)}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .roi-inner{grid-template-columns:1fr;gap:40px}
+  .ftop{grid-template-columns:1fr 1fr}
+  .fbot{flex-direction:column;gap:16px;text-align:center}
+  .cart-drawer{width:100vw}
+  .hero-stats-row{max-width:100%}
+}
+@media(max-width:600px){
+  .wf-grid{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr}
+  .ftop{grid-template-columns:1fr}
+  h1.ptitle{font-size:34px}
+}
+</style>
+<style>
+
+/* ─── CANGO FOOTER (Startseiten-Stil) ─── */
+.cango-footer{background:#080d1a !important;border-top:1px solid rgba(78,99,130,.25) !important;padding:72px 24px 40px !important;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .footer-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#f1f5f9;font-weight:700;font-size:15px}
+.cango-footer .footer-logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0}
+.cango-footer .footer-logo-text{display:flex;flex-direction:column;line-height:1}
+.cango-footer .footer-logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px;font-weight:700}
+.cango-footer .fcol ul{list-style:none;padding:0;margin:0}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#f1f5f9}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav-aggressive" role="navigation">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="cango-empire-v4-monopoly.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
-                    <span class="brand-logo">⚡</span>
-                    <span class="brand-name">CANGO EMPIRE</span>
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="cango-empire-v4-monopoly.html#home">EMPIRE</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#maschine">MASCHINE</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#territorien">TERRITORIEN</a></li>
-                <li><a href="workflows.html">WORKFLOWS</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#arsenal">ARSENAL</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#intel">INTEL</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#zugang" class="nav-cta">JETZT ODER NIE</a></li>
-            </ul>
-        </div>
-    </nav>
+<body class="page-haupt-13 has-primary-cta-bar">
 
-    <!-- Workflows Page -->
-    <div class="workflows-page">
-        <div class="container">
-            <a href="cango-empire-v4-monopoly.html#territorien" class="back-link">← Zurück zu Territorien</a>
-            
-            <div class="workflow-hero">
-                <h1>WORKFLOW MARKETPLACE</h1>
-                <p>100+ getestete Automatisierungen. Kauf sie einzeln oder kombiniere sie zu deiner Content-Maschine.</p>
-                <div class="workflow-stats" id="workflowStats">
-                    <!-- Wird via JavaScript geladen -->
-                </div>
-            </div>
-
-            <div class="workflow-filter-section">
-                <div class="workflow-filters" id="workflowFilters">
-                    <!-- Wird via JavaScript geladen -->
-                </div>
-            </div>
-
-            <div class="workflows-grid" id="workflowsGrid">
-                <!-- Wird via JavaScript geladen -->
-            </div>
-        </div>
+<!-- NAV -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html" class="active">Workflows</a></li>
+      <li><a href="/nischen.html">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart" data-cango-kpi="kpi_checkout_start">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o" data-cango-kpi="kpi_kontakt_cta">Jetzt anfragen</a>
     </div>
+  </div>
+</nav>
 
-    <script src="cango-empire-v4-monopoly.js"></script>
-    <script>
-        // Load workflow data
-        async function loadWorkflows() {
-            try {
-                const response = await fetch('cango-empire-v4-monopoly-data.json');
-                const data = await response.json();
-                
-                if (data.pages && data.pages.workflows) {
-                    const workflows = data.pages.workflows;
-                    
-                    // Render stats
-                    renderStats(workflows.hero.stats);
-                    
-                    // Render filters
-                    renderFilters(workflows.categories);
-                    
-                    // Render workflows
-                    renderWorkflows(workflows.products);
-                    
-                    // Setup filter functionality
-                    setupWorkflowFilters(workflows.products);
-                }
-            } catch (error) {
-                console.error('Error loading workflows:', error);
-            }
-        }
-        
-        function renderStats(stats) {
-            const statsContainer = document.getElementById('workflowStats');
-            if (!statsContainer) return;
-            
-            statsContainer.innerHTML = stats.map(stat => `
-                <div class="workflow-stat">
-                    <span class="workflow-stat-value">${stat.value}</span>
-                    <span class="workflow-stat-label">${stat.label}</span>
-                </div>
-            `).join('');
-        }
-        
-        function renderFilters(categories) {
-            const filtersContainer = document.getElementById('workflowFilters');
-            if (!filtersContainer) return;
-            
-            filtersContainer.innerHTML = `
-                <button class="workflow-filter-btn active" data-filter="all">ALLE</button>
-                ${categories.map(cat => `
-                    <button class="workflow-filter-btn" data-filter="${cat.id}">${cat.name.toUpperCase()}</button>
-                `).join('')}
-            `;
-        }
-        
-        function renderWorkflows(workflows, filter = 'all') {
-            const grid = document.getElementById('workflowsGrid');
-            if (!grid) return;
-            
-            let filteredWorkflows = workflows;
-            if (filter !== 'all') {
-                filteredWorkflows = workflows.filter(w => w.category === filter);
-            }
-            
-            grid.innerHTML = filteredWorkflows.map(workflow => `
-                <div class="workflow-product-card" data-category="${workflow.category}">
-                    <div class="workflow-product-badge">${workflow.badge}</div>
-                    <h3 class="workflow-product-name">${workflow.name}</h3>
-                    <p class="workflow-product-description">${workflow.description}</p>
-                    <ul class="workflow-product-features">
-                        ${workflow.features.map(f => `<li>${f}</li>`).join('')}
-                    </ul>
-                    <div class="workflow-product-footer">
-                        <div class="workflow-product-price">
-                            <span class="workflow-product-price-usd">$${workflow.price_usd.toLocaleString()}</span>
-                            <span class="workflow-product-price-eur">€${workflow.price_eur.toLocaleString()}</span>
-                        </div>
-                        <a href="#kontakt" class="workflow-product-cta">KAUFEN</a>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        function setupWorkflowFilters(workflows) {
-            const filterButtons = document.querySelectorAll('.workflow-filter-btn');
-            const workflowCards = document.querySelectorAll('.workflow-product-card');
-            
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Update active state
-                    filterButtons.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter workflows
-                    const filter = this.getAttribute('data-filter');
-                    renderWorkflows(workflows, filter);
-                });
-            });
-        }
-        
-        // Load on page load
-        document.addEventListener('DOMContentLoaded', loadWorkflows);
-    </script>
+<!-- RELEASE START – Sticky Ribbon unter der Menüleiste, TV-Farbverlauf, Sliding-Text -->
+<div class="release-ribbon" id="releaseRibbon">
+  <span id="ribbon-slide-text" class="ribbon-slide-text"></span>
+  <span id="ribbon-countdown" class="ribbon-countdown"></span>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="bc-bar">
+  <div class="bc-inner">
+    <a href="/index.html">Startseite</a><span style="color:var(--muted-dim)">›</span>
+    <span>Workflows</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="phero">
+  <div class="orb orb1"></div><div class="orb orb2"></div>
+  <div class="phero-inner rv">
+    <div class="hero-chip"><span class="dot"></span><strong>100 Workflows aktiv</strong>&nbsp;·&nbsp;33 Content-Maschinen</div>
+    <h1 class="ptitle">Automation-Workflows<br><span class="dm">für jedes Problem.</span></h1>
+    <p class="hero-lead"><strong>416 Workflows · 11 Kategorien · Sofort einsatzbereit.</strong> Effizienz steigern mit den besten Automatisierungs-Tools und n8n Workflows.</p>
+    <!-- FIX-2026-04-08: Interaktiver Blog-Aktivierungsplan (Blocker, 3-Tage-Rollout) -->
+    <p class="hero-lead" style="margin-top:-12px;font-size:15px;max-width:720px"><a href="/blog-workflow-aktivierungsplan.html" style="color:#F97316;font-weight:600;text-decoration:underline;text-underline-offset:3px">Blog-Workflow Aktivierungsplan</a> — Blocker, Cron, 6 Nischen, Publishing (interaktiv).</p>
+    <div class="hero-stats-row">
+      <div class="hstat"><div class="hstat-num">416</div><div class="hstat-lbl">Workflows</div></div>
+      <div class="hstat"><div class="hstat-num">11</div><div class="hstat-lbl">Kategorien</div></div>
+      <div class="hstat"><div class="hstat-num">108</div><div class="hstat-lbl">Max Nodes</div></div>
+      <div class="hstat"><div class="hstat-num">52€</div><div class="hstat-lbl">Ab Preis (Aktion -75%)</div></div>
+    </div>
+    <!-- FIX-2026-04-07: Phase 1.1 — eine Primär-CTA, Workflows als Text-Link -->
+    <div class="hero-ctas hero-ctas--split">
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+      <a href="#workflows" class="hero-cta-secondary">Workflows entdecken →</a>
+    </div>
+  </div>
+</div>
+
+<!-- RELEASE START – Aktions-Banner -->
+<div class="release-banner-wrap" style="padding:0 24px">
+  <div class="release-banner">
+    <span class="badge-tr">NUR FÜR KURZE ZEIT</span>
+    <div class="release-banner-left">
+      <div class="eyebrow">🚀 Release Start Aktion · 12 Monate gültig</div>
+      <div class="big-price">75% RABATT</div>
+      <div class="sub">Auf alle einzelnen n8n Workflow-Dateien</div>
+      <p class="disclaimer">Du kaufst die fertige Workflow-Datei (JSON). Die Einrichtung und das Anbinden deiner eigenen API-Schlüssel (OpenAI, Google, Anthropic usw.) erfolgt eigenständig durch dich. Kein Support oder Full-Service enthalten. Rechtlich: Verkauf von Software/Workflow-Dateien – kein Dienstleistungsvertrag, kein § 34f GewO.</p>
+    </div>
+    <div class="release-countdown-wrap">
+      <div class="label">Aktion endet in</div>
+      <div class="release-countdown-inner" id="main-countdown">
+        <div class="release-cd-box">
+          <div id="cd-days" class="val val--days">000</div>
+          <div class="unit">Tage</div>
+        </div>
+        <span class="release-cd-sep">:</span>
+        <div class="release-cd-box">
+          <div id="cd-hours" class="val val--time">00</div>
+          <div class="unit">Std</div>
+        </div>
+        <span class="release-cd-sep">:</span>
+        <div class="release-cd-box">
+          <div id="cd-mins" class="val val--time">00</div>
+          <div class="unit">Min</div>
+        </div>
+        <span class="release-cd-sep">:</span>
+        <div class="release-cd-box">
+          <div id="cd-secs" class="val val--time">00</div>
+          <div class="unit">Sek</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="workflows">
+  <div class="filter-inner">
+    <div class="search-wrap">
+      <span class="si">🔍</span>
+      <input type="text" id="search" placeholder="Workflow suchen..." oninput="render()">
+    </div>
+    <div class="cats">
+      <div class="cat active" onclick="setFilter('alle',this)">Alle (416)</div>
+      <div class="cat" onclick="setFilter('master',this)">🎯 Master (152)</div>
+      <div class="cat" onclick="setFilter('content',this)">📝 Content (64)</div>
+      <div class="cat" onclick="setFilter('video',this)">🎬 Video (36)</div>
+      <div class="cat" onclick="setFilter('research',this)">🔍 Research (4)</div>
+      <div class="cat" onclick="setFilter('leads',this)">💰 Leads &amp; Sales (16)</div>
+      <div class="cat" onclick="setFilter('immobilien',this)">🏠 Immobilien (14)</div>
+      <div class="cat" onclick="setFilter('distribution',this)">📢 Distribution (20)</div>
+      <div class="cat" onclick="setFilter('assistenten',this)">🤖 Assistenten (44)</div>
+      <div class="cat" onclick="setFilter('analytics',this)">📊 Analytics (12)</div>
+      <div class="cat" onclick="setFilter('spezial',this)">⚡ Spezial (54)</div>
+    </div>
+    <div class="filter-right">
+      <select class="sort-sel" id="sortSel" onchange="render()">
+        <option value="nodes-desc">Nodes ↓</option>
+        <option value="nodes-asc">Nodes ↑</option>
+        <option value="price-desc">Preis ↓</option>
+        <option value="price-asc">Preis ↑</option>
+        <option value="name-asc">Name A–Z</option>
+      </select>
+      <div class="count-lbl">Zeige <span id="count">416</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main-wrap">
+  <div class="main-inner">
+    <div class="wf-grid" id="grid"></div>
+  </div>
+</div>
+
+<!-- PACKAGES -->
+<section class="pkg-section" id="pakete">
+  <div class="pkg-inner rv">
+    <div class="ey">💰 Dienstleistungs-Pakete</div>
+    <h2 class="st">Pakete &amp; <span class="ac">Preise</span></h2>
+    <div class="div"></div>
+    <p style="font-size:15px;color:var(--muted);max-width:660px;line-height:1.8;margin-bottom:48px">Wähle das passende Paket für deine Automatisierungs-Ziele. Managed Service oder vollständiger Transfer.</p>
+    <div class="pgrid">
+      <div class="prc">
+        <div class="plbl">UNLIMITIERT</div><div class="pname">Starter</div>
+        <div class="pprice">497€ <sub>/ Monat</sub></div>
+        <p class="ptagline">Statt Agentur – CanGo</p>
+        <div class="pavail">Verfügbar <span>∞</span></div><div class="pdiv"></div>
+        <ul class="pfeats"><li>5 Workflows aktiv</li><li>30 Assets/Monat</li><li>1 Nische</li><li>E-Mail Support</li></ul>
+        <div class="pctas"><button class="pkg-add-btn" onclick="addPackage('Starter',497)">In den Warenkorb</button><button class="pkg-cta-btn">Jetzt starten</button></div>
+      </div>
+      <div class="prc feat">
+        <div class="plbl">BELIEBT</div><div class="pname">Professional</div>
+        <div class="pprice">2.497€ <sub>/ Monat</sub></div>
+        <div class="ponetime">+ 15.000€ einmalig Nutzungsrechte</div>
+        <div class="pavail"><span>82 verfügbar</span> · 18 vergeben</div><div class="pdiv"></div>
+        <ul class="pfeats"><li>12 Workflows aktiv</li><li>Bis zu 100 Content-Assets/Monat</li><li>3 Nischen / Kanäle</li><li>Priority Support</li><li>Erweiterte Analytics + A/B Testing</li></ul>
+        <div class="pctas"><button class="pkg-add-btn" onclick="addPackage('Professional',2497)">In den Warenkorb</button><button class="pkg-cta-btn">Jetzt starten</button></div>
+      </div>
+      <div class="prc">
+        <div class="plbl">LIMITIERT</div><div class="pname">Enterprise</div>
+        <div class="pprice">5.997€ <sub>/ Monat</sub></div>
+        <div class="ponetime">+ 23.000€ Nutzungsrechte</div>
+        <div class="pavail"><span>16 verfügbar</span> · 4 vergeben</div><div class="pdiv"></div>
+        <ul class="pfeats"><li>33 Content-Maschinen</li><li>Unbegrenzte Assets</li><li>Alle 7 Nischen</li><li>Account Manager</li><li>White-Label + API</li></ul>
+        <div class="pctas"><button class="pkg-add-btn" onclick="addPackage('Enterprise',5997)">In den Warenkorb</button><button class="pkg-cta-btn">Jetzt starten</button></div>
+      </div>
+      <div class="prc">
+        <div class="plbl">UNLIMITIERT</div><div class="pname">Self Made Empire</div>
+        <div class="pprice">49.997€</div>
+        <p class="ptagline">Voll-Lizenz – 100% autonome Maschinen</p>
+        <div class="pavail">Verfügbar <span>∞</span></div><div class="pdiv"></div>
+        <ul class="pfeats"><li>100 Workflows</li><li>Installation bei dir</li><li>Quellcode + Docs</li><li>100% Datenhoheit</li><li>Wartung selbst</li></ul>
+        <div class="pctas"><button class="pkg-add-btn" onclick="addPackage('Self Made Empire',49997)">In den Warenkorb</button><button class="pkg-cta-btn">Jetzt kaufen</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="roi-section">
+  <div class="roi-inner">
+    <div class="rv">
+      <div class="ey">📈 ROI durch Automatisierung</div>
+      <h2 class="st">Marketing-Personal um <span class="ac">80%</span> reduzieren.</h2>
+      <div class="div"></div>
+      <p class="roi-desc">Output um 500% steigern. Unsere Workflows sind bereits verdrahtet mit bewährten Partnern und Nischen. Die Frage ist nicht, ob du Automatisierung brauchst – sondern ob du weiterhin in Pferdekutschen investieren willst.</p>
+      <div class="roi-stats">
+        <div class="roi-stat"><div class="roi-stat-num">−80%</div><div class="roi-stat-lbl">Personal-Kosten</div></div>
+        <div class="roi-stat"><div class="roi-stat-num">+500%</div><div class="roi-stat-lbl">Output-Steigerung</div></div>
+        <div class="roi-stat"><div class="roi-stat-num">&lt;10 Min</div><div class="roi-stat-lbl">Pro Content-Asset</div></div>
+        <div class="roi-stat"><div class="roi-stat-num">24/7</div><div class="roi-stat-lbl">Produktionsbetrieb</div></div>
+      </div>
+      <div class="hero-ctas hero-ctas--split">
+        <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+        <a href="#pakete" class="hero-cta-secondary">Pakete &amp; Preise ansehen →</a>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="roi-quote">„Die Frage ist nicht ob du Automatisierung brauchst – sondern ob du weiterhin in Pferdekutschen investieren willst."</div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;align-items:center;gap:16px">
+          <div style="font-size:28px">🎯</div>
+          <div><div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px">Master-Workflows</div><div style="font-size:12px;color:var(--muted)">Bis 108 Nodes · Komplett verdrahtet · Sofort live</div></div>
+        </div>
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;align-items:center;gap:16px">
+          <div style="font-size:28px">🤖</div>
+          <div><div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px">KI-Assistenten</div><div style="font-size:12px;color:var(--muted)">44 Workflows · Telegram + OpenAI + Gemini</div></div>
+        </div>
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;align-items:center;gap:16px">
+          <div style="font-size:28px">📝</div>
+          <div><div style="font-size:14px;font-weight:700;color:var(--white);margin-bottom:2px">Content-Maschinen</div><div style="font-size:12px;color:var(--muted)">64 Workflows · SEO · Blog · Research · Publish</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<!-- FOOTER -->
+  <!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cd-head">
+    <div class="cd-title">🛒 Warenkorb</div>
+    <div class="cd-close" onclick="toggleCart()">×</div>
+  </div>
+  <div id="cartItems" style="flex:1;overflow-y:auto;padding:16px"></div>
+  <div class="cd-footer" id="cartFooter" style="display:none">
+    <div class="cd-total-row">
+      <span class="cd-total-label">Gesamt</span>
+      <span class="cd-total-val" id="cartTotal">0€</span>
+    </div>
+    <button class="cd-checkout" onclick="checkout()">Jetzt anfragen →</button>
+    <button class="cd-clear" onclick="clearCart()">Warenkorb leeren</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="toast-icon">✓</span><span id="toastMsg"></span></div>
+
+<script src="/cart.js" defer></script>
+<script>
+// ─── WORKFLOW DATA ───
+const WORKFLOWS = [
+  // MASTER
+  {id:1,cat:'master',emoji:'🎯',name:'01-Content-Creation-Master-Pipeline-BrowserAct',nodes:108,tags:['BrowserAct'],ma:5},
+  {id:2,cat:'master',emoji:'🎯',name:'01-Content-Creation-Master-Pipeline-BrowserAct (107)',nodes:107,tags:['Schedule'],ma:5},
+  {id:3,cat:'master',emoji:'🎯',name:'01-Content-Creation-Master-Pipeline-BrowserAct (103)',nodes:103,tags:['Schedule'],ma:5},
+  {id:4,cat:'master',emoji:'🎯',name:'01-Content-Creation-Master-Pipeline-BrowserAct (99)',nodes:99,tags:['Schedule'],ma:5},
+  {id:5,cat:'master',emoji:'🎯',name:'01-Content-Creation-Master-Pipeline-BrowserAct (98)',nodes:98,tags:['Schedule'],ma:5},
+  {id:6,cat:'master',emoji:'🎯',name:'01-Content-Creation-Master-Pipeline-BrowserAct (96)',nodes:96,tags:[],ma:5},
+  {id:7,cat:'master',emoji:'🎯',name:'17 Nodes to Master',nodes:55,tags:['Schedule'],ma:5},
+  {id:8,cat:'master',emoji:'🎯',name:'Hörbuch Production – Final Fusion (51 Nodes)',nodes:51,tags:['OpenAI + Gemini'],ma:5},
+  {id:9,cat:'master',emoji:'🎯',name:'Hörbuch Production – Final Fusion (50 Nodes)',nodes:50,tags:['OpenAI + Gemini'],ma:5},
+  {id:10,cat:'master',emoji:'🎯',name:'Hörbuch Production – Final Fusion (49 Nodes)',nodes:49,tags:['OpenAI + Gemini'],ma:3},
+  {id:11,cat:'master',emoji:'🎯',name:'Hörbuch Production – Final Fusion (47 Nodes)',nodes:47,tags:['OpenAI + Gemini'],ma:3},
+  {id:12,cat:'master',emoji:'🎯',name:'Hörbuch Production – Final Fusion (46 Nodes)',nodes:46,tags:[],ma:3},
+  {id:13,cat:'master',emoji:'🎯',name:'Hörbuch Production – Final Fusion (45 Nodes)',nodes:45,tags:[],ma:3},
+  {id:14,cat:'master',emoji:'🎯',name:'Content-Creation-Master-Pipeline-Optimized (25)',nodes:25,tags:[],ma:2},
+  {id:15,cat:'master',emoji:'🎯',name:'MASTER-ORCHESTRATOR',nodes:18,tags:['Telegram','Schedule','OpenAI + Gemini'],ma:1},
+  {id:16,cat:'master',emoji:'🎯',name:'MASTER-ORCHESTRATOR-Optimized',nodes:18,tags:['Telegram','Schedule','OpenAI + Gemini'],ma:1},
+  {id:17,cat:'master',emoji:'🎯',name:'02-Master-Orchestrator-Optimized',nodes:18,tags:['Telegram','Schedule','OpenAI + Gemini'],ma:1},
+  {id:18,cat:'master',emoji:'🎯',name:'Content-Creation-Master-Pipeline (19)',nodes:19,tags:['OpenAI + Gemini'],ma:1},
+  {id:19,cat:'master',emoji:'🎯',name:'CanGo App Empire – Kimi × Claude FUSION v2',nodes:15,tags:[],ma:1},
+  {id:20,cat:'master',emoji:'🎯',name:'12-Content-Creation-Master-Pipeline-Optimized',nodes:15,tags:[],ma:1},
+  {id:21,cat:'master',emoji:'🎯',name:'Content-Creation-Master-Pipeline-Hostinger',nodes:15,tags:[],ma:1},
+  {id:22,cat:'master',emoji:'🎯',name:'13-Content-Creation-Master-Pipeline-Hostinger',nodes:15,tags:[],ma:1},
+  {id:23,cat:'master',emoji:'🎯',name:'Content-Creation-Master-Pipeline-BrowserAct (16)',nodes:16,tags:[],ma:1},
+  {id:24,cat:'master',emoji:'🎯',name:'01-Content-Creation-Master-Pipeline-BrowserAct (17)',nodes:17,tags:['OpenAI + Gemini'],ma:1},
+  {id:25,cat:'master',emoji:'🎯',name:'Content-Creation-Master-Pipeline-NoCodeBackend',nodes:8,tags:[],ma:1},
+  {id:26,cat:'master',emoji:'🎯',name:'CanGo BetMaster – Understat xG Scraper',nodes:6,tags:['BrowserAct'],ma:1},
+  // VIDEO
+  {id:27,cat:'video',emoji:'🎬',name:'YouTube Long Form (49 Nodes)',nodes:49,tags:['Telegram','Schedule','OpenAI + Gemini'],ma:3},
+  {id:28,cat:'video',emoji:'🎬',name:'YouTube Long Form (33 Nodes)',nodes:33,tags:['Telegram','Schedule','OpenAI + Gemini'],ma:3},
+  {id:29,cat:'video',emoji:'🎬',name:'Sora 2 Vücut Kamerası (33 Nodes)',nodes:33,tags:['Schedule'],ma:3},
+  {id:30,cat:'video',emoji:'🎬',name:'Hörbuch Production – Kompletter Workflow (33)',nodes:33,tags:['Schedule','OpenAI + Gemini'],ma:3},
+  {id:31,cat:'video',emoji:'🎬',name:'Hörbuch Production – Kompletter Workflow (23)',nodes:23,tags:['Schedule','OpenAI + Gemini'],ma:2},
+  {id:32,cat:'video',emoji:'🎬',name:'Hörbuch Production – Mit Video-Audio-Sync (FFmpeg)',nodes:17,tags:['OpenAI + Gemini'],ma:1},
+  {id:33,cat:'video',emoji:'🎬',name:'Hörbuch Production – Kompletter Workflow (16)',nodes:16,tags:['OpenAI + Gemini'],ma:1},
+  {id:34,cat:'video',emoji:'🎬',name:'Hörbuch Production – 15 Min Audio Alchemist (14)',nodes:14,tags:['OpenAI + Gemini'],ma:1},
+  {id:35,cat:'video',emoji:'🎬',name:'Hörbuch Production – 15 Min Audio Alchemist (13)',nodes:13,tags:['OpenAI + Gemini'],ma:1},
+  // CONTENT
+  {id:36,cat:'content',emoji:'📝',name:'Tüm Prompt Üreticiler',nodes:41,tags:['OpenAI + Gemini'],ma:3},
+  {id:37,cat:'content',emoji:'📝',name:'36-Daily-SEO-Blog-Generator',nodes:21,tags:['Schedule','OpenAI + Gemini'],ma:2},
+  {id:38,cat:'content',emoji:'📝',name:'Research-Content-Pipeline (70% Research Focus)',nodes:20,tags:['Schedule'],ma:2},
+  {id:39,cat:'content',emoji:'📝',name:'BrowserAct-Artikel-Analyse-Pipeline',nodes:15,tags:['Schedule'],ma:1},
+  {id:40,cat:'content',emoji:'📝',name:'Cango Automation Empire Blog Generator',nodes:14,tags:['BrowserAct','Schedule'],ma:1},
+  {id:41,cat:'content',emoji:'📝',name:'01-Research-Content-Pipeline',nodes:13,tags:['Schedule'],ma:1},
+  {id:42,cat:'content',emoji:'📝',name:'02-Artikel-Detail-Analyse-Pipeline',nodes:12,tags:[],ma:1},
+  {id:43,cat:'content',emoji:'📝',name:'Prompt Chaining',nodes:10,tags:['OpenAI + Gemini'],ma:1},
+  {id:44,cat:'content',emoji:'📝',name:'Content-Research-Workflow',nodes:9,tags:[],ma:1},
+  {id:45,cat:'content',emoji:'📝',name:'Script-Generation-Workflow',nodes:9,tags:[],ma:1},
+  {id:46,cat:'content',emoji:'📝',name:'04-Script-Generation-Workflow',nodes:9,tags:[],ma:1},
+  {id:47,cat:'content',emoji:'📝',name:'03-Content-Research-Workflow',nodes:9,tags:[],ma:1},
+  {id:48,cat:'content',emoji:'📝',name:'Blog-Publishing-Workflow',nodes:7,tags:[],ma:1},
+  {id:49,cat:'content',emoji:'📝',name:'06-Blog-Publishing-Workflow',nodes:7,tags:[],ma:1},
+  {id:50,cat:'content',emoji:'📝',name:'🤖 Content Creator Agent',nodes:6,tags:[],ma:1},
+  // RESEARCH
+  {id:51,cat:'research',emoji:'🔍',name:'Twitter/X Scraper',nodes:16,tags:[],ma:1},
+  {id:52,cat:'research',emoji:'🔍',name:'API-Endpoint-Scraper-Automation',nodes:10,tags:[],ma:1},
+  // LEADS
+  {id:53,cat:'leads',emoji:'💰',name:'Sales Team – HITL',nodes:13,tags:['OpenAI + Gemini'],ma:1},
+  {id:54,cat:'leads',emoji:'💰',name:'get leads for free',nodes:12,tags:['OpenAI + Gemini'],ma:1},
+  {id:55,cat:'leads',emoji:'💰',name:'Lead-Generation-Workflow',nodes:5,tags:[],ma:1},
+  {id:56,cat:'leads',emoji:'💰',name:'08-Lead-Generation-Workflow',nodes:5,tags:[],ma:1},
+  // IMMOBILIEN
+  {id:57,cat:'immobilien',emoji:'🏠',name:'Immobilien Kampagne Cangos.world',nodes:26,tags:['OpenAI + Gemini'],ma:2},
+  {id:58,cat:'immobilien',emoji:'🏠',name:'Immobilien Kampagne Workflow',nodes:17,tags:['OpenAI + Gemini'],ma:1},
+  {id:59,cat:'immobilien',emoji:'🏠',name:'FSBO Main',nodes:17,tags:['OpenAI + Gemini'],ma:1},
+  {id:60,cat:'immobilien',emoji:'🏠',name:'Zillow AI',nodes:5,tags:['OpenAI + Gemini'],ma:1},
+  // DISTRIBUTION
+  {id:61,cat:'distribution',emoji:'📢',name:'Distribution-Engine-Workflow',nodes:11,tags:[],ma:1},
+  {id:62,cat:'distribution',emoji:'📢',name:'05-Distribution-Engine-Workflow',nodes:11,tags:[],ma:1},
+  {id:63,cat:'distribution',emoji:'📢',name:'E-Commerce-Updates-Workflow',nodes:6,tags:[],ma:1},
+  {id:64,cat:'distribution',emoji:'📢',name:'07-E-Commerce-Updates-Workflow',nodes:6,tags:[],ma:1},
+  // ASSISTENTEN
+  {id:65,cat:'assistenten',emoji:'🤖',name:'🔥 ULTIMATE Cango Cyber Assistant V2 (MCP)',nodes:23,tags:['Telegram','Schedule'],ma:2},
+  {id:66,cat:'assistenten',emoji:'🤖',name:'Cango Terminplaner (22 Nodes)',nodes:22,tags:['Telegram','OpenAI + Gemini'],ma:2},
+  {id:67,cat:'assistenten',emoji:'🤖',name:'Cango Terminplaner (21 Nodes)',nodes:21,tags:['Telegram','OpenAI + Gemini'],ma:2},
+  {id:68,cat:'assistenten',emoji:'🤖',name:'Ultimate Personal Assistant',nodes:20,tags:['Telegram','OpenAI + Gemini'],ma:2},
+  {id:69,cat:'assistenten',emoji:'🤖',name:'Human in the Loop Calendar Agent',nodes:17,tags:['Telegram','OpenAI + Gemini'],ma:1},
+  {id:70,cat:'assistenten',emoji:'🤖',name:'🤖 Invoice Agent',nodes:12,tags:['Telegram','OpenAI + Gemini'],ma:1},
+  {id:71,cat:'assistenten',emoji:'🤖',name:'🤖 Email Agent',nodes:12,tags:['OpenAI + Gemini'],ma:1},
+  {id:72,cat:'assistenten',emoji:'🤖',name:'Multi AI Agents',nodes:12,tags:['OpenAI + Gemini'],ma:1},
+  {id:73,cat:'assistenten',emoji:'🤖',name:'🤖 Calendar Agent',nodes:10,tags:['OpenAI + Gemini'],ma:1},
+  {id:74,cat:'assistenten',emoji:'🤖',name:'Google Drive to RAG',nodes:9,tags:['OpenAI + Gemini'],ma:1},
+  {id:75,cat:'assistenten',emoji:'🤖',name:'Ronald The Regenerator',nodes:7,tags:['Schedule','OpenAI + Gemini'],ma:1},
+  {id:76,cat:'assistenten',emoji:'🤖',name:'🤖 Contact Agent',nodes:7,tags:['OpenAI + Gemini'],ma:1},
+  {id:77,cat:'assistenten',emoji:'🤖',name:'CanGo App Empire – AI Mentoren Motivator',nodes:8,tags:['Telegram','Schedule','OpenAI + Gemini'],ma:1},
+  {id:78,cat:'assistenten',emoji:'🤖',name:'CanGo App Empire – Mentoren Daily Motivator',nodes:4,tags:['Telegram','Schedule'],ma:1},
+  // ANALYTICS
+  {id:79,cat:'analytics',emoji:'📊',name:'Evaluator-Optimizer',nodes:10,tags:['OpenAI + Gemini'],ma:1},
+  {id:80,cat:'analytics',emoji:'📊',name:'Analytics-Collection-Workflow',nodes:5,tags:[],ma:1},
+  {id:81,cat:'analytics',emoji:'📊',name:'09-Analytics-Collection-Workflow',nodes:5,tags:[],ma:1},
+  // SPEZIAL
+  {id:82,cat:'spezial',emoji:'⚡',name:'CANGO ANIMAL FUNNY (66 Nodes)',nodes:66,tags:['Schedule'],ma:5},
+  {id:83,cat:'spezial',emoji:'⚡',name:'Karriere Vertrieb',nodes:35,tags:['Schedule'],ma:3},
+  {id:84,cat:'spezial',emoji:'⚡',name:'Supercomputer Bot – Mit Bestätigung',nodes:30,tags:['Telegram'],ma:3},
+  {id:85,cat:'spezial',emoji:'⚡',name:'AI Kız Arkadaş',nodes:24,tags:['Telegram','OpenAI + Gemini'],ma:2},
+  {id:86,cat:'spezial',emoji:'⚡',name:'Skool Workflow',nodes:21,tags:['Telegram','OpenAI + Gemini'],ma:2},
+  {id:87,cat:'spezial',emoji:'⚡',name:'My workflow 7 (22 Nodes)',nodes:22,tags:[],ma:2},
+  {id:88,cat:'spezial',emoji:'⚡',name:'Cango Empire Webseite – News Feed Hero',nodes:17,tags:['BrowserAct','Schedule'],ma:1},
+  {id:89,cat:'spezial',emoji:'⚡',name:'My workflow 4',nodes:16,tags:['OpenAI + Gemini'],ma:1},
+  {id:90,cat:'spezial',emoji:'⚡',name:'Routing',nodes:14,tags:['Telegram','OpenAI + Gemini'],ma:1},
+  {id:91,cat:'spezial',emoji:'⚡',name:'Parallelization',nodes:13,tags:['OpenAI + Gemini'],ma:1},
+  {id:92,cat:'spezial',emoji:'⚡',name:'Mittelstand Hunter 2.0 (Stable)',nodes:13,tags:[],ma:1},
+  {id:93,cat:'spezial',emoji:'⚡',name:'Skool Alt Workflow',nodes:13,tags:['OpenAI + Gemini'],ma:1},
+  {id:94,cat:'spezial',emoji:'⚡',name:'AI-Decision-Engine',nodes:8,tags:['OpenAI + Gemini'],ma:1},
+  {id:95,cat:'spezial',emoji:'⚡',name:'10-AI-Decision-Engine',nodes:8,tags:['OpenAI + Gemini'],ma:1},
+  {id:96,cat:'spezial',emoji:'⚡',name:'CANGO ANIMAL FUNNY (34 Nodes)',nodes:34,tags:['Schedule'],ma:3},
+  {id:97,cat:'spezial',emoji:'⚡',name:'Cold Caller',nodes:5,tags:[],ma:1},
+  {id:98,cat:'spezial',emoji:'⚡',name:'Optimization-Trigger-Workflow',nodes:4,tags:[],ma:1},
+  {id:99,cat:'spezial',emoji:'⚡',name:'11-Optimization-Trigger-Workflow',nodes:4,tags:[],ma:1},
+  {id:100,cat:'spezial',emoji:'⚡',name:'AI-Decision-Engine (v2)',nodes:8,tags:['OpenAI + Gemini'],ma:1},
+  {id:101,cat:'spezial',emoji:'⚡',name:'My workflow 7 (5 Nodes)',nodes:5,tags:['OpenAI + Gemini'],ma:1},
+];
+/* FIX-2026-03-18: Shop-ID → n8n-Workflow-ID (Generator: scripts/generate_n8n_workflow_map.py) */
+const N8N_EDITOR_BASE = 'https://n8n.automation-cango-app-empire.com';
+let n8nIdByShop = {};
+fetch('/data/n8n-workflow-map.json?v=20260318').then(function(r){ return r.json(); }).then(function(m){
+  n8nIdByShop = (m && typeof m === 'object' && !Array.isArray(m)) ? m : {};
+  cart.forEach(function(c){ if (!c.n8nWorkflowId && n8nIdByShop[String(c.id)]) c.n8nWorkflowId = n8nIdByShop[String(c.id)]; });
+  render();
+  syncWorkflowsCartToStorage();
+}).catch(function(){ /* Map optional */ });
+
+function calcPrice(nodes){ return 190 + nodes * 15; }
+
+let currentFilter = 'alle';
+let cart = [];
+const quantities = {};
+function initCartFromStorage(){
+  try {
+    if (!window.CanGoCart || !window.CanGoCart.getCart) return;
+    var stored = window.CanGoCart.getCart();
+    stored.filter(function(i){ return i.type === 'workflow'; }).forEach(function(i){
+      var w = WORKFLOWS.find(function(x){ return x.id === (i.workflowId || i.id); });
+      if (w) {
+        var qty = i.quantity || 1;
+        quantities[w.id] = (quantities[w.id] || 0) + qty;
+        var existing = cart.find(function(c){ return c.id === w.id; });
+        var nw = i.n8nWorkflowId || n8nIdByShop[String(w.id)];
+        if (existing) existing.qty += qty;
+        else cart.push({ ...w, qty: qty, _price: i.price || Math.round(calcPrice(w.nodes) * 0.25), n8nWorkflowId: nw });
+      }
+    });
+  } catch(e) {}
+}
+
+const catClass = {
+  master:'cat-master',content:'cat-content',video:'cat-video',
+  spezial:'cat-spezial',assistenten:'cat-assistenten',leads:'cat-leads',
+  immobilien:'cat-immobilien',distribution:'cat-distribution',
+  research:'cat-research',analytics:'cat-analytics'
+};
+const catLabel = {
+  master:'Master',content:'Content',video:'Video',spezial:'Spezial',
+  assistenten:'Assistenten',leads:'Leads & Sales',immobilien:'Immobilien',
+  distribution:'Distribution',research:'Research',analytics:'Analytics'
+};
+function tagClass(t){
+  if(t==='BrowserAct') return 't-ba';
+  if(t==='Telegram') return 't-tg';
+  if(t==='OpenAI + Gemini') return 't-ai';
+  if(t==='Schedule') return 't-sc';
+  return '';
+}
+
+function getFiltered(){
+  const q = document.getElementById('search').value.toLowerCase().trim();
+  const sort = document.getElementById('sortSel').value;
+  let list = WORKFLOWS.filter(w => {
+    const matchCat = currentFilter==='alle' || w.cat===currentFilter;
+    const matchQ = !q || w.name.toLowerCase().includes(q) || catLabel[w.cat]?.toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+  list.sort((a,b)=>{
+    if(sort==='nodes-desc') return b.nodes-a.nodes;
+    if(sort==='nodes-asc') return a.nodes-b.nodes;
+    if(sort==='price-desc') return calcPrice(b.nodes)-calcPrice(a.nodes);
+    if(sort==='price-asc') return calcPrice(a.nodes)-calcPrice(b.nodes);
+    if(sort==='name-asc') return a.name.localeCompare(b.name);
+    return 0;
+  });
+  return list;
+}
+
+function render(){
+  const list = getFiltered();
+  const grid = document.getElementById('grid');
+  document.getElementById('count').textContent = list.length;
+  if(!list.length){
+    grid.innerHTML = '<div class="no-res"><h3>Keine Workflows gefunden</h3><p>Versuche einen anderen Suchbegriff oder Filter.</p></div>';
+    return;
+  }
+  grid.innerHTML = list.map(w=>{
+    const originalPrice = calcPrice(w.nodes);
+    const actionPrice = Math.round(originalPrice * 0.25);
+    const inCart = cart.find(c=>c.id===w.id);
+    const qty = quantities[w.id] || 1;
+    const cardClass = inCart ? 'wf-card in-cart' : 'wf-card';
+    const btnClass = inCart ? 'add-btn added' : 'add-btn';
+    const btnText = inCart ? '✓ Im Warenkorb' : 'In den Warenkorb';
+    const tags = w.tags.map(t=>`<span class="wf-tag ${tagClass(t)}">${t}</span>`).join('');
+    const nodeTxt = `${w.nodes} Nodes`;
+    const maTxt = `Ersetzt ≈${w.ma} MA`;
+    return `<div class="${cardClass}" id="card-${w.id}">
+      <div class="wf-top">
+        <span class="wf-emoji">${w.emoji}</span>
+        <span class="wf-cat-badge ${catClass[w.cat]}">${catLabel[w.cat]}</span>
+      </div>
+      <div class="wf-name">${w.name}</div>
+      <div class="wf-desc">n8n Workflow mit ${w.nodes} Nodes. Produktionsreif und sofort einsatzbereit.</div>
+      <div class="wf-tags">${tags}</div>
+      <div class="wf-footer">
+        <div class="wf-price-row">
+          <div>
+            <div class="wf-price-original">€ ${originalPrice.toLocaleString('de-DE')}</div>
+            <div class="wf-price-action">€ ${actionPrice.toLocaleString('de-DE')} <span class="wf-price-badge-75">-75%</span></div>
+            <div class="wf-nodes">${nodeTxt}</div>
+          </div>
+          <div class="wf-replace">${maTxt}</div>
+        </div>
+        <div class="wf-cart-row">
+          <div class="qty-ctrl">
+            <button class="qty-btn" onclick="changeQty(${w.id},-1)">−</button>
+            <span class="qty-val" id="qty-${w.id}">${qty}</span>
+            <button class="qty-btn" onclick="changeQty(${w.id},1)">+</button>
+          </div>
+          <button class="${btnClass}" id="btn-${w.id}" onclick="addToCart(${w.id})">${btnText}</button>
+        </div>
+        ${n8nIdByShop[String(w.id)] ? `<a class="wf-n8n" href="${N8N_EDITOR_BASE}/workflow/${n8nIdByShop[String(w.id)]}" target="_blank" rel="noopener noreferrer">↗ In n8n öffnen</a>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+  requestAnimationFrame(()=>{
+    grid.querySelectorAll('.wf-card').forEach((el,i)=>{
+      el.style.opacity='0';el.style.transform='translateY(12px)';
+      setTimeout(()=>{el.style.transition='opacity .4s ease,transform .4s ease';el.style.opacity='1';el.style.transform='translateY(0)';},i*18);
+    });
+  });
+}
+
+function setFilter(cat, el){
+  currentFilter = cat;
+  document.querySelectorAll('.cat').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+
+function changeQty(id, delta){
+  quantities[id] = Math.max(1, (quantities[id]||1)+delta);
+  const el = document.getElementById('qty-'+id);
+  if(el) el.textContent = quantities[id];
+}
+
+function addToCart(id){
+  const w = WORKFLOWS.find(x=>x.id===id);
+  if(!w) return;
+  const qty = quantities[id]||1;
+  const actionPrice = Math.round(calcPrice(w.nodes) * 0.25);
+  const existing = cart.find(c=>c.id===id);
+  if(existing){ existing.qty += qty; if(n8nIdByShop[String(id)]) existing.n8nWorkflowId = n8nIdByShop[String(id)]; }
+  else { cart.push({...w, qty, _price: actionPrice, n8nWorkflowId: n8nIdByShop[String(id)] || undefined }); }
+  updateCartUI();
+  const card = document.getElementById('card-'+id);
+  if(card){ card.classList.add('in-cart'); }
+  const btn = document.getElementById('btn-'+id);
+  if(btn){ btn.className='add-btn added'; btn.textContent='✓ Im Warenkorb'; }
+  showToast(`„${w.name.slice(0,30)}..." hinzugefügt`);
+}
+
+function addPackage(name, price){
+  const existing = cart.find(c=>c.name===name&&c.cat==='paket');
+  if(existing){ existing.qty++; }
+  else { cart.push({id:'pkg-'+name,cat:'paket',emoji:'📦',name,nodes:0,qty:1,_price:price}); }
+  updateCartUI();
+  showToast(`Paket „${name}" hinzugefügt`);
+}
+
+function removeFromCart(id){
+  const idx = cart.findIndex(c=>c.id===id);
+  if(idx>-1){
+    const item = cart[idx];
+    cart.splice(idx,1);
+    const card = document.getElementById('card-'+item.id);
+    if(card) card.classList.remove('in-cart');
+    const btn = document.getElementById('btn-'+item.id);
+    if(btn){ btn.className='add-btn'; btn.textContent='In den Warenkorb'; }
+  }
+  updateCartUI();
+}
+
+function clearCart(){
+  cart.forEach(item=>{
+    const card = document.getElementById('card-'+item.id);
+    if(card) card.classList.remove('in-cart');
+    const btn = document.getElementById('btn-'+item.id);
+    if(btn){ btn.className='add-btn'; btn.textContent='In den Warenkorb'; }
+  });
+  cart = [];
+  updateCartUI();
+}
+
+function syncWorkflowsCartToStorage(){
+  try {
+    if (!window.CanGoCart || !window.CanGoCart.setCart) return;
+    var workflowItems = cart.map(function(c){
+      return {
+        type: 'workflow',
+        id: c.id,
+        workflowId: c.id,
+        name: c.name,
+        price: c._price || calcPrice(c.nodes),
+        quantity: c.qty,
+        setup: 0,
+        emoji: c.emoji,
+        tags: c.tags,
+        cat: c.cat,
+        n8nWorkflowId: c.n8nWorkflowId || n8nIdByShop[String(c.id)]
+      };
+    });
+    var existing = window.CanGoCart.getCart();
+    var others = (existing || []).filter(function(i){ return i.type !== 'workflow'; });
+    window.CanGoCart.setCart(others.concat(workflowItems));
+  } catch(e) {}
+}
+function updateCartUI(){
+  syncWorkflowsCartToStorage();
+  const total = cart.reduce((s,c)=> s + (c._price || calcPrice(c.nodes)) * c.qty, 0);
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartBadge').textContent = count;
+  document.getElementById('cartTotal').textContent = total.toLocaleString('de-DE')+'€';
+  const footer = document.getElementById('cartFooter');
+  const itemsEl = document.getElementById('cartItems');
+  if(cart.length===0){
+    itemsEl.innerHTML = `<div class="cd-empty"><div style="font-size:48px">🛒</div><div>Dein Warenkorb ist leer</div></div>`;
+    footer.style.display='none';
+  } else {
+    footer.style.display='block';
+    itemsEl.innerHTML = cart.map(item=>`
+      <div class="cd-item">
+        <div class="cd-item-info">
+          <div class="cd-item-cat">${catLabel[item.cat]||item.cat}</div>
+          <div class="cd-item-name">${item.name.slice(0,40)}${item.name.length>40?'...':''}</div>
+          <div class="cd-item-nodes">${item.nodes ? item.nodes+' Nodes' : 'Paket'} · Qty: ${item.qty}</div>
+        </div>
+        <div class="cd-item-price">${((item._price||calcPrice(item.nodes))*item.qty).toLocaleString('de-DE')}€</div>
+        <div class="cd-item-remove" onclick="removeFromCart('${item.id}')">×</div>
+      </div>`).join('');
+  }
+}
+
+function toggleCart(){
+  const d=document.getElementById('cartDrawer');
+  const o=document.getElementById('cartOverlay');
+  d.classList.toggle('open');
+  o.classList.toggle('open');
+}
+
+function checkout(){
+  try{ sessionStorage.setItem('cango_checkout_cart',JSON.stringify(cart)); }catch(e){}
+  window.location.href='/kasse.html';
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');obs.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+initCartFromStorage();
+updateCartUI();
+render();
+</script>
+<script>
+(function(){
+  var KEY = 'cango_release_start';
+  var start = localStorage.getItem(KEY);
+  if (!start) {
+    start = Date.now().toString();
+    localStorage.setItem(KEY, start);
+  }
+  var end = parseInt(start, 10) + (365 * 24 * 60 * 60 * 1000);
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function update() {
+    var now = Date.now();
+    var diff = Math.max(0, end - now);
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+
+    var dEl = document.getElementById('cd-days');
+    var hEl = document.getElementById('cd-hours');
+    var mEl = document.getElementById('cd-mins');
+    var sEl = document.getElementById('cd-secs');
+    var rEl = document.getElementById('ribbon-countdown');
+
+    if (dEl) dEl.textContent = String(d).padStart(3, '0');
+    if (hEl) hEl.textContent = pad(h);
+    if (mEl) mEl.textContent = pad(m);
+    if (sEl) sEl.textContent = pad(s);
+    if (rEl) rEl.textContent = d + ' T ' + pad(h) + ':' + pad(m);
+  }
+  update();
+  setInterval(update, 1000);
+})();
+</script>
+<script>
+(function(){
+  var messages = [
+    '🔥 365 TAGE RABATT: 75% auf alle Workflow-Dateien – Release-Start-Aktion · Nur 12 Monate gültig',
+    '🚀 RELEASE START: 75% auf alle Workflow-Dateien · Selbst einrichten · API-Keys eigenständig anbinden',
+    '⚡ 75% Rabatt auf n8n Workflows – Konzipierte Vorlagen, API-Keys selbst anbinden',
+    '📦 Limitierte Aktion: Workflow-Dateien zum Viertelpreis – 365 Tage Aktion',
+    '🔥 Fertige JSON-Workflows kaufen · Kein Full-Service · Du bindest API-Schlüssel selbst an'
+  ];
+  var el = document.getElementById('ribbon-slide-text');
+  if (!el) return;
+  var idx = 0;
+  el.textContent = messages[0];
+  function next() {
+    el.classList.add('fade');
+    setTimeout(function(){
+      idx = (idx + 1) % messages.length;
+      el.textContent = messages[idx];
+      el.classList.remove('fade');
+    }, 400);
+  }
+  setInterval(next, 10000);
+})();
+</script>
+<script>(function(){var btn=document.getElementById('navToggle');if(btn)btn.addEventListener('click',function(){document.body.classList.toggle('nav-open');});})();</script>
+<script src="/js/release-ribbon.js?v=2" defer></script>
+<script src="/js/kpi-events.js?v=2" defer></script>
+<div class="primary-cta-mobile-bar" role="region" aria-label="Hauptaktion">
+  <a href="/kontakt.html#kontaktformular" class="btn btn-o btn-lg" data-cango-kpi="kpi_kontakt_cta">Infrastruktur anfragen</a>
+</div>
 </body>
 </html>
-
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workflow Marketplace | CanGo App Empire</title>
-    <meta name="description" content="100+ getestete n8n Workflows. Kauf sie einzeln oder kombiniere sie zu deiner Content-Maschine.">
-    <link rel="stylesheet" href="cango-empire-v4-monopoly.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        .workflows-page {
-            padding-top: 100px;
-        }
-        .workflow-hero {
-            text-align: center;
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .workflow-hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-bright), var(--accent-power));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .workflow-hero p {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-        }
-        .workflow-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-        .workflow-stat {
-            text-align: center;
-        }
-        .workflow-stat-value {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--accent-power);
-            display: block;
-        }
-        .workflow-stat-label {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        .workflow-categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        .workflow-category-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .workflow-category-card:hover {
-            border-color: var(--accent-power);
-            box-shadow: var(--glow-orange);
-            transform: translateY(-5px);
-        }
-        .workflow-category-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .workflow-category-card p {
-            color: var(--text-dim);
-            margin-bottom: 1rem;
-        }
-        .workflow-category-count {
-            display: inline-block;
-            background: var(--accent-power);
-            color: var(--text-bright);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .workflows-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        .workflow-product-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-        .workflow-product-card:hover {
-            border-color: var(--accent-power);
-            box-shadow: var(--glow-orange);
-            transform: translateY(-5px);
-        }
-        .workflow-product-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent-power);
-            color: var(--text-bright);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        .workflow-product-name {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            margin-top: 0.5rem;
-        }
-        .workflow-product-description {
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-        .workflow-product-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-        .workflow-product-features li {
-            padding: 0.5rem 0;
-            color: var(--text-dim);
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        .workflow-product-features li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent-power);
-            font-weight: 700;
-        }
-        .workflow-product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-        .workflow-product-price {
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--accent-power);
-            line-height: 1.4;
-        }
-        .workflow-product-price-usd {
-            display: block;
-            font-size: 1.8rem;
-        }
-        .workflow-product-price-eur {
-            display: block;
-            font-size: 1.4rem;
-            color: var(--text-dim);
-            font-weight: 600;
-        }
-        .workflow-product-cta {
-            background: var(--accent-power);
-            color: var(--text-bright);
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            box-shadow: var(--glow-orange);
-        }
-        .workflow-product-cta:hover {
-            box-shadow: 0 0 40px rgba(255, 153, 0, 0.6);
-            transform: scale(1.05);
-        }
-        .workflow-filter-section {
-            margin: 3rem 0;
-        }
-        .workflow-filters {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-        .workflow-filter-btn {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--text-dim);
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-        .workflow-filter-btn:hover,
-        .workflow-filter-btn.active {
-            border-color: var(--accent-power);
-            color: var(--accent-power);
-            box-shadow: var(--glow-orange);
-        }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 2rem;
-            color: var(--accent-power);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .back-link:hover {
-            color: var(--text-bright);
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav-aggressive" role="navigation">
-        <div class="container">
-            <div class="nav-brand">
-                <a href="cango-empire-v4-monopoly.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
-                    <span class="brand-logo">⚡</span>
-                    <span class="brand-name">CANGO EMPIRE</span>
-                </a>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="cango-empire-v4-monopoly.html#home">EMPIRE</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#maschine">MASCHINE</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#territorien">TERRITORIEN</a></li>
-                <li><a href="workflows.html">WORKFLOWS</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#arsenal">ARSENAL</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#intel">INTEL</a></li>
-                <li><a href="cango-empire-v4-monopoly.html#zugang" class="nav-cta">JETZT ODER NIE</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Workflows Page -->
-    <div class="workflows-page">
-        <div class="container">
-            <a href="cango-empire-v4-monopoly.html#territorien" class="back-link">← Zurück zu Territorien</a>
-            
-            <div class="workflow-hero">
-                <h1>WORKFLOW MARKETPLACE</h1>
-                <p>100+ getestete Automatisierungen. Kauf sie einzeln oder kombiniere sie zu deiner Content-Maschine.</p>
-                <div class="workflow-stats" id="workflowStats">
-                    <!-- Wird via JavaScript geladen -->
-                </div>
-            </div>
-
-            <div class="workflow-filter-section">
-                <div class="workflow-filters" id="workflowFilters">
-                    <!-- Wird via JavaScript geladen -->
-                </div>
-            </div>
-
-            <div class="workflows-grid" id="workflowsGrid">
-                <!-- Wird via JavaScript geladen -->
-            </div>
-        </div>
-    </div>
-
-    <script src="cango-empire-v4-monopoly.js"></script>
-    <script>
-        // Load workflow data
-        async function loadWorkflows() {
-            try {
-                const response = await fetch('cango-empire-v4-monopoly-data.json');
-                const data = await response.json();
-                
-                if (data.pages && data.pages.workflows) {
-                    const workflows = data.pages.workflows;
-                    
-                    // Render stats
-                    renderStats(workflows.hero.stats);
-                    
-                    // Render filters
-                    renderFilters(workflows.categories);
-                    
-                    // Render workflows
-                    renderWorkflows(workflows.products);
-                    
-                    // Setup filter functionality
-                    setupWorkflowFilters(workflows.products);
-                }
-            } catch (error) {
-                console.error('Error loading workflows:', error);
-            }
-        }
-        
-        function renderStats(stats) {
-            const statsContainer = document.getElementById('workflowStats');
-            if (!statsContainer) return;
-            
-            statsContainer.innerHTML = stats.map(stat => `
-                <div class="workflow-stat">
-                    <span class="workflow-stat-value">${stat.value}</span>
-                    <span class="workflow-stat-label">${stat.label}</span>
-                </div>
-            `).join('');
-        }
-        
-        function renderFilters(categories) {
-            const filtersContainer = document.getElementById('workflowFilters');
-            if (!filtersContainer) return;
-            
-            filtersContainer.innerHTML = `
-                <button class="workflow-filter-btn active" data-filter="all">ALLE</button>
-                ${categories.map(cat => `
-                    <button class="workflow-filter-btn" data-filter="${cat.id}">${cat.name.toUpperCase()}</button>
-                `).join('')}
-            `;
-        }
-        
-        function renderWorkflows(workflows, filter = 'all') {
-            const grid = document.getElementById('workflowsGrid');
-            if (!grid) return;
-            
-            let filteredWorkflows = workflows;
-            if (filter !== 'all') {
-                filteredWorkflows = workflows.filter(w => w.category === filter);
-            }
-            
-            grid.innerHTML = filteredWorkflows.map(workflow => `
-                <div class="workflow-product-card" data-category="${workflow.category}">
-                    <div class="workflow-product-badge">${workflow.badge}</div>
-                    <h3 class="workflow-product-name">${workflow.name}</h3>
-                    <p class="workflow-product-description">${workflow.description}</p>
-                    <ul class="workflow-product-features">
-                        ${workflow.features.map(f => `<li>${f}</li>`).join('')}
-                    </ul>
-                    <div class="workflow-product-footer">
-                        <div class="workflow-product-price">
-                            <span class="workflow-product-price-usd">$${workflow.price_usd.toLocaleString()}</span>
-                            <span class="workflow-product-price-eur">€${workflow.price_eur.toLocaleString()}</span>
-                        </div>
-                        <a href="#kontakt" class="workflow-product-cta">KAUFEN</a>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        function setupWorkflowFilters(workflows) {
-            const filterButtons = document.querySelectorAll('.workflow-filter-btn');
-            const workflowCards = document.querySelectorAll('.workflow-product-card');
-            
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Update active state
-                    filterButtons.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Filter workflows
-                    const filter = this.getAttribute('data-filter');
-                    renderWorkflows(workflows, filter);
-                });
-            });
-        }
-        
-        // Load on page load
-        document.addEventListener('DOMContentLoaded', loadWorkflows);
-    </script>
-</body>
-</html>
-

@@ -1,0 +1,31 @@
+{
+  "batch_id": 20,
+  "category": "SOCIAL MEDIA COMMAND",
+  "tools": [
+    {
+      "id": "taplio",
+      "name": "Taplio",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/taplio.html"
+    },
+    {
+      "id": "typefully",
+      "name": "Typefully",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/typefully.html"
+    },
+    {
+      "id": "metricool",
+      "name": "Metricool",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/metricool.html"
+    },
+    {
+      "id": "buffer",
+      "name": "Buffer",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/buffer.html"
+    },
+    {
+      "id": "later",
+      "name": "Later",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/later.html"
+    }
+  ]
+}

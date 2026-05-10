@@ -1,0 +1,31 @@
+{
+  "batch_id": 9,
+  "category": "PRODUCTIVITY & OPS OS",
+  "tools": [
+    {
+      "id": "notion",
+      "name": "Notion",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/notion.html"
+    },
+    {
+      "id": "clickup",
+      "name": "ClickUp",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/clickup.html"
+    },
+    {
+      "id": "monday",
+      "name": "Monday.com",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/monday.html"
+    },
+    {
+      "id": "asana",
+      "name": "Asana",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/asana.html"
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/obsidian.html"
+    }
+  ]
+}

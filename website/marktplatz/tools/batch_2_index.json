@@ -1,0 +1,31 @@
+{
+  "batch_id": 2,
+  "category": "CREATIVE ASSETS & HOSTING",
+  "tools": [
+    {
+      "id": "midjourney",
+      "name": "Midjourney v6",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/midjourney.html"
+    },
+    {
+      "id": "runway-gen3",
+      "name": "Runway Gen-3 Alpha",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/runway-gen3.html"
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/elevenlabs.html"
+    },
+    {
+      "id": "hostinger-vps",
+      "name": "Hostinger KVM VPS",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/hostinger-vps.html"
+    },
+    {
+      "id": "depositphotos",
+      "name": "DepositPhotos",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/depositphotos.html"
+    }
+  ]
+}

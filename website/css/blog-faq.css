@@ -1,0 +1,217 @@
+/* FAQ-Bereiche in Blog-Artikeln — CanGo Orange, Gradient, Glow (FIX-2026-04-08) */
+
+@keyframes blog-faq-bar-shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes blog-faq-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* ── FAQ-Section als Panel (nur wenn dl.blog-faq vorhanden) ── */
+.blog-page section.blog-content__section:has(dl.blog-faq) {
+  position: relative;
+  margin-top: 2.5rem;
+  margin-bottom: var(--space-12, 3rem);
+  padding: clamp(1.35rem, 4vw, 2.25rem);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(
+      155deg,
+      rgba(249, 115, 22, 0.14) 0%,
+      rgba(249, 115, 22, 0.05) 38%,
+      rgba(15, 23, 42, 0.4) 100%
+    ),
+    var(--bg-elevated, #151b2e);
+  border: 1px solid rgba(249, 115, 22, 0.38);
+  box-shadow:
+    0 0 0 1px rgba(249, 115, 22, 0.12),
+    0 16px 48px rgba(0, 0, 0, 0.38),
+    0 0 80px rgba(249, 115, 22, 0.09);
+  overflow: hidden;
+}
+
+/* Oberer Gradient-Streifen (wie Energy-Bar / Headline-Accent) */
+.blog-page section.blog-content__section:has(dl.blog-faq)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  border-radius: 1.25rem 1.25rem 0 0;
+  background: linear-gradient(
+    90deg,
+    #c2410c,
+    #f97316,
+    #fdba74,
+    #f97316,
+    #ea580c
+  );
+  background-size: 200% 100%;
+  animation: blog-faq-bar-shine 10s linear infinite;
+}
+
+/* dezentes Glow im Hintergrund */
+.blog-page section.blog-content__section:has(dl.blog-faq)::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  right: -20%;
+  top: -30%;
+  width: 55%;
+  height: 80%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(249, 115, 22, 0.18) 0%,
+    transparent 68%
+  );
+  animation: blog-faq-glow-pulse 6s ease-in-out infinite;
+}
+
+/* FAQ-Überschrift: Orange-Gradient + Glow wie .text-gradient in den Artikeln */
+.blog-page section.blog-content__section:has(dl.blog-faq) > .blog-content__section-title {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.65rem, 4vw, 2.15rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0;
+  border-bottom: none;
+  background: linear-gradient(
+    135deg,
+    #fdba74 0%,
+    #fb923c 35%,
+    #f97316 70%,
+    #ea580c 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 14px rgba(249, 115, 22, 0.35));
+}
+
+/* Gradient-Unterstrich unter FAQ-Titel */
+.blog-page section.blog-content__section:has(dl.blog-faq) > .blog-content__section-title::after {
+  content: "";
+  display: block;
+  width: min(12rem, 55%);
+  height: 4px;
+  margin-top: 0.85rem;
+  margin-bottom: 0.15rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f97316, #fdba74, rgba(249, 115, 22, 0.15));
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Liste */
+.blog-faq {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fragen */
+.blog-faq dt {
+  position: relative;
+  margin: 0;
+  margin-top: 1.35rem;
+  padding: 1rem 1rem 0.35rem 1.15rem;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--text-primary, #f8fafc);
+  border-radius: 0.65rem 0.65rem 0 0;
+  background: linear-gradient(
+    90deg,
+    rgba(249, 115, 22, 0.12) 0%,
+    rgba(249, 115, 22, 0.02) 100%
+  );
+}
+
+.blog-faq dt:first-of-type {
+  margin-top: 0;
+}
+
+/* Orange Akzentleiste links */
+.blog-faq dt::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  bottom: 0.35rem;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #fdba74, #f97316 45%, #c2410c);
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.55);
+}
+
+.blog-faq dt strong {
+  font-weight: 800;
+  color: #ffedd5;
+  text-shadow: 0 0 24px rgba(249, 115, 22, 0.25);
+}
+
+/* Antworten */
+.blog-faq dd {
+  margin: 0;
+  padding: 0.65rem 1rem 1.15rem 1.15rem;
+  font-size: 0.96rem;
+  line-height: 1.72;
+  color: var(--text-secondary, #cbd5e1);
+  border-left: 1px solid rgba(249, 115, 22, 0.22);
+  margin-left: 0.35rem;
+  border-radius: 0 0 0.65rem 0.65rem;
+  background: rgba(15, 23, 42, 0.35);
+}
+
+.blog-faq dd + dt {
+  margin-top: 0.85rem;
+}
+
+/* Trenner zwischen Q&A-Paaren */
+.blog-faq dd:not(:last-of-type) {
+  border-bottom: 1px solid rgba(249, 115, 22, 0.12);
+  margin-bottom: 0.25rem;
+}
+
+/* Hover: leichte Aufhellung */
+@media (hover: hover) {
+  .blog-faq dt:hover {
+    background: linear-gradient(
+      90deg,
+      rgba(249, 115, 22, 0.18) 0%,
+      rgba(249, 115, 22, 0.04) 100%
+    );
+  }
+}
+
+/* Autorenzeile unter dem Blog-Header */
+.blog-header__author {
+  margin: 1.25rem auto 0;
+  max-width: 42rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--gray-400, #9ca3af);
+  letter-spacing: 0.02em;
+}
+
+.blog-header__author strong {
+  color: var(--primary-400, #fb923c);
+  font-weight: 600;
+}

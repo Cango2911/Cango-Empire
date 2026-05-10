@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | CanGo App Empire</title>
+<meta content="Sicherer Checkout für deine Lifetime Deals" name="description"/>
+<link href="/fonts/fonts.css" rel="stylesheet"/>
+<link href="/cango-empire-v4-monopoly.css?v=16" rel="stylesheet"/>
+<style>
+    :root {
+      --checkout-primary: #F97316;
+      --checkout-success: #10B981;
+      --checkout-border: rgba(249, 115, 22, 0.2);
+    }
+    
+    .checkout-page {
+      padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-12);
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(3, 7, 18, 1) 0%, rgba(15, 23, 42, 1) 100%);
+    }
+    
+    .checkout-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+    
+    /* Progress Stepper */
+    .checkout-stepper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-12);
+      position: relative;
+      padding: 0 var(--space-8);
+    }
+    
+    .stepper__line {
+      position: absolute;
+      top: 20px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: var(--border-default);
+      z-index: 0;
+    }
+    
+    .stepper__line-progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--checkout-primary), var(--primary-600));
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    
+    .stepper__step {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      flex: 1;
+    }
+    
+    .stepper__circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-default);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+    
+    .stepper__step.active .stepper__circle {
+      background: var(--checkout-primary);
+      border-color: var(--checkout-primary);
+      color: var(--text-primary);
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+    }
+    
+    .stepper__step.completed .stepper__circle {
+      background: var(--checkout-success);
+      border-color: var(--checkout-success);
+      color: var(--text-primary);
+    }
+    
+    .stepper__step.completed .stepper__circle::after {
+      content: '✓';
+      font-size: var(--text-lg);
+    }
+    
+    .stepper__label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .stepper__step.active .stepper__label {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    /* Checkout Content */
+    .checkout-content {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: var(--space-8);
+    }
+    
+    .checkout-form {
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(249, 115, 22, 0.02));
+      border: 2px solid var(--checkout-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+    }
+    
+    .checkout-step {
+      display: none;
+    }
+    
+    .checkout-step.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-section {
+      margin-bottom: var(--space-8);
+    }
+    
+    .form-section__title {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    
+    .form-section__title::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: var(--checkout-primary);
+      border-radius: 2px;
+    }
+    
+    .form-group {
+      margin-bottom: var(--space-5);
+    }
+    
+    .form-label {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+    }
+    
+    .form-label__required {
+      color: var(--accent-500);
+      margin-left: 2px;
+    }
+    
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: var(--space-3) var(--space-4);
+      background: var(--bg-surface);
+      border: 2px solid var(--border-default);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: var(--text-base);
+      font-family: 'Instrument Sans', sans-serif;
+      transition: all 0.2s ease;
+    }
+    
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--checkout-primary);
+      box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+    }
+    
+    .form-input::placeholder {
+      color: var(--text-muted);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+    
+    /* Payment Methods */
+    .payment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    
+    .payment-method {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4);
+      background: var(--bg-surface);
+      border: 2px solid var(--border-default);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .payment-method:hover {
+      border-color: var(--checkout-primary);
+      background: rgba(249, 115, 22, 0.05);
+    }
+    
+    .payment-method input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--checkout-primary);
+      cursor: pointer;
+    }
+    
+    .payment-method__info {
+      flex: 1;
+    }
+    
+    .payment-method__name {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-1);
+    }
+    
+    .payment-method__desc {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+    }
+    
+    .payment-method__icon {
+      font-size: var(--text-2xl);
+    }
+    
+    /* Order Summary */
+    .order-summary {
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-8));
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.05));
+      border: 2px solid var(--checkout-primary);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      height: fit-content;
+    }
+    
+    .order-summary__title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    
+    .order-summary__title::before {
+      content: '📦';
+      font-size: var(--text-xl);
+    }
+    
+    .order-items {
+      margin-bottom: var(--space-6);
+    }
+    
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--border-default);
+    }
+    
+    .order-item:last-child {
+      border-bottom: none;
+    }
+    
+    .order-item__info {
+      flex: 1;
+    }
+    
+    .order-item__name {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-1);
+    }
+    
+    .order-item__plan {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+    
+    .order-item__badge {
+      display: inline-block;
+      padding: var(--space-1) var(--space-2);
+      background: rgba(249, 115, 22, 0.2);
+      color: var(--checkout-primary);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      margin-top: var(--space-1);
+    }
+    
+    .order-item__price {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .order-totals {
+      margin-top: var(--space-6);
+      padding-top: var(--space-6);
+      border-top: 2px solid var(--border-default);
+    }
+    
+    .order-total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: var(--space-3);
+      font-size: var(--text-sm);
+    }
+    
+    .order-total-row__label {
+      color: var(--text-secondary);
+    }
+    
+    .order-total-row__value {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .order-total-row--final {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--checkout-primary);
+      margin-top: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 2px solid var(--checkout-border);
+    }
+    
+    /* Trust Badges */
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--border-default);
+    }
+    
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+    }
+    
+    .trust-badge__icon {
+      font-size: var(--text-lg);
+    }
+    
+    /* Buttons */
+    .checkout-actions {
+      display: flex;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+    
+    .btn-checkout {
+      flex: 1;
+      padding: var(--space-4) var(--space-6);
+      font-size: var(--text-base);
+      font-weight: 700;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+    
+    .btn-checkout--primary {
+      background: linear-gradient(135deg, var(--checkout-primary), var(--primary-600));
+      color: var(--text-primary);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    }
+    
+    .btn-checkout--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+    }
+    
+    .btn-checkout--secondary {
+      background: transparent;
+      border: 2px solid var(--border-default);
+      color: var(--text-secondary);
+    }
+    
+    .btn-checkout--secondary:hover {
+      border-color: var(--checkout-primary);
+      color: var(--text-primary);
+    }
+    
+    .btn-checkout:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .form-status {
+      display: none;
+      margin-top: var(--space-4);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }
+
+    .form-status.is-visible {
+      display: block;
+    }
+
+    .form-status--success {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.35);
+      color: #bbf7d0;
+    }
+
+    .form-status--error {
+      background: rgba(239, 68, 68, 0.12);
+      border-color: rgba(239, 68, 68, 0.35);
+      color: #fecaca;
+    }
+    
+    /* Success State */
+    .checkout-success {
+      text-align: center;
+      padding: var(--space-12);
+      display: none;
+    }
+    
+    .checkout-success.active {
+      display: block;
+    }
+    
+    .success-icon {
+      font-size: 5rem;
+      margin-bottom: var(--space-4);
+      animation: scaleIn 0.5s ease;
+    }
+    
+    @keyframes scaleIn {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+    
+    .success-title {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--checkout-success);
+      margin-bottom: var(--space-4);
+    }
+    
+    .success-message {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .checkout-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .order-summary {
+        position: relative;
+        top: 0;
+      }
+      
+      .checkout-stepper {
+        padding: 0;
+      }
+      
+      .stepper__label {
+        font-size: var(--text-xs);
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .stepper__label {
+        display: none;
+      }
+      
+      .stepper__circle {
+        width: 32px;
+        height: 32px;
+        font-size: var(--text-sm);
+      }
+    }
+</style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body>
+<a aria-label="Zum Hauptinhalt springen" class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
+
+<!-- Navigation -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html" class="active">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<div class="checkout-page" id="main-content">
+<div class="checkout-container">
+<!-- Progress Stepper -->
+<div class="checkout-stepper">
+<div class="stepper__line">
+<div class="stepper__line-progress" id="stepper-progress"></div>
+</div>
+<div class="stepper__step active" data-step="1">
+<div class="stepper__circle">1</div>
+<div class="stepper__label">Kontaktdaten</div>
+</div>
+<div class="stepper__step" data-step="2">
+<div class="stepper__circle">2</div>
+<div class="stepper__label">Zahlungsart</div>
+</div>
+<div class="stepper__step" data-step="3">
+<div class="stepper__circle">3</div>
+<div class="stepper__label">Bestätigung</div>
+</div>
+</div>
+
+<!-- Checkout Content -->
+<!-- FIX-2026-03-11_173334: Checkout an Order-Intake und Kundenstamm angebunden -->
+<div class="checkout-content">
+<!-- Checkout Form -->
+<div class="checkout-form">
+<!-- Step 1: Contact Information -->
+<div class="checkout-step active" id="step-1">
+<div class="form-section">
+<h3 class="form-section__title">Kontaktinformationen</h3>
+<div class="form-group">
+<label class="form-label" for="email">E-Mail-Adresse<span class="form-label__required">*</span></label>
+<input class="form-input" id="email" name="email" placeholder="deine@email.de" required type="email"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label class="form-label" for="firstName">Vorname<span class="form-label__required">*</span></label>
+<input class="form-input" id="firstName" name="firstName" placeholder="Max" required type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="lastName">Nachname<span class="form-label__required">*</span></label>
+<input class="form-input" id="lastName" name="lastName" placeholder="Mustermann" required type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="company">Firma (optional)</label>
+<input class="form-input" id="company" name="company" placeholder="Meine Firma GmbH" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="phone">Telefonnummer (optional)</label>
+<input class="form-input" id="phone" name="phone" placeholder="+49 123 456789" type="tel"/>
+</div>
+</div>
+</div>
+
+<!-- Step 2: Payment Method -->
+<div class="checkout-step" id="step-2">
+<div class="form-section">
+<h3 class="form-section__title">Zahlungsmethode</h3>
+<div class="payment-methods">
+<label class="payment-method">
+<input name="paymentMethod" required type="radio" value="stripe"/>
+<div class="payment-method__icon">💳</div>
+<div class="payment-method__info">
+<div class="payment-method__name">Kreditkarte / Debitkarte</div>
+<div class="payment-method__desc">Visa, Mastercard, American Express</div>
+</div>
+</label>
+<label class="payment-method">
+<input name="paymentMethod" required type="radio" value="paypal"/>
+<div class="payment-method__icon">🅿️</div>
+<div class="payment-method__info">
+<div class="payment-method__name">PayPal</div>
+<div class="payment-method__desc">Schnell und sicher</div>
+</div>
+</label>
+<label class="payment-method">
+<input name="paymentMethod" required type="radio" value="sepa"/>
+<div class="payment-method__icon">🏦</div>
+<div class="payment-method__info">
+<div class="payment-method__name">SEPA Lastschrift</div>
+<div class="payment-method__desc">Direkt von deinem Bankkonto</div>
+</div>
+</label>
+</div>
+</div>
+<div class="form-section">
+<h3 class="form-section__title">Rechnungsadresse</h3>
+<div class="form-group">
+<label class="form-label" for="street">Straße & Hausnummer<span class="form-label__required">*</span></label>
+<input class="form-input" id="street" name="street" placeholder="Musterstraße 123" required type="text"/>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label class="form-label" for="zipCode">Postleitzahl<span class="form-label__required">*</span></label>
+<input class="form-input" id="zipCode" name="zipCode" placeholder="12345" required type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label" for="city">Stadt<span class="form-label__required">*</span></label>
+<input class="form-input" id="city" name="city" placeholder="Berlin" required type="text"/>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="country">Land<span class="form-label__required">*</span></label>
+<select class="form-select" id="country" name="country" required>
+<option value="">Bitte wählen</option>
+<option value="DE" selected>Deutschland</option>
+<option value="AT">Österreich</option>
+<option value="CH">Schweiz</option>
+<option value="OTHER">Anderes Land</option>
+</select>
+</div>
+</div>
+</div>
+
+<!-- Step 3: Review & Confirm -->
+<div class="checkout-step" id="step-3">
+<div class="form-section">
+<h3 class="form-section__title">Bestellung bestätigen</h3>
+<div style="background: rgba(16, 185, 129, 0.1); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-6);">
+<p style="color: var(--checkout-success); font-weight: 600; margin-bottom: var(--space-2);">✓ Alle Informationen wurden überprüft</p>
+<p style="color: var(--text-secondary); font-size: var(--text-sm);">Bitte überprüfe deine Bestellung noch einmal, bevor du sie abschickst.</p>
+</div>
+<div class="form-group">
+<label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
+<input id="terms" name="terms" required type="checkbox" style="width: 20px; height: 20px; accent-color: var(--checkout-primary);"/>
+<span style="color: var(--text-primary); font-size: var(--text-sm);">Ich akzeptiere die <a href="/agb.html" style="color: var(--checkout-primary); text-decoration: underline;">AGB</a> und die <a href="/datenschutz.html" style="color: var(--checkout-primary); text-decoration: underline;">Datenschutzerklärung</a><span class="form-label__required">*</span></span>
+</label>
+</div>
+<div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+</div>
+</div>
+
+<!-- Action Buttons -->
+<div class="checkout-actions">
+<button class="btn-checkout btn-checkout--secondary" id="btn-back" onclick="previousStep()" style="display: none;" type="button">← Zurück</button>
+<button class="btn-checkout btn-checkout--primary" id="btn-next" onclick="nextStep()" type="button">Weiter →</button>
+<button class="btn-checkout btn-checkout--primary" id="btn-submit" onclick="submitOrder()" style="display: none;" type="button">Bestellung abschließen ✓</button>
+</div>
+</div>
+
+<!-- Order Summary -->
+<div class="order-summary">
+<h2 class="order-summary__title">Bestellübersicht</h2>
+<div class="order-items" id="order-items">
+<!-- Wird dynamisch gefüllt -->
+</div>
+<div class="order-totals">
+<div class="order-total-row">
+<span class="order-total-row__label">Zwischensumme</span>
+<span class="order-total-row__value" id="subtotal">$0.00</span>
+</div>
+<div class="order-total-row">
+<span class="order-total-row__label">MwSt. (19%)</span>
+<span class="order-total-row__value" id="tax">$0.00</span>
+</div>
+<div class="order-total-row order-total-row--final">
+<span class="order-total-row__label">Gesamtbetrag</span>
+<span class="order-total-row__value" id="total">$0.00</span>
+</div>
+</div>
+<div class="trust-badges">
+<div class="trust-badge">
+<span class="trust-badge__icon">🔒</span>
+<span>Sichere Zahlung</span>
+</div>
+<div class="trust-badge">
+<span class="trust-badge__icon">✓</span>
+<span>Lifetime Deal</span>
+</div>
+<div class="trust-badge">
+<span class="trust-badge__icon">🔄</span>
+<span>30 Tage Rückgabe</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Success State -->
+<div class="checkout-success" id="checkout-success">
+<div class="success-icon">✅</div>
+<h2 class="success-title">Bestellung erfolgreich!</h2>
+<p class="success-message">Vielen Dank für deine Bestellung. Du erhältst in Kürze eine Bestätigungs-E-Mail mit allen Details.</p>
+<a class="btn-checkout btn-checkout--primary" href="/produkte.html">Zurück zum Marktplatz</a>
+</div>
+</div>
+</div>
+
+<!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+    const CART_STORAGE_KEY = 'cango_empire_cart';
+    const ORDER_WEBHOOK_URL = 'https://n8n.automation-cango-app-empire.com/webhook/website-order-intake';
+    let currentStep = 1;
+    const totalSteps = 3;
+    
+    function getCart() {
+      const cartJson = localStorage.getItem(CART_STORAGE_KEY);
+      return cartJson ? JSON.parse(cartJson) : [];
+    }
+    
+    function updateStepper() {
+      const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+      document.getElementById('stepper-progress').style.width = progress + '%';
+      
+      document.querySelectorAll('.stepper__step').forEach((step, index) => {
+        const stepNum = index + 1;
+        step.classList.remove('active', 'completed');
+        
+        if (stepNum < currentStep) {
+          step.classList.add('completed');
+        } else if (stepNum === currentStep) {
+          step.classList.add('active');
+        }
+      });
+    }
+    
+    function showStep(step) {
+      document.querySelectorAll('.checkout-step').forEach(s => s.classList.remove('active'));
+      document.getElementById(`step-${step}`).classList.add('active');
+      
+      // Update buttons
+      const btnBack = document.getElementById('btn-back');
+      const btnNext = document.getElementById('btn-next');
+      const btnSubmit = document.getElementById('btn-submit');
+      
+      btnBack.style.display = step > 1 ? 'flex' : 'none';
+      btnNext.style.display = step < totalSteps ? 'flex' : 'none';
+      btnSubmit.style.display = step === totalSteps ? 'flex' : 'none';
+    }
+    
+    function nextStep() {
+      if (validateStep(currentStep)) {
+        if (currentStep < totalSteps) {
+          currentStep++;
+          updateStepper();
+          showStep(currentStep);
+        }
+      }
+    }
+    
+    function previousStep() {
+      if (currentStep > 1) {
+        currentStep--;
+        updateStepper();
+        showStep(currentStep);
+      }
+    }
+    
+    function validateStep(step) {
+      if (step === 1) {
+        const email = document.getElementById('email').value;
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        
+        if (!email || !firstName || !lastName) {
+          alert('Bitte fülle alle Pflichtfelder aus.');
+          return false;
+        }
+        
+        if (!email.includes('@')) {
+          alert('Bitte gib eine gültige E-Mail-Adresse ein.');
+          return false;
+        }
+      } else if (step === 2) {
+        const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+        const street = document.getElementById('street').value;
+        const zipCode = document.getElementById('zipCode').value;
+        const city = document.getElementById('city').value;
+        const country = document.getElementById('country').value;
+        
+        if (!paymentMethod) {
+          alert('Bitte wähle eine Zahlungsmethode.');
+          return false;
+        }
+        
+        if (!street || !zipCode || !city || !country) {
+          alert('Bitte fülle alle Adressfelder aus.');
+          return false;
+        }
+      } else if (step === 3) {
+        const terms = document.getElementById('terms').checked;
+        if (!terms) {
+          alert('Bitte akzeptiere die AGB und Datenschutzerklärung.');
+          return false;
+        }
+      }
+      
+      return true;
+    }
+    
+    function getItemName(item) {
+      return item.name || item.toolName || item.planName || 'Artikel';
+    }
+
+    function setFormStatus(type, message) {
+      const statusBox = document.getElementById('form-status');
+      statusBox.className = 'form-status is-visible ' + (type === 'success' ? 'form-status--success' : 'form-status--error');
+      statusBox.innerHTML = message;
+    }
+
+    function getTotals() {
+      const cart = getCart();
+      const subtotal = cart.reduce((sum, item) => {
+        const lineTotal = ((item.price || 0) + (item.setup || 0)) * (item.quantity || 1);
+        return sum + lineTotal;
+      }, 0);
+      const tax = subtotal * 0.19;
+      const total = subtotal + tax;
+      return { subtotal, tax, total };
+    }
+
+    function buildOrderFallbackMailto(payload) {
+      const subject = encodeURIComponent('Bestellung ' + (payload.orderLabel || 'CanGo Checkout'));
+      const body = encodeURIComponent(
+        'Name: ' + payload.firstName + ' ' + payload.lastName + '\n' +
+        'E-Mail: ' + payload.email + '\n' +
+        'Telefon: ' + (payload.phone || 'Nicht angegeben') + '\n' +
+        'Firma: ' + (payload.company || 'Nicht angegeben') + '\n' +
+        'Adresse: ' + payload.street + ', ' + payload.zipCode + ' ' + payload.city + ', ' + payload.country + '\n' +
+        'Zahlungsmethode: ' + payload.paymentMethod + '\n' +
+        'Zwischensumme: ' + payload.subtotal.toFixed(2) + ' EUR\n' +
+        'MwSt.: ' + payload.tax.toFixed(2) + ' EUR\n' +
+        'Gesamt: ' + payload.total.toFixed(2) + ' EUR\n\n' +
+        'Warenkorb:\n' + JSON.stringify(payload.cart, null, 2)
+      );
+      return 'mailto:kontakt@cango-empire.de?subject=' + subject + '&body=' + body;
+    }
+
+    function showCheckoutSuccess(orderId) {
+      document.querySelector('.checkout-content').style.display = 'none';
+      document.querySelector('.checkout-stepper').style.display = 'none';
+      document.getElementById('checkout-success').classList.add('active');
+      const successMessage = document.querySelector('.success-message');
+      successMessage.innerHTML =
+        'Deine Bestellung wurde gespeichert und an unseren Intake uebergeben.' +
+        (orderId ? '<br><strong>Vorgangsnummer:</strong> ' + orderId : '') +
+        '<br>Du erhaeltst in Kuerze eine manuelle Bestaetigung per E-Mail.';
+      localStorage.removeItem(CART_STORAGE_KEY);
+      const badge = document.getElementById('cart-badge');
+      if (badge) {
+        badge.style.display = 'none';
+      }
+      if (window.CanGoCart) {
+        window.CanGoCart.updateCartBadge();
+      }
+    }
+    
+    function renderOrderSummary() {
+      const cart = getCart();
+      const itemsDiv = document.getElementById('order-items');
+      
+      if (cart.length === 0) {
+        window.location.href = '/kasse.html';
+        return;
+      }
+      
+      itemsDiv.innerHTML = cart.map(item => {
+        const qty = item.quantity || 1;
+        const lineTotal = ((item.price || 0) + (item.setup || 0)) * qty;
+        const typeLabel = item.type === 'workflow' ? 'Workflow' : item.type === 'package' ? (item.tier || 'Paket') : (item.planName || '');
+        return `
+        <div class="order-item">
+          <div class="order-item__info">
+            <div class="order-item__name">${getItemName(item)}</div>
+            <div class="order-item__plan">${typeLabel} ${qty > 1 ? '× ' + qty : ''}</div>
+            ${item.billingPeriod === 'lifetime' ? '<span class="order-item__badge">🚀 Lifetime Deal</span>' : ''}
+          </div>
+          <div class="order-item__price">${lineTotal.toLocaleString('de-DE')}€</div>
+        </div>
+      `;
+      }).join('');
+      
+      const subtotal = cart.reduce((sum, item) => {
+        const p = ((item.price || 0) + (item.setup || 0)) * (item.quantity || 1);
+        return sum + p;
+      }, 0);
+      const tax = subtotal * 0.19;
+      const total = subtotal + tax;
+      
+      document.getElementById('subtotal').textContent = subtotal.toLocaleString('de-DE') + '€';
+      document.getElementById('tax').textContent = tax.toLocaleString('de-DE') + '€';
+      document.getElementById('total').textContent = total.toLocaleString('de-DE') + '€';
+    }
+    
+    async function submitOrder() {
+      if (!validateStep(3)) {
+        return;
+      }
+
+      const submitButton = document.getElementById('btn-submit');
+      const statusBox = document.getElementById('form-status');
+      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+      const totals = getTotals();
+      const cart = getCart();
+      const formData = {
+        source: 'website-checkout',
+        page: window.location.pathname || '/checkout.html',
+        email: document.getElementById('email').value,
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        company: document.getElementById('company').value,
+        phone: document.getElementById('phone').value,
+        street: document.getElementById('street').value,
+        zipCode: document.getElementById('zipCode').value,
+        city: document.getElementById('city').value,
+        country: document.getElementById('country').value,
+        paymentMethod: paymentMethod ? paymentMethod.value : '',
+        cart: cart,
+        subtotal: totals.subtotal,
+        tax: totals.tax,
+        total: totals.total,
+        orderLabel: cart.length ? getItemName(cart[0]) : 'CanGo Checkout',
+        referrer: document.referrer || '',
+        userAgent: navigator.userAgent || '',
+        utm: {
+          source: new URLSearchParams(window.location.search).get('utm_source') || '',
+          medium: new URLSearchParams(window.location.search).get('utm_medium') || '',
+          campaign: new URLSearchParams(window.location.search).get('utm_campaign') || ''
+        }
+      };
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Bestellung wird uebermittelt...';
+      statusBox.className = 'form-status';
+      statusBox.textContent = '';
+
+      try {
+        const response = await fetch(ORDER_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+          throw new Error('Webhook antwortete mit Status ' + response.status);
+        }
+
+        const result = await response.json();
+        setFormStatus(
+          'success',
+          'Deine Bestellung ist jetzt in unserer Order-Strecke gespeichert.' +
+          (result.order_id ? '<br><strong>Vorgangsnummer:</strong> ' + result.order_id : '') +
+          '<br>Wir bestaetigen dir den Auftrag manuell per E-Mail.'
+        );
+        setTimeout(function() {
+          showCheckoutSuccess(result.order_id || '');
+        }, 500);
+      } catch (error) {
+        setFormStatus(
+          'error',
+          'Der direkte Order-Intake war gerade nicht erreichbar. ' +
+          'Wir oeffnen jetzt automatisch dein Mailprogramm als Fallback, damit die Bestellung nicht verloren geht.'
+        );
+        setTimeout(function() {
+          window.location.href = buildOrderFallbackMailto(formData);
+        }, 700);
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Bestellung abschliessen ✓';
+      }
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      renderOrderSummary();
+      updateStepper();
+      showStep(1);
+      if (window.CanGoCart) window.CanGoCart.updateCartBadge();
+    });
+  </script>
+  <script>
+(function(){var C="cango_empire_cart";var u=function(){try{var r=localStorage.getItem(C);var i=r?JSON.parse(r):[];var n=i.reduce(function(s,x){return s+(x.quantity||1);},0);document.querySelectorAll(".cart-badge").forEach(function(b){b.textContent=n;b.style.display=n>0?"flex":"none";});}catch(e){}};if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",u);else u();window.addEventListener("load",u);setTimeout(u,100);setTimeout(u,500);})();
+</script>
+<script src="/cart.js"></script>
+</body>
+</html>
+

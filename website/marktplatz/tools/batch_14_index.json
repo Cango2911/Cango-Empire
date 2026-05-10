@@ -1,0 +1,31 @@
+{
+  "batch_id": 14,
+  "category": "DATA INTELLIGENCE & ANALYTICS",
+  "tools": [
+    {
+      "id": "hotjar",
+      "name": "Hotjar",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/hotjar.html"
+    },
+    {
+      "id": "clarity",
+      "name": "Microsoft Clarity",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/clarity.html"
+    },
+    {
+      "id": "google-analytics-4",
+      "name": "Google Analytics 4",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/google-analytics-4.html"
+    },
+    {
+      "id": "mixpanel",
+      "name": "Mixpanel",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/mixpanel.html"
+    },
+    {
+      "id": "vwo",
+      "name": "VWO",
+      "file": "/Users/canberkkivilcim/Cango Universal/marktplatz/tools/vwo.html"
+    }
+  ]
+}

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<!-- INDEX-V2-HAUPTSEITE: Version 2 = Hauptseite (2026-03-16). V1 = index-v1.html, V3 = Hybrid index-3.html -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CanGo App Empire – Deine Konkurrenz schläft. Wir nicht.</title>
+<link href="/fonts/fonts.css?v=2" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/footer-meta-proof.css?v=1">
+<style>
+:root {
+  --navy-900: #080d1a;
+  --navy-800: #0d1424;
+  --navy-700: #111c30;
+  --navy-600: #162238;
+  --navy-500: #1d2d47;
+  --navy-400: #253652;
+  --gray-blue: #3a4f6b;
+  --gray-blue-light: #4e6382;
+  --border: rgba(78,99,130,0.25);
+  --border-light: rgba(78,99,130,0.12);
+  --orange: #F97316;
+  --orange-soft: rgba(249,115,22,0.12);
+  --orange-glow: rgba(249,115,22,0.06);
+  --white: #ffffff;
+  --off-white: #e8eef5;
+  --muted: #7a91ab;
+  --muted-dim: #4a607a;
+  --green: #22c55e;
+  --red: #ef4444;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy-900);color:var(--off-white);font-family:'Instrument Sans',sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 20% 10%,rgba(249,115,22,.04) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 80%,rgba(30,60,120,.15) 0%,transparent 60%);pointer-events:none;z-index:0}
+
+/* DISCOUNT BAR */
+.dbar{background:var(--navy-700);border-bottom:1px solid var(--border);color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:11.5px;text-align:center;padding:10px 48px;position:relative;letter-spacing:.02em}
+.dbar strong{color:var(--orange)}
+.dbar .x{position:absolute;right:16px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--muted-dim);font-size:18px;transition:color .2s}
+.dbar .x:hover{color:var(--orange)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,13,26,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 24px;height:68px;display:flex;align-items:center;justify-content:center}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}
+.logo-c{width:34px;height:34px;background:var(--orange);color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.logo-text{color:var(--white)}
+.logo-text span{color:var(--muted);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{color:var(--white);background:var(--navy-600)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px;color:var(--muted);border:1px solid var(--border);padding:6px 14px;border-radius:8px;cursor:pointer;background:var(--navy-700);transition:all .2s}
+.nav-cart:hover{border-color:var(--orange);color:var(--orange)}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:13px;padding:10px 22px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none;border:none;letter-spacing:.01em}
+.btn-o{background:var(--orange);color:#000}
+.btn-o:hover{background:#fb923c;transform:translateY(-1px);box-shadow:0 8px 24px rgba(249,115,22,.3)}
+.btn-g{background:transparent;color:var(--off-white);border:1px solid var(--border)}
+.btn-g:hover{border-color:var(--gray-blue-light);background:var(--navy-600)}
+.btn-lg{font-size:15px;padding:14px 28px;border-radius:12px}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 24px 80px;overflow:hidden;z-index:1}
+.hero-inner{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:1}
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+.orb1{width:600px;height:600px;background:rgba(249,115,22,.07);top:-150px;right:0}
+.orb2{width:500px;height:500px;background:rgba(30,60,120,.2);bottom:-100px;left:-100px}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:var(--navy-600);border:1px solid var(--border);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:32px;width:fit-content}
+.hero-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 1.6s ease-in-out infinite}
+.hero-chip strong{color:var(--off-white)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1.ht{font-size:clamp(52px,8vw,108px);font-weight:800;line-height:1.0;letter-spacing:-.025em;color:var(--white);max-width:860px;margin-bottom:28px}
+h1.ht .ac{color:var(--orange)}
+h1.ht .dm{color:var(--muted);font-weight:300}
+.hero-sub{font-size:17px;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:14px}
+.hero-sub strong{color:var(--off-white)}
+.hero-sub2{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--muted-dim);max-width:520px;line-height:1.7;margin-bottom:40px;padding:16px 20px;background:var(--navy-700);border:1px solid var(--border);border-left:3px solid var(--orange);border-radius:0 8px 8px 0}
+.hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.hlimit{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);display:flex;align-items:center;gap:6px;margin-bottom:60px}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}50%{box-shadow:0 0 0 5px rgba(239,68,68,0)}}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:520px}
+.stat-c{background:var(--navy-700);border:1px solid var(--border);border-radius:14px;padding:22px 20px;position:relative;overflow:hidden;transition:border-color .25s}
+.stat-c:hover{border-color:var(--orange)}
+.sbadge{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:500;letter-spacing:.1em;padding:3px 8px;border-radius:4px;margin-bottom:12px;display:inline-block}
+.sl{background:rgba(239,68,68,.15);color:var(--red)}
+.sa{background:rgba(249,115,22,.15);color:var(--orange)}
+.sc{background:rgba(34,197,94,.15);color:var(--green)}
+.snum{font-size:48px;font-weight:800;color:var(--white);line-height:1;letter-spacing:-.02em}
+.snum span{color:var(--orange)}
+.slbl{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* TICKER */
+.tsec{padding:0 24px;position:relative;z-index:1}
+.tsec-inner{max-width:1200px;margin:0 auto}
+.thead2{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ttxt{font-size:13px;font-weight:600;color:var(--off-white)}
+.chip{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.08em;padding:3px 8px;border-radius:4px}
+.ch-r{background:rgba(239,68,68,.15);color:var(--red);border:1px solid rgba(239,68,68,.25)}
+.ch-o{background:rgba(249,115,22,.15);color:var(--orange);border:1px solid rgba(249,115,22,.25)}
+.tsub{font-size:12px;color:var(--muted-dim);font-family:'JetBrains Mono',monospace}
+.twrap{background:var(--navy-700);border:1px solid var(--border);border-radius:12px;padding:14px 0;overflow:hidden}
+.tinner{display:flex;animation:scroll 28s linear infinite;white-space:nowrap}
+.tinner span{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);padding:0 48px}
+.tinner span strong{color:var(--orange)}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tbtns{display:flex;gap:8px;margin-top:10px}
+.tbtn{width:30px;height:30px;border-radius:8px;background:var(--navy-700);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;transition:all .2s}
+.tbtn:hover{border-color:var(--orange);color:var(--orange)}
+.bbar{margin:16px auto 0;max-width:1200px;padding:14px 24px;background:var(--navy-700);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;gap:14px;position:relative;z-index:1;width:calc(100% - 48px)}
+.bbar-i{font-size:20px}
+.bbar-l{font-size:13px;font-weight:700;color:var(--off-white)}
+.bbar-s{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+
+/* SECTIONS */
+section{padding:80px 24px;position:relative;z-index:1}
+section > *:not(.orb):not(.orb1):not(.orb2){max-width:1200px;margin-left:auto;margin-right:auto}
+.ey{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+h2.st{font-size:clamp(34px,4.5vw,60px);font-weight:800;letter-spacing:-.025em;color:var(--white);line-height:1.05;margin-bottom:16px}
+h2.st .ac{color:var(--orange)}
+h2.st .dm{color:var(--muted);font-weight:300}
+.sdesc{font-size:16px;color:var(--muted);max-width:620px;line-height:1.75}
+.div{width:48px;height:3px;background:var(--orange);border-radius:2px;margin:20px 0 40px}
+
+/* SYSTEMFEHLER */
+.sys-bg{background:var(--navy-800)}
+.sys-intro{font-size:16px;color:var(--muted);line-height:1.8;max-width:680px;margin-bottom:52px}
+.eg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ec{background:var(--navy-700);border:1px solid var(--border);border-radius:16px;padding:36px 32px 32px;position:relative;overflow:hidden;transition:all .3s}
+.ec:hover{border-color:rgba(249,115,22,.4);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.ec::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--orange-soft) 0%,transparent 50%);opacity:0;transition:opacity .3s;border-radius:16px}
+.ec:hover::before{opacity:1}
+.ei{width:48px;height:48px;background:var(--orange-soft);border:1px solid rgba(249,115,22,.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:22px}
+.ec h3{font-size:20px;font-weight:700;color:var(--white);margin-bottom:14px;line-height:1.3}
+.ec p{font-size:14px;color:var(--muted);line-height:1.8}
+.en{position:absolute;bottom:16px;right:20px;font-size:72px;font-weight:900;color:rgba(249,115,22,.04);line-height:1;letter-spacing:-.04em}
+
+/* INFRA */
+.infra-bg{background:var(--navy-900)}
+.infra-lead{font-size:15px;color:var(--muted);max-width:700px;line-height:1.8;margin-bottom:52px}
+.ig{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.icard{background:var(--navy-700);border:1px solid var(--border);border-radius:16px;padding:28px 22px;transition:all .3s}
+.icard:hover{border-color:rgba(249,115,22,.35);transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,.25)}
+.iicon{font-size:26px;margin-bottom:16px}
+.iname{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.isector{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.istat{font-size:36px;font-weight:800;color:var(--orange);letter-spacing:-.02em;line-height:1}
+.istat-alt{font-size:13px;font-weight:700;color:var(--orange)}
+.istat-lbl{font-size:11px;color:var(--muted-dim);margin-bottom:16px;font-family:'JetBrains Mono',monospace;letter-spacing:.05em}
+.itags{display:flex;flex-direction:column;gap:5px}
+.itag{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.itag::before{content:'→';color:var(--orange);font-size:10px}
+.idesc{font-size:12px;color:var(--muted-dim);line-height:1.65;margin-top:14px}
+
+/* ARSENAL */
+.ars-bg{background:var(--navy-800)}
+.ars-lay{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.ars-big{font-size:120px;font-weight:900;color:rgba(249,115,22,.07);line-height:1;letter-spacing:-.04em;margin-bottom:-16px}
+.ars-sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.ars-rnote{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin:10px 0 20px}
+.ars-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px}
+.ars-feats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px}
+.af{background:var(--navy-600);border:1px solid var(--border);border-radius:12px;padding:20px}
+.af h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px}
+.af p{font-size:13px;color:var(--muted);line-height:1.6}
+.ars-ctas{display:flex;gap:12px}
+.bot-pan{background:var(--navy-700);border:1px solid var(--border);border-radius:20px;padding:36px}
+.bgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.bnode{aspect-ratio:1;background:var(--navy-600);border:1px solid var(--border-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;animation:bp var(--d,3s) ease-in-out infinite;animation-delay:var(--dl,0s)}
+.bnode.on{border-color:rgba(249,115,22,.35);background:rgba(249,115,22,.07)}
+@keyframes bp{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* NISCHEN */
+.nisch-bg{background:var(--navy-900)}
+.ng{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
+.nc{background:var(--navy-700);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;align-items:center;gap:18px;transition:all .25s}
+.nc:hover{border-color:rgba(249,115,22,.35);background:var(--navy-600);transform:translateY(-2px)}
+.nic{font-size:28px;flex-shrink:0}
+.nc h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:3px}
+.nc p{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+
+/* SWITCH */
+.sw-bg{background:var(--navy-800)}
+.sw-body{font-size:16px;color:var(--muted);line-height:1.8;max-width:680px;margin:20px 0 36px}
+.bq{background:var(--navy-700);border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:0 14px 14px 0;padding:28px 32px;margin:36px 0 10px;font-size:18px;font-weight:600;color:var(--white);line-height:1.5;position:relative}
+.bq .qm{font-size:80px;font-weight:900;color:rgba(249,115,22,.1);position:absolute;top:8px;right:20px;line-height:1}
+.ptag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted-dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
+.sw-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
+.swc{background:var(--navy-700);border:1px solid var(--border);border-radius:16px;padding:32px;transition:all .25s}
+.swc:hover{border-color:rgba(249,115,22,.3)}
+.swtag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.swc h4{font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px}
+.swc p{font-size:14px;color:var(--muted);line-height:1.7}
+.sw-ctas{display:flex;gap:12px;margin-top:32px}
+
+/* COMPARE */
+.cmp-bg{background:var(--navy-900)}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:14px;margin-top:48px;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+thead{background:var(--navy-700)}
+thead th{padding:18px 28px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;border-bottom:1px solid var(--border)}
+thead th:last-child{color:var(--orange)}
+tbody tr{border-bottom:1px solid var(--border-light);transition:background .2s}
+tbody tr:hover{background:rgba(249,115,22,.03)}
+tbody tr:last-child{border-bottom:none}
+tbody td{padding:17px 28px;color:var(--muted)}
+tbody td:first-child{color:var(--off-white);font-weight:600;font-size:14px}
+tbody td:last-child{color:var(--green);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:13px}
+
+/* AVAIL */
+.av-bg{background:var(--navy-800)}
+.avcards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.avc{background:var(--navy-700);border:1px solid var(--border);border-radius:16px;padding:40px 36px;position:relative;overflow:hidden;transition:all .3s}
+.avc:hover{border-color:rgba(249,115,22,.3);transform:translateY(-3px)}
+.avc h4{font-size:22px;font-weight:700;color:var(--white);margin-bottom:10px}
+.avc p{font-size:15px;color:var(--muted);line-height:1.75}
+.avnum{position:absolute;bottom:-8px;right:16px;font-size:90px;font-weight:900;color:rgba(249,115,22,.05);line-height:1;letter-spacing:-.04em}
+
+/* PRICING */
+.pr-bg{background:var(--navy-900)}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.prc{background:var(--navy-700);border:1px solid var(--border);border-radius:18px;padding:32px 26px;display:flex;flex-direction:column;transition:all .3s;position:relative;overflow:hidden}
+.prc:hover{border-color:rgba(249,115,22,.3);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.prc.feat{border-color:var(--orange);background:linear-gradient(160deg,rgba(249,115,22,.08) 0%,var(--navy-700) 60%)}
+.prc.feat::before{content:'BELIEBT';position:absolute;top:16px;right:16px;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;background:var(--orange);color:#000;padding:4px 10px;border-radius:4px;letter-spacing:.08em}
+.plbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.pname{font-size:22px;font-weight:800;color:var(--white);margin-bottom:4px}
+.pprice{font-size:40px;font-weight:800;color:var(--orange);letter-spacing:-.025em;line-height:1;margin:10px 0 4px}
+.pprice sub{font-size:16px;color:var(--muted);font-weight:400;vertical-align:middle}
+.ponetime{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim);margin-bottom:6px}
+.ptagline{font-size:13px;color:var(--muted);font-style:italic;margin-bottom:16px}
+.pavail{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-dim);margin-bottom:20px}
+.pavail span{color:var(--orange)}
+.pdiv{height:1px;background:var(--border-light);margin-bottom:20px}
+.pfeats{list-style:none;flex:1;display:flex;flex-direction:column;gap:9px}
+.pfeats li{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.pfeats li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0;margin-top:1px}
+.pctas{margin-top:24px;display:flex;flex-direction:column;gap:8px}
+
+/* OPEX */
+.opex-bg{background:var(--navy-800)}
+.opcards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.opc{background:var(--navy-700);border:1px solid var(--border);border-radius:16px;padding:36px;transition:all .25s}
+.opc:hover{border-color:rgba(249,115,22,.3)}
+.opc h4{font-size:20px;font-weight:700;color:var(--white);margin-bottom:10px}
+.opc p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* FAQ */
+.faq-bg{background:var(--navy-900)}
+.faq-lay{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:60px;align-items:end}
+.faq-desc{font-size:15px;color:var(--muted);line-height:1.8}
+.faq-box{background:var(--navy-700);border:1px solid var(--border);border-radius:16px;padding:28px}
+.faq-box h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.faq-tt{font-size:15px;font-weight:700;color:var(--white);margin-bottom:8px}
+.faq-box p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.faq-box ul{list-style:none;margin-bottom:20px}
+.faq-box ul li{font-size:13px;color:var(--muted);padding:5px 0;display:flex;gap:8px}
+.faq-box ul li::before{content:'·';color:var(--orange)}
+.faq-ctas{display:flex;gap:10px;flex-wrap:wrap}
+.faq-cats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px}
+.fcat-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.fi{border-bottom:1px solid var(--border-light);padding:14px 0;cursor:pointer}
+.fi:first-of-type{border-top:1px solid var(--border-light)}
+.fq{font-size:14px;font-weight:600;color:var(--off-white);display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.45}
+.fq span{color:var(--orange);font-size:20px;line-height:1;transition:transform .2s;flex-shrink:0}
+.fi.open .fq span{transform:rotate(45deg)}
+.fa{font-size:13px;color:var(--muted);line-height:1.75;margin-top:10px;display:none}
+.fi.open .fa{display:block}
+.fa-inline{font-size:13px;color:var(--muted);line-height:1.75;margin-top:10px}
+
+/* URGENCY */
+.urg{background:var(--navy-700);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 24px;display:flex;justify-content:center;position:relative;z-index:1}
+.urg-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.urgl{flex:1}
+.urgw{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--red);display:flex;align-items:center;gap:8px;margin-bottom:12px;letter-spacing:.06em}
+.urgl h2{font-size:40px;font-weight:800;color:var(--white);letter-spacing:-.025em;line-height:1.1;margin-bottom:8px}
+.urgl p{font-size:15px;color:var(--muted)}
+
+/* FOOTER */
+footer{background:var(--navy-900);border-top:1px solid var(--border);padding:72px 24px 40px;position:relative;z-index:1}
+.footer-wrap{max-width:1200px;margin:0 auto}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.fbrand p{font-size:14px;color:var(--muted);line-height:1.75;margin-top:14px;max-width:260px}
+.fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.fcol ul{list-style:none}
+.fcol ul li{margin-bottom:10px}
+.fcol ul li a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
+.fcol ul li a:hover{color:var(--white)}
+.fbot{border-top:1px solid var(--border-light);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.fcopy{font-size:13px;color:var(--muted-dim)}
+.fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+.fcmd{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--orange);display:flex;align-items:center;gap:8px;background:var(--navy-700);border:1px solid var(--border);padding:10px 18px;border-radius:10px;cursor:pointer;transition:all .2s}
+.fcmd:hover{border-color:var(--orange);background:var(--orange-soft)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:960px){
+  nav{padding:0 16px}
+  section,.hero{padding:60px 16px}
+  h1.ht{font-size:50px}
+  .hero-stats{grid-template-columns:1fr 1fr 1fr}
+  .eg{grid-template-columns:1fr}
+  .ig{grid-template-columns:repeat(2,1fr)}
+  .ars-lay{grid-template-columns:1fr}
+  .ng{grid-template-columns:repeat(2,1fr)}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .ftop{grid-template-columns:1fr 1fr}
+  .faq-lay{grid-template-columns:1fr}
+  .faq-cats{grid-template-columns:1fr}
+  .tsec{padding:0 16px}
+  .bbar{width:calc(100% - 32px);margin-left:auto;margin-right:auto}
+  .urg-inner{flex-direction:column;text-align:center}
+  .urg{padding:40px 16px}
+  footer{padding:48px 16px 28px}
+  .sw-cards,.avcards,.opcards{grid-template-columns:1fr}
+}
+</style>
+<!-- CANGO-FOOTER-CSS-START -->
+<style>
+
+/* CANGO FOOTER — 1:1 Stil wie index.html (Zeilen FOOTER) */
+.cango-footer{background:#080d1a;border-top:1px solid rgba(78,99,130,.25);padding:72px 24px 40px;position:relative;z-index:1}
+.cango-footer .footer-wrap{max-width:1200px;margin:0 auto}
+.cango-footer .ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:56px}
+.cango-footer .fbrand p{font-size:14px;color:#7a91ab;line-height:1.75;margin-top:14px;max-width:260px}
+.cango-footer .logo{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px;text-decoration:none}
+.cango-footer .logo-c{width:34px;height:34px;background:#F97316;color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
+.cango-footer .logo-text{color:#ffffff}
+.cango-footer .logo-text span{color:#7a91ab;font-weight:400}
+.cango-footer .fcol h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#F97316;margin-bottom:18px}
+.cango-footer .fcol ul{list-style:none}
+.cango-footer .fcol ul li{margin-bottom:10px}
+.cango-footer .fcol ul li a{font-size:14px;color:#7a91ab;text-decoration:none;transition:color .2s}
+.cango-footer .fcol ul li a:hover{color:#ffffff}
+.cango-footer .fbot{border-top:1px solid rgba(78,99,130,.12);padding-top:28px;display:flex;justify-content:space-between;align-items:center}
+.cango-footer .fcopy{font-size:13px;color:#4a607a}
+.cango-footer .fcopy em{display:block;font-style:italic;font-size:12px;margin-top:2px;opacity:.6}
+@media(max-width:900px){.cango-footer .ftop{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:600px){.cango-footer .ftop{grid-template-columns:1fr;gap:32px}}
+
+</style>
+<!-- CANGO-FOOTER-CSS-END -->
+<!-- CANGO-NAV-CSS-START -->
+<style>
+
+/* ─── CANGO NAV (1:1 Startseite) ─── */
+nav{position:sticky!important;top:0!important;z-index:1000!important;background:rgba(8,13,26,.88)!important;backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important;border-bottom:1px solid rgba(78,99,130,.25)!important;padding:0 24px!important;height:68px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-inner{max-width:1200px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px!important;font-weight:800!important;font-family:'Outfit','DM Sans',sans-serif!important;display:flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:#fff!important}
+.logo-c{width:34px!important;height:34px!important;background:#F97316!important;color:#000!important;border-radius:8px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-weight:900!important;font-size:16px!important;flex-shrink:0!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text{color:#fff!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.logo-text span{color:#7a91ab!important;font-weight:400!important}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:13px!important;font-weight:500!important;font-family:'Outfit','DM Sans',sans-serif!important;color:#7a91ab!important;text-decoration:none!important;padding:6px 11px!important;border-radius:8px!important;transition:all .2s!important;white-space:nowrap!important}
+.nav-links a:hover,.nav-links a.active{color:#fff!important;background:#1a2744!important}
+.nav-links a.active{color:#F97316!important}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cart{font-size:13px!important;color:#7a91ab!important;border:1px solid rgba(78,99,130,.25)!important;padding:6px 14px!important;border-radius:8px!important;cursor:pointer!important;background:#111c30!important;transition:all .2s!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;gap:6px!important;font-family:'Outfit','DM Sans',sans-serif!important}
+.nav-cart:hover{border-color:#F97316!important;color:#F97316!important}
+.nav-cart .cart-badge{background:#F97316!important;color:#000!important;font-size:10px!important;font-weight:800!important;min-width:18px!important;height:18px!important;border-radius:50%!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+.btn-o{background:#F97316!important;color:#000!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;font-weight:600!important;font-size:13px!important;font-family:'Outfit','DM Sans',sans-serif!important;padding:10px 22px!important;border-radius:10px!important;cursor:pointer!important;transition:all .2s!important;text-decoration:none!important;border:none!important;white-space:nowrap!important}
+.btn-o:hover{background:#fb923c!important;transform:translateY(-1px)!important}
+/* Hamburger ausblenden auf Desktop */
+.nav-toggle{display:none!important}
+/* Mobile Nav */
+@media(max-width:1080px){
+  nav{position:sticky!important;top:0!important;z-index:1000!important;height:auto!important;min-height:56px!important;padding:0 12px!important;background:#0d1424!important;border-bottom:1px solid rgba(78,99,130,.3)!important}
+  .nav-inner{display:flex!important;align-items:center!important;flex-wrap:wrap!important;min-height:56px!important;gap:0!important}
+  .nav-toggle{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;margin-left:auto!important;margin-right:4px!important;border:1px solid rgba(78,99,130,.4)!important;background:#111c30!important;color:#e8eef5!important;border-radius:8px!important;cursor:pointer!important;font-size:20px!important;flex-shrink:0!important;transition:border-color .2s,color .2s!important}
+  .nav-toggle:hover,.nav-toggle:active{border-color:#F97316!important;color:#F97316!important}
+  .nav-links{display:none!important;width:100%!important;order:3!important;flex-direction:column!important;background:#111c30!important;margin:0 -12px!important;padding:8px 0 12px!important;gap:2px!important;border-top:1px solid rgba(78,99,130,.25)!important}
+  body.nav-open .nav-links{display:flex!important}
+  .nav-links li{width:100%!important;list-style:none!important}
+  .nav-links a{display:flex!important;align-items:center!important;padding:13px 20px!important;font-size:15px!important;color:#e8eef5!important;text-decoration:none!important;border-left:3px solid transparent!important;transition:background .15s,border-color .15s,color .15s!important}
+  .nav-links a:hover,.nav-links a:active{background:rgba(249,115,22,.1)!important;border-left-color:#F97316!important;color:#F97316!important}
+  .nav-right{display:flex!important;align-items:center!important;gap:8px!important;margin-left:8px!important}
+  .nav-right .btn{padding:10px 14px!important;font-size:13px!important;width:auto!important;min-height:44px!important}
+}
+
+</style>
+<!-- CANGO-NAV-CSS-END -->
+</head>
+<body>
+
+<div class="dbar">
+  🎯 Rabattcode <strong>"CanGo App Empire"</strong> auf externen Partnerseiten oder <strong>"CanGo App Empire"</strong> im Kontaktformular angeben – so erkennt unser System, woher du kommst.
+  <span class="x" onclick="this.parentElement.remove()">×</span>
+</div>
+
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<!-- NAV (1:1 Startseite) -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü öffnen oder schließen">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/kontakt.html">Kontakt</a></li>
+      <li><a href="/faq.html">FAQ</a></li>
+      <li><a href="/login.html">Login</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn btn-o">Jetzt anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-inner">
+    <div class="hero-chip rv"><span class="dot"></span><strong>100 Workflows aktiv</strong>&nbsp;·&nbsp;33 Content-Maschinen</div>
+    <h1 class="ht rv">Deine Konkurrenz<br><span class="ac">schläft.</span> <span class="dm">Wir nicht!</span></h1>
+    <p class="hero-sub rv">Von der Idee zum fertigen Content in unter <strong>10 Minuten</strong>. Vollautomatisierte Produktion von Blogs, Videos, SEO/SEA-optimierten Assets &amp; Branding-Optimierung für den DACH-Markt. <strong>Nur ein Mitarbeiter wird benötigt.</strong></p>
+    <p class="hero-sub2 rv">Während dein Wettbewerber noch das Briefing liest,<br>haben wir bereits deine komplette Marketing-Automatisierung.</p>
+    <div class="hero-ctas rv">
+      <a href="/kontakt.html" class="btn btn-o btn-lg">Infrastruktur übernehmen !</a>
+      <a href="/ueber-uns.html" class="btn btn-g btn-lg">Mehr erfahren</a>
+    </div>
+    <div class="hlimit rv"><div class="pulse"></div>Begrenzte Kapazität: Nur 20 Enterprise-Slots</div>
+    <div class="hero-stats rv">
+      <div class="stat-c"><div class="sbadge sl">LIVE</div><div class="snum"><span>100</span></div><div class="slbl">Workflows</div></div>
+      <div class="stat-c"><div class="sbadge sa">ARMED</div><div class="snum"><span>33</span></div><div class="slbl">Content-Maschinen</div></div>
+      <div class="stat-c"><div class="sbadge sc">CONFIRMED</div><div class="snum"><span>1</span></div><div class="slbl">Personal benötigt</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="tsec rv">
+  <div class="tsec-inner">
+    <div class="thead2">
+      <span class="ttxt">📺 Breaking News</span>
+      <span class="chip ch-r">LIVE</span>
+      <span class="tsub">Aktualisiert News via Automation Workflow • Live-Feed</span>
+    </div>
+    <div class="twrap">
+      <div class="tinner">
+        <span>🔴 <strong>LIVE:</strong> Neue Workflows deployed · 33 Content-Maschinen im Einsatz · DACH-Markt vollautomatisiert · SEO-Assets in Echtzeit generiert · Wettbewerb schläft · <strong>CanGo App Empire ist live</strong> · Infrastruktur skaliert exponentiell · 0 menschliche Latenz · 24/7/365 Output ·&nbsp;&nbsp;&nbsp;</span>
+        <span>🔴 <strong>LIVE:</strong> Neue Workflows deployed · 33 Content-Maschinen im Einsatz · DACH-Markt vollautomatisiert · SEO-Assets in Echtzeit generiert · Wettbewerb schläft · <strong>CanGo App Empire ist live</strong> · Infrastruktur skaliert exponentiell · 0 menschliche Latenz · 24/7/365 Output ·&nbsp;&nbsp;&nbsp;</span>
+      </div>
+    </div>
+    <div class="tbtns"><div class="tbtn">←</div><div class="tbtn">→</div></div>
+  </div>
+</div>
+<div class="bbar rv">
+  <div class="bbar-i">📝</div>
+  <div><div class="bbar-l">Daily Blogs <span class="chip ch-o" style="margin-left:8px;vertical-align:middle;">NEU</span></div><div class="bbar-s">Täglich 08:00 Uhr • Automatisierte SEO-Blogs</div></div>
+</div>
+
+<!-- SYSTEMFEHLER -->
+<section class="sys-bg">
+  <div class="ey rv">⚠ Systemfehler: Das Agentur-Modell</div>
+  <h2 class="st rv">Systemfehler: Warum dein<br><span class="ac">Agentur-Modell</span> dich sabotiert!</h2>
+  <div class="div"></div>
+  <p class="sys-intro rv">Der Markt lügt dich an. Man verkauft dir „Strategie" und „Kreativität", aber was du wirklich finanzierst, sind Junioren mit Canva-Abos und ChatGPT-Prompts. Du zahlst 5.000 € im Monat für die Lernkurve anderer. Wir beenden diesen ökonomischen Irrsinn.</p>
+  <div class="eg">
+    <div class="ec rv"><div class="ei">💸</div><h3>Die OpEx-Falle: 60.000 € Verbrennungsrate</h3><p>Du zahlst nicht für Performance, sondern für die Anwesenheit von Praktikanten. Während du auf Ergebnisse hoffst, finanzierst du deren Büromiete und „Kreativ-Meetings" ohne ROI. Das ist kein Investment, das ist eine Spende an veraltete Strukturen.</p><div class="en">01</div></div>
+    <div class="ec rv"><div class="ei">⏳</div><h3>Latenz ist der Killer: 10 Tage Stillstand</h3><p>Der Markt agiert in Millisekunden, deine Agentur in Zeitlupe. Briefings, Korrekturschleifen und Meeting-Kultur fressen deinen Vorsprung. Bis dein Content live ist, ist der Trend längst beerdigt. Wir eliminieren die menschliche Latenz durch digitale Präzision.</p><div class="en">02</div></div>
+    <div class="ec rv"><div class="ei">📉</div><h3>Die lineare Sackgasse: Ökonomischer Selbstmord</h3><p>Menschliche Arbeit skaliert nicht. Um den Output zu verdoppeln, muss eine Agentur die Lohnkosten verdoppeln und du trägst das Risiko. Das ist ein mathematischer Fehler. Unsere Server skalieren exponentiell, während deine Kosten starr am Boden bleiben.</p><div class="en">03</div></div>
+  </div>
+</section>
+
+<!-- INFRA -->
+<section class="infra-bg">
+  <div class="ey rv">✓ Verifizierte Infrastruktur</div>
+  <h2 class="st rv">Infrastruktur der <span class="ac">Marktführer.</span></h2>
+  <div class="div"></div>
+  <p class="infra-lead rv">CanGo App Empire operiert nicht im Vakuum. Wir sind das technologische Rückgrat hinter den Lead-Strömen der größten Akteure im DACH-Raum.<br><br>Wir führen keine Kundenlisten. Wir schmieden Allianzen. Unsere Systeme sind nicht bloß angedockt, sie sind das operative Nervensystem, das Prozesse steuert, Reibung entfernt und Wachstum beschleunigt.</p>
+  <div class="ig rv">
+    <div class="icard"><div class="iicon">🛡️</div><div class="iname">Finanz-Allianz</div><div class="isector">Finanz &amp; Versicherung</div><div class="istat">380+</div><div class="istat-lbl">Gesellschaften</div><div class="itags"><span class="itag">Lead-Routing</span><span class="itag">DIN-Prozesse</span><span class="itag">Vertrauenssysteme</span></div><div class="idesc">Wir verwandeln komplexe Finanzprodukte in DIN-normierte, skalierbare Beratungsprozesse. Vertrauen wird systematisiert, Lead-Routing automatisiert und jeder Schritt auf Wiederholbarkeit ausgelegt.</div></div>
+    <div class="icard"><div class="iicon">🏗️</div><div class="iname">High-Ticket Immobilien</div><div class="isector">Immobilien</div><div class="istat-alt">Dominanz</div><div class="istat-lbl">Immobilien</div><div class="itags"><span class="itag">Pflegeimmobilien</span><span class="itag">Neubau &amp; Finanzierung</span></div><div class="idesc">Vom Eigenheim bis zum Investment-Portfolio: Unsere Infrastruktur generiert qualifizierte Investoren-Leads. Keine Streuverluste. Nur marktfähiger Zufluss.</div></div>
+    <div class="icard"><div class="iicon">⚡</div><div class="iname">Energie-Infrastruktur</div><div class="isector">Energie &amp; Solar</div><div class="istat">64</div><div class="istat-lbl">Versorger</div><div class="itags"><span class="itag">Tarifwechsel in Echtzeit</span></div><div class="idesc">Massengeschäft vollautomatisiert. Wir dominieren den Tarifwechsel in Echtzeit, während der Markt noch über Preise diskutiert. Geschwindigkeit wird hier zur Marge.</div></div>
+    <div class="icard"><div class="iicon">🤝</div><div class="iname">Recruiting</div><div class="isector">Karriere &amp; HR</div><div class="istat-alt">Direktvermittlung</div><div class="istat-lbl">Direktvermittlung</div><div class="itags"><span class="itag">Festanstellung statt Zeitarbeit</span></div><div class="idesc">Ingenieur-Fokus, anonymisierte Hochgeschwindigkeits-Bewerbungen und algorithmische Ansprache. Wir verwandeln Recruiting in ein präzises Zufluss-System.</div></div>
+    <div class="icard"><div class="iicon">🎓</div><div class="iname">E-Learning</div><div class="isector">Education &amp; Learning</div><div class="istat-alt">Education &amp; Learning</div><div class="istat-lbl">Digital</div><div class="itags"><span class="itag">Kurse, Zertifikate, Akademien</span></div><div class="idesc">Skalierbarer Vertrieb für digitale Bildungsprodukte, Zertifizierungen und Online-Akademien. Die Maschine produziert Nachfrage, qualifiziert Interesse und beschleunigt Conversion.</div></div>
+  </div>
+</section>
+
+<!-- ARSENAL -->
+<section class="ars-bg">
+  <div class="ey rv">⚙ Das Arsenal</div>
+  <div class="ars-lay">
+    <div class="rv">
+      <div class="ars-big">30+</div>
+      <div class="ars-sub">Arsenal 02 · Schwarm-Orchestrierung</div>
+      <h2 class="st">Industrielle <span class="ac">Intelligenz.</span></h2>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin:10px 0 6px;">KI-Systeme als operative Einheit</div>
+      <div class="ars-rnote">Live-Routing, Fallbacks, permanente Selbstoptimierung.</div>
+      <p class="ars-desc">Spezialisierung schlägt Generalisierung. Immer. Wir operieren chirurgisch in den lukrativsten Sektoren der Wirtschaft und bauen keine Tool-Sammlung, sondern industrielle Systeme mit digitaler Übermacht.<br><br>Ein einzelner Bot ist ein Spielzeug. Unser Verbund aus Modellen, Prompts und Kontrolllogik ist eine operative Einheit – dort, wo andere Systeme kollabieren.<br><br>Mehrere Modelle, eine Kontrolllogik: Live-Routing, autonome Fallbacks und ständige Selbstoptimierung sichern Output auch unter Last. Kein Single-Point-of-Failure.</p>
+      <div class="ars-feats"><div class="af"><h4>Live Routing</h4><p>Anfragen werden intelligent auf das passende System verteilt.</p></div><div class="af"><h4>Selbstoptimierung</h4><p>Fallbacks und Metriken halten die Qualität konstant.</p></div></div>
+      <div class="ars-ctas"><a href="/kontakt.html" class="btn btn-o">Beratung anfragen</a><a href="/cyber-assistant.html" class="btn btn-g">KI-Assistant ansehen</a></div>
+    </div>
+    <div class="bot-pan rv">
+      <div class="bgrid">
+        <div class="bnode on" style="--d:2.1s;--dl:0s">🤖</div><div class="bnode" style="--d:3.2s;--dl:.3s">⚡</div><div class="bnode on" style="--d:2.8s;--dl:.6s">🧠</div><div class="bnode" style="--d:3.5s;--dl:.1s">📡</div><div class="bnode on" style="--d:2.3s;--dl:.8s">🔧</div>
+        <div class="bnode" style="--d:3.1s;--dl:.4s">📊</div><div class="bnode on" style="--d:2.6s;--dl:.2s">🤖</div><div class="bnode" style="--d:3.4s;--dl:.7s">⚙️</div><div class="bnode on" style="--d:2.2s;--dl:.5s">🔮</div><div class="bnode" style="--d:3.0s;--dl:.9s">📈</div>
+        <div class="bnode on" style="--d:2.7s;--dl:0s">🤖</div><div class="bnode" style="--d:3.3s;--dl:.3s">💡</div><div class="bnode on" style="--d:2.4s;--dl:.6s">🔬</div><div class="bnode" style="--d:3.6s;--dl:.1s">🎯</div><div class="bnode on" style="--d:2.9s;--dl:.8s">🤖</div>
+        <div class="bnode" style="--d:3.2s;--dl:.4s">⚡</div><div class="bnode on" style="--d:2.1s;--dl:.2s">🧬</div><div class="bnode" style="--d:3.5s;--dl:.7s">📡</div><div class="bnode on" style="--d:2.6s;--dl:.5s">🤖</div><div class="bnode" style="--d:3.0s;--dl:.9s">🔭</div>
+        <div class="bnode on" style="--d:2.3s;--dl:.3s">🧠</div><div class="bnode" style="--d:3.4s;--dl:.6s">⚙️</div><div class="bnode on" style="--d:2.8s;--dl:.1s">🤖</div><div class="bnode" style="--d:3.1s;--dl:.4s">📊</div><div class="bnode on" style="--d:2.5s;--dl:.8s">🔧</div>
+        <div class="bnode" style="--d:3.3s;--dl:0s">🎮</div><div class="bnode on" style="--d:2.2s;--dl:.7s">🤖</div><div class="bnode" style="--d:3.6s;--dl:.2s">💻</div><div class="bnode on" style="--d:2.7s;--dl:.5s">🌐</div><div class="bnode" style="--d:3.0s;--dl:.9s">⚡</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NISCHEN -->
+<section class="nisch-bg">
+  <div class="ey rv">◈ High-CPM Nischen</div>
+  <h2 class="st rv">9 Kontrollierte Märkte.<br><span class="ac">Maximale Rendite.</span></h2>
+  <div class="div"></div>
+  <p class="sdesc rv">Wir operieren chirurgisch in den lukrativsten Sektoren mit hohen CPMs und klarer Zielgruppe.</p>
+  <div class="ng rv">
+    <div class="nc"><span class="nic">💰</span><div><h4>Finanzen &amp; Versicherung</h4><p>Versicherungen, Kredite, Investitionen</p></div></div>
+    <div class="nc"><span class="nic">🏠</span><div><h4>Immobilien</h4><p>Makler, Vermietung, Immobilien-Invest</p></div></div>
+    <div class="nc"><span class="nic">📈</span><div><h4>Trading</h4><p>Kurse, Signale, Strategien</p></div></div>
+    <div class="nc"><span class="nic">₿</span><div><h4>Crypto &amp; Web3</h4><p>DeFi, NFTs, Krypto-Assets</p></div></div>
+    <div class="nc"><span class="nic">⚡</span><div><h4>Energie &amp; Solar</h4><p>Solar, Strom, Tarife</p></div></div>
+    <div class="nc"><span class="nic">🤖</span><div><h4>KI &amp; Tech</h4><p>SaaS, Tools, AI-Lösungen</p></div></div>
+    <div class="nc"><span class="nic">⚙️</span><div><h4>Automationen</h4><p>Workflows, n8n, Zapier</p></div></div>
+    <div class="nc"><span class="nic">👔</span><div><h4>Karriere &amp; HR</h4><p>Jobs, Recruiting, Bewerbung</p></div></div>
+    <div class="nc"><span class="nic">🧠</span><div><h4>Coaching &amp; Mindset</h4><p>Kurse, Mentoring, Transformation</p></div></div>
+  </div>
+</section>
+
+<!-- SWITCH -->
+<section class="sw-bg">
+  <div class="ey rv">⟳ System Ownership</div>
+  <h2 class="st rv">Infrastruktur statt <span class="ac">Agentur</span></h2>
+  <div class="div"></div>
+  <p class="sw-body rv">Hör auf, in Agenturen zu investieren. Fang an, in deine Infrastruktur zu investieren.<br><br>Während andere noch Stunden in manuelle Prozesse oder teure Retainer-Verträge versenken, aktivierst du bei CanGo App Empire deine eigene digitale Produktionsstraße. Wir bauen keine Betreuung, sondern ein System, das für dich produziert, während du dein Geschäft führst.</p>
+  <div class="bq rv"><div class="qm">"</div>Wer weiter Kampagnen einkauft, bleibt abhängig. Wer Infrastruktur baut, kontrolliert Output, Timing und Schlagkraft.</div>
+  <p class="ptag rv">Founder Pitch 03 · Kontrolle statt Abhängigkeit</p>
+  <p class="sdesc rv" style="margin-top:16px;">Der Unterschied ist nicht nur Marketing. Der Unterschied ist Besitz am System.<br><br>Ob Managed Service oder Infrastructure Transfer: Das Ziel bleibt dieselbe Maschine. Du kaufst nicht mehr nur Sichtbarkeit ein, sondern baust den skalierbaren Kern für Content, Prozesse und Vertrieb.</p>
+  <div class="sw-cards rv"><div class="swc"><div class="swtag">Option A</div><h4>Managed Service</h4><p>Schnell live, null Setup-Stress für dich.</p></div><div class="swc"><div class="swtag">Option B</div><h4>Infrastructure Transfer</h4><p>Code, Logik und Unabhängigkeit bleiben in deinem Haus.</p></div></div>
+  <div class="sw-ctas rv"><a href="/kontakt.html" class="btn btn-o">System aufbauen</a><a href="/marktplatz.html" class="btn btn-g">Marktplatz öffnen</a></div>
+</section>
+
+<!-- COMPARE -->
+<section class="cmp-bg">
+  <div class="ey rv">▣ Der Unterschied</div>
+  <h2 class="st rv">Agentur vs. <span class="ac">CanGo App Empire</span></h2>
+  <div class="div"></div>
+  <div class="rv">
+    <table>
+      <thead><tr><th>Kriterium</th><th>Typische Agentur</th><th>CanGo App Empire ✓</th></tr></thead>
+      <tbody>
+        <tr><td>Kosten pro Monat</td><td>5.000€ – 15.000€</td><td>✓ ab 497€</td></tr>
+        <tr><td>Zeit pro Content-Asset</td><td>3–10 Tage</td><td>✓ &lt; 10 Minuten</td></tr>
+        <tr><td>Content-Assets pro Monat</td><td>4–8 Assets</td><td>✓ Unbegrenzt</td></tr>
+        <tr><td>Verfügbarkeit</td><td>Mo–Fr, 9–17 Uhr</td><td>✓ 24/7/365</td></tr>
+        <tr><td>Skalierbarkeit</td><td>Mehr Personal = Mehr Kosten</td><td>✓ Kostenlos skalierbar</td></tr>
+        <tr><td>Konsistenz</td><td>Abhängig von Mitarbeitern</td><td>✓ 100% konsistent</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- AVAIL -->
+<section class="av-bg">
+  <div class="ey rv">◉ Verfügbarkeit</div>
+  <h2 class="st rv">Die Frage ist nicht ob.<br>Die Frage ist <span class="ac">wann.</span></h2>
+  <div class="div"></div>
+  <p class="sdesc rv">Begrenzte Kapazität. Unbegrenzte Möglichkeiten.</p>
+  <div class="avcards rv">
+    <div class="avc"><h4>Managed Service</h4><p>Wir schließen dein Unternehmen an unsere Infrastruktur an. 24/7 Output. Null Aufwand für dich.</p><div class="avnum">01</div></div>
+    <div class="avc"><h4>Infrastructure Transfer</h4><p>Wir installieren die komplette Fertigungsstraße in deinem Unternehmen. Du behältst die Kontrolle, den Code und die Unabhängigkeit.</p><div class="avnum">02</div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pr-bg" id="preise">
+  <div class="ey rv">💰 Pakete &amp; Preise</div>
+  <h2 class="st rv">Deine <span class="ac">Infrastruktur.</span> <span class="dm">Dein Preis.</span></h2>
+  <div class="div"></div>
+  <div class="pgrid rv">
+    <div class="prc">
+      <div class="plbl">UNLIMITIERT</div><div class="pname">Starter</div>
+      <div class="pprice">497€ <sub>/ Monat</sub></div>
+      <p class="ptagline">Statt teure Agentur – günstige CanGo</p>
+      <div class="pavail">Verfügbar <span>∞</span></div><div class="pdiv"></div>
+      <ul class="pfeats"><li>5 Workflows aktiv</li><li>Bis zu 30 Content-Assets/Monat</li><li>1 Nische / Kanal</li><li>E-Mail Support</li><li>Basis-Analytics</li></ul>
+      <div class="pctas"><a href="/workflow-detail.html?workflowId=starter&amp;workflows=5" class="btn btn-g">Mehr erfahren</a><a href="/checkout.html?tier=starter&amp;price=497" class="btn btn-o">Jetzt starten</a></div>
+    </div>
+    <div class="prc feat">
+      <div class="plbl">PROFESSIONELL</div><div class="pname">Professional</div>
+      <div class="pprice">2.497€ <sub>/ Monat</sub></div>
+      <div class="ponetime">+ 15.000€ einmalig Nutzungsrechte</div>
+      <div class="pavail"><span>82 verfügbar</span> · 18 vergeben</div><div class="pdiv"></div>
+      <ul class="pfeats"><li>12 Workflows aktiv</li><li>Bis zu 100 Content-Assets/Monat</li><li>3 Nischen / Kanäle</li><li>Priority Support</li><li>Erweiterte Analytics + A/B Testing</li></ul>
+      <div class="pctas"><a href="/workflow-detail.html?workflowId=professional&amp;workflows=12" class="btn btn-g">Mehr erfahren</a><a href="/checkout.html?tier=professional&amp;price=2497&amp;setup=15000" class="btn btn-o">Jetzt starten</a></div>
+    </div>
+    <div class="prc">
+      <div class="plbl">LIMITIERT</div><div class="pname">Enterprise</div>
+      <div class="pprice">5.997€ <sub>/ Monat</sub></div>
+      <div class="ponetime">+ 23.000€ einmalig Nutzungsrechte</div>
+      <div class="pavail"><span>16 verfügbar</span> · 4 vergeben</div><div class="pdiv"></div>
+      <ul class="pfeats"><li>Alle 33 Content-Maschinen + Custom</li><li>Unbegrenzte Content-Assets</li><li>Alle 7 Nischen</li><li>Dedizierter Account Manager</li><li>White-Label + API-Zugang</li></ul>
+      <div class="pctas"><a href="/workflow-detail.html?workflowId=enterprise&amp;workflows=33" class="btn btn-g">Mehr erfahren</a><a href="/checkout.html?tier=enterprise&amp;price=5997&amp;setup=23000" class="btn btn-o">Jetzt starten</a></div>
+    </div>
+    <div class="prc">
+      <div class="plbl">UNLIMITIERT</div><div class="pname">Self Made Empire</div>
+      <div class="pprice">49.997€</div>
+      <p class="ptagline">Voll-Lizenz – 100% autonome Maschinen</p>
+      <div class="pavail">Verfügbar <span>∞</span></div><div class="pdiv"></div>
+      <ul class="pfeats"><li>100 vollständige Workflows</li><li>Komplette Installation bei dir</li><li>Quellcode &amp; Dokumentation</li><li>100% Datenhoheit</li><li>Onboarding &amp; Training</li><li>Keine monatlichen Kosten</li><li>Wartung selbst verantwortlich</li></ul>
+      <div class="pctas"><a href="/selfmade-empire.html" class="btn btn-g">Mehr erfahren</a><a href="/checkout.html?tier=selfmade&amp;price=0&amp;setup=49997" class="btn btn-o">Jetzt kaufen</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEX -->
+<section class="opex-bg">
+  <div class="ey rv">⟺ OPEX vs. CAPEX</div>
+  <h2 class="st rv">Warum CanGo App Empire keine Ausgabe,<br>sondern eine <span class="ac">Investition</span> ist.</h2>
+  <div class="div"></div>
+  <div class="opcards rv">
+    <div class="opc"><h4>Managed Service</h4><p>Wir schließen dein Unternehmen an unsere Infrastruktur an. 24/7 Output. Null Aufwand für dich.</p></div>
+    <div class="opc"><h4>Infrastructure Transfer</h4><p>Wir installieren die komplette Fertigungsstraße in deinem Unternehmen. Du behältst die Kontrolle, den Code und die Unabhängigkeit.</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-bg">
+  <div class="ey rv">? FAQ</div>
+  <h2 class="st rv">Häufig gestellte <span class="ac">Fragen</span></h2>
+  <div class="div"></div>
+  <div class="faq-lay rv">
+    <p class="faq-desc">Die Startseite zeigt nur den kompakten Einstieg. Der Live-Chat und der eigentliche Support liegen bewusst auf der FAQ-Unterseite.</p>
+    <div class="faq-box">
+      <h4>HOME TEASER · FAQ HUB AUF UNTERSEITE</h4>
+      <p class="faq-tt">Startseite = Schnellzugriff</p>
+      <p>Hier geht es nur um Orientierung und die wichtigsten Antworten. Wenn jemand tiefer einsteigen oder chatten will, führt der saubere Weg immer in den FAQ-Hub oder direkt in den Kontaktpfad.</p>
+      <ul>
+        <li>Teaser auf der Startseite: schnelle Antworten für Strategie, Technik und Einstieg.</li>
+        <li>Chat nur auf der Unterseite: der iPhone-/WhatsApp-Chat lebt bewusst unter /faq.html.</li>
+        <li>Saubere Verlinkung: von hier aus geht es entweder in den FAQ-Hub oder direkt in die Rückfrage.</li>
+      </ul>
+      <div class="faq-ctas"><a href="/faq.html" class="btn btn-o">FAQ-Hub mit Chat öffnen</a><a href="/kontakt.html" class="btn btn-g">Direkt fragen</a></div>
+    </div>
+  </div>
+  <div class="faq-cats rv">
+    <div>
+      <div class="fcat-lbl">📡 Strategic Operations</div>
+      <div class="fi" onclick="ftoggle(this)"><div class="fq">Ist CanGo App Empire eine Marketing-Agentur? <span>+</span></div><div class="fa"></div></div>
+      <div class="fi" onclick="ftoggle(this)"><div class="fq">Ersetzt das System mein komplettes Marketing-Team? <span>+</span></div><div class="fa"></div></div>
+      <div class="fi" onclick="ftoggle(this)"><div class="fq">Warum der Fokus auf diese 7 Sektoren? <span>+</span></div><div class="fa"></div></div>
+    </div>
+    <div>
+      <div class="fcat-lbl">💻 Technical Architecture</div>
+      <div class="fi" onclick="ftoggle(this)"><div class="fq">Wie wird 'Halluzination' (Falschinformation) verhindert? <span>+</span></div><div class="fa"></div></div>
+      <div class="fi">
+        <div class="fq" onclick="ftoggle(this.parentElement)">Benötige ich eigene API-Keys? <span>+</span></div>
+        <div class="fa-inline">Kommt auf dein Access-Level an. Im 'Franchise Node' (Managed) stellen wir die Infrastruktur (Keys inklusive). Im 'Enterprise Core' (Self-Hosted) laufen die Systeme über deine eigenen Accounts für volle Datenhoheit.</div>
+      </div>
+      <div class="fi" onclick="ftoggle(this)"><div class="fq">Wem gehört der Content? <span>+</span></div><div class="fa"></div></div>
+    </div>
+    <div>
+      <div class="fcat-lbl">📊 Commercial Logic</div>
+      <div class="fi" onclick="ftoggle(this)"><div class="fq">Warum ist das Setup teurer als eine Agentur-Retainer? <span>+</span></div><div class="fa"></div></div>
+      <div class="fi" onclick="ftoggle(this)"><div class="fq">Kann ich die 'Enterprise Infrastructure' leasen? <span>+</span></div><div class="fa"></div></div>
+      <div class="fi" onclick="ftoggle(this)"><div class="fq">Wie schnell ist das System einsatzbereit? <span>+</span></div><div class="fa"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY -->
+<div class="urg">
+  <div class="urg-inner">
+    <div class="urgl">
+      <div class="urgw"><div class="pulse"></div>⚠ Nur 20 Enterprise-Slots in Q1 2026 · 4 bereits vergeben</div>
+      <h2>Die Frage ist nicht ob.<br>Die Frage ist wann.</h2>
+      <p>Entweder du kontaktierst uns. Oder deine Konkurrenz tut es.</p>
+    </div>
+    <a href="/kontakt.html" class="btn btn-o btn-lg">Kostenlose Beratung anfragen</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<!-- FOOTER (1:1 Startseite) -->
+  <footer class="cango-footer">
+    <div class="footer-wrap">
+      <div class="ftop">
+        <div class="fbrand">
+          <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+          <p>Marketing-Automatisierung für den DACH-Markt. 33 Content-Maschinen. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/index.html#pakete">Preise</a></li></ul></div>
+        <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/karriere-hr.html">Karriere</a></li></ul></div>
+        <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li><li><a href="/widerruf.html">Widerrufserklärung</a></li><li><a href="/nachweis-grenzen.html">Nachweis &amp; Grenzen</a></li><li><a href="/disclaimer.html">Disclaimer</a></li></ul></div>
+      </div>
+      <div class="fbot">
+        <div class="fcopy">© 2026 CanGo App Empire. Alle Rechte vorbehalten.<em>Kopieren hilft dir nicht – du brauchst die Maschine.</em></div>
+        <p class="f-meta-proof" translate="no" title="Öffentlicher Versions-Footprint (Kanon: CanGo|DOK|public-footer|2026-04-07), kein personenbezogener Hash">Nachweis-Build <span class="f-meta-proof__tag">DOK-v2026.04.07</span> · <span class="f-meta-proof__tag" title="SHA-256, erste 12 Zeichen der Kanon-Zeichenkette">72ee6535ced0</span> · <a href="/nachweis-grenzen.html#glossar-dok-folge">DOK-Folge</a> · Rechtstexte versioniert</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)} });
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+function ftoggle(item){
+  const was=item.classList.contains('open');
+  item.closest('div')?.querySelectorAll('.fi').forEach(i=>i.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+</script>
+</body>
+</html>
