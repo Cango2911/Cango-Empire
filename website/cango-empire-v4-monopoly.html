@@ -3595,6 +3595,93 @@ footer {
   }
 }
 
+/* ── CanGo Tools Dropdown ──────────────────────────────── */
+.nav__dropdown-wrap {
+  position: relative;
+}
+
+.nav__dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0;
+}
+
+.nav__dropdown-toggle::after {
+  content: "▾";
+  font-size: 0.75em;
+  transition: transform 0.2s;
+}
+
+.nav__dropdown-wrap.is-open .nav__dropdown-toggle::after {
+  transform: rotate(180deg);
+}
+
+.nav__dropdown-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a2e;
+  border: 1px solid rgba(255,215,0,0.25);
+  border-radius: 10px;
+  padding: 0.5rem 0;
+  min-width: 210px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  z-index: 10000;
+}
+
+.nav__dropdown-wrap:hover .nav__dropdown-panel,
+.nav__dropdown-wrap.is-open .nav__dropdown-panel {
+  display: block;
+}
+
+.nav__dropdown-item {
+  display: block;
+  padding: 0.6rem 1.2rem;
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.nav__dropdown-item:hover {
+  background: rgba(255,215,0,0.12);
+  color: #FFD700;
+}
+
+/* Badge für "Gratis" */
+.nav__dropdown-item .badge {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 1px 6px;
+  background: #FFD700;
+  color: #0d0d1a;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  vertical-align: middle;
+  letter-spacing: 0.03em;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav__dropdown-panel {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: rgba(255,215,0,0.05);
+    border-radius: 0;
+    padding-left: 1rem;
+  }
+}
+
 /* Scrolling erlauben */
 html {
   overflow-y: scroll !important;
@@ -3652,8 +3739,8 @@ body {
           <div class="nav__dropdown-wrap" data-nav-dropdown>
             <button type="button" class="nav__link nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">CanGo Tools</button>
             <div class="nav__dropdown-panel" role="menu">
-              <a href="tools.html" class="nav__dropdown-item" role="menuitem">Tools-Übersicht</a>
-              <a href="short-form-studio.html" class="nav__dropdown-item" role="menuitem">CanGo Studio</a>
+              <a href="tools.html" class="nav__dropdown-item" role="menuitem">🛠️ Alle Tools</a>
+              <a href="short-form-studio.html" class="nav__dropdown-item" role="menuitem">🎬 CanGo Studio <span class="badge">GRATIS</span></a>
             </div>
           </div>
           <a href="marktplatz.html" class="nav__link">Marktplatz</a>
