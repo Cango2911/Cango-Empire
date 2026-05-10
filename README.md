@@ -22,3 +22,7 @@ Die Website läuft auf Docker mit Nginx.
 - `fix_index_html.py` - Korrigiere index.html
 
 Siehe `docs/DOMAIN_BINDUNG_ANLEITUNG.md` für Domain-Konfiguration.
+
+## Secrets / API-Keys
+Dieses Repo hat keine eigenen Secrets. Alle Keys (Perplexity, OpenAI, etc.) werden zentral verwaltet unter:
+`/Users/canberkkivilcim/CanGo Empire Webseite /docs/security/key-hints.local.md` (lokal, nie committen).

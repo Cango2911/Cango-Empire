@@ -1,0 +1,330 @@
+{
+  "name": "CanGo Blog Content Pipeline v1",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "30 6 * * *"
+            }
+          ]
+        },
+        "timezone": "Europe/Berlin"
+      },
+      "id": "node-schedule-trigger",
+      "name": "Täglich 06:30",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Nischen-Konfiguration – hier anpassen!\nconst niches = [\n  {\n    slug: 'ki-tech',\n    name: 'KI & Technologie',\n    niche: 'KI & Tech',\n    icon: '🤖',\n    keywords_hint: 'KI, künstliche Intelligenz, Machine Learning, Automatisierung, GPT, Claude, Unternehmenseinsatz'\n  },\n  {\n    slug: 'automationen',\n    name: 'Automatisierungen',\n    niche: 'Automatisierungen',\n    icon: '⚙️',\n    keywords_hint: 'n8n, Zapier, Make.com, Workflow-Automatisierung, No-Code, Business-Prozesse'\n  },\n  {\n    slug: 'karriere-hr',\n    name: 'Karriere & HR',\n    niche: 'Karriere & HR',\n    icon: '💼',\n    keywords_hint: 'Karriere, HR, Recruiting, Remote Work, Gehaltsverhandlung, Bewerbung, Arbeitgebermarke'\n  },\n  {\n    slug: 'coaching-mindset',\n    name: 'Coaching & Mindset',\n    niche: 'Coaching & Mindset',\n    icon: '🧠',\n    keywords_hint: 'Mindset, persönliche Entwicklung, Produktivität, Gewohnheiten, Ziele, Coaching'\n  },\n  {\n    slug: 'energie-solar',\n    name: 'Energie & Solar',\n    niche: 'Energie & Solar',\n    icon: '⚡',\n    keywords_hint: 'Solar, Photovoltaik, Energiekosten, Wärmepumpe, Strompreise, erneuerbare Energien'\n  },\n  {\n    slug: 'finanzen-versicherung',\n    name: 'Finanzen & Versicherung',\n    niche: 'Finanzen & Versicherung',\n    icon: '💰',\n    keywords_hint: 'ETF, Altersvorsorge, Versicherung, Geldanlage, Inflation, Steuern, Depot'\n  }\n];\n\nreturn niches.map(n => ({ json: n }));"
+      },
+      "id": "node-set-niches",
+      "name": "6 Nischen definieren",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [420, 300]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "node-split-batches",
+      "name": "Pro Nische einzeln",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [640, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.OPENAI_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "model": "gpt-4o",
+          "temperature": 0.7,
+          "response_format": { "type": "json_object" },
+          "messages": [
+            {
+              "role": "system",
+              "content": "Du bist ein erfahrener SEO-Texter für deutsche Blogs. Du antwortest ausschließlich mit validem JSON – kein Text davor oder danach."
+            },
+            {
+              "role": "user",
+              "content": "=Generiere für die Nische '{{ $json.name }}' einen konkreten Blog-Artikel-Plan für 2026.\n\nThemen-Hinweise: {{ $json.keywords_hint }}\n\nWähle ein aktuelles, praktisches SEO-Keyword. Keine Wiederholung von Evergreen-Themen.\n\nAntworte mit EXAKT diesem JSON:\n{\n  \"keyword\": \"Haupt-Keyword (3-5 Wörter, Deutsch)\",\n  \"dp_keyword\": \"Depositphotos search query in English (2-4 words, descriptive, no people)\",\n  \"title\": \"Blog-Titel (max 62 Zeichen, SEO-optimiert)\",\n  \"excerpt\": \"Eröffnungssatz des Artikels – direkt und informativ (2 Sätze max)\",\n  \"meta_description\": \"SEO-Meta-Description (max 155 Zeichen)\",\n  \"sections\": [\n    {\"title\": \"H2-Überschrift 1 (max 50 Zeichen)\", \"dp_search\": \"English search term for this section image\"},\n    {\"title\": \"H2-Überschrift 2 (max 50 Zeichen)\", \"dp_search\": \"English search term for this section image\"},\n    {\"title\": \"H2-Überschrift 3 (max 50 Zeichen)\", \"dp_search\": \"English search term for this section image\"}\n  ],\n  \"tags\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\"]\n}"
+            }
+          ]
+        }
+      },
+      "id": "node-openai-keyword",
+      "name": "GPT-4o: Keyword + Struktur",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [860, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// OpenAI-Antwort parsen und mit Nischen-Daten zusammenführen\nconst response = $json;\nconst choices = response.choices || [];\nif (!choices.length) throw new Error('OpenAI Keyword-Response leer');\n\nconst plan = JSON.parse(choices[0].message.content);\nconst niche = $('Pro Nische einzeln').item.json;\n\n// Suchbegriffe für Depositphotos extrahieren\nconst sections = plan.sections || [];\nconst section_keywords = sections.map(s => s.dp_search || s.title);\n\nreturn [{\n  json: {\n    ...niche,\n    keyword:          plan.keyword,\n    dp_keyword:       plan.dp_keyword || plan.keyword,\n    title:            plan.title,\n    excerpt:          plan.excerpt,\n    meta_description: plan.meta_description,\n    sections:         sections,\n    section_keywords: section_keywords,\n    tags:             plan.tags || [],\n    section1_title:   sections[0]?.title || '',\n    section2_title:   sections[1]?.title || '',\n    section3_title:   sections[2]?.title || ''\n  }\n}];"
+      },
+      "id": "node-parse-keyword",
+      "name": "Keyword-Plan parsen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1080, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.OPENAI_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "model": "gpt-4o",
+          "temperature": 0.75,
+          "messages": [
+            {
+              "role": "system",
+              "content": "Du schreibst professionelle, faktenbasierte Blogartikel auf Deutsch. Stil: klar, direkt, kein Marketing-Bullshit. Informativ wie ein guter Fachautor. Keine Füllwörter wie 'in der heutigen Zeit' oder 'es ist wichtig zu beachten'."
+            },
+            {
+              "role": "user",
+              "content": "=Schreibe einen vollständigen Blogartikel:\n\nTitel: {{ $json.title }}\nKeyword: {{ $json.keyword }}\nNische: {{ $json.name }}\n\nGliederung – nutze EXAKT diese 3 H2-Überschriften:\n## {{ $json.section1_title }}\n## {{ $json.section2_title }}\n## {{ $json.section3_title }}\n\nAnforderungen:\n- 950–1200 Wörter Gesamt\n- Pro H2-Abschnitt: 280–380 Wörter\n- Natürlicher, lesbarer Stil – kein SEO-Spam\n- Konkrete Zahlen, Beispiele, Praxistipps wo sinnvoll\n- Letzter Absatz: kurzer, echter Handlungsaufruf (kein generisches 'Jetzt anfangen!')\n- Markdown: ## für H2, ### für H3, **fett** für Kernbegriffe\n- NUR Artikeltext – keine Einleitung wie 'Hier ist dein Artikel'"
+            }
+          ]
+        }
+      },
+      "id": "node-openai-article",
+      "name": "GPT-4o: Artikel schreiben",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1300, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Artikel-Text extrahieren und finalen Payload zusammenbauen\nconst response = $json;\nconst choices  = response.choices || [];\nif (!choices.length) throw new Error('OpenAI Artikel-Response leer');\n\nconst content_markdown = choices[0].message.content.trim();\nconst meta = $('Keyword-Plan parsen').item.json;\n\nconst date = new Date().toISOString().split('T')[0]; // YYYY-MM-DD\n\n// Payload für blog_generator.py zusammenbauen\nconst payload = {\n  title:            meta.title,\n  niche:            meta.niche,\n  niche_slug:       meta.slug,\n  date:             date,\n  keyword:          meta.keyword,\n  dp_keyword:       meta.dp_keyword,\n  section_keywords: meta.section_keywords,\n  excerpt:          meta.excerpt,\n  meta_description: meta.meta_description,\n  content_markdown: content_markdown,\n  tags:             meta.tags\n};\n\n// Als Base64 kodieren (vermeidet Shell-Quoting-Probleme)\nconst payloadB64 = Buffer.from(JSON.stringify(payload)).toString('base64');\n\nreturn [{ json: { ...payload, payload_b64: payloadB64 } }];"
+      },
+      "id": "node-prepare-payload",
+      "name": "Payload vorbereiten",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1520, 300]
+    },
+    {
+      "parameters": {
+        "command": "=cd /opt/cango && source .env 2>/dev/null || true && python3 blog_generator.py --b64 {{ $json.payload_b64 }}"
+      },
+      "id": "node-execute-generator",
+      "name": "blog_generator.py ausführen",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1740, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Ergebnis des Python-Skripts parsen\nconst stdout = $json.stdout || '{}';\nconst stderr = $json.stderr || '';\n\nlet result = {};\ntry {\n  // Letzte JSON-Zeile aus stdout extrahieren\n  const lines = stdout.trim().split('\\n').filter(l => l.trim().startsWith('{'));\n  result = JSON.parse(lines[lines.length - 1] || '{}');\n} catch (e) {\n  result = { success: false, error: 'JSON parse error: ' + e.message };\n}\n\n// Metadata aus Payload ergänzen\nconst meta = $('Payload vorbereiten').item.json;\n\nreturn [{\n  json: {\n    success:   result.success || false,\n    slug:      result.slug   || meta.title,\n    url:       result.url    || '',\n    title:     result.title  || meta.title,\n    niche:     result.niche  || meta.niche,\n    date:      result.date   || '',\n    images:    result.images || [],\n    error:     result.error  || '',\n    stderr_preview: stderr.slice(-300)\n  }\n}];"
+      },
+      "id": "node-parse-result",
+      "name": "Ergebnis parsen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1960, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "check-success",
+              "leftValue": "={{ $json.success }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "node-check-success",
+      "name": "Erfolgreich?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [2180, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SLACK_WEBHOOK_URL }}",
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "text": "=✅ *CanGo Blog live:* <{{ $json.url }}|{{ $json.title }}>\n• Nische: {{ $json.niche }}\n• Datum: {{ $json.date }}\n• Bilder: {{ $json.images.join(', ') || 'keine' }}"
+        }
+      },
+      "id": "node-slack-success",
+      "name": "Slack: Erfolg",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2400, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SLACK_WEBHOOK_URL }}",
+        "sendBody": true,
+        "contentType": "json",
+        "body": {
+          "text": "=❌ *CanGo Blog Fehler* – Nische: {{ $json.niche }}\n• Fehler: {{ $json.error }}\n• Log: {{ $json.stderr_preview }}"
+        }
+      },
+      "id": "node-slack-error",
+      "name": "Slack: Fehler",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2400, 420]
+    },
+    {
+      "parameters": {
+        "amount": 12,
+        "unit": "seconds"
+      },
+      "id": "node-wait-between",
+      "name": "12s Pause",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [2620, 300],
+      "webhookId": "wait-webhook-content-pipeline"
+    }
+  ],
+  "connections": {
+    "Täglich 06:30": {
+      "main": [
+        [{"node": "6 Nischen definieren", "type": "main", "index": 0}]
+      ]
+    },
+    "6 Nischen definieren": {
+      "main": [
+        [{"node": "Pro Nische einzeln", "type": "main", "index": 0}]
+      ]
+    },
+    "Pro Nische einzeln": {
+      "main": [
+        [{"node": "GPT-4o: Keyword + Struktur", "type": "main", "index": 0}],
+        []
+      ]
+    },
+    "GPT-4o: Keyword + Struktur": {
+      "main": [
+        [{"node": "Keyword-Plan parsen", "type": "main", "index": 0}]
+      ]
+    },
+    "Keyword-Plan parsen": {
+      "main": [
+        [{"node": "GPT-4o: Artikel schreiben", "type": "main", "index": 0}]
+      ]
+    },
+    "GPT-4o: Artikel schreiben": {
+      "main": [
+        [{"node": "Payload vorbereiten", "type": "main", "index": 0}]
+      ]
+    },
+    "Payload vorbereiten": {
+      "main": [
+        [{"node": "blog_generator.py ausführen", "type": "main", "index": 0}]
+      ]
+    },
+    "blog_generator.py ausführen": {
+      "main": [
+        [{"node": "Ergebnis parsen", "type": "main", "index": 0}]
+      ]
+    },
+    "Ergebnis parsen": {
+      "main": [
+        [{"node": "Erfolgreich?", "type": "main", "index": 0}]
+      ]
+    },
+    "Erfolgreich?": {
+      "main": [
+        [{"node": "Slack: Erfolg",  "type": "main", "index": 0}],
+        [{"node": "Slack: Fehler",  "type": "main", "index": 0}]
+      ]
+    },
+    "Slack: Erfolg": {
+      "main": [
+        [{"node": "12s Pause", "type": "main", "index": 0}]
+      ]
+    },
+    "Slack: Fehler": {
+      "main": [
+        [{"node": "12s Pause", "type": "main", "index": 0}]
+      ]
+    },
+    "12s Pause": {
+      "main": [
+        [{"node": "Pro Nische einzeln", "type": "main", "index": 0}]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "id": "cango-content-pipeline-v1",
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "cango-empire-vps"
+  },
+  "tags": [
+    {"name": "content-pipeline"},
+    {"name": "blog-automation"},
+    {"name": "depositphotos"}
+  ]
+}

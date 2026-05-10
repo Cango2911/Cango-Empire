@@ -1,0 +1,28 @@
+Nach dem n8n-Import prüfen
+==========================
+
+1. WAIT-NODES
+   - Alle 6 "Warte 45s"-Nodes: Unit = "seconds", Amount = 45
+   - Nicht "minutes" oder leer lassen
+
+2. WORDPRESS-KATEGORIEN
+   - WP Draft: Karriere  → categories: [1]  ← deine WP-Kategorie-ID prüfen
+   - WP Draft: KI        → categories: [2]
+   - WP Draft: Krypto    → categories: [3]
+   - WP Draft: Finanzen  → categories: [4]
+   - WP Draft: Mindset   → categories: [5]
+   - WP Draft: Energie   → categories: [6]
+   In WP: Einstellungen → Kategorien → ID aus URL ablesen (tag_ID=X)
+
+3. GOOGLE SHEETS
+   - Sheet muss eine Seite namens "Blog-Log" haben
+   - Spalten: Datum | Uhrzeit | Erfolge | Gesamt | Titel
+
+4. DOPPEL-CRON VERHINDERN
+   - Nach erfolgreichem Test: alle alten Einzel-Cron-Workflows
+     für dieselben 6 Nischen DEAKTIVIEREN (nicht löschen)
+   - Sonst: 12 Artikel/Tag statt 6
+
+5. CRON-ZEITZONE
+   - n8n Settings → Timezone auf "Europe/Berlin" prüfen
+   - Sonst läuft 06:00 UTC = 07:00/08:00 Uhr Berliner Zeit

@@ -1,0 +1,796 @@
+{
+  "name": "CanGo Blog Master — Täglich 06:00 Uhr v3",
+  "nodes": [
+
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "cronExpression", "expression": "0 6 * * *" }]
+        }
+      },
+      "id": "cron-trigger",
+      "name": "Täglich 06:00 Uhr",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 400]
+    },
+
+    {
+      "parameters": {
+        "assignments": { "assignments": [
+          { "id": "n-k", "name": "nische",        "value": "Karriere & Jobs",   "type": "string" },
+          { "id": "w-k", "name": "workflowId",    "value": "65873899875213767", "type": "string" },
+          { "id": "p-k", "name": "systemPrompt",  "value": "Du bist ein professioneller Blogger für deutschsprachige Berufstätige (25–45 Jahre). Schreibe einen SEO-optimierten Blog-Artikel (600–800 Wörter) auf Deutsch. Struktur: 1 packende Überschrift (H1), kurzes Intro das ein Problem anspricht (2–3 Sätze), 3 Hauptabschnitte mit H2-Überschriften, konkreter Handlungsaufruf am Ende. Ton: professionell, motivierend, praxisnah. Thema: Karriere und Jobs. WICHTIG: Kennzeichne am Ende des Artikels, dass er KI-unterstützt erstellt wurde. Enthält keine Anlageberatung oder Finanzempfehlungen.", "type": "string" }
+        ]}
+      },
+      "id": "config-karriere",
+      "name": "Config: Karriere",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [240, 0]
+    },
+
+    {
+      "parameters": {
+        "assignments": { "assignments": [
+          { "id": "n-ki", "name": "nische",       "value": "KI & Technologie",  "type": "string" },
+          { "id": "w-ki", "name": "workflowId",   "value": "65870642851338183", "type": "string" },
+          { "id": "p-ki", "name": "systemPrompt", "value": "Du bist ein professioneller Blogger für deutschsprachige Berufstätige (25–45 Jahre). Schreibe einen SEO-optimierten Blog-Artikel (600–800 Wörter) auf Deutsch. Struktur: 1 packende Überschrift (H1), kurzes Intro das ein Problem anspricht (2–3 Sätze), 3 Hauptabschnitte mit H2-Überschriften, konkreter Handlungsaufruf am Ende. Ton: professionell, zukunftsorientiert, verständlich. Thema: KI und Technologie. WICHTIG: Kennzeichne am Ende des Artikels, dass er KI-unterstützt erstellt wurde.", "type": "string" }
+        ]}
+      },
+      "id": "config-ki",
+      "name": "Config: KI",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [240, 160]
+    },
+
+    {
+      "parameters": {
+        "assignments": { "assignments": [
+          { "id": "n-kr", "name": "nische",       "value": "Krypto",            "type": "string" },
+          { "id": "w-kr", "name": "workflowId",   "value": "65870865344485575", "type": "string" },
+          { "id": "p-kr", "name": "systemPrompt", "value": "Du bist ein professioneller Blogger für deutschsprachige Berufstätige (25–45 Jahre). Schreibe einen SEO-optimierten Blog-Artikel (600–800 Wörter) auf Deutsch. Struktur: 1 packende Überschrift (H1), kurzes Intro das ein Problem anspricht (2–3 Sätze), 3 Hauptabschnitte mit H2-Überschriften, konkreter Handlungsaufruf am Ende. Ton: sachlich, informativ, chancenorientiert. Thema: Kryptowährungen und Blockchain. WICHTIG: Kennzeichne KI-Erstellung. Kein Anlageberatungsinhalt gemäß §34f GewO.", "type": "string" }
+        ]}
+      },
+      "id": "config-krypto",
+      "name": "Config: Krypto",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [240, 320]
+    },
+
+    {
+      "parameters": {
+        "assignments": { "assignments": [
+          { "id": "n-f", "name": "nische",        "value": "Finanzen & Vermögen","type": "string" },
+          { "id": "w-f", "name": "workflowId",    "value": "65869999285717191",  "type": "string" },
+          { "id": "p-f", "name": "systemPrompt",  "value": "Du bist ein professioneller Blogger für deutschsprachige Berufstätige (25–45 Jahre). Schreibe einen SEO-optimierten Blog-Artikel (600–800 Wörter) auf Deutsch. Struktur: 1 packende Überschrift (H1), kurzes Intro das ein Problem anspricht (2–3 Sätze), 3 Hauptabschnitte mit H2-Überschriften, konkreter Handlungsaufruf am Ende. Ton: vertrauenswürdig, motivierend, praxisnah. Thema: Finanzielle Freiheit und Vermögensaufbau. WICHTIG: Kennzeichne KI-Erstellung. Kein Anlageberatungsinhalt gemäß §34f GewO.", "type": "string" }
+        ]}
+      },
+      "id": "config-finanzen",
+      "name": "Config: Finanzen",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [240, 480]
+    },
+
+    {
+      "parameters": {
+        "assignments": { "assignments": [
+          { "id": "n-m", "name": "nische",        "value": "Mindset",           "type": "string" },
+          { "id": "w-m", "name": "workflowId",    "value": "65870405829119943", "type": "string" },
+          { "id": "p-m", "name": "systemPrompt",  "value": "Du bist ein professioneller Blogger für deutschsprachige Berufstätige (25–45 Jahre). Schreibe einen SEO-optimierten Blog-Artikel (600–800 Wörter) auf Deutsch. Struktur: 1 packende Überschrift (H1), kurzes Intro das ein Problem anspricht (2–3 Sätze), 3 Hauptabschnitte mit H2-Überschriften, konkreter Handlungsaufruf am Ende. Ton: inspirierend, philosophisch-praktisch, tiefgründig. Thema: Mindset und Persönlichkeitsentwicklung. WICHTIG: Kennzeichne am Ende des Artikels, dass er KI-unterstützt erstellt wurde.", "type": "string" }
+        ]}
+      },
+      "id": "config-mindset",
+      "name": "Config: Mindset",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [240, 640]
+    },
+
+    {
+      "parameters": {
+        "assignments": { "assignments": [
+          { "id": "n-e", "name": "nische",        "value": "Energie & Nachhaltigkeit","type": "string" },
+          { "id": "w-e", "name": "workflowId",    "value": "65880759136014026",       "type": "string" },
+          { "id": "p-e", "name": "systemPrompt",  "value": "Du bist ein professioneller Blogger für deutschsprachige Berufstätige (25–45 Jahre). Schreibe einen SEO-optimierten Blog-Artikel (600–800 Wörter) auf Deutsch. Struktur: 1 packende Überschrift (H1), kurzes Intro das ein Problem anspricht (2–3 Sätze), 3 Hauptabschnitte mit H2-Überschriften, konkreter Handlungsaufruf am Ende. Ton: sachlich, lösungsorientiert, zukunftsgewandt. Thema: Energie und Nachhaltigkeit. WICHTIG: Kennzeichne am Ende des Artikels, dass er KI-unterstützt erstellt wurde.", "type": "string" }
+        ]}
+      },
+      "id": "config-energie",
+      "name": "Config: Energie",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [240, 800]
+    },
+
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.browseract.com/v2/workflow/run-task",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"workflowId\": \"{{ $json.workflowId }}\",\n  \"parameters\": { \"Data_Limit\": \"5\" }\n}"
+      },
+      "id": "ba-start-karriere",
+      "name": "BA Start: Karriere",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.browseract.com/v2/workflow/run-task",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"workflowId\": \"{{ $json.workflowId }}\",\n  \"parameters\": { \"Data_Limit\": \"5\" }\n}"
+      },
+      "id": "ba-start-ki",
+      "name": "BA Start: KI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 160]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.browseract.com/v2/workflow/run-task",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"workflowId\": \"{{ $json.workflowId }}\",\n  \"parameters\": { \"Data_Limit\": \"5\" }\n}"
+      },
+      "id": "ba-start-krypto",
+      "name": "BA Start: Krypto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 320]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.browseract.com/v2/workflow/run-task",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"workflowId\": \"{{ $json.workflowId }}\",\n  \"parameters\": { \"Data_Limit\": \"5\" }\n}"
+      },
+      "id": "ba-start-finanzen",
+      "name": "BA Start: Finanzen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 480]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.browseract.com/v2/workflow/run-task",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"workflowId\": \"{{ $json.workflowId }}\",\n  \"parameters\": { \"Data_Limit\": \"5\" }\n}"
+      },
+      "id": "ba-start-mindset",
+      "name": "BA Start: Mindset",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 640]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.browseract.com/v2/workflow/run-task",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"workflowId\": \"{{ $json.workflowId }}\",\n  \"parameters\": { \"Data_Limit\": \"5\" }\n}"
+      },
+      "id": "ba-start-energie",
+      "name": "BA Start: Energie",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [500, 800]
+    },
+
+    { "parameters": { "amount": 45 }, "id": "wait-karriere", "name": "Warte 45s: Karriere", "type": "n8n-nodes-base.wait", "typeVersion": 1.1, "position": [720, 0] },
+    { "parameters": { "amount": 45 }, "id": "wait-ki",       "name": "Warte 45s: KI",       "type": "n8n-nodes-base.wait", "typeVersion": 1.1, "position": [720, 160] },
+    { "parameters": { "amount": 45 }, "id": "wait-krypto",   "name": "Warte 45s: Krypto",   "type": "n8n-nodes-base.wait", "typeVersion": 1.1, "position": [720, 320] },
+    { "parameters": { "amount": 45 }, "id": "wait-finanzen", "name": "Warte 45s: Finanzen", "type": "n8n-nodes-base.wait", "typeVersion": 1.1, "position": [720, 480] },
+    { "parameters": { "amount": 45 }, "id": "wait-mindset",  "name": "Warte 45s: Mindset",  "type": "n8n-nodes-base.wait", "typeVersion": 1.1, "position": [720, 640] },
+    { "parameters": { "amount": 45 }, "id": "wait-energie",  "name": "Warte 45s: Energie",  "type": "n8n-nodes-base.wait", "typeVersion": 1.1, "position": [720, 800] },
+
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.browseract.com/v2/workflow/get-task",
+        "sendQuery": true,
+        "queryParameters": { "parameters": [
+          { "name": "task_id", "value": "={{ $json.id || $json.body?.id || $json.task_id || $json.data?.id }}" }
+        ]},
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" }
+        ]}
+      },
+      "id": "ba-result-karriere",
+      "name": "BA Ergebnis: Karriere",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [940, 0]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.browseract.com/v2/workflow/get-task",
+        "sendQuery": true,
+        "queryParameters": { "parameters": [
+          { "name": "task_id", "value": "={{ $json.id || $json.body?.id || $json.task_id || $json.data?.id }}" }
+        ]},
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" }
+        ]}
+      },
+      "id": "ba-result-ki",
+      "name": "BA Ergebnis: KI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [940, 160]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.browseract.com/v2/workflow/get-task",
+        "sendQuery": true,
+        "queryParameters": { "parameters": [
+          { "name": "task_id", "value": "={{ $json.id || $json.body?.id || $json.task_id || $json.data?.id }}" }
+        ]},
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" }
+        ]}
+      },
+      "id": "ba-result-krypto",
+      "name": "BA Ergebnis: Krypto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [940, 320]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.browseract.com/v2/workflow/get-task",
+        "sendQuery": true,
+        "queryParameters": { "parameters": [
+          { "name": "task_id", "value": "={{ $json.id || $json.body?.id || $json.task_id || $json.data?.id }}" }
+        ]},
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" }
+        ]}
+      },
+      "id": "ba-result-finanzen",
+      "name": "BA Ergebnis: Finanzen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [940, 480]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.browseract.com/v2/workflow/get-task",
+        "sendQuery": true,
+        "queryParameters": { "parameters": [
+          { "name": "task_id", "value": "={{ $json.id || $json.body?.id || $json.task_id || $json.data?.id }}" }
+        ]},
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" }
+        ]}
+      },
+      "id": "ba-result-mindset",
+      "name": "BA Ergebnis: Mindset",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [940, 640]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.browseract.com/v2/workflow/get-task",
+        "sendQuery": true,
+        "queryParameters": { "parameters": [
+          { "name": "task_id", "value": "={{ $json.id || $json.body?.id || $json.task_id || $json.data?.id }}" }
+        ]},
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Bearer DEIN_BROWSERACT_API_KEY" }
+        ]}
+      },
+      "id": "ba-result-energie",
+      "name": "BA Ergebnis: Energie",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [940, 800]
+    },
+
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "messages": { "values": [
+          { "role": "system", "content": "={{ $('Config: Karriere').item.json.systemPrompt }}" },
+          { "role": "user",   "content": "=Aktuelle Nachrichten Karriere & Jobs:\n\n{{ JSON.stringify($json.result?.data || $json.data || 'Keine Daten', null, 2) }}\n\nSchreibe einen vollständigen Blog-Artikel. Rückgabe: nur fertiges HTML mit <h1>, <h2>, <p> Tags." }
+        ]},
+        "options": { "maxTokens": 1500, "temperature": 0.7 }
+      },
+      "id": "openai-karriere",
+      "name": "OpenAI: Karriere",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [1160, 0],
+      "credentials": { "openAiApi": { "id": "DEINE_OPENAI_CREDENTIAL_ID", "name": "OpenAI API" } }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "messages": { "values": [
+          { "role": "system", "content": "={{ $('Config: KI').item.json.systemPrompt }}" },
+          { "role": "user",   "content": "=Aktuelle Nachrichten KI & Technologie:\n\n{{ JSON.stringify($json.result?.data || $json.data || 'Keine Daten', null, 2) }}\n\nSchreibe einen vollständigen Blog-Artikel. Rückgabe: nur fertiges HTML mit <h1>, <h2>, <p> Tags." }
+        ]},
+        "options": { "maxTokens": 1500, "temperature": 0.7 }
+      },
+      "id": "openai-ki",
+      "name": "OpenAI: KI",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [1160, 160],
+      "credentials": { "openAiApi": { "id": "DEINE_OPENAI_CREDENTIAL_ID", "name": "OpenAI API" } }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "messages": { "values": [
+          { "role": "system", "content": "={{ $('Config: Krypto').item.json.systemPrompt }}" },
+          { "role": "user",   "content": "=Aktuelle Nachrichten Krypto:\n\n{{ JSON.stringify($json.result?.data || $json.data || 'Keine Daten', null, 2) }}\n\nSchreibe einen vollständigen Blog-Artikel. Rückgabe: nur fertiges HTML mit <h1>, <h2>, <p> Tags." }
+        ]},
+        "options": { "maxTokens": 1500, "temperature": 0.7 }
+      },
+      "id": "openai-krypto",
+      "name": "OpenAI: Krypto",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [1160, 320],
+      "credentials": { "openAiApi": { "id": "DEINE_OPENAI_CREDENTIAL_ID", "name": "OpenAI API" } }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "messages": { "values": [
+          { "role": "system", "content": "={{ $('Config: Finanzen').item.json.systemPrompt }}" },
+          { "role": "user",   "content": "=Aktuelle Nachrichten Finanzen & Vermögen:\n\n{{ JSON.stringify($json.result?.data || $json.data || 'Keine Daten', null, 2) }}\n\nSchreibe einen vollständigen Blog-Artikel. Rückgabe: nur fertiges HTML mit <h1>, <h2>, <p> Tags." }
+        ]},
+        "options": { "maxTokens": 1500, "temperature": 0.7 }
+      },
+      "id": "openai-finanzen",
+      "name": "OpenAI: Finanzen",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [1160, 480],
+      "credentials": { "openAiApi": { "id": "DEINE_OPENAI_CREDENTIAL_ID", "name": "OpenAI API" } }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "messages": { "values": [
+          { "role": "system", "content": "={{ $('Config: Mindset').item.json.systemPrompt }}" },
+          { "role": "user",   "content": "=Aktuelle Nachrichten Mindset:\n\n{{ JSON.stringify($json.result?.data || $json.data || 'Keine Daten', null, 2) }}\n\nSchreibe einen vollständigen Blog-Artikel. Rückgabe: nur fertiges HTML mit <h1>, <h2>, <p> Tags." }
+        ]},
+        "options": { "maxTokens": 1500, "temperature": 0.7 }
+      },
+      "id": "openai-mindset",
+      "name": "OpenAI: Mindset",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [1160, 640],
+      "credentials": { "openAiApi": { "id": "DEINE_OPENAI_CREDENTIAL_ID", "name": "OpenAI API" } }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "messages": { "values": [
+          { "role": "system", "content": "={{ $('Config: Energie').item.json.systemPrompt }}" },
+          { "role": "user",   "content": "=Aktuelle Nachrichten Energie & Nachhaltigkeit:\n\n{{ JSON.stringify($json.result?.data || $json.data || 'Keine Daten', null, 2) }}\n\nSchreibe einen vollständigen Blog-Artikel. Rückgabe: nur fertiges HTML mit <h1>, <h2>, <p> Tags." }
+        ]},
+        "options": { "maxTokens": 1500, "temperature": 0.7 }
+      },
+      "id": "openai-energie",
+      "name": "OpenAI: Energie",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.4,
+      "position": [1160, 800],
+      "credentials": { "openAiApi": { "id": "DEINE_OPENAI_CREDENTIAL_ID", "name": "OpenAI API" } }
+    },
+
+    {
+      "parameters": {
+        "jsCode": "// Sicherer WP-Post-Body: HTML-Content korrekt escapen\nconst raw = $input.item.json;\nconst content = raw.message?.content || raw.choices?.[0]?.message?.content || raw.text || raw.output || (raw.json && raw.json.content) || '';\nconst h1Match = content.match(/<h1[^>]*>([^<]+)<\\/h1>/i);\nconst title = h1Match ? h1Match[1].trim() : 'Karriere — ' + new Date().toLocaleDateString('de-DE');\nreturn [{ json: { title, content, nische: 'Karriere' } }];"
+      },
+      "id": "prep-karriere",
+      "name": "Prep: Karriere",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1380, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.item.json;\nconst content = raw.message?.content || raw.choices?.[0]?.message?.content || raw.text || raw.output || (raw.json && raw.json.content) || '';\nconst h1Match = content.match(/<h1[^>]*>([^<]+)<\\/h1>/i);\nconst title = h1Match ? h1Match[1].trim() : 'KI — ' + new Date().toLocaleDateString('de-DE');\nreturn [{ json: { title, content, nische: 'KI' } }];"
+      },
+      "id": "prep-ki",
+      "name": "Prep: KI",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1380, 160]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.item.json;\nconst content = raw.message?.content || raw.choices?.[0]?.message?.content || raw.text || raw.output || (raw.json && raw.json.content) || '';\nconst h1Match = content.match(/<h1[^>]*>([^<]+)<\\/h1>/i);\nconst title = h1Match ? h1Match[1].trim() : 'Krypto — ' + new Date().toLocaleDateString('de-DE');\nreturn [{ json: { title, content, nische: 'Krypto' } }];"
+      },
+      "id": "prep-krypto",
+      "name": "Prep: Krypto",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1380, 320]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.item.json;\nconst content = raw.message?.content || raw.choices?.[0]?.message?.content || raw.text || raw.output || (raw.json && raw.json.content) || '';\nconst h1Match = content.match(/<h1[^>]*>([^<]+)<\\/h1>/i);\nconst title = h1Match ? h1Match[1].trim() : 'Finanzen — ' + new Date().toLocaleDateString('de-DE');\nreturn [{ json: { title, content, nische: 'Finanzen' } }];"
+      },
+      "id": "prep-finanzen",
+      "name": "Prep: Finanzen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1380, 480]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.item.json;\nconst content = raw.message?.content || raw.choices?.[0]?.message?.content || raw.text || raw.output || (raw.json && raw.json.content) || '';\nconst h1Match = content.match(/<h1[^>]*>([^<]+)<\\/h1>/i);\nconst title = h1Match ? h1Match[1].trim() : 'Mindset — ' + new Date().toLocaleDateString('de-DE');\nreturn [{ json: { title, content, nische: 'Mindset' } }];"
+      },
+      "id": "prep-mindset",
+      "name": "Prep: Mindset",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1380, 640]
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.item.json;\nconst content = raw.message?.content || raw.choices?.[0]?.message?.content || raw.text || raw.output || (raw.json && raw.json.content) || '';\nconst h1Match = content.match(/<h1[^>]*>([^<]+)<\\/h1>/i);\nconst title = h1Match ? h1Match[1].trim() : 'Energie — ' + new Date().toLocaleDateString('de-DE');\nreturn [{ json: { title, content, nische: 'Energie' } }];"
+      },
+      "id": "prep-energie",
+      "name": "Prep: Energie",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1380, 800]
+    },
+
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://DEINE-WORDPRESS-URL.de/wp-json/wp/v2/posts",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Basic DEIN_WP_BASE64_AUTH" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "keypair",
+        "bodyParameters": { "parameters": [
+          { "name": "title",      "value": "={{ $json.title }}" },
+          { "name": "content",    "value": "={{ $json.content }}" },
+          { "name": "status",     "value": "draft" },
+          { "name": "categories", "value": "[1]" }
+        ]}
+      },
+      "id": "wp-karriere",
+      "name": "WP Draft: Karriere",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1600, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://DEINE-WORDPRESS-URL.de/wp-json/wp/v2/posts",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Basic DEIN_WP_BASE64_AUTH" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "keypair",
+        "bodyParameters": { "parameters": [
+          { "name": "title",      "value": "={{ $json.title }}" },
+          { "name": "content",    "value": "={{ $json.content }}" },
+          { "name": "status",     "value": "draft" },
+          { "name": "categories", "value": "[2]" }
+        ]}
+      },
+      "id": "wp-ki",
+      "name": "WP Draft: KI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1600, 160]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://DEINE-WORDPRESS-URL.de/wp-json/wp/v2/posts",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Basic DEIN_WP_BASE64_AUTH" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "keypair",
+        "bodyParameters": { "parameters": [
+          { "name": "title",      "value": "={{ $json.title }}" },
+          { "name": "content",    "value": "={{ $json.content }}" },
+          { "name": "status",     "value": "draft" },
+          { "name": "categories", "value": "[3]" }
+        ]}
+      },
+      "id": "wp-krypto",
+      "name": "WP Draft: Krypto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1600, 320]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://DEINE-WORDPRESS-URL.de/wp-json/wp/v2/posts",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Basic DEIN_WP_BASE64_AUTH" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "keypair",
+        "bodyParameters": { "parameters": [
+          { "name": "title",      "value": "={{ $json.title }}" },
+          { "name": "content",    "value": "={{ $json.content }}" },
+          { "name": "status",     "value": "draft" },
+          { "name": "categories", "value": "[4]" }
+        ]}
+      },
+      "id": "wp-finanzen",
+      "name": "WP Draft: Finanzen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1600, 480]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://DEINE-WORDPRESS-URL.de/wp-json/wp/v2/posts",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Basic DEIN_WP_BASE64_AUTH" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "keypair",
+        "bodyParameters": { "parameters": [
+          { "name": "title",      "value": "={{ $json.title }}" },
+          { "name": "content",    "value": "={{ $json.content }}" },
+          { "name": "status",     "value": "draft" },
+          { "name": "categories", "value": "[5]" }
+        ]}
+      },
+      "id": "wp-mindset",
+      "name": "WP Draft: Mindset",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1600, 640]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://DEINE-WORDPRESS-URL.de/wp-json/wp/v2/posts",
+        "sendHeaders": true,
+        "headerParameters": { "parameters": [
+          { "name": "Authorization", "value": "Basic DEIN_WP_BASE64_AUTH" },
+          { "name": "Content-Type",  "value": "application/json" }
+        ]},
+        "sendBody": true,
+        "specifyBody": "keypair",
+        "bodyParameters": { "parameters": [
+          { "name": "title",      "value": "={{ $json.title }}" },
+          { "name": "content",    "value": "={{ $json.content }}" },
+          { "name": "status",     "value": "draft" },
+          { "name": "categories", "value": "[6]" }
+        ]}
+      },
+      "id": "wp-energie",
+      "name": "WP Draft: Energie",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1600, 800]
+    },
+
+    {
+      "parameters": {
+        "mode": "append",
+        "numberInputs": 6,
+        "options": {}
+      },
+      "id": "merge-alle",
+      "name": "Alle 6 zusammenführen",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [1820, 400]
+    },
+
+    {
+      "parameters": {
+        "jsCode": "// Aggregiert alle 6 WP-Ergebnisse — nach Merge Append; feuert EINMAL\nconst items = $input.all();\nfunction wpTitle(j) {\n  const t = j.title;\n  if (t && typeof t === 'object' && t.rendered) return String(t.rendered).replace(/<[^>]+>/g, '').trim();\n  if (typeof t === 'string') return t;\n  return '—';\n}\nconst titles = items.map(i => wpTitle(i.json)).join('\\n• ');\nconst successCount = items.filter(i => i.json.id != null && i.json.id !== '').length;\nreturn [{\n  json: {\n    successCount,\n    totalCount: items.length,\n    titles,\n    datum: new Date().toLocaleDateString('de-DE'),\n    uhrzeit: new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })\n  }\n}];"
+      },
+      "id": "aggregate-einmalig",
+      "name": "Aggregate (einmalig)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2040, 400]
+    },
+
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "DEINE_GOOGLE_SHEET_ID", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "Blog-Log", "mode": "name" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum":     "={{ $json.datum }}",
+            "Uhrzeit":   "={{ $json.uhrzeit }}",
+            "Erfolge":   "={{ $json.successCount }}",
+            "Gesamt":    "={{ $json.totalCount }}",
+            "Titel":     "={{ $json.titles }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "sheets-log",
+      "name": "Google Sheets: Log",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [2260, 280],
+      "credentials": { "googleSheetsOAuth2Api": { "id": "DEINE_GOOGLE_CREDENTIAL_ID", "name": "Google Sheets" } }
+    },
+
+    {
+      "parameters": {
+        "authentication": "webhook",
+        "webhookUri": "DEIN_SLACK_WEBHOOK_URL",
+        "text": "=✅ *CanGo Blog — {{ $json.datum }}*\n\n{{ $json.successCount }}/{{ $json.totalCount }} Artikel als Draft angelegt:\n• {{ $json.titles }}\n\n_Abgeschlossen: {{ $json.uhrzeit }} Uhr_",
+        "otherOptions": {}
+      },
+      "id": "slack-success",
+      "name": "Slack: Erfolgsmeldung",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [2260, 520]
+    }
+
+  ],
+
+  "connections": {
+    "Täglich 06:00 Uhr": { "main": [[
+      { "node": "Config: Karriere", "type": "main", "index": 0 },
+      { "node": "Config: KI",       "type": "main", "index": 0 },
+      { "node": "Config: Krypto",   "type": "main", "index": 0 },
+      { "node": "Config: Finanzen", "type": "main", "index": 0 },
+      { "node": "Config: Mindset",  "type": "main", "index": 0 },
+      { "node": "Config: Energie",  "type": "main", "index": 0 }
+    ]] },
+
+    "Config: Karriere": { "main": [[{ "node": "BA Start: Karriere", "type": "main", "index": 0 }]] },
+    "Config: KI":       { "main": [[{ "node": "BA Start: KI",       "type": "main", "index": 0 }]] },
+    "Config: Krypto":   { "main": [[{ "node": "BA Start: Krypto",   "type": "main", "index": 0 }]] },
+    "Config: Finanzen": { "main": [[{ "node": "BA Start: Finanzen", "type": "main", "index": 0 }]] },
+    "Config: Mindset":  { "main": [[{ "node": "BA Start: Mindset",  "type": "main", "index": 0 }]] },
+    "Config: Energie":  { "main": [[{ "node": "BA Start: Energie",  "type": "main", "index": 0 }]] },
+
+    "BA Start: Karriere": { "main": [[{ "node": "Warte 45s: Karriere", "type": "main", "index": 0 }]] },
+    "BA Start: KI":       { "main": [[{ "node": "Warte 45s: KI",       "type": "main", "index": 0 }]] },
+    "BA Start: Krypto":   { "main": [[{ "node": "Warte 45s: Krypto",   "type": "main", "index": 0 }]] },
+    "BA Start: Finanzen": { "main": [[{ "node": "Warte 45s: Finanzen", "type": "main", "index": 0 }]] },
+    "BA Start: Mindset":  { "main": [[{ "node": "Warte 45s: Mindset",  "type": "main", "index": 0 }]] },
+    "BA Start: Energie":  { "main": [[{ "node": "Warte 45s: Energie",  "type": "main", "index": 0 }]] },
+
+    "Warte 45s: Karriere": { "main": [[{ "node": "BA Ergebnis: Karriere", "type": "main", "index": 0 }]] },
+    "Warte 45s: KI":       { "main": [[{ "node": "BA Ergebnis: KI",       "type": "main", "index": 0 }]] },
+    "Warte 45s: Krypto":   { "main": [[{ "node": "BA Ergebnis: Krypto",   "type": "main", "index": 0 }]] },
+    "Warte 45s: Finanzen": { "main": [[{ "node": "BA Ergebnis: Finanzen", "type": "main", "index": 0 }]] },
+    "Warte 45s: Mindset":  { "main": [[{ "node": "BA Ergebnis: Mindset",  "type": "main", "index": 0 }]] },
+    "Warte 45s: Energie":  { "main": [[{ "node": "BA Ergebnis: Energie",  "type": "main", "index": 0 }]] },
+
+    "BA Ergebnis: Karriere": { "main": [[{ "node": "OpenAI: Karriere", "type": "main", "index": 0 }]] },
+    "BA Ergebnis: KI":       { "main": [[{ "node": "OpenAI: KI",       "type": "main", "index": 0 }]] },
+    "BA Ergebnis: Krypto":   { "main": [[{ "node": "OpenAI: Krypto",   "type": "main", "index": 0 }]] },
+    "BA Ergebnis: Finanzen": { "main": [[{ "node": "OpenAI: Finanzen", "type": "main", "index": 0 }]] },
+    "BA Ergebnis: Mindset":  { "main": [[{ "node": "OpenAI: Mindset",  "type": "main", "index": 0 }]] },
+    "BA Ergebnis: Energie":  { "main": [[{ "node": "OpenAI: Energie",  "type": "main", "index": 0 }]] },
+
+    "OpenAI: Karriere": { "main": [[{ "node": "Prep: Karriere", "type": "main", "index": 0 }]] },
+    "OpenAI: KI":       { "main": [[{ "node": "Prep: KI",       "type": "main", "index": 0 }]] },
+    "OpenAI: Krypto":   { "main": [[{ "node": "Prep: Krypto",   "type": "main", "index": 0 }]] },
+    "OpenAI: Finanzen": { "main": [[{ "node": "Prep: Finanzen", "type": "main", "index": 0 }]] },
+    "OpenAI: Mindset":  { "main": [[{ "node": "Prep: Mindset",  "type": "main", "index": 0 }]] },
+    "OpenAI: Energie":  { "main": [[{ "node": "Prep: Energie",  "type": "main", "index": 0 }]] },
+
+    "Prep: Karriere": { "main": [[{ "node": "WP Draft: Karriere", "type": "main", "index": 0 }]] },
+    "Prep: KI":       { "main": [[{ "node": "WP Draft: KI",       "type": "main", "index": 0 }]] },
+    "Prep: Krypto":   { "main": [[{ "node": "WP Draft: Krypto",   "type": "main", "index": 0 }]] },
+    "Prep: Finanzen": { "main": [[{ "node": "WP Draft: Finanzen", "type": "main", "index": 0 }]] },
+    "Prep: Mindset":  { "main": [[{ "node": "WP Draft: Mindset",  "type": "main", "index": 0 }]] },
+    "Prep: Energie":  { "main": [[{ "node": "WP Draft: Energie",  "type": "main", "index": 0 }]] },
+
+    "WP Draft: Karriere": { "main": [[{ "node": "Alle 6 zusammenführen", "type": "main", "index": 0 }]] },
+    "WP Draft: KI":       { "main": [[{ "node": "Alle 6 zusammenführen", "type": "main", "index": 1 }]] },
+    "WP Draft: Krypto":   { "main": [[{ "node": "Alle 6 zusammenführen", "type": "main", "index": 2 }]] },
+    "WP Draft: Finanzen": { "main": [[{ "node": "Alle 6 zusammenführen", "type": "main", "index": 3 }]] },
+    "WP Draft: Mindset":  { "main": [[{ "node": "Alle 6 zusammenführen", "type": "main", "index": 4 }]] },
+    "WP Draft: Energie":  { "main": [[{ "node": "Alle 6 zusammenführen", "type": "main", "index": 5 }]] },
+
+    "Alle 6 zusammenführen": { "main": [[{ "node": "Aggregate (einmalig)", "type": "main", "index": 0 }]] },
+
+    "Aggregate (einmalig)": { "main": [[
+      { "node": "Google Sheets: Log", "type": "main", "index": 0 },
+      { "node": "Slack: Erfolgsmeldung", "type": "main", "index": 0 }
+    ]] }
+  },
+
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "staticData": null,
+  "tags": ["blog", "automation", "cango-empire"],
+  "triggerCount": 1,
+  "versionId": "3"
+}

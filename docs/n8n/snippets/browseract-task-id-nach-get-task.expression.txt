@@ -1,0 +1,16 @@
+Robuster task_id-Ausdruck für BA Ergebnis Nodes (n8n HTTP Request, Query-Parameter)
+=====================================================================================
+
+Wert für Query-Parameter "task_id":
+={{ $json.id || $json.body?.id || $json.task_id || $json.data?.id }}
+
+Warum 4 Fallbacks:
+- $json.id         → Standard-Rückgabe von /v2/workflow/run-task
+- $json.body?.id   → wenn n8n den Response-Body unter "body" ablegt
+- $json.task_id    → alternative Feldbezeichnung mancher BA-Versionen
+- $json.data?.id   → wenn BrowserAct den Wert in einem data-Objekt liefert
+
+Wenn get-task immer 404 zurückgibt:
+1. BA Start Node: Response im n8n-Execution-Log anschauen
+2. Exaktes Feld-Mapping notieren (z. B. $json.taskId)
+3. Ausdruck oben um das Feld ergänzen

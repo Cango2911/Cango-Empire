@@ -1,0 +1,138 @@
+CanGo Blog Master — Wo du was in n8n einträgst
+===============================================================================
+Bezieht sich auf: docs/n8n/workflows/n8n_Cango_Blog_Master_v2.json (Inhalt v3)
+n8n läuft auf: Hostinger VPS
+Blog-Platform: WordPress
+Keine echten Passwörter/Keys hier eintragen — nur in der n8n-Oberfläche.
+
+SCHRITT 0 — Datei importieren
+-------------------------------
+1. n8n im Browser öffnen (http://DEINE-VPS-IP:5678 oder deine Domain)
+2. Seitenleiste: Workflows
+3. Oben rechts: Import from File
+4. Datei wählen:
+   /Users/canberkkivilcim/OnlineAgentur CanGo/workflows/n8n_Cango_Blog_Master_v2.json
+5. Workflow erscheint als "CanGo Blog Master — Täglich 06:00 Uhr v3"
+
+SCHRITT 1 — Zeitzone (wichtig!)
+---------------------------------
+n8n → oben rechts Profilbild → Settings → Timezone → Europe/Berlin → Speichern
+Ohne das: 06:00 Uhr = UTC, nicht Berliner Zeit.
+
+SCHRITT 2 — BrowserAct Token (12× gleicher Wert)
+--------------------------------------------------
+Token aus BrowserAct Dashboard → API Keys
+
+Diese 12 Nodes anklicken, jeweils Header "Authorization" anpassen:
+
+BA Start Nodes (6×):
+  • BA Start: Karriere
+  • BA Start: KI
+  • BA Start: Krypto
+  • BA Start: Finanzen
+  • BA Start: Mindset
+  • BA Start: Energie
+
+BA Ergebnis Nodes (6×):
+  • BA Ergebnis: Karriere
+  • BA Ergebnis: KI
+  • BA Ergebnis: Krypto
+  • BA Ergebnis: Finanzen
+  • BA Ergebnis: Mindset
+  • BA Ergebnis: Energie
+
+Pro Node: Node anklicken → Headers → Authorization → Wert:
+  Bearer DEIN_ECHTER_TOKEN
+(Wort "Bearer", Leerzeichen, dann dein Token — Platzhalter ersetzen)
+
+Tipp: Ersten Node korrekt setzen, Wert kopieren, in restliche 11 einfügen.
+
+SCHRITT 3 — OpenAI Credential (6× — ein Credential reicht)
+------------------------------------------------------------
+Nodes:
+  • OpenAI: Karriere
+  • OpenAI: KI
+  • OpenAI: Krypto
+  • OpenAI: Finanzen
+  • OpenAI: Mindset
+  • OpenAI: Energie
+
+Pro Node: Credential-Dropdown → bestehendes "OpenAI API" wählen
+Falls noch keines: Create New → API Key von platform.openai.com eintragen.
+Alle 6 können dasselbe Credential nutzen.
+
+SCHRITT 4 — WordPress (6× — URL + Basic-Auth + Kategorien)
+------------------------------------------------------------
+Vorbereitung (Mac Terminal) — Base64-String erzeugen:
+  echo -n 'deinWPNutzername:deinAnwendungsPasswort' | base64
+
+Anwendungspasswort erstellen in WordPress:
+  Benutzer → Profil → Anwendungspasswörter → Neues Passwort vergeben
+
+Nodes:
+  • WP Draft: Karriere   (Kategorie [1])
+  • WP Draft: KI         ([2])
+  • WP Draft: Krypto     ([3])
+  • WP Draft: Finanzen   ([4])
+  • WP Draft: Mindset    ([5])
+  • WP Draft: Energie    ([6])
+
+Pro Node:
+  1) URL: DEINE-WORDPRESS-URL.de → echte Domain:
+     https://deineblog.de/wp-json/wp/v2/posts
+  2) Header Authorization:
+     Basic DerBase64StringAusDemTerminal
+  3) Kategorien [1]–[6] in WordPress prüfen:
+     Beiträge → Kategorien → ID aus URL ablesen (tag_ID=X)
+     → Wert im Node anpassen falls abweichend
+
+SCHRITT 5 — Google Sheets (1 Node)
+-------------------------------------
+Node: "Google Sheets: Log"
+
+  • Credential: Google OAuth2 in n8n verbinden (einmalig anmelden)
+  • Spreadsheet ID aus URL kopieren:
+    https://docs.google.com/spreadsheets/d/DIESE_ID_HIER/edit
+  • Tab-Name: "Blog-Log" (Tab in Google Sheets anlegen falls nicht vorhanden)
+  • Kopfzeile in Zeile 1: Datum | Uhrzeit | Erfolge | Gesamt | Titel
+
+SCHRITT 6 — Slack (1 Node)
+----------------------------
+Node: "Slack: Erfolgsmeldung"
+
+Webhook erstellen:
+  slack.com → Apps → Incoming Webhooks → Kanal wählen → URL kopieren
+  (Format: https://hooks.slack.com/services/...)
+
+Im Node: DEIN_SLACK_WEBHOOK_URL ersetzen durch echte URL.
+
+SCHRITT 7 — BrowserAct Workflow-IDs (nur bei Bedarf)
+------------------------------------------------------
+Config-Nodes (Config: Karriere usw.) enthalten workflowId-Zahlen.
+Nur ändern wenn du in BrowserAct andere Workflow-IDs verknüpfst.
+
+SCHRITT 8 — Manuell testen
+----------------------------
+1. Workflow öffnen → "Execute Workflow" klicken
+2. Alle 6 Branches laufen durch (ca. 3–5 Min wegen 45s Wartezeiten)
+3. Ersten roten Node notieren → Name + Fehlermeldung für Support
+
+SCHRITT 9 — Aktivieren
+------------------------
+1. Workflow speichern
+2. Toggle "Active" einschalten
+3. Alte Einzel-Cron-Workflows für dieselben 6 Nischen DEAKTIVIEREN
+   (sonst doppelte Artikel — 12 statt 6 pro Tag)
+
+KURZ-CHECKLISTE
+----------------
+[ ] JSON importiert
+[ ] Timezone: Europe/Berlin
+[ ] BrowserAct Token in 12 Nodes (Bearer + Token)
+[ ] OpenAI Credential in 6 Nodes
+[ ] WordPress URL + Base64-Auth + Kategorien in 6 Nodes
+[ ] Google Sheets ID + Tab "Blog-Log" + Spalten + OAuth
+[ ] Slack Webhook URL
+[ ] Testlauf durchgeführt
+[ ] Workflow aktiviert (Active)
+[ ] Alte Einzel-Cron-Workflows deaktiviert
