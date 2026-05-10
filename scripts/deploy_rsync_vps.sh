@@ -39,7 +39,7 @@ rsync -avz \
   --delete \
   --exclude='.DS_Store' \
   --exclude='*.bak*' \
-  -e "ssh -o BatchMode=no" \
+  -e "ssh -p 2222 -o BatchMode=no" \
   "$SRC" "${USER}@${HOST}:${REMOTE}/"
 
 echo ""
