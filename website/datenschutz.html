@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung | CanGo App Empire</title>
+  <meta name="description" content="Datenschutzerklärung von CanGo App Empire gemäß DSGVO">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gray-950: #030712;
+      --gray-900: #111827;
+      --gray-800: #1F2937;
+      --gray-700: #374151;
+      --gray-400: #9CA3AF;
+      --gray-50: #F9FAFB;
+      --primary-500: #F97316;
+      --primary-600: #EA580C;
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.563rem;
+      --text-3xl: 1.953rem;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --nav-height: 64px;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.8;
+      color: var(--gray-50);
+      background: var(--gray-950);
+      padding-top: var(--nav-height);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6);
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: rgba(3, 7, 18, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+      z-index: 1000;
+    }
+
+    .nav__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: var(--text-lg);
+      color: var(--gray-50);
+    }
+
+    .nav__brand-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      border-radius: var(--radius-md);
+      color: white;
+      font-weight: 700;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .header__title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--gray-50);
+    }
+
+    .content {
+      background: var(--gray-900);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+    }
+
+    .section {
+      margin-bottom: var(--space-8);
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section__title {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--gray-50);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--gray-800);
+    }
+
+    .section__subtitle {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--gray-50);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+
+    .section__text {
+      color: var(--gray-400);
+      margin-bottom: var(--space-4);
+      line-height: 1.8;
+    }
+
+    .section__list {
+      margin-left: var(--space-6);
+      margin-bottom: var(--space-4);
+      color: var(--gray-400);
+      line-height: 1.8;
+    }
+
+    .section__list li {
+      margin-bottom: var(--space-2);
+    }
+
+    .info-box {
+      background: var(--gray-800);
+      border-left: 4px solid var(--primary-500);
+      padding: var(--space-4);
+      margin: var(--space-6) 0;
+      border-radius: var(--radius-md);
+    }
+
+    .info-box__title {
+      font-weight: 600;
+      color: var(--gray-50);
+      margin-bottom: var(--space-2);
+    }
+
+    .info-box__text {
+      color: var(--gray-400);
+      line-height: 1.8;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--primary-500);
+      text-decoration: none;
+      margin-top: var(--space-8);
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    @media print {
+      .nav,
+      .back-link {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="cango-empire-v4-monopoly.html" class="nav__brand">
+        <div class="nav__brand-icon">CG</div>
+        <span>CanGo App Empire</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <h1 class="header__title">Datenschutzerklärung</h1>
+      <p style="color: var(--gray-400);">Gemäß Art. 13 DSGVO</p>
+    </div>
+
+    <div class="content">
+      <!-- Einleitung -->
+      <div class="section">
+        <p class="section__text">
+          Wir freuen uns über Ihr Interesse an unserem Unternehmen. Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. In dieser Datenschutzerklärung informieren wir Sie über die Verarbeitung von personenbezogenen Daten bei der Nutzung unserer Website.
+        </p>
+      </div>
+
+      <!-- Verantwortlicher -->
+      <div class="section">
+        <h2 class="section__title">1. Verantwortlicher</h2>
+        <div class="info-box">
+          <div class="info-box__title">Angaben zum Verantwortlichen</div>
+          <div class="info-box__text">
+            <strong>CanGo App Empire</strong><br>
+            Inhaber: Canberk Kivilcim<br>
+            An der Legde 9<br>
+            29339 Wathlingen<br>
+            Deutschland<br><br>
+            Telefon: +49 174 640 1362<br>
+            E-Mail: cangoshop24@gmail.com<br>
+            USt-ID: DE33492943<br>
+            Steuernummer: 17/122/02844
+          </div>
+        </div>
+      </div>
+
+      <!-- Erhebung und Speicherung personenbezogener Daten -->
+      <div class="section">
+        <h2 class="section__title">2. Erhebung und Speicherung personenbezogener Daten</h2>
+        
+        <h3 class="section__subtitle">2.1 Bei Besuch der Website</h3>
+        <p class="section__text">
+          Beim Aufruf unserer Website werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sog. Logfile gespeichert. Folgende Informationen werden dabei ohne Ihr Zutun erfasst und bis zur automatisierten Löschung gespeichert:
+        </p>
+        <ul class="section__list">
+          <li>IP-Adresse des anfragenden Rechners</li>
+          <li>Datum und Uhrzeit des Zugriffs</li>
+          <li>Name und URL der abgerufenen Datei</li>
+          <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
+          <li>verwendeter Browser und ggf. das Betriebssystem Ihres Rechners sowie der Name Ihres Access-Providers</li>
+        </ul>
+        <p class="section__text">
+          Die genannten Daten werden durch uns zu folgenden Zwecken verarbeitet:
+        </p>
+        <ul class="section__list">
+          <li>Gewährleistung eines reibungslosen Verbindungsaufbaus der Website</li>
+          <li>Gewährleistung einer komfortablen Nutzung unserer Website</li>
+          <li>Auswertung der Systemsicherheit und -stabilität</li>
+          <li>zu weiteren administrativen Zwecken</li>
+        </ul>
+        <p class="section__text">
+          Die Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 S. 1 lit. f DSGVO. Unser berechtigtes Interesse folgt aus oben aufgelisteten Zwecken zur Datenerhebung. In keinem Fall verwenden wir die erhobenen Daten zu dem Zweck, Rückschlüsse auf Ihre Person zu ziehen.
+        </p>
+
+        <h3 class="section__subtitle">2.2 Bei Nutzung unseres Kontaktformulars</h3>
+        <p class="section__text">
+          Bei Fragen jeglicher Art bieten wir Ihnen die Möglichkeit, mit uns über ein auf der Website bereitgestelltes Formular Kontakt aufzunehmen. Dabei ist die Angabe einer gültigen E-Mail-Adresse erforderlich, damit wir wissen, von wem die Anfrage stammt und um diese beantworten zu können. Weitere Angaben können freiwillig getätigt werden.
+        </p>
+        <p class="section__text">
+          Die Datenverarbeitung zum Zwecke der Kontaktaufnahme mit uns erfolgt nach Art. 6 Abs. 1 S. 1 lit. a DSGVO auf Grundlage Ihrer freiwillig erteilten Einwilligung.
+        </p>
+
+        <h3 class="section__subtitle">2.3 Bei Bestellung/Registrierung</h3>
+        <p class="section__text">
+          Wenn Sie einen unserer Services bestellen oder sich registrieren, erheben und speichern wir folgende personenbezogene Daten:
+        </p>
+        <ul class="section__list">
+          <li>Vor- und Nachname</li>
+          <li>E-Mail-Adresse</li>
+          <li>Telefonnummer</li>
+          <li>Adressdaten (Straße, Hausnummer, PLZ, Ort, Land)</li>
+          <li>ggf. Firmenname</li>
+          <li>Zahlungsdaten (werden nicht bei uns gespeichert, sondern direkt an den Zahlungsanbieter weitergeleitet)</li>
+        </ul>
+        <p class="section__text">
+          Die Erhebung dieser Daten erfolgt,
+        </p>
+        <ul class="section__list">
+          <li>um Ihre Identität als unseren Kunden feststellen zu können</li>
+          <li>um Sie angemessen beraten und mit Ihnen korrespondieren zu können</li>
+          <li>um unsere vertraglichen Leistungen erbringen zu können</li>
+          <li>um unsere gesetzlichen Aufbewahrungspflichten erfüllen zu können</li>
+        </ul>
+        <p class="section__text">
+          Die Verarbeitung der Daten erfolgt auf Ihre Anfrage hin und ist nach Art. 6 Abs. 1 S. 1 lit. b DSGVO für die genannten Zwecke zur Erfüllung des Vertrags und vorvertraglicher Maßnahmen erforderlich.
+        </p>
+      </div>
+
+      <!-- Weitergabe von Daten -->
+      <div class="section">
+        <h2 class="section__title">3. Weitergabe von Daten</h2>
+        <p class="section__text">
+          Eine Übermittlung Ihrer persönlichen Daten an Dritte zu anderen als den im Folgenden aufgeführten Zwecken findet nicht statt.
+        </p>
+        <p class="section__text">
+          Wir geben Ihre persönlichen Daten nur an Dritte weiter, wenn:
+        </p>
+        <ul class="section__list">
+          <li>Sie Ihre nach Art. 6 Abs. 1 S. 1 lit. a DSGVO ausdrückliche Einwilligung dazu erteilt haben</li>
+          <li>die Weitergabe nach Art. 6 Abs. 1 S. 1 lit. f DSGVO zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen erforderlich ist und kein Grund zur Annahme besteht, dass Sie ein überwiegendes schutzwürdiges Interesse an der Nichtweitergabe Ihrer Daten haben</li>
+          <li>für den Fall, dass für die Weitergabe nach Art. 6 Abs. 1 S. 1 lit. c DSGVO eine gesetzliche Verpflichtung besteht</li>
+          <li>dies gesetzlich zulässig und nach Art. 6 Abs. 1 S. 1 lit. b DSGVO für die Abwicklung von Vertragsverhältnissen mit Ihnen erforderlich ist</li>
+        </ul>
+        <p class="section__text">
+          Wir setzen zur Erbringung unserer Leistungen externe Dienstleister ein (z.B. Hosting-Provider, Zahlungsdienstleister). Diese Dienstleister haben Zugriff auf Ihre Daten ausschließlich zur Erfüllung ihrer Aufgaben und sind verpflichtet, diese nicht für andere Zwecke zu verwenden.
+        </p>
+      </div>
+
+      <!-- Cookies -->
+      <div class="section">
+        <h2 class="section__title">4. Cookies</h2>
+        <p class="section__text">
+          Wir setzen auf unserer Seite Cookies ein. Hierbei handelt es sich um kleine Dateien, die Ihr Browser automatisch erstellt und die auf Ihrem Endgerät (Laptop, Tablet, Smartphone o.ä.) gespeichert werden, wenn Sie unsere Seite besuchen.
+        </p>
+        <p class="section__text">
+          Cookies richten auf Ihrem Endgerät keinen Schaden an, enthalten keine Viren, Trojaner oder sonstige Schadsoftware. In dem Cookie werden Informationen abgelegt, die sich jeweils im Zusammenhang mit dem spezifisch eingesetzten Endgerät ergeben.
+        </p>
+        <p class="section__text">
+          Der Einsatz von Cookies dient einerseits dazu, die Nutzung unseres Angebots für Sie angenehmer zu gestalten. So setzen wir sogenannte Session-Cookies ein, um zu erkennen, dass Sie einzelne Seiten unserer Website bereits besucht haben.
+        </p>
+        <p class="section__text">
+          Die meisten Browser akzeptieren Cookies automatisch. Sie können Ihren Browser jedoch so konfigurieren, dass keine Cookies auf Ihrem Computer gespeichert werden oder stets ein Hinweis erscheint, bevor ein neuer Cookie angelegt wird.
+        </p>
+      </div>
+
+      <!-- Betroffenenrechte -->
+      <div class="section">
+        <h2 class="section__title">5. Betroffenenrechte</h2>
+        <p class="section__text">
+          Sie haben das Recht:
+        </p>
+        <ul class="section__list">
+          <li>gemäß Art. 15 DSGVO Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen</li>
+          <li>gemäß Art. 16 DSGVO unverzüglich die Berichtigung unrichtiger oder Vervollständigung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen</li>
+          <li>gemäß Art. 17 DSGVO die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen</li>
+          <li>gemäß Art. 18 DSGVO die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen</li>
+          <li>gemäß Art. 20 DSGVO Ihre personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten</li>
+          <li>gemäß Art. 7 Abs. 3 DSGVO Ihre einmal erteilte Einwilligung jederzeit gegenüber uns zu widerrufen</li>
+          <li>gemäß Art. 77 DSGVO sich bei einer Aufsichtsbehörde zu beschweren</li>
+        </ul>
+      </div>
+
+      <!-- Widerspruchsrecht -->
+      <div class="section">
+        <h2 class="section__title">6. Widerspruchsrecht</h2>
+        <p class="section__text">
+          Sofern Ihre personenbezogenen Daten auf Grundlage von berechtigten Interessen nach Art. 6 Abs. 1 S. 1 lit. f DSGVO verarbeitet werden, haben Sie das Recht, gemäß Art. 21 DSGVO Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten einzulegen, soweit dafür Gründe vorliegen, die sich aus Ihrer besonderen Situation ergeben.
+        </p>
+        <p class="section__text">
+          Möchten Sie von Ihrem Widerspruchsrecht Gebrauch machen, genügt eine E-Mail an cangoshop24@gmail.com.
+        </p>
+      </div>
+
+      <!-- Datensicherheit -->
+      <div class="section">
+        <h2 class="section__title">7. Datensicherheit</h2>
+        <p class="section__text">
+          Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren (Secure Socket Layer) in Verbindung mit der jeweils höchsten Verschlüsselungsstufe, die von Ihrem Browser unterstützt wird. In der Regel handelt es sich dabei um eine 256 Bit Verschlüsselung. Falls Ihr Browser keine 256-Bit Verschlüsselung unterstützt, greifen wir stattdessen auf 128-Bit v3 Technologie zurück.
+        </p>
+        <p class="section__text">
+          Wir bedienen uns im Übrigen geeigneter technischer und organisatorischer Sicherheitsmaßnahmen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, teilweisen oder vollständigen Verlust, Zerstörung oder gegen den unbefugten Zugriff Dritter zu schützen.
+        </p>
+      </div>
+
+      <!-- Aktualität und Änderung dieser Datenschutzerklärung -->
+      <div class="section">
+        <h2 class="section__title">8. Aktualität und Änderung dieser Datenschutzerklärung</h2>
+        <p class="section__text">
+          Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Januar 2025.
+        </p>
+        <p class="section__text">
+          Durch die Weiterentwicklung unserer Website und Angebote darüber oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Datenschutzerklärung kann jederzeit auf der Website unter der Rubrik "Datenschutz" von Ihnen abgerufen und ausgedruckt werden.
+        </p>
+      </div>
+
+      <!-- Kontakt -->
+      <div class="section">
+        <div class="info-box">
+          <div class="info-box__title">Kontakt zum Datenschutzbeauftragten</div>
+          <div class="info-box__text">
+            Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden:<br><br>
+            <strong>CanGo App Empire</strong><br>
+            Inhaber: Canberk Kivilcim<br>
+            An der Legde 9<br>
+            29339 Wathlingen<br>
+            Deutschland<br><br>
+            E-Mail: cangoshop24@gmail.com<br>
+            Telefon: +49 174 640 1362
+          </div>
+        </div>
+      </div>
+
+      <!-- Stand -->
+      <div class="section">
+        <p class="section__text" style="color: var(--gray-500); font-size: var(--text-sm); margin-top: var(--space-8);">
+          Stand: Januar 2025
+        </p>
+      </div>
+    </div>
+
+    <a href="cango-empire-v4-monopoly.html" class="back-link">← Zurück zur Startseite</a>
+  </div>
+</body>
+</html>
+
+
+
+

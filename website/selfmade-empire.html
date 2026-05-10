@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self Made Empire | CanGo App Empire - Deine eigene Content-Maschine</title>
+  <meta name="description" content="33 vollständige Automation-Workflows für 50.000€. Komplette Fertigungsstraße für dein Unternehmen. Vollständige Kontrolle, Quellcode & Dokumentation inklusive.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS Variablen von Hauptseite übernehmen */
+    :root {
+      --gray-950: #030712;
+      --gray-900: #111827;
+      --gray-800: #1F2937;
+      --gray-700: #374151;
+      --gray-400: #9CA3AF;
+      --gray-50: #F9FAFB;
+      --primary-500: #F97316;
+      --primary-600: #EA580C;
+      --primary-400: #FB923C;
+      --accent-500: #EF4444;
+      --success: #10B981;
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.563rem;
+      --text-3xl: 1.953rem;
+      --text-4xl: 2.441rem;
+      --text-5xl: 3.052rem;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --nav-height: 64px;
+      --container-max: 1200px;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--gray-50);
+      background: var(--gray-950);
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+      z-index: 100;
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: var(--text-lg);
+      color: var(--gray-50);
+    }
+
+    .nav__brand-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      border-radius: var(--radius-md);
+      color: white;
+      font-weight: 700;
+    }
+
+    .nav__menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+    }
+
+    .nav__link {
+      color: var(--gray-400);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav__link:hover {
+      color: var(--gray-50);
+    }
+
+    .nav__cta {
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: white;
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+
+    .nav__cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding-top: calc(var(--nav-height) + var(--space-16));
+      padding-bottom: var(--space-16);
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(249, 115, 22, 0.12), transparent);
+      pointer-events: none;
+    }
+
+    .hero__title {
+      font-size: clamp(var(--text-4xl), 6vw, var(--text-6xl));
+      font-weight: 700;
+      margin-bottom: var(--space-6);
+      background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__price {
+      font-size: var(--text-5xl);
+      font-weight: 700;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--primary-500);
+      margin: var(--space-8) 0;
+    }
+
+    .hero__subtitle {
+      font-size: var(--text-xl);
+      color: var(--gray-400);
+      max-width: 800px;
+      margin: 0 auto var(--space-12);
+    }
+
+    /* 4-Spalten Layout für Benefits */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin: var(--space-16) 0;
+    }
+
+    .benefit-card {
+      padding: var(--space-6);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.06), rgba(220, 38, 38, 0.04));
+      border: 1px solid rgba(249, 115, 22, 0.2);
+      border-radius: var(--radius-lg);
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+      border-color: rgba(249, 115, 22, 0.4);
+    }
+
+    .benefit-card h3 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--primary-500);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding-bottom: var(--space-3);
+      border-bottom: 2px solid rgba(249, 115, 22, 0.3);
+    }
+
+    .benefit-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .benefit-card li {
+      padding: var(--space-2) 0;
+      padding-left: var(--space-6);
+      position: relative;
+      color: var(--gray-50);
+      line-height: 1.7;
+      font-size: var(--text-sm);
+    }
+
+    .benefit-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: 700;
+      background: rgba(34, 197, 94, 0.15);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xs);
+    }
+
+    /* Contra Box */
+    .contra-box {
+      margin: var(--space-12) 0;
+      padding: var(--space-8);
+      background: rgba(220, 38, 38, 0.08);
+      border: 2px solid rgba(220, 38, 38, 0.2);
+      border-radius: var(--radius-lg);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contra-box h3 {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--accent-500);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .contra-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contra-box li {
+      padding: var(--space-3) 0;
+      padding-left: var(--space-6);
+      position: relative;
+      color: var(--gray-50);
+      line-height: 1.7;
+      font-size: var(--text-base);
+    }
+
+    .contra-box li::before {
+      content: '⚠';
+      position: absolute;
+      left: 0;
+      color: var(--accent-500);
+      font-weight: 700;
+    }
+
+    /* Workflows Grid */
+    .workflows-section {
+      margin: var(--space-16) 0;
+    }
+
+    .workflows-section h2 {
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--space-12);
+      color: var(--gray-50);
+    }
+
+    .workflows-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-bottom: var(--space-12);
+    }
+
+    .workflow-category {
+      padding: var(--space-6);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(249, 115, 22, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .workflow-category:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(249, 115, 22, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .workflow-category h5 {
+      font-weight: 600;
+      color: var(--primary-400);
+      margin-bottom: var(--space-4);
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .workflow-category ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: var(--space-1);
+    }
+
+    .workflow-category li {
+      padding: var(--space-2) 0;
+      padding-left: var(--space-5);
+      position: relative;
+      color: var(--gray-50);
+      line-height: 1.5;
+      font-size: var(--text-sm);
+      transition: all 0.2s;
+    }
+
+    .workflow-category li:hover {
+      color: var(--primary-400);
+      transform: translateX(4px);
+    }
+
+    .workflow-category a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+    }
+
+    .workflow-category li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary-500);
+      font-weight: 700;
+      transition: transform 0.2s;
+    }
+
+    .workflow-category li:hover::before {
+      transform: translateX(4px);
+    }
+
+    /* CTA Button */
+    .cta-section {
+      text-align: center;
+      margin: var(--space-16) 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-4) var(--space-8);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: white;
+      text-decoration: none;
+      font-size: var(--text-lg);
+      font-weight: 600;
+      border-radius: var(--radius-lg);
+      transition: all 0.3s ease;
+      box-shadow: 0 0 40px -10px var(--primary-500);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px -10px var(--primary-400);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .workflows-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .workflows-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav__menu {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="cango-empire-v4-monopoly.html" class="nav__brand">
+        <span class="nav__brand-icon">C</span>
+        <span>CanGo App Empire</span>
+      </a>
+      
+      <div class="nav__menu">
+        <a href="cango-empire-v4-monopoly.html#problem" class="nav__link">Problem</a>
+        <a href="cango-empire-v4-monopoly.html#technologie" class="nav__link">Technologie</a>
+        <a href="cango-empire-v4-monopoly.html#branchen" class="nav__link">Branchen</a>
+        <a href="cango-empire-v4-monopoly.html#preise" class="nav__link">Preise</a>
+        <a href="cango-empire-v4-monopoly.html#faq" class="nav__link">FAQ</a>
+        <a href="cango-empire-v4-monopoly.html#kontakt" class="nav__cta">Jetzt anfragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title">Self Made Empire</h1>
+      <div class="hero__price">49.997€</div>
+      <p class="hero__subtitle">33 vollständige Automation-Workflows. Komplette Fertigungsstraße für dein Unternehmen. Du behältst die Kontrolle, den Code und die Unabhängigkeit.</p>
+    </div>
+  </section>
+
+  <!-- 4-Spalten Benefits -->
+  <section class="container">
+    <div class="benefits-grid">
+      <!-- Spalte 1: Was du bekommst - Teil 1 -->
+      <div class="benefit-card">
+        <h3>⚡ Was du bekommst</h3>
+        <ul>
+          <li>33 vollständige Automation-Workflows als Export</li>
+          <li>Komplette Installation in deiner Infrastruktur</li>
+          <li>Quellcode & Dokumentation inklusive</li>
+        </ul>
+      </div>
+
+      <!-- Spalte 2: Was du bekommst - Teil 2 -->
+      <div class="benefit-card">
+        <h3>⚡ Weiteres</h3>
+        <ul>
+          <li>Vollständige Datenhoheit nach Installation</li>
+          <li>100% Unabhängigkeit von externen Services</li>
+          <li>Onboarding & Training einmalig</li>
+        </ul>
+      </div>
+
+      <!-- Spalte 3: Vorteile - Teil 1 -->
+      <div class="benefit-card">
+        <h3>✓ Vorteile</h3>
+        <ul>
+          <li>Keine monatlichen Abo-Kosten</li>
+          <li>Vollständige Kontrolle über die Systeme</li>
+          <li>Unbegrenzte Skalierbarkeit</li>
+        </ul>
+      </div>
+
+      <!-- Spalte 4: Vorteile - Teil 2 -->
+      <div class="benefit-card">
+        <h3>✓ Mehr Vorteile</h3>
+        <ul>
+          <li>Anpassungen nach deinen Bedürfnissen</li>
+          <li>Keine Vendor-Lock-in</li>
+          <li>Komplette Daten-Souveränität</li>
+          <li>Langfristige Kostenersparnis</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2 Contra-Punkte -->
+    <div class="contra-box">
+      <h3>⚠ Wichtig zu wissen</h3>
+      <ul>
+        <li>Wartung & Pflege nach Integration selbst verantwortlich</li>
+        <li>Pipeline-Anpassungen müssen selbst vorgenommen werden</li>
+      </ul>
+    </div>
+
+    <!-- Workflows Section -->
+    <div class="workflows-section">
+      <h2>33 Automation-Workflows</h2>
+      
+      <div class="workflows-grid">
+        <div class="workflow-category">
+          <h5>📝 Content (8)</h5>
+          <ul>
+            <li><a href="workflow-detail.html?workflow=daily-seo-blog-generator">Daily SEO-Blog Generator</a></li>
+            <li><a href="workflow-detail.html?workflow=video-script-generator">Video Script Generator</a></li>
+            <li><a href="workflow-detail.html?workflow=social-media-post-creator">Social Media Post Creator</a></li>
+            <li><a href="workflow-detail.html?workflow=newsletter-automation">Newsletter Automation</a></li>
+            <li><a href="workflow-detail.html?workflow=thumbnail-generator">Thumbnail Generator</a></li>
+            <li><a href="workflow-detail.html?workflow=content-research">Content Research</a></li>
+            <li><a href="workflow-detail.html?workflow=multi-format-converter">Multi-Format Converter</a></li>
+            <li><a href="workflow-detail.html?workflow=quality-checker">Quality Checker</a></li>
+          </ul>
+        </div>
+
+        <div class="workflow-category">
+          <h5>🎥 Video (6)</h5>
+          <ul>
+            <li><a href="workflow-detail.html?workflow=youtube-upload">YouTube Upload</a></li>
+            <li><a href="workflow-detail.html?workflow=transcription-subtitles">Transcription & Subtitles</a></li>
+            <li><a href="workflow-detail.html?workflow=auto-cut-edit">Auto-Cut & Edit</a></li>
+            <li><a href="workflow-detail.html?workflow=video-seo-optimizer">Video SEO-Optimizer</a></li>
+            <li><a href="workflow-detail.html?workflow=multi-platform-distribution">Multi-Platform Distribution</a></li>
+            <li><a href="workflow-detail.html?workflow=video-analytics">Video Analytics</a></li>
+          </ul>
+        </div>
+
+        <div class="workflow-category">
+          <h5>🔍 SEO (5)</h5>
+          <ul>
+            <li><a href="workflow-detail.html?workflow=keyword-research">Keyword Research</a></li>
+            <li><a href="workflow-detail.html?workflow=competitor-analysis">Competitor Analysis</a></li>
+            <li><a href="workflow-detail.html?workflow=backlink-monitoring">Backlink Monitoring</a></li>
+            <li><a href="workflow-detail.html?workflow=seo-report-generator">SEO Report Generator</a></li>
+            <li><a href="workflow-detail.html?workflow=rank-tracking">Rank Tracking</a></li>
+          </ul>
+        </div>
+
+        <div class="workflow-category">
+          <h5>📊 Marketing (5)</h5>
+          <ul>
+            <li><a href="workflow-detail.html?workflow=campaign-tracker">Campaign Tracker</a></li>
+            <li><a href="workflow-detail.html?workflow=lead-generation">Lead Generation</a></li>
+            <li><a href="workflow-detail.html?workflow=email-marketing">Email Marketing</a></li>
+            <li><a href="workflow-detail.html?workflow=social-analytics">Social Analytics</a></li>
+            <li><a href="workflow-detail.html?workflow=conversion-optimizer">Conversion Optimizer</a></li>
+          </ul>
+        </div>
+
+        <div class="workflow-category">
+          <h5>🤖 KI (4)</h5>
+          <ul>
+            <li><a href="workflow-detail.html?workflow=chatbot-deployment">Chatbot Deployment</a></li>
+            <li><a href="workflow-detail.html?workflow=ai-moderation">AI Moderation</a></li>
+            <li><a href="workflow-detail.html?workflow=data-processing">Data Processing</a></li>
+            <li><a href="workflow-detail.html?workflow=ab-testing">A/B Testing</a></li>
+          </ul>
+        </div>
+
+        <div class="workflow-category">
+          <h5>🔄 Integration (5)</h5>
+          <ul>
+            <li><a href="workflow-detail.html?workflow=crm-sync">CRM Sync</a></li>
+            <li><a href="workflow-detail.html?workflow=multi-platform-sync">Multi-Platform Sync</a></li>
+            <li><a href="workflow-detail.html?workflow=backup-automation">Backup Automation</a></li>
+            <li><a href="workflow-detail.html?workflow=webhook-manager">Webhook Manager</a></li>
+            <li><a href="workflow-detail.html?workflow=notification-system">Notification System</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <a href="cango-empire-v4-monopoly.html#kontakt" class="btn">Self Made Empire anfragen</a>
+    </div>
+  </section>
+
+</body>
+</html>
+

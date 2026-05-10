@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Widerrufserklärung | CanGo App Empire</title>
+  <meta name="description" content="Widerrufserklärung und Widerrufsbelehrung für CanGo App Empire">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gray-950: #030712;
+      --gray-900: #111827;
+      --gray-800: #1F2937;
+      --gray-700: #374151;
+      --gray-400: #9CA3AF;
+      --gray-50: #F9FAFB;
+      --primary-500: #F97316;
+      --primary-600: #EA580C;
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.563rem;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --nav-height: 64px;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.8;
+      color: var(--gray-50);
+      background: var(--gray-950);
+      padding-top: var(--nav-height);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6);
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: rgba(3, 7, 18, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+      z-index: 1000;
+    }
+
+    .nav__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: var(--text-lg);
+      color: var(--gray-50);
+    }
+
+    .nav__brand-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      border-radius: var(--radius-md);
+      color: white;
+      font-weight: 700;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .header__title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--gray-50);
+    }
+
+    .content {
+      background: var(--gray-900);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+    }
+
+    .section {
+      margin-bottom: var(--space-8);
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section__title {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--gray-50);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--gray-800);
+    }
+
+    .section__subtitle {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      color: var(--gray-50);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+
+    .section__text {
+      color: var(--gray-400);
+      margin-bottom: var(--space-4);
+      line-height: 1.8;
+    }
+
+    .section__list {
+      margin-left: var(--space-6);
+      margin-bottom: var(--space-4);
+      color: var(--gray-400);
+      line-height: 1.8;
+    }
+
+    .section__list li {
+      margin-bottom: var(--space-2);
+    }
+
+    .highlight-box {
+      background: rgba(249, 115, 22, 0.1);
+      border-left: 4px solid var(--primary-500);
+      padding: var(--space-4);
+      margin: var(--space-6) 0;
+      border-radius: var(--radius-md);
+    }
+
+    .highlight-box__title {
+      font-weight: 600;
+      color: var(--gray-50);
+      margin-bottom: var(--space-2);
+    }
+
+    .highlight-box__text {
+      color: var(--gray-400);
+      line-height: 1.8;
+    }
+
+    .warning-box {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid #EF4444;
+      padding: var(--space-4);
+      margin: var(--space-6) 0;
+      border-radius: var(--radius-md);
+    }
+
+    .warning-box__title {
+      font-weight: 600;
+      color: var(--gray-50);
+      margin-bottom: var(--space-2);
+    }
+
+    .warning-box__text {
+      color: var(--gray-400);
+      line-height: 1.8;
+    }
+
+    .form-box {
+      background: var(--gray-800);
+      border: 1px solid var(--gray-700);
+      border-radius: var(--radius-md);
+      padding: var(--space-6);
+      margin: var(--space-8) 0;
+    }
+
+    .form-box__title {
+      font-weight: 600;
+      color: var(--gray-50);
+      margin-bottom: var(--space-4);
+      font-size: var(--text-lg);
+    }
+
+    .form-field {
+      margin-bottom: var(--space-4);
+    }
+
+    .form-label {
+      display: block;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--gray-50);
+      margin-bottom: var(--space-2);
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: var(--space-3);
+      background: var(--gray-700);
+      border: 1px solid var(--gray-600);
+      border-radius: var(--radius-md);
+      color: var(--gray-50);
+      font-size: var(--text-base);
+      font-family: inherit;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .btn {
+      padding: var(--space-3) var(--space-6);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: var(--text-base);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--primary-500);
+      text-decoration: none;
+      margin-top: var(--space-8);
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    @media print {
+      .nav,
+      .back-link,
+      .form-box {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="cango-empire-v4-monopoly.html" class="nav__brand">
+        <div class="nav__brand-icon">CG</div>
+        <span>CanGo App Empire</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <h1 class="header__title">Widerrufserklärung</h1>
+      <p style="color: var(--gray-400);">Widerrufsbelehrung und Muster-Widerrufsformular</p>
+    </div>
+
+    <div class="content">
+      <!-- Widerrufsbelehrung B2C -->
+      <div class="section">
+        <h2 class="section__title">1. Widerrufsbelehrung für Verbraucher (B2C)</h2>
+        
+        <div class="highlight-box">
+          <div class="highlight-box__title">Widerrufsrecht</div>
+          <div class="highlight-box__text">
+            Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen.
+          </div>
+        </div>
+
+        <h3 class="section__subtitle">1.1 Widerrufsfrist</h3>
+        <p class="section__text">
+          Die Widerrufsfrist beträgt <strong>vierzehn Tage</strong> ab dem Tag, an dem Sie oder ein von Ihnen benannter Dritter, 
+          der nicht der Beförderer ist, die Waren in Besitz genommen haben bzw. hat.
+        </p>
+        <p class="section__text">
+          Um Ihr Widerrufsrecht auszuüben, müssen Sie uns
+        </p>
+        <p class="section__text" style="margin-left: var(--space-6);">
+          <strong>CanGo App Empire</strong><br>
+          Inhaber: Canberk Kivilcim<br>
+          An der Legde 9<br>
+          29339 Wathlingen<br>
+          Deutschland<br>
+          Telefon: +49 174 640 1362<br>
+          E-Mail: cangoshop24@gmail.com<br>
+          USt-ID: DE33492943<br>
+          Steuernummer: 17/122/02844<br>
+          IBAN: DE35 1001 0178 8607 3714 68
+        </p>
+        <p class="section__text">
+          mittels einer eindeutigen Erklärung (z.B. ein mit der Post versandter Brief, Telefax oder E-Mail) 
+          über Ihren Entschluss, diesen Vertrag zu widerrufen, informieren. Sie können dafür das beigefügte 
+          Muster-Widerrufsformular verwenden, das jedoch nicht vorgeschrieben ist.
+        </p>
+
+        <h3 class="section__subtitle">1.2 Folgen des Widerrufs</h3>
+        <p class="section__text">
+          Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen, die wir von Ihnen erhalten haben, 
+          einschließlich der Lieferkosten (mit Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass 
+          Sie eine andere Art der Lieferung als die von uns angebotene, günstigste Standardlieferung gewählt haben), 
+          unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung 
+          über Ihren Widerruf dieses Vertrags bei uns eingegangen ist.
+        </p>
+        <p class="section__text">
+          Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie bei der ursprünglichen Transaktion 
+          eingesetzt haben, es sei denn, mit Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall 
+          werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.
+        </p>
+
+        <div class="warning-box">
+          <div class="warning-box__title">Wichtiger Hinweis zu digitalen Inhalten</div>
+          <div class="warning-box__text">
+            Haben Sie verlangt, dass die Dienstleistung bzw. die Bereitstellung digitaler Inhalte während der 
+            Widerrufsfrist beginnt, so haben Sie uns einen angemessenen Betrag zu zahlen, der dem Anteil der 
+            bis zu dem Zeitpunkt, zu dem Sie uns von der Ausübung des Widerrufsrechts hinsichtlich dieses Vertrags 
+            unterrichten, bereits erbrachten Dienstleistungen bzw. bereits gelieferten digitalen Inhalte im Vergleich 
+            zum Gesamtumfang der im Vertrag vorgesehenen Dienstleistungen bzw. digitalen Inhalte entspricht.
+          </div>
+        </div>
+
+        <h3 class="section__subtitle">1.3 Ausschluss bzw. vorzeitiges Erlöschen des Widerrufsrechts</h3>
+        <p class="section__text">
+          Das Widerrufsrecht erlischt vorzeitig bei Verträgen zur Lieferung von digitalen Inhalten, wenn wir 
+          mit der Ausführung des Vertrags begonnen haben und Sie ausdrücklich zugestimmt haben, dass wir mit 
+          der Ausführung des Vertrags vor Ablauf der Widerrufsfrist beginnen und Sie auf Ihr Widerrufsrecht 
+          verzichtet haben.
+        </p>
+      </div>
+
+      <!-- Geld-zurück-Garantie B2B -->
+      <div class="section">
+        <h2 class="section__title">2. Geld-zurück-Garantie für Unternehmen (B2B)</h2>
+        
+        <div class="highlight-box">
+          <div class="highlight-box__title">30-Tage Geld-zurück-Garantie</div>
+          <div class="highlight-box__text">
+            Als Unternehmen erhalten Sie eine <strong>30-Tage Geld-zurück-Garantie</strong>. Falls Sie mit unserem 
+            Service nicht zufrieden sind, kontaktieren Sie uns innerhalb von 30 Tagen nach Bestellung.
+          </div>
+        </div>
+
+        <h3 class="section__subtitle">2.1 Garantiebedingungen</h3>
+        <p class="section__text">
+          Die Geld-zurück-Garantie gilt für alle B2B-Bestellungen (Geschäftskunden). Innerhalb von 30 Tagen nach 
+          Vertragsabschluss können Sie die Rückerstattung der gezahlten Gebühren verlangen, wenn Sie mit unserem 
+          Service nicht zufrieden sind.
+        </p>
+
+        <h3 class="section__subtitle">2.2 Rückerstattungsprozess</h3>
+        <p class="section__text">
+          Um die Geld-zurück-Garantie in Anspruch zu nehmen, kontaktieren Sie uns bitte per E-Mail unter 
+          <strong>cangoshop24@gmail.com</strong> oder telefonisch unter <strong>+49 174 640 1362</strong> mit folgenden Angaben:
+        </p>
+        <ul class="section__list">
+          <li>Ihre Bestellnummer</li>
+          <li>Ihr Firmenname</li>
+          <li>Grund für die Rückerstattung</li>
+          <li>Ihre Bankverbindung für die Rücküberweisung</li>
+        </ul>
+        <p class="section__text">
+          Wir bearbeiten Ihre Anfrage innerhalb von 14 Werktagen und erstatten den vollständigen Betrag 
+          auf Ihr angegebenes Konto zurück.
+        </p>
+      </div>
+
+      <!-- Muster-Widerrufsformular -->
+      <div class="section">
+        <h2 class="section__title">3. Muster-Widerrufsformular</h2>
+        
+        <p class="section__text">
+          Wenn Sie den Vertrag widerrufen wollen, dann füllen Sie bitte dieses Formular aus und senden Sie es zurück.
+        </p>
+
+        <div class="form-box">
+          <div class="form-box__title">Widerrufsformular</div>
+          
+          <div class="form-field">
+            <label class="form-label">An:</label>
+            <div style="background: var(--gray-700); padding: var(--space-3); border-radius: var(--radius-md); color: var(--gray-50);">
+              CanGo App Empire<br>
+              Inhaber: Canberk Kivilcim<br>
+              An der Legde 9<br>
+              29339 Wathlingen<br>
+              Deutschland<br>
+              Telefon: +49 174 640 1362<br>
+              E-Mail: cangoshop24@gmail.com<br>
+              USt-ID: DE33492943<br>
+              Steuernummer: 17/122/02844<br>
+              IBAN: DE35 1001 0178 8607 3714 68
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*)/die Erbringung der folgenden Dienstleistung (*)</label>
+            <input type="text" class="form-input" placeholder="Bestellnummer oder Produktname">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Bestellt am (*)/erhalten am (*)</label>
+            <input type="date" class="form-input">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Name des/der Verbraucher(s)</label>
+            <input type="text" class="form-input" placeholder="Vor- und Nachname">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Anschrift des/der Verbraucher(s)</label>
+            <textarea class="form-textarea" placeholder="Straße, PLZ, Ort"></textarea>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">E-Mail-Adresse</label>
+            <input type="email" class="form-input" placeholder="ihre@email.de">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier)</label>
+            <input type="text" class="form-input" placeholder="[Unterschrift]">
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Datum</label>
+            <input type="date" class="form-input">
+          </div>
+
+          <p style="color: var(--gray-400); font-size: var(--text-sm); margin-top: var(--space-4);">
+            (*) Unzutreffendes streichen.
+          </p>
+
+          <button class="btn" onclick="window.print()">Formular drucken</button>
+        </div>
+      </div>
+
+      <!-- Kontaktinformationen -->
+      <div class="section">
+        <h2 class="section__title">4. Kontaktinformationen</h2>
+        
+        <p class="section__text">
+          Für Fragen zum Widerruf oder zur Geld-zurück-Garantie kontaktieren Sie uns bitte:
+        </p>
+        
+        <div style="background: var(--gray-800); padding: var(--space-4); border-radius: var(--radius-md); margin-top: var(--space-4);">
+          <p style="color: var(--gray-50); margin-bottom: var(--space-2);"><strong>CanGo App Empire</strong></p>
+          <p style="color: var(--gray-400); margin-bottom: var(--space-1);">Inhaber: Canberk Kivilcim</p>
+          <p style="color: var(--gray-400); margin-bottom: var(--space-1);">An der Legde 9</p>
+          <p style="color: var(--gray-400); margin-bottom: var(--space-1);">29339 Wathlingen, Deutschland</p>
+          <p style="color: var(--gray-400); margin-bottom: var(--space-1);">Telefon: +49 174 640 1362</p>
+          <p style="color: var(--gray-400); margin-bottom: var(--space-1);">E-Mail: cangoshop24@gmail.com</p>
+          <p style="color: var(--gray-400); margin-bottom: var(--space-1);">USt-ID: DE33492943</p>
+          <p style="color: var(--gray-400); margin-bottom: var(--space-1);">Steuernummer: 17/122/02844</p>
+          <p style="color: var(--gray-400); margin-bottom: var(--space-1);">IBAN: DE35 1001 0178 8607 3714 68</p>
+        </div>
+      </div>
+
+      <!-- Rechtliche Hinweise -->
+      <div class="section">
+        <h2 class="section__title">5. Rechtliche Hinweise</h2>
+        
+        <p class="section__text">
+          Diese Widerrufsbelehrung entspricht den gesetzlichen Bestimmungen gemäß § 356 BGB i.V.m. Art. 246a § 1 Abs. 2 
+          Satz 1 Nr. 1 EGBGB. Sie wurde entsprechend den Vorgaben des Gesetzgebers erstellt.
+        </p>
+        
+        <p class="section__text">
+          Stand: Januar 2025
+        </p>
+      </div>
+    </div>
+
+    <a href="checkout.html" class="back-link">← Zurück zum Checkout</a>
+  </div>
+</body>
+</html>
+
