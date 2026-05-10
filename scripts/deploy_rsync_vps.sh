@@ -48,6 +48,11 @@ rsync -avz \
   --delete \
   --exclude='.DS_Store' \
   --exclude='*.bak*' \
+  --exclude='*-old.html' \
+  --exclude='index-v*.html' \
+  --exclude='index-[0-9].html' \
+  --exclude='test_local.html' \
+  --exclude='force_reload.html' \
   -e "${RSYNC_SSH[*]}" \
   "$SRC" "${USER}@${HOST}:${REMOTE}/"
 
