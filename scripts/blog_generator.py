@@ -18,8 +18,10 @@ Ablauf:
 Aufruf durch n8n:
   python3 /opt/cango/blog_generator.py --b64 <base64_encoded_json>
 
-Env-Variablen (in /opt/cango/.env oder Systemumgebung):
+Env-Variablen (in /opt/cango/.env oder Repo-Root .env — siehe cango_env.load_env):
   DP_API_KEY, DP_USER, DP_PASS
+  DP_USER muss der Depositphotos-Benutzername sein (loginEnterprise / dp_login_user),
+  nicht die E-Mail-Adresse.
   CANGO_WWW_ROOT   (default: /docker/nginx-proxy-manager-5tiw/www)
   CANGO_SCRIPT_DIR (default: /opt/cango)
 """
@@ -37,6 +39,13 @@ import shutil
 import time
 from datetime import datetime
 from pathlib import Path
+
+try:
+    from cango_env import load_env
+
+    load_env()
+except ImportError:
+    pass
 
 # ── Konfiguration ────────────────────────────────────────────────────────────
 
@@ -107,7 +116,16 @@ def dp_login() -> str:
         "dp_login_user":     DP_USER,
         "dp_login_password": DP_PASS,
     })
-    return result.get("sessionid", "")
+    if not result:
+        return ""
+    sid = result.get("sessionid") or result.get("session_id")
+    if sid:
+        return str(sid)
+    inner = result.get("result")
+    if isinstance(inner, dict):
+        sid = inner.get("sessionid") or inner.get("session_id")
+        return str(sid) if sid else ""
+    return ""
 
 def dp_logout(session_id: str):
     dp_request({"dp_command": "logout", "dp_session_id": session_id})
