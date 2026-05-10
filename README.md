@@ -12,6 +12,14 @@ Website für CanGo Empire - Marketing Automation Platform
 ## Deployment
 Die Website läuft auf Docker mit Nginx.
 
+**Empfohlen (VPS mit SSH):** Lokales `website/` per rsync hochladen:
+```bash
+./scripts/deploy_rsync_vps.sh
+```
+Benötigt funktionierenden SSH-Login (`ssh root@31.97.56.197`) und optional `CANGO_SSH_*` in `.env` (siehe `.env.example`). SSH-Key einrichten (`ssh-copy-id`), dann kein Passwort bei jedem Deploy.
+
+**Alternativ:** FTP über `python3 scripts/upload_full_to_hostinger.py` (Zugangsdaten in `.env`).
+
 ## Domain
 - Domain: automation-cango-app-empire.com
 - Server: 31.97.56.197:8080
