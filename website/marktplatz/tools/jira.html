@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jira – Agile | CanGo Tools</title>
+    <meta name="description" content="Jira: Agile Projektmanagement von Atlassian. Sprints, Bugs und Epics.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../cango-empire-v4-monopoly.css">
+    <link rel="stylesheet" href="tools-detail.css">
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="container nav__inner">
+      <a href="../../index.html" class="nav__brand">
+        <span class="nav__brand-icon">C</span>
+        <span>CanGo App Empire</span>
+      </a>
+      <button class="nav__toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav__menu').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__menu">
+        <a href="../../index.html#problem" class="nav__link">Problem</a>
+        <a href="../../index.html#technologie" class="nav__link">Technologie</a>
+        <a href="../../index.html#branchen" class="nav__link">Branchen</a>
+        <a href="../ki-tech.html" class="nav__link">Marktplatz</a>
+        <a href="../../selfmade-empire.html" class="nav__link">Workflow Kampagnen</a>
+        <a href="../../index.html#faq" class="nav__link">FAQ</a>
+        <a href="../../kontakt.html" class="nav__cta">Jetzt anfragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+          PROJECT MGMT
+        </div>
+        <h1 class="hero-title">
+          <span>Jira</span><br>
+          Agile
+        </h1>
+        <p class="hero-description">Agile Projektmanagement von Atlassian. Sprints, Bugs und Epics.</p>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+            </svg>
+            ab 8$ / Monat
+          </div>
+          <div class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+            Agile
+          </div>
+          <div class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+            Integrations
+          </div>
+        </div>
+        <div class="hero-buttons">
+          <a href="#pricing" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            Zum Tool
+          </a>
+          <a href="#video" class="btn btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            Video ansehen
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="tool-logo-container">
+          <img src="https://www.google.com/s2/favicons?domain=atlassian.com&sz=128" alt="Jira Logo" class="tool-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div style="display:none; font-size: 5rem; width: 200px; height: 200px; align-items: center; justify-content: center;">🔧</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section" id="video">
+    <div class="section-container">
+      <div class="section-header">
+        <p class="section-label">Erklärvideo</p>
+        <h2 class="section-title">Jira in Aktion</h2>
+        <p class="section-subtitle">Erfahre, wie du Jira in deine Workflows integrierst.</p>
+      </div>
+      <div class="video-wrapper">
+        <div class="video-placeholder" onclick="loadVideo(this, '')">
+          <div class="play-button">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <p>Video wird später integriert</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="section-container">
+      <div class="section-header">
+        <p class="section-label">Features</p>
+        <h2 class="section-title">Was macht Jira besonders?</h2>
+        <p class="section-subtitle">Entdecke die Vorteile der Plattform.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+          <h3 class="feature-title">Integration</h3>
+          <p class="feature-description">Nahtlose Integration in n8n-Workflows und Automatisierungen.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+          <h3 class="feature-title">API & Automation</h3>
+          <p class="feature-description">API-Zugang für Custom-Entwicklungen und Workflow-Automation.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <h3 class="feature-title">CanGo Integration</h3>
+          <p class="feature-description">Getestet und integriert in unsere Master-Workflows.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3 class="feature-title">Support</h3>
+          <p class="feature-description">Dokumentation und Community-Support für schnellen Einstieg.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="overview-section">
+    <div class="section-container">
+      <div class="overview-grid">
+        <div class="overview-content">
+          <h3>Was ist Jira?</h3>
+          <p>Agile Projektmanagement von Atlassian. Sprints, Bugs und Epics.</p>
+          <p>Wir nutzen Jira in unseren Automation-Workflows und empfehlen es für spezifische Use Cases. Die Integration in n8n ermöglicht nahtlose Automatisierung.</p>
+          <ul class="overview-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>In CanGo Workflows integriert</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>API und Automation</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Getestet und empfohlen</li>
+          </ul>
+        </div>
+        <div class="overview-image">
+          <div class="image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Screenshot: Jira Dashboard</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="usecases-section">
+    <div class="section-container">
+      <div class="section-header">
+        <p class="section-label">Anwendungsfälle</p>
+        <h2 class="section-title">Wofür kann ich Jira nutzen?</h2>
+        <p class="section-subtitle">Entdecke die vielfältigen Einsatzmöglichkeiten.</p>
+      </div>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-image"><span class="usecase-icon">📧</span></div>
+          <div class="usecase-content">
+            <h3 class="usecase-title">Automation</h3>
+            <p class="usecase-description">Automatisiere wiederkehrende Aufgaben. Workflows ohne manuellen Aufwand.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-image"><span class="usecase-icon">🛒</span></div>
+          <div class="usecase-content">
+            <h3 class="usecase-title">Content-Produktion</h3>
+            <p class="usecase-description">Skaliere Content-Erstellung. Schnellere Produktion mit gleicher Qualität.</p>
+          </div>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-image"><span class="usecase-icon">📊</span></div>
+          <div class="usecase-content">
+            <h3 class="usecase-title">Daten & Analyse</h3>
+            <p class="usecase-description">Daten sammeln, verarbeiten und analysieren. Bessere Entscheidungen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="section-container">
+      <div class="section-header">
+        <p class="section-label">Screenshots</p>
+        <h2 class="section-title">So sieht Jira aus</h2>
+        <p class="section-subtitle">Ein Blick auf die Oberfläche.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <div class="gallery-caption">Dashboard</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+          <div class="gallery-caption">Integration</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section" id="pricing">
+    <div class="section-container">
+      <div class="section-header">
+        <p class="section-label">Preise</p>
+        <h2 class="section-title">Jira Preismodelle</h2>
+        <p class="section-subtitle">Flexible Pakete für jeden Bedarf.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3 class="pricing-name">Starter</h3>
+          <div class="pricing-price">€0 <span>/ Monat</span></div>
+          <p class="pricing-description">Perfekt zum Ausprobieren.</p>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Basis-Features</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Kostenlos testen</li>
+          </ul>
+          <a href="#" class="btn btn-secondary pricing-cta">Kostenlos starten</a>
+        </div>
+        <div class="pricing-card popular">
+          <div class="popular-badge">Beliebteste Wahl</div>
+          <h3 class="pricing-name">Pro</h3>
+          <div class="pricing-price">ab 8$ / Monat</div>
+          <p class="pricing-description">Für professionelle Nutzung.</p>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Alle Features</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>API Integration</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support</li>
+          </ul>
+          <a href="#" class="btn btn-primary pricing-cta" onclick="trackAffiliate('jira');">Zum Tool →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="popular-package">
+    <div class="section-container">
+      <div class="package-highlight">
+        <div class="package-badge">⭐ Unsere Empfehlung</div>
+        <h2 class="package-title">Jira für CanGo Workflows</h2>
+        <div class="package-price">ab 8$ / Monat</div>
+        <p class="package-description">Integriert in unsere n8n Workflows. Getestet und täglich im Einsatz.</p>
+        <div class="package-features">
+          <div class="package-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>n8n Integration</div>
+          <div class="package-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>API</div>
+          <div class="package-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support</div>
+        </div>
+        <a href="#" class="btn btn-primary" onclick="trackAffiliate('jira');">Jira holen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proscons-section">
+    <div class="section-container">
+      <div class="section-header">
+        <p class="section-label">Bewertung</p>
+        <h2 class="section-title">Vor- und Nachteile</h2>
+        <p class="section-subtitle">Eine ehrliche Einschätzung von Jira.</p>
+      </div>
+      <div class="proscons-grid">
+        <div class="pros-card">
+          <h3 class="proscons-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Vorteile</h3>
+          <ul class="proscons-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Integration</strong> – Nahtlose n8n-Anbindung</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>API</strong> – Vollständige API für Automation</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span><strong>CanGo</strong> – In unseren Workflows getestet</span></li>
+          </ul>
+        </div>
+        <div class="cons-card">
+          <h3 class="proscons-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Nachteile</h3>
+          <ul class="proscons-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Lernkurve</strong> – Einarbeitung erforderlich</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span><strong>Kosten</strong> – Bei Skalierung können Kosten steigen</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison-section">
+    <div class="section-container">
+      <div class="section-header">
+        <p class="section-label">Vergleich</p>
+        <h2 class="section-title">Jira vs. Konkurrenz</h2>
+      </div>
+      <table class="comparison-table">
+        <thead>
+          <tr><th>Feature</th><th>Jira</th><th>Alternative</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Integration</td><td><span class="check-icon">✓</span></td><td>Variiert</td></tr>
+          <tr><td>API</td><td><span class="check-icon">✓</span></td><td>Variiert</td></tr>
+          <tr><td>CanGo Workflows</td><td><strong><span class="check-icon">✓</span> Integriert</strong></td><td><span class="cross-icon">✗</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-title">Bereit für Jira?</h2>
+      <p class="cta-description">Integriere Jira in deine Workflows und automatisiere deine Prozesse.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary" onclick="trackAffiliate('jira');">Zum Tool</a>
+        <a href="../ki-tech.html" class="btn btn-secondary">Alle Tools vergleichen</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand"><span class="footer__brand-icon">C</span><span>CanGo App Empire</span></div>
+          <p class="footer__desc">Marketing-Automatisierung für den DACH-Markt. 19 Workflows. 30 KI-Systeme. Kein Bullshit.</p>
+        </div>
+        <div>
+          <div class="footer__title">Produkt</div>
+          <ul class="footer__links">
+            <li><a href="../../index.html#technologie">Technologie</a></li>
+            <li><a href="../../index.html#branchen">Branchen</a></li>
+            <li><a href="../../index.html#preise">Preise</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__title">Unternehmen</div>
+          <ul class="footer__links">
+            <li><a href="#">Über uns</a></li>
+            <li><a href="../../domicil-grundstein.html">Partner</a></li>
+            <li><a href="#">Karriere</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__title">Rechtliches</div>
+          <ul class="footer__links">
+            <li><a href="../../impressum.html">Impressum</a></li>
+            <li><a href="../../datenschutz.html">Datenschutz</a></li>
+            <li><a href="../../agb.html">AGB</a></li>
+            <li><a href="../../widerruf.html">Widerrufserklärung</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div>© 2025 CanGo App Empire. Alle Rechte vorbehalten.</div>
+        <div class="footer__tagline">Kopieren hilft dir nicht – du brauchst die Maschine.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function loadVideo(placeholder, videoId) {
+      if (!videoId) return;
+      const wrapper = placeholder.parentElement;
+      wrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    }
+    function trackAffiliate(id) { console.log('Affiliate:', id); }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    document.querySelectorAll('.nav__link, .nav__cta').forEach(link => {
+      link.addEventListener('click', () => document.querySelector('.nav__menu').classList.remove('active'));
+    });
+  </script>
+</body>
+</html>

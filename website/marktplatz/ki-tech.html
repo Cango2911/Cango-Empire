@@ -1,0 +1,3617 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI & Tech Tools | Marktplatz | CanGo App Empire</title>
+  <meta name="description" content="Die besten KI-Tools für deine Automation-Workflows. OpenAI, Claude, Perplexity, BrowserAct, NeuronWriter und mehr - getestet und integriert in unsere n8n Workflows.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../cango-empire-v4-monopoly.css">
+  <style>
+    .marktplatz-page {
+      padding: var(--space-20) 0 var(--space-12);
+    }
+    .marktplatz-header {
+      text-align: center;
+      margin-bottom: var(--space-16);
+    }
+    .marktplatz-header__icon {
+      font-size: 4rem;
+      margin-bottom: var(--space-4);
+    }
+    .tools-intro {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto var(--space-12);
+      padding: var(--space-8);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.05) 0%, rgba(249, 115, 22, 0.02) 100%);
+      border: 1px solid rgba(249, 115, 22, 0.15);
+      border-radius: var(--radius-lg);
+    }
+    .tools-intro p {
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+      line-height: 1.7;
+      margin: var(--space-4) 0 0;
+    }
+    .tools-container {
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: var(--space-6);
+      margin-top: var(--space-8);
+      border-radius: var(--radius-lg);
+      background: rgba(249, 115, 22, 0.01);
+      border: 1px solid rgba(249, 115, 22, 0.1);
+    }
+    .tools-container::-webkit-scrollbar {
+      width: 10px;
+    }
+    .tools-container::-webkit-scrollbar-track {
+      background: rgba(249, 115, 22, 0.05);
+      border-radius: 5px;
+      margin: var(--space-2) 0;
+    }
+    .tools-container::-webkit-scrollbar-thumb {
+      background: rgba(249, 115, 22, 0.3);
+      border-radius: 5px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    .tools-container::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-500);
+      background-clip: padding-box;
+    }
+    .tool-card[data-category] {
+      display: block;
+    }
+    .tool-card.hidden {
+      display: none !important;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--space-6);
+    }
+    .tool-card {
+      position: relative;
+      padding: var(--space-6);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.03) 0%, rgba(249, 115, 22, 0.01) 100%);
+      border: 2px solid rgba(249, 115, 22, 0.15);
+      border-radius: var(--radius-lg);
+      transition: all var(--duration-slow) var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary-500);
+      opacity: 0;
+      transition: opacity var(--duration-base) var(--ease-out);
+    }
+    .tool-card:hover {
+      border-color: var(--primary-500);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.08) 0%, rgba(249, 115, 22, 0.03) 100%);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
+    }
+    .tool-card:hover::before {
+      opacity: 1;
+    }
+    .tool-card__header {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .tool-card__icon {
+      width: 56px;
+      height: 56px;
+      display: none !important;  /* Standard: versteckt */
+      visibility: hidden !important;
+      opacity: 0 !important;
+      align-items: center;
+      justify-content: center;
+      background: #E5E7EB;
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      border-radius: var(--radius-md);
+      font-size: var(--text-2xl);
+      flex-shrink: 0;
+      transition: all var(--duration-base) var(--ease-out);
+      overflow: hidden;
+      position: relative;
+    }
+    /* Zeige Icon NUR wenn img mit src vorhanden ist */
+    .tool-card__icon:has(img[src]) {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    /* Verstecke ALLE Text/Emoji-Inhalte */
+    .tool-card__icon > *:not(img) {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    .tool-card__icon:empty {
+      display: none !important;
+    }
+    /* Zeige Icon NUR wenn img vorhanden UND geladen */
+    .tool-card__icon:has(img[src]) {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    /* Alternative für Browser ohne :has() - zeige wenn img vorhanden */
+    .tool-card__icon:not(:empty):has(img) {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    /* Verstecke leere Icons KOMPLETT */
+    .tool-card__icon:empty {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+    }
+    .tool-card__icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: var(--space-2);
+      border-radius: var(--radius-md);
+      background: transparent;
+      display: block !important;
+      font-size: initial !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      /* Wichtig: Verstecke während dem Laden */
+      opacity: 0;
+      transition: opacity 0.2s ease-in;
+    }
+    /* Zeige img erst wenn geladen */
+    .tool-card__icon img[src]:not([src=""]) {
+      opacity: 1 !important;
+    }
+    /* Fallback: Zeige wenn img fertig geladen */
+    .tool-card__icon img.loaded {
+      opacity: 1 !important;
+    }
+    /* Verstecke ALLE anderen Inhalte in Icons */
+    .tool-card__icon > *:not(img) {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      font-size: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    .tool-card:hover .tool-card__icon {
+      width: 56px;
+      height: 56px;
+      display: none !important;  /* Standard: versteckt */
+      visibility: hidden !important;
+      opacity: 0 !important;
+      align-items: center;
+      justify-content: center;
+      background: #E5E7EB;
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      border-radius: var(--radius-md);
+      font-size: var(--text-2xl);
+      flex-shrink: 0;
+      transition: all var(--duration-base) var(--ease-out);
+      overflow: hidden;
+      position: relative;
+    }
+    /* Zeige Icon NUR wenn img mit src vorhanden ist */
+    .tool-card__icon:has(img[src]) {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    /* Verstecke ALLE Text/Emoji-Inhalte */
+    .tool-card__icon > *:not(img) {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+    }
+    .tool-card__icon:empty {
+      display: none !important;
+    }
+    .tool-card:hover .tool-card__icon img {
+      transform: scale(1);
+    }
+    .tool-card__title-group {
+      flex: 1;
+    }
+    .tool-card__badge {
+      display: inline-block;
+      padding: var(--space-1) var(--space-2);
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--primary-400);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin-bottom: var(--space-2);
+    }
+    .tool-card__name {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-2);
+      letter-spacing: -0.01em;
+    }
+    .tool-card__description {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: var(--space-4);
+      flex: 1;
+    }
+    .tool-card__features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .tool-card__feature {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      padding-left: var(--space-4);
+      position: relative;
+    }
+    .tool-card__feature::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary-400);
+      font-weight: 700;
+    }
+    .tool-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(249, 115, 22, 0.1);
+    }
+    .tool-card__footer .tool-card__cta {
+      flex-shrink: 0;
+    }
+    .tool-card__price {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--primary-400);
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      white-space: nowrap;
+    }
+    .tool-card__cta {
+      padding: var(--space-3) var(--space-6);
+      background: var(--primary-500);
+      color: var(--text-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      transition: all var(--duration-base) var(--ease-out);
+      cursor: pointer;
+      min-width: 120px;
+      white-space: nowrap;
+    }
+    .tool-card__cta:hover {
+      background: var(--primary-600);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+    }
+    .tool-card__affiliate-badge {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: var(--space-2);
+    }
+    @media (max-width: 768px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+      .tool-card__footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .tool-card__cta {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="container nav__inner">
+      <a href="../cango-empire-v4-monopoly.html" class="nav__brand">
+        <span class="nav__brand-icon">C</span>
+        <span>CanGo App Empire</span>
+      </a>
+      <button class="nav__toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav__menu').classList.toggle('active')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav__menu">
+        <a href="../cango-empire-v4-monopoly.html#problem" class="nav__link">Problem</a>
+        <a href="../cango-empire-v4-monopoly.html#technologie" class="nav__link">Technologie</a>
+        <a href="../cango-empire-v4-monopoly.html#branchen" class="nav__link">Branchen</a>
+        <a href="../marktplatz.html" class="nav__link">Marktplatz</a>
+        <a href="../selfmade-empire.html" class="nav__link">Workflow Kampagnen</a>
+        <a href="../cango-empire-v4-monopoly.html#faq" class="nav__link">FAQ</a>
+        <a href="../cango-empire-v4-monopoly.html#kontakt" class="nav__cta">Jetzt anfragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="marktplatz-page">
+    <div class="container">
+      <div class="marktplatz-header">
+        <div class="marktplatz-header__icon">🤖</div>
+        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-400); margin-bottom: var(--space-4); font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;">
+          KI & TECH TOOLS
+        </span>
+        <h1 style="font-size: clamp(2.5rem, 5vw, var(--text-5xl)); margin-bottom: var(--space-4); font-weight: 700; line-height: 1.1; color: var(--text-primary);">
+          Die besten <span class="text-gradient">KI-Tools</span> für deine Automation
+        </h1>
+        <p style="font-size: var(--text-lg); color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+          Getestet, integriert und täglich eingesetzt in unseren n8n Workflows. Alle Tools sind Affiliate-Partner und unterstützen unsere Infrastruktur.
+        </p>
+      </div>
+
+      <div class="tools-intro">
+        <p>
+          <strong style="color: var(--primary-400);">Wichtig:</strong> Diese Tools sind alle in unseren 33 Master-Workflows integriert. 
+          Über unsere Affiliate-Links erhältst du Zugang zu den besten Deals (inkl. AppSumo Lifetime-Deals) und unterstützt gleichzeitig unsere Infrastruktur.
+        </p>
+      </div>
+
+      <!-- Suchleiste -->
+      <div class="tools-search" style="max-width: 600px; margin: 0 auto var(--space-8);">
+        <input 
+          type="text" 
+          id="toolSearch" 
+          placeholder="🔍 Tools durchsuchen..." 
+          oninput="searchTools(this.value)"
+          style="width: 100%; padding: var(--space-3) var(--space-4); background: rgba(249, 115, 22, 0.05); border: 2px solid rgba(249, 115, 22, 0.2); border-radius: var(--radius-lg); color: var(--text-primary); font-size: var(--text-base); font-family: 'Poppins', sans-serif; transition: all 0.3s; outline: none;"
+          onfocus="this.style.borderColor='var(--primary-500)'; this.style.background='rgba(249, 115, 22, 0.08)';"
+          onblur="this.style.borderColor='rgba(249, 115, 22, 0.2)'; this.style.background='rgba(249, 115, 22, 0.05)';"
+        />
+      </div>
+
+      <!-- Tool Categories Navigation + Sortierung -->
+      <div class="tools-filter" style="display: flex; justify-content: center; align-items: center; gap: var(--space-3); margin-bottom: var(--space-8); flex-wrap: wrap; position: relative;">
+        <button class="filter-btn active" data-category="all" onclick="filterTools('all')" style="padding: var(--space-2) var(--space-4); background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: var(--radius-md); color: var(--primary-400); font-size: var(--text-sm); font-weight: 600; cursor: pointer; transition: all 0.3s;">Alle (100+)</button>
+        <button class="filter-btn" data-category="lifetime" onclick="filterTools('lifetime')" style="padding: var(--space-2) var(--space-4); background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: var(--radius-md); color: var(--text-secondary); font-size: var(--text-sm); font-weight: 600; cursor: pointer; transition: all 0.3s;">⭐ Lifetime Lizenzen</button>
+        <button class="filter-btn" data-category="intelligence" onclick="filterTools('intelligence')" style="padding: var(--space-2) var(--space-4); background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: var(--radius-md); color: var(--text-secondary); font-size: var(--text-sm); font-weight: 600; cursor: pointer; transition: all 0.3s;">AI Intelligence</button>
+        <button class="filter-btn" data-category="automation" onclick="filterTools('automation')" style="padding: var(--space-2) var(--space-4); background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: var(--radius-md); color: var(--text-secondary); font-size: var(--text-sm); font-weight: 600; cursor: pointer; transition: all 0.3s;">Automation</button>
+        <button class="filter-btn" data-category="visual" onclick="filterTools('visual')" style="padding: var(--space-2) var(--space-4); background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: var(--radius-md); color: var(--text-secondary); font-size: var(--text-sm); font-weight: 600; cursor: pointer; transition: all 0.3s;">Visual & Media</button>
+        <button class="filter-btn" data-category="content" onclick="filterTools('content')" style="padding: var(--space-2) var(--space-4); background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: var(--radius-md); color: var(--text-secondary); font-size: var(--text-sm); font-weight: 600; cursor: pointer; transition: all 0.3s;">SEO & Content</button>
+        <button class="filter-btn" data-category="research" onclick="filterTools('research')" style="padding: var(--space-2) var(--space-4); background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: var(--radius-md); color: var(--text-secondary); font-size: var(--text-sm); font-weight: 600; cursor: pointer; transition: all 0.3s;">Research</button>
+        <!-- Sortierung Dropdown -->
+        <div class="tools-sort-wrapper" style="position: relative;">
+          <button 
+            id="sortDropdownBtn" 
+            onclick="toggleSortDropdown()"
+            style="display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1); padding: var(--space-2) var(--space-3); background: rgba(249, 115, 22, 0.05); border: 1px solid rgba(249, 115, 22, 0.2); border-radius: var(--radius-md); color: var(--text-secondary); font-size: var(--text-sm); font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Poppins', sans-serif; min-width: auto;"
+            onmouseover="this.style.background='rgba(249, 115, 22, 0.1)'; this.style.borderColor='rgba(249, 115, 22, 0.3)'; this.style.color='var(--primary-400)';"
+            onmouseout="this.style.background='rgba(249, 115, 22, 0.05)'; this.style.borderColor='rgba(249, 115, 22, 0.2)'; this.style.color='var(--text-secondary)';"
+          >
+            <span>🔽</span>
+          </button>
+          <div id="sortDropdown" class="sort-dropdown" style="display: none; position: absolute; top: calc(100% + var(--space-2)); right: 0; background: var(--bg-elevated); border: 2px solid rgba(249, 115, 22, 0.3); border-radius: var(--radius-lg); padding: var(--space-2); min-width: 220px; z-index: 1000; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px);">
+          <button 
+            class="sort-option" 
+            data-sort="name" 
+            onclick="selectSort('name', 'A-Z')"
+            style="width: 100%; padding: var(--space-3) var(--space-4); background: transparent; border: none; border-radius: var(--radius-md); color: var(--text-primary); font-size: var(--text-sm); font-weight: 500; cursor: pointer; text-align: left; transition: all 0.2s; font-family: 'Poppins', sans-serif;"
+            onmouseover="this.style.background='rgba(249, 115, 22, 0.1)';"
+            onmouseout="this.style.background='transparent';"
+          >
+            📝 A-Z
+          </button>
+          <button 
+            class="sort-option" 
+            data-sort="price-asc" 
+            onclick="selectSort('price-asc', 'Preis aufsteigend')"
+            style="width: 100%; padding: var(--space-3) var(--space-4); background: transparent; border: none; border-radius: var(--radius-md); color: var(--text-primary); font-size: var(--text-sm); font-weight: 500; cursor: pointer; text-align: left; transition: all 0.2s; font-family: 'Poppins', sans-serif;"
+            onmouseover="this.style.background='rgba(249, 115, 22, 0.1)';"
+            onmouseout="this.style.background='transparent';"
+          >
+            💰 Preis aufsteigend
+          </button>
+          <button 
+            class="sort-option" 
+            data-sort="price-desc" 
+            onclick="selectSort('price-desc', 'Preis absteigend')"
+            style="width: 100%; padding: var(--space-3) var(--space-4); background: transparent; border: none; border-radius: var(--radius-md); color: var(--text-primary); font-size: var(--text-sm); font-weight: 500; cursor: pointer; text-align: left; transition: all 0.2s; font-family: 'Poppins', sans-serif;"
+            onmouseover="this.style.background='rgba(249, 115, 22, 0.1)';"
+            onmouseout="this.style.background='transparent';"
+          >
+            💰 Preis absteigend
+          </button>
+          <button 
+            class="sort-option" 
+            data-sort="popularity" 
+            onclick="selectSort('popularity', 'Beliebte Produkte')"
+            style="width: 100%; padding: var(--space-3) var(--space-4); background: transparent; border: none; border-radius: var(--radius-md); color: var(--text-primary); font-size: var(--text-sm); font-weight: 500; cursor: pointer; text-align: left; transition: all 0.2s; font-family: 'Poppins', sans-serif;"
+            onmouseover="this.style.background='rgba(249, 115, 22, 0.1)';"
+            onmouseout="this.style.background='transparent';"
+          >
+            ⭐ Beliebte Produkte
+          </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tools-container" id="toolsContainer" style="max-height: 80vh; overflow-y: auto; padding-right: var(--space-4); margin-top: var(--space-12); border-radius: var(--radius-lg); background: rgba(249, 115, 22, 0.01); border: 1px solid rgba(249, 115, 22, 0.1);">
+        <div class="tools-grid" id="toolsGrid" data-category="all">
+        <!-- OpenAI / ChatGPT -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="OpenAI" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">MARKET LEADER</span>
+              <h3 class="tool-card__name">ChatGPT / OpenAI</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            GPT-4o für Datenanalyse, Vision-Tasks und Content-Generierung. Der Allrounder unserer Workflows.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">GPT-4o für komplexe Aufgaben</li>
+            <li class="tool-card__feature">Vision API für Bildanalyse</li>
+            <li class="tool-card__feature">DALL-E 3 für Image-Generation</li>
+            <li class="tool-card__feature">Perfekte n8n Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 20$ / Monat</div>
+            <a href="tools/chatgpt-plus.html" class="tool-card__cta" data-affiliate="openai" onclick="trackAffiliate('openai');">Zum Tool →</a>
+          </div>
+        </div>
+
+        <!-- Anthropic Claude -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=64" alt="Anthropic Claude" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">CODING KING</span>
+              <h3 class="tool-card__name">Claude 3.5 Sonnet</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Das Gehirn unserer Python-Skripte. Schreibt besseren Code als GPT-4 und ist essentiell für unsere Automation-Workflows.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Überlegene Code-Qualität</li>
+            <li class="tool-card__feature">200K Token Context</li>
+            <li class="tool-card__feature">Perfekte API-Integration</li>
+            <li class="tool-card__feature">Premium Support inklusive</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 20$ / Monat</div>
+            <a href="tools/claude-35.html" class="tool-card__cta" data-affiliate="claude" onclick="trackAffiliate('claude');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Perplexity Pro -->
+        <div class="tool-card" data-category="research">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=64" alt="Perplexity" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">RESEARCH</span>
+              <h3 class="tool-card__name">Perplexity Pro</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Echtzeit-Websuche mit Quellen. Ersetzt Google für Business-Research. Unser Layer 1 für Faktenverifikation.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Echtzeit-Web-Recherche</li>
+            <li class="tool-card__feature">Quellenangaben inklusive</li>
+            <li class="tool-card__feature">Faktenverifikation</li>
+            <li class="tool-card__feature">Dual-Layer-Validation</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">20$ / Monat</div>
+            <a href="tools/perplexity-pro.html" class="tool-card__cta" data-affiliate="perplexity" onclick="trackAffiliate('perplexity');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=browseract.com&sz=64" alt="BrowserAct" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AGENT</span>
+              <h3 class="tool-card__name">BrowserAct</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Ghost-Agent für Headless Automation. Essenziell für Scraper ohne API. Der Automations-Engine unserer Workflows.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Headless Browser Automation</li>
+            <li class="tool-card__feature">API-freie Web-Scraping</li>
+            <li class="tool-card__feature">n8n Native Integration</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/browseract.html" class="tool-card__cta" data-affiliate="browseract" onclick="trackAffiliate('browseract');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="content lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=neuronwriter.com&sz=64" alt="NeuronWriter" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SEMANTICS</span>
+              <h3 class="tool-card__name">NeuronWriter</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            NLP-Analyse für Content-Cluster und Rankings. SEO-optimierte Blog-Generierung mit semantischer Analyse.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">SEO-Semantik-Analyse</li>
+            <li class="tool-card__feature">Content-Optimierung</li>
+            <li class="tool-card__feature">Keyword-Clustering</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/neuronwriter.html" class="tool-card__cta" data-affiliate="neuronwriter" onclick="trackAffiliate('neuronwriter');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=depositphotos.com&sz=64" alt="DepositPhotos" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">STOCK ASSETS</span>
+              <h3 class="tool-card__name">DepositPhotos</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            320 Mio. Bilder/Videos. Lifetime-Zugriff via AppSumo. Unser Asset-Pool für alle Video- und Blog-Produktionen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">320+ Millionen Assets</li>
+            <li class="tool-card__feature">Lifetime Zugriff</li>
+            <li class="tool-card__feature">Kommerzielle Nutzung</li>
+            <li class="tool-card__feature">HD/4K verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/depositphotos.html" class="tool-card__cta" data-affiliate="depositphotos" onclick="trackAffiliate('depositphotos');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=n8n.io&sz=64" alt="n8n" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">WORKFLOW ENGINE</span>
+              <h3 class="tool-card__name">n8n</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Die Workflow-Engine unserer gesamten Infrastruktur. Self-hosted für maximale Kontrolle und Unabhängigkeit.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Self-hosted Option</li>
+            <li class="tool-card__feature">Open-Source Basis</li>
+            <li class="tool-card__feature">1000+ Integrations</li>
+            <li class="tool-card__feature">Unser Core-System</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Open Source</div>
+            <a href="https://n8n.io" target="_blank" rel="noopener noreferrer" class="tool-card__cta" data-affiliate="n8n" onclick="trackAffiliate('n8n');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="research">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=katteb.com&sz=64" alt="Katteb" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">FACT-CHECK</span>
+              <h3 class="tool-card__name">Katteb</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Fact-Shield für verifizierte Informationen. Unser Layer 2 der Dual-Layer-Validation neben Perplexity.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Automatische Faktenprüfung</li>
+            <li class="tool-card__feature">Quellenverifikation</li>
+            <li class="tool-card__feature">Content-Validierung</li>
+            <li class="tool-card__feature">API-Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Auf Anfrage</div>
+            <a href="tools/katteb.html" class="tool-card__cta" data-affiliate="katteb" onclick="trackAffiliate('katteb');">
+              Mehr erfahren →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Suchleiste" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">MULTIMODAL</span>
+              <h3 class="tool-card__name">Google Gemini</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Googles multimodales AI-Modell für Text, Bilder, Audio und Video. Starke API für komplexe Multimodal-Aufgaben.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Multimodale Verarbeitung</li>
+            <li class="tool-card__feature">Gemini Pro API</li>
+            <li class="tool-card__feature">Video-Analyse</li>
+            <li class="tool-card__feature">Kostenlos verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / API</div>
+            <a href="#" class="tool-card__cta" data-affiliate="gemini" onclick="trackAffiliate('gemini');">Zum Tool →</a></div>
+        </div>
+
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Grok" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">REAL-TIME</span>
+              <h3 class="tool-card__name">Grok (xAI)</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Echtzeit-Informationen via X/Twitter. Ideal für Trend-Analysen und aktuelle Marktdaten.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">X/Twitter Integration</li>
+            <li class="tool-card__feature">Echtzeit-Daten</li>
+            <li class="tool-card__feature">Trend-Analysen</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 16$ / Monat</div>
+            <a href="#" class="tool-card__cta" data-affiliate="grok" onclick="trackAffiliate('grok');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Mistral AI" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">OPEN SOURCE</span>
+              <h3 class="tool-card__name">Mistral AI</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Europäische Open-Source Alternative. Hohe Performance bei niedrigeren Kosten. Ideal für Batch-Processing.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Open-Source Modelle</li>
+            <li class="tool-card__feature">Kosteneffizient</li>
+            <li class="tool-card__feature">Self-hosted möglich</li>
+            <li class="tool-card__feature">EU-Datenschutz</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Pay-per-use</div>
+            <a href="tools/mistral-ai.html" class="tool-card__cta" data-affiliate="mistral" onclick="trackAffiliate('mistral');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Make" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AUTOMATION</span>
+              <h3 class="tool-card__name">Make (Integromat)</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Visuelle Automation-Plattform. Alternative zu n8n für non-technical Users. Starke API-Integrations.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Visueller Builder</li>
+            <li class="tool-card__feature">1000+ Apps</li>
+            <li class="tool-card__feature">Error Handling</li>
+            <li class="tool-card__feature">Team-Kollaboration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 9$ / Monat</div>
+            <a href="tools/make-integromat.html" class="tool-card__cta" data-affiliate="make" onclick="trackAffiliate('make');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Zapier" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AUTOMATION</span>
+              <h3 class="tool-card__name">Zapier</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Die bekannteste Automation-Plattform. Einfache Workflows ohne Code. Massiver App-Marktplatz.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">6000+ App-Integrationen</li>
+            <li class="tool-card__feature">No-Code Builder</li>
+            <li class="tool-card__feature">Multi-Step Zaps</li>
+            <li class="tool-card__feature">Enterprise Features</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 20$ / Monat</div>
+            <a href="tools/zapier.html" class="tool-card__cta" data-affiliate="zapier" onclick="trackAffiliate('zapier');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=google.com&sz=64" alt="Gemini" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">IMAGE GEN</span>
+              <h3 class="tool-card__name">Midjourney</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Premium Image-Generation. Beste Qualität für kreative Visuals. Discord-basierte Community.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Premium Qualität</li>
+            <li class="tool-card__feature">Künstlerische Styles</li>
+            <li class="tool-card__feature">High-Resolution Output</li>
+            <li class="tool-card__feature">Community-Features</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 10$ / Monat</div>
+            <a href="tools/midjourney.html" class="tool-card__cta" data-affiliate="midjourney" onclick="trackAffiliate('midjourney');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="Runway" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VIDEO GEN</span>
+              <h3 class="tool-card__name">Runway</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Video-Generierung und -Bearbeitung. Text-to-Video, Inpainting, Motion Tracking für professionelle Produktionen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Text-to-Video</li>
+            <li class="tool-card__feature">Video Editing AI</li>
+            <li class="tool-card__feature">Motion Tracking</li>
+            <li class="tool-card__feature">Professional Tools</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 15$ / Monat</div>
+            <a href="tools/runway-gen3.html" class="tool-card__cta" data-affiliate="runway" onclick="trackAffiliate('runway');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="ElevenLabs" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VOICE GEN</span>
+              <h3 class="tool-card__name">ElevenLabs</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Realistische Text-to-Speech mit Voice Cloning. Unser Standard für Voice-Over in allen Video-Produktionen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Natural Voice Synthesis</li>
+            <li class="tool-card__feature">Voice Cloning</li>
+            <li class="tool-card__feature">29+ Sprachen</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 5$ / Monat</div>
+            <a href="tools/elevenlabs.html" class="tool-card__cta" data-affiliate="elevenlabs" onclick="trackAffiliate('elevenlabs');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=surferseo.com&sz=64" alt="Surfer SEO" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SEO OPTIMIZER</span>
+              <h3 class="tool-card__name">Surfer SEO</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Content Editor mit real-time SEO-Daten. Keyword-Dichte, LSI-Topic-Cluster und SERP-Analysen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Real-time SEO-Score</li>
+            <li class="tool-card__feature">Content Editor</li>
+            <li class="tool-card__feature">Keyword Research</li>
+            <li class="tool-card__feature">Competitor Analysis</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 89$ / Monat</div>
+            <a href="tools/surfer-seo.html" class="tool-card__cta" data-affiliate="surfer" onclick="trackAffiliate('surfer');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Ahrefs" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SEO SUITE</span>
+              <h3 class="tool-card__name">Ahrefs</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            All-in-one SEO-Toolkit. Backlink-Analyse, Keyword-Tracking, Competitor-Research und Content-Gaps.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Backlink-Analyse</li>
+            <li class="tool-card__feature">Keyword Explorer</li>
+            <li class="tool-card__feature">Rank Tracking</li>
+            <li class="tool-card__feature">Content Explorer</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 99$ / Monat</div>
+            <a href="tools/ahrefs.html" class="tool-card__cta" data-affiliate="ahrefs" onclick="trackAffiliate('ahrefs');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="Firecrawl" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">WEB CRAWLER</span>
+              <h3 class="tool-card__name">Firecrawl</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-powered Web Scraper. Konvertiert jede Website in strukturierte Markdown-Daten. API-first für Automation.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Website zu Markdown</li>
+            <li class="tool-card__feature">Sitemap Crawling</li>
+            <li class="tool-card__feature">API Integration</li>
+            <li class="tool-card__feature">JavaScript Rendering</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 20$ / Monat</div>
+            <a href="tools/firecrawl.html" class="tool-card__cta" data-affiliate="firecrawl" onclick="trackAffiliate('firecrawl');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="Grok" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SCRAPING API</span>
+              <h3 class="tool-card__name">ScraperAPI</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Proxy-Rotation und CAPTCHA-Lösung für Web-Scraping. Bypass von Anti-Bot-Systemen automatisch.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Proxy-Rotation</li>
+            <li class="tool-card__feature">CAPTCHA Solving</li>
+            <li class="tool-card__feature">Geolocation Support</li>
+            <li class="tool-card__feature">99.9% Uptime</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 49$ / Monat</div>
+            <a href="tools/scraperapi.html" class="tool-card__cta" data-affiliate="scraperapi" onclick="trackAffiliate('scraperapi');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=mistral.ai&sz=64" alt="Mistral AI" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AUDIO EDITOR</span>
+              <h3 class="tool-card__name">Descript</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Text-basiertes Audio/Video-Editing. Überdub Voice Cloning und automatische Transkription für schnelle Produktion.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Text-basiertes Editing</li>
+            <li class="tool-card__feature">Overdub Voice Cloning</li>
+            <li class="tool-card__feature">Auto-Transcription</li>
+            <li class="tool-card__feature">Multi-Track Editing</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 12$ / Monat</div>
+            <a href="tools/descript.html" class="tool-card__cta" data-affiliate="descript" onclick="trackAffiliate('descript');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=synthesia.io&sz=64" alt="Synthesia" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AI AVATAR</span>
+              <h3 class="tool-card__name">Synthesia</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Avatar-Videos aus Text. 140+ Avatare, 120+ Sprachen. Ideal für Erklärvideos ohne Kamera.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">140+ AI Avatare</li>
+            <li class="tool-card__feature">120+ Sprachen</li>
+            <li class="tool-card__feature">Text-to-Video</li>
+            <li class="tool-card__feature">Custom Avatars</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 29$ / Monat</div>
+            <a href="tools/#" class="tool-card__cta" data-affiliate="synthesia" onclick="trackAffiliate('synthesia');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion AI" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">WORKSPACE</span>
+              <h3 class="tool-card__name">Notion AI</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            All-in-one Workspace mit integrierter AI. Content-Planung, Dokumentation und Team-Kollaboration in einem.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI-Content-Generierung</li>
+            <li class="tool-card__feature">Database & Wikis</li>
+            <li class="tool-card__feature">Team-Kollaboration</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 10$ / Monat</div>
+            <a href="tools/notion.html" class="tool-card__cta" data-affiliate="notion" onclick="trackAffiliate('notion');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=make.com&sz=64" alt="Make" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AI IDE</span>
+              <h3 class="tool-card__name">Cursor</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-powered Code-Editor. GPT-4 integriert für Code-Completion, Refactoring und Debugging.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI Code Completion</li>
+            <li class="tool-card__feature">Chat mit Codebase</li>
+            <li class="tool-card__feature">Auto-Refactoring</li>
+            <li class="tool-card__feature">VS Code basiert</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 20$ / Monat</div>
+            <a href="tools/cursor.html" class="tool-card__cta" data-affiliate="cursor" onclick="trackAffiliate('cursor');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=zapier.com&sz=64" alt="Zapier" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">CONTENT AI</span>
+              <h3 class="tool-card__name">Frase</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            SEO-Content-Recherche und -Generierung. Analysiert Top-Ranking-Content und generiert optimierte Artikel.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Content-Recherche</li>
+            <li class="tool-card__feature">SEO-Optimierung</li>
+            <li class="tool-card__feature">AI-Content-Generierung</li>
+            <li class="tool-card__feature">Competitor-Analyse</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 45$ / Monat</div>
+            <a href="tools/#" class="tool-card__cta" data-affiliate="frase" onclick="trackAffiliate('frase');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=midjourney.com&sz=64" alt="Midjourney" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">CONTENT GEN</span>
+              <h3 class="tool-card__name">Jasper AI</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Enterprise Content-Generierung. Blog-Posts, Social Media, Ads und E-Mails in 29 Sprachen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Multi-Language Support</li>
+            <li class="tool-card__feature">Brand Voice Training</li>
+            <li class="tool-card__feature">Team-Kollaboration</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 39$ / Monat</div>
+            <a href="tools/jasper-ai.html" class="tool-card__cta" data-affiliate="jasper" onclick="trackAffiliate('jasper');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" alt="Runway" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">COPYWRITING</span>
+              <h3 class="tool-card__name">Copy.ai</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Copywriting für Marketing. Blog-Posts, Product Descriptions, Social Media und E-Mail-Kampagnen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">90+ Templates</li>
+            <li class="tool-card__feature">Multi-Language</li>
+            <li class="tool-card__feature">Workflow Builder</li>
+            <li class="tool-card__feature">Brand Voice</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 36$ / Monat</div>
+            <a href="tools/copy-ai.html" class="tool-card__cta" data-affiliate="copyai" onclick="trackAffiliate('copyai');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=stability.ai&sz=64" alt="Stable Diffusion" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">OPEN SOURCE</span>
+              <h3 class="tool-card__name">Stable Diffusion</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Open-Source Image-Generation. Self-hosted für volle Kontrolle. Community-Modelle und Fine-Tuning möglich.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Open-Source</li>
+            <li class="tool-card__feature">Self-hosted</li>
+            <li class="tool-card__feature">Custom Models</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Self-hosted</div>
+            <a href="tools/stable-diffusion.html" class="tool-card__cta" data-affiliate="stablediffusion" onclick="trackAffiliate('stablediffusion');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=pika.art&sz=64" alt="Pika Labs" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VIDEO GEN</span>
+              <h3 class="tool-card__name">Pika Labs</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Video-Generierung via Discord. Text-to-Video und Image-to-Video mit hoher Qualität.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Text-to-Video</li>
+            <li class="tool-card__feature">Image-to-Video</li>
+            <li class="tool-card__feature">Discord-Integration</li>
+            <li class="tool-card__feature">Free Tier verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Premium</div>
+            <a href="#" class="tool-card__cta" data-affiliate="pika" onclick="trackAffiliate('pika');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=brightdata.com&sz=64" alt="Bright Data" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">PROXY NETWORK</span>
+              <h3 class="tool-card__name">Bright Data</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Enterprise Proxy-Netzwerk für Web-Scraping. Residential, Datacenter und Mobile Proxies mit globaler Abdeckung.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Residential Proxies</li>
+            <li class="tool-card__feature">Global Coverage</li>
+            <li class="tool-card__feature">CAPTCHA Solving</li>
+            <li class="tool-card__feature">Enterprise Support</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Pay-per-GB</div>
+            <a href="tools/bright-data.html" class="tool-card__cta" data-affiliate="brightdata" onclick="trackAffiliate('brightdata');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=semrush.com&sz=64" alt="SEMrush" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SEO SUITE</span>
+              <h3 class="tool-card__name">SEMrush</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            All-in-one Marketing-Toolkit. SEO, PPC, Social Media und Content-Marketing in einer Plattform.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Keyword Research</li>
+            <li class="tool-card__feature">Competitor Analysis</li>
+            <li class="tool-card__feature">Backlink Audit</li>
+            <li class="tool-card__feature">Content Marketing</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 120$ / Monat</div>
+            <a href="tools/semrush.html" class="tool-card__cta" data-affiliate="semrush" onclick="trackAffiliate('semrush');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="Airtable" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">DATABASE</span>
+              <h3 class="tool-card__name">Airtable</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Flexible Datenbank-Plattform mit Automation. Spreadsheet meets Database. Starke API für Workflows.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Flexible Schemas</li>
+            <li class="tool-card__feature">Automation Builder</li>
+            <li class="tool-card__feature">API Integration</li>
+            <li class="tool-card__feature">Team-Kollaboration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 20$ / Monat</div>
+            <a href="tools/airtable.html" class="tool-card__cta" data-affiliate="airtable" onclick="trackAffiliate('airtable');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64" alt="ElevenLabs" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">BACKEND</span>
+              <h3 class="tool-card__name">Supabase</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Open-Source Firebase-Alternative. PostgreSQL-Datenbank, Auth, Storage und Real-time Features.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">PostgreSQL Database</li>
+            <li class="tool-card__feature">Real-time Subscriptions</li>
+            <li class="tool-card__feature">Auth & Storage</li>
+            <li class="tool-card__feature">Open-Source</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 25$</div>
+            <a href="tools/supabase.html" class="tool-card__cta" data-affiliate="supabase" onclick="trackAffiliate('supabase');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=pinecone.io&sz=64" alt="Pinecone" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VECTOR DB</span>
+              <h3 class="tool-card__name">Pinecone</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Managed Vector Database für AI-Anwendungen. Semantic Search, RAG und LLM-Context-Management.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Vector Similarity Search</li>
+            <li class="tool-card__feature">Managed Service</li>
+            <li class="tool-card__feature">Real-time Updates</li>
+            <li class="tool-card__feature">Enterprise Scale</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 70$</div>
+            <a href="tools/pinecone.html" class="tool-card__cta" data-affiliate="pinecone" onclick="trackAffiliate('pinecone');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="LangChain" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">FRAMEWORK</span>
+              <h3 class="tool-card__name">LangChain</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Framework für LLM-Anwendungen. Chains, Agents und Memory-Management für komplexe AI-Workflows.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">LLM Orchestration</li>
+            <li class="tool-card__feature">Agent Framework</li>
+            <li class="tool-card__feature">RAG Integration</li>
+            <li class="tool-card__feature">Open-Source</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Open Source</div>
+            <a href="tools/langchain.html" class="tool-card__cta" data-affiliate="langchain" onclick="trackAffiliate('langchain');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=64" alt="Hugging Face" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AI HUB</span>
+              <h3 class="tool-card__name">Hugging Face</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Die größte Open-Source AI-Model-Bibliothek. Models, Datasets und Spaces für alle AI-Anwendungen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">100k+ Models</li>
+            <li class="tool-card__feature">Inference API</li>
+            <li class="tool-card__feature">Model Hosting</li>
+            <li class="tool-card__feature">Free Tier verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro</div>
+            <a href="tools/hugging-face.html" class="tool-card__cta" data-affiliate="huggingface" onclick="trackAffiliate('huggingface');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=getzep.com&sz=64" alt="ZEP Memory" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">MEMORY API</span>
+              <h3 class="tool-card__name">ZEP Memory</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Langzeit-Memory für AI-Agents. Kontextuelle Erinnerungen für Chatbots und Conversational AI.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Long-term Memory</li>
+            <li class="tool-card__feature">Context Management</li>
+            <li class="tool-card__feature">Session Handling</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro</div>
+            <a href="tools/zep-memory.html" class="tool-card__cta" data-affiliate="zep" onclick="trackAffiliate('zep');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=surferseo.com&sz=64" alt="Surfer SEO" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VIDEO CLIPPER</span>
+              <h3 class="tool-card__name">Opus Clip</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-basierte Video-Klip-Generierung. Automatisches Clipping von Long-Form-Videos in viral-würdige Shorts.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Auto-Video-Clipping</li>
+            <li class="tool-card__feature">Viral-Moment Detection</li>
+            <li class="tool-card__feature">Auto-Captions</li>
+            <li class="tool-card__feature">Multi-Format Export</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 19$ / Monat</div>
+            <a href="tools/opus-clip.html" class="tool-card__cta" data-affiliate="opusclip" onclick="trackAffiliate('opusclip');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=yapper.so&sz=64" alt="Yapper" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SOCIAL AUTOMATION</span>
+              <h3 class="tool-card__name">Yapper</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Social Media Automation für X/Twitter. Auto-Posting, Thread-Generierung und Engagement-Management.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Auto-Posting</li>
+            <li class="tool-card__feature">Thread-Generierung</li>
+            <li class="tool-card__feature">Engagement Tracking</li>
+            <li class="tool-card__feature">API Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="https://yapper.so" target="_blank" rel="noopener noreferrer" class="tool-card__cta" data-affiliate="yapper" onclick="trackAffiliate('yapper');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="automation lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=reap.video&sz=64" alt="Reap" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AUTOMATION</span>
+              <h3 class="tool-card__name">Reap</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-powered Workflow-Automation. Vereinfacht komplexe Prozesse mit intelligenter Automation.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Workflow-Automation</li>
+            <li class="tool-card__feature">AI-Integration</li>
+            <li class="tool-card__feature">Multi-Platform</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/reap.html" class="tool-card__cta" data-affiliate="reap" onclick="trackAffiliate('reap');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="content lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=feedspace.io&sz=64" alt="Feedspace" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">CONTENT</span>
+              <h3 class="tool-card__name">Feedspace</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Content-Management und Distribution-Plattform. Optimiert deine Content-Strategie mit Analytics.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Content-Management</li>
+            <li class="tool-card__feature">Distribution-Tools</li>
+            <li class="tool-card__feature">Analytics & Insights</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/feedspace.html" class="tool-card__cta" data-affiliate="feedspace" onclick="trackAffiliate('feedspace');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="visual lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=greta.ai&sz=64" alt="Greta" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AI AVATAR</span>
+              <h3 class="tool-card__name">Greta</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Avatar-Generierung für Video-Content. Professionelle Avatare für Erklärvideos und Präsentationen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI-Avatare</li>
+            <li class="tool-card__feature">Video-Generierung</li>
+            <li class="tool-card__feature">Multi-Language</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/greta-ai.html" class="tool-card__cta" data-affiliate="greta" onclick="trackAffiliate('greta');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <!-- Skillplate -->
+        <div class="tool-card" data-category="content lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=skillplate.io&sz=64" alt="Skillplate" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">LEARNING</span>
+              <h3 class="tool-card__name">Skillplate</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Online-Lernplattform für Skills-Training. Erstelle und verwalte Lerninhalte für Teams.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Lernplattform</li>
+            <li class="tool-card__feature">Content-Erstellung</li>
+            <li class="tool-card__feature">Team-Management</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/skillplate.html" class="tool-card__cta" data-affiliate="skillplate" onclick="trackAffiliate('skillplate');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <!-- Mootion -->
+        <div class="tool-card" data-category="visual lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=mootion.com&sz=64" alt="Mootion" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VIDEO EDITING</span>
+              <h3 class="tool-card__name">Mootion</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-basierte Video-Bearbeitung. Automatisiertes Editing und Effekte für professionelle Videos.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI Video Editing</li>
+            <li class="tool-card__feature">Auto-Effekte</li>
+            <li class="tool-card__feature">Export-Optionen</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/mootion.html" class="tool-card__cta" data-affiliate="mootion" onclick="trackAffiliate('mootion');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <!-- TidyCal -->
+        <div class="tool-card" data-category="automation lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=tidycal.com&sz=64" alt="TidyCal" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SCHEDULING</span>
+              <h3 class="tool-card__name">TidyCal</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Meeting-Scheduling mit AI. Automatisiertes Kalender-Management und Terminbuchung.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Meeting-Scheduling</li>
+            <li class="tool-card__feature">Calendar-Sync</li>
+            <li class="tool-card__feature">AI-Optimierung</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/tidycal.html" class="tool-card__cta" data-affiliate="tidycal" onclick="trackAffiliate('tidycal');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <!-- NoCodeBackend -->
+        <div class="tool-card" data-category="automation lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=ahrefs.com&sz=64" alt="Ahrefs" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">BACKEND</span>
+              <h3 class="tool-card__name">NoCodeBackend</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            No-Code Backend-Infrastructure. Erstelle APIs und Datenbanken ohne Code zu schreiben.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">No-Code Backend</li>
+            <li class="tool-card__feature">API-Generierung</li>
+            <li class="tool-card__feature">Database Management</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/nocode-backend.html" class="tool-card__cta" data-affiliate="nocodebackend" onclick="trackAffiliate('nocodebackend');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <!-- Unmixr AI -->
+        <div class="tool-card" data-category="visual lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=unmixr.ai&sz=64" alt="Unmixr AI" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AUDIO AI</span>
+              <h3 class="tool-card__name">Unmixr AI</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Text-to-Speech, Speech-to-Text und Audio/Video Dubbing. Vollständige Audio-Produktion mit AI.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Text-to-Speech</li>
+            <li class="tool-card__feature">Speech-to-Text</li>
+            <li class="tool-card__feature">Audio/Video Dubbing</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/unmixr-ai.html" class="tool-card__cta" data-affiliate="unmixr" onclick="trackAffiliate('unmixr');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <!-- GOOSE VPN -->
+        <div class="tool-card" data-category="automation lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=goosevpn.com&sz=64" alt="GOOSE VPN" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VPN</span>
+              <h3 class="tool-card__name">GOOSE VPN</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            VPN-Service für sichere Verbindungen. Globales Server-Netzwerk für Privacy und Sicherheit.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Global Server Network</li>
+            <li class="tool-card__feature">Privacy Protection</li>
+            <li class="tool-card__feature">High Speed</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/goose-vpn.html" class="tool-card__cta" data-affiliate="goosevpn" onclick="trackAffiliate('goosevpn');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <!-- Sociamonials -->
+        <div class="tool-card" data-category="content lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=sociamonials.com&sz=64" alt="Sociamonials" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SOCIAL PROOF</span>
+              <h3 class="tool-card__name">Sociamonials</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Social Proof Widgets und Testimonials. Zeige Kundenbewertungen und Social Signals auf deiner Website.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Testimonial Widgets</li>
+            <li class="tool-card__feature">Social Proof</li>
+            <li class="tool-card__feature">Customizable Design</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/sociamonials.html" class="tool-card__cta" data-affiliate="sociamonials" onclick="trackAffiliate('sociamonials');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <!-- Voilà -->
+        <div class="tool-card" data-category="visual lifetime">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=getvoila.ai&sz=64" alt="Voilà" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">DESIGN</span>
+              <h3 class="tool-card__name">Voilà</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Design-Tool für kreative Visuals. Erstelle professionelle Designs mit AI-Unterstützung.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Design-Tools</li>
+            <li class="tool-card__feature">AI-Assistant</li>
+            <li class="tool-card__feature">Template-Library</li>
+            <li class="tool-card__feature">Lifetime Deal verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">LIFETIME DEAL</div>
+            <a href="tools/voila.html" class="tool-card__cta" data-affiliate="voila" onclick="trackAffiliate('voila');">
+              Zum Deal →
+            </a>
+          </div>
+        </div>
+
+        <!-- Binance API -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=binance.com&sz=64" alt="Firecrawl" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">CRYPTO API</span>
+              <h3 class="tool-card__name">Binance API</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Cryptocurrency Trading API. Real-time Market Data, Trading-Bots und Portfolio-Management für Automation.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Real-time Market Data</li>
+            <li class="tool-card__feature">Trading API</li>
+            <li class="tool-card__feature">WebSocket Streams</li>
+            <li class="tool-card__feature">Futures & Spot</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos</div>
+            <a href="tools/binance-api.html" class="tool-card__cta" data-affiliate="binance" onclick="trackAffiliate('binance');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Hostinger -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=hostinger.com&sz=64" alt="Hostinger" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">HOSTING</span>
+              <h3 class="tool-card__name">Hostinger</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            VPS-Hosting für n8n Self-Hosted. Unser Standard-Hosting für alle Workflow-Instanzen und APIs.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">VPS Hosting</li>
+            <li class="tool-card__feature">Global Locations</li>
+            <li class="tool-card__feature">SSD Storage</li>
+            <li class="tool-card__feature">24/7 Support</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 3.99$ / Monat</div>
+            <a href="tools/hostinger.html" class="tool-card__cta" data-affiliate="hostinger" onclick="trackAffiliate('hostinger');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Luma AI -->
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=lumalabs.ai&sz=64" alt="ScraperAPI" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">3D GEN</span>
+              <h3 class="tool-card__name">Luma AI</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-basierte 3D-Modell-Generierung. Text-to-3D und Image-to-3D für immersive Visuals.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Text-to-3D</li>
+            <li class="tool-card__feature">Image-to-3D</li>
+            <li class="tool-card__feature">High-Quality Output</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro</div>
+            <a href="tools/luma-ai.html" class="tool-card__cta" data-affiliate="luma" onclick="trackAffiliate('luma');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Claude Artifacts -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=descript.com&sz=64" alt="Descript" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">CODE GEN</span>
+              <h3 class="tool-card__name">Claude Artifacts</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Interaktive Code-Generierung in Claude. Live-Preview von HTML, React und Python-Code direkt im Chat.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Live Code-Preview</li>
+            <li class="tool-card__feature">Multi-Language Support</li>
+            <li class="tool-card__feature">Iterative Editing</li>
+            <li class="tool-card__feature">Export-Funktionen</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Inkl. Claude Pro</div>
+            <a href="tools/claude-artifacts.html" class="tool-card__cta" data-affiliate="claude-artifacts" onclick="trackAffiliate('claude-artifacts');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Gamma -->
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=synthesia.io&sz=64" alt="Synthesia" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">PRESENTATION</span>
+              <h3 class="tool-card__name">Gamma</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-generierte Präsentationen und Dokumente. Von der Idee zum fertigen Design in Sekunden.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI-Präsentationen</li>
+            <li class="tool-card__feature">Auto-Design</li>
+            <li class="tool-card__feature">Export als PDF/PPT</li>
+            <li class="tool-card__feature">Team-Kollaboration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro</div>
+            <a href="tools/gamma.html" class="tool-card__cta" data-affiliate="gamma" onclick="trackAffiliate('gamma');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Tome -->
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=notion.so&sz=64" alt="Notion AI" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">STORYTELLING</span>
+              <h3 class="tool-card__name">Tome</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Powered Storytelling-Plattform. Interaktive Präsentationen mit automatischer Bild-Generierung.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI-Content-Generierung</li>
+            <li class="tool-card__feature">Auto-Bilder</li>
+            <li class="tool-card__feature">Interaktive Elemente</li>
+            <li class="tool-card__feature">Sharing & Analytics</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro</div>
+            <a href="tools/tome.html" class="tool-card__cta" data-affiliate="tome" onclick="trackAffiliate('tome');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Canva -->
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=cursor.sh&sz=64" alt="Cursor (AI IDE)" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">DESIGN</span>
+              <h3 class="tool-card__name">Canva</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Design-Tool für Social Media, Präsentationen und Marketing-Materialien. AI-Features inklusive.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI-Design-Assistant</li>
+            <li class="tool-card__feature">Template-Library</li>
+            <li class="tool-card__feature">Brand Kit</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 15$</div>
+            <a href="tools/canva.html" class="tool-card__cta" data-affiliate="canva" onclick="trackAffiliate('canva');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Murf -->
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=frase.io&sz=64" alt="Frase" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VOICE GEN</span>
+              <h3 class="tool-card__name">Murf</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Text-to-Speech mit natürlichen Stimmen. 120+ Stimmen in 20+ Sprachen für professionelle Voice-Over.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">120+ Stimmen</li>
+            <li class="tool-card__feature">20+ Sprachen</li>
+            <li class="tool-card__feature">Voice Cloning</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 19$ / Monat</div>
+            <a href="tools/murf.html" class="tool-card__cta" data-affiliate="murf" onclick="trackAffiliate('murf');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- PlayHT -->
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=jasper.ai&sz=64" alt="Jasper AI" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VOICE GEN</span>
+              <h3 class="tool-card__name">PlayHT</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Ultra-realistische Text-to-Speech. Voice Cloning und Conversational AI für interaktive Anwendungen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Realistische Stimmen</li>
+            <li class="tool-card__feature">Voice Cloning</li>
+            <li class="tool-card__feature">Conversational AI</li>
+            <li class="tool-card__feature">API Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 15$ / Monat</div>
+            <a href="tools/playht.html" class="tool-card__cta" data-affiliate="playht" onclick="trackAffiliate('playht');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Headlime -->
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=copy.ai&sz=64" alt="Copy.ai" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">COPYWRITING</span>
+              <h3 class="tool-card__name">Headlime</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Copywriting für Landing Pages, E-Mails und Ads. Conversion-optimierte Texte basierend auf Best Practices.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Landing Page Copy</li>
+            <li class="tool-card__feature">Email Templates</li>
+            <li class="tool-card__feature">A/B Testing</li>
+            <li class="tool-card__feature">Conversion-Fokus</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 49$ / Monat</div>
+            <a href="tools/headlime.html" class="tool-card__cta" data-affiliate="headlime" onclick="trackAffiliate('headlime');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Writesonic -->
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=stability.ai&sz=64" alt="Stable Diffusion" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">CONTENT GEN</span>
+              <h3 class="tool-card__name">Writesonic</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Content-Generierung für Blogs, Ads und Social Media. GPT-4 powered mit Brand Voice Training.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">GPT-4 Powered</li>
+            <li class="tool-card__feature">Brand Voice</li>
+            <li class="tool-card__feature">100+ Templates</li>
+            <li class="tool-card__feature">SEO-optimiert</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 13$ / Monat</div>
+            <a href="tools/writesonic.html" class="tool-card__cta" data-affiliate="writesonic" onclick="trackAffiliate('writesonic');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Grammarly -->
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=pika.art&sz=64" alt="Pika Labs" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">WRITING ASSISTANT</span>
+              <h3 class="tool-card__name">Grammarly</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Schreibassistent für Grammatik, Stil und Klarheit. Integration in Browser, Word und mehr.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Grammatik-Check</li>
+            <li class="tool-card__feature">Stil-Optimierung</li>
+            <li class="tool-card__feature">Plagiarism Check</li>
+            <li class="tool-card__feature">Browser-Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 12$</div>
+            <a href="tools/grammarly.html" class="tool-card__cta" data-affiliate="grammarly" onclick="trackAffiliate('grammarly');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Wordtune -->
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=brightdata.com&sz=64" alt="Bright Data" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">REWRITING</span>
+              <h3 class="tool-card__name">Wordtune</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-basierte Text-Umschreibung. Verbessert Klarheit, Ton und Wirkung deiner Texte.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Text-Rewriting</li>
+            <li class="tool-card__feature">Tone-Adjustment</li>
+            <li class="tool-card__feature">Clarity-Optimierung</li>
+            <li class="tool-card__feature">Browser-Extension</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 10$ / Monat</div>
+            <a href="tools/wordtune.html" class="tool-card__cta" data-affiliate="wordtune" onclick="trackAffiliate('wordtune');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- QuillBot -->
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=semrush.com&sz=64" alt="SEMrush" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">PARAPHRASING</span>
+              <h3 class="tool-card__name">QuillBot</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Paraphrasierung und Text-Optimierung. Synonyme, Grammatik-Check und Zusammenfassungen.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Paraphrasierung</li>
+            <li class="tool-card__feature">Summarizer</li>
+            <li class="tool-card__feature">Grammar Check</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 10$</div>
+            <a href="tools/quillbot.html" class="tool-card__cta" data-affiliate="quillbot" onclick="trackAffiliate('quillbot');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Originality.ai -->
+        <div class="tool-card" data-category="content">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=airtable.com&sz=64" alt="Airtable" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AI DETECTION</span>
+              <h3 class="tool-card__name">Originality.ai</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Content-Detection und Plagiarism-Check. Erkennt GPT-4, Claude und andere AI-Generierte Texte.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI-Detection</li>
+            <li class="tool-card__feature">Plagiarism Check</li>
+            <li class="tool-card__feature">Fact-Checking</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 15$ / Monat</div>
+            <a href="tools/originality-ai.html" class="tool-card__cta" data-affiliate="originality" onclick="trackAffiliate('originality');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- HubSpot -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=hubspot.com&sz=64" alt="HubSpot" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">CRM</span>
+              <h3 class="tool-card__name">HubSpot</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            All-in-one CRM mit Marketing, Sales und Service. Automation, Email-Marketing und Lead-Management.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">CRM & Marketing</li>
+            <li class="tool-card__feature">Email Automation</li>
+            <li class="tool-card__feature">Lead Scoring</li>
+            <li class="tool-card__feature">API Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 45$</div>
+            <a href="tools/hubspot.html" class="tool-card__cta" data-affiliate="hubspot" onclick="trackAffiliate('hubspot');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Pipedrive -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=supabase.com&sz=64" alt="Supabase" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SALES CRM</span>
+              <h3 class="tool-card__name">Pipedrive</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Sales-CRM mit visuellem Pipeline-Management. Automation und Reporting für effizientes Sales-Management.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Visual Pipeline</li>
+            <li class="tool-card__feature">Sales Automation</li>
+            <li class="tool-card__feature">Reporting & Analytics</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 15$ / Monat</div>
+            <a href="tools/pipedrive.html" class="tool-card__cta" data-affiliate="pipedrive" onclick="trackAffiliate('pipedrive');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- SendGrid -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=sendgrid.com&sz=64" alt="SendGrid" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">EMAIL API</span>
+              <h3 class="tool-card__name">SendGrid</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Transactional Email-Service mit API. Automatisiertes E-Mail-Versand für Anwendungen und Workflows.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Transactional Email</li>
+            <li class="tool-card__feature">Email API</li>
+            <li class="tool-card__feature">Delivery Analytics</li>
+            <li class="tool-card__feature">100 Email/Tag kostenlos</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 20$</div>
+            <a href="tools/sendgrid.html" class="tool-card__cta" data-affiliate="sendgrid" onclick="trackAffiliate('sendgrid');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Mailchimp -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=mailchimp.com&sz=64" alt="Mailchimp" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">EMAIL MARKETING</span>
+              <h3 class="tool-card__name">Mailchimp</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Email-Marketing-Plattform mit Automation. Newsletter, Kampagnen und Audience-Management.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Email Automation</li>
+            <li class="tool-card__feature">Audience Segmentation</li>
+            <li class="tool-card__feature">A/B Testing</li>
+            <li class="tool-card__feature">API Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 13$</div>
+            <a href="tools/mailchimp.html" class="tool-card__cta" data-affiliate="mailchimp" onclick="trackAffiliate('mailchimp');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Calendly -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=calendly.com&sz=64" alt="Calendly" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SCHEDULING</span>
+              <h3 class="tool-card__name">Calendly</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Automatisiertes Meeting-Scheduling. Integration mit Kalendern und CRM für nahtlose Terminplanung.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Auto-Scheduling</li>
+            <li class="tool-card__feature">Calendar Sync</li>
+            <li class="tool-card__feature">CRM Integration</li>
+            <li class="tool-card__feature">Custom Branding</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 10$</div>
+            <a href="#" class="tool-card__cta" data-affiliate="calendly" onclick="trackAffiliate('calendly');">Zum Tool →</a></div>
+        </div> </div>
+
+        <!-- Loom -->
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=loom.com&sz=64" alt="Loom" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">VIDEO RECORDING</span>
+              <h3 class="tool-card__name">Loom</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Screen-Recording und Video-Messaging. Schnelle Video-Updates für Teams und Kunden.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Screen Recording</li>
+            <li class="tool-card__feature">Video Messaging</li>
+            <li class="tool-card__feature">Team Collaboration</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 8$</div>
+            <a href="tools/loom.html" class="tool-card__cta" data-affiliate="loom" onclick="trackAffiliate('loom');">Zum Tool →</a>
+        </div>
+
+        <!-- Otter.ai -->
+        <div class="tool-card" data-category="research">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Otter.ai" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">TRANSCRIPTION</span>
+              <h3 class="tool-card__name">Otter.ai</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Transkription für Meetings und Audio. Automatische Notizen, Zusammenfassungen und Suche.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Live Transcription</li>
+            <li class="tool-card__feature">Meeting Notes</li>
+            <li class="tool-card__feature">Speaker ID</li>
+            <li class="tool-card__feature">Search & Export</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 10$</div>
+            <a href="#" onclick="alert('Detailseite für Otter AI wird noch erstellt.');" class="tool-card__cta" data-affiliate="otter">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Rev -->
+        <div class="tool-card" data-category="research">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Rev" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">TRANSCRIPTION</span>
+              <h3 class="tool-card__name">Rev</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Professionelle Transkription und Untertitel. Human-verified für höchste Genauigkeit.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Human Transcription</li>
+            <li class="tool-card__feature">Subtitles & Captions</li>
+            <li class="tool-card__feature">99% Accuracy</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 1.25$ / Minute</div>
+            <a href="#" onclick="alert('Detailseite für Otter AI wird noch erstellt.');" class="tool-card__cta" data-affiliate="rev">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Replicate -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=pinecone.io&sz=64" alt="Pinecone" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AI API</span>
+              <h3 class="tool-card__name">Replicate</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            API für tausende Open-Source AI-Models. Einfache Integration für Image-Gen, LLMs und mehr.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">1000+ Models</li>
+            <li class="tool-card__feature">Simple API</li>
+            <li class="tool-card__feature">Pay-per-use</li>
+            <li class="tool-card__feature">Auto-Scaling</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Pay-per-use</div>
+            <a href="#" class="tool-card__cta" data-affiliate="replicate" onclick="trackAffiliate('replicate');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Together.ai -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Together.ai" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">LLM API</span>
+              <h3 class="tool-card__name">Together.ai</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Cloud-Infrastructure für Open-Source LLMs. GPT, Llama, Mistral und mehr via API.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Open-Source LLMs</li>
+            <li class="tool-card__feature">Cost-Effective</li>
+            <li class="tool-card__feature">High Performance</li>
+            <li class="tool-card__feature">Simple API</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Pay-per-token</div>
+            <a href="#" class="tool-card__cta" data-affiliate="together" onclick="trackAffiliate('together');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Anthropic Bedrock -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=langchain.com&sz=64" alt="LangChain" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AWS LLM</span>
+              <h3 class="tool-card__name">Anthropic Bedrock</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AWS-basierte Claude API für Enterprise. Hohe Skalierbarkeit und AWS-Integration.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Claude via AWS</li>
+            <li class="tool-card__feature">Enterprise Scale</li>
+            <li class="tool-card__feature">AWS Integration</li>
+            <li class="tool-card__feature">Security & Compliance</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Pay-per-token</div>
+            <a href="#" class="tool-card__cta" data-affiliate="bedrock" onclick="trackAffiliate('bedrock');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Cohere -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Cohere" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">LLM API</span>
+              <h3 class="tool-card__name">Cohere</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Enterprise LLM API für Text-Generierung, Klassifikation und Embeddings.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Text Generation</li>
+            <li class="tool-card__feature">Classification</li>
+            <li class="tool-card__feature">Embeddings</li>
+            <li class="tool-card__feature">Enterprise Ready</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Pay-per-use</div>
+            <a href="#" class="tool-card__cta" data-affiliate="cohere" onclick="trackAffiliate('cohere');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Serper -->
+        <div class="tool-card" data-category="research">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=huggingface.co&sz=64" alt="Hugging Face" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SEARCH API</span>
+              <h3 class="tool-card__name">Serper</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Google Search API für Web-Scraping. Real-time SERP-Daten für SEO und Research.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Google Search API</li>
+            <li class="tool-card__feature">Real-time SERP</li>
+            <li class="tool-card__feature">Cost-Effective</li>
+            <li class="tool-card__feature">Simple Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 50$ / Monat</div>
+            <a href="#" class="tool-card__cta" data-affiliate="serper" onclick="trackAffiliate('serper');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- SerpAPI -->
+        <div class="tool-card" data-category="research">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=getzep.com&sz=64" alt="ZEP Memory" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">SERP API</span>
+              <h3 class="tool-card__name">SerpAPI</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Google & Bing Search Results API. Scrape SERPs ohne CAPTCHA-Probleme.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Google & Bing</li>
+            <li class="tool-card__feature">No CAPTCHA</li>
+            <li class="tool-card__feature">Global Locations</li>
+            <li class="tool-card__feature">JSON Output</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 50$ / Monat</div>
+            <a href="#" class="tool-card__cta" data-affiliate="serpapi" onclick="trackAffiliate('serpapi');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- ClickUp -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=opus.pro&sz=64" alt="Opus Clip" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">PROJECT MGMT</span>
+              <h3 class="tool-card__name">ClickUp</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            All-in-one Projektmanagement mit AI-Features. Tasks, Docs, Goals und Automation in einer Plattform.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI-Assistant</li>
+            <li class="tool-card__feature">Task Management</li>
+            <li class="tool-card__feature">Automation</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 10$</div>
+            <a href="tools/clickup.html" class="tool-card__cta" data-affiliate="clickup" onclick="trackAffiliate('clickup');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Monday.com -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=monday.com&sz=64" alt="Monday.com" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">WORK OS</span>
+              <h3 class="tool-card__name">Monday.com</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Work Operating System für Teams. Projektmanagement, Automation und Kollaboration.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Visual Workflows</li>
+            <li class="tool-card__feature">Automation Builder</li>
+            <li class="tool-card__feature">Team Collaboration</li>
+            <li class="tool-card__feature">Integrations</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 10$ / Monat</div>
+            <a href="tools/monday.html" class="tool-card__cta" data-affiliate="monday" onclick="trackAffiliate('monday');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Asana -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=asana.com&sz=64" alt="Asana" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">PROJECT MGMT</span>
+              <h3 class="tool-card__name">Asana</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Team-Project-Management mit Automation. Tasks, Timelines und Workflows für effiziente Zusammenarbeit.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Task Management</li>
+            <li class="tool-card__feature">Timeline View</li>
+            <li class="tool-card__feature">Automation Rules</li>
+            <li class="tool-card__feature">API Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 11$</div>
+            <a href="tools/asana.html" class="tool-card__cta" data-affiliate="asana" onclick="trackAffiliate('asana');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Typeform -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=yapper.so&sz=64" alt="Yapper" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">FORMS</span>
+              <h3 class="tool-card__name">Typeform</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Interaktive Formulare und Umfragen. Conversational Forms für bessere Conversion-Raten.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Conversational Forms</li>
+            <li class="tool-card__feature">Logic Jumps</li>
+            <li class="tool-card__feature">Analytics</li>
+            <li class="tool-card__feature">Integrations</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 29$</div>
+            <a href="tools/typeform.html" class="tool-card__cta" data-affiliate="typeform" onclick="trackAffiliate('typeform');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Stripe -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=stripe.com&sz=64" alt="Stripe" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">PAYMENT</span>
+              <h3 class="tool-card__name">Stripe</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Payment-Processing API für Online-Zahlungen. Subscriptions, Invoicing und mehr.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Payment API</li>
+            <li class="tool-card__feature">Subscriptions</li>
+            <li class="tool-card__feature">Invoicing</li>
+            <li class="tool-card__feature">Webhooks</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">2.9% + 0.30$ / Transaction</div>
+            <a href="tools/stripe.html" class="tool-card__cta" data-affiliate="stripe" onclick="trackAffiliate('stripe');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Unsplash API -->
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Unsplash API" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">STOCK IMAGES</span>
+              <h3 class="tool-card__name">Unsplash API</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Kostenlose Stock-Fotos via API. Millionen hochwertige Bilder für Websites und Apps.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Free Stock Photos</li>
+            <li class="tool-card__feature">High Quality</li>
+            <li class="tool-card__feature">API Access</li>
+            <li class="tool-card__feature">No Attribution Required</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos</div>
+            <a href="#" class="tool-card__cta" data-affiliate="unsplash" onclick="trackAffiliate('unsplash');">Zum Tool →</a>
+        </div>
+
+        <!-- Pexels API -->
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Pexels API" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">STOCK MEDIA</span>
+              <h3 class="tool-card__name">Pexels API</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Kostenlose Stock-Fotos und Videos via API. Millionen Assets für Content-Produktion.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Free Photos & Videos</li>
+            <li class="tool-card__feature">HD Quality</li>
+            <li class="tool-card__feature">API Integration</li>
+            <li class="tool-card__feature">Commercial Use</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos</div>
+            <a href="#" class="tool-card__cta" data-affiliate="pexels" onclick="trackAffiliate('pexels');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Framer -->
+        <div class="tool-card" data-category="visual">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=reap.video&sz=64" alt="Reap" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">DESIGN TOOL</span>
+              <h3 class="tool-card__name">Framer</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-powered Design- und Prototyping-Tool. Von Design zu Code ohne Entwickler.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI Design Assistant</li>
+            <li class="tool-card__feature">Code Export</li>
+            <li class="tool-card__feature">Interactive Prototypes</li>
+            <li class="tool-card__feature">Team Collaboration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 15$</div>
+            <a href="tools/framer.html" class="tool-card__cta" data-affiliate="framer" onclick="trackAffiliate('framer');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Webflow -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=feedspace.io&sz=64" alt="Feedspace" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">WEBSITE BUILDER</span>
+              <h3 class="tool-card__name">Webflow</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            No-code Website-Builder mit CMS und E-Commerce. Professionelle Websites ohne Code.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">No-Code Builder</li>
+            <li class="tool-card__feature">CMS & E-Commerce</li>
+            <li class="tool-card__feature">Custom Code</li>
+            <li class="tool-card__feature">API verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 16$</div>
+            <a href="tools/webflow.html" class="tool-card__cta" data-affiliate="webflow" onclick="trackAffiliate('webflow');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Bubble -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=bubble.io&sz=64" alt="Bubble" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">NO-CODE</span>
+              <h3 class="tool-card__name">Bubble</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            No-code Plattform für Web-Apps. Vollständige Anwendungen ohne Code schreiben.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Visual Builder</li>
+            <li class="tool-card__feature">Database & Logic</li>
+            <li class="tool-card__feature">API Integration</li>
+            <li class="tool-card__feature">Responsive Design</li>
+          </ul>
+            <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 29$</div>
+            <a href="#" class="tool-card__cta" data-affiliate="bubble" onclick="trackAffiliate('bubble');">Zum Tool →</a>
+          </div>
+        </div>
+
+        <!-- Vercel -->
+        <div class="tool-card" data-category="automation">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=vercel.com&sz=64" alt="Vercel" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">HOSTING</span>
+              <h3 class="tool-card__name">Vercel</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Hosting-Plattform für Next.js und React-Apps. Edge-Netzwerk für maximale Performance.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Next.js Optimized</li>
+            <li class="tool-card__feature">Edge Network</li>
+            <li class="tool-card__feature">Auto-Deploy</li>
+            <li class="tool-card__feature">Free Tier verfügbar</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 20$</div>
+            <a href="tools/vercel.html" class="tool-card__cta" data-affiliate="vercel" onclick="trackAffiliate('vercel');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- GitHub Copilot -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="GitHub Copilot" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AI CODING</span>
+              <h3 class="tool-card__name">GitHub Copilot</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-Pair-Programmierer für VS Code. Code-Completion und -Generierung basierend auf Kontext.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI Code Completion</li>
+            <li class="tool-card__feature">Context-Aware</li>
+            <li class="tool-card__feature">Multi-Language</li>
+            <li class="tool-card__feature">VS Code Integration</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">ab 10$ / Monat</div>
+            <a href="tools/github.html" class="tool-card__cta" data-affiliate="copilot" onclick="trackAffiliate('copilot');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+        <!-- Tabnine -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?sz=128" alt="Tabnine" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">AI CODING</span>
+              <h3 class="tool-card__name">Tabnine</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            Enterprise AI-Code-Assistant. Privates Training auf eigener Codebase möglich.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">AI Code Completion</li>
+            <li class="tool-card__feature">Private Training</li>
+            <li class="tool-card__feature">Multi-IDE Support</li>
+            <li class="tool-card__feature">Enterprise Security</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro ab 12$</div>
+            <a href="#" class="tool-card__cta" data-affiliate="tabnine" onclick="trackAffiliate('tabnine');">Zum Tool →</a>
+          </div>
+        </div>
+
+        <!-- Sourcegraph -->
+        <div class="tool-card" data-category="intelligence">
+          <div class="tool-card__header">
+            <div class="tool-card__icon"><img src="https://www.google.com/s2/favicons?domain=greta.ai&sz=64" alt="Greta" onerror="this.style.display='none';" /></div>
+            <div class="tool-card__title-group">
+              <span class="tool-card__badge">CODE SEARCH</span>
+              <h3 class="tool-card__name">Sourcegraph</h3>
+            </div>
+          </div>
+          <p class="tool-card__description">
+            AI-powered Code-Suche und -Navigation. Findet Code über Repositories hinweg.
+          </p>
+          <ul class="tool-card__features">
+            <li class="tool-card__feature">Universal Code Search</li>
+            <li class="tool-card__feature">AI Chat</li>
+            <li class="tool-card__feature">Code Intelligence</li>
+            <li class="tool-card__feature">Enterprise Ready</li>
+          </ul>
+          <div class="tool-card__footer">
+            <div class="tool-card__price">Kostenlos / Pro</div>
+            <a href="#" class="tool-card__cta" data-affiliate="sourcegraph" onclick="trackAffiliate('sourcegraph');">
+              Zum Tool →
+            </a>
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">
+            <span class="footer__brand-icon">C</span>
+            <span>CanGo App Empire</span>
+          </div>
+          <p class="footer__desc">
+            Marketing-Automatisierung für den DACH-Markt. 
+            19 Workflows. 30 KI-Systeme. Kein Bullshit.
+          </p>
+        </div>
+        <div>
+          <div class="footer__title">Produkt</div>
+          <ul class="footer__links">
+            <li><a href="../cango-empire-v4-monopoly.html#technologie">Technologie</a></li>
+            <li><a href="../cango-empire-v4-monopoly.html#branchen">Branchen</a></li>
+            <li><a href="../cango-empire-v4-monopoly.html#preise">Preise</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__title">Unternehmen</div>
+          <ul class="footer__links">
+            <li><a href="#">Über uns</a></li>
+            <li><a href="#">Partner</a></li>
+            <li><a href="#">Karriere</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__title">Rechtliches</div>
+          <ul class="footer__links">
+            <li><a href="../impressum.html">Impressum</a></li>
+            <li><a href="../datenschutz.html">Datenschutz</a></li>
+            <li><a href="../agb.html">AGB</a></li>
+            <li><a href="../widerruf.html">Widerrufserklärung</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div>© 2025 CanGo App Empire. Alle Rechte vorbehalten.</div>
+        <div class="footer__tagline">Kopieren hilft dir nicht – du brauchst die Maschine.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================
+    // TOOL LOGOS KONFIGURATION
+    // ============================================
+    // Logo-URLs für Tools - Direkte Favicon/Logo-URLs von den Websites
+    const TOOL_LOGOS = {
+      'ChatGPT / OpenAI': 'https://www.google.com/s2/favicons?domain=openai.com&sz=64',
+      'Claude 3.5 Sonnet': 'https://www.google.com/s2/favicons?domain=anthropic.com&sz=64',
+      'Perplexity Pro': 'https://www.google.com/s2/favicons?domain=perplexity.ai&sz=64',
+      'BrowserAct': 'https://www.google.com/s2/favicons?domain=browseract.com&sz=64',
+      'NeuronWriter': 'https://www.google.com/s2/favicons?domain=neuronwriter.com&sz=64',
+      'DepositPhotos': 'https://www.google.com/s2/favicons?domain=depositphotos.com&sz=64',
+      'n8n': 'https://www.google.com/s2/favicons?domain=n8n.io&sz=64',
+      'Katteb': 'https://www.google.com/s2/favicons?domain=katteb.com&sz=64',
+      'Google Gemini': 'https://www.google.com/s2/favicons?domain=google.com&sz=64',
+      'Grok (xAI)': 'https://x.ai/favicon-192x192.png',
+      'Mistral AI': 'https://www.google.com/s2/favicons?domain=mistral.ai&sz=64',
+      'Make (Integromat)': 'https://www.google.com/s2/favicons?domain=make.com&sz=64',
+      'Zapier': 'https://www.google.com/s2/favicons?domain=zapier.com&sz=64',
+      'Midjourney': 'https://www.google.com/s2/favicons?domain=midjourney.com&sz=64',
+      'ElevenLabs': 'https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64',
+      'ScraperAPI': 'https://www.google.com/s2/favicons?domain=scraperapi.com&sz=64',
+      'Descript': 'https://www.google.com/s2/favicons?domain=descript.com&sz=64',
+      'Synthesia': 'https://www.google.com/s2/favicons?domain=synthesia.io&sz=64',
+      'Notion AI': 'https://www.google.com/s2/favicons?domain=notion.so&sz=64',
+      'Cursor': 'https://cursor.sh/favicon-192x192.png',
+      'Frase': 'https://www.google.com/s2/favicons?domain=frase.io&sz=64',
+      'Jasper AI': 'https://www.google.com/s2/favicons?domain=jasper.ai&sz=64',
+      'Copy.ai': 'https://www.google.com/s2/favicons?domain=copy.ai&sz=64',
+      'Stable Diffusion': 'https://www.google.com/s2/favicons?domain=stability.ai&sz=64',
+      'Pika Labs': 'https://www.google.com/s2/favicons?domain=pika.art&sz=64',
+      'Bright Data': 'https://www.google.com/s2/favicons?domain=brightdata.com&sz=64',
+      'SEMrush': 'https://www.google.com/s2/favicons?domain=semrush.com&sz=64',
+      'Airtable': 'https://www.google.com/s2/favicons?domain=airtable.com&sz=64',
+      'Supabase': 'https://www.google.com/s2/favicons?domain=supabase.com&sz=64',
+      'Pinecone': 'https://www.google.com/s2/favicons?domain=pinecone.io&sz=64',
+      'LangChain': 'https://www.google.com/s2/favicons?domain=langchain.com&sz=64',
+      'Hugging Face': 'https://www.google.com/s2/favicons?domain=huggingface.co&sz=64',
+      'ZEP Memory': 'https://www.google.com/s2/favicons?domain=getzep.com&sz=64',
+      'Opus Clip': 'https://www.google.com/s2/favicons?domain=opus.pro&sz=64',
+      'Yapper': 'https://yapper.so/favicon-192x192.png',
+      'Reap': 'https://www.google.com/s2/favicons?domain=reap.video&sz=64',
+      'Feedspace': 'https://www.google.com/s2/favicons?domain=feedspace.io&sz=64',
+      'Greta': 'https://greta.ai/favicon-192x192.png',
+      'Skillplate': 'https://skillplate.io/favicon-192x192.png',
+      'Mootion': 'https://www.google.com/s2/favicons?domain=mootion.com&sz=64',
+      'TidyCal': 'https://www.google.com/s2/favicons?domain=tidycal.com&sz=64',
+      'NoCodeBackend': 'https://nocodebackend.com/favicon-192x192.png',
+      'Unmixr AI': 'https://unmixr.ai/favicon-192x192.png',
+      'GOOSE VPN': 'https://www.google.com/s2/favicons?domain=goosevpn.com&sz=64',
+      'Sociamonials': 'https://www.google.com/s2/favicons?domain=sociamonials.com&sz=64',
+      'Voilà': 'https://www.google.com/s2/favicons?domain=getvoila.ai&sz=64',
+      'Binance API': 'https://www.google.com/s2/favicons?domain=binance.com&sz=64',
+      'Hostinger': 'https://www.hostinger.com/favicon-192x192.png',
+      'Luma AI': 'https://www.google.com/s2/favicons?domain=lumalabs.ai&sz=64',
+      'Claude Artifacts': 'https://www.anthropic.com/favicon-192x192.png',
+      'Gamma': 'https://gamma.app/favicon-192x192.png',
+      'Tome': 'https://www.google.com/s2/favicons?domain=tome.app&sz=64',
+      'Canva': 'https://www.google.com/s2/favicons?domain=canva.com&sz=64',
+      'Murf': 'https://www.google.com/s2/favicons?domain=murf.ai&sz=64',
+      'PlayHT': 'https://www.google.com/s2/favicons?domain=play.ht&sz=64',
+      'Headlime': 'https://headlime.com/favicon-192x192.png',
+      'Writesonic': 'https://www.google.com/s2/favicons?domain=writesonic.com&sz=64',
+      'Grammarly': 'https://www.google.com/s2/favicons?domain=grammarly.com&sz=64',
+      'Wordtune': 'https://www.google.com/s2/favicons?domain=wordtune.com&sz=64',
+      'QuillBot': 'https://www.google.com/s2/favicons?domain=quillbot.com&sz=64',
+      'Originality.ai': 'https://www.google.com/s2/favicons?domain=originality.ai&sz=64',
+      'HubSpot': 'https://www.google.com/s2/favicons?domain=hubspot.com&sz=64',
+      'Pipedrive': 'https://www.google.com/s2/favicons?domain=pipedrive.com&sz=64',
+      'SendGrid': 'https://www.google.com/s2/favicons?domain=sendgrid.com&sz=64',
+      'Mailchimp': 'https://www.google.com/s2/favicons?domain=mailchimp.com&sz=64',
+      'Calendly': 'https://calendly.com/favicon-192x192.png',
+      'Loom': 'https://www.google.com/s2/favicons?domain=loom.com&sz=64',
+      'Otter.ai': 'https://www.google.com/s2/favicons?domain=otter.ai&sz=64',
+      'Rev': 'https://www.google.com/s2/favicons?domain=rev.com&sz=64',
+      'Replicate': 'https://www.google.com/s2/favicons?domain=replicate.com&sz=64',
+      'Together.ai': 'https://www.google.com/s2/favicons?domain=together.ai&sz=64',
+      'Anthropic Bedrock': 'https://www.anthropic.com/favicon-192x192.png',
+      'Cohere': 'https://www.google.com/s2/favicons?domain=cohere.com&sz=64',
+      'Serper': 'https://www.google.com/s2/favicons?domain=serper.dev&sz=64',
+      'SerpAPI': 'https://www.google.com/s2/favicons?domain=serpapi.com&sz=64',
+      'ClickUp': 'https://www.google.com/s2/favicons?domain=clickup.com&sz=64',
+      'Monday.com': 'https://www.google.com/s2/favicons?domain=monday.com&sz=64',
+      'Asana': 'https://www.google.com/s2/favicons?domain=asana.com&sz=64',
+      'Typeform': 'https://www.google.com/s2/favicons?domain=typeform.com&sz=64',
+      'Stripe': 'https://www.google.com/s2/favicons?domain=stripe.com&sz=64',
+      'Unsplash API': 'https://www.google.com/s2/favicons?domain=unsplash.com&sz=64',
+      'Pexels API': 'https://www.google.com/s2/favicons?domain=pexels.com&sz=64',
+      'Framer': 'https://www.google.com/s2/favicons?domain=framer.com&sz=64',
+      'Webflow': 'https://www.google.com/s2/favicons?domain=webflow.com&sz=64',
+      'Bubble': 'https://www.google.com/s2/favicons?domain=bubble.io&sz=64',
+      'Vercel': 'https://www.google.com/s2/favicons?domain=vercel.com&sz=64',
+      'GitHub Copilot': 'https://www.google.com/s2/favicons?domain=github.com&sz=64',
+      'Tabnine': 'https://www.google.com/s2/favicons?domain=tabnine.com&sz=64',
+      'Sourcegraph': 'https://www.google.com/s2/favicons?domain=sourcegraph.com&sz=64',
+      'Runway': 'https://www.google.com/s2/favicons?domain=runwayml.com&sz=64',
+      'Surfer SEO': 'https://www.google.com/s2/favicons?domain=surferseo.com&sz=64',
+      'Ahrefs': 'https://www.google.com/s2/favicons?domain=ahrefs.com&sz=64',
+      'Firecrawl': 'https://www.google.com/s2/favicons?domain=firecrawl.dev&sz=64',
+    };
+    // ============================================
+    // AFFILIATE LINKS KONFIGURATION
+    // ============================================
+    // Hier werden später alle Affiliate-Links eingetragen
+    const AFFILIATE_LINKS = {
+      'openai': {
+        url: '#', // TODO: OpenAI Affiliate-Link einfügen
+        type: 'direct',
+        provider: 'OpenAI'
+      },
+      'claude': {
+        url: '#', // TODO: Anthropic Affiliate-Link einfügen
+        type: 'direct',
+        provider: 'Anthropic'
+      },
+      'perplexity': {
+        url: '#', // TODO: Perplexity AppSumo/Partner-Link einfügen
+        type: 'appsumo',
+        provider: 'Perplexity'
+      },
+      'browseract': {
+        url: '#', // TODO: BrowserAct AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'BrowserAct'
+      },
+      'neuronwriter': {
+        url: '#', // TODO: NeuronWriter AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'NeuronWriter'
+      },
+      'depositphotos': {
+        url: '#', // TODO: DepositPhotos AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'DepositPhotos'
+      },
+      'n8n': {
+        url: 'https://n8n.io',
+        type: 'direct',
+        provider: 'n8n'
+      },
+      'katteb': {
+        url: '#', // TODO: Katteb Affiliate-Link einfügen
+        type: 'direct',
+        provider: 'Katteb'
+      },
+      'yapper': {
+        url: 'https://yapper.so',
+        type: 'lifetime',
+        provider: 'Yapper'
+      },
+      'reap': {
+        url: '#', // TODO: Reap AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'Reap'
+      },
+      'feedspace': {
+        url: '#', // TODO: Feedspace AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'Feedspace'
+      },
+      'greta': {
+        url: '#', // TODO: Greta AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'Greta'
+      },
+      'skillplate': {
+        url: '#', // TODO: Skillplate AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'Skillplate'
+      },
+      'mootion': {
+        url: '#', // TODO: Mootion AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'Mootion'
+      },
+      'tidycal': {
+        url: '#', // TODO: TidyCal AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'TidyCal'
+      },
+      'nocodebackend': {
+        url: '#', // TODO: NoCodeBackend AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'NoCodeBackend'
+      },
+      'unmixr': {
+        url: '#', // TODO: Unmixr AI AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'Unmixr AI'
+      },
+      'goosevpn': {
+        url: '#', // TODO: GOOSE VPN AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'GOOSE VPN'
+      },
+      'sociamonials': {
+        url: '#', // TODO: Sociamonials AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'Sociamonials'
+      },
+      'voila': {
+        url: '#', // TODO: Voilà AppSumo Lifetime Deal Link einfügen
+        type: 'appsumo',
+        provider: 'Voilà'
+      },
+      'calendly': {
+        url: '#', // TODO: Calendly Affiliate-Link einfügen
+        type: 'direct',
+        provider: 'Calendly'
+      },
+      'bedrock': {
+        url: '#', // TODO: Anthropic Bedrock Affiliate-Link einfügen
+        type: 'direct',
+        provider: 'Anthropic Bedrock'
+      }
+    };
+
+    // Affiliate Link Tracking & Redirect
+    function trackAffiliate(toolId) {
+      // WICHTIG: Diese Funktion trackt nur - blockiert Navigation NICHT!
+      // Die Navigation zum href (Produktdetailseite) wird ERLAUBT!
+      const affiliateConfig = AFFILIATE_LINKS[toolId];
+      if (!affiliateConfig) {
+        console.error('Affiliate-Link nicht gefunden:', toolId);
+        return; // Kein  - Navigation funktioniert!
+      }
+
+      // Event Tracking (Google Analytics / GTM)
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'affiliate_click', {
+          'affiliate_id': toolId,
+          'affiliate_name': affiliateConfig.provider,
+          'affiliate_type': affiliateConfig.type,
+          'event_category': 'Affiliate',
+          'event_label': toolId
+        });
+      }
+
+      // Console Log für Debugging
+      console.log('Affiliate Click tracked:', {
+        tool: toolId,
+        provider: affiliateConfig.provider,
+        type: affiliateConfig.type
+      });
+
+      // WICHTIG: KEIN window.open() mehr - Navigation erfolgt über href!
+      // KEIN  - Navigation wird NICHT blockiert!
+    }
+    // Funktion zum einfachen Eintragen neuer Affiliate-Links
+    function updateAffiliateLink(toolId, url, type = 'direct') {
+      if (AFFILIATE_LINKS[toolId]) {
+        AFFILIATE_LINKS[toolId].url = url;
+        AFFILIATE_LINKS[toolId].type = type;
+        console.log('Affiliate-Link aktualisiert:', toolId, url);
+      } else {
+        console.error('Tool nicht gefunden:', toolId);
+      }
+    }
+
+    // ============================================
+    // TOOL FILTER FUNCTION
+    // ============================================
+    let currentSort = 'name'; // Standard-Sortierung
+    let currentSearch = ''; // Aktueller Suchbegriff
+    function filterTools(category) {
+      const tools = document.querySelectorAll('.tool-card');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      // Update active button
+      filterButtons.forEach(btn => {
+        if (btn.dataset.category === category) {
+          btn.classList.add('active');
+          btn.style.background = 'rgba(249, 115, 22, 0.1)';
+          btn.style.borderColor = 'rgba(249, 115, 22, 0.3)';
+          btn.style.color = 'var(--primary-400)';
+        } else {
+          btn.classList.remove('active');
+          btn.style.background = 'rgba(249, 115, 22, 0.05)';
+          btn.style.borderColor = 'rgba(249, 115, 22, 0.2)';
+          btn.style.color = 'var(--text-secondary)';
+        }
+      });
+      // Filter tools (berücksichtige auch aktuelle Suche)
+      tools.forEach(tool => {
+        const toolCategories = tool.dataset.category ? tool.dataset.category.split(' ') : [];
+        const matchesCategory = category === 'all' || toolCategories.includes(category);
+        // Prüfe auch Suche
+        let matchesSearch = true;
+        if (currentSearch) {
+          const toolName = tool.querySelector('.tool-card__name').textContent.toLowerCase();
+          const toolDescription = tool.querySelector('.tool-card__description').textContent.toLowerCase();
+          const toolFeatures = Array.from(tool.querySelectorAll('.tool-card__feature')).map(f => f.textContent.toLowerCase()).join(' ');
+          const toolBadge = tool.querySelector('.tool-card__badge')?.textContent.toLowerCase() || '';
+          const searchIn = toolName + ' ' + toolDescription + ' ' + toolFeatures + ' ' + toolBadge;
+          matchesSearch = searchIn.includes(currentSearch);
+        }
+        if (matchesCategory && matchesSearch) {
+          tool.classList.remove('hidden');
+          tool.style.display = 'flex';
+        } else {
+          tool.classList.add('hidden');
+          tool.style.display = 'none';
+        }
+      });
+      // Sortiere nach aktueller Sortierung
+      sortTools(currentSort, false);
+      // Update Suchergebnisse (nur wenn Suche aktiv)
+      if (currentSearch) {
+        const visibleTools = Array.from(tools).filter(tool => !tool.classList.contains('hidden'));
+        updateSearchResults(visibleTools.length, tools.length);
+      } else {
+        updateSearchResults(0, 0);
+      }
+    }
+
+    // ============================================
+    // TOOL SORT FUNCTION
+    // ============================================
+    function sortTools(sortType, updateFilter = true) {
+      currentSort = sortType;
+      const toolsGrid = document.getElementById('toolsGrid');
+      const tools = Array.from(document.querySelectorAll('.tool-card'));
+      const visibleTools = tools.filter(tool => !tool.classList.contains('hidden'));
+      // Update sort options im Dropdown
+      const sortOptions = document.querySelectorAll('.sort-option');
+      sortOptions.forEach(btn => {
+        if (btn.dataset.sort === sortType) {
+          btn.style.background = 'rgba(249, 115, 22, 0.15)';
+          btn.style.color = 'var(--primary-400)';
+          btn.style.fontWeight = '600';
+        } else {
+          btn.style.background = 'transparent';
+          btn.style.color = 'var(--text-primary)';
+          btn.style.fontWeight = '500';
+        }
+      });
+      // Sortiere Tools
+      visibleTools.sort((a, b) => {
+        switch(sortType) {
+          case 'name':
+            const nameA = a.querySelector('.tool-card__name').textContent.trim();
+            const nameB = b.querySelector('.tool-card__name').textContent.trim();
+            return nameA.localeCompare(nameB, 'de', { sensitivity: 'base' });
+          case 'price-asc':
+            return getPriceValue(a) - getPriceValue(b);
+          case 'price-desc':
+            return getPriceValue(b) - getPriceValue(a);
+          case 'popularity':
+            return getPopularity(b) - getPopularity(a);
+          default:
+            return 0;
+        }
+      });
+      // Re-append sorted tools
+      visibleTools.forEach(tool => {
+        toolsGrid.appendChild(tool);
+      });
+    }
+    // Hilfsfunktion: Extrahiert Preis-Wert aus Preis-Text
+    function getPriceValue(toolCard) {
+      const priceElement = toolCard.querySelector('.tool-card__price');
+      if (!priceElement) return 999999; // Kein Preis = ganz nach hinten
+      const priceText = priceElement.textContent.trim();
+      // Prüfe auf "LIFETIME DEAL" oder "Open Source"
+      if (priceText.includes('LIFETIME') || priceText.includes('Lifetime')) return 0;
+      if (priceText.includes('Open Source') || priceText.includes('Kostenlos')) return -1;
+      // Extrahiere Zahl aus Text (z.B. "ab 20$ / Monat" -> 20)
+      const match = priceText.match(/(\d+(?:\.\d+)?)/);
+      if (match) {
+        return parseFloat(match[1]);
+      }
+      return 999999; // Fallback: ganz nach hinten
+    }
+    // Hilfsfunktion: Beliebtheit basierend auf Tool-Name (kann später erweitert werden)
+    function getPopularity(toolCard) {
+      const toolName = toolCard.querySelector('.tool-card__name').textContent.trim().toLowerCase();
+      // Beliebtheits-Ranking (höhere Zahl = beliebter)
+      const popularityMap = {
+        'chatgpt': 100,
+        'openai': 100,
+        'claude': 95,
+        'perplexity': 90,
+        'n8n': 85,
+        'midjourney': 85,
+        'elevenlabs': 80,
+        'runway': 80,
+        'browseract': 75,
+        'notion': 75,
+        'cursor': 70,
+        'surfer': 70,
+        'neuronwriter': 65,
+        'depositphotos': 60,
+        'hostinger': 55,
+      };
+      // Prüfe ob Tool-Name in Map enthalten ist
+      for (const [key, value] of Object.entries(popularityMap)) {
+        if (toolName.includes(key)) {
+          return value;
+        }
+      }
+      // Standard: basierend auf Position in Liste (früher = beliebter)
+      return 50;
+    }
+
+    // ============================================
+    // TOOL SEARCH FUNCTION
+    // ============================================
+    function searchTools(searchTerm) {
+      currentSearch = searchTerm.toLowerCase().trim();
+      const tools = document.querySelectorAll('.tool-card');
+      const toolsGrid = document.getElementById('toolsGrid');
+      if (!currentSearch) {
+        // Wenn Suche leer, zeige alle Tools basierend auf aktuellem Filter
+        const activeFilter = document.querySelector('.filter-btn.active');
+        if (activeFilter) {
+          filterTools(activeFilter.dataset.category);
+        }
+        return;
+      }
+      // Durchsuche Tools
+      let visibleCount = 0;
+      tools.forEach(tool => {
+        const toolName = tool.querySelector('.tool-card__name').textContent.toLowerCase();
+        const toolDescription = tool.querySelector('.tool-card__description').textContent.toLowerCase();
+        const toolFeatures = Array.from(tool.querySelectorAll('.tool-card__feature')).map(f => f.textContent.toLowerCase()).join(' ');
+        const toolBadge = tool.querySelector('.tool-card__badge')?.textContent.toLowerCase() || '';
+        // Suche in Name, Beschreibung, Features und Badge
+        const searchIn = toolName + ' ' + toolDescription + ' ' + toolFeatures + ' ' + toolBadge;
+        if (searchIn.includes(currentSearch)) {
+          tool.classList.remove('hidden');
+          tool.style.display = 'flex';
+          visibleCount++;
+        } else {
+          tool.classList.add('hidden');
+          tool.style.display = 'none';
+        }
+      });
+      // Sortiere sichtbare Tools
+      const visibleTools = Array.from(tools).filter(tool => !tool.classList.contains('hidden'));
+      sortTools(currentSort, false);
+      // Zeige Anzahl der Ergebnisse
+      updateSearchResults(visibleCount, tools.length);
+    }
+    // Zeige Anzahl der Suchergebnisse
+    function updateSearchResults(visible, total) {
+      let resultsInfo = document.getElementById('searchResultsInfo');
+      if (!resultsInfo) {
+        resultsInfo = document.createElement('div');
+        resultsInfo.id = 'searchResultsInfo';
+        resultsInfo.style.cssText = 'text-align: center; margin-top: var(--space-4); color: var(--text-secondary); font-size: var(--text-sm);';
+        document.querySelector('.tools-search').after(resultsInfo);
+      }
+      if (currentSearch) {
+        resultsInfo.textContent = `${visible} von ${total} Tools gefunden`;
+        resultsInfo.style.display = 'block';
+      } else {
+        resultsInfo.style.display = 'none';
+      }
+    }
+
+    // ============================================
+    // SORT DROPDOWN FUNCTIONS
+    // ============================================
+    function toggleSortDropdown() {
+      const dropdown = document.getElementById('sortDropdown');
+      const isOpen = dropdown.style.display === 'block';
+      dropdown.style.display = isOpen ? 'none' : 'block';
+    }
+    function selectSort(sortType, label) {
+      sortTools(sortType);
+      document.getElementById('sortDropdown').style.display = 'none';
+    }
+    // Schließe Dropdown wenn außerhalb geklickt wird
+    document.addEventListener('click', function(event) {
+      const dropdown = document.getElementById('sortDropdown');
+      const button = document.getElementById('sortDropdownBtn');
+      if (dropdown && button && !dropdown.contains(event.target) && !button.contains(event.target)) {
+        dropdown.style.display = 'none';
+      }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav__link, .nav__cta').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav__menu').classList.remove('active');
+      });
+    });
+
+    // ============================================
+    // TOOL LOGOS LADEN
+    // ============================================
+    function loadToolLogos() {
+      // WICHTIG: Verstecke ALLE Icons SOFORT bevor Logos geladen werden
+      document.querySelectorAll('.tool-card__icon').forEach(iconDiv => {
+        iconDiv.style.display = 'none';
+        iconDiv.style.visibility = 'hidden';
+        iconDiv.style.opacity = '0';
+        // Entferne ALLE Text-Inhalte (Emojis) SOFORT
+        if (iconDiv.textContent) {
+          iconDiv.textContent = '';
+        }
+        iconDiv.innerHTML = iconDiv.innerHTML.replace(/[🎨🌐📝🖼️⚙️✅💻🌙⚒️📊📖🎙️🔊✍️✏️🔄🪶🔍🕷️⌨️🗄️✂️🛏️₿🔮🤖🌊🔗⚡💡🧠🎬🎤🏄🔥👤🦦📓🎭🎥📈📋]/g, '');
+      });
+      const toolCards = document.querySelectorAll('.tool-card');
+      toolCards.forEach(card => {
+        const toolName = card.querySelector('.tool-card__name')?.textContent.trim();
+        const iconDiv = card.querySelector('.tool-card__icon');
+        if (toolName && iconDiv) {
+          // SOFORT: Verstecke Icon und entferne Inhalte
+          iconDiv.innerHTML = '';
+          iconDiv.style.display = 'none';
+          iconDiv.style.visibility = 'hidden';
+          iconDiv.style.opacity = '0';
+          const emoji = '';  // Emoji nicht mehr nötig
+          let logoUrl = TOOL_LOGOS[toolName];
+          // Debug: Log das Mapping
+          if (!logoUrl) {
+            console.warn('Kein Logo-Mapping für:', toolName);
+          }
+          // Wenn kein Logo im Mapping, versuche automatische Erkennung
+          if (!logoUrl) {
+            // Versuche Tool-URL aus Affiliate-Links zu extrahieren
+            const toolId = toolName.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+            const affiliateLink = AFFILIATE_LINKS[toolId];
+            if (affiliateLink && affiliateLink.url && affiliateLink.url !== '#') {
+              try {
+                const url = new URL(affiliateLink.url);
+                logoUrl = url.origin + '/favicon-192x192.png';
+              } catch(e) {
+                // URL konnte nicht geparst werden
+              }
+            }
+            // Wenn immer noch keine URL, versuche Domain aus Tool-Name
+            if (!logoUrl) {
+              const domainMatch = toolName.toLowerCase().match(/(\w+)\.(ai|io|com|dev|app|so|co|sh)/);
+              if (domainMatch) {
+                logoUrl = 'https://' + domainMatch[0] + '/favicon-192x192.png';
+              } else {
+                const cleanName = toolName.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+                logoUrl = 'https://' + cleanName + '.com/favicon-192x192.png';
+              }
+            }
+          }
+          // WICHTIG: Verstecke Icon SOFORT bevor Logo-Laden startet
+          iconDiv.innerHTML = ''; // Entferne ALLE Inhalte (auch Emojis)
+          iconDiv.style.display = 'none';
+          iconDiv.style.visibility = 'hidden';
+          iconDiv.style.opacity = '0';
+          // WICHTIG: Verstecke Icon SOFORT bevor Logo-Laden startet
+          iconDiv.innerHTML = ''; // Entferne ALLE Inhalte (auch Emojis)
+          iconDiv.style.display = 'none';
+          iconDiv.style.visibility = 'hidden';
+          iconDiv.style.opacity = '0';
+          if (logoUrl) {
+            // Erstelle img Element - Verbessertes Logo-System mit mehreren Quellen
+            const img = document.createElement('img');
+            img.alt = toolName + ' Logo';
+            img.style.display = 'none';
+            // Extrahiere Domain aus URL für Fallbacks (unterstützt alle URL-Formate)
+            let domain = '';
+            // Prüfe verschiedene URL-Formate
+            const clearbitMatch = logoUrl.match(/logo\.clearbit\.com\/([^?\/]+)/);
+            const faviconMatch = logoUrl.match(/https?:\/\/(?:www\.)?([^\/]+)\//);
+            const directMatch = logoUrl.match(/https?:\/\/(?:www\.)?([^\/]+)/);
+            if (clearbitMatch) {
+              domain = clearbitMatch[1];
+            } else if (faviconMatch) {
+              domain = faviconMatch[1];
+            } else if (directMatch) {
+              domain = directMatch[1];
+            }
+            // Verbessertes Logo-System mit mehreren Quellen
+            const logoSources = [];
+            // Wenn logoUrl bereits eine direkte URL ist, verwende sie zuerst (höchste Priorität)
+            if (logoUrl && !logoUrl.includes('logo.clearbit.com') && !logoUrl.includes('google.com/s2/favicons')) {
+              logoSources.push(logoUrl);
+            }
+            if (domain) {
+              // 1. Direkte Favicon-URLs von der Domain (höchste Qualität - zuerst versuchen)
+              logoSources.push(`https://${domain}/favicon-192x192.png`);
+              logoSources.push(`https://${domain}/favicon-512x512.png`);
+              logoSources.push(`https://${domain}/favicon-32x32.png`);
+              logoSources.push(`https://${domain}/favicon.ico`);
+              // 2. Direkte Logo-URLs von der Domain
+              logoSources.push(`https://${domain}/logo.png`);
+              logoSources.push(`https://${domain}/assets/logo.png`);
+              logoSources.push(`https://${domain}/images/logo.png`);
+              logoSources.push(`https://${domain}/static/logo.png`);
+              logoSources.push(`https://${domain}/img/logo.png`);
+              logoSources.push(`https://${domain}/cdn/logo.png`);
+              logoSources.push(`https://${domain}/assets/images/logo.png`);
+              // 3. Clearbit Logo API (hohe Qualität)
+              logoSources.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=64`);
+              logoSources.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
+              logoSources.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=256`);
+              // 4. Google Favicon API (zuverlässige Alternative)
+              logoSources.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
+              logoSources.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=256`);
+              // 5. Simple Icons CDN (für bekannte Tools)
+              const simpleIconsMap = {
+                'openai.com': 'openai',
+                'anthropic.com': 'anthropic',
+                'google.com': 'google',
+                'github.com': 'github',
+                'stripe.com': 'stripe',
+                'vercel.com': 'vercel',
+                'notion.so': 'notion',
+                'airtable.com': 'airtable',
+                'supabase.com': 'supabase',
+                'zapier.com': 'zapier',
+                'make.com': 'make',
+                'n8n.io': 'n8n',
+                'canva.com': 'canva',
+                'framer.com': 'framer',
+                'webflow.com': 'webflow',
+                'bubble.io': 'bubble',
+                'clickup.com': 'clickup',
+                'monday.com': 'monday',
+                'asana.com': 'asana',
+                'hubspot.com': 'hubspot',
+                'pipedrive.com': 'pipedrive',
+                'typeform.com': 'typeform',
+                'calendly.com': 'calendly',
+                'loom.com': 'loom',
+                'mailchimp.com': 'mailchimp',
+                'sendgrid.com': 'sendgrid',
+                'grammarly.com': 'grammarly',
+                'semrush.com': 'semrush',
+                'ahrefs.com': 'ahrefs',
+                'unsplash.com': 'unsplash',
+                'pexels.com': 'pexels',
+                'binance.com': 'binance',
+                'hostinger.com': 'hostinger',
+                'huggingface.co': 'huggingface',
+                'langchain.com': 'langchain',
+                'pinecone.io': 'pinecone',
+                'sourcegraph.com': 'sourcegraph',
+                'tabnine.com': 'tabnine',
+                'cloudflare.com': 'cloudflare',
+                'docker.com': 'docker',
+                'slack.com': 'slack',
+                'discord.com': 'discord',
+                'x.ai': 'x',
+                'cursor.sh': 'cursor',
+                'firecrawl.dev': 'firecrawl',
+                'gamma.app': 'gamma',
+                'greta.ai': 'greta',
+                'headlime.com': 'headlime',
+                'nocodebackend.com': 'nocodebackend',
+                'skillplate.io': 'skillplate',
+                'unmixr.ai': 'unmixr',
+                'yapper.so': 'yapper',
+              };
+              if (simpleIconsMap[domain]) {
+              }
+            } else {
+              logoSources.push(logoUrl);
+            }
+            let currentSourceIndex = 0;
+            let logoLoaded = false;
+            function tryNextSource() {
+              if (currentSourceIndex < logoSources.length && !logoLoaded) {
+                img.src = logoSources[currentSourceIndex];
+                currentSourceIndex++;
+              } else if (!logoLoaded) {
+                console.error(`❌ Alle ${logoSources.length} Logo-Versuche fehlgeschlagen für: ${toolName}`);
+                // KEINE Emoji-Icons mehr - Icon bleibt leer/versteckt
+                iconDiv.innerHTML = '';
+                iconDiv.style.display = 'none';
+              }
+            }
+            img.onload = function() {
+              if (!logoLoaded) {
+                logoLoaded = true;
+                console.log(`✅ Logo geladen für ${toolName} (${currentSourceIndex}/${logoSources.length}): ${img.src}`);
+                // Entferne ALLE Inhalte (auch Emojis) - nur img behalten
+                iconDiv.innerHTML = '';
+                iconDiv.appendChild(img);
+                // Zeige Icon NUR wenn img geladen ist
+                iconDiv.style.display = 'flex';
+                iconDiv.style.visibility = 'visible';
+                iconDiv.style.opacity = '1';
+                img.style.display = 'block';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'contain'; // Logo passt in Rahmen
+                img.style.padding = 'var(--space-2)';
+                img.classList.add('loaded');
+              }
+            };
+            img.onerror = function() {
+              if (!logoLoaded) {
+                // Nur bei ersten paar Versuchen loggen, um Console nicht zu überladen
+                if (currentSourceIndex <= 3) {
+                  console.warn(`⚠️ Logo-Versuch ${currentSourceIndex} fehlgeschlagen für ${toolName}`);
+                }
+                tryNextSource();
+              }
+            };
+            // Starte Logo-Laden
+            iconDiv.appendChild(img);
+            tryNextSource();
+          } else {
+            // Keine URL gefunden - KEINE Emoji-Icons mehr - Icon bleibt leer/versteckt
+            iconDiv.innerHTML = '';
+            iconDiv.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // Track all affiliate links on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Lade Tool-Logos
+      loadToolLogos();
+      // Sortiere Tools nach Name beim Laden (Standard)
+      sortTools('name', false);
+      // Track affiliate links - Navigation NICHT blockieren!
+      document.querySelectorAll('[data-affiliate]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          // trackAffiliate aufrufen, aber Navigation ERLAUBEN
+          const affiliateId = this.dataset.affiliate;
+          trackAffiliate(affiliateId);
+          // KEIN  - Links funktionieren jetzt!
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -22,12 +22,12 @@
 
 /* Performance: Optimize font loading */
 @font-face {
-    font-family: 'Orbitron';
+    font-family: 'Poppins';
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Rajdhani';
+    font-family: 'Poppins';
     font-display: swap;
 }
 
@@ -38,7 +38,7 @@
 }
 
 body {
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
     background: var(--bg-dark);
     color: var(--text-primary);
     line-height: 1.6;
@@ -47,7 +47,7 @@ body {
 
 /* Terminal Font für Daten */
 .terminal-font {
-    font-family: 'JetBrains Mono', 'Roboto Mono', 'Courier New', monospace;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .container {
@@ -61,7 +61,7 @@ body {
     background: var(--bg-darker);
     border-bottom: 1px solid var(--border-color);
     padding: 0.5rem 0;
-    font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 0.75rem;
     color: var(--text-secondary);
     position: sticky;
@@ -142,7 +142,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
 
@@ -270,7 +270,7 @@ body {
 }
 
 .flow-node span {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 0.75rem;
     letter-spacing: 2px;
@@ -314,7 +314,7 @@ body {
 }
 
 .hero-headline {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 5rem;
     font-weight: 900;
     line-height: 1.1;
@@ -362,7 +362,7 @@ body {
     transition: all 0.3s;
     display: inline-block;
     border: 2px solid;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.875rem;
 }
 
@@ -411,7 +411,7 @@ body {
 }
 
 .stat-value {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 3rem;
     font-weight: 900;
     color: var(--primary-color);
@@ -428,7 +428,7 @@ body {
 
 /* Section Styles */
 .section-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 3rem;
     font-weight: 900;
     text-align: center;
@@ -471,7 +471,7 @@ body {
 }
 
 .byok-content h3 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     color: var(--primary-color);
@@ -504,7 +504,7 @@ body {
 }
 
 .module-header h3 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     color: var(--primary-color);
 }
@@ -636,7 +636,7 @@ body {
 }
 
 .niche-requirements h4 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     color: var(--primary-color);
     margin-bottom: 1rem;
 }
@@ -651,7 +651,7 @@ body {
 }
 
 .system-status-overview h3 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     color: var(--primary-color);
@@ -682,7 +682,7 @@ body {
 
 .status-value {
     display: block;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     font-weight: 900;
     color: var(--primary-color);
@@ -754,7 +754,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .requirement-card.critical .req-badge {
@@ -832,7 +832,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     font-weight: 900;
     color: var(--primary-color);
@@ -840,7 +840,7 @@ body {
 }
 
 .cluster-info h3 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.75rem;
     margin-bottom: 0.5rem;
     color: var(--primary-color);
@@ -891,7 +891,7 @@ body {
     font-size: 0.625rem;
     font-weight: 700;
     text-transform: uppercase;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .tool-badge-priority {
@@ -913,7 +913,7 @@ body {
     font-size: 0.625rem;
     font-weight: 900;
     text-transform: uppercase;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, var(--accent-color) 0%, #FFA500 100%);
     color: var(--bg-dark);
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
@@ -930,7 +930,7 @@ body {
     font-size: 0.625rem;
     font-weight: 900;
     text-transform: uppercase;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #8B949E 0%, #6E7681 100%);
     color: var(--text-primary);
     box-shadow: 0 0 10px rgba(139, 148, 158, 0.3);
@@ -1028,7 +1028,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     font-weight: 900;
     color: var(--bg-dark);
@@ -1079,7 +1079,7 @@ body {
     background: var(--bg-card);
     border: 2px solid var(--border-color);
     color: var(--text-secondary);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -1101,7 +1101,7 @@ body {
 }
 
 .product-intro h3 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
@@ -1158,7 +1158,7 @@ body {
     padding: 0.5rem 1.5rem;
     background: var(--primary-color);
     color: var(--bg-dark);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -1174,7 +1174,7 @@ body {
 }
 
 .tier-price .price {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 4rem;
     font-weight: 900;
     color: var(--primary-color);
@@ -1217,7 +1217,7 @@ body {
     padding: 1rem;
     background: var(--accent-color);
     color: var(--bg-dark);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -1245,7 +1245,7 @@ body {
 
 .setup-fee .value,
 .retainer .value {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     font-weight: 900;
     color: var(--accent-color);
@@ -1330,7 +1330,7 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .market-status.dominated {
@@ -1453,7 +1453,7 @@ body {
 }
 
 .contact-info h3 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
@@ -1495,7 +1495,7 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 4px;
     color: var(--text-primary);
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
 }
 
@@ -1566,7 +1566,7 @@ body {
 }
 
 .metric-value {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     font-weight: 900;
     color: var(--primary-color);
@@ -1656,7 +1656,7 @@ body {
     padding: 0.5rem 1.5rem;
     background: var(--accent-color);
     color: var(--bg-dark);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -1706,7 +1706,7 @@ body {
 }
 
 .why-7-section h3 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
@@ -1749,7 +1749,7 @@ body {
 }
 
 .monopoly-statement strong {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -1801,7 +1801,7 @@ body {
 .system-status {
     color: #00C853;
     font-weight: 700;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     margin-top: 1rem;
 }
 
@@ -1838,7 +1838,7 @@ body {
 }
 
 .enterprise-highlight strong {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Responsive */
@@ -1964,7 +1964,7 @@ body {
 
 .problem-box h3,
 .solution-box h3 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
@@ -2015,7 +2015,7 @@ body {
 }
 
 .advantage-header h3 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.3rem;
     color: var(--primary-color);
     margin: 0;
@@ -2052,7 +2052,7 @@ body {
 .pain-point h4,
 .our-solution h4,
 .your-benefit h4 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     margin-bottom: 0.75rem;
     text-transform: uppercase;
@@ -2085,7 +2085,7 @@ body {
 }
 
 .comparison-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 3rem;
@@ -2113,7 +2113,7 @@ body {
 .comparison-table th {
     padding: 1.25rem;
     text-align: left;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -2148,7 +2148,7 @@ body {
 .comparison-table .advantage-cell {
     color: var(--accent-color);
     font-weight: 700;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
     font-size: 0.85rem;
 }
@@ -2196,7 +2196,7 @@ body {
 }
 
 .closer-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     color: var(--primary-color);
     margin-bottom: 2rem;
@@ -2306,7 +2306,7 @@ body {
 }
 
 .aggregator-stats .stat-value {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     font-weight: 900;
     color: var(--accent-color);
@@ -2334,7 +2334,7 @@ body {
 }
 
 .market-access-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
@@ -2384,7 +2384,7 @@ body {
     padding: 0.5rem 1rem;
     background: var(--accent-color);
     color: var(--bg-dark);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.7rem;
     font-weight: 900;
     text-transform: uppercase;
@@ -2408,7 +2408,7 @@ body {
 }
 
 .sector-header h4 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.3rem;
     color: var(--primary-color);
     margin: 0;
@@ -2480,7 +2480,7 @@ body {
     padding: 0.5rem 1.5rem;
     background: var(--accent-color);
     color: var(--bg-dark);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.75rem;
     font-weight: 900;
     text-transform: uppercase;
@@ -2491,7 +2491,7 @@ body {
 }
 
 .trust-headline {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
@@ -2536,7 +2536,7 @@ body {
 .pipeline-table th {
     padding: 1.25rem;
     text-align: left;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -2557,7 +2557,7 @@ body {
 
 .pipeline-table td strong {
     color: var(--primary-color);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .pipeline-table a {
@@ -2578,7 +2578,7 @@ body {
 }
 
 .cango-lever h5 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     color: var(--accent-color);
     margin-bottom: 0.75rem;
@@ -2604,7 +2604,7 @@ body {
 }
 
 .revenue-label {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.75rem;
     color: #00C853;
     text-transform: uppercase;
@@ -2627,7 +2627,7 @@ body {
 }
 
 .strategic-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     color: var(--primary-color);
     text-align: center;
@@ -2672,7 +2672,7 @@ body {
 }
 
 .strategic-benefit-card h4 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
@@ -2704,7 +2704,7 @@ body {
 
 .metaphor-text strong {
     color: var(--accent-color);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* About Us Section */
@@ -2738,7 +2738,7 @@ body {
 
 .about-tagline strong {
     color: var(--primary-color);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .about-intro {
@@ -2769,7 +2769,7 @@ body {
     font-size: 1.3rem;
     line-height: 1.8;
     color: var(--accent-color);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
 }
 
@@ -2779,7 +2779,7 @@ body {
 }
 
 .architecture-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     color: var(--primary-color);
     text-align: center;
@@ -2829,7 +2829,7 @@ body {
 }
 
 .architecture-card h4 {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
@@ -2855,7 +2855,7 @@ body {
 }
 
 .philosophy-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     color: var(--primary-color);
     text-align: center;
@@ -2879,7 +2879,7 @@ body {
 
 .philosophy-quote strong {
     color: var(--accent-color);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .philosophy-description {
@@ -2904,7 +2904,7 @@ body {
 }
 
 .ecosystem-about-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
@@ -2977,7 +2977,7 @@ body {
 }
 
 .about-closing-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 3rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
@@ -3029,7 +3029,7 @@ body {
 }
 
 .news-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
@@ -3081,7 +3081,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .filter-tab:hover {
@@ -3166,7 +3166,7 @@ body {
     color: var(--primary-color);
     font-weight: 700;
     text-transform: uppercase;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .news-card-content {
@@ -3303,7 +3303,7 @@ body {
 }
 
 .ticker-label {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     color: var(--accent-color);
     font-weight: 900;
@@ -3416,7 +3416,7 @@ body {
 }
 
 .tab-label {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     color: var(--primary-color);
     font-weight: 700;
@@ -3447,7 +3447,7 @@ body {
 }
 
 .category-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
@@ -3500,7 +3500,7 @@ body {
     padding: 0.5rem 1rem;
     background: var(--accent-color);
     color: var(--bg-dark);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.7rem;
     font-weight: 900;
     text-transform: uppercase;
@@ -3595,7 +3595,7 @@ body {
 
 .comparison-value {
     font-weight: 700;
-    font-family: 'Orbitron', monospace;
+    font-family: 'Poppins', sans-serif;
 }
 
 .comparison-value.old {

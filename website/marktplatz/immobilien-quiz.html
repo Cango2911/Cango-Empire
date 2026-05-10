@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Immobilien Partner Quiz | CanGo App Empire</title>
+  <link rel="stylesheet" href="../cango-empire-v4-monopoly.css">
+  <style>
+    .quiz-page {
+      padding: calc(var(--nav-height) + var(--space-20)) 0 var(--space-12);
+      min-height: 100vh;
+    }
+    
+    .quiz-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: var(--space-12);
+    }
+    
+    .quiz-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      margin-bottom: var(--space-6);
+    }
+    
+    .quiz-question {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      margin-bottom: var(--space-6);
+      color: var(--text-primary);
+    }
+    
+    .quiz-options {
+      display: grid;
+      gap: var(--space-4);
+    }
+    
+    .quiz-option {
+      padding: var(--space-4);
+      background: var(--bg-default);
+      border: 2px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .quiz-option:hover {
+      border-color: var(--primary-500);
+      background: rgba(249, 115, 22, 0.05);
+    }
+    
+    .quiz-option.selected {
+      border-color: var(--primary-500);
+      background: rgba(249, 115, 22, 0.1);
+    }
+    
+    .quiz-button {
+      margin-top: var(--space-6);
+      width: 100%;
+    }
+    
+    .quiz-result {
+      text-align: center;
+      padding: var(--space-12);
+    }
+    
+    .quiz-result__title {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      color: var(--text-primary);
+    }
+    
+    .quiz-result__description {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="container nav__inner">
+      <a href="../index.html" class="nav__brand">
+        <span class="nav__brand-icon">C</span>
+        <span>CanGo App Empire</span>
+      </a>
+      
+      <button class="nav__toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav__menu').classList.toggle('active')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav__menu">
+        <a href="../index.html#problem" class="nav__link">Problem</a>
+        <a href="../index.html#technologie" class="nav__link">Technologie</a>
+        <a href="../index.html#branchen" class="nav__link">Branchen</a>
+        <a href="immobilien.html" class="nav__link">Immobilien</a>
+        <a href="../index.html#faq" class="nav__link">FAQ</a>
+        <a href="../kontakt.html" class="nav__cta">Jetzt anfragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="quiz-page">
+    <div class="quiz-container">
+      <div id="quiz-content"></div>
+    </div>
+  </section>
+  
+  <script>
+    const quizData = [
+      {
+        question: "Wie viel Eigenkapital können Sie investieren?",
+        options: [
+          { text: "10.000€ - 50.000€", domicil: 0, grundstein: 1, mitnorm: 2 },
+          { text: "50.000€ - 200.000€", domicil: 2, grundstein: 1, mitnorm: 0 },
+          { text: "Über 200.000€", domicil: 2, grundstein: 2, mitnorm: 1 },
+          { text: "Noch unklar / möchte mehr erfahren", domicil: 1, grundstein: 1, mitnorm: 2 }
+        ]
+      },
+      {
+        question: "Welches Investment-Interesse haben Sie?",
+        options: [
+          { text: "Pflegeimmobilien (High-Ticket)", domicil: 3, grundstein: 0, mitnorm: 0 },
+          { text: "Strategische Immobilien-Entwicklung", domicil: 0, grundstein: 3, mitnorm: 1 },
+          { text: "Nachhaltige, sozialverträgliche Projekte", domicil: 1, grundstein: 1, mitnorm: 3 },
+          { text: "Portfolio-Diversifikation", domicil: 1, grundstein: 2, mitnorm: 1 }
+        ]
+      },
+      {
+        question: "Welche Laufzeit bevorzugen Sie?",
+        options: [
+          { text: "Kurzfristig (1-5 Jahre)", domicil: 1, grundstein: 2, mitnorm: 1 },
+          { text: "Mittelfristig (5-15 Jahre)", domicil: 2, grundstein: 2, mitnorm: 2 },
+          { text: "Langfristig (15+ Jahre)", domicil: 2, grundstein: 3, mitnorm: 3 }
+        ]
+      },
+      {
+        question: "Wie wichtig ist Ihnen Nachhaltigkeit?",
+        options: [
+          { text: "Sehr wichtig", domicil: 1, grundstein: 2, mitnorm: 3 },
+          { text: "Wichtig", domicil: 1, grundstein: 2, mitnorm: 2 },
+          { text: "Weniger wichtig", domicil: 2, grundstein: 1, mitnorm: 0 }
+        ]
+      }
+    ];
+    
+    let currentQuestion = 0;
+    let scores = { domicil: 0, grundstein: 0, mitnorm: 0 };
+    let selectedOptions = [];
+    
+    function renderQuestion() {
+      const question = quizData[currentQuestion];
+      const content = document.getElementById('quiz-content');
+      
+      content.innerHTML = `
+        <div class="quiz-card">
+          <div class="quiz-question">
+            Frage ${currentQuestion + 1} von ${quizData.length}: ${question.question}
+          </div>
+          <div class="quiz-options">
+            ${question.options.map((option, index) => `
+              <div class="quiz-option" onclick="selectOption(${index})">
+                ${option.text}
+              </div>
+            `).join('')}
+          </div>
+          ${currentQuestion > 0 ? `<button class="btn btn--secondary quiz-button" onclick="previousQuestion()">Zurück</button>` : ''}
+          <button class="btn btn--primary quiz-button" onclick="nextQuestion()" id="next-btn" disabled>Weiter</button>
+        </div>
+      `;
+    }
+    
+    function selectOption(index) {
+      document.querySelectorAll('.quiz-option').forEach((opt, i) => {
+        opt.classList.toggle('selected', i === index);
+      });
+      selectedOptions[currentQuestion] = index;
+      document.getElementById('next-btn').disabled = false;
+    }
+    
+    function nextQuestion() {
+      if (selectedOptions[currentQuestion] === undefined) return;
+      
+      const selectedOption = quizData[currentQuestion].options[selectedOptions[currentQuestion]];
+      scores.domicil += selectedOption.domicil;
+      scores.grundstein += selectedOption.grundstein;
+      scores.mitnorm += selectedOption.mitnorm;
+      
+      currentQuestion++;
+      
+      if (currentQuestion < quizData.length) {
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    }
+    
+    function previousQuestion() {
+      if (currentQuestion === 0) return;
+      
+      // Remove last scores
+      const lastSelected = quizData[currentQuestion - 1].options[selectedOptions[currentQuestion - 1]];
+      scores.domicil -= lastSelected.domicil;
+      scores.grundstein -= lastSelected.grundstein;
+      scores.mitnorm -= lastSelected.mitnorm;
+      
+      currentQuestion--;
+      renderQuestion();
+      
+      // Restore selection
+      if (selectedOptions[currentQuestion] !== undefined) {
+        setTimeout(() => {
+          selectOption(selectedOptions[currentQuestion]);
+        }, 10);
+      }
+    }
+    
+    function showResult() {
+      let winner = 'domicil';
+      let maxScore = scores.domicil;
+      
+      if (scores.grundstein > maxScore) {
+        winner = 'grundstein';
+        maxScore = scores.grundstein;
+      }
+      if (scores.mitnorm > maxScore) {
+        winner = 'mitnorm';
+        maxScore = scores.mitnorm;
+      }
+      
+      const partnerNames = {
+        domicil: 'Domicil Group',
+        grundstein: 'Grundstein Holding',
+        mitnorm: 'mitNORM'
+      };
+      
+      const partnerLinks = {
+        domicil: 'domicil-projekte.html',
+        grundstein: 'grundstein-projekte.html',
+        mitnorm: 'mitnorm-projekte.html'
+      };
+      
+      const content = document.getElementById('quiz-content');
+      content.innerHTML = `
+        <div class="quiz-card quiz-result">
+          <div class="quiz-result__title">
+            Ihr perfekter Partner: ${partnerNames[winner]}
+          </div>
+          <div class="quiz-result__description">
+            Basierend auf Ihren Antworten passt ${partnerNames[winner]} am besten zu Ihren Investment-Zielen.
+          </div>
+          <a href="${partnerLinks[winner]}" class="btn btn--primary btn--lg">
+            Zu den ${partnerNames[winner]} Projekten →
+          </a>
+          <div style="margin-top: var(--space-6);">
+            <a href="immobilien.html" class="btn btn--secondary">Zurück zur Übersicht</a>
+          </div>
+        </div>
+      `;
+    }
+    
+    renderQuestion();
+  </script>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__brand-name">CanGo App Empire</div>
+          <p class="footer__brand-description">
+            Marketing-Automatisierung für den DACH-Markt. 
+            19 Workflows. 30 KI-Systeme. Kein Bullshit.
+          </p>
+        </div>
+        
+        <div>
+          <div class="footer__column-title">Produkt</div>
+          <ul class="footer__links">
+            <li><a href="../index.html#technologie" class="footer__link">Technologie</a></li>
+            <li><a href="../index.html#branchen" class="footer__link">Branchen</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="footer__column-title">Unternehmen</div>
+          <ul class="footer__links">
+            <li><a href="../domicil-grundstein.html" class="footer__link">Partner</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="footer__column-title">Rechtliches</div>
+          <ul class="footer__links">
+            <li><a href="../impressum.html" class="footer__link">Impressum</a></li>
+            <li><a href="../datenschutz.html" class="footer__link">Datenschutz</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <div>© 2025 CanGo App Empire. Alle Rechte vorbehalten.</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
