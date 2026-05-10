@@ -1,0 +1,32 @@
+{
+  "articles": [
+    {
+      "title": "KI-Tools für Content-Ersteller 2026",
+      "snippet": "Welche KI-Tools 2026 für Creator wirklich zählen — Workflow, Qualität und Reichweite.",
+      "url": "/blogs/2026-05-10-ki-tools-fuer-content-ersteller-2026.html",
+      "nicheName": "KI & Tech",
+      "banner": "/images/blog-sections/2026-05-10-ki-tools-fuer-content-ersteller-2026-hero.jpg"
+    },
+    {
+      "title": "Claude vs ChatGPT: Was Unternehmen 2026 wissen müssen",
+      "snippet": "Ein direkter Vergleich für den Unternehmenseinsatz — Stärken, Schwächen und Kosten.",
+      "url": "/blogs/artikel-claude-vs-chatgpt-unternehmen-2026.html",
+      "nicheName": "KI & Technologie",
+      "banner": "/images/blog-real/artikel-claude-vs-chatgpt-unternehmen-2026-hero.jpg"
+    },
+    {
+      "title": "KI & Tech 2026: Was jetzt wirklich passiert",
+      "snippet": "KI ist kein Hype mehr — sie ist Infrastruktur. Was 2026 für Unternehmen und Freelancer zählt.",
+      "url": "/blogs/ki-tech.html",
+      "nicheName": "KI & Technologie",
+      "banner": "/images/blog-real/ki-tech-hero.jpg"
+    },
+    {
+      "title": "Automatisierungen 2026: Was du heute noch einrichten kannst",
+      "snippet": "Von n8n über Make bis KI-Agenten — der größte Impact mit überschaubarem Aufwand.",
+      "url": "/blogs/automationen.html",
+      "nicheName": "Automatisierungen",
+      "banner": "/images/blog-real/automationen-hero.jpg"
+    }
+  ]
+}
