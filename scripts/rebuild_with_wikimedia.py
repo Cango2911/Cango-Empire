@@ -13,9 +13,9 @@ BLOGS_DIR = ROOT / "website" / "blogs"
 IMG_DIR   = ROOT / "website" / "images" / "blog-sections"
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 
-FTP_HOST = "145.223.115.121"
-FTP_USER = "u447057499.automation-cango-app-empire.com"
-FTP_PASS = "Cango2911@"
+from cango_env import ftp_credentials
+
+FTP_HOST, FTP_USER, FTP_PASS = ftp_credentials()
 REMOTE   = "/docker/nginx-proxy-manager-5tiw/www"
 
 IMG_EXTS = {"jpg", "jpeg", "png", "webp"}

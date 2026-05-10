@@ -20,9 +20,9 @@ CANGO_UNIVERSAL = Path("/Users/canberkkivilcim/Cango Universal")
 ONLINE_AGENTUR = Path("/Users/canberkkivilcim/OnlineAgentur CanGo")
 
 # FTP-Konfiguration
-FTP_HOST = "145.223.115.121"
-FTP_USER = "u447057499.automation-cango-app-empire.com"
-FTP_PASS = "Cango2911@"
+from cango_env import ftp_credentials
+
+FTP_HOST, FTP_USER, FTP_PASS = ftp_credentials()
 DOCKER_WWW_PATH = "/docker/nginx-proxy-manager-5tiw/www"
 
 def sync_to_hostinger_docker(file_path):

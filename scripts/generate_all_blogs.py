@@ -7,6 +7,8 @@ Erstellt alle fehlenden Blog-Seiten und lädt sie auf Hostinger hoch.
 import ftplib, re, time, urllib.request
 from pathlib import Path
 
+from cango_env import ftp_credentials
+
 ROOT       = Path(__file__).parent.parent
 BLOGS_DIR  = ROOT / "website" / "blogs"
 IMG_DIR    = ROOT / "website" / "images" / "blog-real"
@@ -15,9 +17,7 @@ BLOGS_HTML = ROOT / "website" / "blogs.html"
 BLOGS_DIR.mkdir(parents=True, exist_ok=True)
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 
-FTP_HOST   = "145.223.115.121"
-FTP_USER   = "u447057499.automation-cango-app-empire.com"
-FTP_PASS   = "Cango2911@"
+FTP_HOST, FTP_USER, FTP_PASS = ftp_credentials()
 REMOTE     = "/docker/nginx-proxy-manager-5tiw/www"
 
 # ── Blog-Definitionen ──────────────────────────────────────────────────────────

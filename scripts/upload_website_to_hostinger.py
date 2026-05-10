@@ -7,9 +7,9 @@ Lade alle HTML-Dateien aus website/ zu Hostinger Docker hoch
 import ftplib
 from pathlib import Path
 
-FTP_HOST = "145.223.115.121"
-FTP_USER = "u447057499.automation-cango-app-empire.com"
-FTP_PASS = "Cango2911@"
+from cango_env import ftp_credentials
+
+FTP_HOST, FTP_USER, FTP_PASS = ftp_credentials()
 DOCKER_WWW_PATH = "/docker/nginx-proxy-manager-5tiw/www"
 
 REPO_PATH = Path("/Users/canberkkivilcim/PycharmProjects/Cango-Empire")

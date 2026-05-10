@@ -15,11 +15,11 @@ from io import BytesIO
 from pathlib import Path
 import sys
 
+from cango_env import ftp_credentials
+
 # Konfiguration
 REPO_PATH = "/Users/canberkkivilcim/PycharmProjects/Cango-Empire"
-FTP_HOST = "145.223.115.121"
-FTP_USER = "u447057499.automation-cango-app-empire.com"
-FTP_PASS = "Cango2911@"
+FTP_HOST, FTP_USER, FTP_PASS = ftp_credentials()
 DOCKER_WWW_PATH = "/docker/nginx-proxy-manager-5tiw/www"
 GITHUB_REPO = "https://github.com/Cango2911/Cango-Empire.git"
 

@@ -19,9 +19,9 @@ HTML_FILES = [
     "cango-empire-v4-monopoly.html"
 ]
 
-FTP_HOST = "145.223.115.121"
-FTP_USER = "u447057499.automation-cango-app-empire.com"
-FTP_PASS = "Cango2911@"
+from cango_env import ftp_credentials
+
+FTP_HOST, FTP_USER, FTP_PASS = ftp_credentials()
 
 DOC_ROOTS = [
     "/htdocs/automation-cango-app-empire.com/",

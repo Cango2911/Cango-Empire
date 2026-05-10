@@ -7,9 +7,9 @@ Prüfe und lade HTML-Dateien in das Docker www-Verzeichnis hoch
 import ftplib
 import os
 
-FTP_HOST = "145.223.115.121"
-FTP_USER = "u447057499.automation-cango-app-empire.com"
-FTP_PASS = "Cango2911@"
+from cango_env import ftp_credentials
+
+FTP_HOST, FTP_USER, FTP_PASS = ftp_credentials()
 
 # Docker www-Verzeichnis
 DOCKER_WWW_PATH = "/docker/nginx-proxy-manager-5tiw/www"

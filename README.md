@@ -24,5 +24,7 @@ Die Website läuft auf Docker mit Nginx.
 Siehe `docs/DOMAIN_BINDUNG_ANLEITUNG.md` für Domain-Konfiguration.
 
 ## Secrets / API-Keys
-Dieses Repo hat keine eigenen Secrets. Alle Keys (Perplexity, OpenAI, etc.) werden zentral verwaltet unter:
-`/Users/canberkkivilcim/CanGo Empire Webseite /docs/security/key-hints.local.md` (lokal, nie committen).
+- Die **statische Website** (`website/`) braucht **keine** API-Keys im Browser; das Short-Form-Studio arbeitet lokal im Client.
+- **Skripte** (`scripts/`) lesen Zugangsdaten aus **`.env` im Repo-Root** (siehe `.env.example`). Niemals `.env` committen — steht in `.gitignore`.
+- **FTP:** Alle Upload-Skripte nutzen `scripts/cango_env.py` und erwarten `FTP_PASS` (und optional `FTP_HOST` / `FTP_USER`) in `.env`. Keine Passwörter mehr im Python-Quelltext.
+- Weitere Keys (OpenAI, n8n, …) nur für Workflows/Automation; siehe `docs/n8n/` und jeweilige Skripte.
