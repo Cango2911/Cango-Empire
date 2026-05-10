@@ -312,6 +312,11 @@ a.nc{text-decoration:none;color:inherit;cursor:pointer}
 .nc h4{font-size:15px;font-weight:700;color:var(--white);margin-bottom:3px}
 .nc p{font-size:12px;color:var(--muted);font-family:'JetBrains Mono',monospace}
 
+/* CANGO TOOLS */
+.ct-card{cursor:default;align-items:flex-start}
+.ct-card .nic{margin-top:2px}
+.ct-badge{display:inline-block;margin-top:8px;font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:700;color:#F97316;border:1px solid rgba(249,115,22,.4);border-radius:6px;padding:2px 8px;text-transform:uppercase;letter-spacing:.06em;background:rgba(249,115,22,.08)}
+
 /* SWITCH */
 .sw-bg{background:var(--navy-800)}
 .sw-body{font-size:16px;color:var(--muted);line-height:1.8;max-width:680px;margin:20px 0 36px}
@@ -1275,23 +1280,85 @@ footer{background:var(--navy-900);border-top:1px solid var(--border);padding:72p
   </div>
 </section>
 
-<!-- NISCHEN -->
-<section class="nisch-bg">
-  <div class="ey rv">◈ High-CPM Nischen</div>
-  <h2 class="st rv">9 Kontrollierte Märkte.<br><span class="ac">Maximale Rendite.</span></h2>
+<!-- CANGO TOOLS -->
+<section class="nisch-bg" id="cango-tools">
+  <div class="ey rv">◈ CanGo Tools</div>
+  <h2 class="st rv">Kostenlose Apps.<br><span class="ac">Direkt einsatzbereit.</span></h2>
   <div class="div"></div>
-  <p class="sdesc rv">Wir operieren chirurgisch in den lukrativsten Sektoren mit hohen CPMs und klarer Zielgruppe.</p>
-  <div class="ng rv">
-    <!-- FIX-2026-03-29: Ziele wie nischen.html (Marktplatz-Unterseiten) -->
-    <a class="nc" href="/finanzen-versicherung.html"><span class="nic">💰</span><div><h4><span class="ac">Finanzen &amp; Versicherung</span></h4><p>Versicherungen, Kredite, Investitionen</p></div></a>
-    <a class="nc" href="/immobilien.html"><span class="nic">🏠</span><div><h4><span class="ac">Immobilien</span></h4><p>Makler, Vermietung, Immobilien-Invest</p></div></a>
-    <a class="nc" href="/marktplatz/trading.html"><span class="nic">📈</span><div><h4><span class="ac">Trading</span></h4><p>Kurse, Signale, Strategien</p></div></a>
-    <a class="nc" href="/marktplatz/crypto-web3.html"><span class="nic">₿</span><div><h4><span class="ac">Crypto &amp; Web3</span></h4><p>DeFi, NFTs, Krypto-Assets</p></div></a>
-    <a class="nc" href="/energie-finance.html"><span class="nic">⚡</span><div><h4><span class="ac">Energie &amp; Solar</span></h4><p>Solar, Strom, Tarife</p></div></a>
-    <a class="nc" href="/marktplatz/ki-tech.html"><span class="nic">🤖</span><div><h4><span class="ac">KI &amp; Tech</span></h4><p>SaaS, Tools, AI-Lösungen</p></div></a>
-    <a class="nc" href="/automationen-workflows.html"><span class="nic">⚙️</span><div><h4><span class="ac">Automationen</span></h4><p>Workflows, n8n, Zapier</p></div></a>
-    <a class="nc" href="/karriere-hr.html"><span class="nic">👔</span><div><h4><span class="ac">Karriere &amp; HR</span></h4><p>Jobs, Recruiting, Bewerbung</p></div></a>
-    <a class="nc" href="/coaching-mindset.html"><span class="nic">🧠</span><div><h4><span class="ac">Coaching &amp; Mindset</span></h4><p>Kurse, Mentoring, Transformation</p></div></a>
+  <p class="sdesc rv">Unsere eigenen kostenlosen Tools für dein Business – entwickelt von CanGo App Empire. Mehr Apps folgen laufend.</p>
+  <div class="ng rv" id="cango-tools-grid">
+    <div class="nc ct-card">
+      <span class="nic">🧮</span>
+      <div>
+        <h4><span class="ac">ROI-Rechner</span></h4>
+        <p>Rendite deiner Automatisierung berechnen</p>
+        <span class="ct-badge">Bald verfügbar</span>
+      </div>
+    </div>
+    <div class="nc ct-card">
+      <span class="nic">📋</span>
+      <div>
+        <h4><span class="ac">Workflow-Planer</span></h4>
+        <p>Automatisierungen strukturiert planen</p>
+        <span class="ct-badge">Bald verfügbar</span>
+      </div>
+    </div>
+    <div class="nc ct-card">
+      <span class="nic">🤖</span>
+      <div>
+        <h4><span class="ac">KI-Prompt-Generator</span></h4>
+        <p>Optimierte Prompts für dein Marketing</p>
+        <span class="ct-badge">Bald verfügbar</span>
+      </div>
+    </div>
+    <div class="nc ct-card">
+      <span class="nic">📊</span>
+      <div>
+        <h4><span class="ac">Content-Kalender</span></h4>
+        <p>Redaktionsplan automatisch befüllen</p>
+        <span class="ct-badge">Bald verfügbar</span>
+      </div>
+    </div>
+    <div class="nc ct-card">
+      <span class="nic">🔍</span>
+      <div>
+        <h4><span class="ac">SEO-Analyse</span></h4>
+        <p>Keyword-Potenziale sofort erkennen</p>
+        <span class="ct-badge">Bald verfügbar</span>
+      </div>
+    </div>
+    <div class="nc ct-card">
+      <span class="nic">⚡</span>
+      <div>
+        <h4><span class="ac">Automation-Check</span></h4>
+        <p>Welche Prozesse sich automatisieren lassen</p>
+        <span class="ct-badge">Bald verfügbar</span>
+      </div>
+    </div>
+    <div class="nc ct-card">
+      <span class="nic">💬</span>
+      <div>
+        <h4><span class="ac">Copywriting-Tool</span></h4>
+        <p>Texte für Ads, E-Mails und Landingpages</p>
+        <span class="ct-badge">Bald verfügbar</span>
+      </div>
+    </div>
+    <div class="nc ct-card">
+      <span class="nic">🎯</span>
+      <div>
+        <h4><span class="ac">Zielgruppen-Finder</span></h4>
+        <p>Deine Zielgruppe präzise definieren</p>
+        <span class="ct-badge">Bald verfügbar</span>
+      </div>
+    </div>
+    <div class="nc ct-card">
+      <span class="nic">📩</span>
+      <div>
+        <h4><span class="ac">E-Mail-Sequenz-Builder</span></h4>
+        <p>Automatische Follow-up-Ketten erstellen</p>
+        <span class="ct-badge">Bald verfügbar</span>
+      </div>
+    </div>
   </div>
 </section>
 
