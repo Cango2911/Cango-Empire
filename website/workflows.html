@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Marketplace | CanGo App Empire</title>
+    <meta name="description" content="100+ getestete n8n Workflows. Kauf sie einzeln oder kombiniere sie zu deiner Content-Maschine.">
+    <link rel="stylesheet" href="cango-empire-v4-monopoly.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .workflows-page {
+            padding-top: 100px;
+        }
+        .workflow-hero {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .workflow-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-bright), var(--accent-power));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .workflow-hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+        .workflow-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        .workflow-stat {
+            text-align: center;
+        }
+        .workflow-stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-power);
+            display: block;
+        }
+        .workflow-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .workflow-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .workflow-category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .workflow-category-card:hover {
+            border-color: var(--accent-power);
+            box-shadow: var(--glow-orange);
+            transform: translateY(-5px);
+        }
+        .workflow-category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .workflow-category-card p {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+        .workflow-category-count {
+            display: inline-block;
+            background: var(--accent-power);
+            color: var(--text-bright);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .workflows-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .workflow-product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .workflow-product-card:hover {
+            border-color: var(--accent-power);
+            box-shadow: var(--glow-orange);
+            transform: translateY(-5px);
+        }
+        .workflow-product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-power);
+            color: var(--text-bright);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .workflow-product-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+        .workflow-product-description {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .workflow-product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .workflow-product-features li {
+            padding: 0.5rem 0;
+            color: var(--text-dim);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .workflow-product-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-power);
+            font-weight: 700;
+        }
+        .workflow-product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .workflow-product-price {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-power);
+            line-height: 1.4;
+        }
+        .workflow-product-price-usd {
+            display: block;
+            font-size: 1.8rem;
+        }
+        .workflow-product-price-eur {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+        .workflow-product-cta {
+            background: var(--accent-power);
+            color: var(--text-bright);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: var(--glow-orange);
+        }
+        .workflow-product-cta:hover {
+            box-shadow: 0 0 40px rgba(255, 153, 0, 0.6);
+            transform: scale(1.05);
+        }
+        .workflow-filter-section {
+            margin: 3rem 0;
+        }
+        .workflow-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .workflow-filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .workflow-filter-btn:hover,
+        .workflow-filter-btn.active {
+            border-color: var(--accent-power);
+            color: var(--accent-power);
+            box-shadow: var(--glow-orange);
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-power);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .back-link:hover {
+            color: var(--text-bright);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-aggressive" role="navigation">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="cango-empire-v4-monopoly.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                    <span class="brand-logo">⚡</span>
+                    <span class="brand-name">CANGO EMPIRE</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="cango-empire-v4-monopoly.html#home">EMPIRE</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#maschine">MASCHINE</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#territorien">TERRITORIEN</a></li>
+                <li><a href="workflows.html">WORKFLOWS</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#arsenal">ARSENAL</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#intel">INTEL</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#zugang" class="nav-cta">JETZT ODER NIE</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Workflows Page -->
+    <div class="workflows-page">
+        <div class="container">
+            <a href="cango-empire-v4-monopoly.html#territorien" class="back-link">← Zurück zu Territorien</a>
+            
+            <div class="workflow-hero">
+                <h1>WORKFLOW MARKETPLACE</h1>
+                <p>100+ getestete Automatisierungen. Kauf sie einzeln oder kombiniere sie zu deiner Content-Maschine.</p>
+                <div class="workflow-stats" id="workflowStats">
+                    <!-- Wird via JavaScript geladen -->
+                </div>
+            </div>
+
+            <div class="workflow-filter-section">
+                <div class="workflow-filters" id="workflowFilters">
+                    <!-- Wird via JavaScript geladen -->
+                </div>
+            </div>
+
+            <div class="workflows-grid" id="workflowsGrid">
+                <!-- Wird via JavaScript geladen -->
+            </div>
+        </div>
+    </div>
+
+    <script src="cango-empire-v4-monopoly.js"></script>
+    <script>
+        // Load workflow data
+        async function loadWorkflows() {
+            try {
+                const response = await fetch('cango-empire-v4-monopoly-data.json');
+                const data = await response.json();
+                
+                if (data.pages && data.pages.workflows) {
+                    const workflows = data.pages.workflows;
+                    
+                    // Render stats
+                    renderStats(workflows.hero.stats);
+                    
+                    // Render filters
+                    renderFilters(workflows.categories);
+                    
+                    // Render workflows
+                    renderWorkflows(workflows.products);
+                    
+                    // Setup filter functionality
+                    setupWorkflowFilters(workflows.products);
+                }
+            } catch (error) {
+                console.error('Error loading workflows:', error);
+            }
+        }
+        
+        function renderStats(stats) {
+            const statsContainer = document.getElementById('workflowStats');
+            if (!statsContainer) return;
+            
+            statsContainer.innerHTML = stats.map(stat => `
+                <div class="workflow-stat">
+                    <span class="workflow-stat-value">${stat.value}</span>
+                    <span class="workflow-stat-label">${stat.label}</span>
+                </div>
+            `).join('');
+        }
+        
+        function renderFilters(categories) {
+            const filtersContainer = document.getElementById('workflowFilters');
+            if (!filtersContainer) return;
+            
+            filtersContainer.innerHTML = `
+                <button class="workflow-filter-btn active" data-filter="all">ALLE</button>
+                ${categories.map(cat => `
+                    <button class="workflow-filter-btn" data-filter="${cat.id}">${cat.name.toUpperCase()}</button>
+                `).join('')}
+            `;
+        }
+        
+        function renderWorkflows(workflows, filter = 'all') {
+            const grid = document.getElementById('workflowsGrid');
+            if (!grid) return;
+            
+            let filteredWorkflows = workflows;
+            if (filter !== 'all') {
+                filteredWorkflows = workflows.filter(w => w.category === filter);
+            }
+            
+            grid.innerHTML = filteredWorkflows.map(workflow => `
+                <div class="workflow-product-card" data-category="${workflow.category}">
+                    <div class="workflow-product-badge">${workflow.badge}</div>
+                    <h3 class="workflow-product-name">${workflow.name}</h3>
+                    <p class="workflow-product-description">${workflow.description}</p>
+                    <ul class="workflow-product-features">
+                        ${workflow.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                    <div class="workflow-product-footer">
+                        <div class="workflow-product-price">
+                            <span class="workflow-product-price-usd">$${workflow.price_usd.toLocaleString()}</span>
+                            <span class="workflow-product-price-eur">€${workflow.price_eur.toLocaleString()}</span>
+                        </div>
+                        <a href="#kontakt" class="workflow-product-cta">KAUFEN</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function setupWorkflowFilters(workflows) {
+            const filterButtons = document.querySelectorAll('.workflow-filter-btn');
+            const workflowCards = document.querySelectorAll('.workflow-product-card');
+            
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active state
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter workflows
+                    const filter = this.getAttribute('data-filter');
+                    renderWorkflows(workflows, filter);
+                });
+            });
+        }
+        
+        // Load on page load
+        document.addEventListener('DOMContentLoaded', loadWorkflows);
+    </script>
+</body>
+</html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Marketplace | CanGo App Empire</title>
+    <meta name="description" content="100+ getestete n8n Workflows. Kauf sie einzeln oder kombiniere sie zu deiner Content-Maschine.">
+    <link rel="stylesheet" href="cango-empire-v4-monopoly.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .workflows-page {
+            padding-top: 100px;
+        }
+        .workflow-hero {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .workflow-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-bright), var(--accent-power));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .workflow-hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+        .workflow-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        .workflow-stat {
+            text-align: center;
+        }
+        .workflow-stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-power);
+            display: block;
+        }
+        .workflow-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .workflow-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .workflow-category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .workflow-category-card:hover {
+            border-color: var(--accent-power);
+            box-shadow: var(--glow-orange);
+            transform: translateY(-5px);
+        }
+        .workflow-category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .workflow-category-card p {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+        .workflow-category-count {
+            display: inline-block;
+            background: var(--accent-power);
+            color: var(--text-bright);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .workflows-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .workflow-product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .workflow-product-card:hover {
+            border-color: var(--accent-power);
+            box-shadow: var(--glow-orange);
+            transform: translateY(-5px);
+        }
+        .workflow-product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent-power);
+            color: var(--text-bright);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .workflow-product-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            margin-top: 0.5rem;
+        }
+        .workflow-product-description {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .workflow-product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .workflow-product-features li {
+            padding: 0.5rem 0;
+            color: var(--text-dim);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .workflow-product-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-power);
+            font-weight: 700;
+        }
+        .workflow-product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .workflow-product-price {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-power);
+            line-height: 1.4;
+        }
+        .workflow-product-price-usd {
+            display: block;
+            font-size: 1.8rem;
+        }
+        .workflow-product-price-eur {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+        .workflow-product-cta {
+            background: var(--accent-power);
+            color: var(--text-bright);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: var(--glow-orange);
+        }
+        .workflow-product-cta:hover {
+            box-shadow: 0 0 40px rgba(255, 153, 0, 0.6);
+            transform: scale(1.05);
+        }
+        .workflow-filter-section {
+            margin: 3rem 0;
+        }
+        .workflow-filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .workflow-filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .workflow-filter-btn:hover,
+        .workflow-filter-btn.active {
+            border-color: var(--accent-power);
+            color: var(--accent-power);
+            box-shadow: var(--glow-orange);
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-power);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .back-link:hover {
+            color: var(--text-bright);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-aggressive" role="navigation">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="cango-empire-v4-monopoly.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                    <span class="brand-logo">⚡</span>
+                    <span class="brand-name">CANGO EMPIRE</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="cango-empire-v4-monopoly.html#home">EMPIRE</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#maschine">MASCHINE</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#territorien">TERRITORIEN</a></li>
+                <li><a href="workflows.html">WORKFLOWS</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#arsenal">ARSENAL</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#intel">INTEL</a></li>
+                <li><a href="cango-empire-v4-monopoly.html#zugang" class="nav-cta">JETZT ODER NIE</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Workflows Page -->
+    <div class="workflows-page">
+        <div class="container">
+            <a href="cango-empire-v4-monopoly.html#territorien" class="back-link">← Zurück zu Territorien</a>
+            
+            <div class="workflow-hero">
+                <h1>WORKFLOW MARKETPLACE</h1>
+                <p>100+ getestete Automatisierungen. Kauf sie einzeln oder kombiniere sie zu deiner Content-Maschine.</p>
+                <div class="workflow-stats" id="workflowStats">
+                    <!-- Wird via JavaScript geladen -->
+                </div>
+            </div>
+
+            <div class="workflow-filter-section">
+                <div class="workflow-filters" id="workflowFilters">
+                    <!-- Wird via JavaScript geladen -->
+                </div>
+            </div>
+
+            <div class="workflows-grid" id="workflowsGrid">
+                <!-- Wird via JavaScript geladen -->
+            </div>
+        </div>
+    </div>
+
+    <script src="cango-empire-v4-monopoly.js"></script>
+    <script>
+        // Load workflow data
+        async function loadWorkflows() {
+            try {
+                const response = await fetch('cango-empire-v4-monopoly-data.json');
+                const data = await response.json();
+                
+                if (data.pages && data.pages.workflows) {
+                    const workflows = data.pages.workflows;
+                    
+                    // Render stats
+                    renderStats(workflows.hero.stats);
+                    
+                    // Render filters
+                    renderFilters(workflows.categories);
+                    
+                    // Render workflows
+                    renderWorkflows(workflows.products);
+                    
+                    // Setup filter functionality
+                    setupWorkflowFilters(workflows.products);
+                }
+            } catch (error) {
+                console.error('Error loading workflows:', error);
+            }
+        }
+        
+        function renderStats(stats) {
+            const statsContainer = document.getElementById('workflowStats');
+            if (!statsContainer) return;
+            
+            statsContainer.innerHTML = stats.map(stat => `
+                <div class="workflow-stat">
+                    <span class="workflow-stat-value">${stat.value}</span>
+                    <span class="workflow-stat-label">${stat.label}</span>
+                </div>
+            `).join('');
+        }
+        
+        function renderFilters(categories) {
+            const filtersContainer = document.getElementById('workflowFilters');
+            if (!filtersContainer) return;
+            
+            filtersContainer.innerHTML = `
+                <button class="workflow-filter-btn active" data-filter="all">ALLE</button>
+                ${categories.map(cat => `
+                    <button class="workflow-filter-btn" data-filter="${cat.id}">${cat.name.toUpperCase()}</button>
+                `).join('')}
+            `;
+        }
+        
+        function renderWorkflows(workflows, filter = 'all') {
+            const grid = document.getElementById('workflowsGrid');
+            if (!grid) return;
+            
+            let filteredWorkflows = workflows;
+            if (filter !== 'all') {
+                filteredWorkflows = workflows.filter(w => w.category === filter);
+            }
+            
+            grid.innerHTML = filteredWorkflows.map(workflow => `
+                <div class="workflow-product-card" data-category="${workflow.category}">
+                    <div class="workflow-product-badge">${workflow.badge}</div>
+                    <h3 class="workflow-product-name">${workflow.name}</h3>
+                    <p class="workflow-product-description">${workflow.description}</p>
+                    <ul class="workflow-product-features">
+                        ${workflow.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                    <div class="workflow-product-footer">
+                        <div class="workflow-product-price">
+                            <span class="workflow-product-price-usd">$${workflow.price_usd.toLocaleString()}</span>
+                            <span class="workflow-product-price-eur">€${workflow.price_eur.toLocaleString()}</span>
+                        </div>
+                        <a href="#kontakt" class="workflow-product-cta">KAUFEN</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function setupWorkflowFilters(workflows) {
+            const filterButtons = document.querySelectorAll('.workflow-filter-btn');
+            const workflowCards = document.querySelectorAll('.workflow-product-card');
+            
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active state
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter workflows
+                    const filter = this.getAttribute('data-filter');
+                    renderWorkflows(workflows, filter);
+                });
+            });
+        }
+        
+        // Load on page load
+        document.addEventListener('DOMContentLoaded', loadWorkflows);
+    </script>
+</body>
+</html>
+

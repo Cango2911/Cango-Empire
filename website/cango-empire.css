@@ -1,0 +1,668 @@
+/* CanGo App Empire - Modern SaaS Light Design */
+/* Stripe / Apple Business Aesthetic */
+
+:root {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F8FAFC;
+    --bg-tertiary: #F1F5F9;
+    
+    --text-primary: #1A1F2C;
+    --text-secondary: #64748B;
+    --text-tertiary: #94A3B8;
+    
+    --accent-primary: #0F172A;
+    --accent-trust: #0EA5E9;
+    --accent-growth: #10B981;
+    --accent-wealth: #1E40AF;
+    --accent-realestate: #D97706;
+    --accent-career: #1E293B;
+    --accent-energy: #059669;
+    
+    --border-color: #E2E8F0;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Navigation */
+.main-nav {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--text-primary);
+}
+
+.brand-logo {
+    font-size: 24px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+    color: var(--text-primary);
+}
+
+.nav-cta {
+    color: var(--accent-trust) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 120px 0 80px;
+    background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+}
+
+.hero-section .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.trust-badges {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 6px 16px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.hero-headline {
+    font-family: 'Poppins', sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+.hero-subline {
+    font-size: 20px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1.5px solid var(--border-color);
+}
+
+.btn-outline:hover {
+    border-color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+.btn-text {
+    background: transparent;
+    color: var(--accent-trust);
+    padding: 14px 0;
+}
+
+.btn-text:hover {
+    color: var(--accent-primary);
+}
+
+/* Dashboard Preview */
+.dashboard-preview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.dashboard-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-title {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.card-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Value Section */
+.value-section {
+    padding: 100px 0;
+    background: var(--bg-primary);
+}
+
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 64px;
+}
+
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+}
+
+.section-description {
+    font-size: 18px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.pillar-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+}
+
+.pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.pillar-icon {
+    font-size: 48px;
+    margin-bottom: 24px;
+}
+
+.pillar-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.pillar-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Sectors Section */
+.sectors-section {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+}
+
+.sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.sector-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+}
+
+.sector-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.sector-wealth {
+    border-top: 4px solid var(--accent-wealth);
+}
+
+.sector-realestate {
+    border-top: 4px solid var(--accent-realestate);
+}
+
+.sector-career {
+    border-top: 4px solid var(--accent-career);
+}
+
+.sector-energy {
+    border-top: 4px solid var(--accent-energy);
+}
+
+.sector-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.sector-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.sector-partner {
+    font-size: 15px;
+    color: var(--accent-trust);
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.sector-promise {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.sector-metric {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Technology Section */
+.tech-section {
+    padding: 100px 0;
+    background: var(--bg-primary);
+}
+
+.tech-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-bottom: 64px;
+}
+
+.tech-highlight {
+    text-align: center;
+}
+
+.tech-number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--accent-trust);
+    margin-bottom: 12px;
+}
+
+.tech-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.tech-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+}
+
+.partner-logos {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+    padding: 48px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.logo-item {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+}
+
+/* Pricing Section */
+.pricing-section {
+    padding: 100px 0;
+    background: var(--bg-secondary);
+}
+
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: 48px 40px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.pricing-popular {
+    border: 2px solid var(--accent-trust);
+    box-shadow: var(--shadow-md);
+}
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-trust);
+    color: white;
+    padding: 6px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.pricing-header {
+    margin-bottom: 24px;
+}
+
+.pricing-header h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.pricing-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.pricing-price span {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.pricing-target {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+}
+
+.pricing-features {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.pricing-features li {
+    padding: 12px 0;
+    font-size: 16px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+/* Social Proof */
+.social-proof-section {
+    padding: 100px 0;
+    background: var(--bg-primary);
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.partner-logo-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 32px 24px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.partner-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.partner-category {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* Footer */
+.main-footer {
+    background: var(--accent-primary);
+    color: white;
+    padding: 64px 0 32px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+}
+
+.footer-brand .brand-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.brand-slogan {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.footer-contact {
+    font-size: 14px;
+    opacity: 0.8;
+    line-height: 1.8;
+}
+
+.contact-email {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .hero-section .container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    
+    .hero-headline {
+        font-size: 42px;
+    }
+    
+    .pillars-grid,
+    .sectors-grid,
+    .pricing-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-highlights {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-menu {
+        gap: 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-headline {
+        font-size: 32px;
+    }
+    
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .partners-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

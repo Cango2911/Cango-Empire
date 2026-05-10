@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workflow Details | Self Made Empire - CanGo App Empire</title>
+  <meta name="description" content="Erfahre, wie unsere Automation-Workflows dein Business revolutionieren.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gray-950: #030712;
+      --gray-900: #111827;
+      --gray-800: #1F2937;
+      --gray-700: #374151;
+      --gray-400: #9CA3AF;
+      --gray-50: #F9FAFB;
+      --primary-500: #F97316;
+      --primary-600: #EA580C;
+      --primary-400: #FB923C;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.563rem;
+      --text-3xl: 1.953rem;
+      --text-4xl: 2.441rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --radius-lg: 12px;
+      --nav-height: 64px;
+      --container-max: 1200px;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: var(--text-base);
+      line-height: 1.7;
+      color: var(--gray-50);
+      background: var(--gray-950);
+    }
+
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+      z-index: 100;
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--gray-50);
+    }
+
+    .nav__back {
+      color: var(--gray-400);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      transition: color 0.2s;
+    }
+
+    .nav__back:hover {
+      color: var(--primary-500);
+    }
+
+    .hero {
+      padding-top: calc(var(--nav-height) + var(--space-16));
+      padding-bottom: var(--space-12);
+      text-align: center;
+      border-bottom: 1px solid var(--gray-800);
+      margin-bottom: var(--space-16);
+    }
+
+    .hero__title {
+      font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+      font-weight: 700;
+      margin-bottom: var(--space-6);
+      background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__subtitle {
+      font-size: var(--text-xl);
+      color: var(--gray-400);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-bottom: var(--space-16);
+    }
+
+    .story-section {
+      margin-bottom: var(--space-12);
+      padding: var(--space-8);
+      background: rgba(249, 115, 22, 0.05);
+      border-left: 4px solid var(--primary-500);
+      border-radius: var(--radius-lg);
+    }
+
+    .story-section h2 {
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      margin-bottom: var(--space-6);
+      color: var(--gray-50);
+    }
+
+    .story-section p {
+      font-size: var(--text-lg);
+      color: var(--gray-400);
+      margin-bottom: var(--space-4);
+      line-height: 1.8;
+    }
+
+    .benefits-list {
+      margin: var(--space-8) 0;
+    }
+
+    .benefits-list h3 {
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      margin-bottom: var(--space-6);
+      color: var(--primary-500);
+    }
+
+    .benefits-list ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .benefits-list li {
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius-lg);
+      border-left: 3px solid var(--primary-500);
+      font-size: var(--text-lg);
+    }
+
+    .cta-box {
+      margin-top: var(--space-16);
+      padding: var(--space-8);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(220, 38, 38, 0.05));
+      border: 2px solid rgba(249, 115, 22, 0.3);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .cta-box h3 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-4);
+      color: var(--gray-50);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: var(--space-4) var(--space-8);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: white;
+      text-decoration: none;
+      font-size: var(--text-lg);
+      font-weight: 600;
+      border-radius: var(--radius-lg);
+      transition: all 0.3s;
+      margin-top: var(--space-4);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(249, 115, 22, 0.4);
+    }
+
+    @media (max-width: 640px) {
+      .nav__inner {
+        flex-direction: column;
+        gap: var(--space-2);
+        padding: var(--space-2) var(--space-4);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="selfmade-empire.html" class="nav__brand">
+        <span>←</span>
+        <span>Zurück zu Self Made Empire</span>
+      </a>
+      <a href="cango-empire-v4-monopoly.html" class="nav__back">CanGo App Empire</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero__title" id="workflow-title">Workflow Details</h1>
+      <p class="hero__subtitle" id="workflow-subtitle">Erfahre, wie dieser Workflow dein Business revolutioniert</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="content container">
+    <div class="story-section" id="workflow-content">
+      <h2>Die Geschichte dahinter</h2>
+      <p>Wähle einen Workflow aus der Übersicht, um die Details zu sehen.</p>
+    </div>
+  </section>
+
+  <script>
+    // Workflow-Datenbank
+    const workflows = {
+      'daily-seo-blog-generator': {
+        title: 'Daily SEO-Blog Generator',
+        subtitle: 'Täglich automatisch SEO-optimierte Blog-Artikel generieren',
+        story: {
+          title: 'Von der Idee zum veröffentlichten Artikel – in Minuten statt Stunden',
+          content: `
+            <p>Stell dir vor: Jeden Morgen wachst du auf und hast bereits einen frischen, SEO-optimierten Blog-Artikel in deinem CMS. Ohne dass du einen Finger gerührt hast. Ohne Stunden vor dem leeren Dokument. Ohne Recherche-Stress.</p>
+            
+            <p>Unser <strong>Daily SEO-Blog Generator</strong> macht genau das. Er analysiert aktuelle Trends in deiner Nische, findet die heißesten Keywords, recherchiert automatisch die neuesten Informationen und generiert einen vollständigen, SEO-optimierten Artikel – der so gut ist, dass Google ihn liebt.</p>
+            
+            <p>Wir haben diesen Workflow für uns selbst entwickelt, weil wir morgens keine Zeit für Content-Creation haben. Jetzt produzieren wir täglich Premium-Content, während wir schlafen. Und du kannst das auch.</p>
+          `
+        },
+        benefits: [
+          'Täglich ein neuer SEO-optimierter Artikel, automatisch',
+          'Spare 10-15 Stunden pro Woche an Content-Erstellung',
+          'Google liebt regelmäßige, hochwertige Updates',
+          'Höhere Rankings durch konsistentes Publishing',
+          'Automatische Keyword-Integration und On-Page SEO'
+        ]
+      },
+      'video-script-generator': {
+        title: 'Video Script Generator',
+        subtitle: 'Professionelle Video-Scripts in Sekunden generieren',
+        story: {
+          title: 'Von der Keyword-Idee zum fertigen Video-Script',
+          content: `
+            <p>Du hast eine großartige Video-Idee, aber keine Ahnung, wie du das Script schreiben sollst? Du sitzt vor dem leeren Blatt und weißt nicht, wie du anfangen sollst?</p>
+            
+            <p>Unser <strong>Video Script Generator</strong> nimmt dir diese Last ab. Gib einfach dein Haupt-Keyword oder deine Video-Idee ein, und er erstellt ein vollständiges, strukturiertes Script mit Hook, Hauptinhalt, Call-to-Action – alles, was ein erfolgreiches Video braucht.</p>
+            
+            <p>Basierend auf den erfolgreichsten Videos in deiner Nische lernt der Workflow, was funktioniert, und baut genau das in dein Script ein. Das Ergebnis? Videos, die mehr Views, mehr Engagement und mehr Conversions bringen.</p>
+          `
+        },
+        benefits: [
+          'Professionelle Video-Scripts in unter 2 Minuten',
+          'Erfolgsbewährte Struktur aus Top-Performern',
+          'Automatische Hook-Erstellung für maximale Retention',
+          'SEO-optimiert für YouTube & Co.',
+          'Skalierbar auf hunderte Videos pro Monat'
+        ]
+      },
+      'keyword-research': {
+        title: 'Keyword Research Automation',
+        subtitle: 'Finde die profitabelsten Keywords automatisch',
+        story: {
+          title: 'Die Keywords, die dich an die Spitze bringen',
+          content: `
+            <p>Wie findest du die Keywords, die wirklich Traffic und Leads bringen? Die, die deine Konkurrenz noch nicht entdeckt hat? Die, die perfekt zu deinem Angebot passen?</p>
+            
+            <p>Unser <strong>Keyword Research Workflow</strong> tut genau das – automatisch, täglich, ohne dass du es merkst. Er durchkämmt Google Trends, analysiert deine Konkurrenz, findet Long-Tail-Opportunities und präsentiert dir jeden Tag die heißesten Keywords in deiner Nische.</p>
+            
+            <p>Wir nutzen diesen Workflow seit Monaten und haben dadurch hunderte neue Ranking-Positionen gewonnen. Keywords, die wir sonst nie gefunden hätten. Keywords, die jetzt jeden Tag Traffic bringen.</p>
+          `
+        },
+        benefits: [
+          'Tägliche Keyword-Opportunities automatisch gefunden',
+          'Long-Tail-Keywords mit niedrigem Competition',
+          'Konkurrenz-Analyse inklusive',
+          'Priorisierung nach Traffic-Potenzial',
+          'Direkt integriert in deine Content-Strategie'
+        ]
+      }
+    };
+
+    // URL Parameter lesen
+    const urlParams = new URLSearchParams(window.location.search);
+    const workflowId = urlParams.get('workflow');
+    const workflow = workflows[workflowId];
+
+    if (workflow) {
+      // Titel und Subtitle aktualisieren
+      document.getElementById('workflow-title').textContent = workflow.title;
+      document.getElementById('workflow-subtitle').textContent = workflow.subtitle;
+
+      // Content aktualisieren
+      const contentDiv = document.getElementById('workflow-content');
+      contentDiv.innerHTML = `
+        <h2>${workflow.story.title}</h2>
+        ${workflow.story.content}
+      `;
+
+      // Benefits hinzufügen
+      const benefitsHtml = `
+        <div class="benefits-list">
+          <h3>Was du damit erreichen kannst:</h3>
+          <ul>
+            ${workflow.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="cta-box">
+          <h3>Bereit, dein Business zu automatisieren?</h3>
+          <p>Dieser Workflow ist Teil des Self Made Empire Pakets mit allen 33 Workflows.</p>
+          <a href="selfmade-empire.html" class="btn">Jetzt Self Made Empire anfragen</a>
+        </div>
+      `;
+      contentDiv.insertAdjacentHTML('afterend', benefitsHtml);
+    } else {
+      // Fallback für unbekannte Workflows
+      document.getElementById('workflow-content').innerHTML = `
+        <h2>Workflow wird geladen...</h2>
+        <p>Die Details zu diesem Workflow werden hier angezeigt. Bitte wähle einen Workflow aus der <a href="selfmade-empire.html" style="color: var(--primary-500);">Übersicht</a>.</p>
+      `;
+    }
+  </script>
+</body>
+</html>
+
+
+
+

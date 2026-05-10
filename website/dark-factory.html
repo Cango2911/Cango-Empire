@@ -1,0 +1,2465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CanGo Automation Empire | Deutsche Content Infrastruktur | Vollautomatisierte Medienproduktion</title>
+    <meta name="description" content="SKALIERUNG DURCH AUTOMATISIERUNG. Wir ersetzen manuelle Redaktionen durch intelligente Server-Cluster. 7 kontrollierte Märkte. 30 Enterprise-Tools. 19 n8n Workflows. Zero OpEx durch Lifetime Assets.">
+    <meta name="keywords" content="Content Automation, n8n Workflows, KI-Content, Automatisierung, Deutsche Agentur, Media Production, Content Marketing, AI Tools">
+    <meta name="author" content="CanGo Automation Empire">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="German">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cango-automation-empire.com/">
+    <meta property="og:title" content="CanGo Automation Empire | Deutsche Content Infrastruktur">
+    <meta property="og:description" content="Vollautomatisierte Medienproduktion durch 19 n8n Workflows. 7 kontrollierte Märkte. 30 Enterprise-Tools. Zero OpEx.">
+    <meta property="og:image" content="https://cango-automation-empire.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cango-automation-empire.com/">
+    <meta property="twitter:title" content="CanGo Automation Empire | Deutsche Content Infrastruktur">
+    <meta property="twitter:description" content="Vollautomatisierte Medienproduktion durch 19 n8n Workflows. 7 kontrollierte Märkte. 30 Enterprise-Tools.">
+    <meta property="twitter:image" content="https://cango-automation-empire.com/og-image.jpg">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "CanGo Automation Empire",
+      "url": "https://cango-automation-empire.com",
+      "logo": "https://cango-automation-empire.com/logo.png",
+      "description": "Vollautomatisierte Medienproduktion durch intelligente Server-Cluster",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "an der Legde 9",
+        "addressLocality": "Wathlingen",
+        "postalCode": "29339",
+        "addressCountry": "DE"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "cangoshop24@gmail.com",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/cango-automation-empire",
+        "https://twitter.com/cangoempire"
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="dark-factory.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
+    
+    <!-- Affiliate Link Tracking -->
+    <script>
+      // Track alle Affiliate-Link Klicks
+      document.addEventListener('DOMContentLoaded', function() {
+        const affiliateLinks = document.querySelectorAll('[data-affiliate], .req-action-link, .card-cta, .partner-tag');
+        affiliateLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            const affiliateId = this.dataset.affiliate || this.textContent.trim();
+            const url = this.href;
+            
+            // Google Analytics Event
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'affiliate_click', {
+                'affiliate_id': affiliateId,
+                'link_url': url,
+                'link_text': this.textContent.trim()
+              });
+            }
+            
+            // Console Log für Debugging
+            console.log('Affiliate Click:', { affiliateId, url });
+          });
+        });
+      });
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="dark-nav" role="navigation" aria-label="Hauptnavigation">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="brand-logo">⚡</span>
+                <span class="brand-name">CANGO AUTOMATION EMPIRE</span>
+                <span class="brand-tagline">DEUTSCHE CONTENT INFRASTRUKTUR</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#daily-news">Daily Feed</a></li>
+                <li><a href="#upgrade-area">CanGo Picks</a></li>
+                <li><a href="#tech-stack">Infrastruktur</a></li>
+                <li><a href="#sector-dominance">Kontrollierte Märkte</a></li>
+                <li><a href="#why-partner">Warum Partner?</a></li>
+                <li><a href="#partner-ecosystem">Partner-Ökosystem</a></li>
+                <li><a href="#franchise">Niche Nodes (B2C)</a></li>
+                <li><a href="#enterprise">Enterprise (B2B)</a></li>
+                <li><a href="#about">Über Uns</a></li>
+                <li><a href="#compliance">Compliance</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Top Status Bar (Bloomberg Terminal Style) -->
+    <div class="status-bar">
+        <div class="status-bar-content">
+            <span class="status-indicator">
+                <span class="status-dot operational"></span>
+                SYSTEM STATUS: OPERATIONAL
+            </span>
+            <span class="status-divider">|</span>
+            <span class="status-item">SERVER: FRA-01 (Hostinger VPS)</span>
+            <span class="status-divider">|</span>
+            <span class="status-item">UPTIME: 99.99%</span>
+            <span class="status-divider">|</span>
+            <span class="status-item">ACTIVE NODES: 19</span>
+            <span class="status-divider">|</span>
+            <span class="status-item">WORKFLOWS: 100+ nutzbar</span>
+            <span class="status-divider">|</span>
+            <span class="status-item trust-badge">COMPLIANCE: DIN-77230 READY</span>
+        </div>
+    </div>
+
+    <!-- Hero Section (Bloomberg Terminal Style) -->
+    <section class="dark-hero terminal-hero">
+        <div class="container">
+            <div class="hero-content terminal-layout">
+                <!-- Left: Headline & Subline -->
+                <div class="hero-text-section">
+                    <h1 class="hero-headline terminal-headline">
+                        INDUSTRIALISIERUNG DER<br>
+                        <span class="gradient-text">WERTSCHÖPFUNG</span>
+                    </h1>
+                    <p class="hero-subheadline terminal-subheadline">
+                        Wir ersetzen manuelle Redaktionen durch autonome Server-Cluster. CanGo App Empire entkoppelt Wachstum von Zeit. Wir orchestrieren 30 High-End KI-Modelle in 19 Master-Prozessen, um 7 High-CPM Märkte vollautomatisch zu dominieren.
+                    </p>
+                </div>
+
+                <!-- Right: Data Terminal Window -->
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control-dot red"></span>
+                            <span class="control-dot yellow"></span>
+                            <span class="control-dot green"></span>
+                        </div>
+                        <span class="terminal-title">CANGO_CORE_V2.exe</span>
+                    </div>
+                    <div class="terminal-body" id="terminalOutput">
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">></span>
+                            <span class="terminal-command">INITIALIZING CANGO_CORE_V2...</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">></span>
+                            <span class="terminal-command">LOADING PARTNER PROTOCOLS...</span>
+                        </div>
+                        <div class="terminal-line success">
+                            <span class="terminal-prompt">[+]</span>
+                            <span class="terminal-text">FINANCE_NODE (MyVi/Mitnorm)</span>
+                            <span class="terminal-status">..... CONNECTED</span>
+                            <span class="terminal-data">(380 Insurers)</span>
+                        </div>
+                        <div class="terminal-line success">
+                            <span class="terminal-prompt">[+]</span>
+                            <span class="terminal-text">ENERGY_NODE (EnergyFinance)</span>
+                            <span class="terminal-status">..... CONNECTED</span>
+                            <span class="terminal-data">(65 Providers)</span>
+                        </div>
+                        <div class="terminal-line success">
+                            <span class="terminal-prompt">[+]</span>
+                            <span class="terminal-text">REAL_ESTATE (Domicil Group)</span>
+                            <span class="terminal-status">..... CONNECTED</span>
+                            <span class="terminal-data">(High-Ticket)</span>
+                        </div>
+                        <div class="terminal-line success">
+                            <span class="terminal-prompt">[+]</span>
+                            <span class="terminal-text">HR_RECRUITING (JobPortal)</span>
+                            <span class="terminal-status">..... CONNECTED</span>
+                            <span class="terminal-data">(800 Corps)</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">></span>
+                            <span class="terminal-command">SYSTEM CHECK:</span>
+                        </div>
+                        <div class="terminal-line success">
+                            <span class="terminal-prompt">[√]</span>
+                            <span class="terminal-text">GDPR SHIELD</span>
+                            <span class="terminal-status">..................... ACTIVE</span>
+                        </div>
+                        <div class="terminal-line success">
+                            <span class="terminal-prompt">[√]</span>
+                            <span class="terminal-text">KATTEB FACT-CHECK</span>
+                            <span class="terminal-status">............... VERIFIED</span>
+                        </div>
+                        <div class="terminal-line success">
+                            <span class="terminal-prompt">[√]</span>
+                            <span class="terminal-text">PYTHON RENDER ENGINE</span>
+                            <span class="terminal-status">............ READY</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">></span>
+                            <span class="terminal-command blinking">WAITING FOR INPUT...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Commands (Command-Line Style Buttons) -->
+            <div class="hero-cta terminal-cta">
+                <a href="#enterprise" class="btn-terminal btn-primary-terminal">
+                    [ B2B: DEPLOY INFRASTRUCTURE ]
+                </a>
+                <a href="#franchise" class="btn-terminal btn-secondary-terminal">
+                    [ B2C: INITIALIZE NICHE NODE ]
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Ticker (Laufschrift) -->
+    <div class="trust-ticker">
+        <div class="ticker-content">
+            <span class="ticker-label">+++ LIVE MARKETS:</span>
+            <span class="ticker-item">VERSICHERUNG (380 TARIFE)</span>
+            <span class="ticker-divider">+++</span>
+            <span class="ticker-item">ENERGIE (65 ANBIETER)</span>
+            <span class="ticker-divider">+++</span>
+            <span class="ticker-item">IMMOBILIEN (DOMICIL GROUP)</span>
+            <span class="ticker-divider">+++</span>
+            <span class="ticker-item">KARRIERE (800 UNTERNEHMEN)</span>
+            <span class="ticker-divider">+++</span>
+            <span class="ticker-item">KRYPTO (BINANCE API)</span>
+            <span class="ticker-divider">+++</span>
+            <span class="ticker-item">EDUCATION (GRSTI)</span>
+            <span class="ticker-divider">+++</span>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">HOW IT WORKS: DIE 30-KI-ORCHESTRIERUNG</h2>
+                <p class="section-subtitle">
+                    Wie 30 High-End KI-Modelle nahtlos in 19 Master-Prozessen zusammenspielen, um vollautomatisch Wert zu schaffen.
+                </p>
+            </div>
+
+            <div class="orchestration-diagram">
+                <!-- Layer 1: Input Layer -->
+                <div class="orchestration-layer input-layer">
+                    <h3 class="layer-title">LAYER 1: INTELLIGENCE INPUT</h3>
+                    <div class="layer-description">
+                        <p>7 spezialisierte KI-Cores sammeln und verarbeiten Daten in Echtzeit:</p>
+                    </div>
+                    <div class="ki-cores-grid">
+                        <div class="ki-core-card">
+                            <div class="core-icon">🔍</div>
+                            <h4>Perplexity Pro</h4>
+                            <p>Real-Time Research</p>
+                            <span class="core-status">ACTIVE</span>
+                        </div>
+                        <div class="ki-core-card">
+                            <div class="core-icon">🧠</div>
+                            <h4>Claude 3.5</h4>
+                            <p>Logic & Analysis</p>
+                            <span class="core-status">ACTIVE</span>
+                        </div>
+                        <div class="ki-core-card">
+                            <div class="core-icon">⚡</div>
+                            <h4>GPT-4</h4>
+                            <p>Content Generation</p>
+                            <span class="core-status">ACTIVE</span>
+                        </div>
+                        <div class="ki-core-card">
+                            <div class="core-icon">✅</div>
+                            <h4>Katteb</h4>
+                            <p>Fact-Checking</p>
+                            <span class="core-status owned">OWNED</span>
+                        </div>
+                        <div class="ki-core-card">
+                            <div class="core-icon">📊</div>
+                            <h4>Surfer SEO</h4>
+                            <p>Ranking Analysis</p>
+                            <span class="core-status owned">OWNED</span>
+                        </div>
+                        <div class="ki-core-card">
+                            <div class="core-icon">💾</div>
+                            <h4>ZEP Memory</h4>
+                            <p>Long-term Context</p>
+                            <span class="core-status">ACTIVE</span>
+                        </div>
+                        <div class="ki-core-card">
+                            <div class="core-icon">🌐</div>
+                            <h4>Gemini</h4>
+                            <p>Multi-Modal Research</p>
+                            <span class="core-status">ACTIVE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connection Arrow -->
+                <div class="connection-arrow">
+                    <div class="arrow-line"></div>
+                    <div class="arrow-head">↓</div>
+                    <div class="arrow-label">19 MASTER-WORKFLOWS</div>
+                </div>
+
+                <!-- Layer 2: Processing Layer -->
+                <div class="orchestration-layer processing-layer">
+                    <h3 class="layer-title">LAYER 2: MASTER-PROZESS-ORCHESTRIERUNG</h3>
+                    <div class="layer-description">
+                        <p>19 autonome Workflows orchestrieren die KI-Cores nach definierten Logik-Pfaden:</p>
+                    </div>
+                    <div class="workflow-clusters">
+                        <div class="workflow-cluster">
+                            <h4>Research Cluster (3 Workflows)</h4>
+                            <ul>
+                                <li>Global News Scraper</li>
+                                <li>Niche Intelligence Engine</li>
+                                <li>Competitor Analysis Bot</li>
+                            </ul>
+                        </div>
+                        <div class="workflow-cluster">
+                            <h4>Content Cluster (5 Workflows)</h4>
+                            <ul>
+                                <li>Neural Script Writer</li>
+                                <li>Video Assembly Pipeline</li>
+                                <li>SEO-Optimization Engine</li>
+                                <li>Multi-Format Generator</li>
+                                <li>Quality Assurance Bot</li>
+                            </ul>
+                        </div>
+                        <div class="workflow-cluster">
+                            <h4>Distribution Cluster (4 Workflows)</h4>
+                            <ul>
+                                <li>Omni-Channel Distributor</li>
+                                <li>Viral Hook Optimizer</li>
+                                <li>Platform-Specific Adapter</li>
+                                <li>Performance Tracker</li>
+                            </ul>
+                        </div>
+                        <div class="workflow-cluster">
+                            <h4>Monetization Cluster (4 Workflows)</h4>
+                            <ul>
+                                <li>Lead Qualification Engine</li>
+                                <li>Partner API Integrator</li>
+                                <li>Affiliate Link Manager</li>
+                                <li>Revenue Attribution Tracker</li>
+                            </ul>
+                        </div>
+                        <div class="workflow-cluster">
+                            <h4>Infrastructure Cluster (3 Workflows)</h4>
+                            <ul>
+                                <li>Master-Master-Orchestrator</li>
+                                <li>System Health Monitor</li>
+                                <li>Auto-Scaling Controller</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connection Arrow -->
+                <div class="connection-arrow">
+                    <div class="arrow-line"></div>
+                    <div class="arrow-head">↓</div>
+                    <div class="arrow-label">7 HIGH-CPM MÄRKTE</div>
+                </div>
+
+                <!-- Layer 3: Output Layer -->
+                <div class="orchestration-layer output-layer">
+                    <h3 class="layer-title">LAYER 3: MARKT-DOMINANZ</h3>
+                    <div class="layer-description">
+                        <p>Jeder Workflow speist automatisch in die Vertriebskanäle unserer 500+ Partner ein:</p>
+                    </div>
+                    <div class="market-outputs">
+                        <div class="market-output-card">
+                            <div class="market-icon">💰</div>
+                            <h4>Finanzen</h4>
+                            <p>→ myNORM (500+ Versicherer)</p>
+                            <p>→ Mitnorm (DIN 77230)</p>
+                        </div>
+                        <div class="market-output-card">
+                            <div class="market-icon">⚡</div>
+                            <h4>Energie</h4>
+                            <p>→ EnergyFinance (65 Anbieter)</p>
+                        </div>
+                        <div class="market-output-card">
+                            <div class="market-icon">🏠</div>
+                            <h4>Immobilien</h4>
+                            <p>→ Domicil Group (High-Ticket)</p>
+                        </div>
+                        <div class="market-output-card">
+                            <div class="market-icon">💼</div>
+                            <h4>Karriere</h4>
+                            <p>→ JobPortal (800 Unternehmen)</p>
+                        </div>
+                        <div class="market-output-card">
+                            <div class="market-icon">₿</div>
+                            <h4>Krypto</h4>
+                            <p>→ Binance API (Real-Time)</p>
+                        </div>
+                        <div class="market-output-card">
+                            <div class="market-icon">🤖</div>
+                            <h4>KI</h4>
+                            <p>→ Tech-Content Distribution</p>
+                        </div>
+                        <div class="market-output-card">
+                            <div class="market-icon">🧠</div>
+                            <h4>Mindset</h4>
+                            <p>→ GRSTI (E-Learning)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Box -->
+                <div class="result-box">
+                    <h3 class="result-title">ERGEBNIS: EXPONENTIELLE WERTSCHÖPFUNG</h3>
+                    <div class="result-metrics">
+                        <div class="result-metric">
+                            <span class="metric-value">3,400+</span>
+                            <span class="metric-label">Daily Assets</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-value">500+</span>
+                            <span class="metric-label">Partner Connected</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-value">0%</span>
+                            <span class="metric-label">Human Intervention</span>
+                        </div>
+                        <div class="result-metric">
+                            <span class="metric-value">∞</span>
+                            <span class="metric-label">Scalability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily News Feed Section (Google News Style) -->
+    <section id="daily-news" class="daily-news-section">
+        <div class="container">
+            <div class="news-header">
+                <h2 class="news-title">DAILY INTELLIGENCE FEED</h2>
+                <p class="news-subtitle">Automatisch generierte, nischen-relevante Beiträge aus unseren 7 kontrollierten Märkten</p>
+                <div class="news-badge">
+                    <span class="badge-icon">⚡</span>
+                    <span>Powered by 19 n8n Workflows | Live Updates</span>
+                </div>
+            </div>
+
+            <!-- News Filter Tabs -->
+            <div class="news-filter-tabs">
+                <button class="filter-tab active" data-niche="all">Alle Nischen</button>
+                <button class="filter-tab" data-niche="finanzen">💰 Finanzen</button>
+                <button class="filter-tab" data-niche="immobilien">🏠 Immobilien</button>
+                <button class="filter-tab" data-niche="krypto">₿ Krypto</button>
+                <button class="filter-tab" data-niche="energie">⚡ Energie</button>
+                <button class="filter-tab" data-niche="ki">🤖 KI</button>
+                <button class="filter-tab" data-niche="karriere">💼 Karriere</button>
+                <button class="filter-tab" data-niche="mindset">🧠 Mindset</button>
+            </div>
+
+            <!-- News Grid -->
+            <div class="news-grid" id="newsGrid" role="feed" aria-label="Tägliche Nachrichten aus kontrollierten Märkten">
+                <!-- Featured Article (Large) -->
+                <article class="news-card featured" data-niche="finanzen" role="article" aria-labelledby="news-headline-1">
+                    <div class="news-card-image">
+                        <div class="news-placeholder-image" aria-hidden="true">📊</div>
+                        <span class="news-category">Finanzen</span>
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-meta">
+                            <span class="news-time">Vor 2 Stunden</span>
+                            <span class="news-source">CanGo Intelligence</span>
+                        </div>
+                        <h3 class="news-headline" id="news-headline-1">
+                            <a href="#" aria-label="Artikel: Bitcoin erreicht neues Allzeithoch">Bitcoin erreicht neues Allzeithoch: Was bedeutet das für deutsche Anleger?</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Die Kryptowährung Bitcoin hat heute ein neues Allzeithoch erreicht. Unsere Analyse zeigt, welche Auswirkungen dies auf deutsche Anleger hat und welche Strategien jetzt sinnvoll sind.
+                        </p>
+                        <div class="news-tags">
+                            <span class="tag">Krypto</span>
+                            <span class="tag">Investment</span>
+                            <span class="tag">Deutschland</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Standard Articles -->
+                <article class="news-card" data-niche="immobilien">
+                    <div class="news-card-image">
+                        <div class="news-placeholder-image">🏠</div>
+                        <span class="news-category">Immobilien</span>
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-meta">
+                            <span class="news-time">Vor 4 Stunden</span>
+                            <span class="news-source">CanGo Intelligence</span>
+                        </div>
+                        <h3 class="news-headline">
+                            <a href="#">Immobilienmarkt 2024: Diese Regionen bieten noch Potenzial</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Eine detaillierte Analyse der deutschen Immobilienmärkte zeigt auf, wo Investoren noch Chancen finden.
+                        </p>
+                        <div class="news-tags">
+                            <span class="tag">Immobilien</span>
+                            <span class="tag">Investment</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card" data-niche="energie">
+                    <div class="news-card-image">
+                        <div class="news-placeholder-image">⚡</div>
+                        <span class="news-category">Energie</span>
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-meta">
+                            <span class="news-time">Vor 6 Stunden</span>
+                            <span class="news-source">CanGo Intelligence</span>
+                        </div>
+                        <h3 class="news-headline">
+                            <a href="#">Neue Förderungen für Solaranlagen: So profitieren Sie 2024</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Die Bundesregierung hat neue Förderprogramme für erneuerbare Energien angekündigt. Hier erfahren Sie, wie Sie davon profitieren.
+                        </p>
+                        <div class="news-tags">
+                            <span class="tag">Energie</span>
+                            <span class="tag">Solar</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card" data-niche="ki">
+                    <div class="news-card-image">
+                        <div class="news-placeholder-image">🤖</div>
+                        <span class="news-category">KI</span>
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-meta">
+                            <span class="news-time">Vor 8 Stunden</span>
+                            <span class="news-source">CanGo Intelligence</span>
+                        </div>
+                        <h3 class="news-headline">
+                            <a href="#">GPT-5 angekündigt: Was bedeutet das für deutsche Unternehmen?</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            OpenAI hat die nächste Generation ihrer KI-Modelle vorgestellt. Wir analysieren die Auswirkungen auf den deutschen Markt.
+                        </p>
+                        <div class="news-tags">
+                            <span class="tag">KI</span>
+                            <span class="tag">Technologie</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card" data-niche="karriere">
+                    <div class="news-card-image">
+                        <div class="news-placeholder-image">💼</div>
+                        <span class="news-category">Karriere</span>
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-meta">
+                            <span class="news-time">Vor 10 Stunden</span>
+                            <span class="news-source">CanGo Intelligence</span>
+                        </div>
+                        <h3 class="news-headline">
+                            <a href="#">Remote Work 2024: Diese Skills sind jetzt gefragt</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Der Arbeitsmarkt verändert sich rasant. Welche Fähigkeiten Sie jetzt entwickeln sollten, um wettbewerbsfähig zu bleiben.
+                        </p>
+                        <div class="news-tags">
+                            <span class="tag">Karriere</span>
+                            <span class="tag">Skills</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card" data-niche="mindset">
+                    <div class="news-card-image">
+                        <div class="news-placeholder-image">🧠</div>
+                        <span class="news-category">Mindset</span>
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-meta">
+                            <span class="news-time">Vor 12 Stunden</span>
+                            <span class="news-source">CanGo Intelligence</span>
+                        </div>
+                        <h3 class="news-headline">
+                            <a href="#">Produktivität steigern: Die 5 besten Methoden für 2024</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Wissenschaftlich belegte Strategien, um Ihre Produktivität zu maximieren und mehr in weniger Zeit zu erreichen.
+                        </p>
+                        <div class="news-tags">
+                            <span class="tag">Mindset</span>
+                            <span class="tag">Produktivität</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card" data-niche="finanzen">
+                    <div class="news-card-image">
+                        <div class="news-placeholder-image">💰</div>
+                        <span class="news-category">Finanzen</span>
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-meta">
+                            <span class="news-time">Vor 14 Stunden</span>
+                            <span class="news-source">CanGo Intelligence</span>
+                        </div>
+                        <h3 class="news-headline">
+                            <a href="#">Steueroptimierung 2024: Diese Änderungen sollten Sie kennen</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Neue Steuergesetze treten in Kraft. So optimieren Sie Ihre Steuerlast und nutzen alle verfügbaren Möglichkeiten.
+                        </p>
+                        <div class="news-tags">
+                            <span class="tag">Finanzen</span>
+                            <span class="tag">Steuern</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card" data-niche="krypto">
+                    <div class="news-card-image">
+                        <div class="news-placeholder-image">₿</div>
+                        <span class="news-category">Krypto</span>
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-meta">
+                            <span class="news-time">Vor 16 Stunden</span>
+                            <span class="news-source">CanGo Intelligence</span>
+                        </div>
+                        <h3 class="news-headline">
+                            <a href="#">Ethereum Update: Was ändert sich für deutsche Nutzer?</a>
+                        </h3>
+                        <p class="news-excerpt">
+                            Das neueste Ethereum-Update bringt wichtige Änderungen mit sich. Wir erklären, was das für deutsche Krypto-Nutzer bedeutet.
+                        </p>
+                        <div class="news-tags">
+                            <span class="tag">Krypto</span>
+                            <span class="tag">Ethereum</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="news-load-more">
+                <button class="btn btn-secondary" id="loadMoreNews">Mehr Artikel laden</button>
+                <p class="news-automation-note">
+                    <span class="automation-icon">⚙️</span>
+                    Diese Artikel werden automatisch von unseren 19 n8n Workflows generiert und aktualisiert.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deal Ticker (Laufschrift) -->
+    <div class="deal-ticker" id="dealTicker">
+        <div class="ticker-content">
+            <span class="ticker-label">⚡ AKTUELLER TOP-DEAL:</span>
+            <span class="ticker-deal">DepositPhotos Lifetime Deal für 39$ statt 500$ - Nur noch 24h verfügbar!</span>
+            <a href="#upgrade-area" class="ticker-link">Jetzt sichern →</a>
+        </div>
+    </div>
+
+    <!-- CanGo Upgrade Area / CanGo Picks -->
+    <section id="upgrade-area" class="upgrade-area-section">
+        <div class="container">
+            <div class="upgrade-header">
+                <h2 class="section-title">THE CANGO UPGRADE</h2>
+                <p class="upgrade-subtitle">
+                    Hier findest du die Werkzeuge, um dein Business effizienter und dein Leben vermögender zu machen.
+                </p>
+                <div class="upgrade-badge">
+                    <span class="badge-icon">🎯</span>
+                    <span>Automatisch kuratiert von unseren 19 n8n Workflows</span>
+                </div>
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="upgrade-category-tabs">
+                <button class="category-tab active" data-category="toolbox">
+                    <span class="tab-icon">🛠️</span>
+                    <span class="tab-label">Tool Box</span>
+                    <span class="tab-description">LTDs & Software</span>
+                </button>
+                <button class="category-tab" data-category="wealth">
+                    <span class="tab-icon">💰</span>
+                    <span class="tab-label">Wealth & Security</span>
+                    <span class="tab-description">Finanz-Partner</span>
+                </button>
+                <button class="category-tab" data-category="lifehack">
+                    <span class="tab-icon">⚡</span>
+                    <span class="tab-label">Life Hack</span>
+                    <span class="tab-description">Energie & Karriere</span>
+                </button>
+            </div>
+
+            <!-- Tool Box Category -->
+            <div class="upgrade-category active" id="category-toolbox">
+                <div class="category-header">
+                    <h3 class="category-title">🛠️ TOOL BOX</h3>
+                    <p class="category-description">
+                        Warum monatlich zahlen? Hol dir den Lifetime-Deal. Reviews zu AppSumo-Deals, VPN-Vergleiche, Best AI Tools 2025.
+                    </p>
+                </div>
+
+                <div class="upgrade-grid">
+                    <!-- Product Card 1: Kie.ai -->
+                    <div class="upgrade-card featured">
+                        <div class="card-badge">TESTSIEGER</div>
+                        <div class="card-image">
+                            <div class="card-placeholder">🎨</div>
+                            <div class="card-video-badge">▶️ Video Review</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">AI Tools</div>
+                            <h3 class="card-title">Kie.ai - High-End Rendering für Creators</h3>
+                            <p class="card-excerpt">
+                                Warum jeder CEO dieses 40€ Tool braucht. Professionelle Visuals in Sekunden statt Stunden.
+                            </p>
+                            <div class="card-comparison">
+                                <div class="comparison-item">
+                                    <span class="comparison-label">Normalpreis:</span>
+                                    <span class="comparison-value old">29€/Monat</span>
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-label">Lifetime Deal:</span>
+                                    <span class="comparison-value new">39€ einmalig</span>
+                                </div>
+                            </div>
+                            <div class="card-trust-badges">
+                                <span class="trust-badge">✓ Geprüft von CanGo AI</span>
+                                <span class="trust-badge">✓ Lifetime Offer</span>
+                            </div>
+                            <a href="#" class="btn btn-primary card-cta" data-affiliate="kie-ai">ZUM DEAL →</a>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2: Unmixr -->
+                    <div class="upgrade-card">
+                        <div class="card-badge">PREISTIPP</div>
+                        <div class="card-image">
+                            <div class="card-placeholder">🎤</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">Voice Synthesis</div>
+                            <h3 class="card-title">Unmixr - Professionelle Voice-Over</h3>
+                            <p class="card-excerpt">
+                                Erstelle Studio-Qualität Voice-Overs ohne Mikrofon. Perfekt für Videos und Podcasts.
+                            </p>
+                            <div class="card-comparison">
+                                <div class="comparison-item">
+                                    <span class="comparison-label">Normalpreis:</span>
+                                    <span class="comparison-value old">19€/Monat</span>
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-label">Lifetime Deal:</span>
+                                    <span class="comparison-value new">49€ einmalig</span>
+                                </div>
+                            </div>
+                            <div class="card-trust-badges">
+                                <span class="trust-badge">✓ Partner-Deal</span>
+                            </div>
+                            <a href="#" class="btn btn-primary card-cta" data-affiliate="unmixr">ZUM DEAL →</a>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3: DepositPhotos -->
+                    <div class="upgrade-card">
+                        <div class="card-badge">TOP DEAL</div>
+                        <div class="card-image">
+                            <div class="card-placeholder">📸</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">Stock Assets</div>
+                            <h3 class="card-title">DepositPhotos - 320M Assets Lifetime</h3>
+                            <p class="card-excerpt">
+                                320 Millionen Stock-Fotos, Videos und Grafiken. Einmal zahlen, für immer nutzen.
+                            </p>
+                            <div class="card-comparison">
+                                <div class="comparison-item">
+                                    <span class="comparison-label">Normalpreis:</span>
+                                    <span class="comparison-value old">500€/Jahr</span>
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-label">Lifetime Deal:</span>
+                                    <span class="comparison-value new">39€ einmalig</span>
+                                </div>
+                            </div>
+                            <div class="card-trust-badges">
+                                <span class="trust-badge">✓ OWNED ASSET</span>
+                                <span class="trust-badge">✓ 320M Assets</span>
+                            </div>
+                            <a href="#" class="btn btn-primary card-cta" data-affiliate="depositphotos">ZUM DEAL →</a>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4: VPN Comparison -->
+                    <div class="upgrade-card">
+                        <div class="card-image">
+                            <div class="card-placeholder">🔒</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">VPN Vergleich</div>
+                            <h3 class="card-title">Beste VPNs 2025: Vergleichstest</h3>
+                            <p class="card-excerpt">
+                                Wir haben 12 VPN-Anbieter getestet. Hier sind die Top 3 für deutsche Nutzer.
+                            </p>
+                            <div class="card-trust-badges">
+                                <span class="trust-badge">✓ Unabhängiger Test</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary card-cta">Zum Vergleich →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wealth & Security Category -->
+            <div class="upgrade-category" id="category-wealth" style="display: none;">
+                <div class="category-header">
+                    <h3 class="category-title">💰 WEALTH & SECURITY</h3>
+                    <p class="category-description">
+                        Die 5 Fehler bei der Zahnzusatzversicherung. Wie du Inflationssicher in Pflegeimmobilien investierst. Steuertricks für Selbstständige.
+                    </p>
+                </div>
+
+                <div class="upgrade-grid">
+                    <!-- Lead Card: Versicherungsvergleich -->
+                    <div class="upgrade-card lead-card">
+                        <div class="card-image">
+                            <div class="card-placeholder">🛡️</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">Versicherungen</div>
+                            <h3 class="card-title">Zahnzusatzversicherung: Die 5 häufigsten Fehler</h3>
+                            <p class="card-excerpt">
+                                Vermeide diese Fehler und spare Tausende. Unser Guide zeigt dir, worauf du achten musst.
+                            </p>
+                            <div class="card-partner">
+                                <span class="partner-label">Partner:</span>
+                                <span class="partner-name">myNORM, Mitnorm</span>
+                            </div>
+                            <form class="lead-form">
+                                <input type="email" placeholder="E-Mail für kostenlosen Vergleich" required>
+                                <button type="submit" class="btn btn-primary">Jetzt Vergleich anfordern</button>
+                            </form>
+                            <p class="lead-note">✓ Kostenlos ✓ Unverbindlich ✓ 500+ Versicherer</p>
+                        </div>
+                    </div>
+
+                    <!-- Lead Card: Immobilien -->
+                    <div class="upgrade-card lead-card featured">
+                        <div class="card-badge">HIGH TICKET</div>
+                        <div class="card-image">
+                            <div class="card-placeholder">🏠</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">Immobilien Investment</div>
+                            <h3 class="card-title">Pflegeimmobilien: Inflationssicher investieren</h3>
+                            <p class="card-excerpt">
+                                Wie du in Pflegeimmobilien investierst und dabei Provisionen im fünfstelligen Bereich erzielst.
+                            </p>
+                            <div class="card-partner">
+                                <span class="partner-label">Partner:</span>
+                                <span class="partner-name">Domicil Group</span>
+                            </div>
+                            <form class="lead-form">
+                                <input type="text" placeholder="Name" required>
+                                <input type="email" placeholder="E-Mail" required>
+                                <input type="tel" placeholder="Telefon (optional)">
+                                <button type="submit" class="btn btn-primary">Kostenlose Beratung anfordern</button>
+                            </form>
+                            <p class="lead-note">✓ Exklusiv für Investoren ✓ 5-stellige Provisionen möglich</p>
+                        </div>
+                    </div>
+
+                    <!-- Article Card: Steuertricks -->
+                    <div class="upgrade-card">
+                        <div class="card-image">
+                            <div class="card-placeholder">📊</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">Steueroptimierung</div>
+                            <h3 class="card-title">Steuertricks für Selbstständige 2024</h3>
+                            <p class="card-excerpt">
+                                Legal Steuern sparen: Die besten Strategien für Freelancer und Unternehmer.
+                            </p>
+                            <div class="card-trust-badges">
+                                <span class="trust-badge">✓ DSGVO-konform</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary card-cta">Artikel lesen →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Life Hack Category -->
+            <div class="upgrade-category" id="category-lifehack" style="display: none;">
+                <div class="category-header">
+                    <h3 class="category-title">⚡ LIFE HACK</h3>
+                    <p class="category-description">
+                        Strompreis-Bremse erklärt. Gehaltsverhandlung für Ingenieure. Jobwechsel leicht gemacht.
+                    </p>
+                </div>
+
+                <div class="upgrade-grid">
+                    <!-- Lead Card: Energie -->
+                    <div class="upgrade-card lead-card">
+                        <div class="card-image">
+                            <div class="card-placeholder">⚡</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">Energie</div>
+                            <h3 class="card-title">Strompreis-Bremse 2024: So profitierst du</h3>
+                            <p class="card-excerpt">
+                                Die neue Strompreis-Bremse erklärt. Vergleiche jetzt und wechsle zu einem günstigeren Anbieter.
+                            </p>
+                            <div class="card-partner">
+                                <span class="partner-label">Partner:</span>
+                                <span class="partner-name">EnergyFinance</span>
+                            </div>
+                            <div class="card-comparison">
+                                <div class="comparison-item">
+                                    <span class="comparison-label">Durchschnitt:</span>
+                                    <span class="comparison-value old">0,35€/kWh</span>
+                                </div>
+                                <div class="comparison-item">
+                                    <span class="comparison-label">Bester Deal:</span>
+                                    <span class="comparison-value new">0,28€/kWh</span>
+                                </div>
+                            </div>
+                            <form class="lead-form">
+                                <input type="email" placeholder="E-Mail für kostenlosen Vergleich" required>
+                                <button type="submit" class="btn btn-primary">Jetzt vergleichen</button>
+                            </form>
+                            <p class="lead-note">✓ 65 Energieversorger ✓ Provision pro Wechsel</p>
+                        </div>
+                    </div>
+
+                    <!-- Article Card: Karriere -->
+                    <div class="upgrade-card">
+                        <div class="card-image">
+                            <div class="card-placeholder">💼</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">Karriere</div>
+                            <h3 class="card-title">Gehaltsverhandlung für Ingenieure: Der Guide</h3>
+                            <p class="card-excerpt">
+                                Wie du 20% mehr Gehalt verhandelst. Strategien, die wirklich funktionieren.
+                            </p>
+                            <div class="card-trust-badges">
+                                <span class="trust-badge">✓ 800+ Unternehmen</span>
+                            </div>
+                            <a href="#" class="btn btn-secondary card-cta">Artikel lesen →</a>
+                        </div>
+                    </div>
+
+                    <!-- Lead Card: Jobwechsel -->
+                    <div class="upgrade-card lead-card">
+                        <div class="card-image">
+                            <div class="card-placeholder">🚀</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-category">Jobwechsel</div>
+                            <h3 class="card-title">Jobwechsel leicht gemacht: Automatisches Matching</h3>
+                            <p class="card-excerpt">
+                                Unsere Algorithmen matchen dich automatisch mit passenden Stellen. Keine Bewerbung mehr schreiben.
+                            </p>
+                            <div class="card-partner">
+                                <span class="partner-label">Partner:</span>
+                                <span class="partner-name">Das Karriere Institut, Wir Personalberater</span>
+                            </div>
+                            <form class="lead-form">
+                                <input type="text" placeholder="Name" required>
+                                <input type="email" placeholder="E-Mail" required>
+                                <input type="text" placeholder="Branche" required>
+                                <button type="submit" class="btn btn-primary">Jetzt matchen lassen</button>
+                            </form>
+                            <p class="lead-note">✓ Automatisches Matching ✓ Provision pro Vermittlung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation Note -->
+            <div class="automation-note">
+                <p>
+                    <span class="automation-icon">⚙️</span>
+                    Alle Artikel, Deals und Vergleiche werden automatisch von unseren 19 n8n Workflows generiert und aktualisiert. 
+                    Wenn ein neuer Deal erscheint, ist unser Review + Video 10 Minuten später online.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Initialization Protocol Section -->
+    <section id="requirements" class="requirements-section">
+        <div class="container">
+            <h2 class="section-title">SYSTEM INITIALIZATION PROTOCOL (BYOK)</h2>
+            <p class="section-subtitle">
+                Achtung: Um eine Node zu aktivieren, sind valide API-Schlüssel erforderlich. Dies ist eine technische Notwendigkeit.
+            </p>
+            <div class="byok-notice">
+                <div class="byok-icon">🔑</div>
+                <div class="byok-content">
+                    <h3>Bring Your Own Key (BYOK) Protocol</h3>
+                    <p>System-Initialisierung: API-Key-Integration erforderlich. Technische Voraussetzung, keine Verkaufsabsicht.</p>
+                </div>
+            </div>
+
+            <!-- System Requirements Modules -->
+            <div class="requirements-modules">
+                <!-- Module 1: Core Infrastructure -->
+                <div class="requirement-module">
+                    <div class="module-header">
+                        <h3>🔴 CORE INFRASTRUCTURE</h3>
+                        <span class="module-status">Systemstopp ohne diese Komponenten</span>
+                    </div>
+                    <div class="requirement-checklist">
+                        <div class="checklist-item" data-requirement="n8n">
+                            <div class="status-indicator red">🔴</div>
+                            <div class="item-content">
+                                <h4>n8n (Self-Hosted)</h4>
+                                <p>Workflow Orchestration Platform</p>
+                                <a href="#" class="req-action-link" data-affiliate="n8n">Setup Guide →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item" data-requirement="hostinger">
+                            <div class="status-indicator red">🔴</div>
+                            <div class="item-content">
+                                <h4>Hostinger VPS</h4>
+                                <p>Server-Infrastruktur (Europa)</p>
+                                <a href="#" class="req-action-link" data-affiliate="hostinger">VPS Erwerben →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item" data-requirement="sheets">
+                            <div class="status-indicator red">🔴</div>
+                            <div class="item-content">
+                                <h4>Google Sheets (OAuth)</h4>
+                                <p>Data Logging & Management</p>
+                                <a href="#" class="req-action-link">OAuth Setup →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2: AI Intelligence Layer -->
+                <div class="requirement-module">
+                    <div class="module-header">
+                        <h3>🔴 AI INTELLIGENCE LAYER</h3>
+                        <span class="module-status">Erforderlich für Content-Generation</span>
+                    </div>
+                    <div class="requirement-checklist">
+                        <div class="checklist-item" data-requirement="openai">
+                            <div class="status-indicator red">🔴</div>
+                            <div class="item-content">
+                                <h4>OpenAI GPT-4</h4>
+                                <p>API Key erforderlich</p>
+                                <a href="#" class="req-action-link" data-affiliate="openai">API Key Erwerben →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item" data-requirement="claude">
+                            <div class="status-indicator red">🔴</div>
+                            <div class="item-content">
+                                <h4>Claude 3.5 (Anthropic)</h4>
+                                <p>API Key erforderlich</p>
+                                <a href="#" class="req-action-link" data-affiliate="claude">API Key Erwerben →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item" data-requirement="perplexity">
+                            <div class="status-indicator red">🔴</div>
+                            <div class="item-content">
+                                <h4>Perplexity Pro</h4>
+                                <p>Premium Account erforderlich</p>
+                                <a href="#" class="req-action-link" data-affiliate="perplexity">Premium Erwerben →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item" data-requirement="gemini">
+                            <div class="status-indicator red">🔴</div>
+                            <div class="item-content">
+                                <h4>Gemini (Google)</h4>
+                                <p>API Key erforderlich</p>
+                                <a href="#" class="req-action-link" data-affiliate="gemini">API Key Erwerben →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 3: Niche-Specific Requirements -->
+                <div class="requirement-module">
+                    <div class="module-header">
+                        <h3>🟡 NICHE-SPEZIFISCHE ANFORDERUNGEN</h3>
+                        <span class="module-status">Abhängig von gewählter Nische</span>
+                    </div>
+                    
+                    <!-- Crypto Niche -->
+                    <div class="niche-requirements" data-niche="crypto">
+                        <h4>Krypto Nische - Market Access</h4>
+                        <div class="requirement-checklist">
+                            <div class="checklist-item" data-requirement="binance">
+                                <div class="status-indicator red">🔴</div>
+                                <div class="item-content">
+                                    <h4>Binance / ByBit</h4>
+                                    <p>Verified Account für API-Datenanbindung erforderlich</p>
+                                    <a href="#" class="req-action-link" data-affiliate="binance">Account Erstellen →</a>
+                                </div>
+                            </div>
+                            <div class="checklist-item" data-requirement="coinbase">
+                                <div class="status-indicator yellow">🟡</div>
+                                <div class="item-content">
+                                    <h4>Coinbase (Optional)</h4>
+                                    <p>Zusätzliche Datenquelle</p>
+                                    <a href="#" class="req-action-link" data-affiliate="coinbase">Account Erstellen →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Real Estate Niche -->
+                    <div class="niche-requirements" data-niche="immobilien">
+                        <h4>Immobilien Nische - Visual Engine</h4>
+                        <div class="requirement-checklist">
+                            <div class="checklist-item" data-requirement="mootion">
+                                <div class="status-indicator red">🔴</div>
+                                <div class="item-content">
+                                    <h4>Mootion</h4>
+                                    <p>3D-Rendering für Exposé-Videos erforderlich</p>
+                                    <a href="#" class="req-action-link" data-affiliate="mootion">Lizenz Erwerben →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Finance Niche -->
+                    <div class="niche-requirements" data-niche="finanzen">
+                        <h4>Finanzen/Versicherung Nische - SEO Authority</h4>
+                        <div class="requirement-checklist">
+                            <div class="checklist-item" data-requirement="surfer">
+                                <div class="status-indicator red">🔴</div>
+                                <div class="item-content">
+                                    <h4>Surfer SEO</h4>
+                                    <p>Ranking-Garantie für regulierte Märkte</p>
+                                    <a href="#" class="req-action-link" data-affiliate="surfer">AppSumo Deal →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 4: Media Synthesis Core -->
+                <div class="requirement-module">
+                    <div class="module-header">
+                        <h3>🟡 MEDIA SYNTHESIS CORE</h3>
+                        <span class="module-status">Empfohlen für maximale Qualität</span>
+                    </div>
+                    <div class="requirement-checklist">
+                        <div class="checklist-item" data-requirement="opus">
+                            <div class="status-indicator red">🔴</div>
+                            <div class="item-content">
+                                <h4>Opus Clip Pro</h4>
+                                <p>Pro Plan (API Access) erforderlich</p>
+                                <a href="#" class="req-action-link" data-affiliate="opus">Lizenz Erwerben →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item" data-requirement="depositphotos">
+                            <div class="status-indicator red">🔴</div>
+                            <div class="item-content">
+                                <h4>DepositPhotos</h4>
+                                <p>320M Assets - API Access erforderlich</p>
+                                <a href="#" class="req-action-link" data-affiliate="depositphotos">AppSumo Deal →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item" data-requirement="kie">
+                            <div class="status-indicator yellow">🟡</div>
+                            <div class="item-content">
+                                <h4>Kie AI (Priority)</h4>
+                                <p>Premium Content Quality (Score 8.5+)</p>
+                                <a href="#" class="req-action-link" data-affiliate="kie">AppSumo Deal →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item" data-requirement="elevenlabs">
+                            <div class="status-indicator yellow">🟡</div>
+                            <div class="item-content">
+                                <h4>ElevenLabs / Unmixr</h4>
+                                <p>Creator Plan für Voice-Synthesis</p>
+                                <a href="#" class="req-action-link" data-affiliate="elevenlabs">Lizenz Erwerben →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 5: AppSumo Lifetime Deals -->
+                <div class="requirement-module">
+                    <div class="module-header">
+                        <h3>🟢 APPSUMO LIFETIME DEALS (LIMITED TIME)</h3>
+                        <span class="module-status">Reduzieren Sie Ihre OpEx durch Lifetime-Lizenzen</span>
+                    </div>
+                    <div class="appsumo-notice">
+                        <p><strong>Wichtig:</strong> Diese Deals sind zeitlich begrenzt. Sichern Sie sich diese Lizenzen, bevor sie weg sind. Das senkt Ihre laufenden Kosten erheblich.</p>
+                    </div>
+                    <div class="requirement-checklist">
+                        <div class="checklist-item appsumo-deal" data-requirement="depositphotos-ltd">
+                            <div class="status-indicator green">🟢</div>
+                            <div class="item-content">
+                                <h4>DepositPhotos Lifetime</h4>
+                                <p>320M Assets - Lifetime Access</p>
+                                <span class="deal-status">Deal verfügbar</span>
+                                <a href="#" class="req-action-link" data-affiliate="depositphotos-appsumo">AppSumo Deal Prüfen →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item appsumo-deal" data-requirement="neuron-ltd">
+                            <div class="status-indicator green">🟢</div>
+                            <div class="item-content">
+                                <h4>Neuron Writer Lifetime</h4>
+                                <p>SEO Content Optimizer</p>
+                                <span class="deal-status">Deal verfügbar</span>
+                                <a href="#" class="req-action-link" data-affiliate="neuron-appsumo">AppSumo Deal Prüfen →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item appsumo-deal" data-requirement="surfer-ltd">
+                            <div class="status-indicator green">🟢</div>
+                            <div class="item-content">
+                                <h4>Surfer SEO Lifetime</h4>
+                                <p>AI SEO Tool</p>
+                                <span class="deal-status">Deal verfügbar</span>
+                                <a href="#" class="req-action-link" data-affiliate="surfer-appsumo">AppSumo Deal Prüfen →</a>
+                            </div>
+                        </div>
+                        <div class="checklist-item appsumo-deal expired" data-requirement="jasper-ltd">
+                            <div class="status-indicator gray">⚪</div>
+                            <div class="item-content">
+                                <h4>Jasper AI</h4>
+                                <p>Content Creation</p>
+                                <span class="deal-status expired">Deal abgelaufen - Standard-Lizenz erforderlich</span>
+                                <a href="#" class="req-action-link" data-affiliate="jasper">Industrie-Standard-Lizenz →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Status Overview -->
+            <div class="system-status-overview">
+                <h3>SYSTEM STATUS</h3>
+                <div class="status-summary">
+                    <div class="status-item">
+                        <span class="status-label">Erforderliche Komponenten:</span>
+                        <span class="status-value" id="required-count">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Aktiviert:</span>
+                        <span class="status-value green" id="activated-count">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Ausstehend:</span>
+                        <span class="status-value red" id="pending-count">0</span>
+                    </div>
+                </div>
+                <div class="status-message" id="status-message">
+                    <p>🔴 <strong>Systemstopp:</strong> Bitte erwerben Sie die erforderlichen Lizenzen, um Ihre Node zu aktivieren.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 30-Core Intelligence Grid -->
+    <section id="ecosystem" class="ecosystem-section">
+        <div class="container">
+            <h2 class="section-title">THE 30-CORE INTELLIGENCE GRID</h2>
+            <p class="section-subtitle">
+                CanGo App Empire basiert auf einem verifizierten Ökosystem. Unsere Partner sind die Besten ihrer Klasse.
+            </p>
+
+            <!-- Cluster 1: Neural Intelligence -->
+            <div class="cluster" data-cluster="neural">
+                <div class="cluster-header">
+                    <div class="cluster-number">1</div>
+                    <div class="cluster-info">
+                        <h3>CLUSTER 1: NEURAL INTELLIGENCE</h3>
+                        <p>Logic & Decision Making</p>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-node" data-tool="OpenAI GPT-4">
+                        <div class="tool-icon">🧠</div>
+                        <h4>OpenAI GPT-4</h4>
+                        <span class="tool-role">Generative Core</span>
+                        <a href="#" class="tool-link" data-affiliate="openai">Get API Key →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Claude">
+                        <div class="tool-icon">⚡</div>
+                        <h4>Claude 3.5 Sonnet</h4>
+                        <span class="tool-role">Code & Logic</span>
+                        <a href="#" class="tool-link" data-affiliate="claude">Get API Key →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Jasper AI">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">📝</div>
+                        <h4>Jasper AI</h4>
+                        <span class="tool-role">Marketing Specialist</span>
+                        <a href="#" class="tool-link" data-affiliate="jasper">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Gemini">
+                        <div class="tool-icon">🔍</div>
+                        <h4>Gemini</h4>
+                        <span class="tool-role">Research & Data</span>
+                        <a href="#" class="tool-link" data-affiliate="gemini">Get API Key →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Perplexity">
+                        <div class="tool-icon">📊</div>
+                        <h4>Perplexity Pro</h4>
+                        <span class="tool-role">Real-Time Data</span>
+                        <a href="#" class="tool-link" data-affiliate="perplexity">Get Premium →</a>
+                    </div>
+                    <div class="tool-node" data-tool="ZEP Memory">
+                        <div class="tool-icon">💾</div>
+                        <h4>ZEP Memory</h4>
+                        <span class="tool-role">Long-term Context</span>
+                        <a href="#" class="tool-link" data-affiliate="zep">Get API Key →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Katteb">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">✅</div>
+                        <h4>Katteb</h4>
+                        <span class="tool-role">Fact-Checking Shield</span>
+                        <a href="#" class="tool-link" data-affiliate="katteb">Lifetime Owned →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cluster 2: Media Synthesis -->
+            <div class="cluster" data-cluster="media">
+                <div class="cluster-header">
+                    <div class="cluster-number">2</div>
+                    <div class="cluster-info">
+                        <h3>CLUSTER 2: MEDIA SYNTHESIS</h3>
+                        <p>Visual & Audio Production</p>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-node owned-asset priority" data-tool="DepositPhotos">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-badge-priority">⭐ 320M</div>
+                        <div class="tool-icon">📸</div>
+                        <h4>DepositPhotos</h4>
+                        <span class="tool-role">320M Asset Library</span>
+                        <a href="#" class="tool-link" data-affiliate="depositphotos">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Kie AI">
+                        <div class="tool-icon">🎯</div>
+                        <h4>Kie.ai</h4>
+                        <span class="tool-role">High-End Rendering</span>
+                        <a href="#" class="tool-link" data-affiliate="kie">AppSumo Deal →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Opus Clip">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">✂️</div>
+                        <h4>Opus Clip</h4>
+                        <span class="tool-role">Viral Assembly</span>
+                        <a href="#" class="tool-link" data-affiliate="opus">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Unmixr">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">🎤</div>
+                        <h4>Unmixr</h4>
+                        <span class="tool-role">Voice Synthesis</span>
+                        <a href="#" class="tool-link" data-affiliate="unmixr">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Pictory">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">🎬</div>
+                        <h4>Pictory</h4>
+                        <span class="tool-role">Video Gen</span>
+                        <a href="#" class="tool-link" data-affiliate="pictory">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Canva Pro">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">🎨</div>
+                        <h4>Canva Pro</h4>
+                        <span class="tool-role">Design Automation</span>
+                        <a href="#" class="tool-link" data-affiliate="canva">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Mootion">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">🎬</div>
+                        <h4>Mootion</h4>
+                        <span class="tool-role">3D/Motion Gen</span>
+                        <a href="#" class="tool-link" data-affiliate="mootion">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Runway Gen-3">
+                        <div class="tool-icon">🎬</div>
+                        <h4>Runway Gen-3 Alpha</h4>
+                        <span class="tool-role">High-End Video Generation</span>
+                        <a href="#" class="tool-link" data-affiliate="runway">Get Access →</a>
+                    </div>
+                    <div class="tool-node waitlist" data-tool="OpenAI Sora">
+                        <div class="tool-badge-waitlist">WAITLIST</div>
+                        <div class="tool-icon">⏳</div>
+                        <h4>OpenAI Sora</h4>
+                        <span class="tool-role">Future Video Core</span>
+                        <a href="#" class="tool-link" data-affiliate="sora">Waitlist →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Luma Dream Machine">
+                        <div class="tool-icon">🎥</div>
+                        <h4>Luma Dream Machine</h4>
+                        <span class="tool-role">Alternative Video AI</span>
+                        <a href="#" class="tool-link" data-affiliate="luma">Get Access →</a>
+                    </div>
+                    <div class="tool-node" data-tool="HeyGen">
+                        <div class="tool-icon">👤</div>
+                        <h4>HeyGen</h4>
+                        <span class="tool-role">Avatar Synthesis</span>
+                        <a href="#" class="tool-link" data-affiliate="heygen">Get API Key →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Nano Banana">
+                        <div class="tool-icon">🖼️</div>
+                        <h4>Nano Banana</h4>
+                        <span class="tool-role">Image Gen</span>
+                        <a href="#" class="tool-link" data-affiliate="nanobanana">Get API Key →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Capcut">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">🎨</div>
+                        <h4>Capcut</h4>
+                        <span class="tool-role">Post-Production</span>
+                        <a href="#" class="tool-link" data-affiliate="capcut">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="vpiler">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">⚙️</div>
+                        <h4>vpiler</h4>
+                        <span class="tool-role">Processing</span>
+                        <a href="#" class="tool-link" data-affiliate="vpiler">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Canva Captions">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">📝</div>
+                        <h4>Canva Captions AI</h4>
+                        <span class="tool-role">Subtitles</span>
+                        <a href="#" class="tool-link" data-affiliate="canva">Lifetime Owned →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cluster 3: Infrastructure -->
+            <div class="cluster" data-cluster="infrastructure">
+                <div class="cluster-header">
+                    <div class="cluster-number">3</div>
+                    <div class="cluster-info">
+                        <h3>CLUSTER 3: HARDWARE & DATA</h3>
+                        <p>Processing & Storage</p>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-node core" data-tool="n8n">
+                        <div class="tool-badge-core">CORE</div>
+                        <div class="tool-icon">🔗</div>
+                        <h4>n8n</h4>
+                        <span class="tool-role">Orchestrator</span>
+                        <a href="#" class="tool-link" data-affiliate="n8n">Self-Host →</a>
+                    </div>
+                    <div class="tool-node core" data-tool="Hostinger">
+                        <div class="tool-badge-core">CORE</div>
+                        <div class="tool-icon">🖥️</div>
+                        <h4>Hostinger VPS</h4>
+                        <span class="tool-role">The Server</span>
+                        <a href="#" class="tool-link" data-affiliate="hostinger">Get VPS →</a>
+                    </div>
+                    <div class="tool-node" data-tool="NoCodeBackend">
+                        <div class="tool-icon">🔌</div>
+                        <h4>NoCodeBackend</h4>
+                        <span class="tool-role">API Gateway</span>
+                        <a href="#" class="tool-link" data-affiliate="nocode">Get API Key →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Supabase">
+                        <div class="tool-icon">🗄️</div>
+                        <h4>Supabase</h4>
+                        <span class="tool-role">PostgreSQL DB</span>
+                        <a href="#" class="tool-link" data-affiliate="supabase">Get API Key →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Pinecone">
+                        <div class="tool-icon">🔍</div>
+                        <h4>Pinecone</h4>
+                        <span class="tool-role">Vector DB</span>
+                        <a href="#" class="tool-link" data-affiliate="pinecone">Get API Key →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Google Sheets">
+                        <div class="tool-icon">📊</div>
+                        <h4>Google Sheets</h4>
+                        <span class="tool-role">Data Logging</span>
+                        <a href="#" class="tool-link" data-affiliate="sheets">OAuth Setup →</a>
+                    </div>
+                    <div class="tool-node" data-tool="BrowserAct">
+                        <div class="tool-icon">🌐</div>
+                        <h4>BrowserAct</h4>
+                        <span class="tool-role">Web Agent</span>
+                        <a href="#" class="tool-link" data-affiliate="browseract">n8n Node →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Firecrawl">
+                        <div class="tool-icon">🕷️</div>
+                        <h4>Firecrawl</h4>
+                        <span class="tool-role">Deep Scraping</span>
+                        <a href="#" class="tool-link" data-affiliate="firecrawl">Get API Key →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Apify">
+                        <div class="tool-icon">🤖</div>
+                        <h4>Apify</h4>
+                        <span class="tool-role">Web Scraper</span>
+                        <a href="#" class="tool-link" data-affiliate="apify">Get API Key →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cluster 4: Distribution -->
+            <div class="cluster" data-cluster="distribution">
+                <div class="cluster-header">
+                    <div class="cluster-number">4</div>
+                    <div class="cluster-info">
+                        <h3>CLUSTER 4: GROWTH & SEO</h3>
+                        <p>Ranking & Viral Reach</p>
+                    </div>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-node owned-asset" data-tool="Surfer SEO">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">📊</div>
+                        <h4>Surfer SEO</h4>
+                        <span class="tool-role">Semantic Ranking</span>
+                        <a href="#" class="tool-link" data-affiliate="surfer">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Neuron Writer">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">📈</div>
+                        <h4>Neuron Writer</h4>
+                        <span class="tool-role">Competitor Analysis</span>
+                        <a href="#" class="tool-link" data-affiliate="neuron">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Yapper">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">🚀</div>
+                        <h4>Yapper</h4>
+                        <span class="tool-role">Viral Hooks</span>
+                        <a href="#" class="tool-link" data-affiliate="yapper">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node owned-asset" data-tool="Greta">
+                        <div class="tool-badge-owned">OWNED ASSET</div>
+                        <div class="tool-icon">🎁</div>
+                        <h4>Greta</h4>
+                        <span class="tool-role">Lead Magnet Gen</span>
+                        <a href="#" class="tool-link" data-affiliate="greta">Lifetime Owned →</a>
+                    </div>
+                    <div class="tool-node" data-tool="Blotato">
+                        <div class="tool-icon">📤</div>
+                        <h4>Blotato</h4>
+                        <span class="tool-role">Auto-Publishing</span>
+                        <a href="#" class="tool-link" data-affiliate="blotato">Get API Key →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Engine -->
+    <section id="workflows" class="workflows-section">
+        <div class="container">
+            <h2 class="section-title">THE WORKFLOW ENGINE</h2>
+            <p class="section-subtitle">19 autonome Workflows orchestriert durch den Master-Master-Orchestrator</p>
+            
+            <div class="workflow-showcase">
+                <div class="workflow-card">
+                    <div class="workflow-number">01</div>
+                    <h3>Global News Scraper</h3>
+                    <p>BrowserAct + Firecrawl</p>
+                    <div class="workflow-tools">
+                        <span>BrowserAct</span>
+                        <span>Firecrawl</span>
+                        <span>Perplexity</span>
+                    </div>
+                </div>
+                <div class="workflow-card">
+                    <div class="workflow-number">02</div>
+                    <h3>Neural Script Writer</h3>
+                    <p>Claude + ZEP Memory</p>
+                    <div class="workflow-tools">
+                        <span>Claude</span>
+                        <span>ZEP Memory</span>
+                        <span>Kie AI</span>
+                    </div>
+                </div>
+                <div class="workflow-card">
+                    <div class="workflow-number">03</div>
+                    <h3>Viral Video Assembler</h3>
+                    <p>Opus Clip + Capcut</p>
+                    <div class="workflow-tools">
+                        <span>Opus Clip</span>
+                        <span>Capcut</span>
+                        <span>DepositPhotos</span>
+                    </div>
+                </div>
+                <div class="workflow-card">
+                    <div class="workflow-number">04</div>
+                    <h3>Omni-Channel Distributor</h3>
+                    <p>Yapper + Blotato</p>
+                    <div class="workflow-tools">
+                        <span>Yapper</span>
+                        <span>Blotato</span>
+                        <span>Neuron Writer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefit-First Pitch Section -->
+    <section id="why-partner" class="benefit-pitch-section">
+        <div class="container">
+            <div class="pitch-header">
+                <h2 class="section-title">WARUM CANGO AUTOMATION EMPIRE?</h2>
+                <p class="pitch-subtitle">Die Antwort auf das Skalierungs-Dilemma</p>
+            </div>
+            
+            <div class="dilemma-intro">
+                <div class="problem-box">
+                    <div class="problem-icon">⚠️</div>
+                    <h3>Ihr Problem:</h3>
+                    <p>Jedes wachsende Unternehmen steht vor derselben Wand: Um den Output zu verdoppeln, müssen Sie die Kosten verdoppeln (mehr Personal, mehr Lizenzen, mehr Management).</p>
+                </div>
+                <div class="solution-box">
+                    <div class="solution-icon">⚡</div>
+                    <h3>Unsere Lösung:</h3>
+                    <p>Wir reißen diese Wand ein. Wir sind der richtige Partner, weil wir Medienproduktion von einer Dienstleistung in eine Infrastruktur verwandeln.</p>
+                </div>
+            </div>
+
+            <!-- 4 Advantages -->
+            <div class="advantages-grid">
+                <!-- Advantage 1: Economic -->
+                <div class="advantage-card">
+                    <div class="advantage-header">
+                        <div class="advantage-icon">💰</div>
+                        <h3>Der Ökonomische Vorteil: Zero Marginal Cost</h3>
+                    </div>
+                    <div class="advantage-content">
+                        <div class="pain-point">
+                            <h4>Ihr Problem:</h4>
+                            <p>Jede neue Kampagne kostet Geld. Agenturen berechnen Stunden, Freelancer berechnen Tagessätze. SaaS-Tools fressen monatliche Budgets.</p>
+                        </div>
+                        <div class="our-solution">
+                            <h4>Unsere Lösung:</h4>
+                            <p>Wir besitzen unsere Produktionsmittel. Durch strategische Lifetime-Assets (Jasper, Surfer SEO, Pictory, DepositPhotos) und eigene Server-Architektur (Hostinger VPS) kostet uns die Produktion eines weiteren Videos fast 0 Euro.</p>
+                        </div>
+                        <div class="your-benefit">
+                            <h4>Ihr Benefit:</h4>
+                            <p><strong>Wir geben diesen Kostenvorteil weiter. Sie zahlen für Ergebnisse, nicht für die Existenz von Mitarbeitern. Wir skalieren Ihren Output um 1000%, während Ihre Kosten flach bleiben.</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advantage 2: Speed -->
+                <div class="advantage-card">
+                    <div class="advantage-header">
+                        <div class="advantage-icon">⚡</div>
+                        <h3>Der Geschwindigkeits-Vorteil: Real-Time Market Response</h3>
+                    </div>
+                    <div class="advantage-content">
+                        <div class="pain-point">
+                            <h4>Ihr Problem:</h4>
+                            <p>Der Markt ist volatil (Krypto, Finanzen). Bis Ihr Team ein Briefing geschrieben, das Video geschnitten und freigegeben hat, ist der Trend vorbei.</p>
+                        </div>
+                        <div class="our-solution">
+                            <h4>Unsere Lösung:</h4>
+                            <p>Unsere n8n-Cluster überwachen Märkte in Echtzeit. Wenn Bitcoin fällt oder ein Gesetz geändert wird, produziert unser System in derselben Minute das passende Asset (Video, Artikel, Social Post).</p>
+                        </div>
+                        <div class="your-benefit">
+                            <h4>Ihr Benefit:</h4>
+                            <p><strong>Sie sind nicht mehr Teilnehmer am Markt, Sie sind der First Mover. Immer.</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advantage 3: Quality -->
+                <div class="advantage-card">
+                    <div class="advantage-header">
+                        <div class="advantage-icon">🔒</div>
+                        <h3>Der Qualitäts-Vorteil: German Engineering & Compliance</h3>
+                    </div>
+                    <div class="advantage-content">
+                        <div class="pain-point">
+                            <h4>Ihr Problem:</h4>
+                            <p>KI ist riskant. "Halluzinationen" (Falschinformationen) können Ihren Ruf ruinieren. Deutsche Unternehmen haben Angst vor Black-Box-Systemen.</p>
+                        </div>
+                        <div class="our-solution">
+                            <h4>Unsere Lösung:</h4>
+                            <p>Wir bauen Sicherheitsnetze. Unser Workflow nutzt Katteb und Perplexity für mehrstufige Faktenchecks bevor Content veröffentlicht wird. Unsere Server stehen in Frankfurt (Hostinger).</p>
+                        </div>
+                        <div class="your-benefit">
+                            <h4>Ihr Benefit:</h4>
+                            <p><strong>Sie erhalten die Geschwindigkeit von KI mit der Sicherheit deutscher Ingenieurskunst. DSGVO-konform und Brand-Safe.</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advantage 4: Strategic -->
+                <div class="advantage-card">
+                    <div class="advantage-header">
+                        <div class="advantage-icon">🏭</div>
+                        <h3>Der Strategische Vorteil: Unabhängigkeit</h3>
+                    </div>
+                    <div class="advantage-content">
+                        <div class="pain-point">
+                            <h4>Ihr Problem:</h4>
+                            <p>Sie machen sich abhängig von Agenturen, die Wissen horten.</p>
+                        </div>
+                        <div class="our-solution">
+                            <h4>Unsere Lösung:</h4>
+                            <p>Wir bieten White-Label Infrastructure Deployment. Wir können die Fabrik bei Ihnen intern aufbauen.</p>
+                        </div>
+                        <div class="your-benefit">
+                            <h4>Ihr Benefit:</h4>
+                            <p><strong>Sie kaufen keine Fische, Sie kaufen die Angel – nein, Sie kaufen den ganzen Trawler. Sie machen sich unabhängig von externen Dienstleistern.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="comparison-section">
+                <h3 class="comparison-title">Vergleich: Traditionelle Agentur vs. CanGo App Empire</h3>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Kriterium</th>
+                                <th>Traditionelle Agentur / In-House Team</th>
+                                <th>CanGo Automation Empire</th>
+                                <th>Ihr Vorteil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Reaktionszeit</strong></td>
+                                <td>2-5 Tage (Briefing bis Upload)</td>
+                                <td class="cango-advantage">&lt; 10 Minuten (Trigger bis Upload)</td>
+                                <td class="advantage-cell">Marktdominanz</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kostenstruktur</strong></td>
+                                <td>Linear (Mehr Output = Mehr Kosten)</td>
+                                <td class="cango-advantage">Exponentiell (Fixe Kosten, unendlich Output)</td>
+                                <td class="advantage-cell">Maximale Marge</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Verfügbarkeit</strong></td>
+                                <td>Mo-Fr, 9-17 Uhr (Urlaub/Krankheit)</td>
+                                <td class="cango-advantage">24/7/365 (Server schlafen nicht)</td>
+                                <td class="advantage-cell">Dauerpräsenz</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Datenbasis</strong></td>
+                                <td>Menschliche Recherche (Fehleranfällig)</td>
+                                <td class="cango-advantage">30-Core AI Cluster (320M Assets, Live-Daten)</td>
+                                <td class="advantage-cell">Präzision</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Skalierung</strong></td>
+                                <td>"Wir müssen erst neue Leute einstellen."</td>
+                                <td class="cango-advantage">"Wir fahren einfach die Server-Leistung hoch."</td>
+                                <td class="advantage-cell">Sofortiges Wachstum</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Closer -->
+            <div class="closer-section">
+                <div class="closer-box">
+                    <h3 class="closer-title">Das Fazit für den Entscheider</h3>
+                    <div class="closer-quote">
+                        <p><strong>Sie haben die Wahl:</strong></p>
+                        <p>Sie können weiterhin versuchen, digitale Probleme mit analogen Mitteln (Menschen) zu lösen. Das ist ehrenwert, aber langsam.</p>
+                        <p><strong>Oder Sie partnern mit CanGo Automation Empire.</strong></p>
+                        <p>Wir bringen die Infrastruktur, die Lizenzen und die Logik mit, um Ihre Medienproduktion zu industrialisieren.</p>
+                        <p class="closer-final"><strong>Wir sind nicht hier, um 'ein bisschen Social Media' zu machen. Wir sind hier, um Ihre Konkurrenz durch reine technologische Überlegenheit irrelevant zu machen.</strong></p>
+                    </div>
+                    <a href="#enterprise" class="btn btn-primary btn-large">STRATEGIE-GESPRÄCH VEREINBAREN</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Ecosystem Section -->
+    <section id="partner-ecosystem" class="partner-ecosystem-section">
+        <div class="container">
+            <div class="ecosystem-header">
+                <h2 class="section-title">DAS PARTNER-ÖKOSYSTEM: DIE MONETARISIERUNGS-INFRASTRUKTUR</h2>
+                <p class="ecosystem-subtitle">
+                    Was CanGo Automation Empire von herkömmlichen KI-Lösungen unterscheidet, ist die geschlossene Wertschöpfungskette.
+                </p>
+                <div class="trust-factor-box">
+                    <div class="trust-badge">GAME-CHANGER</div>
+                    <h3 class="trust-headline">Vollintegrierter Vertriebs-Aggregator</h3>
+                    <p class="trust-description">
+                        CanGo App Empire ist <strong>keine Content-Farm mehr</strong>, sondern ein vollintegrierter Vertriebs-Aggregator. Wir haben das gelöst, woran 90% aller Agenturen scheitern: <strong>"Was verkaufen wir eigentlich?"</strong>
+                    </p>
+                    <p class="trust-value">
+                        Du hast die Produkte (380 Versicherer, 65 Energieversorger, 800 Job-Unternehmen). Dein System ist das fehlende Bindeglied, das den Traffic (Social Media) in diese fertigen Vertriebskanäle pumpt.
+                    </p>
+                </div>
+            </div>
+
+            <div class="ecosystem-intro">
+                <div class="intro-box">
+                    <p class="intro-text">
+                        Wir generieren nicht nur Reichweite im luftleeren Raum – unsere Infrastruktur ist technisch und vertraglich fest mit einem etablierten High-End Produkt-Portfolio verdrahtet.
+                    </p>
+                </div>
+                <div class="aggregator-box">
+                    <div class="aggregator-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">50.000</div>
+                            <div class="stat-label">Codes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">Exklusive Partner</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">1.245+</div>
+                            <div class="stat-label">Marktzugänge</div>
+                        </div>
+                    </div>
+                    <p class="aggregator-description">
+                        Die 30 Master-Workflows der CanGo-Engine sind präzise darauf programmiert, Traffic zu filtern und automatisiert in die Vertriebstrichter unserer exklusiven Partner zu leiten. Das System fungiert hierbei als <strong>aggressiver Aggregator</strong>: Es bündelt die Angebote führender Marktteilnehmer und nutzt die 50.000 Codes, um für jedes Produkt die perfekte Zielgruppe zu identifizieren.
+                    </p>
+                </div>
+            </div>
+
+            <div class="market-access-section">
+                <h3 class="market-access-title">UNSERE PRODUKT-PIPELINE (STATUS QUO)</h3>
+                <p class="market-access-description">
+                    Die CanGo Infrastruktur operiert nicht im luftleeren Raum. Das System ist technisch bereits fest mit einem etablierten High-End Partnernetzwerk verdrahtet. Die 30 Workflows sind darauf programmiert, Traffic gezielt in diese bestehenden Verkaufs-Trichter zu leiten.
+                </p>
+
+                <!-- Product Pipeline Table -->
+                <div class="pipeline-table-wrapper">
+                    <table class="pipeline-table">
+                        <thead>
+                            <tr>
+                                <th>Nische</th>
+                                <th>Exklusive Produkt-Partner</th>
+                                <th>Inventar / Zugriff</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Finanzen & Versicherung</strong></td>
+                                <td>
+                                    <a href="https://mynorm.de" target="_blank" rel="noopener"><strong>mynorm.de</strong> ⭐</a>, 
+                                    <a href="https://myvi.de" target="_blank" rel="noopener">myvi.de</a>, 
+                                    <a href="https://mitnorm.de" target="_blank" rel="noopener">mitnorm.de</a>, 
+                                    <a href="https://mitnormfirmenberatung.de" target="_blank" rel="noopener">mitnormfirmenberatung.de</a>
+                                </td>
+                                <td>Zugriff auf <strong>500+ Versicherungsgesellschaften</strong> (via myNORM). Automatisierte Tarif-Vergleiche und DIN-Norm-Beratung nach DIN 77230.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Energie</strong></td>
+                                <td>
+                                    <a href="https://energyfinance.de" target="_blank" rel="noopener">energyfinance.de</a>
+                                </td>
+                                <td>Tarife von <strong>65 Energieversorgern</strong>. High-Volume Lead-Generierung (Strom/Gas).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Karriere & Jobs</strong></td>
+                                <td>
+                                    <a href="https://daskarriereinstitut.de" target="_blank" rel="noopener">daskarriereinstitut.de</a>, 
+                                    <a href="https://wirpersonalberater.de" target="_blank" rel="noopener">wirpersonalberater.de</a>
+                                </td>
+                                <td>Zugriff auf <strong>800 Unternehmen</strong> via Jobportal. Automatisierte Kandidaten-Vermittlung (Recruiting).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Immobilien</strong></td>
+                                <td>
+                                    <a href="https://domicil-group.de" target="_blank" rel="noopener">domicil-group.de</a>
+                                </td>
+                                <td>Pflegeimmobilien & Kapitalanlagen. <strong>High-Ticket Sales</strong> (Provisionen im 5-stelligen Bereich).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Education & Mindset</strong></td>
+                                <td>
+                                    <a href="https://grsti.de" target="_blank" rel="noopener">grsti.de</a> (Greator/Coaching), Größte E-Learning Plattform DACH
+                                </td>
+                                <td>Digitale Infoprodukte, Kurse und Coachings. Skalierbarer Direkt-Verkauf.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="partner-sectors-grid">
+                    <!-- Sector 1: Finanzen & Versicherung -->
+                    <div class="partner-sector-card">
+                        <div class="sector-header">
+                            <div class="sector-icon">💰</div>
+                            <h4>Finanzen & Versicherung</h4>
+                        </div>
+                        <div class="sector-partners">
+                            <a href="https://mynorm.de" target="_blank" rel="noopener" class="partner-tag featured-partner">myNORM ⭐</a>
+                            <a href="https://myvi.de" target="_blank" rel="noopener" class="partner-tag">MyVi</a>
+                            <a href="https://mitnorm.de" target="_blank" rel="noopener" class="partner-tag">Mitnorm</a>
+                            <a href="https://mitnormfirmenberatung.de" target="_blank" rel="noopener" class="partner-tag">Mitnorm Firmenberatung</a>
+                        </div>
+                        <div class="cango-lever">
+                            <h5>Der CanGo-Hebel:</h5>
+                            <p>Unsere Workflows greifen auf Tarife von über <strong>380 Versicherungsgesellschaften</strong> zu. Das System erstellt nicht nur Content, sondern führt Nutzer automatisiert in DIN-normierte Finanzanalysen und Vergleichsrechner.</p>
+                        </div>
+                        <div class="revenue-model">
+                            <span class="revenue-label">Revenue Model:</span>
+                            <span class="revenue-value">Provisionen pro abgeschlossener Versicherung</span>
+                        </div>
+                    </div>
+
+                    <!-- Sector 2: Energie & Versorgung -->
+                    <div class="partner-sector-card">
+                        <div class="sector-header">
+                            <div class="sector-icon">⚡</div>
+                            <h4>Energie & Versorgung</h4>
+                        </div>
+                        <div class="sector-partners">
+                            <a href="https://energyfinance.de" target="_blank" rel="noopener" class="partner-tag">EnergyFinance</a>
+                        </div>
+                        <div class="cango-lever">
+                            <h5>Der CanGo-Hebel:</h5>
+                            <p>Direkte Schnittstelle zu Tarifen von <strong>65 Energieversorgern</strong>. Unsere "Spar-Fuchs"-Workflows generieren High-Volume Leads im Strom- und Gasmarkt, die sofort monetarisiert werden.</p>
+                        </div>
+                        <div class="revenue-model">
+                            <span class="revenue-label">Revenue Model:</span>
+                            <span class="revenue-value">Provisionen pro Energievertrag</span>
+                        </div>
+                    </div>
+
+                    <!-- Sector 3: Karriere & Human Resources -->
+                    <div class="partner-sector-card">
+                        <div class="sector-header">
+                            <div class="sector-icon">💼</div>
+                            <h4>Karriere & Human Resources</h4>
+                        </div>
+                        <div class="sector-partners">
+                            <a href="https://daskarriereinstitut.de" target="_blank" rel="noopener" class="partner-tag">Das Karriere Institut</a>
+                            <a href="https://wirpersonalberater.de" target="_blank" rel="noopener" class="partner-tag">Wir Personalberater</a>
+                        </div>
+                        <div class="cango-lever">
+                            <h5>Der CanGo-Hebel:</h5>
+                            <p>Integration in ein Jobportal mit Beziehungen zu über <strong>800 Unternehmen</strong>. Unsere Algorithmen erkennen wechselwillige Kandidaten auf Social Media und matchen sie vollautomatisch mit offenen Stellen unserer Partner.</p>
+                        </div>
+                        <div class="revenue-model">
+                            <span class="revenue-label">Revenue Model:</span>
+                            <span class="revenue-value">Provisionen pro erfolgreicher Vermittlung</span>
+                        </div>
+                    </div>
+
+                    <!-- Sector 4: Immobilien (High Ticket) -->
+                    <div class="partner-sector-card featured">
+                        <div class="sector-badge">HIGH TICKET</div>
+                        <div class="sector-header">
+                            <div class="sector-icon">🏠</div>
+                            <h4>Immobilien</h4>
+                        </div>
+                        <div class="sector-partners">
+                            <a href="https://domicil-group.de" target="_blank" rel="noopener" class="partner-tag">Domicil Group</a>
+                        </div>
+                        <div class="cango-lever">
+                            <h5>Der CanGo-Hebel:</h5>
+                            <p>Fokus auf Pflegeimmobilien und Kapitalanlagen. Hier transformiert CanGo Automation Empire Traffic in Investoren-Leads mit <strong>Provisionspotenzialen im fünfstelligen Bereich pro Abschluss</strong>.</p>
+                        </div>
+                        <div class="revenue-model">
+                            <span class="revenue-label">Revenue Model:</span>
+                            <span class="revenue-value">Fünfstellige Provisionen pro Abschluss</span>
+                        </div>
+                    </div>
+
+                    <!-- Sector 5: Education & Mindset -->
+                    <div class="partner-sector-card">
+                        <div class="sector-header">
+                            <div class="sector-icon">🧠</div>
+                            <h4>Education & Mindset</h4>
+                        </div>
+                        <div class="sector-partners">
+                            <a href="https://grsti.de" target="_blank" rel="noopener" class="partner-tag">GRSTI (Greator Umfeld)</a>
+                        </div>
+                        <div class="cango-lever">
+                            <h5>Der CanGo-Hebel:</h5>
+                            <p>Zugriff auf das Portfolio der <strong>größten Online-Lernplattformen im DACH-Raum</strong>. Automatisierter Vertrieb von E-Learnings, Coachings und digitalen Infoprodukten.</p>
+                        </div>
+                        <div class="revenue-model">
+                            <span class="revenue-label">Revenue Model:</span>
+                            <span class="revenue-value">Provisionen pro verkauftem Kurs/Coaching</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Advantage for Holdings -->
+            <div class="strategic-advantage-section">
+                <h3 class="strategic-title">DER STRATEGISCHE VORTEIL FÜR DIE HOLDING</h3>
+                <p class="strategic-intro">
+                    Dieses Ökosystem eliminiert das größte Risiko jeder Marketing-Investition: <strong>Das Produkt-Risiko.</strong>
+                </p>
+
+                <div class="strategic-benefits-grid">
+                    <div class="strategic-benefit-card">
+                        <div class="benefit-icon">🚀</div>
+                        <h4>Sofortige Traktion</h4>
+                        <p>Wir müssen keine Produkte entwickeln oder testen. Die Vertriebskanäle (MyVi, Domicil, etc.) sind etabliert, die Produkte sind Marktführer.</p>
+                    </div>
+                    <div class="strategic-benefit-card">
+                        <div class="benefit-icon">📈</div>
+                        <h4>Skalierbarer Umsatz</h4>
+                        <p>Wenn wir die Server-Leistung der CanGo-Engine hochfahren, fließt der Traffic direkt in funktionierende Provisions-Modelle.</p>
+                    </div>
+                    <div class="strategic-benefit-card">
+                        <div class="benefit-icon">👑</div>
+                        <h4>Monopol-Stellung</h4>
+                        <p>Sie investieren in den technologischen Motor (CanGo), der als einziger Player diesen breiten Marktzugang automatisiert bespielen kann.</p>
+                    </div>
+                </div>
+
+                <div class="closing-metaphor">
+                    <p class="metaphor-text">
+                        <strong>Wir haben den Ferrari (CanGo) und wir haben bereits das Benzin und die Autobahn (Die Partner).</strong><br>
+                        Wir brauchen nur noch jemanden, der den Zündschlüssel dreht (Die Holding).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deploy Section -->
+    <section id="franchise" class="deploy-section">
+        <div class="container">
+            <h2 class="section-title">DEPLOY INFRASTRUCTURE</h2>
+            
+            <div class="deploy-toggle">
+                <button class="toggle-btn active" data-mode="b2c">B2C: Niche Node</button>
+                <button class="toggle-btn" data-mode="b2b">B2B: Enterprise</button>
+            </div>
+
+            <!-- B2C Product -->
+            <div id="b2c-product" class="product-container">
+                <div class="product-intro">
+                    <h3>NICHE FRANCHISE LICENSE</h3>
+                    <p class="product-target">Kleinanleger & Solopreneure</p>
+                    <p class="product-pitch">
+                        Besitzen Sie einen Teil des Netzwerks. Mieten Sie einen vollautomatischen Workflow.
+                    </p>
+                    <div class="requirement-notice">
+                        <p><strong>⚠️ System Requirement:</strong> Benötigt aktive Accounts bei unseren zertifizierten Partnern (siehe System Requirements Protocol).</p>
+                    </div>
+                </div>
+                
+                <div class="pricing-tiers">
+                    <div class="tier-card">
+                        <div class="tier-badge">STARTER</div>
+                        <div class="tier-price">
+                            <span class="price">497</span>
+                            <span class="currency">€/Mo</span>
+                        </div>
+                        <ul class="tier-features">
+                            <li>✅ 1 Nische</li>
+                            <li>✅ 3 Workflows</li>
+                            <li>✅ Hosting inkl.</li>
+                            <li>✅ Basic Support</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">DEPLOY NODE</a>
+                    </div>
+                    
+                    <div class="tier-card featured">
+                        <div class="tier-badge">EMPIRE</div>
+                        <div class="tier-price">
+                            <span class="price">997</span>
+                            <span class="currency">€/Mo</span>
+                        </div>
+                        <ul class="tier-features">
+                            <li>✅ 3 Nischen</li>
+                            <li>✅ Alle 19 Workflows</li>
+                            <li>✅ Priorisierter Slot</li>
+                            <li>✅ Priority Support</li>
+                            <li>✅ Setup-Support</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">DEPLOY NODE</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B2B Product -->
+            <div id="b2b-product" class="product-container" style="display: none;">
+                <div class="product-intro">
+                    <h3>ENTERPRISE INFRASTRUCTURE DEPLOYMENT</h3>
+                    <p class="product-target">Holdings & Agenturen</p>
+                    <p class="product-pitch">
+                        Erwerben Sie Ihre eigene Medien-Fabrik. White-Label. Unbegrenzte Skalierung.
+                    </p>
+                    <div class="enterprise-highlight">
+                        <p><strong>⭐ Inklusive:</strong> White-Label & Source Code Option</p>
+                    </div>
+                </div>
+                
+                <div class="enterprise-pricing">
+                    <div class="enterprise-card">
+                        <div class="enterprise-badge">MANAGED SERVICE</div>
+                        <div class="enterprise-price">
+                            <div class="setup-fee">
+                                <span class="label">Setup:</span>
+                                <span class="value">25.000 €</span>
+                            </div>
+                            <div class="retainer">
+                                <span class="label">Retainer:</span>
+                                <span class="value">6.000 €/Mo</span>
+                            </div>
+                        </div>
+                        <ul class="enterprise-features">
+                            <li>✅ Dedizierter Cluster</li>
+                            <li>✅ Full Source Access</li>
+                            <li>✅ 24/7 Monitoring</li>
+                            <li>✅ Revenue Share Option</li>
+                            <li>✅ White-Label</li>
+                            <li>✅ Custom Nischen</li>
+                            <li>✅ API Access</li>
+                            <li>✅ SLA-Garantie</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary btn-large">REQUEST DEPLOYMENT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- German Compliance Shield -->
+    <section id="compliance" class="compliance-section">
+        <div class="container">
+            <h2 class="section-title">GERMAN COMPLIANCE SHIELD</h2>
+            <p class="section-subtitle">
+                Deutsche Firmen haben Angst vor KI-Halluzinationen. Unser System hat eingebaute Sicherheitsmechanismen.
+            </p>
+            <div class="compliance-grid">
+                <div class="compliance-card">
+                    <div class="compliance-icon">✅</div>
+                    <h3>Katteb Fact-Checking</h3>
+                    <p>Jeder Content wird automatisch auf Richtigkeit und Quellen überprüft. Kein Fake News Müll.</p>
+                </div>
+                <div class="compliance-card">
+                    <div class="compliance-icon">📊</div>
+                    <h3>Surfer SEO Verification</h3>
+                    <p>Datengetriebene Präzision statt menschlicher Varianz. 100% SEO-konform.</p>
+                </div>
+                <div class="compliance-card">
+                    <div class="compliance-icon">🔒</div>
+                    <h3>DSGVO-Konform</h3>
+                    <p>Serverstandort Europa. Vollständige Datenschutz-Compliance für deutsche Unternehmen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zero-Cost Proof -->
+    <section class="zero-cost-section">
+        <div class="container">
+            <h2 class="section-title">ZERO-COST BEWEIS</h2>
+            <p class="section-subtitle">
+                Andere geben Ihre Gebühren an Adobe weiter. Wir investieren Ihre Gebühren in Server-Leistung, weil uns die Software gehört.
+            </p>
+            <div class="zero-cost-grid">
+                <div class="owned-tool">
+                    <div class="owned-badge">OWNED</div>
+                    <h3>Jasper AI</h3>
+                    <p>Lifetime License via AppSumo</p>
+                </div>
+                <div class="owned-tool">
+                    <div class="owned-badge">OWNED</div>
+                    <h3>DepositPhotos</h3>
+                    <p>320M Assets - Lifetime Access</p>
+                </div>
+                <div class="owned-tool">
+                    <div class="owned-badge">OWNED</div>
+                    <h3>Surfer SEO</h3>
+                    <p>Lifetime License</p>
+                </div>
+                <div class="owned-tool">
+                    <div class="owned-badge">OWNED</div>
+                    <h3>Canva Pro</h3>
+                    <p>Lifetime License</p>
+                </div>
+                <div class="owned-tool">
+                    <div class="owned-badge">OWNED</div>
+                    <h3>Copy.ai</h3>
+                    <p>Lifetime License</p>
+                </div>
+                <div class="owned-tool">
+                    <div class="owned-badge">OWNED</div>
+                    <h3>Pictory</h3>
+                    <p>Lifetime License</p>
+                </div>
+            </div>
+            <div class="zero-cost-argument">
+                <p><strong>Das bedeutet:</strong> Während andere Agenturen monatlich Tausende für Software-Lizenzen zahlen, haben wir diese Tools bereits gekauft. Ihre Gebühren fließen zu 100% in Server-Leistung und Support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sector Dominance Grid -->
+    <section id="sector-dominance" class="sector-dominance-section">
+        <div class="container">
+            <h2 class="section-title">CONTROLLED TERRITORIES</h2>
+            <p class="section-subtitle">
+                Unsere Infrastruktur ist spezialisiert auf 7 High-CPM Industrien. Wählen Sie Ihren Sektor.
+            </p>
+            <div class="why-7-section">
+                <h3>WARUM DIESE 7 MÄRKTE?</h3>
+                <p>Wir automatisieren nicht „irgendwas“. Wir konzentrieren uns ausschließlich auf High-Ticket & High-CPM Sektoren.</p>
+                <ul>
+                    <li><strong>Regulierte Märkte (Finanzen/Versicherung):</strong> Hier scheitert normale KI an Fakten. Unser System nutzt Katteb & Perplexity für verifizierten Fakt-Check. Wir sind die einzige sichere Lösung im Markt.</li>
+                    <li><strong>Volatile Märkte (Krypto):</strong> Hier ist Geschwindigkeit alles. Unsere n8n-Echtzeit-Cluster publizieren News, bevor menschliche Redakteure den Kaffee gekocht haben.</li>
+                    <li><strong>Visuelle Märkte (Immo/Mindset):</strong> Hier zählt Ästhetik. Unsere Kie.ai & Runway Engines liefern Kino-Qualität statt Standard-Stock-Videos.</li>
+                </ul>
+                <p class="monopoly-statement"><strong>CanGo Automation Empire ist der Gatekeeper für diese Industrien.</strong></p>
+            </div>
+            <div class="sectors-grid">
+                <a href="nischen/vermoegen.html" class="market-card" data-market="vermoegen">
+                    <div class="market-status dominated">DOMINIERT</div>
+                    <div class="market-icon">💰</div>
+                    <h3>WEALTH & RISK INFRASTRUCTURE</h3>
+                    <p class="market-subtitle">Finanzen/Versicherung</p>
+                    <div class="market-stats">
+                        <span>50+ Artikel/Tag</span>
+                        <span>300K+ Views</span>
+                    </div>
+                    <div class="market-tech">
+                        <span>Katteb</span>
+                        <span>Jasper AI</span>
+                        <span>BrowserAct</span>
+                    </div>
+                    <div class="market-pitch">
+                        <p>Automatisierte Lead-Gen für Hochpreis-Policen. 100% Compliance-konform.</p>
+                    </div>
+                </a>
+                <a href="nischen/mindset.html" class="market-card" data-market="mindset">
+                    <div class="market-status viral">VIRAL MODE</div>
+                    <div class="market-icon">🧠</div>
+                    <h3>PERFORMANCE PSYCHOLOGY</h3>
+                    <p class="market-subtitle">Mindset</p>
+                    <div class="market-stats">
+                        <span>45+ Artikel/Tag</span>
+                        <span>500K+ Views</span>
+                    </div>
+                    <div class="market-tech">
+                        <span>Opus Clip</span>
+                        <span>Unmixr</span>
+                        <span>Pictory</span>
+                    </div>
+                    <div class="market-pitch">
+                        <p>Virale Motivations-Loops für maximale Retention.</p>
+                    </div>
+                </a>
+                <a href="nischen/ki.html" class="market-card" data-market="ki">
+                    <div class="market-status core-focus">CORE FOCUS</div>
+                    <div class="market-icon">🤖</div>
+                    <h3>AI & TECH SINGULARITY</h3>
+                    <p class="market-subtitle">KI</p>
+                    <div class="market-stats">
+                        <span>60+ Artikel/Tag</span>
+                        <span>400K+ Views</span>
+                    </div>
+                    <div class="market-tech">
+                        <span>Runway Gen-3 Alpha</span>
+                        <span>Runway Gen-3</span>
+                        <span>ElevenLabs</span>
+                    </div>
+                    <div class="market-pitch">
+                        <p>Metacontent: KI erklärt KI. Demonstriert technologische Überlegenheit.</p>
+                    </div>
+                </a>
+                <a href="nischen/krypto.html" class="market-card" data-market="krypto">
+                    <div class="market-status high-volatility">HIGH VOLATILITY MODE</div>
+                    <div class="market-icon">₿</div>
+                    <h3>DEFI & CRYPTO INTELLIGENCE</h3>
+                    <p class="market-subtitle">Krypto</p>
+                    <div class="market-stats">
+                        <span>55+ Artikel/Tag</span>
+                        <span>350K+ Views</span>
+                    </div>
+                    <div class="market-tech">
+                        <span>Perplexity</span>
+                        <span>Yapper</span>
+                        <span>Binance Connect</span>
+                    </div>
+                    <div class="market-pitch">
+                        <p>Echtzeit-News-Verarbeitung schneller als jeder Trader.</p>
+                    </div>
+                    <div class="market-requirements">
+                        <p><strong>System Requirement:</strong> Verifizierter Binance-Account für API-Datenanbindung erforderlich.</p>
+                    </div>
+                </a>
+                <a href="nischen/karriere.html" class="market-card" data-market="karriere">
+                    <div class="market-status operational">OPERATIONAL</div>
+                    <div class="market-icon">💼</div>
+                    <h3>HUMAN CAPITAL AUTOMATION</h3>
+                    <p class="market-subtitle">Karriere</p>
+                    <div class="market-stats">
+                        <span>40+ Artikel/Tag</span>
+                        <span>250K+ Views</span>
+                    </div>
+                    <div class="market-tech">
+                        <span>Greta</span>
+                        <span>Neuron Writer</span>
+                        <span>LinkedIn API</span>
+                    </div>
+                    <div class="market-pitch">
+                        <p>Personal Branding & Recruiting Content auf Autopilot.</p>
+                    </div>
+                </a>
+                <a href="nischen/energie.html" class="market-card" data-market="energie">
+                    <div class="market-status growth">GROWTH</div>
+                    <div class="market-icon">⚡</div>
+                    <h3>RENEWABLE ENERGY SYSTEMS</h3>
+                    <p class="market-subtitle">Energie</p>
+                    <div class="market-stats">
+                        <span>35+ Artikel/Tag</span>
+                        <span>200K+ Views</span>
+                    </div>
+                    <div class="market-tech">
+                        <span>BrowserAct</span>
+                        <span>Claude 3.5</span>
+                    </div>
+                    <div class="market-pitch">
+                        <p>Komplexe Solartechnik verständlich erklärt für B2C-Leads.</p>
+                    </div>
+                </a>
+                <a href="nischen/immobilien.html" class="market-card" data-market="immobilien">
+                    <div class="market-status operational">OPERATIONAL</div>
+                    <div class="market-icon">🏠</div>
+                    <h3>REAL ESTATE ASSET ENGINE</h3>
+                    <p class="market-subtitle">Immobilien</p>
+                    <div class="market-stats">
+                        <span>45+ Artikel/Tag</span>
+                        <span>280K+ Views</span>
+                    </div>
+                    <div class="market-tech">
+                        <span>Mootion (3D)</span>
+                        <span>DepositPhotos</span>
+                        <span>Canva Pro</span>
+                    </div>
+                    <div class="market-pitch">
+                        <p>Erstellung von Exposé-Videos & Standort-Analysen in Sekunden.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">INITIATE DEPLOYMENT</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>CanGo Automation Empire</h3>
+                    <p>The Dark Factory</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>cangoshop24@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <span>an der Legde 9<br>29339 Wathlingen</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">👤</span>
+                            <span>Canberk Kivilcim</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="deploymentForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="E-Mail" required>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="">Deployment Type</option>
+                            <option value="starter">Starter Node (€497/Mo)</option>
+                            <option value="empire">Empire Node (€997/Mo)</option>
+                            <option value="enterprise">Enterprise (€25K Setup)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Nachricht" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">INITIATE DEPLOYMENT</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-logo">⚡</span>
+                    <span class="brand-name">CANGO AUTOMATION EMPIRE</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#tech-stack">Infrastruktur</a>
+                    <a href="#sector-dominance">Kontrollierte Märkte</a>
+                    <a href="#franchise">Niche Nodes</a>
+                    <a href="#enterprise">Enterprise</a>
+                    <a href="#compliance">Compliance</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CanGo Automation Empire - Deutsche Content Infrastruktur</p>
+                <p>Canberk Kivilcim | an der Legde 9, 29339 Wathlingen | cangoshop24@gmail.com</p>
+                <p>Steuernummer: 17/12202844 | USt.-ID: DE334929430</p>
+                <p class="system-status">Systems Operational: 100%</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="dark-factory.js"></script>
+</body>
+</html>
+

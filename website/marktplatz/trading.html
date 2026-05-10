@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trading | Marktplatz | CanGo App Empire</title>
+  <meta name="description" content="Spezialisierte Marketing-Workflows für Trading & Finanzmärkte. CPM: 12-30€.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../cango-empire-v4-monopoly.css">
+  <style>
+    .marktplatz-page { padding: var(--space-20) 0 var(--space-12); }
+    .marktplatz-header { text-align: center; margin-bottom: var(--space-12); }
+    .marktplatz-header__icon { font-size: 4rem; margin-bottom: var(--space-4); }
+    .produkte-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-6); margin-top: var(--space-12); }
+    .produkt-card { padding: var(--space-6); background: linear-gradient(135deg, rgba(249, 115, 22, 0.03) 0%, rgba(249, 115, 22, 0.01) 100%); border: 2px solid rgba(249, 115, 22, 0.15); border-radius: var(--radius-lg); transition: all var(--duration-slow) var(--ease-out); }
+    .produkt-card:hover { border-color: var(--primary-500); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15); }
+    .produkt-placeholder { text-align: center; padding: var(--space-16); color: var(--text-muted); font-style: italic; }
+  </style>
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="container nav__inner">
+      <a href="../cango-empire-v4-monopoly.html" class="nav__brand"><span class="nav__brand-icon">C</span><span>CanGo App Empire</span></a>
+      <button class="nav__toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav__menu').classList.toggle('active')"><span></span><span></span><span></span></button>
+      <div class="nav__menu">
+        <a href="../cango-empire-v4-monopoly.html#problem" class="nav__link">Problem</a>
+        <a href="../cango-empire-v4-monopoly.html#technologie" class="nav__link">Technologie</a>
+        <a href="../cango-empire-v4-monopoly.html#branchen" class="nav__link">Branchen</a>
+        <a href="../marktplatz.html" class="nav__link">Marktplatz</a>
+        <a href="../selfmade-empire.html" class="nav__link">Workflow Kampagnen</a>
+        <a href="../cango-empire-v4-monopoly.html#faq" class="nav__link">FAQ</a>
+        <a href="../cango-empire-v4-monopoly.html#kontakt" class="nav__cta">Jetzt anfragen</a>
+      </div>
+    </div>
+  </nav>
+  <section class="marktplatz-page">
+    <div class="container">
+      <div class="marktplatz-header">
+        <div class="marktplatz-header__icon">📈</div>
+        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-400); margin-bottom: var(--space-4); font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;">TRADING</span>
+        <h1 style="font-size: clamp(2.5rem, 5vw, var(--text-5xl)); margin-bottom: var(--space-4); font-weight: 700; line-height: 1.1; color: var(--text-primary);">Spezialisierte Lösungen für <span class="text-gradient">Trading & Finanzmärkte</span></h1>
+        <p style="font-size: var(--text-lg); color: var(--text-secondary); max-width: 700px; margin: 0 auto;">Automatisierte Content-Produktion für Trading-Plattformen, Broker und Finanzdienstleister. Hohe CPM-Werte (12-30€) und präzise Zielgruppenansprache.</p>
+        <div class="industry__cpm" style="margin-top: var(--space-4); font-size: var(--text-base);">Durchschnittlicher CPM: 12-30€</div>
+      </div>
+      <div class="produkte-grid"><div class="produkt-placeholder">Produkte werden hier angezeigt</div></div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">
+            <span class="footer__brand-icon">C</span>
+            <span>CanGo App Empire</span>
+          </div>
+          <p class="footer__desc">
+            Marketing-Automatisierung für den DACH-Markt. 
+            19 Workflows. 30 KI-Systeme. Kein Bullshit.
+          </p>
+        </div>
+        
+        <div>
+          <div class="footer__title">Produkt</div>
+          <ul class="footer__links">
+            <li><a href="../cango-empire-v4-monopoly.html#technologie">Technologie</a></li>
+            <li><a href="../cango-empire-v4-monopoly.html#branchen">Branchen</a></li>
+            <li><a href="../cango-empire-v4-monopoly.html#preise">Preise</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="footer__title">Unternehmen</div>
+          <ul class="footer__links">
+            <li><a href="#">Über uns</a></li>
+            <li><a href="#">Partner</a></li>
+            <li><a href="#">Karriere</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="footer__title">Rechtliches</div>
+          <ul class="footer__links">
+            <li><a href="../impressum.html">Impressum</a></li>
+            <li><a href="../datenschutz.html">Datenschutz</a></li>
+            <li><a href="../agb.html">AGB</a></li>
+            <li><a href="../widerruf.html">Widerrufserklärung</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer__bottom">
+        <div>© 2025 CanGo App Empire. Alle Rechte vorbehalten.</div>
+        <div class="footer__tagline">Kopieren hilft dir nicht – du brauchst die Maschine.</div>
+      </div>
+    </div>
+  </footer>
+  <script>document.querySelectorAll('.nav__link, .nav__cta').forEach(link => { link.addEventListener('click', () => { document.querySelector('.nav__menu').classList.remove('active'); }); });</script>
+</body>
+</html>
