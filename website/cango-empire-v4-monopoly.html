@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CanGo App Empire | Deine Konkurrenz schläft. Wir nicht.</title>
+  <title>CanGo Empire | Deine Konkurrenz schläft. Wir nicht.</title>
   <meta name="description" content="33 Master Workflows. 30+ KI-Systeme. 7 High-CPM Branchen. Vollautomatisierte Produktion von Blogs, Videos, SEO/SEA-Assets & Branding-Optimierung. KI-Chatbots als Assistenten für deine Marketing-Pipeline. Von der Idee zum fertigen Content in unter 10 Minuten.">
   
   <!-- Fonts: Distinctive, not generic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <style>
     /* ============================================
@@ -112,7 +112,6 @@
 
       /* Layout */
       --nav-height: 64px;
-      --banner-height: 40px;
       --container-max: 1200px;
       --container-narrow: 800px;
       --radius-sm: 6px;
@@ -142,7 +141,7 @@
     }
 
     body {
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: var(--text-base);
       line-height: 1.6;
       color: var(--text-primary);
@@ -276,38 +275,6 @@
       box-shadow: 0 0 50px -10px var(--primary-400);
     }
 
-    /* Externe-Links-Banner */
-    .external-links-banner {
-      position: fixed;
-      top: var(--nav-height);
-      left: 0;
-      right: 0;
-      z-index: calc(var(--z-sticky) - 1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-2);
-      padding: var(--space-2) var(--space-4);
-      background: rgba(100, 90, 80, 0.25);
-      border-bottom: 1px solid rgba(120, 100, 80, 0.3);
-      font-size: var(--text-sm);
-      color: rgba(220, 210, 200, 0.95);
-    }
-
-    .external-links-banner__icon {
-      opacity: 0.9;
-    }
-
-    .external-links-banner a {
-      color: var(--primary-400);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    .external-links-banner a:hover {
-      color: var(--primary-300);
-    }
-
     /* Mobile Menu Toggle */
     .nav__toggle {
       display: none;
@@ -332,7 +299,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: calc(var(--nav-height) + var(--banner-height) + var(--space-16));
+      padding-top: calc(var(--nav-height) + var(--space-16));
       padding-bottom: var(--space-24);
       overflow: hidden;
     }
@@ -383,12 +350,12 @@
       z-index: var(--z-base);
     }
 
-    /* TV-Nachrichten-Style - gedämpft, Referenz-Look */
+    /* TV-Nachrichten-Style */
     .hero__news {
       position: sticky;
-      top: calc(var(--nav-height) + var(--banner-height) + var(--space-8));
-      background: linear-gradient(135deg, rgba(10, 10, 18, 0.98) 0%, rgba(18, 18, 28, 0.96) 100%);
-      border: 1px solid rgba(120, 100, 80, 0.35);
+      top: calc(var(--nav-height) + var(--space-8));
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 30, 0.98) 100%);
+      border: 2px solid rgba(249, 115, 22, 0.3);
       border-radius: var(--radius-lg);
       padding: 0;
       animation: fadeInUp 0.6s var(--ease-out) 0.5s both;
@@ -396,7 +363,7 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 100px rgba(249, 115, 22, 0.1);
     }
     
     /* Spacer für Daily Blogs - kompensiert Höhe von Badge + Title + Subtitle + Tagline + Actions + Scarcity bis Metrik-Karten */
@@ -411,14 +378,42 @@
       justify-content: space-between;
       gap: var(--space-3);
       padding: var(--space-4) var(--space-6);
-      background: rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(120, 100, 80, 0.25);
+      background: linear-gradient(90deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.05) 100%);
+      border-bottom: 2px solid rgba(249, 115, 22, 0.4);
       position: relative;
+    }
+
+    .hero__news-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(249, 115, 22, 0.8) 20%,
+        rgba(249, 115, 22, 1) 50%,
+        rgba(249, 115, 22, 0.8) 80%,
+        transparent 100%
+      );
+      animation: scanLine 3s linear infinite;
+    }
+
+    @keyframes scanLine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
 
     .hero__news-icon {
       font-size: var(--text-2xl);
-      filter: none;
+      filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6));
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6)); }
+      50% { transform: scale(1.1); filter: drop-shadow(0 0 12px rgba(249, 115, 22, 1)); }
     }
 
     .hero__news-title {
@@ -428,19 +423,45 @@
       color: var(--text-primary);
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
       font-family: 'Courier New', monospace;
     }
 
     .hero__news-badge {
       padding: var(--space-2) var(--space-4);
-      background: linear-gradient(135deg, #b91c1c, #991b1b);
-      color: rgba(255, 255, 255, 0.95);
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
       font-size: var(--text-xs);
       font-weight: 700;
       border-radius: var(--radius-sm);
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+      animation: blink 1.5s ease-in-out infinite;
       position: relative;
+    }
+
+    .hero__news-badge::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-sm);
+      animation: ripple 1.5s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    @keyframes ripple {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+      100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
     }
 
     .hero__news-content {
@@ -453,7 +474,7 @@
       align-items: center;
       justify-content: center;
       padding: var(--space-6);
-      background: transparent;
+      background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.05) 0%, transparent 70%);
     }
 
     .hero__news-item {
@@ -496,7 +517,7 @@
 
     .hero__news-date {
       font-size: var(--text-xs);
-      color: rgba(180, 170, 160, 0.9);
+      color: rgba(249, 115, 22, 0.8);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.15em;
@@ -511,7 +532,7 @@
     .hero__news-date::before,
     .hero__news-date::after {
       content: '◆';
-      color: rgba(140, 130, 120, 0.6);
+      color: rgba(249, 115, 22, 0.6);
       font-size: var(--text-sm);
     }
 
@@ -537,11 +558,11 @@
     .hero__news-niche {
       display: inline-block;
       padding: var(--space-1) var(--space-3);
-      background: rgba(100, 90, 80, 0.3);
-      border: 1px solid rgba(120, 100, 80, 0.4);
+      background: rgba(249, 115, 22, 0.2);
+      border: 1px solid rgba(249, 115, 22, 0.4);
       border-radius: var(--radius-sm);
       font-size: var(--text-xs);
-      color: rgba(200, 180, 160, 0.95);
+      color: rgba(249, 115, 22, 0.9);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -549,7 +570,7 @@
     }
 
     .hero__news-link {
-      color: rgba(200, 180, 160, 0.95);
+      color: rgba(249, 115, 22, 0.9);
       font-size: var(--text-sm);
       text-decoration: none;
       margin-top: var(--space-4);
@@ -569,7 +590,8 @@
     }
 
     .hero__news-link:hover {
-      color: rgba(220, 200, 180, 1);
+      color: rgba(249, 115, 22, 1);
+      text-shadow: 0 0 10px rgba(249, 115, 22, 0.6);
     }
 
     .hero__news-link:hover::after {
@@ -578,8 +600,8 @@
 
     .hero__news-footer {
       padding: var(--space-3) var(--space-6);
-      background: rgba(0, 0, 0, 0.4);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.3);
+      border-top: 1px solid rgba(249, 115, 22, 0.2);
       text-align: center;
       position: relative;
     }
@@ -591,7 +613,11 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(120, 100, 80, 0.3) 50%, transparent 100%);
+      background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(249, 115, 22, 0.5) 50%,
+        transparent 100%
+      );
     }
 
     .hero__news-update {
@@ -601,13 +627,32 @@
       font-family: 'Courier New', monospace;
     }
 
-    /* Daily Blogs Widget - gedämpft, Referenz-Look */
+    /* TV-Rahmen-Effekt */
+    .hero__news::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid transparent;
+      border-image: linear-gradient(135deg, 
+        rgba(249, 115, 22, 0.8) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(249, 115, 22, 0.8) 100%
+      ) 1;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Daily Blogs Widget - ähnlich News Widget */
     .hero__blogs {
       position: sticky;
-      top: calc(var(--nav-height) + var(--banner-height) + var(--space-8));
+      top: calc(var(--nav-height) + var(--space-8));
       margin-top: 0;
-      background: linear-gradient(135deg, rgba(10, 10, 18, 0.98) 0%, rgba(18, 18, 28, 0.96) 100%);
-      border: 1px solid rgba(120, 100, 80, 0.35);
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 30, 0.98) 100%);
+      border: 2px solid rgba(249, 115, 22, 0.3);
       border-radius: var(--radius-lg);
       padding: 0;
       animation: fadeInUp 0.6s var(--ease-out) 0.7s both;
@@ -615,7 +660,7 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 100px rgba(249, 115, 22, 0.1);
     }
 
     .hero__blogs-header {
@@ -624,14 +669,32 @@
       justify-content: space-between;
       gap: var(--space-3);
       padding: var(--space-4) var(--space-6);
-      background: rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(120, 100, 80, 0.25);
+      background: linear-gradient(90deg, rgba(249, 115, 22, 0.2) 0%, rgba(249, 115, 22, 0.05) 100%);
+      border-bottom: 2px solid rgba(249, 115, 22, 0.4);
       position: relative;
+    }
+
+    .hero__blogs-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(249, 115, 22, 0.8) 20%,
+        rgba(249, 115, 22, 1) 50%,
+        rgba(249, 115, 22, 0.8) 80%,
+        transparent 100%
+      );
+      animation: scanLine 4s linear infinite;
     }
 
     .hero__blogs-icon {
       font-size: var(--text-2xl);
-      filter: none;
+      filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6));
+      animation: pulse 2s ease-in-out infinite;
     }
 
     .hero__blogs-title {
@@ -641,18 +704,21 @@
       color: var(--text-primary);
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      text-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
       font-family: 'Courier New', monospace;
     }
 
     .hero__blogs-badge {
       padding: var(--space-2) var(--space-4);
-      background: linear-gradient(135deg, rgba(180, 120, 80, 0.9), rgba(140, 90, 60, 0.95));
-      color: rgba(255, 255, 255, 0.95);
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      color: white;
       font-size: var(--text-xs);
       font-weight: 700;
       border-radius: var(--radius-sm);
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      box-shadow: 0 0 20px rgba(249, 115, 22, 0.6);
+      animation: blink 1.5s ease-in-out infinite;
       position: relative;
     }
 
@@ -660,7 +726,7 @@
       flex: 1;
       overflow-y: auto;
       padding: var(--space-6);
-      background: transparent;
+      background: radial-gradient(ellipse at center, rgba(249, 115, 22, 0.05) 0%, transparent 70%);
       min-height: 240px;
       max-height: 480px;
     }
@@ -668,22 +734,22 @@
     .hero__blogs-item {
       padding: var(--space-4);
       margin-bottom: var(--space-4);
-      background: rgba(80, 70, 60, 0.15);
-      border-left: 3px solid rgba(120, 100, 80, 0.4);
+      background: rgba(249, 115, 22, 0.05);
+      border-left: 3px solid rgba(249, 115, 22, 0.5);
       border-radius: var(--radius-sm);
       transition: all var(--duration-fast) var(--ease-out);
       cursor: pointer;
     }
 
     .hero__blogs-item:hover {
-      background: rgba(100, 90, 80, 0.2);
-      border-left-color: rgba(140, 120, 100, 0.5);
+      background: rgba(249, 115, 22, 0.1);
+      border-left-color: rgba(249, 115, 22, 0.9);
       transform: translateX(4px);
     }
 
     .hero__blogs-date {
       font-size: var(--text-xs);
-      color: rgba(180, 170, 160, 0.9);
+      color: rgba(249, 115, 22, 0.8);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -709,11 +775,11 @@
     .hero__blogs-category {
       display: inline-block;
       padding: var(--space-1) var(--space-2);
-      background: rgba(100, 90, 80, 0.3);
-      border: 1px solid rgba(120, 100, 80, 0.4);
+      background: rgba(249, 115, 22, 0.2);
+      border: 1px solid rgba(249, 115, 22, 0.4);
       border-radius: var(--radius-sm);
       font-size: var(--text-xs);
-      color: rgba(200, 180, 160, 0.95);
+      color: rgba(249, 115, 22, 0.9);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -727,8 +793,8 @@
 
     .hero__blogs-footer {
       padding: var(--space-3) var(--space-6);
-      background: rgba(0, 0, 0, 0.4);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.3);
+      border-top: 1px solid rgba(249, 115, 22, 0.2);
       text-align: center;
       position: relative;
     }
@@ -740,7 +806,11 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(120, 100, 80, 0.3) 50%, transparent 100%);
+      background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(249, 115, 22, 0.5) 50%,
+        transparent 100%
+      );
     }
 
     .hero__blogs-update {
@@ -966,9 +1036,9 @@
     }
 
     .metric:hover {
-      border-color: var(--border-default);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      border-color: var(--primary-500);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(249, 115, 22, 0.15);
     }
 
     .metric__badge {
@@ -994,8 +1064,8 @@
     }
 
     .metric__badge--confirmed {
-      background: rgba(180, 80, 60, 0.9);
-      color: rgba(255, 255, 255, 0.95);
+      background: var(--primary-500);
+      color: white;
     }
 
     .metric__icon {
@@ -1005,10 +1075,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-default);
+      background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(249, 115, 22, 0.1));
+      border: 2px solid rgba(249, 115, 22, 0.3);
       border-radius: var(--radius-full);
       position: relative;
+      box-shadow: 0 0 30px rgba(249, 115, 22, 0.3);
       flex-shrink: 0;
     }
 
@@ -1017,8 +1088,8 @@
       position: absolute;
       inset: -4px;
       border-radius: var(--radius-full);
-      background: rgba(100, 90, 80, 0.2);
-      opacity: 0.4;
+      background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+      opacity: 0.2;
       filter: blur(12px);
       z-index: -1;
     }
@@ -1026,8 +1097,9 @@
     .metric__icon-value {
       font-size: var(--text-5xl);
       font-weight: 700;
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: rgba(180, 150, 120, 0.95);
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--primary-400);
+      text-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
     }
 
     .metric__label {
@@ -1046,7 +1118,7 @@
     /* === 8. SECTIONS === */
     section {
       padding: var(--space-24) 0;
-      scroll-margin-top: calc(var(--nav-height) + var(--banner-height) + var(--space-8));
+      scroll-margin-top: calc(var(--nav-height) + var(--space-8));
     }
 
     .section__header {
@@ -1229,7 +1301,7 @@
     .tech__number {
       font-size: clamp(3rem, 6vw, var(--text-6xl));
       font-weight: 800;
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       background: linear-gradient(135deg, var(--primary-400), var(--primary-600), var(--primary-500));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -1439,7 +1511,7 @@
     .industry__cpm {
       font-size: var(--text-sm);
       color: var(--primary-400);
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       font-weight: 600;
       letter-spacing: 0.05em;
     }
@@ -1566,7 +1638,7 @@
       color: var(--text-primary);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'JetBrains Mono', monospace;
     }
 
     .comparison__table th:first-child {
@@ -2074,7 +2146,7 @@
     .scarcity__infrastructure-price {
       font-size: var(--text-5xl);
       font-weight: 700;
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       color: var(--primary-500);
       margin-bottom: var(--space-2);
     }
@@ -2365,7 +2437,7 @@
     .scarcity__number {
       font-size: var(--text-5xl);
       font-weight: 700;
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'JetBrains Mono', monospace;
       line-height: 1;
     }
 
@@ -2583,7 +2655,7 @@
       font-size: var(--text-2xl);
       font-weight: 700;
       margin: var(--space-6) 0 var(--space-2);
-      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'JetBrains Mono', monospace;
     }
 
     .scarcity__price span {
@@ -2862,7 +2934,7 @@
     <div class="container nav__inner">
       <a href="#home" class="nav__brand">
         <span class="nav__brand-icon">C</span>
-        <span>CanGo App Empire</span>
+        <span>CanGo Empire</span>
       </a>
       
       <button class="nav__toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav__menu').classList.toggle('active')">
@@ -2878,17 +2950,10 @@
         <a href="marktplatz/ki-tech.html" class="nav__link">Produkte</a>
         <a href="selfmade-empire.html" class="nav__link">Workflow Kampagnen</a>
         <a href="#faq" class="nav__link">FAQ</a>
-        <a href="kontakt.html" class="nav__cta">Jetzt anfragen</a>
+        <a href="#kontakt" class="nav__cta">Jetzt anfragen</a>
       </div>
     </div>
   </nav>
-
-  <!-- Banner: Hinweis externe Seiten -->
-  <div class="external-links-banner" role="complementary" aria-label="Hinweis zu externen Links">
-    <span class="external-links-banner__icon" aria-hidden="true">ℹ️</span>
-    <span>Einige Links auf dieser Seite führen zu externen Webseiten Dritter. Für die Inhalte der verlinkten Seiten sind die jeweiligen Anbieter verantwortlich.</span>
-    <a href="impressum.html#haftung">Mehr erfahren</a>
-  </div>
 
   <!-- ========================================
        HERO
@@ -2922,7 +2987,7 @@
         
         <!-- Actions -->
         <div class="hero__actions">
-          <a href="kontakt.html" class="btn btn--accent btn--large">
+          <a href="#kontakt" class="btn btn--accent btn--large">
             Infrastruktur übernehmen
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -3021,7 +3086,7 @@
     <div class="container">
       
       <div class="section__header">
-        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--primary-400); margin-bottom: var(--space-6); font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; opacity: 0.9;">
+        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--primary-400); margin-bottom: var(--space-6); font-family: 'JetBrains Mono', monospace; opacity: 0.9;">
           SYSTEMFEHLER: DAS AGENTUR-MODELL
         </span>
         <h2 class="section__title" style="color: var(--text-primary); font-size: clamp(2.5rem, 5vw, var(--text-5xl)); margin-bottom: var(--space-6); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">
@@ -3111,7 +3176,7 @@
             <p style="color: var(--text-secondary); font-size: var(--text-base); line-height: 1.8;">
               Während deine Konkurrenz <strong style="color: var(--text-primary); font-weight: 600;">10 neue Mitarbeiter einstellen muss</strong>, um den Output zu verdoppeln... 
               <br><br>
-              <strong style="color: var(--primary-400); font-size: var(--text-lg);">...drückst du bei CanGo App Empire nur einen Knopf.</strong>
+              <strong style="color: var(--primary-400); font-size: var(--text-lg);">...drückst du bei CanGo Empire nur einen Knopf.</strong>
             </p>
           </div>
         </div>
@@ -3156,7 +3221,7 @@
     <div class="container">
       
       <div class="section__header">
-        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--primary-400); margin-bottom: var(--space-6); font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; opacity: 0.9;">
+        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--primary-400); margin-bottom: var(--space-6); font-family: 'JetBrains Mono', monospace; opacity: 0.9;">
           HIGH-CPM NISCHEN
         </span>
         <h2 class="section__title" style="color: var(--text-primary); font-size: clamp(2.5rem, 5vw, var(--text-5xl)); margin-bottom: var(--space-4); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">
@@ -3251,11 +3316,11 @@
     <div class="container">
       
       <div class="section__header">
-        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--primary-400); margin-bottom: var(--space-6); font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif; opacity: 0.9;">
+        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--primary-400); margin-bottom: var(--space-6); font-family: 'JetBrains Mono', monospace; opacity: 0.9;">
           DER UNTERSCHIED
         </span>
         <h2 class="section__title" style="color: var(--text-primary); font-size: clamp(2.5rem, 5vw, var(--text-5xl)); margin-bottom: var(--space-4); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">
-          Agentur <span style="color: var(--text-muted);">vs.</span> <span style="color: var(--primary-500);">CanGo App Empire</span>
+          Agentur <span style="color: var(--text-muted);">vs.</span> <span style="color: var(--primary-500);">CanGo Empire</span>
         </h2>
       </div>
 
@@ -3264,7 +3329,7 @@
           <tr>
             <th>Kriterium</th>
             <th>Typische Agentur</th>
-            <th>CanGo App Empire</th>
+            <th>CanGo Empire</th>
           </tr>
         </thead>
         <tbody>
@@ -3467,8 +3532,8 @@
 
         <!-- Pitch 3: Infrastruktur/Asset -->
         <div class="asset-pitch" style="margin-top: var(--space-16); margin-bottom: var(--space-12); padding: var(--space-6); border-top: 1px solid rgba(249, 115, 22, 0.1); border-bottom: 1px solid rgba(249, 115, 22, 0.1); background: rgba(249, 115, 22, 0.01);">
-          <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;">OPEX VS. CAPEX</h3>
-          <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-6); opacity: 0.8;">Warum CanGo App Empire keine Ausgabe, sondern eine Investition ist.</p>
+          <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-2); color: var(--text-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'JetBrains Mono', monospace;">OPEX VS. CAPEX</h3>
+          <p style="font-size: var(--text-sm); color: var(--text-secondary); margin-bottom: var(--space-6); opacity: 0.8;">Warum CanGo Empire keine Ausgabe, sondern eine Investition ist.</p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6);">
             <div style="padding: var(--space-4); background: rgba(239, 68, 68, 0.05); border-left: 2px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-sm);">
               <div style="font-size: var(--text-xs); font-weight: 700; color: var(--accent-500); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-2);">TRADITIONELL (OpEx)</div>
@@ -3506,7 +3571,7 @@
             In Nischen wie Finanzen gewinnt nicht der Kreativste – <span class="mantra-slide__highlight">es gewinnt der Schnellste</span>.
           </p>
           <div class="mantra-cta">
-            <a href="kontakt.html" class="btn btn--accent">ZEIG MIR DIE ZAHLEN</a>
+            <a href="#kontakt" class="btn btn--accent">ZEIG MIR DIE ZAHLEN</a>
           </div>
         </div>
         <div class="mantra-slide">
@@ -3554,7 +3619,7 @@
             Bereits verdrahtet mit MyVi, Domicil & EnergyFinance.
           </p>
           <div class="mantra-cta">
-            <a href="kontakt.html" class="btn btn--accent">ZEIG MIR DIE ZAHLEN</a>
+            <a href="#kontakt" class="btn btn--accent">ZEIG MIR DIE ZAHLEN</a>
           </div>
         </div>
       </div>
@@ -3569,7 +3634,7 @@
     <div class="container">
       
       <div class="section__header">
-        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-400); margin-bottom: var(--space-4); font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;">
+        <span class="section__eyebrow" style="display: inline-block; font-size: var(--text-sm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary-400); margin-bottom: var(--space-4); font-family: 'JetBrains Mono', monospace;">
           FAQ
         </span>
         <h2 class="section__title" style="color: var(--text-primary); font-size: clamp(2.5rem, 5vw, var(--text-5xl)); margin-bottom: var(--space-4); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;">
@@ -3596,11 +3661,11 @@
           <div class="faq__items">
             <div class="faq__item">
               <button class="faq__question">
-                <span>Ist CanGo App Empire eine Marketing-Agentur?</span>
+                <span>Ist CanGo Empire eine Marketing-Agentur?</span>
                 <span class="faq__icon">+</span>
               </button>
               <div class="faq__answer">
-                <p>Negativ. Eine Agentur vermietet menschliche Arbeitszeit gegen Geld. Das ist ineffizient. CanGo App Empire ist ein Infrastruktur-Provider. Wir installieren eine autonome Fertigungsstraße für digitale Assets in deinem Unternehmen.</p>
+                <p>Negativ. Eine Agentur vermietet menschliche Arbeitszeit gegen Geld. Das ist ineffizient. CanGo Empire ist ein Infrastruktur-Provider. Wir installieren eine autonome Fertigungsstraße für digitale Assets in deinem Unternehmen.</p>
               </div>
             </div>
             
@@ -3739,7 +3804,7 @@
         </p>
         
         <div class="hero__actions" style="justify-content: center;">
-          <a href="kontakt.html" class="btn btn--accent btn--large">
+          <a href="/cdn-cgi/l/email-protection#84efebeaf0e5eff0c4e7e5eae3eba9e1e9f4edf6e1aae0e1" class="btn btn--accent btn--large">
             Kostenlose Beratung anfragen
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -3761,7 +3826,7 @@
         <div>
           <div class="footer__brand">
             <span class="footer__brand-icon">C</span>
-            <span>CanGo App Empire</span>
+            <span>CanGo Empire</span>
           </div>
           <p class="footer__desc">
             Marketing-Automatisierung für den DACH-Markt. 
@@ -3799,7 +3864,7 @@
       </div>
       
       <div class="footer__bottom">
-        <div>© 2025 CanGo App Empire. Alle Rechte vorbehalten.</div>
+        <div>© 2025 CanGo Empire. Alle Rechte vorbehalten.</div>
         <div class="footer__tagline">Kopieren hilft dir nicht – du brauchst die Maschine.</div>
       </div>
       
@@ -3809,7 +3874,7 @@
   <!-- ========================================
        JAVASCRIPT
        ======================================== -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Close mobile menu when clicking a link
     document.querySelectorAll('.nav__link, .nav__cta').forEach(link => {
       link.addEventListener('click', () => {
@@ -4029,80 +4094,42 @@
       });
     });
 
-    // ============================================
-    // METRIK-ANIMATION - EINFACHE, GARANTIERT FUNKTIONIERENDE VERSION
-    // ============================================
-    (function() {
-      'use strict';
-      
-      function animateCounter(element, target, duration) {
-        if (!element) return;
-        
-        const start = 0;
-        const startTime = Date.now();
-        const increment = target / (duration / 16); // 60fps
-        
-        function update() {
-          const elapsed = Date.now() - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          
-          // Ease-out easing
-          const easeOut = 1 - Math.pow(1 - progress, 3);
-          const current = Math.floor(start + (target - start) * easeOut);
-          
-          if (element && element.textContent !== undefined) {
-            element.textContent = current;
-          }
-          
-          if (progress < 1) {
-            requestAnimationFrame(update);
-          } else {
-            if (element && element.textContent !== undefined) {
-              element.textContent = target;
-            }
-          }
+    // Count-Up Animation für Metrik-Werte
+    function animateCounter(element) {
+      const target = parseInt(element.getAttribute('data-count'));
+      const duration = parseInt(element.getAttribute('data-duration')) || 2000;
+      const start = 0;
+      const increment = target / (duration / 16); // 60fps
+      let current = start;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
         }
-        
-        requestAnimationFrame(update);
-      }
-      
-      function startAnimations() {
-        const counters = document.querySelectorAll('.metric__icon-value[data-count]');
-        
-        if (counters.length === 0) {
-          console.log('Metriken nicht gefunden, versuche es erneut...');
-          setTimeout(startAnimations, 200);
-          return;
+        element.textContent = Math.floor(current);
+      }, 16);
+    }
+
+    // Starte Animation wenn Element sichtbar wird
+    const metricObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target.querySelector('.metric__icon-value[data-count]');
+          if (counter && !counter.classList.contains('animated')) {
+            counter.classList.add('animated');
+            animateCounter(counter);
+          }
+          metricObserver.unobserve(entry.target);
         }
-        
-        console.log('Gefunden: ' + counters.length + ' Metriken');
-        
-        counters.forEach(function(counter, index) {
-          const target = parseInt(counter.getAttribute('data-count')) || 0;
-          const duration = parseInt(counter.getAttribute('data-duration')) || 2000;
-          
-          // Staggered start - jede Metrik startet mit kurzer Verzögerung
-          setTimeout(function() {
-            animateCounter(counter, target, duration);
-          }, index * 150);
-        });
-      }
-      
-      // Starte Animationen sobald DOM bereit ist
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-          setTimeout(startAnimations, 300);
-        });
-      } else {
-        // DOM bereits geladen
-        setTimeout(startAnimations, 300);
-      }
-      
-      // Fallback für langsames Laden
-      window.addEventListener('load', function() {
-        setTimeout(startAnimations, 500);
       });
-    })();
+    }, { threshold: 0.5 });
+
+    // Beobachte alle Metric-Cards
+    document.querySelectorAll('.metric').forEach(metric => {
+      metricObserver.observe(metric);
+    });
 
     // n8n Webhook Endpoint für News Feed
     // Der Workflow "Cango Antomation Empire Webseite Workflow 1 News Feed Hero" muss aktiviert sein
@@ -4164,7 +4191,7 @@
           newsArticles = [
             {
               title: 'News werden geladen...',
-              publisher: 'CanGo App Empire',
+              publisher: 'CanGo Empire',
               date: 'Heute',
               url: '#',
               snippet: 'Die neuesten Artikel werden vom n8n Workflow geladen.',
@@ -4201,7 +4228,7 @@
         newsArticles = [
           {
             title: 'News-Feed wird aktualisiert...',
-            publisher: 'CanGo App Empire',
+            publisher: 'CanGo Empire',
             date: 'Heute',
             url: '#',
             snippet: 'Die neuesten Artikel werden geladen.'
@@ -4488,12 +4515,4 @@
       }).join('');
     }
 
-    // Blogs beim Laden der Seite abrufen
-    fetchDailyBlogs();
-
-    // Alle 10 Minuten Blogs aktualisieren
-    setInterval(fetchDailyBlogs, 10 * 60 * 1000);
-  </script>
-
-</body>
-</html>
+    // Blogs beim Laden der Seite 
