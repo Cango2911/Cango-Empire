@@ -1,8 +1,9 @@
 /* ============================================================
-   CanGo App Empire – responsive-global.css v40
+   CanGo App Empire – responsive-global.css v46
    Mobile-First für Android & iOS – Corporate Design
    Primary: #F97316 | Navy: #0d1424 | Text: #e8eef5
-   Breakpoints (einheitlich): 1080 (Mobile-Layout) | 1024 | 768 | 600 | 480 | 360 | 320px
+   Breakpoints: v46 — Mobile-Layout gilt für alle Breiten; 1024 | 768 | 600 | 480 | 360 | 320px
+   v46: Desktop = Mobile — Breakpoint 1080 gilt für alle Viewports; Desktop ≥1081 Typo/Head deaktiviert.
    v45: index ?v=45 — nur Cache-Zeile bei Bedarf.
    v44: Ribbon wieder body> unter Nav; sw-bg Ribbon-Override entfernt.
    v43: Kopf ?v=43 = index; gleicher Stand wie v42.
@@ -94,8 +95,8 @@ button, .btn, a.btn,
   }
 }
 
-/* ── 1. Breakpoint 1080px (Mobile-/Android-Layout, z. B. Tablet quer & große Phones) ── */
-@media (max-width: 1080px) {
+/* ── 1. „Mobile“-Layout auch auf Desktop (gleicher Stand wie iOS-WebView) ── */
+@media (max-width: 99999px) {
 
   /* Radikaler Mobile-Reset – Desktop-Zoom beheben */
   html, body {
@@ -544,8 +545,8 @@ button, .btn, a.btn,
   .fcopy { text-align: center !important; }
 }
 
-/* ── 3. Breakpoint 600px ── */
-@media (max-width: 600px) {
+/* ── 3. Phone-Feintuning — auch auf Desktop (gleiche Darstellung wie iOS-Safari) ── */
+@media (max-width: 99999px) {
 
   nav { padding: 0 12px !important; }
 
@@ -911,8 +912,8 @@ a, button { color: inherit; }
   }
 }
 
-/* ── 11. Mobile: Layout hart auf Viewportbreite (kein Rauszoomen, keine schmale Spalte) ── */
-@media (max-width: 1080px) {
+/* ── 11. Layout hart auf Viewportbreite — auch Desktop wie Mobile ── */
+@media (max-width: 99999px) {
   html, body {
     width: 100% !important;
     max-width: 100% !important;
@@ -1021,8 +1022,8 @@ a, button { color: inherit; }
   }
 }
 
-/* ── 12. Desktop (≥1081px): Fließtext nicht „zu klein“ zur Containerbreite ── */
-@media (min-width: 1081px) {
+/* ── 12. Desktop-Typo nur bei extrem breiten Viewports (de facto aus) — Web folgt Mobile-Typo ── */
+@media (min-width: 99999px) {
   html {
     font-size: 17px;
   }
@@ -1056,8 +1057,8 @@ a, button { color: inherit; }
   }
 }
 
-/* FIX-20260406-CC: Headline links wächst (flex:1 1 auto + min-content), CTAs rechts mit margin-left:auto; flex-wrap:wrap als Sicherheit */
-@media (min-width: 1081px) {
+/* FIX-20260406-CC: Desktop-Zweispalter deaktiviert (gleiche Logik wie ≤1080) */
+@media (min-width: 99999px) {
   .sw-bg .sw-head-row {
     display: flex !important;
     flex-wrap: wrap !important;
