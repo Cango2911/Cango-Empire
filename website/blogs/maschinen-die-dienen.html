@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<!-- SEO META TAGS -->
+<title>Maschinen, die dienen – nicht beherrschen | CanGo Empire Blog</title>
+<meta name="description" content="Warum Automatisierung im CanGo Empire mehr ist als Effizienz: Ein Essay über Systeme, die dem Menschen Freiheit zurückgeben – und Projekte vollenden, statt sie halbfertig zu lassen.">
+<meta name="author" content="Canberk Umut Kıvılcım">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://automation-cango-app-empire.com/blogs/maschinen-die-dienen.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maschinen, die dienen – nicht beherrschen | CanGo Empire">
+<meta property="og:description" content="Warum Automatisierung im CanGo Empire mehr ist als Effizienz: Systeme, die dem Menschen Freiheit zurückgeben und Projekte vollenden.">
+<meta property="og:url" content="https://automation-cango-app-empire.com/blogs/maschinen-die-dienen.html">
+<meta property="og:site_name" content="CanGo Empire">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://automation-cango-app-empire.com/images/blog-real/maschinen-die-dienen-hero.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CanGo Empire – Maschinen, die dienen: DaVinci-Pfad Artikel Cover">
+<meta property="article:author" content="Canberk Umut Kıvılcım">
+<meta property="article:published_time" content="2026-04-15">
+<meta property="article:section" content="KI & Automatisierung">
+<meta property="article:tag" content="KI Automatisierung">
+<meta property="article:tag" content="n8n">
+<meta property="article:tag" content="Digitales Business">
+<meta property="article:tag" content="CanGo Empire">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maschinen, die dienen – nicht beherrschen">
+<meta name="twitter:description" content="Systeme, die Freiheit erschaffen statt Abhängigkeit – der DaVinci-Pfad von CanGo Empire.">
+<meta name="twitter:image" content="https://automation-cango-app-empire.com/images/blog-real/maschinen-die-dienen-hero.jpg">
+<meta name="twitter:site" content="@cangoempire">
+<meta name="twitter:creator" content="@canberkkivilcim">
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Maschinen, die dienen – nicht beherrschen",
+  "description": "Warum Automatisierung im CanGo Empire mehr ist als Effizienz: Systeme, die dem Menschen Freiheit zurückgeben.",
+  "image": "https://automation-cango-app-empire.com/images/blog-real/maschinen-die-dienen-hero.jpg",
+  "url": "https://automation-cango-app-empire.com/blogs/maschinen-die-dienen.html",
+  "author": {
+    "@type": "Person",
+    "name": "Canberk Umut Kıvılcım",
+    "url": "https://automation-cango-app-empire.com/ueber-uns.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CanGo Empire",
+    "url": "https://automation-cango-app-empire.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://automation-cango-app-empire.com/images/logo.png"
+    }
+  },
+  "datePublished": "2026-04-15",
+  "dateModified": "2026-04-15",
+  "inLanguage": "de",
+  "articleSection": "KI & Automatisierung",
+  "keywords": "KI Automatisierung, n8n, OpenAI, Digitales Business, CanGo Empire, Content Automatisierung"
+}
+</script>
+
+<!-- Fonts: non-blocking (performance) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap"></noscript>
+
+<style>
+  :root {
+    --orange: #F97316;
+    --navy: #0A0F1E;
+    --navy-light: #1E293B;
+    --text: #E2E8F0;
+    --muted: #94A3B8;
+    --gold: #D4A853;
+    --link-underline: rgba(249,115,22,0.35);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Inter', Georgia, sans-serif;
+    font-weight: 300;
+    line-height: 1.9;
+    padding: 2rem 1rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  article { max-width: 720px; margin: 0 auto; width: 100%; }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .breadcrumb a:hover { color: var(--orange); }
+  .breadcrumb span { margin: 0 0.4rem; }
+
+  /* Hero */
+  .hero-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 630;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 2.5rem;
+    display: block;
+    background: var(--navy-light);
+  }
+
+  .meta {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-weight: 600;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  h1 em { color: var(--orange); font-style: italic; }
+
+  .byline {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--navy-light);
+  }
+
+  .opening {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    font-style: italic;
+    color: #CBD5E1;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  p { font-size: clamp(0.9rem, 1.5vw, 0.97rem); margin-bottom: 1.3rem; color: var(--text); }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 700;
+    color: var(--orange);
+    margin: 3rem 0 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .inline-link {
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 1px solid var(--link-underline);
+    transition: border-color 0.2s;
+  }
+  .inline-link:hover { border-bottom-color: var(--orange); }
+
+  .pullquote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-style: italic;
+    color: #fff;
+    border-left: 3px solid var(--gold);
+    padding: 1rem 0 1rem 1.5rem;
+    margin: 2.5rem 0;
+    line-height: 1.5;
+  }
+  .pullquote span {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    color: var(--muted);
+    margin-top: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  strong { color: #fff; font-weight: 500; }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--navy-light);
+  }
+
+  .closing {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-style: italic;
+    color: #CBD5E1;
+    line-height: 1.7;
+    margin: 2.5rem 0;
+  }
+
+  .signature {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--navy-light);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .sig-dot {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), #EA580C);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+  .sig-text { font-size: 0.82rem; color: var(--muted); }
+  .sig-text strong { color: var(--text); display: block; font-size: 0.9rem; }
+
+  .tags { margin-top: 2rem; }
+  .tag {
+    display: inline-block;
+    background: var(--navy-light);
+    border: 1px solid #1E3A5F;
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    margin: 0.3rem 0.2rem 0 0;
+  }
+
+  /* CTA */
+  .cta-block {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 3rem;
+    text-align: center;
+  }
+  .cta-block strong {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    display: block;
+    margin-bottom: 0.6rem;
+    color: #fff;
+  }
+  .cta-block p { color: rgba(255,255,255,0.88); margin-bottom: 1.2rem; font-size: 0.9rem; }
+  .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: #EA580C;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.8rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.9; }
+
+  /* Related */
+  .related { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--navy-light); }
+  .related-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .related a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--navy-light);
+    transition: color 0.2s;
+  }
+  .related a:hover { color: var(--orange); }
+  .related a::before { content: '→ '; color: var(--orange); }
+
+  /* AI Disclaimer */
+  .ai-disclaimer {
+    margin-top: 2rem;
+    padding: 0.75rem 1rem;
+    background: var(--navy-light);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .ai-disclaimer strong { color: var(--muted); font-weight: 500; }
+
+  /* Share */
+  .share-block {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--navy-light);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .share-block p { font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem; }
+  .share-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    border-radius: 4px;
+    margin: 0.3rem;
+    transition: opacity 0.2s;
+  }
+  .share-btn:hover { opacity: 0.85; }
+  .share-btn.linkedin { background: #0A66C2; }
+  .share-btn.twitter { background: #1DA1F2; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    body { padding: 1.5rem 1rem; }
+    .pullquote { padding-left: 1rem; }
+  }
+  @media (min-width: 1200px) {
+    body { padding: 4rem 2rem; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; color: #000; }
+    .share-block, .cta-block { display: none; }
+    h1, h2 { color: #000; }
+    .pullquote { border-left-color: #000; color: #000; }
+    .meta, .byline { color: #555; }
+  }
+
+  /* ── Bento Magazin ─────────────────────────────── */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    margin: 2rem 0 3rem;
+  }
+  .bento-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--navy-light);
+  }
+  .bento-item:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/7;
+  }
+  .bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .bento-item:hover img { transform: scale(1.04); }
+  .bento-item figcaption {
+    position: absolute;
+    bottom: 0; right: 0;
+    background: rgba(10,15,30,0.65);
+    color: rgba(148,163,184,0.8);
+    font-size: 0.6rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 8px 0 0 0;
+    letter-spacing: 0.03em;
+  }
+  @media (max-width: 600px) {
+    .bento-grid { grid-template-columns: 1fr; }
+    .bento-item:first-child { aspect-ratio: 16/9; }
+  }
+  /* ── /Bento ─────────────────────────────────────── */
+
+</style>
+<link rel="stylesheet" href="../css/cango-responsive-corporate.css"/>
+</head>
+<body>
+
+<article>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span>›</span>
+    <a href="../blogs.html">Blog</a>
+    <span>›</span>
+    Maschinen, die dienen
+  </nav>
+
+  <!-- Hero Image -->
+  <img
+    src="../images/blog-real/maschinen-die-dienen-hero.jpg"
+    alt="Maschinen Die Dienen Hero"
+    class="hero-img"
+    width="1200" height="630"
+    loading="eager"
+    onerror="this.style.opacity='0'"
+  >
+
+  <div class="meta">Der DaVinci-Pfad · CanGo Empire · Technologie & Vision</div>
+
+  <h1>Maschinen, die <em>dienen</em> —<br>nicht beherrschen</h1>
+
+  <div class="byline">Von Canberk Umut Kıvılcım · CanGo Empire · 15. April 2026 · 5 Min. Lesezeit</div>
+
+  <p class="opening">
+    Es gibt eine Frage, die ich mir stellte, bevor ich die erste Zeile Code schrieb:
+    Wofür soll das alles sein? Für Wachstum? Für Zahlen? Oder für etwas,
+    das sich schwerer messen lässt — aber tiefer zählt?
+  </p>
+
+  <p>
+    Wir leben in einer Zeit, in der Automatisierung oft gleichgesetzt wird mit Effizienz um der Effizienz willen.
+    Mehr Output. Weniger Aufwand. Schneller, billiger, skalierbar.
+    Das sind valide Ziele. Aber sie reichen mir nicht.
+  </p>
+
+  <p>
+    Was mich antreibt, ist eine andere Frage: <strong>Was wird frei, wenn die Maschine die Last trägt?</strong>
+    Was tut ein Mensch mit seiner Zeit, wenn er sie nicht mehr mit Wiederholungen verschwendet?
+    Welche Ideen entstehen, welche Gespräche, welche Entscheidungen — wenn der Kopf endlich Raum hat?
+  </p>
+
+  <div class="pullquote">
+    Technologie ohne Richtung ist Lärm.<br>
+    Technologie mit Absicht ist Architektur.
+    <span>— Der DaVinci-Pfad</span>
+  </div>
+
+  <h2>Warum ich den DaVinci-Pfad nenne, was ich tue</h2>
+
+  <p>
+    Leonardo da Vinci war kein Ingenieur, der zufällig malte. Er war kein Künstler,
+    der nebenbei Maschinen zeichnete. Er war beides gleichzeitig —
+    weil er nie akzeptierte, dass Funktion und Schönheit, Technik und Seele, getrennte Welten sind.
+  </p>
+
+  <p>
+    Das ist das Prinzip hinter CanGo Empire. Ich baue Systeme —
+    Automatisierungen, Content-Pipelines, KI-Workflows.
+    Aber ich baue sie mit einer Absicht, die über den Prozess hinausgeht:
+    <strong>Diese Systeme sollen Menschen Zeit zurückgeben.</strong>
+    Nicht damit sie mehr konsumieren. Damit sie mehr werden.
+  </p>
+
+  <h2>Was ein System mit Seele bedeutet</h2>
+
+  <p>
+    Ein System ohne Richtung optimiert ins Leere. Es produziert Content, den niemand braucht.
+    Es generiert Leads, die zu nichts führen. Es skaliert Gleichgültigkeit.
+  </p>
+
+  <p>
+    Ein System mit Richtung ist anders. Es stellt sich vor jeder Entscheidung eine Frage:
+    <strong>Hilft das jemandem?</strong> Löst es ein echtes Problem?
+    Gibt es dem Leser etwas zurück — Klarheit, eine Idee, einen Schritt nach vorn?
+  </p>
+
+  <p>
+    Das klingt philosophisch. Es ist aber zutiefst praktisch.
+    Denn Inhalte, die wirklich helfen, werden gelesen.
+    Systeme, die echten Wert liefern, bauen echtes Vertrauen.
+    Und Vertrauen ist die einzige Währung, die nicht inflationiert.
+  </p>
+
+  <div class="pullquote">
+    Ich will keine Aufmerksamkeit stehlen.<br>
+    Ich will Zeit schenken.
+    <span>— Canberk Umut Kıvılcım</span>
+  </div>
+
+  <h2>Was das konkret bedeutet</h2>
+
+  <p>
+    Jeden Morgen produziert das CanGo Empire automatisch Inhalte —
+    in sechs Bereichen, die ich für grundlegend halte:
+    Karriere, Technologie, Finanzen, Krypto, Mindset, Nachhaltigkeit.
+    Themen, bei denen Menschen Orientierung suchen und oft zu wenig verlässliche Stimmen finden.
+  </p>
+
+  <p>
+    Die Technologie dahinter ist <a href="../marktplatz.html" class="inline-link">n8n, OpenAI, WordPress</a> —
+    Werkzeuge, die wir im CanGo Empire täglich einsetzen und weiterentwickeln.
+    Aber die Entscheidung, <em>was</em> produziert wird und <em>warum</em> —
+    das ist menschlich. Das ist meine Handschrift in jedem Workflow.
+  </p>
+
+  <p>
+    Automatisierung bedeutet für mich nicht, die eigene Stimme zu delegieren.
+    Es bedeutet, sie zu vervielfältigen — ohne sie zu verwässern.
+    Wie wir das aufgebaut haben, findest du in unserer
+    <a href="../marktplatz.html" class="inline-link">Workflow-Übersicht</a>.
+  </p>
+
+  <div class="divider">✦</div>
+
+  <p class="closing">
+    Der DaVinci-Pfad ist keine Methode. Er ist eine Haltung.
+    Die Überzeugung, dass das Beste, was wir mit Technologie tun können,
+    nicht ist, sie zu optimieren — sondern sie zu orientieren.
+    An etwas, das größer ist als Wachstum. An dem, was wir wirklich hinterlassen wollen.
+  </p>
+
+  <p>
+    Ich baue weiter. Und ich lade dich ein, diesen Weg mitzugehen —
+    nicht als Nutzer, sondern als jemand, der selbst entscheiden will,
+    wohin seine Zeit fließt.
+  </p>
+
+  <div class="signature">
+    <div class="sig-dot">CU</div>
+    <div class="sig-text">
+      <strong>Canberk Umut Kıvılcım</strong>
+      Gründer · CanGo Empire · DaVinci-Autor
+    </div>
+  </div>
+
+  <div class="tags">
+    <span class="tag">KI & Automatisierung</span>
+    <span class="tag">DaVinci-Pfad</span>
+    <span class="tag">Digitale Freiheit</span>
+    <span class="tag">CanGo Empire</span>
+    <span class="tag">Technologie & Vision</span>
+    <span class="tag">n8n</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <strong>Bereit, dein eigenes System aufzubauen?</strong>
+    <p>Buch dir ein kostenloses Strategiegespräch — wir zeigen dir, wie du in 30 Tagen deine erste automatisierte Content-Pipeline live schaltest.</p>
+    <a href="../kontakt.html" class="cta-btn">Strategiegespräch starten</a>
+  </div>
+
+  <!-- Related Articles -->
+  <div class="related">
+    <div class="related-title">Weitere Artikel</div>
+    <a href="../blogs.html">Alle Blog-Artikel von CanGo Empire</a>
+    <a href="../marktplatz.html">Unsere KI-Workflows & Tools im Überblick</a>
+    <a href="../ueber-uns.html">Über Canberk Umut Kıvılcım & CanGo Empire</a>
+  </div>
+
+  <!-- KI-Disclaimer -->
+  <p class="ai-disclaimer">
+    <strong>Hinweis:</strong> Dieser Beitrag wurde KI-unterstützt erstellt und redaktionell von Canberk Umut Kıvılcım kuratiert. Die Inhalte dienen ausschließlich zur Information und stellen keine Rechts-, Finanz- oder Anlageberatung dar.
+  </p>
+
+  <!-- Share -->
+  <div class="share-block">
+    <p>Artikel teilen</p>
+    <a class="share-btn linkedin"
+       href="https://www.linkedin.com/sharing/share-offsite/?url=https://automation-cango-app-empire.com/blogs/maschinen-die-dienen.html"
+       target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="share-btn twitter"
+       href="https://twitter.com/intent/tweet?text=Maschinen%2C+die+dienen+%E2%80%93+nicht+beherrschen+%7C+CanGo+Empire&url=https://automation-cango-app-empire.com/blogs/maschinen-die-dienen.html"
+       target="_blank" rel="noopener noreferrer">Twitter / X</a>
+  </div>
+
+</article>
+
+</body>
+<!-- WordPress Import:
+     1. <article>...</article> → Gutenberg "Custom HTML" Block
+     2. <style>...</style> → Darstellung > Zusätzliches CSS
+     3. Relative Links (../blogs.html) → absolute WP-URLs ersetzen
+     4. Hero-Bild → /wp-content/uploads/blog/ hochladen
+-->
+</html>

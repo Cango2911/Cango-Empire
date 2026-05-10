@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <title>CanGo Tools | Kostenlose Tools &amp; Lead-Magnete | CanGo Empire</title>
+  <meta name="description" content="CanGo Tools: Short-Form Studio, Hook-Score, Script Rewriter und mehr — Enterprise Dark, Orange, laptop-first."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gray-950: #030712;
+      --gray-900: #111827;
+      --gray-800: #1F2937;
+      --gray-400: #9CA3AF;
+      --primary-500: #F97316;
+      --primary-400: #FB923C;
+      --accent-500: #EF4444;
+      --nav-height: 64px;
+      --container-max: 1100px;
+      --radius-lg: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Instrument Sans', system-ui, sans-serif;
+      background: var(--gray-950);
+      color: #F9FAFB;
+      min-height: 100vh;
+      padding-top: var(--nav-height);
+      display: flex;
+      flex-direction: column;
+    }
+    .container { width: 100%; max-width: var(--container-max); margin: 0 auto; padding: 0 1.25rem; }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height);
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+      z-index: 10000;
+      transform: translateZ(0);
+    }
+    .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav__brand { display: flex; align-items: center; gap: 0.5rem; color: #fff; text-decoration: none; font-weight: 600; }
+    .nav__brand-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary-500), var(--accent-500));
+      display: grid; place-items: center; font-size: 0.9rem; font-weight: 700;
+    }
+    .nav__toggle {
+      display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 0.5rem;
+    }
+    .nav__toggle span { width: 22px; height: 2px; background: #fff; border-radius: 1px; }
+    .nav__menu { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .nav__link {
+      color: var(--gray-400); text-decoration: none; font-size: 0.88rem; font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav__link:hover { color: #fff; }
+    .nav__link--active { color: var(--primary-400); }
+    .nav__cta {
+      background: var(--primary-500); color: #fff !important; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; text-decoration: none;
+      font-size: 0.88rem;
+    }
+    .nav__cta:hover { filter: brightness(1.08); }
+    @media (max-width: 900px) {
+      .nav__toggle { display: flex; }
+      .nav__menu {
+        display: none; position: absolute; top: var(--nav-height); left: 0; right: 0;
+        flex-direction: column; align-items: stretch; padding: 1rem 1.25rem 1.25rem;
+        background: rgba(3, 7, 18, 0.97); border-bottom: 1px solid var(--gray-800); gap: 0.75rem;
+      }
+      .nav__menu.active { display: flex; }
+      .nav__link, .nav__cta { text-align: center; padding: 0.6rem; }
+    }
+
+    .tools-hero {
+      padding: 2.75rem 0 1.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .tools-hero__eyebrow {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--primary-400); margin-bottom: 0.75rem;
+    }
+    .tools-hero__title {
+      font-size: clamp(1.55rem, 3.2vw, 2.15rem); font-weight: 700; line-height: 1.15; margin-bottom: 0.65rem;
+    }
+    .tools-hero__lead {
+      color: var(--gray-400); font-size: 1.02rem; max-width: 58ch; line-height: 1.6;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+      gap: 1.15rem;
+      padding: 2rem 0 2.5rem;
+      flex: 1;
+    }
+    .tool-card {
+      background: var(--gray-900);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+      display: flex; flex-direction: column; gap: 0.65rem;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      min-height: 100%;
+    }
+    .tool-card:hover {
+      border-color: rgba(249, 115, 22, 0.35);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.18);
+    }
+    .tool-card__badge {
+      font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--primary-400); font-weight: 600;
+    }
+    .tool-card__title { font-size: 1.08rem; font-weight: 600; }
+    .tool-card__desc { color: var(--gray-400); font-size: 0.88rem; line-height: 1.52; flex: 1; }
+    .tool-card__actions { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: auto; padding-top: 0.35rem; }
+    .tool-card__btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.5rem 0.95rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.12); color: #fff; background: transparent;
+    }
+    .tool-card__btn--primary {
+      background: var(--primary-500); border-color: var(--primary-500); color: #fff;
+    }
+    .tool-card__btn--primary[aria-disabled="true"],
+    .tool-card__btn[aria-disabled="true"] {
+      opacity: 0.42; cursor: not-allowed; pointer-events: none;
+    }
+    .tool-card__btn:hover:not([aria-disabled="true"]) { filter: brightness(1.06); }
+
+    .site-footer {
+      margin-top: auto;
+      padding: 2rem 0 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: var(--gray-400);
+      font-size: 0.82rem;
+    }
+    .site-footer a { color: var(--primary-400); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+
+    .skip-link { position: absolute; left: -9999px; }
+    .skip-link:focus { left: 1rem; top: 1rem; z-index: 9999; padding: 0.5rem 1rem; background: var(--primary-500); color: #fff; }
+  </style>
+  <link rel="stylesheet" href="css/cango-responsive-corporate.css"/>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt springen</a>
+  <nav class="nav" aria-label="Hauptnavigation" role="navigation">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="cango-empire-v4-monopoly.html#home">
+        <span class="nav__brand-icon">C</span>
+        <span>CanGo Empire</span>
+      </a>
+      <button type="button" class="nav__toggle" aria-label="Menü öffnen" onclick="document.querySelector('.nav__menu').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__menu">
+        <a href="index.html" class="nav__link">Startseite</a>
+        <a href="ueber-uns.html" class="nav__link">Über Uns</a>
+        <a href="blogs.html" class="nav__link">Blogs</a>
+        <div class="nav__dropdown-wrap nav__dropdown-wrap--active" data-nav-dropdown>
+          <button type="button" class="nav__link nav__dropdown-toggle nav__link--active" aria-expanded="false" aria-haspopup="true" aria-current="page">CanGo Tools</button>
+          <div class="nav__dropdown-panel" role="menu">
+            <a href="tools.html" class="nav__dropdown-item nav__link--active" aria-current="page" role="menuitem">Tools-Übersicht</a>
+            <a href="short-form-studio.html" class="nav__dropdown-item" role="menuitem">CanGo Studio</a>
+          </div>
+        </div>
+        <a href="marktplatz.html" class="nav__link">Marktplatz</a>
+        <a href="aiaiffiliatprodukte.html" class="nav__link">Produktdetailseite</a>
+        <a href="kontakt.html" class="nav__link">Kontakt</a>
+        <a href="kontakt.html" class="nav__cta">Jetzt starten</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="tools-area-bar" aria-label="CanGo Tools Unterbereich">
+    <div class="container tools-area-bar__inner">
+      <span class="tools-area-bar__title">CanGo Tools</span>
+      <div class="tools-area-bar__dropdown nav__dropdown-wrap" data-nav-dropdown>
+        <button type="button" class="tools-area-bar__toggle nav__dropdown-toggle" aria-expanded="false" aria-haspopup="true">CanGo Studio &amp; Übersicht</button>
+        <div class="nav__dropdown-panel" role="menu">
+          <a href="tools.html" class="nav__dropdown-item nav__link--active" aria-current="page" role="menuitem">Tools-Übersicht</a>
+          <a href="short-form-studio.html" class="nav__dropdown-item" role="menuitem">CanGo Studio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <section class="tools-hero">
+      <div class="container">
+        <p class="tools-hero__eyebrow">Lead-Magnete · Pipeline · App-WebView</p>
+        <h1 class="tools-hero__title">CanGo Tools</h1>
+        <p class="tools-hero__lead">
+          Zentrale Anlaufstelle für kostenlose Mini-Tools im CanGo Enterprise-Stil — Orange, Dark, laptop-first (Grid stapelt auf Mobile). Ideal eingebunden als „CanGo Tools“ in der App.
+        </p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="tools-grid">
+        <article class="tool-card">
+          <span class="tool-card__badge">Video · Short-Form</span>
+          <h2 class="tool-card__title">Short-Form AI Studio</h2>
+          <p class="tool-card__desc">
+            Ingest → Analyze (Opus-Style Segmente &amp; Hook-Score) → Caption-Presets → Safe-Zone 9:16 → Export .txt. Vollständig im Browser.
+          </p>
+          <div class="tool-card__actions">
+            <a class="tool-card__btn tool-card__btn--primary" href="short-form-studio.html">Studio öffnen</a>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <span class="tool-card__badge">Analyse</span>
+          <h2 class="tool-card__title">Hook-Score Analyzer</h2>
+          <p class="tool-card__desc">
+            Gleiche Heuristik wie im Studio: Trigger-Wörter, Zahlen, Fragen — Viralität 0–100 mit Begründung. Direkt bei Schritt „Analyze“.
+          </p>
+          <div class="tool-card__actions">
+            <a class="tool-card__btn tool-card__btn--primary" href="short-form-studio.html#step-analyze">Zum Analyzer</a>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <span class="tool-card__badge">Text</span>
+          <h2 class="tool-card__title">AI Script Rewriter</h2>
+          <p class="tool-card__desc">
+            Skript schärfer formulieren (Hook-Präfixe &amp; Direktheit). Im Studio unter Ingest — Button „Script schärfer formulieren“.
+          </p>
+          <div class="tool-card__actions">
+            <a class="tool-card__btn tool-card__btn--primary" href="short-form-studio.html#step-ingest">Zum Rewriter</a>
+          </div>
+        </article>
+
+        <article class="tool-card">
+          <span class="tool-card__badge">Coming Soon</span>
+          <h2 class="tool-card__title">B-Roll Search</h2>
+          <p class="tool-card__desc">
+            Semantische B-Roll-Vorschläge zur KI-Lane — Anbindung Stock/API folgt. Platzhalter für die Pipeline.
+          </p>
+          <div class="tool-card__actions">
+            <span class="tool-card__btn" aria-disabled="true">Demnächst</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© CanGo Empire · <a href="index.html">Startseite</a> · <a href="kontakt.html">Kontakt</a></p>
+    </div>
+  </footer>
+  <script src="js/nav-dropdown.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+/**
+ * CanGo Empire — Corporate Responsive Layer
+ * Nach allen Inline-Styles laden. Ziel: sichere Bereiche (Notch), Touch-Ziele,
+ * keine horizontalen Scroll-Leaks, konsistente Raster auf Phone / Tablet / Desktop.
+ */
+
+/* ── Basis ─────────────────────────────────────────────────── */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Safe Area: nicht am body seitlich — bricht auf iOS oft position:fixed für .nav
+   (Menü „wandert“ oder bleibt nicht am Viewport). Abstände über .container / Sections. ── */
+
+/* ── Haupt-Container: nie gegen Display-Kante klemmen ───────── */
+@media (max-width: 640px) {
+  .container {
+    padding-left: max(0.875rem, env(safe-area-inset-left, 0px)) !important;
+    padding-right: max(0.875rem, env(safe-area-inset-right, 0px)) !important;
+  }
+
+  .nav .container.nav__inner,
+  .nav__inner.container {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px)) !important;
+    padding-right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+  }
+}
+
+/* ── Navigation: Touch-Ziele ≥ 44px (WCAG 2.5.5 / Apple HIG) ─ */
+@media (max-width: 900px) {
+  .nav__link,
+  .nav__cta {
+    min-height: 44px;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    box-sizing: border-box;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav__toggle {
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav__brand {
+    min-height: 44px;
+    align-items: center;
+  }
+}
+
+/* ── Partner-Banner ─────────────────────────────────────────── */
+.partner-banner {
+  padding-left: max(var(--space-4, 1rem), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-4, 1rem), env(safe-area-inset-right, 0px));
+}
+
+.partner-banner__close {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* ── Typografie: keine Überläufe bei langen Wörtern/URLs ───── */
+@media (max-width: 640px) {
+  .hero__title,
+  .section__title,
+  .section__subtitle,
+  .blogs-header__title,
+  .blogs-header__subtitle,
+  .blog-card h3,
+  .faq__question {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+
+/* ── Buttons & CTAs ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .btn,
+  .nav__cta,
+  button[type="submit"]:not(.partner-banner__close) {
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ── Raster: eine Spalte auf schmalen Phones ─────────────────── */
+@media (max-width: 640px) {
+  .tech__grid,
+  .arsenal__grid,
+  .manifest__grid,
+  .industries__grid,
+  .footer__grid,
+  .faq__grid,
+  .comparison__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero__stats {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .industries__grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)) !important;
+  }
+}
+
+/* ── Tabellen / breite Blöcke ───────────────────────────────── */
+table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.comparison__table-wrap,
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+/* ── Blog-Übersicht (blogs.html) ───────────────────────────── */
+@media (max-width: 640px) {
+  .blogs-grid,
+  .blog-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Formulare (Kontakt o. ä.) ──────────────────────────────── */
+@media (max-width: 640px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: 16px !important; /* verhindert iOS-Zoom beim Fokus */
+    max-width: 100%;
+  }
+}
+
+/* ── Reduzierte Bewegung ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Blog-Artikel (website/blogs/*.html, eigene Typo-Vorlage) ─ */
+article {
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  article .hero-img,
+  article .section-visual {
+    border-radius: 8px;
+  }
+}
+
+/* ── Apple Safari / iOS / iPadOS: Menüleiste bleibt beim Scrollen am Viewport (persistente Bar)
+   Analog zu Enterprise-Sites mit fixierter Kopfzeile bei „Infrastruktur / Anfrage“-Flows. ───────── */
+
+:root {
+  --partner-banner-height-fallback: 48px;
+}
+
+/* iOS erkennen (nicht Desktop-Safari ohne Touch) */
+@supports (-webkit-touch-callout: none) {
+  /* Horizontal-scroll-Fix ohne body-padding (siehe oben) */
+  html {
+    overflow-x: clip;
+  }
+
+  /* Nav direkt unter body = eigener Layer, immer relativ zum Viewport */
+  body > .nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    z-index: 2147483000 !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Partner-Banner aktiv: Nav unter dem Banner (gleiche Logik wie Inline-CSS) */
+  body.has-banner > .nav {
+    top: var(--partner-banner-height-fallback) !important;
+  }
+
+  /* Ausklapp-Menü über Seiteninhalt */
+  .nav__menu {
+    z-index: 2147482999 !important;
+  }
+}
+
+/* Touch-Geräte allgemein (einige iPadOS-/Split-View-Fälle) */
+@media (hover: none) and (pointer: coarse) {
+  body > .nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 2147483000 !important;
+  }
+
+  body.has-banner > .nav {
+    top: var(--partner-banner-height-fallback) !important;
+  }
+}
+
+/* ── Nav: CanGo Tools Dropdown + Tool-Bereichsleiste ───────────────── */
+
+.nav__dropdown-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+button.nav__dropdown-toggle {
+  font: inherit;
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  text-align: inherit;
+}
+
+.nav__dropdown-wrap--active > .nav__dropdown-toggle {
+  color: var(--primary-400, #fb923c);
+}
+
+.nav__dropdown-panel {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.35rem);
+  min-width: 220px;
+  padding: 0.35rem 0;
+  margin: 0;
+  background: rgba(17, 24, 39, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  z-index: 2147483647;
+}
+
+.nav__dropdown-item {
+  display: block;
+  padding: 0.55rem 1rem;
+  color: var(--gray-400, #9ca3af);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav__dropdown-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav__dropdown-item.nav__link--active {
+  color: var(--primary-400, #fb923c);
+}
+
+@media (min-width: 901px) {
+  .nav__dropdown-wrap:hover > .nav__dropdown-panel,
+  .nav__dropdown-wrap:focus-within > .nav__dropdown-panel {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav__dropdown-wrap {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav__dropdown-toggle {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav__dropdown-panel {
+    position: static;
+    top: auto;
+    margin-top: 0.35rem;
+    box-shadow: none;
+    border-radius: 8px;
+  }
+
+  .nav__dropdown-wrap:not(.is-open) > .nav__dropdown-panel {
+    display: none !important;
+  }
+
+  .nav__dropdown-wrap.is-open > .nav__dropdown-panel {
+    display: block !important;
+  }
+}
+
+/* Zweite Zeile unter der Hauptnav: nur auf Tool-Seiten */
+.tools-area-bar {
+  background: rgba(17, 24, 39, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0.55rem 0;
+}
+
+.tools-area-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tools-area-bar__title {
+  font-family: ui-monospace, "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-400, #fb923c);
+  font-weight: 600;
+}
+
+.tools-area-bar__dropdown.nav__dropdown-wrap {
+  margin-left: auto;
+}
+
+.tools-area-bar .nav__dropdown-panel {
+  right: 0;
+  left: auto;
+}
+
+@media (min-width: 901px) {
+  .tools-area-bar .nav__dropdown-wrap:hover > .nav__dropdown-panel,
+  .tools-area-bar .nav__dropdown-wrap:focus-within > .nav__dropdown-panel {
+    display: block;
+  }
+}
+
+.tools-area-bar__toggle {
+  font-size: 0.82rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7eb !important;
+}
+
+.tools-area-bar__toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff !important;
+}
