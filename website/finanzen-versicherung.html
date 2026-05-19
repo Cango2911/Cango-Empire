@@ -283,13 +283,24 @@
 
     /* === SECTION HEADERS === */
     .section {
-      padding: var(--space-24) 0;
+      padding: clamp(5rem, 10vw, 7rem) 0;
     }
 
     .section--elevated {
       background: var(--bg-elevated);
-      border-top: 1px solid var(--border-default);
-      border-bottom: 1px solid var(--border-default);
+      border-top: 1px solid rgba(59,130,246,0.18);
+      border-bottom: 1px solid rgba(59,130,246,0.18);
+      position: relative;
+    }
+
+    .section--elevated::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 50%, rgba(59,130,246,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 35% at 80% 50%, rgba(249,115,22,0.04) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .section__header {
@@ -503,12 +514,13 @@
 
     .problem__card {
       padding: var(--space-8);
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.03), rgba(59, 130, 246, 0.01));
-      border: 1px solid rgba(59, 130, 246, 0.15);
+      background: linear-gradient(145deg, rgba(59,130,246,0.09) 0%, rgba(59,130,246,0.03) 50%, rgba(3,7,18,0.5) 100%);
+      border: 1px solid rgba(59,130,246,0.28);
       border-radius: var(--radius-xl);
       transition: all var(--duration-slow) var(--ease-out);
       position: relative;
       overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(59,130,246,0.12);
     }
 
     .problem__card::before {
@@ -518,20 +530,14 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, var(--blue-500), transparent);
-      opacity: 0;
-      transition: opacity var(--duration-base) var(--ease-out);
+      background: linear-gradient(90deg, transparent 5%, var(--blue-400) 50%, transparent 95%);
     }
 
     .problem__card:hover {
-      border-color: rgba(59, 130, 246, 0.3);
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(59, 130, 246, 0.02));
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
-    }
-
-    .problem__card:hover::before {
-      opacity: 1;
+      border-color: rgba(59,130,246,0.5);
+      background: linear-gradient(145deg, rgba(59,130,246,0.14) 0%, rgba(59,130,246,0.06) 50%, rgba(3,7,18,0.4) 100%);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(59,130,246,0.18), inset 0 1px 0 rgba(59,130,246,0.2);
     }
 
     .problem__card-icon {
@@ -598,13 +604,27 @@
     }
 
     .solution__card--berater {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.03));
-      border: 2px solid rgba(245, 158, 11, 0.3);
+      background: linear-gradient(145deg, rgba(245,158,11,0.14) 0%, rgba(245,158,11,0.05) 55%, rgba(3,7,18,0.5) 100%);
+      border: 1px solid rgba(245,158,11,0.4);
+      box-shadow: 0 0 0 1px rgba(245,158,11,0.08), inset 0 1px 0 rgba(245,158,11,0.15);
+    }
+
+    .solution__card--berater:hover {
+      box-shadow: 0 16px 40px rgba(245,158,11,0.18), inset 0 1px 0 rgba(245,158,11,0.2);
+      border-color: rgba(245,158,11,0.65);
+      transform: translateY(-5px);
     }
 
     .solution__card--kunde {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.03));
-      border: 2px solid rgba(16, 185, 129, 0.3);
+      background: linear-gradient(145deg, rgba(16,185,129,0.14) 0%, rgba(16,185,129,0.05) 55%, rgba(3,7,18,0.5) 100%);
+      border: 1px solid rgba(16,185,129,0.4);
+      box-shadow: 0 0 0 1px rgba(16,185,129,0.08), inset 0 1px 0 rgba(16,185,129,0.15);
+    }
+
+    .solution__card--kunde:hover {
+      box-shadow: 0 16px 40px rgba(16,185,129,0.18), inset 0 1px 0 rgba(16,185,129,0.2);
+      border-color: rgba(16,185,129,0.65);
+      transform: translateY(-5px);
     }
 
     .solution__card::before {
@@ -879,18 +899,44 @@
 
     .partner-card {
       padding: var(--space-8);
-      background: var(--bg-base);
-      border: 2px solid var(--border-default);
       border-radius: var(--radius-xl);
       transition: all var(--duration-slow) var(--ease-out);
       position: relative;
       overflow: hidden;
     }
 
-    .partner-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    .partner-card--myvi {
+      background: linear-gradient(135deg, rgba(245,158,11,0.12) 0%, rgba(245,158,11,0.04) 60%, rgba(3,7,18,0.6) 100%);
+      border: 1px solid rgba(245,158,11,0.35);
+      box-shadow: 0 0 0 1px rgba(245,158,11,0.08), inset 0 1px 0 rgba(245,158,11,0.1);
     }
+
+    .partner-card--mitnorm {
+      background: linear-gradient(135deg, rgba(59,130,246,0.12) 0%, rgba(59,130,246,0.04) 60%, rgba(3,7,18,0.6) 100%);
+      border: 1px solid rgba(59,130,246,0.35);
+      box-shadow: 0 0 0 1px rgba(59,130,246,0.08), inset 0 1px 0 rgba(59,130,246,0.1);
+    }
+
+    .partner-card--mynorm {
+      background: linear-gradient(135deg, rgba(16,185,129,0.12) 0%, rgba(16,185,129,0.04) 60%, rgba(3,7,18,0.6) 100%);
+      border: 1px solid rgba(16,185,129,0.35);
+      box-shadow: 0 0 0 1px rgba(16,185,129,0.08), inset 0 1px 0 rgba(16,185,129,0.1);
+    }
+
+    .partner-card--firmen {
+      background: linear-gradient(135deg, rgba(34,211,238,0.12) 0%, rgba(34,211,238,0.04) 60%, rgba(3,7,18,0.6) 100%);
+      border: 1px solid rgba(34,211,238,0.35);
+      box-shadow: 0 0 0 1px rgba(34,211,238,0.08), inset 0 1px 0 rgba(34,211,238,0.1);
+    }
+
+    .partner-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .partner-card--myvi:hover  { box-shadow: 0 16px 40px rgba(245,158,11,0.2), 0 0 0 1px rgba(245,158,11,0.3); border-color: rgba(245,158,11,0.6); }
+    .partner-card--mitnorm:hover { box-shadow: 0 16px 40px rgba(59,130,246,0.2), 0 0 0 1px rgba(59,130,246,0.3); border-color: rgba(59,130,246,0.6); }
+    .partner-card--mynorm:hover  { box-shadow: 0 16px 40px rgba(16,185,129,0.2), 0 0 0 1px rgba(16,185,129,0.3); border-color: rgba(16,185,129,0.6); }
+    .partner-card--firmen:hover  { box-shadow: 0 16px 40px rgba(34,211,238,0.2), 0 0 0 1px rgba(34,211,238,0.3); border-color: rgba(34,211,238,0.6); }
 
     .partner-card::before {
       content: '';
@@ -899,27 +945,12 @@
       left: 0;
       right: 0;
       height: 3px;
-      opacity: 0;
-      transition: opacity var(--duration-base) var(--ease-out);
     }
 
-    .partner-card:hover::before {
-      opacity: 1;
-    }
-
-    .partner-card--myvi::before { background: linear-gradient(90deg, var(--gold-400), var(--gold-600)); }
-    .partner-card--mitnorm::before { background: linear-gradient(90deg, var(--blue-400), var(--blue-600)); }
-    .partner-card--mynorm::before { background: linear-gradient(90deg, var(--emerald-400), var(--emerald-600)); }
-    .partner-card--firmen::before { background: linear-gradient(90deg, var(--cyan-400), var(--cyan-600)); }
-
-    .partner-card:hover {
-      border-color: var(--border-default);
-    }
-
-    .partner-card--myvi:hover { border-color: rgba(245, 158, 11, 0.5); }
-    .partner-card--mitnorm:hover { border-color: rgba(59, 130, 246, 0.5); }
-    .partner-card--mynorm:hover { border-color: rgba(16, 185, 129, 0.5); }
-    .partner-card--firmen:hover { border-color: rgba(34, 211, 238, 0.5); }
+    .partner-card--myvi::before    { background: linear-gradient(90deg, transparent 5%, var(--gold-400) 50%, transparent 95%); }
+    .partner-card--mitnorm::before { background: linear-gradient(90deg, transparent 5%, var(--blue-400) 50%, transparent 95%); }
+    .partner-card--mynorm::before  { background: linear-gradient(90deg, transparent 5%, var(--emerald-400) 50%, transparent 95%); }
+    .partner-card--firmen::before  { background: linear-gradient(90deg, transparent 5%, var(--cyan-400) 50%, transparent 95%); }
 
     .partner-card__header {
       display: flex;
@@ -988,7 +1019,7 @@
       display: flex;
       gap: var(--space-4);
       padding-top: var(--space-4);
-      border-top: 1px solid var(--border-default);
+      border-top: 1px solid rgba(255,255,255,0.08);
       margin-bottom: var(--space-4);
     }
 
@@ -1291,6 +1322,91 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
+    }
+
+    /* === VISUELLES ENHANCEMENT: Mehr Leben, Farbe & Tiefe === */
+
+    /* Subtiles Ambient-Licht im Body */
+    body {
+      background-image:
+        radial-gradient(ellipse 80% 50% at 10% 20%, rgba(59,130,246,0.03) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 90% 60%, rgba(249,115,22,0.025) 0%, transparent 60%);
+    }
+
+    /* Section-Trennlinien mit Farbverlauf */
+    .section + .section,
+    .section + .section--elevated,
+    .section--elevated + .section {
+      position: relative;
+    }
+
+    /* Hero stat-Karten lebendiger */
+    .hero__stat {
+      background: linear-gradient(145deg, rgba(59,130,246,0.1) 0%, rgba(59,130,246,0.03) 100%);
+      border: 1px solid rgba(59,130,246,0.3);
+      box-shadow: inset 0 1px 0 rgba(59,130,246,0.1);
+    }
+
+    /* Problem-Intro mit stärkerem Akzent */
+    .problem__intro {
+      background: linear-gradient(145deg, rgba(59,130,246,0.09) 0%, rgba(59,130,246,0.02) 100%);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-left: 3px solid var(--blue-500);
+    }
+
+    /* CanGo Advantage Block aufhellen */
+    .cango-advantage {
+      background: linear-gradient(145deg, rgba(59,130,246,0.13) 0%, rgba(59,130,246,0.04) 60%, rgba(3,7,18,0.5) 100%);
+      border: 1px solid rgba(59,130,246,0.35);
+      box-shadow: 0 0 60px rgba(59,130,246,0.08), inset 0 1px 0 rgba(59,130,246,0.12);
+    }
+
+    /* Partners-Intro aufhellen */
+    .partners__intro {
+      background: linear-gradient(145deg, rgba(59,130,246,0.1) 0%, rgba(59,130,246,0.03) 100%);
+      border: 1px solid rgba(59,130,246,0.28);
+      box-shadow: inset 0 1px 0 rgba(59,130,246,0.1);
+    }
+
+    /* Step-Karten aufhellen */
+    .cango-advantage__step {
+      background: rgba(59,130,246,0.07);
+      border: 1px solid rgba(59,130,246,0.18);
+    }
+
+    /* Digital-Banner stärker */
+    .digital-banner {
+      background: linear-gradient(135deg, rgba(59,130,246,0.18), rgba(59,130,246,0.06));
+      border-top: 3px solid var(--blue-500);
+      border-bottom: 1px solid rgba(59,130,246,0.35);
+    }
+
+    /* CTA Section Glow */
+    .cta {
+      position: relative;
+    }
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(249,115,22,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Solution benefit-rows leicht sichtbar */
+    .solution__benefit {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .solution__card--berater .solution__benefit {
+      background: rgba(245,158,11,0.06);
+      border-color: rgba(245,158,11,0.12);
+    }
+
+    .solution__card--kunde .solution__benefit {
+      background: rgba(16,185,129,0.06);
+      border-color: rgba(16,185,129,0.12);
     }
 
     /* ============================================
