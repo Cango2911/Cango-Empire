@@ -11,6 +11,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { queryFromSectionTitle, ARTICLE_FALLBACK } from './blog-section-query-map.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(__dirname, '..');
@@ -22,74 +23,6 @@ const MIN_BYTES = 8_000;
 const DELAY_MS = 300;
 const FORCE = process.argv.includes('--force');
 const KEEP_COVERS = process.argv.includes('--keep-covers');
-
-/** Deutsch → englische Stock-Suchbegriffe (Kern-Keywords) */
-const PHRASE_MAP = [
-  [/etf[\s-]*sparpl[aä]n|sparplan/i, 'ETF savings plan investment portfolio chart'],
-  [/versicherung.*vergleich|versicherungen intelligent/i, 'insurance comparison documents policy'],
-  [/berufsunf[aä]higkeit|\bbu\b/i, 'disability insurance protection family umbrella'],
-  [/pkv|private kranken/i, 'private health insurance doctor stethoscope card'],
-  [/gkv|gesetzlich.*kranken|solidarisch.*beitrag/i, 'statutory health insurance hospital Germany'],
-  [/krankenversicherung|gesundheits?vorsorge/i, 'health insurance medical checkup'],
-  [/bitcoin|btc\b/i, 'bitcoin gold coin cryptocurrency chart institutional'],
-  [/krypto|crypto|web3|defi/i, 'cryptocurrency blockchain digital finance'],
-  [/steuer.*krypto|krypto.*steuer/i, 'cryptocurrency tax documents calculator'],
-  [/solar|photovoltaik|pv-anlage/i, 'solar panels house roof sunshine photovoltaic'],
-  [/w[aä]rmepumpe/i, 'air source heat pump modern house energy'],
-  [/strom.*sparen|stromanbieter|energietarif/i, 'electricity bill energy saving light bulb'],
-  [/cfd|trading|broker|aktien|börse/i, 'stock trading chart candlestick forex screen'],
-  [/technische analyse|candlestick|rsi/i, 'technical analysis trading chart indicators'],
-  [/immobil|pflegeimmobil|kapitalanlage.*immobil/i, 'real estate investment property building'],
-  [/eigentumswohnung|wohnung kaufen|miete/i, 'apartment keys buying real estate handshake'],
-  [/ki\b|künstliche intelligenz|chatgpt|claude|llm/i, 'artificial intelligence AI chatbot laptop business'],
-  [/n8n|zapier|automatisierung|workflow/i, 'business process automation workflow diagram software'],
-  [/bewerbung|recruiting|karriere|hr\b|personal/i, 'job interview recruitment HR talent'],
-  [/gehalt|verhandlung/i, 'salary negotiation business meeting handshake'],
-  [/coaching|mindset|enneagramm|persönlichkeit/i, 'business coaching mentor mindset workshop'],
-  [/adhs|produktivit|fokus|konzentration/i, 'organized productive workspace focus minimal desk'],
-  [/finanztool|vermögen|portfolio|anlage/i, 'personal finance dashboard wealth management'],
-  [/buchhaltung|datev|rechnung/i, 'accounting bookkeeping invoice laptop office'],
-  [/steuer|steueroptim/i, 'tax planning documents calculator business'],
-  [/faq|häufige fragen/i, 'FAQ help support question answer customer service'],
-  [/checkliste|gespräch.*expert/i, 'checklist consultation meeting professional advisor'],
-  [/denkfehler|fehler vermeiden/i, 'mistake warning decision thinking business'],
-  [/institutionell|adoption|etf.*institut/i, 'institutional investment finance corporate'],
-  [/energie.*effizienz|renewable|nachhaltig/i, 'renewable energy sustainability green technology'],
-  [/robot|maschine.*dienen|davinci/i, 'human robot collaboration innovation technology'],
-  [/compliance|regulierung|rechtlich/i, 'legal compliance regulation documents business'],
-  [/signal.*pipeline|algorithmus/i, 'algorithm data pipeline trading technology'],
-  [/risikomanagement/i, 'risk management finance protection shield chart'],
-  [/reporting|performance.*track/i, 'financial reporting analytics dashboard screen'],
-];
-
-const WORD_MAP = {
-  finanzen: 'finance money',
-  versicherung: 'insurance',
-  energie: 'energy power',
-  solar: 'solar panels',
-  trading: 'stock trading',
-  immobilien: 'real estate',
-  automatisierung: 'automation technology',
-  unternehmen: 'business corporate',
-  digital: 'digital technology',
-  beratung: 'consultation advisor',
-  vergleich: 'comparison choice',
-  investition: 'investment growth',
-  sicherheit: 'security protection',
-  familie: 'family protection',
-  arzt: 'doctor medical',
-  krankenhaus: 'hospital medical',
-  vertrag: 'contract document signing',
-  laptop: 'laptop business',
-  team: 'business team meeting',
-  daten: 'data analytics dashboard',
-};
-
-const STOP = new Set(
-  'der die das und oder ein eine einer eines einem den dem des von zu im in auf für mit ist sind war werden als auch nicht nur noch sehr mehr als bei nach über durch ohne bis zum zur beim bereits heute jahr jahre 2026 2025 dach raum deutschland'.split(
-    ' ',
-  ),
-);
 
 function loadEnv() {
   const envPath = path.join(REPO, '.env');
@@ -122,34 +55,6 @@ function stripHtml(s) {
     .trim();
 }
 
-/** Aus Titel + Absatz englische Kern-Keywords für Depositphotos */
-function buildContextQuery(title, paragraph = '', pageTopic = '') {
-  const combined = `${title} ${paragraph}`.toLowerCase();
-  const parts = [];
-
-  for (const [re, en] of PHRASE_MAP) {
-    if (re.test(combined)) parts.push(en);
-  }
-
-  const words = combined
-    .replace(/[^\wäöüß\s-]/g, ' ')
-    .split(/\s+/)
-    .filter((w) => w.length > 2 && !STOP.has(w));
-
-  for (const w of words) {
-    const stem = w.replace(/(en|er|em|es|e|n|s)$/i, '').slice(0, 6);
-    for (const [de, en] of Object.entries(WORD_MAP)) {
-      if (w.includes(de) || de.startsWith(stem)) parts.push(en);
-    }
-  }
-
-  if (parts.length === 0 && pageTopic) parts.push(pageTopic);
-
-  const unique = [...new Set(parts.join(' ').split(/\s+/))].filter((w) => w.length > 2);
-  const query = unique.slice(0, 12).join(' ');
-  return query || 'business professional modern office';
-}
-
 function extractParagraphAfter(html, imgPath) {
   const idx = html.indexOf(imgPath);
   if (idx < 0) return '';
@@ -170,8 +75,6 @@ function parseBlogPage(html, sourceFile) {
 
   const intro = html.match(/class="blog-content__intro"[^>]*>([\s\S]*?)<\/div>/i);
   const introText = intro ? stripHtml(intro[1]) : '';
-  const pageTopic = buildContextQuery(pageTitle, introText);
-
   const sections = [];
   const sectionRe =
     /<h2 class="blog-content__section-title">([^<]+)<\/h2><figure class="section-visual"><img[^>]+src="(\/img\/blog-sections\/[^"]+\.jpg)"/gi;
@@ -180,7 +83,7 @@ function parseBlogPage(html, sourceFile) {
     const title = decodeHtml(m[1].trim());
     const webPath = m[2];
     const paragraph = extractParagraphAfter(html, webPath);
-    const query = buildContextQuery(title, paragraph, pageTopic);
+    const query = queryFromSectionTitle(title, paragraph, articleSlug);
     sections.push({ webPath, query, title, paragraph: paragraph.slice(0, 120) });
   }
 
@@ -202,7 +105,7 @@ function parseBlogPage(html, sourceFile) {
   if (bentoMain) {
     jobs.push({
       webPath: bentoMain[1],
-      query: buildContextQuery(pageTitle, introText),
+      query: ARTICLE_FALLBACK[articleSlug] || queryFromSectionTitle(pageTitle, introText, articleSlug),
       source: sourceFile,
       articleSlug,
       kind: 'bento-main',
@@ -219,11 +122,7 @@ function parseBlogPage(html, sourceFile) {
     const sec = sections[i];
     const query = sec
       ? sec.query
-      : buildContextQuery(
-          `${pageTitle} aspect ${i + 1}`,
-          introText,
-          pageTopic,
-        );
+      : queryFromSectionTitle(pageTitle, introText, articleSlug);
     jobs.push({
       webPath,
       query,
@@ -294,7 +193,31 @@ function pickUrl(item) {
   );
 }
 
-async function trySearch(query, excludeIds = new Set(), limit = 12) {
+function relevanceScore(item, query) {
+  const tokens = query
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((t) => t.length > 3);
+  const title = (item.title || '').toLowerCase();
+  let score = 0;
+  for (const t of tokens) {
+    if (title.includes(t)) score += 4;
+  }
+  // Leichte Popularitäts-Gewichtung, aber Relevanz dominiert
+  score += Math.min((item.downloads || 0) / 80000, 1.5);
+  return score;
+}
+
+function pickBestResult(results, query) {
+  if (!results.length) return null;
+  return results.reduce((best, cur) => {
+    const sb = relevanceScore(best, query);
+    const sc = relevanceScore(cur, query);
+    return sc > sb ? cur : best;
+  });
+}
+
+async function trySearch(query, excludeIds = new Set(), limit = 20) {
   const data = await apiGet(
     new URLSearchParams({
       dp_apikey: apiKey,
@@ -302,7 +225,7 @@ async function trySearch(query, excludeIds = new Set(), limit = 12) {
       dp_command: 'search',
       dp_search_query: query.slice(0, 120),
       dp_search_limit: String(limit),
-      dp_search_sort: 4,
+      dp_search_sort: 1,
       dp_search_orientation: 'horizontal',
       dp_search_photo: 1,
       dp_search_vector: 0,
@@ -325,25 +248,30 @@ async function trySearch(query, excludeIds = new Set(), limit = 12) {
 
 async function searchImage(query, excludeIds) {
   const words = query.split(/\s+/).filter(Boolean);
-  const attempts = [
-    query,
-    words.slice(0, 8).join(' '),
-    words.slice(0, 5).join(' '),
-    words.slice(0, 3).join(' '),
-  ];
+  const attempts = [query, words.slice(0, 6).join(' '), words.slice(0, 4).join(' ')];
   const seen = new Set();
+  let bestOverall = null;
+  let bestScore = -1;
+
   for (const q of attempts) {
     const key = q.toLowerCase();
     if (seen.has(key) || !q.trim()) continue;
     seen.add(key);
-    const results = await trySearch(q, excludeIds);
-    if (results.length) {
-      const best = results.reduce((a, b) => (b.downloads > a.downloads ? b : a));
-      return best;
+    const results = await trySearch(q, excludeIds, 20);
+    if (!results.length) {
+      await sleep(100);
+      continue;
     }
+    const candidate = pickBestResult(results, query);
+    const sc = relevanceScore(candidate, query);
+    if (sc > bestScore) {
+      bestScore = sc;
+      bestOverall = candidate;
+    }
+    if (bestScore >= 8) break;
     await sleep(100);
   }
-  return null;
+  return bestOverall;
 }
 
 async function downloadToFile(url, dest) {
