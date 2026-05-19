@@ -159,7 +159,9 @@ h1.ptitle .dm{color:var(--muted);font-weight:300}
 a.article-card{color:inherit;cursor:pointer}
 .article-card:hover{border-color:rgba(251,146,60,.85);transform:translateY(-3px);box-shadow:0 0 0 1px rgba(249,115,22,.22),0 12px 28px rgba(249,115,22,.22)}
 .ac-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden;flex-shrink:0}
-.ac-thumb::before{content:'';position:absolute;inset:0}
+.ac-thumb::before{content:'';position:absolute;inset:0;z-index:1}
+.ac-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
+.af-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
 .ac-body{padding:22px;flex:1;display:flex;flex-direction:column}
 .ac-cat{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .ac-title{font-size:16px;font-weight:700;color:var(--white);line-height:1.35;margin-bottom:10px;letter-spacing:-.01em}
@@ -566,7 +568,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- FEATURED ARTICLE -->
         <div class="article-featured cat-finanzen rv" data-cat="finanzen" data-title="PKV vs GKV: Die große Entscheidung 2026">
-          <div class="af-img th-finanzen">💰</div>
+          <div class="af-img th-finanzen"><img src="https://st2.depositphotos.com/thumbs/3489481/image/8697/86971000/api_thumb_450.jpg?forcejpeg=true" alt="Krankenversicherung Vergleich PKV GKV" loading="lazy"></div>
           <div class="af-body">
             <div class="af-cat"><span class="chip ch-o">FEATURED</span> Finanzen &amp; Versicherung</div>
             <div class="af-title">PKV vs GKV: Die große Entscheidung 2026 – Was wirklich besser ist</div>
@@ -582,7 +584,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- FINANZEN ARTICLES -->
         <div class="article-card th-finanzen cat-finanzen rv" data-cat="finanzen" data-title="ETF-Sparplan Vergleich 2026">
-          <div class="ac-thumb"><span>📊</span></div>
+          <div class="ac-thumb th-finanzen"><img src="https://st4.depositphotos.com/thumbs/1001877/image/20597/205970182/api_thumb_450.jpg?forcejpeg=true" alt="ETF Sparplan Broker Vergleich" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat">💰 Finanzen &amp; Versicherung</div>
             <div class="ac-title">ETF-Sparplan Vergleich 2026: Die besten Broker im Test</div>
@@ -595,7 +597,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
         </div>
 
         <div class="article-card th-finanzen cat-finanzen rv" data-cat="finanzen" data-title="Berufsunfähigkeitsversicherung">
-          <div class="ac-thumb"><span>🛡️</span></div>
+          <div class="ac-thumb th-finanzen"><img src="https://st2.depositphotos.com/thumbs/2627021/image/8015/80154384/api_thumb_450.jpg?forcejpeg=true" alt="Berufsunfähigkeitsversicherung Schutz" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat">💰 Finanzen &amp; Versicherung</div>
             <div class="ac-title">Berufsunfähigkeitsversicherung: Wann lohnt sie sich wirklich?</div>
@@ -609,7 +611,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- CRYPTO FEATURED -->
         <div class="article-featured cat-crypto rv" data-cat="crypto" data-title="Bitcoin 2026: Institutional Adoption">
-          <div class="af-img th-crypto">₿</div>
+          <div class="af-img th-crypto"><img src="https://st2.depositphotos.com/thumbs/1001877/image/50573/505730158/api_thumb_450.jpg?forcejpeg=true" alt="Bitcoin institutionelle Adoption 2026" loading="lazy"></div>
           <div class="af-body">
             <div class="af-cat"><span class="chip" style="background:rgba(168,85,247,.15);color:#c084fc;border:1px solid rgba(168,85,247,.25)">TRENDING</span> Crypto &amp; Web3</div>
             <div class="af-title">Bitcoin 2026: Warum institutionelle Adoption alles verändert</div>
@@ -625,7 +627,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- CRYPTO CARDS -->
         <div class="article-card th-crypto cat-crypto rv" data-cat="crypto" data-title="DeFi 2026 Überblick">
-          <div class="ac-thumb"><span>🔗</span></div>
+          <div class="ac-thumb th-crypto"><img src="https://st4.depositphotos.com/thumbs/6539596/image/38226/382262808/api_thumb_450.jpg?forcejpeg=true" alt="DeFi Dezentralisierte Finanzen 2026" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#a855f7">₿ Crypto &amp; Web3</div>
             <div class="ac-title">DeFi 2026: Welche Protokolle noch relevant sind</div>
@@ -638,7 +640,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
         </div>
 
         <div class="article-card th-crypto cat-crypto rv" data-cat="crypto" data-title="Krypto Steuern Deutschland">
-          <div class="ac-thumb"><span>📋</span></div>
+          <div class="ac-thumb th-crypto"><img src="https://st4.depositphotos.com/thumbs/21718214/image/23610/236100350/api_thumb_450.jpg?forcejpeg=true" alt="Krypto Steuern Deutschland 2026" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#a855f7">₿ Crypto &amp; Web3</div>
             <div class="ac-title">Krypto-Steuern in Deutschland 2026: Der komplette Guide</div>
@@ -652,7 +654,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- ENERGIE FEATURED -->
         <div class="article-featured cat-energie rv" data-cat="energie" data-title="Solaranlage 2026">
-          <div class="af-img th-energie">⚡</div>
+          <div class="af-img th-energie"><img src="https://st5.depositphotos.com/thumbs/1006241/image/75011/750113160/api_thumb_450.jpg?forcejpeg=true" alt="Solaranlage Photovoltaik Haus 2026" loading="lazy"></div>
           <div class="af-body">
             <div class="af-cat"><span class="chip" style="background:rgba(250,204,21,.12);color:#facc15;border:1px solid rgba(250,204,21,.25)">NEU</span> Energie &amp; Solar</div>
             <div class="af-title">Solaranlage 2026: Lohnt sich die Investition noch – kompletter Ratgeber</div>
@@ -668,7 +670,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- ENERGIE CARDS -->
         <div class="article-card th-energie cat-energie rv" data-cat="energie" data-title="Stromanbieter Wechsel">
-          <div class="ac-thumb"><span>🔌</span></div>
+          <div class="ac-thumb th-energie"><img src="https://static4.depositphotos.com/thumbs/1005895/image/360/3600809/api_thumb_450.jpg?forcejpeg=true" alt="Stromanbieter Tarife sparen 2026" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#facc15">⚡ Energie &amp; Solar</div>
             <div class="ac-title">Strom sparen 2026: Diese Anbieter bieten die besten Tarife</div>
@@ -681,7 +683,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
         </div>
 
         <div class="article-card th-energie cat-energie rv" data-cat="energie" data-title="Wärmepumpe Förderung">
-          <div class="ac-thumb"><span>🏡</span></div>
+          <div class="ac-thumb th-energie"><img src="https://st5.depositphotos.com/thumbs/1007254/image/68435/684352164/api_thumb_450.jpg?forcejpeg=true" alt="Wärmepumpe Förderung 2026" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#facc15">⚡ Energie &amp; Solar</div>
             <div class="ac-title">Wärmepumpe + Fördermittel 2026: Bis zu 70% Zuschuss sichern</div>
@@ -695,7 +697,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- TRADING CARDS -->
         <div class="article-card th-trading cat-trading rv" data-cat="trading" data-title="CFD Trading Risiken">
-          <div class="ac-thumb"><span>📉</span></div>
+          <div class="ac-thumb th-trading"><img src="https://st5.depositphotos.com/thumbs/79011060/image/67333/673334364/api_thumb_450.jpg?forcejpeg=true" alt="CFD Trading Risiken Broker 2026" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#10b981">📈 Trading</div>
             <div class="ac-title">CFD Trading 2026: Risiken, Chancen und die besten Broker</div>
@@ -708,7 +710,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
         </div>
 
         <div class="article-card th-trading cat-trading rv" data-cat="trading" data-title="Technische Analyse Grundlagen">
-          <div class="ac-thumb"><span>📐</span></div>
+          <div class="ac-thumb th-trading"><img src="https://static6.depositphotos.com/thumbs/1062085/image/593/5937633/api_thumb_450.jpg?forcejpeg=true" alt="Technische Analyse Candlesticks Trading" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#10b981">📈 Trading</div>
             <div class="ac-title">Technische Analyse Grundlagen: Von Candlesticks bis RSI</div>
@@ -722,7 +724,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- IMMOBILIEN CARDS -->
         <div class="article-card th-immobilien cat-immobilien rv" data-cat="immobilien" data-title="Pflegeimmobilien als Kapitalanlage">
-          <div class="ac-thumb"><span>🏘️</span></div>
+          <div class="ac-thumb th-immobilien"><img src="https://st3.depositphotos.com/thumbs/1177973/image/18061/180612972/api_thumb_450.jpg?forcejpeg=true" alt="Pflegeimmobilien Kapitalanlage" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#fb923c">🏠 Immobilien</div>
             <div class="ac-title">Pflegeimmobilien als Kapitalanlage: Was du 2026 wissen musst</div>
@@ -735,7 +737,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
         </div>
 
         <a href="/blogs/artikel-eigentumswohnung-kaufen-2026.html" class="article-card th-immobilien cat-immobilien rv" data-cat="immobilien" data-title="Eigentumswohnung kaufen 2026">
-          <div class="ac-thumb"><span>🔑</span></div>
+          <div class="ac-thumb th-immobilien"><img src="https://st.depositphotos.com/thumbs/2953923/image/4406/44063771/api_thumb_450.jpg?forcejpeg=true" alt="Eigentumswohnung kaufen 2026" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#fb923c">🏠 Immobilien</div>
             <div class="ac-title">Eigentumswohnung kaufen 2026: Jetzt kaufen oder weiter warten?</div>
@@ -749,7 +751,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- KI CARDS -->
         <a href="/blogs/artikel-claude-vs-chatgpt-unternehmen-2026.html" class="article-card th-ki cat-ki rv" data-cat="ki" data-title="Claude vs ChatGPT 2026">
-          <div class="ac-thumb"><span>🤖</span></div>
+          <div class="ac-thumb th-ki"><img src="https://st5.depositphotos.com/thumbs/36948878/image/74527/745271418/api_thumb_450.jpg?forcejpeg=true" alt="Claude vs ChatGPT KI Vergleich 2026" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#60a5fa">🤖 KI &amp; Tech</div>
             <div class="ac-title">Claude vs ChatGPT 2026: Welches KI-Modell ist für Unternehmen besser?</div>
@@ -762,7 +764,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
         </a>
 
         <div class="article-card th-ki cat-ki rv" data-cat="ki" data-title="n8n Self-Hosted Guide">
-          <div class="ac-thumb"><span>⚡</span></div>
+          <div class="ac-thumb th-ki"><img src="https://st2.depositphotos.com/thumbs/1000128/image/7902/79027836/api_thumb_450.jpg?forcejpeg=true" alt="n8n Self-Hosted VPS Server Setup" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#60a5fa">🤖 KI &amp; Tech</div>
             <div class="ac-title">n8n Self-Hosted: Der komplette Setup-Guide für VPS-Einsteiger</div>
@@ -776,7 +778,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- AUTOMATION CARDS -->
         <div class="article-card th-automation cat-automation rv" data-cat="automation" data-title="n8n Workflows für Mittelstand">
-          <div class="ac-thumb"><span>⚙️</span></div>
+          <div class="ac-thumb th-automation"><img src="https://st5.depositphotos.com/thumbs/2673929/image/73508/735082432/api_thumb_450.jpg?forcejpeg=true" alt="n8n Workflows Business Automation" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat">⚙️ Automationen</div>
             <div class="ac-title">10 n8n Workflows, die deinen Mittelstandsbetrieb revolutionieren</div>
@@ -789,7 +791,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
         </div>
 
         <div class="article-card th-automation cat-automation rv" data-cat="automation" data-title="Zapier vs n8n Vergleich">
-          <div class="ac-thumb"><span>🔄</span></div>
+          <div class="ac-thumb th-automation"><img src="https://st5.depositphotos.com/thumbs/32617610/image/78206/782064250/api_thumb_450.jpg?forcejpeg=true" alt="Zapier vs n8n Automatisierung Vergleich" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat">⚙️ Automationen</div>
             <div class="ac-title">Zapier vs n8n: Welches Tool lohnt sich für wen 2026?</div>
@@ -803,7 +805,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- KARRIERE CARDS -->
         <div class="article-card th-karriere cat-karriere rv" data-cat="karriere" data-title="KI im Bewerbungsprozess">
-          <div class="ac-thumb"><span>👔</span></div>
+          <div class="ac-thumb th-karriere"><img src="https://st5.depositphotos.com/thumbs/1258191/image/64493/644934018/api_thumb_450.jpg?forcejpeg=true" alt="KI Bewerbungsprozess HR Recruiting" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#818cf8">👔 Karriere &amp; HR</div>
             <div class="ac-title">KI im Bewerbungsprozess: Wie HR-Teams jetzt wirklich filtern</div>
@@ -816,7 +818,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
         </div>
 
         <div class="article-card th-karriere cat-karriere rv" data-cat="karriere" data-title="Gehaltsverhandlung Tipps">
-          <div class="ac-thumb"><span>💼</span></div>
+          <div class="ac-thumb th-karriere"><img src="https://st4.depositphotos.com/thumbs/1000975/image/22128/221281990/api_thumb_450.jpg?forcejpeg=true" alt="Gehaltsverhandlung Business Meeting 2026" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#818cf8">👔 Karriere &amp; HR</div>
             <div class="ac-title">Gehaltsverhandlung 2026: Datenbasiert mehr verdienen</div>
@@ -830,7 +832,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
 
         <!-- COACHING CARDS -->
         <div class="article-card th-coaching cat-coaching rv" data-cat="coaching" data-title="Enneagramm im Business">
-          <div class="ac-thumb"><span>🧠</span></div>
+          <div class="ac-thumb th-coaching"><img src="https://st.depositphotos.com/thumbs/3099349/image/57597/575976686/api_thumb_450.jpg?forcejpeg=true" alt="Enneagramm Persönlichkeit Business Coaching" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#4ade80">🧠 Coaching &amp; Mindset</div>
             <div class="ac-title">Enneagramm im Business: Welcher Persönlichkeitstyp bist du?</div>
@@ -843,7 +845,7 @@ nav{position:sticky!important;top:0!important;z-index:1000!important;background:
         </div>
 
         <a href="/blogs/artikel-produktivitaet-adhs-systeme.html" class="article-card th-coaching cat-coaching rv" data-cat="coaching" data-title="Produktivität ADHD Tipps">
-          <div class="ac-thumb"><span>⚡</span></div>
+          <div class="ac-thumb th-coaching"><img src="https://st2.depositphotos.com/thumbs/29218364/image/87874/878742136/api_thumb_450.jpg?forcejpeg=true" alt="Produktivität ADHS Systeme Focus" loading="lazy"></div>
           <div class="ac-body">
             <div class="ac-cat" style="color:#4ade80">🧠 Coaching &amp; Mindset</div>
             <div class="ac-title">Produktivität mit ADHS: Systeme statt Willenskraft</div>
