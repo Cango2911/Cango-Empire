@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Daily Todo Master — CanGo App Empire</title>
+  <link href="/fonts/fonts.css?v=2" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/primary-cta-mobile-bar.css?v=2"/>
+  <style>
+    :root {
+      --orange: #F97316;
+      --orange-dim: #c75c0d;
+      --orange-glow: rgba(249,115,22,.25);
+      --orange-faint: rgba(249,115,22,.07);
+      --green: #22c55e;
+      --green-dim: rgba(34,197,94,.15);
+      --blue: #3b82f6;
+      --blue-dim: rgba(59,130,246,.15);
+      --red: #ef4444;
+      --red-dim: rgba(239,68,68,.15);
+      --yellow: #f59e0b;
+      --yellow-dim: rgba(245,158,11,.12);
+      --bg: #05070c;
+      --bg1: #080c14;
+      --bg2: #0c1118;
+      --card-bg: #0a0f1a;
+      --card-hover: #0e1322;
+      --navy-800: #0d1424;
+      --navy-700: #111c30;
+      --navy-600: #162238;
+      --line: rgba(255,255,255,.06);
+      --border: rgba(78,99,130,.25);
+      --border-light: rgba(78,99,130,.12);
+      --text: #f0ede8;
+      --text-muted: rgba(240,237,232,.45);
+      --text-dim: rgba(240,237,232,.25);
+      --muted: #7a91ab;
+      --font-body: 'Outfit','DM Sans',sans-serif;
+      --font-mono: 'JetBrains Mono',monospace;
+      --radius: 6px;
+      --radius-lg: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+    input, textarea, select { font: inherit; color: inherit; background: var(--navy-800); border: 1px solid var(--border); border-radius: var(--radius); padding: 6px 10px; }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--orange); }
+
+    /* Grid overlay */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: linear-gradient(var(--line) 1px,transparent 1px), linear-gradient(90deg,var(--line) 1px,transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none; z-index: 1;
+    }
+
+    /* Ambient background */
+    .ambient { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .amb { position: absolute; border-radius: 50%; filter: blur(80px); animation: afloat 28s ease-in-out infinite; }
+    .amb-a { width: 70vmax; height: 70vmax; background: radial-gradient(circle,rgba(249,115,22,.12) 0%,transparent 70%); top: -20%; left: -10%; }
+    .amb-b { width: 60vmax; height: 60vmax; background: radial-gradient(circle,rgba(59,130,246,.08) 0%,transparent 70%); bottom: -15%; right: -10%; animation-delay: -8s; }
+    @keyframes afloat { 0%,100%{transform:translate(0,0)} 50%{transform:translate(2%,-3%)} }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(8,13,26,.9); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+      padding: 0 24px;
+    }
+    .nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; }
+    .logo-c { width: 34px; height: 34px; background: var(--orange); color: #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; flex-shrink: 0; }
+    .logo-text { color: #fff; }
+    .logo-text span { color: var(--muted); font-weight: 400; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); padding: 6px 11px; border-radius: 8px; transition: all .2s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; background: var(--navy-700); }
+    .nav-links a.active { color: var(--orange); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .btn-o { background: var(--orange); color: #000; font-weight: 700; font-size: 13px; padding: 9px 18px; border-radius: var(--radius); transition: background .2s; }
+    .btn-o:hover { background: var(--orange-dim); }
+    .nav-toggle { display: none; font-size: 22px; color: var(--text); padding: 6px; }
+    .nav-cart { position: relative; font-size: 18px; padding: 6px; }
+    .cart-badge { position: absolute; top: 0; right: 0; background: var(--orange); color: #000; font-size: 10px; font-weight: 800; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    @media(max-width:1080px) {
+      .nav-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; background: var(--navy-700); padding: 12px 0; border-bottom: 1px solid var(--border); gap: 2px; }
+      body.nav-open .nav-links { display: flex; }
+      .nav-links a { padding: 13px 24px; font-size: 15px; border-radius: 0; border-left: 3px solid transparent; }
+      .nav-links a:hover { border-left-color: var(--orange); }
+    }
+
+    /* PAGE LAYOUT */
+    .page-wrap { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+
+    /* HERO HEADER */
+    .todo-header { margin-bottom: 28px; }
+    .todo-header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .todo-date-block {}
+    .todo-date-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: 4px; }
+    .todo-date-value { font-size: 26px; font-weight: 800; color: #fff; }
+    .todo-date-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .btn-jarvis {
+      background: linear-gradient(135deg, #1a0a00, #3d1a00);
+      border: 1px solid var(--orange-glow);
+      color: var(--orange);
+      padding: 10px 18px; border-radius: 8px;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; gap: 7px;
+      transition: all .2s;
+      box-shadow: 0 0 20px rgba(249,115,22,.15);
+    }
+    .btn-jarvis:hover { box-shadow: 0 0 32px rgba(249,115,22,.35); border-color: var(--orange); }
+    .btn-jarvis.speaking { animation: pulse-orange 1s ease-in-out infinite; }
+    @keyframes pulse-orange { 0%,100%{box-shadow:0 0 20px rgba(249,115,22,.2)} 50%{box-shadow:0 0 40px rgba(249,115,22,.6)} }
+    .btn-energie {
+      background: var(--red-dim); border: 1px solid rgba(239,68,68,.3);
+      color: #ef4444; padding: 10px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; gap: 6px; transition: all .2s;
+    }
+    .btn-energie:hover, .btn-energie.active { background: rgba(239,68,68,.25); }
+    .btn-energie.active { border-color: var(--red); }
+
+    /* MILESTONE BADGE */
+    .milestone-banner {
+      background: linear-gradient(135deg, var(--navy-800), var(--navy-600));
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: var(--radius-lg); padding: 14px 18px;
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .ms-icon { font-size: 22px; flex-shrink: 0; }
+    .ms-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 2px; }
+    .ms-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .ms-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+    /* PROGRESS + STREAK BAR */
+    .stats-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    .stat-card {
+      background: var(--card-bg); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 16px;
+    }
+    .stat-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .stat-value { font-size: 24px; font-weight: 800; color: #fff; }
+    .stat-value span { font-size: 13px; color: var(--muted); font-weight: 400; }
+    .progress-bar-wrap { margin-top: 8px; background: var(--navy-700); border-radius: 4px; height: 6px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--orange), #ff9944); transition: width .4s ease; min-width: 2px; }
+    .progress-bar-fill.green { background: linear-gradient(90deg, var(--green), #4ade80); }
+    @media(max-width:700px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:460px) { .stats-row { grid-template-columns: 1fr; } }
+
+    /* BLOCK CARDS */
+    .block-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); margin-bottom: 16px;
+      transition: border-color .2s;
+    }
+    .block-card:hover { border-color: rgba(78,99,130,.5); }
+    .block-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px; cursor: pointer;
+      border-bottom: 1px solid var(--border-light);
+      user-select: none;
+    }
+    .block-header:hover { background: var(--card-hover); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+    .block-card.collapsed .block-header { border-bottom: none; border-radius: var(--radius-lg); }
+    .block-card.collapsed .block-body { display: none; }
+    .block-title-wrap { display: flex; align-items: center; gap: 12px; }
+    .block-icon { font-size: 20px; }
+    .block-title { font-size: 15px; font-weight: 700; color: #fff; }
+    .block-subtitle { font-size: 12px; color: var(--muted); margin-top: 1px; }
+    .block-badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; padding: 3px 8px; border-radius: 20px; font-weight: 600; }
+    .badge-orange { background: var(--orange-faint); color: var(--orange); border: 1px solid rgba(249,115,22,.2); }
+    .badge-green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(34,197,94,.2); }
+    .badge-blue { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(59,130,246,.2); }
+    .badge-yellow { background: var(--yellow-dim); color: var(--yellow); border: 1px solid rgba(245,158,11,.2); }
+    .block-collapse-icon { color: var(--muted); font-size: 16px; transition: transform .2s; }
+    .block-card.collapsed .block-collapse-icon { transform: rotate(-90deg); }
+    .block-body { padding: 6px 0 16px; }
+    .block-section { padding: 10px 20px 4px; }
+    .block-section-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--border-light); }
+
+    /* TASK ITEMS */
+    .task-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 9px 20px; border-radius: var(--radius);
+      transition: background .15s; position: relative;
+    }
+    .task-item:hover { background: rgba(255,255,255,.02); }
+    .task-item.done .task-label { text-decoration: line-through; color: var(--text-dim); }
+    .task-item.done .task-hint { opacity: 0.4; }
+    .task-check {
+      width: 18px; height: 18px; border: 2px solid var(--border);
+      border-radius: 4px; flex-shrink: 0; margin-top: 1px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+    }
+    .task-item.done .task-check { background: var(--orange); border-color: var(--orange); }
+    .task-check::after { content: '✓'; font-size: 11px; color: #000; font-weight: 900; opacity: 0; }
+    .task-item.done .task-check::after { opacity: 1; }
+    .task-check:hover { border-color: var(--orange); }
+    .task-content { flex: 1; }
+    .task-label { font-size: 14px; color: var(--text); cursor: pointer; }
+    .task-hint { font-size: 12px; color: var(--muted); margin-top: 1px; }
+    .task-tag { display: inline-block; font-family: var(--font-mono); font-size: 9px; padding: 1px 6px; border-radius: 3px; margin-right: 4px; vertical-align: middle; }
+    .tag-kpi { background: rgba(249,115,22,.1); color: var(--orange); }
+    .tag-pflicht { background: rgba(239,68,68,.1); color: var(--red); }
+
+    /* CARRY-OVER BLOCK */
+    .carryover-block {
+      background: rgba(239,68,68,.05); border: 1px solid rgba(239,68,68,.2);
+      border-left: 3px solid var(--red); border-radius: var(--radius-lg);
+      margin-bottom: 16px; padding: 16px 20px;
+    }
+    .carryover-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .carryover-item { font-size: 13px; color: var(--text-muted); padding: 4px 0; display: flex; align-items: center; gap: 8px; }
+    .carryover-item::before { content: '↑'; color: var(--red); font-weight: 700; }
+
+    /* ENERGIE-LOW MODE */
+    body.energie-low .block-card:not(.priority-block) { opacity: .3; pointer-events: none; filter: blur(1px); }
+    body.energie-low .priority-block { border-color: var(--orange); box-shadow: 0 0 24px rgba(249,115,22,.15); }
+
+    /* TOP-3 PRIORITY */
+    .top3-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; padding: 14px 20px; }
+    .top3-input-wrap { display: flex; flex-direction: column; gap: 4px; }
+    .top3-num { font-family: var(--font-mono); font-size: 10px; color: var(--orange); letter-spacing: .08em; }
+    .top3-input { width: 100%; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; font-size: 13px; resize: none; }
+    @media(max-width:600px) { .top3-grid { grid-template-columns: 1fr; } }
+
+    /* OUTREACH TRACKER */
+    .outreach-wrap { padding: 0 20px 16px; }
+    .outreach-table-wrap { overflow-x: auto; }
+    .outreach-table {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+    }
+    .outreach-table th {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); padding: 8px 10px;
+      border-bottom: 1px solid var(--border); text-align: left;
+    }
+    .outreach-table td { padding: 8px 10px; border-bottom: 1px solid var(--border-light); vertical-align: middle; }
+    .outreach-table tr:last-child td { border-bottom: none; }
+    .outreach-table input[type="text"] { width: 100%; background: transparent; border: none; border-radius: 0; padding: 0; font-size: 13px; }
+    .outreach-table input[type="text"]:focus { border-bottom: 1px solid var(--orange); }
+    .status-sel {
+      background: transparent; border: none; font-size: 12px; font-family: var(--font-mono);
+      cursor: pointer; padding: 3px 6px; border-radius: 4px;
+    }
+    .status-gesendet { background: rgba(100,116,139,.2); color: #94a3b8; }
+    .status-antwort { background: var(--blue-dim); color: var(--blue); }
+    .status-termin { background: var(--orange-faint); color: var(--orange); }
+    .status-abschluss { background: var(--green-dim); color: var(--green); }
+    .status-kein { background: rgba(239,68,68,.1); color: #ef4444; }
+    .outreach-add-btn {
+      margin-top: 10px; padding: 7px 14px; background: var(--navy-700);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      font-size: 12px; color: var(--muted); transition: all .15s;
+    }
+    .outreach-add-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .outreach-del-btn { color: var(--red); font-size: 16px; cursor: pointer; padding: 0 4px; opacity: .6; }
+    .outreach-del-btn:hover { opacity: 1; }
+
+    /* FINANCE / STATS INPUTS */
+    .finance-row { display: flex; align-items: center; gap: 12px; padding: 12px 20px; flex-wrap: wrap; }
+    .finance-input-wrap { display: flex; align-items: center; gap: 8px; }
+    .finance-input-wrap label { font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .finance-input-wrap input { width: 120px; }
+    .finance-bar-wrap { padding: 0 20px 16px; }
+    .finance-bar-label { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12px; color: var(--muted); }
+    .finance-bar-label strong { color: var(--orange); font-size: 14px; }
+
+    /* LINKEDIN TRACKER */
+    .linkedin-row { display: flex; align-items: center; gap: 16px; padding: 12px 20px; flex-wrap: wrap; }
+    .linkedin-follower-input { display: flex; align-items: center; gap: 8px; }
+    .linkedin-follower-input label { font-size: 13px; color: var(--muted); }
+    .linkedin-follower-input input { width: 90px; }
+    .follower-bar-wrap { flex: 1; min-width: 160px; }
+    .follower-bar-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+
+    /* EVENING REVIEW */
+    .evening-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px 20px; }
+    .evening-item label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; font-family: var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+    .evening-item textarea { width: 100%; resize: vertical; min-height: 70px; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; font-size: 13px; }
+    @media(max-width:600px) { .evening-grid { grid-template-columns: 1fr; } }
+
+    /* CALENDAR BUTTONS */
+    .cal-row { display: flex; gap: 10px; padding: 12px 20px; flex-wrap: wrap; }
+    .cal-btn {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--navy-700); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 9px 16px;
+      font-size: 13px; color: var(--text); transition: all .2s;
+    }
+    .cal-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* FOOTER */
+    .cango-footer { background: #080d1a; border-top: 1px solid var(--border); padding: 56px 24px 32px; position: relative; z-index: 2; margin-top: 40px; }
+    .footer-wrap { max-width: 1200px; margin: 0 auto; }
+    .ftop { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 40px; }
+    .fbrand p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-top: 14px; max-width: 260px; }
+    .cango-footer .logo { font-size: 18px; font-weight: 800; }
+    .fcol h5 { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: 18px; }
+    .fcol ul { list-style: none; }
+    .fcol ul li { margin-bottom: 10px; }
+    .fcol ul li a { font-size: 14px; color: var(--muted); transition: color .2s; }
+    .fcol ul li a:hover { color: #fff; }
+    .fbot { border-top: 1px solid var(--border-light); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .fcopy { font-size: 13px; color: #4a607a; }
+    @media(max-width:900px) { .ftop { grid-template-columns: 1fr 1fr; gap: 40px; } }
+    @media(max-width:600px) { .ftop { grid-template-columns: 1fr; gap: 28px; } }
+
+    /* MISC */
+    .divider { border: none; border-top: 1px solid var(--border-light); margin: 4px 20px; }
+    .info-note { margin: 8px 20px 4px; background: rgba(59,130,246,.07); border: 1px solid rgba(59,130,246,.15); border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: #93c5fd; }
+    .quick-note { margin: 0 20px 0; background: var(--orange-faint); border: 1px solid rgba(249,115,22,.15); border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: rgba(249,115,22,.8); }
+  </style>
+</head>
+<body>
+<div class="ambient"><div class="amb amb-a"></div><div class="amb amb-b"></div></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Menü">☰</button>
+    <ul class="nav-links">
+      <li><a href="/index.html">Startseite</a></li>
+      <li><a href="/ueber-uns.html">Über Uns</a></li>
+      <li><a href="/produkte.html">Produkte</a></li>
+      <li><a href="/workflows.html">Workflows</a></li>
+      <li><a href="/nischen.html">Marktplatz</a></li>
+      <li><a href="/blogs.html">Blogs</a></li>
+      <li><a href="/hq.html">HQ</a></li>
+      <li><a href="/daily-todo-master.html" class="active">Daily Master</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="/kasse.html" class="nav-cart">🛒 <span class="cart-badge">0</span></a>
+      <a href="/kontakt.html#kontaktformular" class="btn-o">Anfragen</a>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="todo-header">
+    <div class="todo-header-top">
+      <div class="todo-date-block">
+        <div class="todo-date-label">CanGo App Empire · Daily Ops</div>
+        <div class="todo-date-value" id="dateDisplay">—</div>
+        <div class="todo-date-sub" id="dateSubDisplay">—</div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-jarvis" id="btnJarvis" onclick="toggleJarvis()">
+          <span id="jarvisIcon">🔊</span> Jarvis – Briefing
+        </button>
+        <button class="btn-energie" id="btnEnergie" onclick="toggleEnergie()">
+          ⚡ Energie-Low
+        </button>
+      </div>
+    </div>
+
+    <!-- MILESTONE BANNER -->
+    <div class="milestone-banner" id="milestoneBanner">
+      <div class="ms-icon">🎯</div>
+      <div>
+        <div class="ms-label">Aktueller Meilenstein</div>
+        <div class="ms-title" id="msTitle">—</div>
+        <div class="ms-sub" id="msSub">—</div>
+      </div>
+    </div>
+
+    <!-- STATS ROW -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Tages-Fortschritt</div>
+        <div class="stat-value"><span id="doneCount">0</span> / <span id="totalCount">0</span> <span>Tasks</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="dayProgressBar" style="width:0%"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Monats-Einnahmen</div>
+        <div class="stat-value">€<span id="monthIncomeDisplay">0</span> <span>/ €2.870</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill green" id="incomeProgressBar" style="width:0%"></div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Streak 🔥</div>
+        <div class="stat-value"><span id="streakCount">0</span> <span>Tage</span></div>
+        <div class="stat-label" style="margin-top:6px">Bestleistung: <span id="streakBest">0</span> Tage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARRY-OVER (dynamisch befüllt) -->
+  <div class="carryover-block" id="carryoverBlock" style="display:none">
+    <div class="carryover-title">⚠ Übertrag von gestern</div>
+    <div id="carryoverList"></div>
+  </div>
+
+  <!-- BLOCK 0: TOP 3 PRIORITÄTEN (priority-block für Energie-Low) -->
+  <div class="block-card priority-block" id="block-top3">
+    <div class="block-header" onclick="toggleBlock('block-top3')">
+      <div class="block-title-wrap">
+        <span class="block-icon">🏆</span>
+        <div>
+          <div class="block-title">Top 3 Prioritäten heute</div>
+          <div class="block-subtitle">Diese 3 Dinge müssen heute erledigt werden</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-orange">PFLICHT</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="top3-grid">
+        <div class="top3-input-wrap">
+          <div class="top3-num">#1 PRIORITÄT</div>
+          <textarea class="top3-input" id="top3-1" placeholder="Wichtigste Aufgabe heute..." rows="2" oninput="saveTop3()"></textarea>
+        </div>
+        <div class="top3-input-wrap">
+          <div class="top3-num">#2 PRIORITÄT</div>
+          <textarea class="top3-input" id="top3-2" placeholder="Zweitwichtigste Aufgabe..." rows="2" oninput="saveTop3()"></textarea>
+        </div>
+        <div class="top3-input-wrap">
+          <div class="top3-num">#3 PRIORITÄT</div>
+          <textarea class="top3-input" id="top3-3" placeholder="Dritte Aufgabe heute..." rows="2" oninput="saveTop3()"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 1: MORGENROUTINE -->
+  <div class="block-card" id="block-morning">
+    <div class="block-header" onclick="toggleBlock('block-morning')">
+      <div class="block-title-wrap">
+        <span class="block-icon">☀️</span>
+        <div>
+          <div class="block-title">Morgenroutine</div>
+          <div class="block-subtitle">Täglich · ~30 Min · Grundlage für den Tag</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-yellow">TÄGLICH</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="cal-row">
+        <a href="https://outlook.live.com/calendar/" target="_blank" class="cal-btn">📅 Outlook öffnen</a>
+        <a href="https://calendar.google.com/" target="_blank" class="cal-btn">📅 Gmail Kalender</a>
+        <a href="https://mail.google.com/" target="_blank" class="cal-btn">✉️ Gmail öffnen</a>
+        <a href="https://outlook.live.com/mail/" target="_blank" class="cal-btn">✉️ Outlook Mail</a>
+      </div>
+      <hr class="divider"/>
+      <div id="tasks-morning"></div>
+    </div>
+  </div>
+
+  <!-- BLOCK 2: COACHING & WEBSITE-BAU -->
+  <div class="block-card" id="block-coaching">
+    <div class="block-header" onclick="toggleBlock('block-coaching')">
+      <div class="block-title-wrap">
+        <span class="block-icon">🧠</span>
+        <div>
+          <div class="block-title">Prozess-Coaching & Website-Bau</div>
+          <div class="block-subtitle">Säule 1 · €150/Std · €500 Retainer · €500 Website</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-orange">SÄULE 1</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="block-section">
+        <div class="block-section-title">Website-Akquise Mittelstand</div>
+      </div>
+      <div id="tasks-coaching-akquise"></div>
+      <div class="block-section" style="margin-top:8px">
+        <div class="block-section-title">Outreach-Tracker</div>
+      </div>
+      <div class="outreach-wrap">
+        <div class="outreach-table-wrap">
+          <table class="outreach-table" id="outreachTable">
+            <thead>
+              <tr>
+                <th>Datum</th>
+                <th>Firma / Agentur</th>
+                <th>E-Mail</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="outreachBody"></tbody>
+          </table>
+        </div>
+        <button class="outreach-add-btn" onclick="addOutreachRow()">+ Zeile hinzufügen</button>
+      </div>
+      <div class="block-section" style="margin-top:4px">
+        <div class="block-section-title">Coaching & Angebote</div>
+      </div>
+      <div id="tasks-coaching-main"></div>
+    </div>
+  </div>
+
+  <!-- BLOCK 3: AFFILIATE -->
+  <div class="block-card" id="block-affiliate">
+    <div class="block-header" onclick="toggleBlock('block-affiliate')">
+      <div class="block-title-wrap">
+        <span class="block-icon">🔗</span>
+        <div>
+          <div class="block-title">Affiliate & Tool-Empfehlungen</div>
+          <div class="block-subtitle">SaaS · Amazon · Booking/Reisen · 15–30% Provision</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-green">PASSIV</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="block-section">
+        <div class="block-section-title">SaaS Affiliates (n8n · Notion · ActiveCampaign · Pipedrive · Make.com)</div>
+      </div>
+      <div id="tasks-aff-saas"></div>
+      <hr class="divider"/>
+      <div class="block-section" style="margin-top:8px">
+        <div class="block-section-title">Amazon Affiliate</div>
+      </div>
+      <div class="info-note">Amazon Partnerprogramm: Produktrecherche → Content → Affiliate-Link → Einbau auf Website oder Social Media</div>
+      <div id="tasks-aff-amazon"></div>
+      <hr class="divider"/>
+      <div class="block-section" style="margin-top:8px">
+        <div class="block-section-title">Booking / Reisen Affiliate</div>
+      </div>
+      <div class="info-note">Booking.com, Airbnb, HolidayCheck oder CHECK24 Reisen Affiliate-Programme</div>
+      <div id="tasks-aff-booking"></div>
+    </div>
+  </div>
+
+  <!-- BLOCK 4: E-COMMERCE & CONTENT CREATOR -->
+  <div class="block-card" id="block-ecom">
+    <div class="block-header" onclick="toggleBlock('block-ecom')">
+      <div class="block-title-wrap">
+        <span class="block-icon">🛍️</span>
+        <div>
+          <div class="block-title">E-Commerce & Content Creator</div>
+          <div class="block-subtitle">Eigene Websites · Produkte · Instagram · YouTube</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-blue">NEU</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="block-section">
+        <div class="block-section-title">E-Commerce (eigene Websites & Produkte)</div>
+      </div>
+      <div id="tasks-ecom"></div>
+      <hr class="divider"/>
+      <div class="block-section" style="margin-top:8px">
+        <div class="block-section-title">Content Creator (Video · Reel · Blog)</div>
+      </div>
+      <div id="tasks-content"></div>
+    </div>
+  </div>
+
+  <!-- BLOCK 5: LINKEDIN -->
+  <div class="block-card" id="block-linkedin">
+    <div class="block-header" onclick="toggleBlock('block-linkedin')">
+      <div class="block-title-wrap">
+        <span class="block-icon">💼</span>
+        <div>
+          <div class="block-title">LinkedIn Personal Branding</div>
+          <div class="block-subtitle">Vertriebskanal 1 · Ziel: 500 Follower bis Monat 6</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-orange">KPI</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="linkedin-row">
+        <div class="linkedin-follower-input">
+          <label>Aktuelle Follower:</label>
+          <input type="number" id="linkedinFollowers" placeholder="0" min="0" max="10000" oninput="saveLinkedin()"/>
+        </div>
+        <div class="follower-bar-wrap">
+          <div class="follower-bar-label"><span>0</span><span id="followerPct">0%</span><span>500 Ziel</span></div>
+          <div class="progress-bar-wrap"><div class="progress-bar-fill" id="followerBar" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div id="tasks-linkedin"></div>
+    </div>
+  </div>
+
+  <!-- BLOCK 6: AVGS-COACHING -->
+  <div class="block-card" id="block-avgs">
+    <div class="block-header" onclick="toggleBlock('block-avgs')">
+      <div class="block-title-wrap">
+        <span class="block-icon">🎓</span>
+        <div>
+          <div class="block-title">AVGS-Coaching Vorbereitung</div>
+          <div class="block-subtitle">Säule 2 · Staatlich gefördert · Ab Q4 2026 · AZAV-Zertifizierung</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-yellow">Q4 2026</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="quick-note">AZAV-Zertifizierung läuft Q2/Q3 2026 über TÜV/DEKRA · ca. €1.500 einmalig · AfA Celle zahlt Kunden €0</div>
+      <div id="tasks-avgs"></div>
+    </div>
+  </div>
+
+  <!-- BLOCK 7: KALENDER & VERWALTUNG -->
+  <div class="block-card" id="block-admin">
+    <div class="block-header" onclick="toggleBlock('block-admin')">
+      <div class="block-title-wrap">
+        <span class="block-icon">📋</span>
+        <div>
+          <div class="block-title">Kalender & Verwaltung</div>
+          <div class="block-subtitle">Outlook · Gmail · Steuer · Behörden</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-blue">ADMIN</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="cal-row">
+        <a href="https://outlook.live.com/calendar/" target="_blank" class="cal-btn">📅 Outlook-Kalender sync</a>
+        <a href="https://calendar.google.com/" target="_blank" class="cal-btn">📅 Google-Kalender sync</a>
+      </div>
+      <div id="tasks-admin"></div>
+    </div>
+  </div>
+
+  <!-- BLOCK 8: ABEND-REVIEW -->
+  <div class="block-card" id="block-evening">
+    <div class="block-header" onclick="toggleBlock('block-evening')">
+      <div class="block-title-wrap">
+        <span class="block-icon">🌙</span>
+        <div>
+          <div class="block-title">Abend-Review</div>
+          <div class="block-subtitle">Tagesabschluss · Einnahmen · Reflexion · Planung</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-green">REVIEW</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="finance-row">
+        <div class="finance-input-wrap">
+          <label>Einnahmen heute (€):</label>
+          <input type="number" id="incomeToday" placeholder="0" min="0" oninput="saveFinance()"/>
+        </div>
+        <div class="finance-input-wrap">
+          <label>Outreach-Kontakte:</label>
+          <input type="number" id="outreachToday" placeholder="0" min="0" oninput="saveFinance()"/>
+        </div>
+      </div>
+      <div class="finance-bar-wrap">
+        <div class="finance-bar-label">
+          <span>Monatsziel: <strong>€<span id="monthTotal">0</span></strong></span>
+          <span>Ziel: €2.870/Monat</span>
+        </div>
+        <div class="progress-bar-wrap" style="height:10px">
+          <div class="progress-bar-fill green" id="monthBar" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="evening-grid">
+        <div class="evening-item">
+          <label>Was lief heute gut?</label>
+          <textarea id="notesGood" placeholder="Erfolge, Erkenntnisse, positive Momente..." oninput="saveNotes()"></textarea>
+        </div>
+        <div class="evening-item">
+          <label>Was als erstes morgen?</label>
+          <textarea id="notesTomorrow" placeholder="Wichtigste Aufgabe für morgen früh..." oninput="saveNotes()"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .page-wrap -->
+
+<!-- FOOTER -->
+<footer class="cango-footer">
+  <div class="footer-wrap">
+    <div class="ftop">
+      <div class="fbrand">
+        <a href="/index.html" class="logo"><div class="logo-c">C</div><div class="logo-text">CanGo <span>App Empire</span></div></a>
+        <p>Marketing-Automatisierung für den DACH-Markt. 4 Einnahme-Säulen. Kein Bullshit.</p>
+      </div>
+      <div class="fcol"><h5>Produkt</h5><ul><li><a href="/nischen.html">Marktplatz</a></li><li><a href="/workflows.html">Workflows</a></li></ul></div>
+      <div class="fcol"><h5>Unternehmen</h5><ul><li><a href="/ueber-uns.html">Über uns</a></li><li><a href="/hq.html">HQ</a></li></ul></div>
+      <div class="fcol"><h5>Rechtliches</h5><ul><li><a href="/impressum.html">Impressum</a></li><li><a href="/datenschutz.html">Datenschutz</a></li><li><a href="/agb.html">AGB</a></li></ul></div>
+    </div>
+    <div class="fbot">
+      <div class="fcopy">© 2026 CanGo App Empire · Canberk Kivilcim · Wathlingen/Celle</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// TASK DEFINITIONS
+// ============================================================
+const TASK_GROUPS = {
+  'morning': [
+    { id:'m-outlook', label:'Outlook & Gmail gecheckt', hint:'E-Mails lesen, Wichtiges markieren', pflicht:true },
+    { id:'m-linkedin-check', label:'LinkedIn-Feed 5 Min. (kommentieren & liken)', hint:'Netzwerk pflegen, Sichtbarkeit erhöhen', pflicht:false },
+    { id:'m-top3', label:'Top 3 Aufgaben für heute festgelegt', hint:'Felder oben ausfüllen', pflicht:true },
+    { id:'m-finance', label:'Finanz-Ziel-Check: aktueller Monatstand', hint:'Monatsziel €2.870 – wo stehst du?', pflicht:false },
+    { id:'m-energie', label:'Energielevel heute einschätzen (1–10)', hint:'Passt die Aufgabenlast dazu?', pflicht:false },
+  ],
+  'coaching-akquise': [
+    { id:'ca-outreach', label:'1 Mittelständler via Google Maps / Branchenbuch kontaktiert', hint:'Identifikation: kein Impressum, veraltete Website', pflicht:true, tag:'KPI: 1/Woche = €2.000/Monat' },
+    { id:'ca-follow', label:'Follow-up bei offenen Outreach-Kontakten', hint:'Nach 2–3 Tagen nachfassen', pflicht:false },
+    { id:'ca-email-done', label:'Outreach-Tracker aktualisiert', hint:'Neue Zeile im Tracker oben eintragen', pflicht:false },
+  ],
+  'coaching-main': [
+    { id:'cm-angebot', label:'Angebot erstellt oder Rechnung gestellt', hint:'€150/Std · €500 Website · €500/Mon Retainer', pflicht:false },
+    { id:'cm-retainer', label:'Retainer-Kunde: Session vorbereitet/durchgeführt', hint:'4 Sessions/Monat + Chat-Begleitung', pflicht:false },
+    { id:'cm-website', label:'Website-Projekt: Fortschritt dokumentiert', hint:'Projektdurchführung Schritt für Schritt', pflicht:false },
+    { id:'cm-steuer', label:'Einnahme gebucht / Belege gesichert', hint:'Für Steuerberater vorbereiten', pflicht:false },
+  ],
+  'aff-saas': [
+    { id:'as-share', label:'Neuen SaaS-Affiliate-Link geteilt (LinkedIn / E-Mail)', hint:'n8n Cloud · Notion · ActiveCampaign · Pipedrive · Make.com', pflicht:false },
+    { id:'as-check', label:'Affiliate-Provisionen gecheckt', hint:'Dashboards der Programme öffnen', pflicht:false },
+    { id:'as-content', label:'SaaS-Tool-Content-Idee notiert', hint:'Blog, Reel, LinkedIn-Post zu einem Tool', pflicht:false },
+  ],
+  'aff-amazon': [
+    { id:'aa-research', label:'1 Amazon-Produkt recherchiert & geprüft', hint:'Nische: DACH-relevant, gute Bewertungen, hohe Provision', pflicht:false },
+    { id:'aa-content', label:'Content-Idee für Amazon-Produkt vorbereitet', hint:'Blog-Post / Instagram-Reel / YouTube-Short Idee', pflicht:false },
+    { id:'aa-link', label:'Affiliate-Link erstellt & in Content eingebaut', hint:'Amazon Partnerprogramm → Link generieren', pflicht:false },
+    { id:'aa-stats', label:'Amazon-Affiliate-Stats gecheckt', hint:'Klicks, Conversions, Provisionen prüfen', pflicht:false },
+  ],
+  'aff-booking': [
+    { id:'ab-deal', label:'Reise-Deal oder Hotel-Angebot recherchiert', hint:'Booking.com · Airbnb · CHECK24 Reisen', pflicht:false },
+    { id:'ab-content', label:'Content-Idee für Reise-Affiliate notiert', hint:'Zielgruppe: KMU-Inhaber, Business-Reisen, Urlaub DACH', pflicht:false },
+    { id:'ab-link', label:'Booking-Affiliate-Link erstellt & eingebaut', hint:'Booking.com Partnerprogramm oder CHECK24', pflicht:false },
+  ],
+  'ecom': [
+    { id:'ec-nische', label:'Produkt-Nische recherchiert (1 Idee)', hint:'Trend-Produkte, Amazon BSR, Google Trends', pflicht:false },
+    { id:'ec-listing', label:'Website / Listing optimiert oder aktualisiert', hint:'SEO, Bilder, Beschreibung verbessern', pflicht:false },
+    { id:'ec-orders', label:'Bestellungen / Anfragen bearbeitet', hint:'Kundenservice, Versand, Rückmeldungen', pflicht:false },
+  ],
+  'content': [
+    { id:'ct-video', label:'Video / Reel aufgenommen oder geplant', hint:'15–60 Sekunden Inhalt für Instagram / YouTube Shorts', pflicht:false },
+    { id:'ct-upload', label:'Content hochgeladen oder geplant', hint:'Instagram, YouTube, TikTok oder LinkedIn', pflicht:false },
+    { id:'ct-thumb', label:'Thumbnail / Titel optimiert', hint:'A/B-Ideen testen, Klickrate verbessern', pflicht:false },
+    { id:'ct-idea', label:'Neue Content-Idee in Ideen-Liste eingetragen', hint:'Notiz-App, Notion oder Aufgaben-Backlog', pflicht:false },
+  ],
+  'linkedin': [
+    { id:'li-post', label:'LinkedIn-Beitrag erstellt & gepostet', hint:'3×/Woche KPI · Themen: Prozesse, KI, Coaching, Nischen', pflicht:false, tag:'KPI: 3×/Woche' },
+    { id:'li-comment', label:'5 Kommentare bei Zielgruppe hinterlassen', hint:'KMU-Inhaber, Agenturen, DACH-Unternehmer', pflicht:false, tag:'KPI: täglich' },
+    { id:'li-connect', label:'3 neue Verbindungsanfragen gesendet', hint:'Persönliche Nachricht, kein Spam', pflicht:false },
+    { id:'li-dm', label:'1 DM an potenziellen Coaching-Kunden gesendet', hint:'Warm ansprechen, kein Cold-Pitch', pflicht:false },
+  ],
+  'avgs': [
+    { id:'av-azav', label:'AZAV-Zertifizierungsstatus geprüft (TÜV/DEKRA)', hint:'Akkreditierungsstelle beauftragen Q2/Q3 2026', pflicht:false },
+    { id:'av-qm', label:'Qualitätsmanagementsystem-Dokument aktualisiert', hint:'Maßnahmenkonzept einreichen', pflicht:false },
+    { id:'av-afa', label:'AfA Celle Kontakt gepflegt', hint:'Sachbearbeiter Herr Bachmann · Termin oder Status-Update', pflicht:false },
+    { id:'av-ihk', label:'IHK Hannover: Frau Baude informiert', hint:'Tragfähigkeitsprüfung Fortschritt', pflicht:false },
+  ],
+  'admin': [
+    { id:'ad-outlook', label:'Outlook-Kalender synchronisiert & Termine gecheckt', hint:'Erinnerungen eingestellt, wichtige Termine markiert', pflicht:false },
+    { id:'ad-gmail', label:'Gmail-Kalender synchronisiert', hint:'Outlook ↔ Gmail Sync prüfen', pflicht:false },
+    { id:'ad-steuer', label:'Steuerberater-Unterlagen vorbereitet / abgeheftet', hint:'Belege, Rechnungen, Einnahmen-Dokumente', pflicht:false },
+    { id:'ad-gewrebe', label:'Gewerbeanmeldung / Behördenkram erledigt', hint:'AfA Celle, Finanzamt, IHK', pflicht:false },
+    { id:'ad-gzcheck', label:'Gründungszuschuss-Status gecheckt', hint:'§93 SGB III · Sachbearbeiter Bachmann · €1.518/Mon', pflicht:false },
+  ],
+};
+
+// ============================================================
+// MILESTONES
+// ============================================================
+const MILESTONES = [
+  { from:'2026-05-01', to:'2026-06-30', title:'Gewerbeanmeldung & Marktlaunch', sub:'LinkedIn-Profil optimiert · erster Content live · Outreach gestartet', icon:'🚀' },
+  { from:'2026-06-01', to:'2026-07-31', title:'Erster zahlender Coaching-Kunde', sub:'Coaching-Vertrag unterschreiben · Rechnung stellen · Break-Even nähert sich', icon:'💰' },
+  { from:'2026-07-01', to:'2026-07-31', title:'Break-Even erreicht', sub:'Betriebskosten durch Einnahmen gedeckt (ab 2. zahlenden Kunden)', icon:'⚖️' },
+  { from:'2026-08-01', to:'2026-09-30', title:'3 aktive Coaching-Kunden', sub:'€1.200–1.800/Monat aus Coaching-Retainern und AVGS', icon:'👥' },
+  { from:'2026-10-01', to:'2026-12-31', title:'AVGS-Trägerzulassung erhalten', sub:'Q4 2026 · erste AVGS-Kunden über AfA Celle abrechenbar', icon:'🎓' },
+];
+
+const QUOTES = [
+  'Kein System – kein Scale. Jeden Tag 1% besser.',
+  'Die Maschine läuft, weil du sie baust.',
+  'Festpreis. Deadline. Ergebnis. Kein Bullshit.',
+  'Säule für Säule – das Empire entsteht nicht über Nacht.',
+  'Outreach ist kein Spam – es ist Struktur.',
+  'Du arbeitest täglich an eigenen Projekten – das macht dich besser als jeden Konkurrenten.',
+  'ROI-Argumentation macht Preis irrelevant. Sei die Persönlichkeit.',
+  '1 Mittelständler pro Woche = €2.000 pro Monat. Rechne es durch.',
+];
+
+// ============================================================
+// STATE
+// ============================================================
+function getDateStr(offset=0) {
+  const d = new Date(); d.setDate(d.getDate() + offset);
+  return d.toISOString().slice(0,10);
+}
+function getMonthStr() { return getDateStr().slice(0,7); }
+function getTodayKey() { return 'cango_todo_' + getDateStr(); }
+function getYesterdayKey() { return 'cango_todo_' + getDateStr(-1); }
+
+function loadState() { try { return JSON.parse(localStorage.getItem(getTodayKey())) || {}; } catch(e){ return {}; } }
+function saveState(s) { localStorage.setItem(getTodayKey(), JSON.stringify(s)); }
+function loadOutreach() { try { return JSON.parse(localStorage.getItem('cango_outreach_v2')) || []; } catch(e){ return []; } }
+function saveOutreach(d) { localStorage.setItem('cango_outreach_v2', JSON.stringify(d)); }
+function loadStreak() { try { return JSON.parse(localStorage.getItem('cango_streak_v1')) || {current:0,best:0,last:''}; } catch(e){ return {current:0,best:0,last:''}; } }
+function saveStreak(s) { localStorage.setItem('cango_streak_v1', JSON.stringify(s)); }
+function loadFinance() { try { return JSON.parse(localStorage.getItem('cango_finance_'+getMonthStr())) || {total:0,entries:[]}; } catch(e){ return {total:0,entries:[]}; } }
+function saveFinanceData(d) { localStorage.setItem('cango_finance_'+getMonthStr(), JSON.stringify(d)); }
+
+let state = {};
+let outreachData = [];
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+  state = loadState();
+  outreachData = loadOutreach();
+  renderDate();
+  renderMilestone();
+  renderAllTasks();
+  renderOutreach();
+  loadInputs();
+  updateProgress();
+  updateFinanceBars();
+  updateLinkedinBar();
+  updateStreak();
+  checkCarryOver();
+});
+
+// ============================================================
+// DATE DISPLAY
+// ============================================================
+function renderDate() {
+  const now = new Date();
+  const days = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+  const months = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  document.getElementById('dateDisplay').textContent =
+    days[now.getDay()] + ', ' + now.getDate() + '. ' + months[now.getMonth()] + ' ' + now.getFullYear();
+  const q = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+  document.getElementById('dateSubDisplay').textContent = '» ' + q;
+}
+
+// ============================================================
+// MILESTONE
+// ============================================================
+function renderMilestone() {
+  const today = getDateStr();
+  let active = MILESTONES[0];
+  for (const m of MILESTONES) { if (today >= m.from && today <= m.to) { active = m; break; } }
+  document.getElementById('msTitle').textContent = active.title;
+  document.getElementById('msSub').textContent = active.sub;
+  document.getElementById('milestoneBanner').querySelector('.ms-icon').textContent = active.icon;
+}
+
+// ============================================================
+// RENDER TASKS
+// ============================================================
+function renderAllTasks() {
+  renderTaskGroup('tasks-morning', TASK_GROUPS['morning']);
+  renderTaskGroup('tasks-coaching-akquise', TASK_GROUPS['coaching-akquise']);
+  renderTaskGroup('tasks-coaching-main', TASK_GROUPS['coaching-main']);
+  renderTaskGroup('tasks-aff-saas', TASK_GROUPS['aff-saas']);
+  renderTaskGroup('tasks-aff-amazon', TASK_GROUPS['aff-amazon']);
+  renderTaskGroup('tasks-aff-booking', TASK_GROUPS['aff-booking']);
+  renderTaskGroup('tasks-ecom', TASK_GROUPS['ecom']);
+  renderTaskGroup('tasks-content', TASK_GROUPS['content']);
+  renderTaskGroup('tasks-linkedin', TASK_GROUPS['linkedin']);
+  renderTaskGroup('tasks-avgs', TASK_GROUPS['avgs']);
+  renderTaskGroup('tasks-admin', TASK_GROUPS['admin']);
+}
+
+function renderTaskGroup(containerId, tasks) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = '';
+  const checked = state.tasks || {};
+  for (const t of tasks) {
+    const done = !!checked[t.id];
+    const div = document.createElement('div');
+    div.className = 'task-item' + (done?' done':'');
+    div.id = 'task-row-' + t.id;
+    let tagHtml = '';
+    if (t.pflicht) tagHtml += '<span class="task-tag tag-pflicht">PFLICHT</span> ';
+    if (t.tag) tagHtml += '<span class="task-tag tag-kpi">'+t.tag+'</span> ';
+    div.innerHTML = `
+      <div class="task-check" onclick="toggleTask('${t.id}')"></div>
+      <div class="task-content">
+        <div class="task-label" onclick="toggleTask('${t.id}')">${tagHtml}${t.label}</div>
+        ${t.hint ? '<div class="task-hint">'+t.hint+'</div>' : ''}
+      </div>`;
+    el.appendChild(div);
+  }
+}
+
+// ============================================================
+// TOGGLE TASK
+// ============================================================
+function toggleTask(id) {
+  if (!state.tasks) state.tasks = {};
+  state.tasks[id] = !state.tasks[id];
+  saveState(state);
+  const row = document.getElementById('task-row-' + id);
+  if (row) row.className = 'task-item' + (state.tasks[id]?' done':'');
+  updateProgress();
+  checkStreakCompletion();
+}
+
+// ============================================================
+// PROGRESS
+// ============================================================
+function updateProgress() {
+  const checked = state.tasks || {};
+  let total = 0, done = 0;
+  for (const g of Object.values(TASK_GROUPS)) {
+    for (const t of g) { total++; if (checked[t.id]) done++; }
+  }
+  document.getElementById('doneCount').textContent = done;
+  document.getElementById('totalCount').textContent = total;
+  const pct = total > 0 ? Math.round((done/total)*100) : 0;
+  document.getElementById('dayProgressBar').style.width = pct + '%';
+}
+
+// ============================================================
+// BLOCK TOGGLE (FOCUS MODE)
+// ============================================================
+function toggleBlock(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('collapsed');
+}
+
+// ============================================================
+// OUTREACH TRACKER
+// ============================================================
+function renderOutreach() {
+  const tbody = document.getElementById('outreachBody');
+  tbody.innerHTML = '';
+  for (const row of outreachData) {
+    tbody.appendChild(buildOutreachRow(row));
+  }
+}
+
+function buildOutreachRow(row) {
+  const tr = document.createElement('tr');
+  tr.dataset.id = row.id;
+  const statusClass = 'status-' + (row.status||'gesendet');
+  tr.innerHTML = `
+    <td><input type="text" value="${row.date||''}" placeholder="2026-05-21" onchange="updateOutreachField('${row.id}','date',this.value)" style="width:100px"/></td>
+    <td><input type="text" value="${row.firm||''}" placeholder="Firma / Agentur" onchange="updateOutreachField('${row.id}','firm',this.value)"/></td>
+    <td><input type="text" value="${row.email||''}" placeholder="kontakt@firma.de" onchange="updateOutreachField('${row.id}','email',this.value)"/></td>
+    <td>
+      <select class="status-sel ${statusClass}" onchange="updateOutreachStatus('${row.id}',this)">
+        <option value="gesendet" ${row.status==='gesendet'?'selected':''}>Gesendet</option>
+        <option value="antwort" ${row.status==='antwort'?'selected':''}>Antwort</option>
+        <option value="termin" ${row.status==='termin'?'selected':''}>Termin</option>
+        <option value="abschluss" ${row.status==='abschluss'?'selected':''}>Abschluss ✓</option>
+        <option value="kein" ${row.status==='kein'?'selected':''}>Kein Interesse</option>
+      </select>
+    </td>
+    <td><span class="outreach-del-btn" onclick="deleteOutreachRow('${row.id}')">✕</span></td>`;
+  return tr;
+}
+
+function addOutreachRow() {
+  const id = 'r' + Date.now();
+  const today = getDateStr();
+  outreachData.push({ id, date:today, firm:'', email:'', status:'gesendet' });
+  saveOutreach(outreachData);
+  const tbody = document.getElementById('outreachBody');
+  tbody.appendChild(buildOutreachRow(outreachData[outreachData.length-1]));
+}
+
+function updateOutreachField(id, field, val) {
+  const row = outreachData.find(r=>r.id===id);
+  if (row) { row[field] = val; saveOutreach(outreachData); }
+}
+
+function updateOutreachStatus(id, sel) {
+  const row = outreachData.find(r=>r.id===id);
+  if (row) { row.status = sel.value; saveOutreach(outreachData); }
+  sel.className = 'status-sel status-' + sel.value;
+}
+
+function deleteOutreachRow(id) {
+  outreachData = outreachData.filter(r=>r.id!==id);
+  saveOutreach(outreachData);
+  const tr = document.querySelector('[data-id="'+id+'"]');
+  if (tr) tr.remove();
+}
+
+// ============================================================
+// FINANCE
+// ============================================================
+function saveFinance() {
+  const todayIncome = parseFloat(document.getElementById('incomeToday').value) || 0;
+  const fin = loadFinance();
+  const existing = fin.entries.find(e=>e.date===getDateStr());
+  if (existing) { existing.amount = todayIncome; }
+  else if (todayIncome > 0) { fin.entries.push({ date:getDateStr(), amount:todayIncome }); }
+  fin.total = fin.entries.reduce((s,e)=>s+e.amount, 0);
+  saveFinanceData(fin);
+  state.outreachToday = parseInt(document.getElementById('outreachToday').value)||0;
+  saveState(state);
+  updateFinanceBars();
+}
+
+function updateFinanceBars() {
+  const fin = loadFinance();
+  const total = fin.total || 0;
+  const goal = 2870;
+  const pct = Math.min(100, Math.round((total/goal)*100));
+  document.getElementById('monthTotal').textContent = total.toLocaleString('de-DE');
+  document.getElementById('monthIncomeDisplay').textContent = total.toLocaleString('de-DE');
+  document.getElementById('monthBar').style.width = pct + '%';
+  document.getElementById('incomeProgressBar').style.width = pct + '%';
+  const todayEntry = fin.entries.find(e=>e.date===getDateStr());
+  if (todayEntry && document.getElementById('incomeToday').value==='') {
+    document.getElementById('incomeToday').value = todayEntry.amount||'';
+  }
+}
+
+// ============================================================
+// LINKEDIN
+// ============================================================
+function saveLinkedin() {
+  const val = parseInt(document.getElementById('linkedinFollowers').value)||0;
+  localStorage.setItem('cango_linkedin_followers', val);
+  updateLinkedinBar();
+}
+
+function updateLinkedinBar() {
+  const val = parseInt(localStorage.getItem('cango_linkedin_followers'))||0;
+  document.getElementById('linkedinFollowers').value = val || '';
+  const pct = Math.min(100, Math.round((val/500)*100));
+  document.getElementById('followerBar').style.width = pct + '%';
+  document.getElementById('followerPct').textContent = pct + '%';
+}
+
+// ============================================================
+// TOP 3
+// ============================================================
+function saveTop3() {
+  state.top3 = [
+    document.getElementById('top3-1').value,
+    document.getElementById('top3-2').value,
+    document.getElementById('top3-3').value,
+  ];
+  saveState(state);
+}
+
+// ============================================================
+// NOTES
+// ============================================================
+function saveNotes() {
+  state.notesGood = document.getElementById('notesGood').value;
+  state.notesTomorrow = document.getElementById('notesTomorrow').value;
+  saveState(state);
+}
+
+// ============================================================
+// LOAD INPUTS
+// ============================================================
+function loadInputs() {
+  if (state.top3) {
+    document.getElementById('top3-1').value = state.top3[0]||'';
+    document.getElementById('top3-2').value = state.top3[1]||'';
+    document.getElementById('top3-3').value = state.top3[2]||'';
+  }
+  if (state.notesGood) document.getElementById('notesGood').value = state.notesGood;
+  if (state.notesTomorrow) document.getElementById('notesTomorrow').value = state.notesTomorrow;
+  if (state.outreachToday) document.getElementById('outreachToday').value = state.outreachToday;
+}
+
+// ============================================================
+// STREAK
+// ============================================================
+function updateStreak() {
+  const s = loadStreak();
+  document.getElementById('streakCount').textContent = s.current||0;
+  document.getElementById('streakBest').textContent = s.best||0;
+}
+
+function checkStreakCompletion() {
+  const checked = state.tasks || {};
+  const pflicht = [];
+  for (const g of Object.values(TASK_GROUPS)) {
+    for (const t of g) { if (t.pflicht) pflicht.push(t.id); }
+  }
+  const allDone = pflicht.every(id=>checked[id]);
+  if (!allDone) return;
+  const s = loadStreak();
+  const today = getDateStr();
+  if (s.last === today) return;
+  const yesterday = getDateStr(-1);
+  s.current = (s.last === yesterday) ? (s.current||0) + 1 : 1;
+  s.best = Math.max(s.best||0, s.current);
+  s.last = today;
+  saveStreak(s);
+  document.getElementById('streakCount').textContent = s.current;
+  document.getElementById('streakBest').textContent = s.best;
+}
+
+// ============================================================
+// CARRY-OVER
+// ============================================================
+function checkCarryOver() {
+  try {
+    const yesterday = JSON.parse(localStorage.getItem(getYesterdayKey())) || {};
+    const checked = yesterday.tasks || {};
+    const pending = [];
+    for (const g of Object.values(TASK_GROUPS)) {
+      for (const t of g) {
+        if (t.pflicht && !checked[t.id]) pending.push(t.label);
+      }
+    }
+    if (pending.length > 0) {
+      const block = document.getElementById('carryoverBlock');
+      const list = document.getElementById('carryoverList');
+      block.style.display = 'block';
+      list.innerHTML = '';
+      for (const p of pending) {
+        const d = document.createElement('div');
+        d.className = 'carryover-item';
+        d.textContent = p;
+        list.appendChild(d);
+      }
+    }
+  } catch(e) {}
+}
+
+// ============================================================
+// ENERGIE-LOW MODE
+// ============================================================
+function toggleEnergie() {
+  document.body.classList.toggle('energie-low');
+  const btn = document.getElementById('btnEnergie');
+  btn.classList.toggle('active');
+  btn.textContent = document.body.classList.contains('energie-low') ? '⚡ Energie-Low AUS' : '⚡ Energie-Low';
+}
+
+// ============================================================
+// JARVIS TEXT-TO-SPEECH
+// ============================================================
+let jarvisSpeaking = false;
+
+function toggleJarvis() {
+  if (jarvisSpeaking) {
+    window.speechSynthesis.cancel();
+    jarvisSpeaking = false;
+    document.getElementById('btnJarvis').classList.remove('speaking');
+    document.getElementById('jarvisIcon').textContent = '🔊';
+    return;
+  }
+  if (!('speechSynthesis' in window)) {
+    alert('Dein Browser unterstützt kein Text-to-Speech. Bitte Chrome oder Edge verwenden.');
+    return;
+  }
+  const now = new Date();
+  const days = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+  const months = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  const dateStr = days[now.getDay()] + ', der ' + now.getDate() + '. ' + months[now.getMonth()] + ' ' + now.getFullYear();
+  const fin = loadFinance();
+  const total = fin.total || 0;
+  const checked = state.tasks || {};
+  let done = 0, totalT = 0;
+  for (const g of Object.values(TASK_GROUPS)) { for (const t of g) { totalT++; if (checked[t.id]) done++; } }
+  const s = loadStreak();
+  const top3 = state.top3 || [];
+  const ms = (() => { const today=getDateStr(); for(const m of MILESTONES){if(today>=m.from&&today<=m.to)return m.title;} return MILESTONES[0].title; })();
+  let text = `Guten Morgen, Canberk. Heute ist ${dateStr}. `;
+  text += `Dein aktueller Meilenstein lautet: ${ms}. `;
+  text += `Dein Monatsziel beträgt 2870 Euro. Bisher hast du ${total} Euro erreicht. `;
+  text += `Dein aktueller Streak ist ${s.current} Tage. `;
+  if (top3[0]) text += `Deine Top 1 Priorität heute: ${top3[0]}. `;
+  if (top3[1]) text += `Priorität 2: ${top3[1]}. `;
+  if (top3[2]) text += `Priorität 3: ${top3[2]}. `;
+  text += `Du hast ${done} von ${totalT} Aufgaben erledigt. `;
+  text += `Kein System, kein Scale. Pack es an, Canberk!`;
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'de-DE';
+  utterance.rate = 1.05;
+  utterance.pitch = 0.9;
+  const voices = window.speechSynthesis.getVoices();
+  const deVoice = voices.find(v=>v.lang==='de-DE'||v.lang.startsWith('de'));
+  if (deVoice) utterance.voice = deVoice;
+  utterance.onstart = function() {
+    jarvisSpeaking = true;
+    document.getElementById('btnJarvis').classList.add('speaking');
+    document.getElementById('jarvisIcon').textContent = '⏹';
+  };
+  utterance.onend = utterance.onerror = function() {
+    jarvisSpeaking = false;
+    document.getElementById('btnJarvis').classList.remove('speaking');
+    document.getElementById('jarvisIcon').textContent = '🔊';
+  };
+  window.speechSynthesis.speak(utterance);
+}
+
+// ============================================================
+// NAV TOGGLE
+// ============================================================
+(function(){
+  var btn = document.getElementById('navToggle');
+  if (btn) btn.addEventListener('click', function() { document.body.classList.toggle('nav-open'); });
+})();
+</script>
+</body>
+</html>
