@@ -329,6 +329,51 @@
     .info-note { margin: 8px 20px 4px; background: rgba(59,130,246,.07); border: 1px solid rgba(59,130,246,.15); border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: #93c5fd; }
     .quick-note { margin: 0 20px 0; background: var(--orange-faint); border: 1px solid rgba(249,115,22,.15); border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: rgba(249,115,22,.8); }
 
+    /* VISION MODE BUTTON */
+    .btn-vision {
+      background: linear-gradient(135deg,#0a0020,#1a003a);
+      border: 1px solid rgba(139,92,246,.4);
+      color: #a78bfa; padding: 10px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; gap: 6px; transition: all .2s;
+    }
+    .btn-vision:hover, .btn-vision.active { border-color: #8b5cf6; box-shadow: 0 0 24px rgba(139,92,246,.3); }
+    /* Vision Mode: nur strategische Blöcke sichtbar */
+    body.vision-mode .block-card:not(.vision-block) { display: none; }
+    body.vision-mode .carryover-block { display: none !important; }
+    body.vision-mode .vision-banner {
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 999;
+      background: rgba(139,92,246,.12); border-bottom: 1px solid rgba(139,92,246,.3);
+      text-align: center; padding: 8px; font-size: 12px; color: #a78bfa;
+      font-family: var(--font-mono); letter-spacing: .1em;
+    }
+
+    /* KPI FLYWHEEL */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(160px,1fr)); gap: 10px; padding: 12px 20px; }
+    .kpi-card { background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px; }
+    .kpi-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .kpi-value { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .kpi-sub { font-size: 11px; color: var(--muted); }
+    .kpi-input { width: 100%; background: var(--navy-800); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 5px 8px; font-size: 13px; margin-top: 6px; }
+    .kpi-ratio-good { color: var(--green); }
+    .kpi-ratio-warn { color: var(--yellow); }
+    .kpi-ratio-bad { color: var(--red); }
+    .scale-ladder { padding: 10px 20px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .scale-rung { display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: var(--navy-700); border: 1px solid var(--border-light); border-radius: var(--radius); }
+    .scale-rung.reached { border-color: var(--green); background: rgba(34,197,94,.05); }
+    .scale-rung.current { border-color: var(--orange); background: rgba(249,115,22,.05); }
+    .rung-amount { font-family: var(--font-mono); font-size: 13px; font-weight: 700; width: 100px; flex-shrink: 0; }
+    .rung-amount.reached { color: var(--green); }
+    .rung-amount.current { color: var(--orange); }
+    .rung-desc { font-size: 12px; color: var(--muted); }
+    .rung-check { margin-left: auto; font-size: 16px; flex-shrink: 0; }
+    .asset-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 10px; padding: 12px 20px 16px; }
+    .asset-card { background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; }
+    .asset-card input { background: transparent; border: none; border-bottom: 1px solid var(--border-light); width: 100%; font-size: 12px; color: var(--text); padding: 3px 0; margin-bottom: 4px; }
+    .asset-card input:focus { outline: none; border-bottom-color: var(--orange); }
+    .asset-add-btn { margin: 0 20px 16px; padding: 7px 14px; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); font-size: 12px; color: var(--muted); transition: all .15s; }
+    .asset-add-btn:hover { border-color: var(--orange); color: var(--orange); }
+
     /* BOT-EMPIRE */
     .bot-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .bot-table th { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
@@ -454,6 +499,9 @@
         </button>
         <button class="btn-energie" id="btnEnergie" onclick="toggleEnergie()">
           ⚡ Energie-Low
+        </button>
+        <button class="btn-vision" id="btnVision" onclick="toggleVision()">
+          🎯 Vision-Mode
         </button>
       </div>
     </div>
@@ -789,7 +837,7 @@
 
 
   <!-- BLOCK 9: BOT-EMPIRE COMMAND CENTER -->
-  <div class="block-card" id="block-bot" style="border-color:rgba(249,115,22,.3);">
+  <div class="block-card vision-block" id="block-bot" style="border-color:rgba(249,115,22,.3);">
     <div class="block-header" onclick="toggleBlock('block-bot')">
       <div class="block-title-wrap">
         <span class="block-icon">🤖</span>
@@ -939,8 +987,104 @@
   </div>
 
 
+  <!-- VISION MODE BANNER (nur sichtbar wenn aktiv) -->
+  <div class="vision-banner" id="visionBanner" style="display:none">
+    🎯 VISION-MODE AKTIV — Nur strategische Blöcke sichtbar · Klick "Vision-Mode" zum Beenden
+  </div>
+
+  <!-- BLOCK 12: KPI FLYWHEEL & ASSET PORTFOLIO -->
+  <div class="block-card vision-block" id="block-kpi">
+    <div class="block-header" onclick="toggleBlock('block-kpi')">
+      <div class="block-title-wrap">
+        <span class="block-icon">📊</span>
+        <div>
+          <div class="block-title">KPI Flywheel & Asset Portfolio</div>
+          <div class="block-subtitle">LTV · CAC · MRR · Bot-ROI · Skalierungsleiter · Digitale Assets</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge" style="background:rgba(139,92,246,.1);color:#a78bfa;border:1px solid rgba(139,92,246,.2)">FLYWHEEL</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+
+      <!-- KPI CARDS -->
+      <div class="block-section">
+        <div class="block-section-title">Unit Economics · Eingabe aktualisiert Ratios automatisch</div>
+      </div>
+      <div class="kpi-grid" id="kpiGrid">
+        <div class="kpi-card">
+          <div class="kpi-label">MRR (Monat)</div>
+          <div class="kpi-value">€<span id="kpi-mrr-display">0</span></div>
+          <div class="kpi-sub">Ziel: €2.870/Monat</div>
+          <input class="kpi-input" type="number" id="kpi-mrr" placeholder="0" oninput="updateKPIs()"/>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">ARR (Jahr)</div>
+          <div class="kpi-value">€<span id="kpi-arr-display">0</span></div>
+          <div class="kpi-sub">MRR × 12</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">LTV (Ø Kundenwert)</div>
+          <div class="kpi-value">€<span id="kpi-ltv-display">0</span></div>
+          <div class="kpi-sub">Coaching-Retainer 6 Mon.</div>
+          <input class="kpi-input" type="number" id="kpi-ltv" placeholder="3000" oninput="updateKPIs()"/>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">CAC (Akquisekosten)</div>
+          <div class="kpi-value">€<span id="kpi-cac-display">0</span></div>
+          <div class="kpi-sub">Zeit + Tools pro Kunde</div>
+          <input class="kpi-input" type="number" id="kpi-cac" placeholder="50" oninput="updateKPIs()"/>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">LTV:CAC Ratio</div>
+          <div class="kpi-value"><span id="kpi-ratio-display" class="kpi-ratio-warn">—</span></div>
+          <div class="kpi-sub">Ziel: &gt;3x = profitabel</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Bot-ROI (€/Std)</div>
+          <div class="kpi-value">€<span id="kpi-botroi-display">0</span></div>
+          <div class="kpi-sub">Leads × Wert ÷ Bot-Stunden</div>
+          <input class="kpi-input" type="number" id="kpi-botroi" placeholder="0" oninput="updateKPIs()"/>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Aktive Kunden</div>
+          <div class="kpi-value"><span id="kpi-clients-display">0</span></div>
+          <div class="kpi-sub">Ziel: 3 bis Monat 5</div>
+          <input class="kpi-input" type="number" id="kpi-clients" placeholder="0" oninput="updateKPIs()"/>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Outreach gesamt</div>
+          <div class="kpi-value"><span id="kpi-outreach-display">0</span></div>
+          <div class="kpi-sub">Kontakte since Launch</div>
+          <input class="kpi-input" type="number" id="kpi-outreach-total" placeholder="0" oninput="updateKPIs()"/>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Conv. Rate</div>
+          <div class="kpi-value"><span id="kpi-conv-display">0</span>%</div>
+          <div class="kpi-sub">Kunden ÷ Outreach</div>
+        </div>
+      </div>
+
+      <!-- SKALIERUNGSLEITER -->
+      <div class="block-section" style="margin-top:8px">
+        <div class="block-section-title">Skalierungsleiter · Monatlicher Umsatz</div>
+      </div>
+      <div class="scale-ladder" id="scaleLadder"></div>
+
+      <!-- DIGITAL ASSET PORTFOLIO -->
+      <div class="block-section" style="margin-top:8px">
+        <div class="block-section-title">Digitales Asset-Portfolio · Deine arbeitenden Vermögenswerte</div>
+      </div>
+      <div class="asset-grid" id="assetGrid"></div>
+      <button class="asset-add-btn" onclick="addAsset()">+ Asset hinzufügen</button>
+
+    </div>
+  </div>
+
   <!-- BLOCK 10: ENGINEERING & DEPLOYMENT HUB -->
-  <div class="block-card" id="block-engineering">
+  <div class="block-card vision-block" id="block-engineering">
     <div class="block-header" onclick="toggleBlock('block-engineering')">
       <div class="block-title-wrap">
         <span class="block-icon">⚡</span>
@@ -1205,6 +1349,8 @@ document.addEventListener('DOMContentLoaded', function() {
   checkCarryOver();
   updateVisionBar();
   loadBotSprint();
+  loadKPIInputs();
+  renderAssets();
 });
 
 // ============================================================
@@ -1700,6 +1846,153 @@ function updateVisionBar() {
   const pct = Math.min(100, (val/goal)*100).toFixed(2);
   document.getElementById('visionDisplay').textContent = val.toLocaleString('de-DE');
   document.getElementById('visionBar').style.width = pct + '%';
+}
+
+// ============================================================
+// VISION MODE
+// ============================================================
+function toggleVision() {
+  document.body.classList.toggle('vision-mode');
+  const btn = document.getElementById('btnVision');
+  const banner = document.getElementById('visionBanner');
+  const on = document.body.classList.contains('vision-mode');
+  btn.classList.toggle('active', on);
+  if (banner) banner.style.display = on ? 'block' : 'none';
+}
+
+// ============================================================
+// KPI FLYWHEEL
+// ============================================================
+const SCALE_RUNGS = [
+  { amount: 500,    label: '€500/Mon',    desc: 'Erste bezahlte Stunde · Break-Even Richtung' },
+  { amount: 1000,   label: '€1.000/Mon',  desc: 'Erster Retainer-Kunde gesichert' },
+  { amount: 2870,   label: '€2.870/Mon',  desc: 'Monatsziel Säule 1+2 · Betriebskosten gedeckt' },
+  { amount: 5000,   label: '€5.000/Mon',  desc: '3 Retainer + Affiliate passiv laufend' },
+  { amount: 10000,  label: '€10.000/Mon', desc: 'Online-Kurs oder Productized Service live' },
+  { amount: 25000,  label: '€25.000/Mon', desc: 'SaaS Grundversion + Affiliate-Stack' },
+  { amount: 50000,  label: '€50.000/Mon', desc: 'Erstes Team / erste VA-Delegation' },
+  { amount: 100000, label: '€100k/Mon',   desc: '100k/Monat Stufe · Full-System läuft' },
+  { amount: 500000, label: '€500k/Mon',   desc: 'Lizenzgeschäft + mehrere Produktlinien' },
+  { amount: 825000, label: '€825k/Mon',   desc: '≈ €9,9M Jahresziel · Empire-Level' },
+];
+
+function loadKPIs() { try { return JSON.parse(localStorage.getItem('cango_kpis_v1')) || {}; } catch(e){ return {}; } }
+function saveKPIs(d) { localStorage.setItem('cango_kpis_v1', JSON.stringify(d)); }
+
+function updateKPIs() {
+  const mrr = parseFloat(document.getElementById('kpi-mrr').value) || 0;
+  const ltv = parseFloat(document.getElementById('kpi-ltv').value) || 0;
+  const cac = parseFloat(document.getElementById('kpi-cac').value) || 0;
+  const botroi = parseFloat(document.getElementById('kpi-botroi').value) || 0;
+  const clients = parseInt(document.getElementById('kpi-clients').value) || 0;
+  const outreach = parseInt(document.getElementById('kpi-outreach-total').value) || 0;
+
+  document.getElementById('kpi-mrr-display').textContent = mrr.toLocaleString('de-DE');
+  document.getElementById('kpi-arr-display').textContent = (mrr * 12).toLocaleString('de-DE');
+  document.getElementById('kpi-ltv-display').textContent = ltv.toLocaleString('de-DE');
+  document.getElementById('kpi-cac-display').textContent = cac.toLocaleString('de-DE');
+  document.getElementById('kpi-botroi-display').textContent = botroi.toLocaleString('de-DE');
+  document.getElementById('kpi-clients-display').textContent = clients;
+  document.getElementById('kpi-outreach-display').textContent = outreach;
+
+  const ratio = cac > 0 ? (ltv / cac).toFixed(1) : '—';
+  const ratioEl = document.getElementById('kpi-ratio-display');
+  ratioEl.textContent = ratio !== '—' ? ratio + 'x' : '—';
+  const ratioNum = parseFloat(ratio);
+  ratioEl.className = ratioNum >= 3 ? 'kpi-ratio-good' : ratioNum >= 1.5 ? 'kpi-ratio-warn' : 'kpi-ratio-bad';
+
+  const conv = outreach > 0 ? ((clients / outreach) * 100).toFixed(1) : 0;
+  document.getElementById('kpi-conv-display').textContent = conv;
+
+  saveKPIs({ mrr, ltv, cac, botroi, clients, outreach });
+  renderScaleLadder(mrr);
+}
+
+function loadKPIInputs() {
+  const k = loadKPIs();
+  if (k.mrr !== undefined) document.getElementById('kpi-mrr').value = k.mrr || '';
+  if (k.ltv !== undefined) document.getElementById('kpi-ltv').value = k.ltv || '';
+  if (k.cac !== undefined) document.getElementById('kpi-cac').value = k.cac || '';
+  if (k.botroi !== undefined) document.getElementById('kpi-botroi').value = k.botroi || '';
+  if (k.clients !== undefined) document.getElementById('kpi-clients').value = k.clients || '';
+  if (k.outreach !== undefined) document.getElementById('kpi-outreach-total').value = k.outreach || '';
+  updateKPIs();
+}
+
+function renderScaleLadder(mrr) {
+  const el = document.getElementById('scaleLadder');
+  if (!el) return;
+  el.innerHTML = '';
+  let currentSet = false;
+  for (const r of SCALE_RUNGS) {
+    const reached = mrr >= r.amount;
+    const isCurrent = !reached && !currentSet;
+    if (isCurrent) currentSet = true;
+    const div = document.createElement('div');
+    div.className = 'scale-rung' + (reached ? ' reached' : isCurrent ? ' current' : '');
+    div.innerHTML = `
+      <div class="rung-amount ${reached?'reached':isCurrent?'current':''}">${r.label}</div>
+      <div class="rung-desc">${r.desc}</div>
+      <div class="rung-check">${reached ? '✅' : isCurrent ? '🎯' : '○'}</div>`;
+    el.appendChild(div);
+  }
+}
+
+// ============================================================
+// DIGITAL ASSET PORTFOLIO
+// ============================================================
+const DEFAULT_ASSETS = [
+  { id:'a1', name:'automation-cango-app-empire.com', type:'Website', value:'500', status:'aktiv' },
+  { id:'a2', name:'Hostinger VPS (Ubuntu 24.04)', type:'Infrastruktur', value:'3750', status:'aktiv' },
+  { id:'a3', name:'30+ KI-Tool Lifetime-Lizenzen', type:'Software-Assets', value:'3750', status:'aktiv' },
+  { id:'a4', name:'Supabase Datenbank', type:'Daten', value:'', status:'aktiv' },
+  { id:'a5', name:'LinkedIn Audience (aufbauend)', type:'Audience', value:'', status:'aufbau' },
+  { id:'a6', name:'Outreach-Sniper Bot', type:'Bot', value:'', status:'aufbau' },
+];
+
+function loadAssets() { try { return JSON.parse(localStorage.getItem('cango_assets_v1')) || DEFAULT_ASSETS; } catch(e){ return DEFAULT_ASSETS; } }
+function saveAssets(d) { localStorage.setItem('cango_assets_v1', JSON.stringify(d)); }
+
+function renderAssets() {
+  const el = document.getElementById('assetGrid');
+  if (!el) return;
+  const assets = loadAssets();
+  el.innerHTML = '';
+  for (const a of assets) {
+    const div = document.createElement('div');
+    div.className = 'asset-card';
+    div.dataset.id = a.id;
+    div.innerHTML = `
+      <div style="font-size:10px;font-family:var(--font-mono);color:var(--orange);text-transform:uppercase;margin-bottom:6px">${a.type}</div>
+      <input type="text" value="${a.name}" placeholder="Asset-Name" onchange="updateAsset('${a.id}','name',this.value)" style="font-weight:700;font-size:13px;color:#fff"/>
+      <input type="text" value="${a.value}" placeholder="Wert (€)" onchange="updateAsset('${a.id}','value',this.value)" style="color:var(--green)"/>
+      <select style="background:transparent;border:none;font-size:11px;font-family:var(--font-mono);color:var(--muted);width:100%;margin-top:4px" onchange="updateAsset('${a.id}','status',this.value)">
+        <option ${a.status==='aktiv'?'selected':''}>aktiv</option>
+        <option ${a.status==='aufbau'?'selected':''}>aufbau</option>
+        <option ${a.status==='geplant'?'selected':''}>geplant</option>
+        <option ${a.status==='pause'?'selected':''}>pause</option>
+      </select>
+      <span onclick="deleteAsset('${a.id}')" style="font-size:11px;color:var(--red);cursor:pointer;opacity:.5;float:right;margin-top:4px">✕</span>`;
+    el.appendChild(div);
+  }
+}
+
+function updateAsset(id, field, val) {
+  const assets = loadAssets();
+  const a = assets.find(x=>x.id===id);
+  if (a) { a[field]=val; saveAssets(assets); }
+}
+
+function deleteAsset(id) {
+  saveAssets(loadAssets().filter(a=>a.id!==id));
+  renderAssets();
+}
+
+function addAsset() {
+  const assets = loadAssets();
+  assets.push({ id:'a'+Date.now(), name:'', type:'Website', value:'', status:'geplant' });
+  saveAssets(assets);
+  renderAssets();
 }
 
 // ============================================================
