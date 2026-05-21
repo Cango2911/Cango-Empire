@@ -329,7 +329,31 @@
     .info-note { margin: 8px 20px 4px; background: rgba(59,130,246,.07); border: 1px solid rgba(59,130,246,.15); border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: #93c5fd; }
     .quick-note { margin: 0 20px 0; background: var(--orange-faint); border: 1px solid rgba(249,115,22,.15); border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: rgba(249,115,22,.8); }
 
-    /* VISION MODE BUTTON */
+    /* NOTIFICATION & ESCALATION */
+    .btn-notif { background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.25); color: var(--blue); padding: 10px 14px; border-radius: 8px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 6px; transition: all .2s; }
+    .btn-notif:hover { border-color: var(--blue); }
+    .notif-setup { background: var(--navy-800); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px; margin-bottom: 20px; display: none; }
+    .notif-setup.open { display: block; }
+    .notif-setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+    .notif-field label { display: block; font-size: 11px; font-family: var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .notif-field input { width: 100%; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; font-size: 13px; color: var(--text); }
+    .notif-save-btn { background: var(--blue); color: #fff; font-weight: 700; font-size: 13px; padding: 8px 16px; border-radius: var(--radius); margin-top: 10px; }
+    .notif-save-btn:hover { background: #2563eb; }
+    @media(max-width:600px) { .notif-setup-grid { grid-template-columns: 1fr; } }
+    /* Block start/done buttons inside block headers */
+    .block-start-btn { font-size: 11px; font-family: var(--font-mono); padding: 4px 9px; border-radius: 4px; border: 1px solid var(--border); color: var(--muted); transition: all .15s; white-space: nowrap; flex-shrink: 0; }
+    .block-start-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .block-start-btn.started { background: rgba(249,115,22,.1); border-color: var(--orange); color: var(--orange); }
+    .block-start-btn.done { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+    /* Escalation log */
+    .escalation-log { max-height: 120px; overflow-y: auto; padding: 0 20px 14px; }
+    .esc-entry { font-size: 11px; font-family: var(--font-mono); padding: 3px 0; border-bottom: 1px solid var(--border-light); display: flex; gap: 8px; }
+    .esc-time { color: var(--muted); flex-shrink: 0; }
+    .esc-msg { color: var(--text-muted); }
+    .esc-info   { color: var(--text); }
+    .esc-stufe1 { color: var(--green); }
+    .esc-stufe2 { color: var(--yellow); }
+    .esc-stufe3 { color: var(--red); }
     .btn-vision {
       background: linear-gradient(135deg,#0a0020,#1a003a);
       border: 1px solid rgba(139,92,246,.4);
@@ -546,10 +570,49 @@
         <button class="btn-vision" id="btnVision" onclick="toggleVision()">
           🎯 Vision-Mode
         </button>
+        <button class="btn-notif" onclick="toggleNotifSetup()">
+          🔔 Benachrichtigungen
+        </button>
       </div>
     </div>
 
-    <!-- MILESTONE BANNER -->
+    <!-- NOTIFICATION SETUP PANEL -->
+  <div class="notif-setup" id="notifSetup">
+    <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:6px">🔔 Eskalations-Benachrichtigungen · 3-Stufen-System</div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:12px">
+      Stufe 1 (sofort): Telegram-Nachricht beim Block-Start.<br>
+      Stufe 2 (+10 Min.): Telegram-Eskalation wenn nicht gestartet.<br>
+      Stufe 3 (+20 Min.): E-Mail an alle 3 Adressen — <strong>🚨 KRITISCH</strong>.
+    </div>
+    <div class="notif-setup-grid">
+      <div class="notif-field">
+        <label>n8n Webhook-URL (Block-Signale)</label>
+        <input type="url" id="notif-webhook" placeholder="https://n8n.deine-domain.de/webhook/cango-blocks" oninput="saveNotifConfig()"/>
+      </div>
+      <div class="notif-field">
+        <label>Telegram Chat-ID</label>
+        <input type="text" id="notif-telegram" placeholder="z.B. 123456789 (via @userinfobot ermitteln)" oninput="saveNotifConfig()"/>
+      </div>
+      <div class="notif-field">
+        <label>Stufe 2 Delay (Minuten)</label>
+        <input type="number" id="notif-delay2" value="10" min="1" max="60" oninput="saveNotifConfig()"/>
+      </div>
+      <div class="notif-field">
+        <label>Stufe 3 Delay (Minuten)</label>
+        <input type="number" id="notif-delay3" value="20" min="5" max="120" oninput="saveNotifConfig()"/>
+      </div>
+    </div>
+    <button class="notif-save-btn" onclick="saveNotifConfig();showNotifSaved()">💾 Speichern</button>
+    <span id="notifSavedMsg" style="font-size:12px;color:var(--green);margin-left:10px;display:none">✓ Gespeichert</span>
+    <div class="block-section" style="margin:12px 0 6px;padding:0">
+      <div class="block-section-title" style="padding:0">Eskalations-Log (heute)</div>
+    </div>
+    <div class="escalation-log" id="escalationLog">
+      <div style="font-size:12px;color:var(--muted)">Noch keine Eskalationen heute.</div>
+    </div>
+  </div>
+
+  <!-- MILESTONE BANNER -->
     <div class="milestone-banner" id="milestoneBanner">
       <div class="ms-icon">🎯</div>
       <div>
@@ -629,6 +692,7 @@
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
+        <button class="block-start-btn" id="btn-morning" onclick="startBlock('morning','Morgenroutine');event.stopPropagation()">▶ Start</button>
         <span class="block-badge badge-yellow">TÄGLICH</span>
         <span class="block-collapse-icon">▾</span>
       </div>
@@ -656,6 +720,7 @@
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
+        <button class="block-start-btn" id="btn-coaching" onclick="startBlock('coaching','Coaching & Akquise');event.stopPropagation()">▶ Start</button>
         <span class="block-badge badge-orange">SÄULE 1</span>
         <span class="block-collapse-icon">▾</span>
       </div>
@@ -766,6 +831,7 @@
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
+        <button class="block-start-btn" id="btn-linkedin" onclick="startBlock('linkedin','LinkedIn');event.stopPropagation()">▶ Start</button>
         <span class="block-badge badge-orange">KPI</span>
         <span class="block-collapse-icon">▾</span>
       </div>
@@ -841,6 +907,7 @@
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
+        <button class="block-start-btn" id="btn-evening" onclick="startBlock('evening','Abend-Review');event.stopPropagation()">▶ Start</button>
         <span class="block-badge badge-green">REVIEW</span>
         <span class="block-collapse-icon">▾</span>
       </div>
@@ -890,6 +957,7 @@
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:8px">
+        <button class="block-start-btn" id="btn-bot" onclick="startBlock('bot','Bot-Empire');event.stopPropagation()">▶ Start</button>
         <span class="block-badge badge-orange">9.9M VISION</span>
         <span class="block-collapse-icon">▾</span>
       </div>
@@ -1519,6 +1587,7 @@ document.addEventListener('DOMContentLoaded', function() {
   loadBotSprint();
   loadKPIInputs();
   renderAssets();
+  initBlockButtons();
 });
 
 // ============================================================
@@ -2602,6 +2671,136 @@ function saveLtdStatus_(id, sel) {
   var btn = document.getElementById('navToggle');
   if (btn) btn.addEventListener('click', function() { document.body.classList.toggle('nav-open'); });
 })();
+
+// ============================================================
+// ESKALATION & BLOCK-SIGNALING (3-Stufen)
+// ============================================================
+const NOTIF_CFG_KEY = 'cango_notif_config';
+const BLOCK_STATE_KEY = 'cango_block_state_' + TODAY;
+const escalationTimers = {};
+
+function loadNotifConfig() {
+  try { return JSON.parse(localStorage.getItem(NOTIF_CFG_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveNotifConfig() {
+  const cfg = {
+    webhookUrl:     (document.getElementById('notif-webhook')?.value  || '').trim(),
+    telegramChatId: (document.getElementById('notif-telegram')?.value || '').trim(),
+    delay2:         parseInt(document.getElementById('notif-delay2')?.value  || '10'),
+    delay3:         parseInt(document.getElementById('notif-delay3')?.value  || '20'),
+  };
+  localStorage.setItem(NOTIF_CFG_KEY, JSON.stringify(cfg));
+}
+function showNotifSaved() {
+  const msg = document.getElementById('notifSavedMsg');
+  if (!msg) return;
+  msg.style.display = 'inline';
+  setTimeout(() => { msg.style.display = 'none'; }, 2500);
+}
+function toggleNotifSetup() {
+  const el = document.getElementById('notifSetup');
+  el.classList.toggle('open');
+  if (el.classList.contains('open')) {
+    const cfg = loadNotifConfig();
+    const f = (id, v) => { const e = document.getElementById(id); if (e) e.value = v || ''; };
+    f('notif-webhook',   cfg.webhookUrl     || '');
+    f('notif-telegram',  cfg.telegramChatId || '');
+    f('notif-delay2',    cfg.delay2         || 10);
+    f('notif-delay3',    cfg.delay3         || 20);
+  }
+}
+
+function loadBlockState() {
+  try { return JSON.parse(localStorage.getItem(BLOCK_STATE_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveBlockStateEntry(blockId, state) {
+  const st = loadBlockState();
+  st[blockId] = state;
+  localStorage.setItem(BLOCK_STATE_KEY, JSON.stringify(st));
+}
+function setBlockBtnUI(blockId, state) {
+  const btn = document.getElementById('btn-' + blockId);
+  if (!btn) return;
+  btn.className = 'block-start-btn' + (state === 'started' ? ' started' : state === 'done' ? ' done' : '');
+  btn.textContent = state === 'started' ? '⏸ Läuft…' : state === 'done' ? '✓ Erledigt' : '▶ Start';
+}
+
+function startBlock(blockId, blockName) {
+  const st = loadBlockState();
+  if (st[blockId] === 'done') return;
+  if (st[blockId] === 'started') {
+    clearEscalationTimers(blockId);
+    saveBlockStateEntry(blockId, 'done');
+    setBlockBtnUI(blockId, 'done');
+    sendBlockSignal(blockId, 'done', blockName);
+    addEscalationLog('esc-info', '✓ ' + blockName + ' abgeschlossen');
+    return;
+  }
+  saveBlockStateEntry(blockId, 'started');
+  setBlockBtnUI(blockId, 'started');
+  sendBlockSignal(blockId, 'start', blockName);
+  addEscalationLog('esc-info', '▶ ' + blockName + ' gestartet');
+  scheduleEscalation(blockId, blockName);
+}
+
+function clearEscalationTimers(blockId) {
+  if (escalationTimers[blockId]) {
+    escalationTimers[blockId].forEach(clearTimeout);
+    delete escalationTimers[blockId];
+  }
+}
+
+function scheduleEscalation(blockId, blockName) {
+  const cfg = loadNotifConfig();
+  const ms2 = (parseInt(cfg.delay2) || 10) * 60000;
+  const ms3 = (parseInt(cfg.delay3) || 20) * 60000;
+  clearEscalationTimers(blockId);
+  escalationTimers[blockId] = [
+    setTimeout(() => {
+      if (loadBlockState()[blockId] !== 'done') {
+        addEscalationLog('esc-stufe1', '🟡 Stufe 1: ' + blockName + ' noch offen');
+        sendBlockSignal(blockId, 'escalate_1', blockName);
+      }
+    }, ms2),
+    setTimeout(() => {
+      if (loadBlockState()[blockId] !== 'done') {
+        addEscalationLog('esc-stufe2', '🔴 Stufe 2: ' + blockName + ' — dringlich!');
+        sendBlockSignal(blockId, 'escalate_2', blockName);
+      }
+    }, ms3)
+  ];
+}
+
+function sendBlockSignal(blockId, type, blockName) {
+  const cfg = loadNotifConfig();
+  if (!cfg.webhookUrl) return;
+  fetch(cfg.webhookUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      block: blockId, blockName, type,
+      date: TODAY,
+      timestamp: new Date().toISOString(),
+      telegramChatId: cfg.telegramChatId || ''
+    })
+  }).catch(() => {});
+}
+
+function addEscalationLog(cssClass, message) {
+  const log = document.getElementById('escalationLog');
+  if (!log) return;
+  const div = document.createElement('div');
+  div.className = 'esc-entry ' + cssClass;
+  const ts = new Date().toLocaleTimeString('de-DE', { hour:'2-digit', minute:'2-digit' });
+  div.innerHTML = '<span style="opacity:.5;margin-right:4px">' + ts + '</span><span>' + message + '</span>';
+  log.prepend(div);
+  while (log.children.length > 30) log.removeChild(log.lastChild);
+}
+
+function initBlockButtons() {
+  const st = loadBlockState();
+  Object.keys(st).forEach(id => setBlockBtnUI(id, st[id]));
+}
 </script>
 </body>
 </html>
