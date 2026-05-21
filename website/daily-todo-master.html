@@ -357,6 +357,59 @@
     .sprint-item label { display: block; font-size: 11px; font-family: var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
     .sprint-item textarea { width: 100%; resize: vertical; min-height: 60px; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; font-size: 13px; }
     @media(max-width:600px) { .sprint-grid { grid-template-columns: 1fr; } .bot-add-row input { width: 140px; } }
+
+    /* ENGINEERING HUB */
+    .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 10px; padding: 12px 20px 16px; }
+    .stack-card { background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+    .stack-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .stack-name { font-size: 12px; font-weight: 700; color: #fff; }
+    .stack-status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; cursor: pointer; transition: box-shadow .2s; }
+    .dot-green { background: var(--green); box-shadow: 0 0 8px var(--green); }
+    .dot-yellow { background: var(--yellow); box-shadow: 0 0 8px var(--yellow); }
+    .dot-red { background: var(--red); box-shadow: 0 0 8px var(--red); }
+    .dot-grey { background: #4a607a; box-shadow: none; }
+    .stack-note-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border-light); font-size: 11px; color: var(--muted); padding: 3px 0; }
+    .stack-note-input:focus { outline: none; border-bottom-color: var(--orange); }
+    .prompt-lib-wrap { padding: 0 20px 16px; }
+    .prompt-add-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+    .prompt-add-row input, .prompt-add-row select { background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 7px 10px; font-size: 13px; color: var(--text); }
+    .prompt-add-row textarea { flex: 1; min-width: 200px; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 7px 10px; font-size: 13px; color: var(--text); resize: vertical; min-height: 54px; }
+    .prompt-save-btn { background: var(--orange); color: #000; font-weight: 700; font-size: 13px; padding: 8px 14px; border-radius: var(--radius); white-space: nowrap; align-self: flex-start; }
+    .prompt-save-btn:hover { background: var(--orange-dim); }
+    .prompt-cards { display: flex; flex-direction: column; gap: 8px; max-height: 320px; overflow-y: auto; }
+    .prompt-card { background: var(--navy-800); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 10px 14px; position: relative; }
+    .prompt-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .prompt-cat-badge { font-family: var(--font-mono); font-size: 9px; padding: 2px 7px; border-radius: 3px; background: var(--orange-faint); color: var(--orange); }
+    .prompt-date { font-size: 11px; color: var(--text-dim); margin-left: auto; }
+    .prompt-text { font-size: 12px; color: var(--text); line-height: 1.5; white-space: pre-wrap; }
+    .prompt-result { font-size: 11px; color: var(--green); margin-top: 4px; }
+    .prompt-actions { display: flex; gap: 8px; margin-top: 6px; }
+    .prompt-copy-btn { font-size: 11px; color: var(--orange); cursor: pointer; }
+    .prompt-del-btn { font-size: 11px; color: var(--red); cursor: pointer; opacity: .6; }
+    .prompt-del-btn:hover { opacity: 1; }
+    .channel-matrix { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 8px; padding: 12px 20px 16px; }
+    .ch-card { background: var(--navy-700); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 10px 12px; text-align: center; cursor: pointer; transition: all .15s; }
+    .ch-card:hover { border-color: var(--orange); }
+    .ch-card.ch-active { border-color: var(--green); background: rgba(34,197,94,.05); }
+    .ch-card.ch-inactive { opacity: .5; }
+    .ch-icon { font-size: 20px; margin-bottom: 4px; }
+    .ch-name { font-size: 11px; font-weight: 700; color: #fff; }
+    .ch-status { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+    /* APPSUMO TOOLBOX */
+    .ltd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 10px; padding: 12px 20px 16px; }
+    .ltd-card { background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px; transition: border-color .2s; }
+    .ltd-card:hover { border-color: rgba(78,99,130,.6); }
+    .ltd-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+    .ltd-icon { font-size: 22px; }
+    .ltd-price { font-family: var(--font-mono); font-size: 10px; color: var(--green); background: var(--green-dim); border-radius: 3px; padding: 2px 6px; }
+    .ltd-name { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .ltd-usecase { font-size: 11px; color: var(--muted); line-height: 1.4; margin-bottom: 8px; }
+    .ltd-status-sel { width: 100%; background: var(--navy-800); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 5px 8px; font-size: 11px; font-family: var(--font-mono); color: var(--text); cursor: pointer; }
+    .ltd-status-sel.s-aktiv { border-color: var(--green); color: var(--green); }
+    .ltd-status-sel.s-nutzung { border-color: var(--orange); color: var(--orange); }
+    .ltd-status-sel.s-setup { border-color: var(--yellow); color: var(--yellow); }
+    .ltd-status-sel.s-pause { border-color: #4a607a; color: #4a607a; }
   </style>
 </head>
 <body>
@@ -885,6 +938,101 @@
     </div>
   </div>
 
+
+  <!-- BLOCK 10: ENGINEERING & DEPLOYMENT HUB -->
+  <div class="block-card" id="block-engineering">
+    <div class="block-header" onclick="toggleBlock('block-engineering')">
+      <div class="block-title-wrap">
+        <span class="block-icon">⚡</span>
+        <div>
+          <div class="block-title">Engineering & Deployment Hub</div>
+          <div class="block-subtitle">Stack Health · Prompt-Bibliothek · Omnichannel-Matrix · Claude · Cursor · Vercel · Supabase · n8n</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-blue">TECH</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+
+      <!-- STACK HEALTH MONITOR -->
+      <div class="block-section">
+        <div class="block-section-title">Stack Health Monitor · Klick auf Dot = Status wechseln</div>
+      </div>
+      <div class="stack-grid" id="stackGrid"></div>
+
+      <!-- ACTIVE SESSION -->
+      <div class="block-section" style="margin-top:4px">
+        <div class="block-section-title">Aktive Session (Was baust du gerade in Cursor / Claude Code?)</div>
+      </div>
+      <div style="padding:8px 20px 12px">
+        <textarea id="activeSession" style="width:100%;background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:10px;font-size:13px;resize:vertical;min-height:60px;color:var(--text)" placeholder="z.B. Cursor: Outreach-Sniper v2 – Loop-Fehler behoben, rate_limit=3s eingebaut. Claude: Prompt für LinkedIn-Bot optimiert..." oninput="saveEngSession()"></textarea>
+      </div>
+
+      <!-- OMNICHANNEL MATRIX -->
+      <div class="block-section">
+        <div class="block-section-title">Omnichannel-Sync Matrix · Klick = Kanal aktiv/inaktiv</div>
+      </div>
+      <div class="channel-matrix" id="channelMatrix"></div>
+
+      <!-- PROMPT BIBLIOTHEK -->
+      <div class="block-section" style="margin-top:4px">
+        <div class="block-section-title">Prompt-Bibliothek · Erfolgreiche Prompts speichern</div>
+      </div>
+      <div class="prompt-lib-wrap">
+        <div class="prompt-add-row">
+          <select id="promptCat">
+            <option>Outreach</option>
+            <option>Content</option>
+            <option>SEO</option>
+            <option>Bot-Build</option>
+            <option>Coaching</option>
+            <option>E-Commerce</option>
+            <option>LinkedIn</option>
+            <option>Amazon-Affiliate</option>
+            <option>AVGS</option>
+            <option>Sonstige</option>
+          </select>
+          <textarea id="promptText" placeholder="Prompt-Text eingeben... (z.B. 'Du bist ein LinkedIn-Experte. Erstelle 3 Posts über Prozessoptimierung für KMU-Inhaber...')"></textarea>
+          <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0">
+            <input type="text" id="promptResult" placeholder="Ergebnis / Impact..." style="width:160px"/>
+            <button class="prompt-save-btn" onclick="savePrompt()">💾 Prompt speichern</button>
+          </div>
+        </div>
+        <div class="prompt-cards" id="promptCards"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BLOCK 11: APPSUMO LIFETIME TOOLBOX -->
+  <div class="block-card" id="block-appsumo">
+    <div class="block-header" onclick="toggleBlock('block-appsumo')">
+      <div class="block-title-wrap">
+        <span class="block-icon">🛒</span>
+        <div>
+          <div class="block-title">AppSumo LTD Toolbox</div>
+          <div class="block-subtitle">14 Lifetime-Tools · einmalig bezahlt · dauerhaft nutzbar · Status & Use-Cases</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-green">LTD</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="quick-note" style="margin-bottom:8px">
+        💡 Alle Tools einmalig bezahlt. Ziel: Jeden Tool aktiv für mindestens 1 Einnahmequelle nutzen – kein Tool links liegen lassen.
+      </div>
+      <div class="ltd-grid" id="ltdGrid"></div>
+      <div class="block-section" style="margin-top:8px">
+        <div class="block-section-title">AppSumo Daily Check</div>
+      </div>
+      <div id="tasks-appsumo-daily"></div>
+    </div>
+  </div>
+
 </div><!-- end .page-wrap -->
 
 <!-- FOOTER -->
@@ -973,6 +1121,14 @@ const TASK_GROUPS = {
     { id:'ad-steuer', label:'Steuerberater-Unterlagen vorbereitet / abgeheftet', hint:'Belege, Rechnungen, Einnahmen-Dokumente', pflicht:false },
     { id:'ad-gewrebe', label:'Gewerbeanmeldung / Behördenkram erledigt', hint:'AfA Celle, Finanzamt, IHK', pflicht:false },
     { id:'ad-gzcheck', label:'Gründungszuschuss-Status gecheckt', hint:'§93 SGB III · Sachbearbeiter Bachmann · €1.518/Mon', pflicht:false },
+  ],
+  'appsumo-daily': [
+    { id:'ap-neuron', label:'NeuronWriter: Heute 1 SEO-Artikel oder Affiliate-Content erstellt', hint:'SEO-optimiert → Blog → Affiliate-Links → Organischer Traffic', pflicht:false },
+    { id:'ap-tidycal', label:'TidyCal: Coaching-Terminlink aktiv & geteilt', hint:'Ersetzt Calendly · In LinkedIn-Bio und E-Mail-Signatur eingebaut?', pflicht:false },
+    { id:'ap-socio', label:'Sociamonials: Social-Media-Post geplant / geteilt', hint:'Instagram, LinkedIn, Facebook – Scheduling nutzen', pflicht:false },
+    { id:'ap-katteb', label:'Katteb: AI-Content für Blog oder Outreach generiert', hint:'Multilingual, Fakten-geprüft · Für DACH-Markt optimieren', pflicht:false },
+    { id:'ap-mootion', label:'Mootion: 1 Reel / Animations-Video erstellt oder geplant', hint:'Für Instagram/YouTube Shorts · Spart Videoschnittprogramme', pflicht:false },
+    { id:'ap-feedspace', label:'Feedspace: Kunden-Testimonial eingeholt oder angezeigt', hint:'Coaching-Kunden um Feedback bitten → Social Proof aufbauen', pflicht:false },
   ],
   'bot-daily': [
     { id:'bt-logs', label:'Log-Dateien geprüft (Hostinger VPS / Mac Terminal)', hint:'SSH: tail -f /var/log/... · Fehler identifiziert & dokumentiert', pflicht:true },
@@ -1092,6 +1248,12 @@ function renderAllTasks() {
   renderTaskGroup('tasks-avgs', TASK_GROUPS['avgs']);
   renderTaskGroup('tasks-admin', TASK_GROUPS['admin']);
   renderTaskGroup('tasks-bot-daily', TASK_GROUPS['bot-daily']);
+  renderTaskGroup('tasks-appsumo-daily', TASK_GROUPS['appsumo-daily']);
+  renderStackHealth();
+  renderChannelMatrix();
+  renderPrompts();
+  renderLtdGrid();
+  loadEngSession();
 }
 
 function renderTaskGroup(containerId, tasks) {
@@ -1538,6 +1700,244 @@ function updateVisionBar() {
   const pct = Math.min(100, (val/goal)*100).toFixed(2);
   document.getElementById('visionDisplay').textContent = val.toLocaleString('de-DE');
   document.getElementById('visionBar').style.width = pct + '%';
+}
+
+// ============================================================
+// STACK HEALTH MONITOR
+// ============================================================
+const STACK_SERVICES = [
+  { id:'supabase', name:'Supabase DB', icon:'🗄️', url:'https://supabase.com' },
+  { id:'vercel', name:'Vercel Deploy', icon:'▲', url:'https://vercel.com' },
+  { id:'n8n', name:'n8n Workflows', icon:'🔄', url:'https://n8n.io' },
+  { id:'hostinger', name:'Hostinger VPS', icon:'🖥️', url:'https://hostinger.com' },
+  { id:'claude', name:'Claude API', icon:'🤖', url:'https://anthropic.com' },
+  { id:'cursor', name:'Cursor AI', icon:'✏️', url:'https://cursor.sh' },
+  { id:'github', name:'GitHub Repo', icon:'🐙', url:'https://github.com' },
+  { id:'openai', name:'OpenAI API', icon:'⚡', url:'https://openai.com' },
+];
+const STATUS_CYCLE = ['green','yellow','red','grey'];
+const STATUS_LABEL = { green:'✓ Online', yellow:'⚠ Wartung', red:'✕ Fehler', grey:'– Ungeprüft' };
+
+function loadStackHealth() { try { return JSON.parse(localStorage.getItem('cango_stack_health')) || {}; } catch(e){ return {}; } }
+function saveStackHealth(d) { localStorage.setItem('cango_stack_health', JSON.stringify(d)); }
+
+function renderStackHealth() {
+  const el = document.getElementById('stackGrid');
+  if (!el) return;
+  const h = loadStackHealth();
+  el.innerHTML = '';
+  for (const svc of STACK_SERVICES) {
+    const status = h[svc.id] || 'grey';
+    const note = h[svc.id+'_note'] || '';
+    const div = document.createElement('div');
+    div.className = 'stack-card';
+    div.innerHTML = `
+      <div class="stack-card-header">
+        <div style="display:flex;align-items:center;gap:6px">
+          <span style="font-size:16px">${svc.icon}</span>
+          <span class="stack-name">${svc.name}</span>
+        </div>
+        <div class="stack-status-dot dot-${status}" title="${STATUS_LABEL[status]}" onclick="cycleStackStatus('${svc.id}',this)"></div>
+      </div>
+      <div style="font-size:10px;color:var(--${status==='green'?'green':status==='yellow'?'yellow':status==='red'?'red':'muted'});font-family:var(--font-mono);margin-bottom:6px">${STATUS_LABEL[status]}</div>
+      <input class="stack-note-input" placeholder="Notiz..." value="${note}" oninput="saveStackNote('${svc.id}',this.value)"/>`;
+    el.appendChild(div);
+  }
+}
+
+function cycleStackStatus(id, dot) {
+  const h = loadStackHealth();
+  const cur = h[id] || 'grey';
+  const idx = STATUS_CYCLE.indexOf(cur);
+  const next = STATUS_CYCLE[(idx+1) % STATUS_CYCLE.length];
+  h[id] = next;
+  saveStackHealth(h);
+  dot.className = 'stack-status-dot dot-' + next;
+  dot.title = STATUS_LABEL[next];
+  const label = dot.parentElement.nextElementSibling;
+  if (label) {
+    const colors = { green:'var(--green)', yellow:'var(--yellow)', red:'var(--red)', grey:'var(--muted)' };
+    label.style.color = colors[next];
+    label.textContent = STATUS_LABEL[next];
+  }
+}
+
+function saveStackNote(id, val) {
+  const h = loadStackHealth();
+  h[id+'_note'] = val;
+  saveStackHealth(h);
+}
+
+// ============================================================
+// OMNICHANNEL MATRIX
+// ============================================================
+const CHANNELS = [
+  { id:'ch-linkedin', icon:'💼', name:'LinkedIn', sub:'Personal Branding' },
+  { id:'ch-instagram', icon:'📸', name:'Instagram', sub:'Content Creator' },
+  { id:'ch-youtube', icon:'▶️', name:'YouTube', sub:'Shorts & Videos' },
+  { id:'ch-email', icon:'✉️', name:'E-Mail', sub:'Outreach Batches' },
+  { id:'ch-n8n', icon:'🔄', name:'n8n Bots', sub:'Automatisiert' },
+  { id:'ch-amazon', icon:'📦', name:'Amazon', sub:'Affiliate' },
+  { id:'ch-booking', icon:'✈️', name:'Booking', sub:'Reisen Affiliate' },
+  { id:'ch-website', icon:'🌐', name:'Website', sub:'Akquise Mittelstand' },
+  { id:'ch-coaching', icon:'🧠', name:'Coaching', sub:'1:1 Sessions' },
+  { id:'ch-avgs', icon:'🎓', name:'AVGS', sub:'AfA gefördert' },
+];
+
+function loadChannels() { try { return JSON.parse(localStorage.getItem('cango_channels')) || {}; } catch(e){ return {}; } }
+function saveChannels(d) { localStorage.setItem('cango_channels', JSON.stringify(d)); }
+
+function renderChannelMatrix() {
+  const el = document.getElementById('channelMatrix');
+  if (!el) return;
+  const ch = loadChannels();
+  el.innerHTML = '';
+  for (const c of CHANNELS) {
+    const active = ch[c.id] !== false;
+    const div = document.createElement('div');
+    div.className = 'ch-card' + (active ? ' ch-active' : ' ch-inactive');
+    div.onclick = () => toggleChannel(c.id, div);
+    div.innerHTML = `<div class="ch-icon">${c.icon}</div><div class="ch-name">${c.name}</div><div class="ch-status">${active?'🟢 Aktiv':'⚪ Inaktiv'}</div><div style="font-size:10px;color:var(--muted);margin-top:2px">${c.sub}</div>`;
+    el.appendChild(div);
+  }
+}
+
+function toggleChannel(id, el) {
+  const ch = loadChannels();
+  ch[id] = ch[id] === false ? true : false;
+  saveChannels(ch);
+  const active = ch[id] !== false;
+  el.className = 'ch-card' + (active ? ' ch-active' : ' ch-inactive');
+  el.querySelector('.ch-status').textContent = active ? '🟢 Aktiv' : '⚪ Inaktiv';
+}
+
+// ============================================================
+// PROMPT BIBLIOTHEK
+// ============================================================
+function loadPrompts() { try { return JSON.parse(localStorage.getItem('cango_prompts_v1')) || []; } catch(e){ return []; } }
+function storePrompts(p) { localStorage.setItem('cango_prompts_v1', JSON.stringify(p)); }
+
+function savePrompt() {
+  const text = document.getElementById('promptText').value.trim();
+  if (!text) return;
+  const prompts = loadPrompts();
+  prompts.unshift({
+    id: 'p' + Date.now(),
+    cat: document.getElementById('promptCat').value,
+    text,
+    result: document.getElementById('promptResult').value,
+    date: getDateStr()
+  });
+  storePrompts(prompts);
+  document.getElementById('promptText').value = '';
+  document.getElementById('promptResult').value = '';
+  renderPrompts();
+}
+
+function renderPrompts() {
+  const el = document.getElementById('promptCards');
+  if (!el) return;
+  const prompts = loadPrompts();
+  if (prompts.length === 0) {
+    el.innerHTML = '<div style="font-size:12px;color:var(--muted);padding:12px 0">Noch keine Prompts gespeichert. Ersten Prompt oben eingeben.</div>';
+    return;
+  }
+  el.innerHTML = '';
+  for (const p of prompts) {
+    const div = document.createElement('div');
+    div.className = 'prompt-card';
+    div.innerHTML = `
+      <div class="prompt-card-header">
+        <span class="prompt-cat-badge">${p.cat}</span>
+        <span class="prompt-date">${p.date}</span>
+      </div>
+      <div class="prompt-text">${p.text}</div>
+      ${p.result ? '<div class="prompt-result">→ ' + p.result + '</div>' : ''}
+      <div class="prompt-actions">
+        <span class="prompt-copy-btn" onclick="copyPrompt('${p.id}')">📋 Kopieren</span>
+        <span class="prompt-del-btn" onclick="deletePrompt('${p.id}')">✕ Löschen</span>
+      </div>`;
+    el.appendChild(div);
+  }
+}
+
+function copyPrompt(id) {
+  const p = loadPrompts().find(x=>x.id===id);
+  if (p) navigator.clipboard.writeText(p.text).then(()=>{ /* silent */ });
+}
+
+function deletePrompt(id) {
+  storePrompts(loadPrompts().filter(p=>p.id!==id));
+  renderPrompts();
+}
+
+// ============================================================
+// ACTIVE SESSION
+// ============================================================
+function saveEngSession() {
+  const val = document.getElementById('activeSession').value;
+  localStorage.setItem('cango_eng_session_' + getDateStr(), val);
+}
+function loadEngSession() {
+  const val = localStorage.getItem('cango_eng_session_' + getDateStr()) || '';
+  const el = document.getElementById('activeSession');
+  if (el) el.value = val;
+}
+
+// ============================================================
+// APPSUMO LTD GRID
+// ============================================================
+const LTD_TOOLS = [
+  { id:'neuronwriter', icon:'✍️', name:'NeuronWriter', price:'$89 LTD', usecase:'SEO-Artikel + Affiliate-Content mit KI-Score. Für Blog + Backlinks.' },
+  { id:'sociamonials', icon:'📣', name:'Sociamonials', price:'$69 LTD', usecase:'Social Media Scheduling + UGC-Kampagnen. Für LinkedIn + Instagram.' },
+  { id:'unmixrai', icon:'🎙️', name:'Unmixr AI', price:'$69 LTD', usecase:'Audio-Trennung + Voice Cloning. Für Podcast, YouTube, Reels-Voiceover.' },
+  { id:'skillplate', icon:'🎨', name:'Skillplate', price:'$79 LTD', usecase:'Marketing-Assets, Thumbnails, Social Graphics. Kein Canva-Abo nötig.' },
+  { id:'mootion', icon:'🎬', name:'Mootion', price:'$49 LTD', usecase:'KI-Animationsvideos für Reels + YouTube Shorts. Schneller als CapCut.' },
+  { id:'reap', icon:'🌱', name:'Reap', price:'$59 LTD', usecase:'Marketing-Material automatisch generieren. Für Affiliate + Coaching.' },
+  { id:'tidycal', icon:'📅', name:'TidyCal', price:'$29 LTD', usecase:'Coaching-Buchungsseite. Ersetzt Calendly. In LinkedIn-Bio einbauen.' },
+  { id:'nocodebackend', icon:'🔧', name:'NoCodeBackend', price:'$59 LTD', usecase:'Backend für Bots ohne Code. Daten speichern ohne Supabase-Setup.' },
+  { id:'goosevpn', icon:'🔒', name:'GOOSE VPN', price:'$39 LTD', usecase:'VPN für VPS + Scraping-Bots. Anonymisiertes Outreach-Scripting.' },
+  { id:'voila', icon:'🧠', name:'Voila AI', price:'$29 LTD', usecase:'Browser-KI-Assistent. Texte umschreiben, zusammenfassen, prompten.' },
+  { id:'katteb', icon:'📝', name:'Katteb AI', price:'$39 LTD', usecase:'Fakten-geprüfte KI-Artikel. Für DACH-Markt SEO + Blog-Content.' },
+  { id:'feedspace', icon:'⭐', name:'Feedspace', price:'$49 LTD', usecase:'Testimonials + Social Proof einsammeln. Für Coaching-Kunden.' },
+  { id:'gretaai', icon:'📈', name:'Greta.ai', price:'$39 LTD', usecase:'Growth Hacking Automation. Leads + Engagement automatisch steigern.' },
+  { id:'yapper', icon:'🎥', name:'Yapper', price:'$39 LTD', usecase:'Video-Content aus Text. Für Instagram Reels + YouTube ohne Kamera.' },
+];
+
+function loadLtdStatus() { try { return JSON.parse(localStorage.getItem('cango_ltd_status')) || {}; } catch(e){ return {}; } }
+function saveLtdStatus(d) { localStorage.setItem('cango_ltd_status', JSON.stringify(d)); }
+
+function renderLtdGrid() {
+  const el = document.getElementById('ltdGrid');
+  if (!el) return;
+  const st = loadLtdStatus();
+  el.innerHTML = '';
+  for (const t of LTD_TOOLS) {
+    const status = st[t.id] || 'setup';
+    const div = document.createElement('div');
+    div.className = 'ltd-card';
+    div.innerHTML = `
+      <div class="ltd-card-top">
+        <span class="ltd-icon">${t.icon}</span>
+        <span class="ltd-price">${t.price}</span>
+      </div>
+      <div class="ltd-name">${t.name}</div>
+      <div class="ltd-usecase">${t.usecase}</div>
+      <select class="ltd-status-sel s-${status}" onchange="saveLtdStatus_('${t.id}',this)">
+        <option value="aktiv" ${status==='aktiv'?'selected':''}>🟢 Aktiv im Einsatz</option>
+        <option value="nutzung" ${status==='nutzung'?'selected':''}>🟠 Wird getestet</option>
+        <option value="setup" ${status==='setup'?'selected':''}>🟡 Noch einrichten</option>
+        <option value="pause" ${status==='pause'?'selected':''}>⚪ Pausiert</option>
+      </select>`;
+    el.appendChild(div);
+  }
+}
+
+function saveLtdStatus_(id, sel) {
+  const st = loadLtdStatus();
+  st[id] = sel.value;
+  saveLtdStatus(st);
+  sel.className = 'ltd-status-sel s-' + sel.value;
 }
 
 // ============================================================
