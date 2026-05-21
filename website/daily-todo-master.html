@@ -518,10 +518,13 @@
     .ltd-name { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 2px; }
     .ltd-usecase { font-size: 11px; color: var(--muted); line-height: 1.4; margin-bottom: 8px; }
     .ltd-status-sel { width: 100%; background: var(--navy-800); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 5px 8px; font-size: 11px; font-family: var(--font-mono); color: var(--text); cursor: pointer; }
-    .ltd-status-sel.s-aktiv { border-color: var(--green); color: var(--green); }
-    .ltd-status-sel.s-nutzung { border-color: var(--orange); color: var(--orange); }
-    .ltd-status-sel.s-setup { border-color: var(--yellow); color: var(--yellow); }
-    .ltd-status-sel.s-pause { border-color: #4a607a; color: #4a607a; }
+    .ltd-status-sel.s-aktiv     { border-color: var(--green);  color: var(--green); }
+    .ltd-status-sel.s-nutzung   { border-color: var(--orange); color: var(--orange); }
+    .ltd-status-sel.s-setup     { border-color: var(--yellow); color: var(--yellow); }
+    .ltd-status-sel.s-pause     { border-color: #4a607a; color: #4a607a; }
+    .ltd-status-sel.s-abgelaufen{ border-color: var(--red); color: var(--red); }
+    .ltd-card.expired           { border-color: rgba(239,68,68,.35); background: rgba(239,68,68,.04); }
+    .ltd-expired-badge          { font-size:10px; font-family:var(--font-mono); color:var(--red); background:rgba(239,68,68,.12); border-radius:3px; padding:2px 6px; margin-bottom:6px; display:inline-block; }
   </style>
 </head>
 <body>
@@ -2612,20 +2615,50 @@ function loadEngSession() {
 // APPSUMO LTD GRID
 // ============================================================
 const LTD_TOOLS = [
-  { id:'neuronwriter', icon:'✍️', name:'NeuronWriter', price:'$89 LTD', usecase:'SEO-Artikel + Affiliate-Content mit KI-Score. Für Blog + Backlinks.' },
-  { id:'sociamonials', icon:'📣', name:'Sociamonials', price:'$69 LTD', usecase:'Social Media Scheduling + UGC-Kampagnen. Für LinkedIn + Instagram.' },
-  { id:'unmixrai', icon:'🎙️', name:'Unmixr AI', price:'$69 LTD', usecase:'Audio-Trennung + Voice Cloning. Für Podcast, YouTube, Reels-Voiceover.' },
-  { id:'skillplate', icon:'🎨', name:'Skillplate', price:'$79 LTD', usecase:'Marketing-Assets, Thumbnails, Social Graphics. Kein Canva-Abo nötig.' },
-  { id:'mootion', icon:'🎬', name:'Mootion', price:'$49 LTD', usecase:'KI-Animationsvideos für Reels + YouTube Shorts. Schneller als CapCut.' },
-  { id:'reap', icon:'🌱', name:'Reap', price:'$59 LTD', usecase:'Marketing-Material automatisch generieren. Für Affiliate + Coaching.' },
-  { id:'tidycal', icon:'📅', name:'TidyCal', price:'$29 LTD', usecase:'Coaching-Buchungsseite. Ersetzt Calendly. In LinkedIn-Bio einbauen.' },
-  { id:'nocodebackend', icon:'🔧', name:'NoCodeBackend', price:'$59 LTD', usecase:'Backend für Bots ohne Code. Daten speichern ohne Supabase-Setup.' },
-  { id:'goosevpn', icon:'🔒', name:'GOOSE VPN', price:'$39 LTD', usecase:'VPN für VPS + Scraping-Bots. Anonymisiertes Outreach-Scripting.' },
-  { id:'voila', icon:'🧠', name:'Voila AI', price:'$29 LTD', usecase:'Browser-KI-Assistent. Texte umschreiben, zusammenfassen, prompten.' },
-  { id:'katteb', icon:'📝', name:'Katteb AI', price:'$39 LTD', usecase:'Fakten-geprüfte KI-Artikel. Für DACH-Markt SEO + Blog-Content.' },
-  { id:'feedspace', icon:'⭐', name:'Feedspace', price:'$49 LTD', usecase:'Testimonials + Social Proof einsammeln. Für Coaching-Kunden.' },
-  { id:'gretaai', icon:'📈', name:'Greta.ai', price:'$39 LTD', usecase:'Growth Hacking Automation. Leads + Engagement automatisch steigern.' },
-  { id:'yapper', icon:'🎥', name:'Yapper', price:'$39 LTD', usecase:'Video-Content aus Text. Für Instagram Reels + YouTube ohne Kamera.' },
+  // ── AKTIV (aus AppSumo bestätigt) ──────────────────────────
+  { id:'reap',          icon:'🌱', name:'Reap',          tier:'Stufe 2 LTD',  status0:'aktiv',
+    usecase:'Content repurposing: 1 Longform → 10 Formate automatisch. LinkedIn-Posts, Threads, Carousel aus Podcast/Video.' },
+  { id:'depositphotos', icon:'📸', name:'DepositPhotos',  tier:'Erlöst',       status0:'aktiv',
+    usecase:'Millionen Stock-Fotos + Videos. Für Website-Mockups, Affiliate-Content, Social Posts.' },
+  { id:'feedspace',     icon:'⭐', name:'Feedspace',      tier:'Stufe 1',      status0:'aktiv',
+    usecase:'Kundenbewertungen + Video-Testimonials einsammeln. Für Coaching & Website-Referenzen.' },
+  { id:'gretaai',       icon:'🌐', name:'Greta',          tier:'Stufe 3',      status0:'aktiv',
+    usecase:'KI-Website-Builder + Landing Pages. Schnell Website für Coaching-Kunden bauen.' },
+  { id:'browseract',    icon:'🖥️', name:'BrowserAct',     tier:'Stufe 1',      status0:'setup',
+    usecase:'Browser-Automation ohne Code. Web-Scraping, Formular-Ausfüllen, Outreach-Automatisierung.' },
+  { id:'skillplate',    icon:'🎨', name:'Skillplate',     tier:'Stufe 2',      status0:'setup',
+    usecase:'Marketing-Templates + Kurs-Materialien. Professionelle Assets ohne Designer.' },
+  { id:'mootion',       icon:'🎬', name:'Bewegung (Mootion)', tier:'Stufe 3',  status0:'aktiv',
+    usecase:'KI-Animationsvideos für Reels + Shorts. Produkt-Demos und Erklärvideos automatisch.' },
+  { id:'nocodebackend', icon:'🔧', name:'NoCodeBackend',  tier:'Plan 2',       status0:'aktiv',
+    usecase:'Backend-API ohne Code. Datenbank + Auth + Webhooks für Bots & Apps.' },
+  { id:'voila',         icon:'🧠', name:'Voilà',          tier:'Stufe 1',      status0:'aktiv',
+    usecase:'Browser-KI: Texte zusammenfassen, umschreiben, prompten auf jeder Website.' },
+  { id:'sociamonials',  icon:'📣', name:'Sociamonials',   tier:'Erlöst',       status0:'aktiv',
+    usecase:'Social Media Scheduling + UGC-Kampagnen. LinkedIn + Instagram automatisch planen.' },
+  { id:'yapper',        icon:'🎥', name:'Yapper.so',      tier:'LTD',          status0:'setup',
+    usecase:'Text → Video-Avatar-Content. Reels + YouTube Shorts ohne Kamera aufnehmen.' },
+  // ── SETUP AUSSTEHEND ──────────────────────────────────────
+  { id:'neuronwriter',  icon:'✍️', name:'NeuronWriter',   tier:'LTD',          status0:'setup',
+    usecase:'SEO-Artikel mit KI-Score. Für Blog + Affiliate-Backlinks im DACH-Raum.' },
+  { id:'opusclip',      icon:'✂️', name:'Opus Clip',      tier:'LTD',          status0:'setup',
+    usecase:'KI schneidet Long-Videos automatisch in virale Clips. YouTube → 10 Reels per Klick.' },
+  { id:'kieai',         icon:'🖼️', name:'Kie.ai',         tier:'LTD',          status0:'setup',
+    usecase:'KI-Bildgenerierung + Editing. Für Avatar-Thumbnails, Marketing-Visuals, Social Content.' },
+  { id:'repocloud',     icon:'☁️', name:'RepoCloud',      tier:'LTD',          status0:'setup',
+    usecase:'1-Klick Deployment für Bots + Apps direkt aus GitHub. Ersetzt Railway/Render.' },
+  { id:'hostingervps',  icon:'🖥️', name:'Hostinger VPS',  tier:'VPS Plan',     status0:'aktiv',
+    usecase:'Root-Server für n8n, Python-Bots, Webhooks. 24/7 Bot-Empire Backbone.' },
+  // ── ABGELAUFEN → AppSumo Support kontaktieren ────────────
+  { id:'tidycal',       icon:'📅', name:'TidyCal',        tier:'Agenturplan',  status0:'abgelaufen',
+    expired:'Aktivierungszeitraum abgelaufen (26.01.2026) → AppSumo Support',
+    usecase:'Coaching-Buchungsseite. Ersetzt Calendly. Agenturplan = unbegrenzte Kalender.' },
+  { id:'unmixrai',      icon:'🎙️', name:'Unmixr AI',      tier:'×2 Codes',     status0:'abgelaufen',
+    expired:'Nicht eingelöst, abgelaufen (26.01.2026) → AppSumo Support kontaktieren',
+    usecase:'Audio/Video-Sync + TTS + STT. Für Avatar-Voiceovers und Podcast-Produktion.' },
+  { id:'katteb',        icon:'📝', name:'Katteb AI',      tier:'LTD',          status0:'abgelaufen',
+    expired:'Nicht eingelöst, abgelaufen (28.01.2024) → AppSumo Support kontaktieren',
+    usecase:'Fakten-geprüfte KI-Artikel. Für DACH-Markt SEO + Blog-Content.' },
 ];
 
 function loadLtdStatus() { try { return JSON.parse(localStorage.getItem('cango_ltd_status')) || {}; } catch(e){ return {}; } }
@@ -2634,27 +2667,42 @@ function saveLtdStatus(d) { localStorage.setItem('cango_ltd_status', JSON.string
 function renderLtdGrid() {
   const el = document.getElementById('ltdGrid');
   if (!el) return;
-  const st = loadLtdStatus();
+  const saved = loadLtdStatus();
   el.innerHTML = '';
   for (const t of LTD_TOOLS) {
-    const status = st[t.id] || 'setup';
+    const status = saved[t.id] || t.status0 || 'setup';
+    const isExpired = t.expired && status === 'abgelaufen';
     const div = document.createElement('div');
-    div.className = 'ltd-card';
+    div.className = 'ltd-card' + (isExpired ? ' expired' : '');
     div.innerHTML = `
       <div class="ltd-card-top">
         <span class="ltd-icon">${t.icon}</span>
-        <span class="ltd-price">${t.price}</span>
+        <span class="ltd-price" style="font-size:9px">${t.tier || 'LTD'}</span>
       </div>
       <div class="ltd-name">${t.name}</div>
+      ${isExpired ? `<div class="ltd-expired-badge">⚠️ ${t.expired}</div>` : ''}
       <div class="ltd-usecase">${t.usecase}</div>
       <select class="ltd-status-sel s-${status}" onchange="saveLtdStatus_('${t.id}',this)">
-        <option value="aktiv" ${status==='aktiv'?'selected':''}>🟢 Aktiv im Einsatz</option>
-        <option value="nutzung" ${status==='nutzung'?'selected':''}>🟠 Wird getestet</option>
-        <option value="setup" ${status==='setup'?'selected':''}>🟡 Noch einrichten</option>
-        <option value="pause" ${status==='pause'?'selected':''}>⚪ Pausiert</option>
+        <option value="aktiv"      ${status==='aktiv'?'selected':''}>🟢 Aktiv im Einsatz</option>
+        <option value="nutzung"    ${status==='nutzung'?'selected':''}>🟠 Wird getestet</option>
+        <option value="setup"      ${status==='setup'?'selected':''}>🟡 Noch einrichten</option>
+        <option value="pause"      ${status==='pause'?'selected':''}>⚪ Pausiert</option>
+        <option value="abgelaufen" ${status==='abgelaufen'?'selected':''}>🔴 Abgelaufen</option>
       </select>`;
     el.appendChild(div);
   }
+  // Summary line
+  const active  = LTD_TOOLS.filter(t => (saved[t.id]||t.status0) === 'aktiv').length;
+  const expired = LTD_TOOLS.filter(t => (saved[t.id]||t.status0) === 'abgelaufen').length;
+  const setup   = LTD_TOOLS.filter(t => (saved[t.id]||t.status0) === 'setup').length;
+  let summary = document.getElementById('ltdSummary');
+  if (!summary) {
+    summary = document.createElement('div');
+    summary.id = 'ltdSummary';
+    summary.style.cssText = 'padding:8px 20px 12px;font-size:12px;font-family:var(--font-mono);color:var(--muted);display:flex;gap:16px;flex-wrap:wrap';
+    el.parentNode.insertBefore(summary, el.nextSibling);
+  }
+  summary.innerHTML = `<span style="color:var(--green)">🟢 ${active} aktiv</span><span style="color:var(--yellow)">🟡 ${setup} einrichten</span><span style="color:var(--red)">🔴 ${expired} abgelaufen → AppSumo Support</span>`;
 }
 
 function saveLtdStatus_(id, sel) {
