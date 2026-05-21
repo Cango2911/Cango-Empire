@@ -374,7 +374,50 @@
     .asset-add-btn { margin: 0 20px 16px; padding: 7px 14px; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); font-size: 12px; color: var(--muted); transition: all .15s; }
     .asset-add-btn:hover { border-color: var(--orange); color: var(--orange); }
 
-    /* BOT-EMPIRE */
+    /* AVATAR-REGIE */
+    .avatar-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .avatar-table th { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    .avatar-table td { padding: 8px 10px; border-bottom: 1px solid var(--border-light); vertical-align: middle; }
+    .avatar-table tr:last-child td { border-bottom: none; }
+    .avatar-table input[type="text"] { background: transparent; border: none; width: 100%; font-size: 13px; color: var(--text); }
+    .avatar-table input[type="text"]:focus { border-bottom: 1px solid var(--orange); outline: none; }
+    .avatar-status-sel { background: transparent; border: none; font-size: 11px; font-family: var(--font-mono); cursor: pointer; padding: 3px 7px; border-radius: 20px; font-weight: 600; }
+    .av-aktiv { background: var(--green-dim); color: var(--green); }
+    .av-produktion { background: var(--orange-faint); color: var(--orange); }
+    .av-skript { background: var(--yellow-dim); color: var(--yellow); }
+    .av-pause { background: rgba(100,116,139,.15); color: #94a3b8; }
+    .conv-rate { font-family: var(--font-mono); font-size: 13px; font-weight: 700; }
+    .conv-good { color: var(--green); }
+    .conv-mid { color: var(--yellow); }
+    .conv-low { color: var(--red); }
+    .script-editor { padding: 10px 20px 14px; }
+    .script-editor textarea { width: 100%; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; font-size: 13px; resize: vertical; min-height: 80px; color: var(--text); }
+    .avatar-add-row { display: flex; gap: 8px; padding: 10px 20px 14px; flex-wrap: wrap; }
+    .avatar-add-row input, .avatar-add-row select { background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 7px 10px; font-size: 13px; color: var(--text); }
+    .avatar-add-row input { width: 160px; }
+    .avatar-add-btn { background: var(--orange); color: #000; font-weight: 700; font-size: 13px; padding: 8px 14px; border-radius: var(--radius); }
+    .avatar-add-btn:hover { background: var(--orange-dim); }
+    .avatar-del { color: var(--red); font-size: 15px; cursor: pointer; opacity: .5; padding: 0 4px; }
+    .avatar-del:hover { opacity: 1; }
+    .funnel-metric { display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 3px 0; }
+    .funnel-arrow { color: var(--muted); font-size: 11px; }
+
+    /* BIO-STRUKTUR */
+    .sport-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 10px; padding: 12px 20px; }
+    .sport-card { background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px; }
+    .sport-card.done-sport { border-color: var(--green); background: rgba(34,197,94,.04); }
+    .sport-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .sport-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .sport-check-btn { width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all .15s; flex-shrink: 0; }
+    .sport-card.done-sport .sport-check-btn { background: var(--green); border-color: var(--green); }
+    .sport-duration { font-size: 12px; color: var(--muted); }
+    .sport-input { width: 60px; background: transparent; border: none; border-bottom: 1px solid var(--border-light); font-size: 12px; color: var(--text); text-align: center; padding: 2px 4px; }
+    .sport-input:focus { outline: none; border-bottom-color: var(--orange); }
+    .maintenance-banner { margin: 0 20px 14px; padding: 12px 16px; background: rgba(34,197,94,.06); border: 1px solid rgba(34,197,94,.2); border-left: 3px solid var(--green); border-radius: var(--radius); font-size: 12px; color: var(--green); }
+    .streak-sport { display: flex; gap: 6px; padding: 0 20px 14px; flex-wrap: wrap; }
+    .sport-day-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; font-family: var(--font-mono); color: var(--muted); cursor: default; }
+    .sport-day-dot.s-done { background: var(--green); border-color: var(--green); color: #000; font-weight: 700; }
+    .sport-day-dot.s-today { border-color: var(--orange); color: var(--orange); }
     .bot-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .bot-table th { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
     .bot-table td { padding: 9px 10px; border-bottom: 1px solid var(--border-light); vertical-align: middle; }
@@ -1083,6 +1126,125 @@
     </div>
   </div>
 
+  <!-- BLOCK 13: AVATAR-REGIE -->
+  <div class="block-card" id="block-avatar">
+    <div class="block-header" onclick="toggleBlock('block-avatar')">
+      <div class="block-title-wrap">
+        <span class="block-icon">🎭</span>
+        <div>
+          <div class="block-title">Avatar-Regie · Content-Fabrik 24/7</div>
+          <div class="block-subtitle">HeyGen · D-ID · Mootion · Yapper · Skript-Status · Konversionsrate Kontakt→Termin</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-blue">AVATAR</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+
+      <!-- FUNNEL METRIK -->
+      <div class="block-section">
+        <div class="block-section-title">Avatar-Funnel · Eine Metrik die zählt</div>
+      </div>
+      <div style="padding:10px 20px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;display:flex;flex-direction:column;align-items:center;min-width:90px">
+          <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase">Views</div>
+          <input type="number" id="av-views" placeholder="0" style="width:70px;text-align:center;font-size:20px;font-weight:800;background:transparent;border:none;color:#fff" oninput="updateAvatarFunnel()"/>
+        </div>
+        <span class="funnel-arrow">→</span>
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;display:flex;flex-direction:column;align-items:center;min-width:90px">
+          <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase">Kontakte</div>
+          <input type="number" id="av-contacts" placeholder="0" style="width:70px;text-align:center;font-size:20px;font-weight:800;background:transparent;border:none;color:#fff" oninput="updateAvatarFunnel()"/>
+        </div>
+        <span class="funnel-arrow">→</span>
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;display:flex;flex-direction:column;align-items:center;min-width:90px">
+          <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase">Termine</div>
+          <input type="number" id="av-bookings" placeholder="0" style="width:70px;text-align:center;font-size:20px;font-weight:800;background:transparent;border:none;color:#fff" oninput="updateAvatarFunnel()"/>
+        </div>
+        <span class="funnel-arrow">→</span>
+        <div style="background:var(--navy-700);border:1px solid var(--border-light);border-radius:var(--radius);padding:12px 16px;display:flex;flex-direction:column;align-items:center;min-width:110px">
+          <div style="font-size:10px;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase">Conv.-Rate</div>
+          <div class="conv-rate conv-low" id="av-conv-display" style="font-size:20px">0%</div>
+          <div style="font-size:10px;color:var(--muted)">Ziel: &gt;5%</div>
+        </div>
+        <div style="background:var(--orange-faint);border:1px solid rgba(249,115,22,.2);border-radius:var(--radius);padding:12px 16px;font-size:11px;color:var(--orange);max-width:200px">
+          <strong>Wenn Conv. nicht steigt:</strong><br/>Nicht den Code ändern — das <strong>Avatar-Skript</strong> anpassen.
+        </div>
+      </div>
+
+      <!-- AVATAR KAMPAGNEN TABELLE -->
+      <div class="block-section">
+        <div class="block-section-title">Avatar-Kampagnen Dashboard</div>
+      </div>
+      <div style="padding:0 20px 10px;overflow-x:auto">
+        <table class="avatar-table" id="avatarTable">
+          <thead><tr>
+            <th>Kampagne</th><th>Tool</th><th>Status</th>
+            <th>Skript fertig?</th><th>Views</th><th>Termine</th><th></th>
+          </tr></thead>
+          <tbody id="avatarBody"></tbody>
+        </table>
+      </div>
+      <div class="avatar-add-row">
+        <input type="text" id="avNameInput" placeholder="Kampagnen-Name"/>
+        <select id="avToolInput">
+          <option>HeyGen</option><option>D-ID</option>
+          <option>Mootion (LTD)</option><option>Yapper (LTD)</option>
+          <option>Unmixr AI (LTD)</option><option>Sonstige</option>
+        </select>
+        <button class="avatar-add-btn" onclick="addAvatarCampaign()">+ Kampagne</button>
+      </div>
+
+      <!-- AKTIVES SKRIPT -->
+      <div class="block-section" style="margin-top:4px">
+        <div class="block-section-title">Aktives Avatar-Skript (n8n → Claude → Avatar-API)</div>
+      </div>
+      <div class="script-editor">
+        <textarea id="avatarScript" placeholder="Skript-Text für aktuelle Avatar-Kampagne...&#10;&#10;z.B.: 'Guten Tag, ich bin Canberk von CanGo App Empire. In den nächsten 60 Sekunden zeige ich Ihnen, wie wir Ihren Betrieb digitalisieren – für einen Festpreis, mit garantiertem Ergebnis...'" oninput="saveAvatarScript()"></textarea>
+        <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+          <div style="font-size:12px;color:var(--muted)">Skript-Länge: <span id="scriptWordCount">0</span> Wörter · Ø <span id="scriptDuration">0</span> Sek. bei 130 Wörter/Min.</div>
+        </div>
+      </div>
+
+      <!-- AVATAR WORKFLOW HINWEIS -->
+      <div class="info-note" style="margin:0 20px 14px">
+        <strong>Workflow:</strong> n8n Webhook → Claude Prompt → Skript generiert → HeyGen/D-ID API → Video → Vercel-Seite → Outreach-E-Mail mit Video-Link → TidyCal-Buchung
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BLOCK 14: BIO-STRUKTUR & SPORT -->
+  <div class="block-card" id="block-bio">
+    <div class="block-header" onclick="toggleBlock('block-bio')">
+      <div class="block-title-wrap">
+        <span class="block-icon">💪</span>
+        <div>
+          <div class="block-title">Bio-Struktur & Sport</div>
+          <div class="block-subtitle">Unverhandelbarer Anker · 3×/Woche · Maintenance-Modus für Gehirn & Körper</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-green">PFLICHT</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+      <div class="maintenance-banner" id="maintenanceBanner" style="display:none">
+        🔋 MAINTENANCE-MODUS AKTIV — Sport in Bearbeitung. Keine Notifications, kein Bot-Tuning. Dein Gehirn löst offline Probleme.
+      </div>
+      <div class="sport-grid" id="sportGrid"></div>
+      <div class="block-section" style="margin-top:4px">
+        <div class="block-section-title">Sport-Streak dieser Woche (Mo–So)</div>
+      </div>
+      <div class="streak-sport" id="sportWeekDots"></div>
+      <div style="padding:0 20px 14px">
+        <div id="tasks-bio-daily"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- BLOCK 10: ENGINEERING & DEPLOYMENT HUB -->
   <div class="block-card vision-block" id="block-engineering">
     <div class="block-header" onclick="toggleBlock('block-engineering')">
@@ -1266,6 +1428,12 @@ const TASK_GROUPS = {
     { id:'ad-gewrebe', label:'Gewerbeanmeldung / Behördenkram erledigt', hint:'AfA Celle, Finanzamt, IHK', pflicht:false },
     { id:'ad-gzcheck', label:'Gründungszuschuss-Status gecheckt', hint:'§93 SGB III · Sachbearbeiter Bachmann · €1.518/Mon', pflicht:false },
   ],
+  'bio-daily': [
+    { id:'bio-sport', label:'Sport-Einheit absolviert (Haken = Streak +1)', hint:'3×/Woche Ziel · Zählt zur wöchentlichen Pflicht-Erfüllung', pflicht:true },
+    { id:'bio-wasser', label:'Mindestens 2 Liter Wasser getrunken', hint:'Basis für Fokus und Energie', pflicht:false },
+    { id:'bio-schlaf', label:'7–8 Stunden Schlaf letzte Nacht', hint:'Kein nächtliches Prokrastinieren – Schlaf ist Betriebsmittel', pflicht:false },
+    { id:'bio-handy', label:'Handy 1h vor Schlaf wegelegen', hint:'Blaues Licht blockiert Tief-Schlaf → weniger Fokus morgen', pflicht:false },
+  ],
   'appsumo-daily': [
     { id:'ap-neuron', label:'NeuronWriter: Heute 1 SEO-Artikel oder Affiliate-Content erstellt', hint:'SEO-optimiert → Blog → Affiliate-Links → Organischer Traffic', pflicht:false },
     { id:'ap-tidycal', label:'TidyCal: Coaching-Terminlink aktiv & geteilt', hint:'Ersetzt Calendly · In LinkedIn-Bio und E-Mail-Signatur eingebaut?', pflicht:false },
@@ -1395,6 +1563,11 @@ function renderAllTasks() {
   renderTaskGroup('tasks-admin', TASK_GROUPS['admin']);
   renderTaskGroup('tasks-bot-daily', TASK_GROUPS['bot-daily']);
   renderTaskGroup('tasks-appsumo-daily', TASK_GROUPS['appsumo-daily']);
+  renderTaskGroup('tasks-bio-daily', TASK_GROUPS['bio-daily']);
+  renderSportGrid();
+  renderSportWeek();
+  renderAvatarTable();
+  loadAvatarInputs();
   renderStackHealth();
   renderChannelMatrix();
   renderPrompts();
@@ -1846,6 +2019,195 @@ function updateVisionBar() {
   const pct = Math.min(100, (val/goal)*100).toFixed(2);
   document.getElementById('visionDisplay').textContent = val.toLocaleString('de-DE');
   document.getElementById('visionBar').style.width = pct + '%';
+}
+
+// ============================================================
+// AVATAR-REGIE
+// ============================================================
+function loadAvatarCampaigns() { try { return JSON.parse(localStorage.getItem('cango_avatars_v1')) || []; } catch(e){ return []; } }
+function saveAvatarCampaigns(d) { localStorage.setItem('cango_avatars_v1', JSON.stringify(d)); }
+
+function renderAvatarTable() {
+  const tbody = document.getElementById('avatarBody');
+  if (!tbody) return;
+  const cps = loadAvatarCampaigns();
+  tbody.innerHTML = '';
+  for (const c of cps) tbody.appendChild(buildAvatarRow(c));
+}
+
+function buildAvatarRow(c) {
+  const tr = document.createElement('tr');
+  tr.dataset.id = c.id;
+  const sc = 'av-' + (c.status || 'pause');
+  const tools = ['HeyGen','D-ID','Mootion (LTD)','Yapper (LTD)','Unmixr AI (LTD)','Sonstige'];
+  const toolOpts = tools.map(t=>`<option ${c.tool===t?'selected':''}>${t}</option>`).join('');
+  const statusOpts = [['aktiv','🟢 Live'],['produktion','🟠 In Produktion'],['skript','🟡 Skript fehlt'],['pause','⚪ Pause']]
+    .map(([v,l])=>`<option value="${v}" ${c.status===v?'selected':''}>${l}</option>`).join('');
+  const conv = c.views > 0 ? ((c.bookings/c.views)*100).toFixed(1) + '%' : '—';
+  tr.innerHTML = `
+    <td><input type="text" value="${c.name||''}" placeholder="Kampagne" onchange="updateAvatar('${c.id}','name',this.value)"/></td>
+    <td><select style="background:transparent;border:none;font-size:12px;font-family:var(--font-mono);color:var(--muted)" onchange="updateAvatar('${c.id}','tool',this.value)">${toolOpts}</select></td>
+    <td><select class="avatar-status-sel ${sc}" onchange="updateAvatarStatus('${c.id}',this)">${statusOpts}</select></td>
+    <td style="text-align:center"><input type="checkbox" ${c.script_done?'checked':''} onchange="updateAvatar('${c.id}','script_done',this.checked)" style="width:16px;height:16px;cursor:pointer"/></td>
+    <td><input type="number" value="${c.views||0}" style="width:60px;background:transparent;border:none;text-align:right;font-size:13px;color:var(--text)" onchange="updateAvatar('${c.id}','views',+this.value)"/></td>
+    <td><input type="number" value="${c.bookings||0}" style="width:50px;background:transparent;border:none;text-align:right;font-size:13px;color:var(--green)" onchange="updateAvatar('${c.id}','bookings',+this.value)"/></td>
+    <td><span class="avatar-del" onclick="deleteAvatar('${c.id}')">✕</span></td>`;
+  return tr;
+}
+
+function addAvatarCampaign() {
+  const name = document.getElementById('avNameInput').value.trim();
+  if (!name) return;
+  const cps = loadAvatarCampaigns();
+  cps.push({ id:'av'+Date.now(), name, tool: document.getElementById('avToolInput').value, status:'skript', script_done:false, views:0, bookings:0 });
+  saveAvatarCampaigns(cps);
+  document.getElementById('avNameInput').value = '';
+  renderAvatarTable();
+  updateAvatarFunnel();
+}
+
+function updateAvatar(id, field, val) {
+  const cps = loadAvatarCampaigns();
+  const c = cps.find(x=>x.id===id);
+  if (c) { c[field]=val; saveAvatarCampaigns(cps); }
+}
+
+function updateAvatarStatus(id, sel) {
+  updateAvatar(id, 'status', sel.value);
+  sel.className = 'avatar-status-sel av-' + sel.value;
+}
+
+function deleteAvatar(id) {
+  saveAvatarCampaigns(loadAvatarCampaigns().filter(c=>c.id!==id));
+  const tr = document.querySelector('#avatarBody [data-id="'+id+'"]');
+  if (tr) tr.remove();
+}
+
+function updateAvatarFunnel() {
+  const views = parseInt(document.getElementById('av-views').value)||0;
+  const contacts = parseInt(document.getElementById('av-contacts').value)||0;
+  const bookings = parseInt(document.getElementById('av-bookings').value)||0;
+  const conv = contacts > 0 ? ((bookings/contacts)*100).toFixed(1) : 0;
+  const el = document.getElementById('av-conv-display');
+  el.textContent = conv + '%';
+  el.className = 'conv-rate ' + (conv >= 5 ? 'conv-good' : conv >= 2 ? 'conv-mid' : 'conv-low');
+  localStorage.setItem('cango_avatar_funnel', JSON.stringify({views, contacts, bookings}));
+}
+
+function saveAvatarScript() {
+  const text = document.getElementById('avatarScript').value;
+  localStorage.setItem('cango_avatar_script', text);
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  document.getElementById('scriptWordCount').textContent = words;
+  document.getElementById('scriptDuration').textContent = Math.round(words / 130 * 60);
+}
+
+function loadAvatarInputs() {
+  const script = localStorage.getItem('cango_avatar_script') || '';
+  const el = document.getElementById('avatarScript');
+  if (el && script) { el.value = script; saveAvatarScript(); }
+  try {
+    const f = JSON.parse(localStorage.getItem('cango_avatar_funnel')) || {};
+    if (f.views) document.getElementById('av-views').value = f.views;
+    if (f.contacts) document.getElementById('av-contacts').value = f.contacts;
+    if (f.bookings) document.getElementById('av-bookings').value = f.bookings;
+    updateAvatarFunnel();
+  } catch(e){}
+}
+
+// ============================================================
+// BIO-STRUKTUR & SPORT
+// ============================================================
+const SPORT_TYPES = [
+  { id:'sp-kraft', icon:'🏋️', name:'Kraft-Training', default_min:90 },
+  { id:'sp-cardio', icon:'🏃', name:'Cardio / Laufen', default_min:45 },
+  { id:'sp-yoga', icon:'🧘', name:'Yoga / Dehnen', default_min:30 },
+  { id:'sp-frei', icon:'⚽', name:'Freie Einheit', default_min:60 },
+];
+
+function loadSportData() { try { return JSON.parse(localStorage.getItem('cango_sport_v1')) || {}; } catch(e){ return {}; } }
+function saveSportData(d) { localStorage.setItem('cango_sport_v1', JSON.stringify(d)); }
+
+function renderSportGrid() {
+  const el = document.getElementById('sportGrid');
+  if (!el) return;
+  const data = loadSportData();
+  const today = getDateStr();
+  el.innerHTML = '';
+  for (const sp of SPORT_TYPES) {
+    const key = today + '_' + sp.id;
+    const done = data[key] || false;
+    const mins = data[key+'_min'] || sp.default_min;
+    const div = document.createElement('div');
+    div.className = 'sport-card' + (done ? ' done-sport' : '');
+    div.id = 'sport-card-' + sp.id;
+    div.innerHTML = `
+      <div class="sport-card-header">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:20px">${sp.icon}</span>
+          <span class="sport-name">${sp.name}</span>
+        </div>
+        <div class="sport-check-btn" onclick="toggleSport('${sp.id}')">${done?'✓':''}</div>
+      </div>
+      <div class="sport-duration">
+        Dauer: <input class="sport-input" type="number" value="${mins}" min="10" max="300"
+          onchange="saveSportMins('${sp.id}',this.value)"/> Min.
+        ${done ? '<span style="color:var(--green);margin-left:6px">✅ Erledigt</span>' : ''}
+      </div>`;
+    el.appendChild(div);
+  }
+  updateMaintenanceBanner();
+}
+
+function toggleSport(id) {
+  const data = loadSportData();
+  const key = getDateStr() + '_' + id;
+  data[key] = !data[key];
+  saveSportData(data);
+  const card = document.getElementById('sport-card-' + id);
+  if (card) {
+    card.className = 'sport-card' + (data[key] ? ' done-sport' : '');
+    const btn = card.querySelector('.sport-check-btn');
+    if (btn) btn.textContent = data[key] ? '✓' : '';
+  }
+  renderSportWeek();
+  updateMaintenanceBanner();
+}
+
+function saveSportMins(id, val) {
+  const data = loadSportData();
+  data[getDateStr() + '_' + id + '_min'] = parseInt(val)||60;
+  saveSportData(data);
+}
+
+function renderSportWeek() {
+  const el = document.getElementById('sportWeekDots');
+  if (!el) return;
+  const data = loadSportData();
+  const today = new Date();
+  const dow = today.getDay();
+  const days = ['Mo','Di','Mi','Do','Fr','Sa','So'];
+  el.innerHTML = '';
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - ((dow + 6) % 7) + i);
+    const ds = d.toISOString().slice(0,10);
+    const isToday = ds === getDateStr();
+    const hasSport = SPORT_TYPES.some(sp => data[ds + '_' + sp.id]);
+    const dot = document.createElement('div');
+    dot.className = 'sport-day-dot' + (hasSport ? ' s-done' : isToday ? ' s-today' : '');
+    dot.textContent = hasSport ? '✓' : days[i];
+    dot.title = ds;
+    el.appendChild(dot);
+  }
+}
+
+function updateMaintenanceBanner() {
+  const data = loadSportData();
+  const today = getDateStr();
+  const active = SPORT_TYPES.some(sp => data[today + '_' + sp.id]);
+  const banner = document.getElementById('maintenanceBanner');
+  if (banner) banner.style.display = active ? 'block' : 'none';
 }
 
 // ============================================================

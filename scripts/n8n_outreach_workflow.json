@@ -1,0 +1,216 @@
+{
+  "name": "CanGo Outreach-Sniper Pipeline",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "outreach-leads",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-receive",
+      "name": "Leads empfangen (Webhook)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "notes": "Empfängt JSON von outreach_sniper.py: {date, city, leads: [{name, address, phone, website, priority}]}"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": false},
+          "conditions": [
+            {
+              "id": "filter-priority",
+              "leftValue": "={{ $json.priority }}",
+              "rightValue": "HOCH",
+              "operator": {"type": "string", "operation": "equals"}
+            }
+          ],
+          "combinator": "or"
+        }
+      },
+      "id": "filter-high-priority",
+      "name": "Nur HOCH-Priorität",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [480, 300],
+      "notes": "Filtert Leads ohne Website (HOCH) heraus – höchste Abschluss-Wahrscheinlichkeit"
+    },
+    {
+      "parameters": {
+        "model": "claude-opus-4-7",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Du bist Canberk Kivilcim von CanGo App Empire. Du schreibst kurze, persönliche E-Mails an Inhaberinnen und Inhaber kleiner Unternehmen im DACH-Raum. Stil: direkt, respektvoll, lösungsorientiert. Kein Spam-Ton. Immer mit konkretem Nutzen. Signatur: Canberk Kivilcim | CanGo App Empire | automation-cango-app-empire.com | Festpreise – kein Stundensatz"
+            },
+            {
+              "role": "user",
+              "content": "=Schreibe eine kurze Outreach-E-Mail (max. 120 Wörter) an den Inhaber von '{{ $json.name }}' in {{ $json.address }}. Das Unternehmen hat {{ $json.website === 'KEIN WEBSITE' ? 'keine Website' : 'eine schwache Online-Präsenz' }}. Betreff-Idee und E-Mail-Text trennen. Biete eine schlüsselfertige Website für €500 pauschal an. Erwähne, dass ich täglich an eigenen Projekten arbeite und dadurch fachlich aktuell bin. Kein Floskeln."
+            }
+          ]
+        },
+        "options": {"maxTokens": 400, "temperature": 0.7}
+      },
+      "id": "claude-personalize",
+      "name": "Claude: E-Mail personalisieren",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [720, 300],
+      "notes": "Nutzt Claude claude-opus-4-7 für personalisierte E-Mail-Texte pro Lead. API-Key in n8n Credentials hinterlegen."
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "value": "public",
+          "mode": "list"
+        },
+        "table": {
+          "__rl": true,
+          "value": "outreach_leads",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "values": [
+            {"column": "firm_name", "value": "={{ $('Leads empfangen (Webhook)').item.json.name }}"},
+            {"column": "address", "value": "={{ $('Leads empfangen (Webhook)').item.json.address }}"},
+            {"column": "phone", "value": "={{ $('Leads empfangen (Webhook)').item.json.phone }}"},
+            {"column": "website", "value": "={{ $('Leads empfangen (Webhook)').item.json.website }}"},
+            {"column": "priority", "value": "={{ $('Leads empfangen (Webhook)').item.json.priority }}"},
+            {"column": "ai_email_text", "value": "={{ $json.content[0].text }}"},
+            {"column": "status", "value": "neu"},
+            {"column": "created_at", "value": "={{ $now }}"}
+          ]
+        },
+        "matchingColumns": ["firm_name", "address"]
+      },
+      "id": "supabase-save",
+      "name": "Supabase: Lead speichern",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [960, 200],
+      "notes": "Speichert Lead + KI-Text in Supabase. Tabelle 'outreach_leads' muss existieren. Supabase-Credentials in n8n hinterlegen."
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Leads empfangen (Webhook)').item.json.email || 'cangoshop24@gmail.com' }}",
+        "subject": "=CanGo Outreach: {{ $('Leads empfangen (Webhook)').item.json.name }}",
+        "emailType": "text",
+        "message": "={{ $('Claude: E-Mail personalisieren').item.json.content[0].text }}",
+        "options": {
+          "ccList": "cangoshop24@gmail.com"
+        }
+      },
+      "id": "send-email",
+      "name": "E-Mail senden (Gmail/SMTP)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [960, 400],
+      "notes": "Sendet personalisierte E-Mail. Alternativ: n8n-nodes-base.emailSend für SMTP. BCC an Canberk für Überblick."
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({success: true, leads_processed: $input.all().length}) }}"
+      },
+      "id": "webhook-response",
+      "name": "Webhook-Antwort",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1200, 300]
+    },
+    {
+      "parameters": {
+        "rule": {"interval": [{"field": "cronExpression", "expression": "0 8 * * 1,3,5"}]},
+        "options": {}
+      },
+      "id": "daily-trigger",
+      "name": "Täglich 08:00 Uhr (Mo/Mi/Fr)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 520],
+      "notes": "Alternativ-Trigger: Startet Outreach-Zusammenfassung automatisch Mo/Mi/Fr um 8 Uhr"
+    },
+    {
+      "parameters": {
+        "url": "=https://supabase-url/rest/v1/outreach_leads?status=eq.neu&select=*",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "={{ $env.SUPABASE_KEY }}"},
+            {"name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_KEY }}"}
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-new-leads",
+      "name": "Neue Leads aus Supabase laden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 520],
+      "notes": "Lädt alle Leads mit Status 'neu' für Tages-Zusammenfassung"
+    },
+    {
+      "parameters": {
+        "model": "claude-haiku-4-5-20251001",
+        "messages": {
+          "values": [
+            {
+              "role": "user",
+              "content": "=Erstelle eine kurze Tages-Zusammenfassung für Canberk: Heute {{ $now.format('DD.MM.YYYY') }} wurden {{ $input.all().length }} neue Leads gefunden. Top-3 nach Priorität: {{ $input.all().slice(0,3).map(l => l.json.firm_name + ' (' + l.json.address + ')').join(', ') }}. Formuliere als kurze Motivation (2 Sätze) und konkreten nächsten Schritt."
+            }
+          ]
+        },
+        "options": {"maxTokens": 200}
+      },
+      "id": "daily-summary",
+      "name": "Claude: Tages-Zusammenfassung",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [720, 520],
+      "notes": "Nutzt Claude Haiku (günstig) für tägliche Zusammenfassung an Canberk"
+    }
+  ],
+  "connections": {
+    "Leads empfangen (Webhook)": {
+      "main": [[{"node": "Nur HOCH-Priorität", "type": "main", "index": 0}]]
+    },
+    "Nur HOCH-Priorität": {
+      "main": [[{"node": "Claude: E-Mail personalisieren", "type": "main", "index": 0}]]
+    },
+    "Claude: E-Mail personalisieren": {
+      "main": [[
+        {"node": "Supabase: Lead speichern", "type": "main", "index": 0},
+        {"node": "E-Mail senden (Gmail/SMTP)", "type": "main", "index": 0}
+      ]]
+    },
+    "Supabase: Lead speichern": {
+      "main": [[{"node": "Webhook-Antwort", "type": "main", "index": 0}]]
+    },
+    "E-Mail senden (Gmail/SMTP)": {
+      "main": [[{"node": "Webhook-Antwort", "type": "main", "index": 0}]]
+    },
+    "Täglich 08:00 Uhr (Mo/Mi/Fr)": {
+      "main": [[{"node": "Neue Leads aus Supabase laden", "type": "main", "index": 0}]]
+    },
+    "Neue Leads aus Supabase laden": {
+      "main": [[{"node": "Claude: Tages-Zusammenfassung", "type": "main", "index": 0}]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "meta": {
+    "instanceId": "cango-empire",
+    "templateId": "cango-outreach-sniper-v1",
+    "notes": "Setup: 1) Anthropic API-Credentials in n8n hinterlegen 2) Supabase-Credentials hinterlegen 3) Gmail OAuth einrichten 4) Webhook-URL in .env von outreach_sniper.py eintragen 5) Supabase-Tabelle 'outreach_leads' anlegen"
+  }
+}
