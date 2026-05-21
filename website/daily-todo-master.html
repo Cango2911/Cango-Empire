@@ -328,6 +328,35 @@
     .divider { border: none; border-top: 1px solid var(--border-light); margin: 4px 20px; }
     .info-note { margin: 8px 20px 4px; background: rgba(59,130,246,.07); border: 1px solid rgba(59,130,246,.15); border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: #93c5fd; }
     .quick-note { margin: 0 20px 0; background: var(--orange-faint); border: 1px solid rgba(249,115,22,.15); border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: rgba(249,115,22,.8); }
+
+    /* BOT-EMPIRE */
+    .bot-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .bot-table th { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+    .bot-table td { padding: 9px 10px; border-bottom: 1px solid var(--border-light); vertical-align: middle; }
+    .bot-table tr:last-child td { border-bottom: none; }
+    .bot-table input[type="text"] { background: transparent; border: none; border-radius: 0; padding: 0; font-size: 13px; width: 100%; min-width: 80px; }
+    .bot-table input[type="text"]:focus { border-bottom: 1px solid var(--orange); outline: none; }
+    .bot-status-sel { background: transparent; border: none; font-size: 11px; font-family: var(--font-mono); cursor: pointer; padding: 3px 7px; border-radius: 20px; font-weight: 600; }
+    .bot-aktiv { background: var(--green-dim); color: var(--green); }
+    .bot-wartung { background: var(--yellow-dim); color: var(--yellow); }
+    .bot-fehler { background: var(--red-dim); color: var(--red); }
+    .bot-pause { background: rgba(100,116,139,.15); color: #94a3b8; }
+    .bot-platform-sel { background: transparent; border: none; font-size: 12px; font-family: var(--font-mono); cursor: pointer; color: var(--muted); }
+    .bot-del { color: var(--red); font-size: 15px; cursor: pointer; opacity: .5; padding: 0 4px; }
+    .bot-del:hover { opacity: 1; }
+    .bot-add-row { display: flex; align-items: center; gap: 10px; padding: 12px 20px; flex-wrap: wrap; }
+    .bot-add-row input, .bot-add-row select { background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 7px 10px; font-size: 13px; color: var(--text); }
+    .bot-add-row input { width: 180px; }
+    .bot-add-btn { background: var(--orange); color: #000; font-weight: 700; font-size: 13px; padding: 8px 16px; border-radius: var(--radius); transition: background .2s; white-space: nowrap; }
+    .bot-add-btn:hover { background: var(--orange-dim); }
+    .bot-impact-badge { font-family: var(--font-mono); font-size: 10px; padding: 2px 7px; border-radius: 3px; background: rgba(249,115,22,.1); color: var(--orange); }
+    .vision-bar-wrap { padding: 12px 20px; }
+    .vision-bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .vision-bar-label strong { color: var(--orange); font-size: 15px; }
+    .sprint-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px 20px; }
+    .sprint-item label { display: block; font-size: 11px; font-family: var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+    .sprint-item textarea { width: 100%; resize: vertical; min-height: 60px; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; font-size: 13px; }
+    @media(max-width:600px) { .sprint-grid { grid-template-columns: 1fr; } .bot-add-row input { width: 140px; } }
   </style>
 </head>
 <body>
@@ -705,6 +734,157 @@
     </div>
   </div>
 
+
+  <!-- BLOCK 9: BOT-EMPIRE COMMAND CENTER -->
+  <div class="block-card" id="block-bot" style="border-color:rgba(249,115,22,.3);">
+    <div class="block-header" onclick="toggleBlock('block-bot')">
+      <div class="block-title-wrap">
+        <span class="block-icon">🤖</span>
+        <div>
+          <div class="block-title">Bot-Empire Command Center</div>
+          <div class="block-subtitle">Deine digitalen Mitarbeiter · n8n · Python · Hostinger VPS · 24/7</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="block-badge badge-orange">9.9M VISION</span>
+        <span class="block-collapse-icon">▾</span>
+      </div>
+    </div>
+    <div class="block-body">
+
+      <!-- 9.9M VISION BAR -->
+      <div class="vision-bar-wrap">
+        <div class="vision-bar-label">
+          <span>9,9 Mio. Vision · Jahresumsatz-Fortschritt</span>
+          <strong>€<span id="visionDisplay">0</span> / €9.900.000</strong>
+        </div>
+        <div class="progress-bar-wrap" style="height:8px">
+          <div class="progress-bar-fill" id="visionBar" style="width:0%"></div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap">
+          <div style="font-size:12px;color:var(--muted)">Jahreseingabe (€): <input type="number" id="visionInput" placeholder="0" style="width:120px;margin-left:6px" oninput="saveVision()"/></div>
+        </div>
+      </div>
+
+      <!-- BOT STATUS TABELLE -->
+      <div class="block-section">
+        <div class="block-section-title">Bot-Status Dashboard · Aktive digitale Mitarbeiter</div>
+      </div>
+      <div class="outreach-wrap">
+        <div class="outreach-table-wrap">
+          <table class="bot-table" id="botTable">
+            <thead>
+              <tr>
+                <th>Bot-Name</th>
+                <th>Plattform</th>
+                <th>Status</th>
+                <th>Impact / Tag</th>
+                <th>Letzte Prüfung</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="botTableBody"></tbody>
+          </table>
+        </div>
+        <div class="bot-add-row">
+          <input type="text" id="botNameInput" placeholder="Bot-Name (z.B. LinkedIn-Scanner)"/>
+          <select id="botPlatformInput">
+            <option value="Hostinger VPS">Hostinger VPS</option>
+            <option value="Mac Terminal">Mac Terminal</option>
+            <option value="n8n Cloud">n8n Cloud</option>
+            <option value="n8n Self-Host">n8n Self-Host</option>
+            <option value="Python Lokal">Python Lokal</option>
+            <option value="Supabase Edge">Supabase Edge</option>
+          </select>
+          <select id="botImpactInput">
+            <option value="~1 Std/Tag">~1 Std/Tag gespart</option>
+            <option value="~2 Std/Tag">~2 Std/Tag gespart</option>
+            <option value="~€50/Tag">~€50/Tag Umsatz</option>
+            <option value="~€100/Tag">~€100/Tag Umsatz</option>
+            <option value="~€200/Tag">~€200/Tag Umsatz</option>
+            <option value="Leadgen">Leadgen-Bot</option>
+            <option value="Content">Content-Bot</option>
+            <option value="Monitor">Monitor-Bot</option>
+          </select>
+          <button class="bot-add-btn" onclick="addBot()">+ Bot hinzufügen</button>
+        </div>
+      </div>
+
+      <!-- WARTUNGS-CHECKLISTE -->
+      <div class="block-section" style="margin-top:8px">
+        <div class="block-section-title">Tägliche Bot-Wartung (Daily Check)</div>
+      </div>
+      <div id="tasks-bot-daily"></div>
+
+      <!-- SPRINT-BEREICH -->
+      <div class="block-section" style="margin-top:8px">
+        <div class="block-section-title">Bot-Sprint · Aktuelle Entwicklung</div>
+      </div>
+      <div class="sprint-grid">
+        <div class="sprint-item">
+          <label>Neuen Bot skizzieren (Was soll er tun?)</label>
+          <textarea id="botSketch" placeholder="Idee: Bot liest täglich Google Maps → neue Firmen ohne Website → sendet mir Liste..." oninput="saveBotSprint()"></textarea>
+        </div>
+        <div class="sprint-item">
+          <label>Aktueller Bot-Sprint / Refactoring</label>
+          <textarea id="botSprint" placeholder="z.B. LinkedIn-Scanner v2: Fehler in Loop behoben, Rate-Limiting eingebaut..." oninput="saveBotSprint()"></textarea>
+        </div>
+        <div class="sprint-item">
+          <label>Hostinger VPS Log-Notiz</label>
+          <textarea id="botLog" placeholder="Letzter SSH-Check, aufgetretene Fehler, Cron-Job Status..." oninput="saveBotSprint()"></textarea>
+        </div>
+        <div class="sprint-item">
+          <label>Nächster Bot (Backlog #1)</label>
+          <textarea id="botBacklog" placeholder="Finance-Monitor: Täglich Einnahmen aus n8n ziehen und in Supabase schreiben..." oninput="saveBotSprint()"></textarea>
+        </div>
+      </div>
+
+      <!-- BOT TYPEN REFERENZ -->
+      <div class="block-section" style="margin-top:4px">
+        <div class="block-section-title">Bot-Bibliothek · Geplante digitale Mitarbeiter</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;padding:8px 20px 16px">
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:12px">
+          <div style="font-size:16px;margin-bottom:4px">🎯</div>
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:3px">Outreach-Sniper</div>
+          <div style="font-size:11px;color:var(--muted)">Google Maps → Firmen ohne Website → Kontaktliste automatisch</div>
+          <div style="margin-top:6px"><span class="bot-impact-badge">€2.000/Monat Potenzial</span></div>
+        </div>
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:12px">
+          <div style="font-size:16px;margin-bottom:4px">📦</div>
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:3px">Amazon-Nischen-Scanner</div>
+          <div style="font-size:11px;color:var(--muted)">BSR + Trends + Provision → Top-Produkte täglich</div>
+          <div style="margin-top:6px"><span class="bot-impact-badge">~1 Std/Tag gespart</span></div>
+        </div>
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:12px">
+          <div style="font-size:16px;margin-bottom:4px">📰</div>
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:3px">Content-Aggregator</div>
+          <div style="font-size:11px;color:var(--muted)">RSS + KI → LinkedIn-Post-Ideen automatisch generiert</div>
+          <div style="margin-top:6px"><span class="bot-impact-badge">3 Posts/Woche Autopilot</span></div>
+        </div>
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:12px">
+          <div style="font-size:16px;margin-bottom:4px">💰</div>
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:3px">Finance-Monitor</div>
+          <div style="font-size:11px;color:var(--muted)">Einnahmen aus n8n → Supabase → täglicher Report</div>
+          <div style="margin-top:6px"><span class="bot-impact-badge">Echtzeit-Übersicht</span></div>
+        </div>
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:12px">
+          <div style="font-size:16px;margin-bottom:4px">✈️</div>
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:3px">Booking-Deal-Finder</div>
+          <div style="font-size:11px;color:var(--muted)">Täglich beste Reise-Deals → Affiliate-Content fertig</div>
+          <div style="margin-top:6px"><span class="bot-impact-badge">Passiv-Einnahmen</span></div>
+        </div>
+        <div style="background:var(--navy-700);border:1px solid var(--border);border-radius:var(--radius);padding:12px">
+          <div style="font-size:16px;margin-bottom:4px">📊</div>
+          <div style="font-size:12px;font-weight:700;color:#fff;margin-bottom:3px">LinkedIn-Branding-Bot</div>
+          <div style="font-size:11px;color:var(--muted)">Kommentare analysieren → beste Posting-Zeiten → Reichweite</div>
+          <div style="margin-top:6px"><span class="bot-impact-badge">500 Follower Ziel</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div><!-- end .page-wrap -->
 
 <!-- FOOTER -->
@@ -794,6 +974,15 @@ const TASK_GROUPS = {
     { id:'ad-gewrebe', label:'Gewerbeanmeldung / Behördenkram erledigt', hint:'AfA Celle, Finanzamt, IHK', pflicht:false },
     { id:'ad-gzcheck', label:'Gründungszuschuss-Status gecheckt', hint:'§93 SGB III · Sachbearbeiter Bachmann · €1.518/Mon', pflicht:false },
   ],
+  'bot-daily': [
+    { id:'bt-logs', label:'Log-Dateien geprüft (Hostinger VPS / Mac Terminal)', hint:'SSH: tail -f /var/log/... · Fehler identifiziert & dokumentiert', pflicht:true },
+    { id:'bt-n8n', label:'n8n-Workflows Statuscheck (alle grün?)', hint:'n8n Dashboard öffnen → fehlgeschlagene Executions prüfen', pflicht:true },
+    { id:'bt-api', label:'API-Keys & Credentials validiert', hint:'Abgelaufene Tokens, Rate-Limits gecheckt', pflicht:false },
+    { id:'bt-metrics', label:'Bot-Performance-Metriken notiert', hint:'Leads generiert / Provisionen / Zeit gespart → in Tabelle eintragen', pflicht:false },
+    { id:'bt-cron', label:'Cron-Jobs aktiv? (Hostinger / Mac launchd)', hint:'Scheduler-Status prüfen · Skripte laufen pünktlich?', pflicht:false },
+    { id:'bt-hour', label:'Bot-Tuning-Hour (30 Min. Code-Optimierung)', hint:'Refactoring, neue Features, Fehler beheben – kein Multi-Tasking', pflicht:false },
+    { id:'bt-backup', label:'Skript-Backup auf GitHub gepusht', hint:'git push origin main – Code nie nur lokal lassen', pflicht:false },
+  ],
 };
 
 // ============================================================
@@ -851,12 +1040,15 @@ document.addEventListener('DOMContentLoaded', function() {
   renderMilestone();
   renderAllTasks();
   renderOutreach();
+  renderBots();
   loadInputs();
   updateProgress();
   updateFinanceBars();
   updateLinkedinBar();
   updateStreak();
   checkCarryOver();
+  updateVisionBar();
+  loadBotSprint();
 });
 
 // ============================================================
@@ -899,6 +1091,7 @@ function renderAllTasks() {
   renderTaskGroup('tasks-linkedin', TASK_GROUPS['linkedin']);
   renderTaskGroup('tasks-avgs', TASK_GROUPS['avgs']);
   renderTaskGroup('tasks-admin', TASK_GROUPS['admin']);
+  renderTaskGroup('tasks-bot-daily', TASK_GROUPS['bot-daily']);
 }
 
 function renderTaskGroup(containerId, tasks) {
@@ -1225,6 +1418,126 @@ function toggleJarvis() {
     document.getElementById('jarvisIcon').textContent = '🔊';
   };
   window.speechSynthesis.speak(utterance);
+}
+
+// ============================================================
+// BOT EMPIRE
+// ============================================================
+function loadBots() { try { return JSON.parse(localStorage.getItem('cango_bots_v2')) || getDefaultBots(); } catch(e){ return getDefaultBots(); } }
+function saveBots(bots) { localStorage.setItem('cango_bots_v2', JSON.stringify(bots)); }
+
+function getDefaultBots() {
+  return [
+    { id:'b1', name:'Outreach-Sniper (Google Maps)', platform:'Python Lokal', status:'pause', impact:'€2.000/Monat Potenzial', checked:getDateStr() },
+    { id:'b2', name:'n8n Webhook Automation', platform:'n8n Self-Host', status:'aktiv', impact:'~2 Std/Tag gespart', checked:getDateStr() },
+    { id:'b3', name:'Amazon Nischen-Scanner', platform:'Python Lokal', status:'pause', impact:'Leadgen', checked:getDateStr() },
+  ];
+}
+
+function renderBots() {
+  const bots = loadBots();
+  const tbody = document.getElementById('botTableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  for (const bot of bots) {
+    tbody.appendChild(buildBotRow(bot));
+  }
+}
+
+function buildBotRow(bot) {
+  const tr = document.createElement('tr');
+  tr.dataset.id = bot.id;
+  const sc = 'bot-' + (bot.status||'pause');
+  const statusOpts = ['aktiv','wartung','fehler','pause'].map(s =>
+    `<option value="${s}" ${bot.status===s?'selected':''}>${s==='aktiv'?'🟢 Aktiv':s==='wartung'?'🟡 Wartung':s==='fehler'?'🔴 Fehler':'⚪ Pause'}</option>`
+  ).join('');
+  const platOpts = ['Hostinger VPS','Mac Terminal','n8n Cloud','n8n Self-Host','Python Lokal','Supabase Edge'].map(p =>
+    `<option ${bot.platform===p?'selected':''}>${p}</option>`
+  ).join('');
+  tr.innerHTML = `
+    <td><input type="text" value="${bot.name||''}" placeholder="Bot-Name" onchange="updateBotField('${bot.id}','name',this.value)" style="min-width:140px"/></td>
+    <td><select class="bot-platform-sel" onchange="updateBotField('${bot.id}','platform',this.value)">${platOpts}</select></td>
+    <td><select class="bot-status-sel ${sc}" onchange="updateBotStatus('${bot.id}',this)">${statusOpts}</select></td>
+    <td><input type="text" value="${bot.impact||''}" placeholder="Impact" onchange="updateBotField('${bot.id}','impact',this.value)" style="min-width:90px"/></td>
+    <td><input type="text" value="${bot.checked||''}" placeholder="${getDateStr()}" onchange="updateBotField('${bot.id}','checked',this.value)" style="min-width:80px"/></td>
+    <td><span class="bot-del" onclick="deleteBot('${bot.id}')">✕</span></td>`;
+  return tr;
+}
+
+function addBot() {
+  const name = document.getElementById('botNameInput').value.trim();
+  if (!name) return;
+  const bots = loadBots();
+  bots.push({
+    id: 'b' + Date.now(),
+    name,
+    platform: document.getElementById('botPlatformInput').value,
+    status: 'pause',
+    impact: document.getElementById('botImpactInput').value,
+    checked: getDateStr()
+  });
+  saveBots(bots);
+  document.getElementById('botNameInput').value = '';
+  renderBots();
+}
+
+function updateBotField(id, field, val) {
+  const bots = loadBots();
+  const b = bots.find(x=>x.id===id);
+  if (b) { b[field]=val; saveBots(bots); }
+}
+
+function updateBotStatus(id, sel) {
+  updateBotField(id, 'status', sel.value);
+  sel.className = 'bot-status-sel bot-' + sel.value;
+}
+
+function deleteBot(id) {
+  const bots = loadBots().filter(b=>b.id!==id);
+  saveBots(bots);
+  const tr = document.querySelector('#botTableBody [data-id="'+id+'"]');
+  if (tr) tr.remove();
+}
+
+// ============================================================
+// BOT SPRINT NOTES
+// ============================================================
+function saveBotSprint() {
+  const d = {
+    sketch: document.getElementById('botSketch').value,
+    sprint: document.getElementById('botSprint').value,
+    log: document.getElementById('botLog').value,
+    backlog: document.getElementById('botBacklog').value,
+  };
+  localStorage.setItem('cango_bot_sprint_' + getDateStr(), JSON.stringify(d));
+}
+
+function loadBotSprint() {
+  try {
+    const d = JSON.parse(localStorage.getItem('cango_bot_sprint_' + getDateStr())) || {};
+    if (d.sketch) document.getElementById('botSketch').value = d.sketch;
+    if (d.sprint) document.getElementById('botSprint').value = d.sprint;
+    if (d.log) document.getElementById('botLog').value = d.log;
+    if (d.backlog) document.getElementById('botBacklog').value = d.backlog;
+  } catch(e){}
+}
+
+// ============================================================
+// 9.9M VISION BAR
+// ============================================================
+function saveVision() {
+  const val = parseFloat(document.getElementById('visionInput').value)||0;
+  localStorage.setItem('cango_vision_year', val);
+  updateVisionBar();
+}
+
+function updateVisionBar() {
+  const val = parseFloat(localStorage.getItem('cango_vision_year'))||0;
+  if (document.getElementById('visionInput').value==='') document.getElementById('visionInput').value = val||'';
+  const goal = 9900000;
+  const pct = Math.min(100, (val/goal)*100).toFixed(2);
+  document.getElementById('visionDisplay').textContent = val.toLocaleString('de-DE');
+  document.getElementById('visionBar').style.width = pct + '%';
 }
 
 // ============================================================
