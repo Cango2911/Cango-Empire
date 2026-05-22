@@ -1,6 +1,6 @@
 -- CanGo App Empire · Jarvis Daily Master · Supabase Schema
--- Einmalig im SQL Editor ausführen (supabase.com → Projekt → SQL Editor)
--- Stand: Mai 2026
+-- Projekt: kekmslytyttcipanwdop (eu-central-1) · Stand: Mai 2026
+-- 8 Tabellen · bereits migriert, hier als Referenz / Neuaufsetzen
 
 -- ────────────────────────────────────────────────────────────
 -- 1. JARVIS MISSIONS (KI-Analyse-Ergebnisse, täglich gecacht)
@@ -8,18 +8,16 @@
 CREATE TABLE IF NOT EXISTS jarvis_missions (
   id           uuid DEFAULT gen_random_uuid() PRIMARY KEY,
   date         date UNIQUE,
-  missions     jsonb,       -- Array: [{rank, task, pillar, why, tools}]
+  missions     jsonb,       -- [{rank, task, pillar, why, tools}]
   daily_focus  text,
   alert        text,
-  context      jsonb,       -- Vollständiger Kontext (energyLevel, revenueGap, etc.)
+  context      jsonb,       -- energyLevel, revenueGap, maxTasksPensum, …
   created_at   timestamptz DEFAULT now()
 );
-
--- Index für schnelle Datumsabfragen
 CREATE INDEX IF NOT EXISTS idx_jarvis_missions_date ON jarvis_missions(date);
 
 -- ────────────────────────────────────────────────────────────
--- 2. TASK CONFIRMATIONS (Telegram Start/Skip/Done Tracking)
+-- 2. TASK CONFIRMATIONS (Telegram Start/Skip/Done)
 -- ────────────────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS task_confirmations (
   id           uuid DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -32,7 +30,6 @@ CREATE TABLE IF NOT EXISTS task_confirmations (
   completed_at timestamptz,
   UNIQUE(date, task_rank)
 );
-
 CREATE INDEX IF NOT EXISTS idx_task_confirmations_date ON task_confirmations(date);
 
 -- ────────────────────────────────────────────────────────────
@@ -49,7 +46,6 @@ CREATE TABLE IF NOT EXISTS outreach_leads (
   updated_at timestamptz DEFAULT now()
 );
 
--- Trigger: updated_at automatisch setzen
 CREATE OR REPLACE FUNCTION update_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN NEW.updated_at = now(); RETURN NEW; END;
@@ -79,22 +75,66 @@ CREATE TABLE IF NOT EXISTS knowledge_base (
   id         uuid DEFAULT gen_random_uuid() PRIMARY KEY,
   category   text,   -- outreach | coaching | affiliate | ecommerce | personal
   content    text,
-  embedding  vector(1536),  -- für spätere Vektor-Suche (pgvector)
   created_at timestamptz DEFAULT now()
 );
 
 -- ────────────────────────────────────────────────────────────
--- ROW LEVEL SECURITY (RLS) — alle Tabellen sichern
+-- 6. DAILY CONTEXT (Tageskontext: Umsatz, Phase, Energie)
 -- ────────────────────────────────────────────────────────────
-ALTER TABLE jarvis_missions      ENABLE ROW LEVEL SECURITY;
-ALTER TABLE task_confirmations   ENABLE ROW LEVEL SECURITY;
-ALTER TABLE outreach_leads       ENABLE ROW LEVEL SECURITY;
-ALTER TABLE avatar_productions   ENABLE ROW LEVEL SECURITY;
-ALTER TABLE knowledge_base       ENABLE ROW LEVEL SECURITY;
+CREATE TABLE IF NOT EXISTS daily_context (
+  day            date PRIMARY KEY,
+  phase          text DEFAULT 'phase1',
+  revenue_month  numeric(12,2) DEFAULT 0,
+  revenue_today  numeric(12,2) DEFAULT 0,
+  vision_revenue numeric(14,2) DEFAULT 0,
+  energy_level   smallint DEFAULT 7 CHECK (energy_level BETWEEN 1 AND 10),
+  one_thing      text,
+  context_json   jsonb,
+  updated_at     timestamptz DEFAULT now()
+);
 
--- Service-Role darf alles (für n8n Backend)
-CREATE POLICY "service_role_all" ON jarvis_missions      FOR ALL USING (true);
-CREATE POLICY "service_role_all" ON task_confirmations   FOR ALL USING (true);
-CREATE POLICY "service_role_all" ON outreach_leads       FOR ALL USING (true);
-CREATE POLICY "service_role_all" ON avatar_productions   FOR ALL USING (true);
-CREATE POLICY "service_role_all" ON knowledge_base       FOR ALL USING (true);
+-- ────────────────────────────────────────────────────────────
+-- 7. EVENING REPORT (Abend-Review, Whisper-Transkript)
+-- ────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS evening_report (
+  day            date PRIMARY KEY,
+  energy_level   smallint CHECK (energy_level BETWEEN 1 AND 10),
+  work_hours     numeric(4,1),
+  notes          text,
+  mood_ok        boolean,
+  jarvis_pct     smallint,      -- % der Jarvis-Missionen erledigt
+  raw_transcript text,          -- Whisper-Transkript der Sprachnachricht
+  created_at     timestamptz DEFAULT now()
+);
+
+-- ────────────────────────────────────────────────────────────
+-- 8. MORNING BRIEFING (Telegram-Briefing-Log)
+-- ────────────────────────────────────────────────────────────
+CREATE TABLE IF NOT EXISTS morning_briefing (
+  id             bigserial PRIMARY KEY,
+  day            date NOT NULL,
+  briefing_text  text,
+  missions_json  jsonb,
+  sent_at        timestamptz DEFAULT now()
+);
+
+-- ────────────────────────────────────────────────────────────
+-- ROW LEVEL SECURITY
+-- ────────────────────────────────────────────────────────────
+ALTER TABLE jarvis_missions    ENABLE ROW LEVEL SECURITY;
+ALTER TABLE task_confirmations ENABLE ROW LEVEL SECURITY;
+ALTER TABLE outreach_leads     ENABLE ROW LEVEL SECURITY;
+ALTER TABLE avatar_productions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE knowledge_base     ENABLE ROW LEVEL SECURITY;
+ALTER TABLE daily_context      ENABLE ROW LEVEL SECURITY;
+ALTER TABLE evening_report     ENABLE ROW LEVEL SECURITY;
+ALTER TABLE morning_briefing   ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "service_role_all" ON jarvis_missions    FOR ALL USING (true);
+CREATE POLICY "service_role_all" ON task_confirmations FOR ALL USING (true);
+CREATE POLICY "service_role_all" ON outreach_leads     FOR ALL USING (true);
+CREATE POLICY "service_role_all" ON avatar_productions FOR ALL USING (true);
+CREATE POLICY "service_role_all" ON knowledge_base     FOR ALL USING (true);
+CREATE POLICY "service_role_all" ON daily_context      FOR ALL USING (true);
+CREATE POLICY "service_role_all" ON evening_report     FOR ALL USING (true);
+CREATE POLICY "service_role_all" ON morning_briefing   FOR ALL USING (true);
