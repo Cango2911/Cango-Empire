@@ -176,11 +176,12 @@ CREATE TABLE outreach_leads (
 
 ### Priorität 1 — Aktivierung (ohne diese läuft nichts live)
 
-- [x] **Supabase anlegen**: `kekmslytyttcipanwdop` · eu-central-1 · URL + Key in `.env` ✅
-- [x] **SQL-Tabellen erstellt**: jarvis_missions, task_confirmations, outreach_leads, avatar_productions, knowledge_base ✅
-- [ ] **TELEGRAM_CHAT_ID**: `/start` an `@CanGo_ToDo_Master_bot` → ID aus Telegram API holen
+- [x] **Supabase anlegen**: `kekmslytyttcipanwdop` · eu-central-1 · 8 Tabellen ✅
+- [x] **TELEGRAM_CHAT_ID**: `7396952825` (Canberk) — `/start` bestätigt ✅
+- [x] **Supabase-Keys in `.env`**: URL + Anon Key gesetzt ✅
+- [ ] **ANTHROPIC_API_KEY**: `console.anthropic.com → API Keys → Create Key` → in n8n Env-Vars
 - [ ] **n8n Jarvis-Webhook-URL** in `website/intern/daily-todo-master.html` Jarvis-Block eintragen
-- [ ] **Supabase-Keys in n8n Env-Vars** eintragen: `SUPABASE_URL` + `SUPABASE_ANON_KEY`
+- [ ] **n8n Env-Vars vollständig**: alle Werte aus `docs/n8n/n8n-env-vars.env` eintragen
 
 ### Priorität 2 — Dashboard-Verbesserungen
 
@@ -211,7 +212,8 @@ CREATE TABLE outreach_leads (
 | `GEMINI_API_KEY` | ✅ eingetragen | Brainstorm + Content-Ideen |
 | `TELEGRAM_BOT_TOKEN` | ✅ `@CanGo_ToDo_Master_bot` (NEU) | Jarvis Task-Queue, Briefings |
 | `TELEGRAM_BOT_TOKEN_OLD` | ✅ `@Cango_master_bot` (ALT) | Eskalation, Avatar-Pipeline |
-| `TELEGRAM_CHAT_ID` | ⬜ **FEHLT — Priorität 1** | Beide Bots senden hierhin |
+| `TELEGRAM_CHAT_ID` | ✅ `7396952825` (Canberk) | Beide Bots senden hierhin |
+| `ANTHROPIC_API_KEY` | ⬜ **FEHLT** — `console.anthropic.com → API Keys` | Jarvis Claude-Analyse |
 | `SUPABASE_URL` | ✅ `https://kekmslytyttcipanwdop.supabase.co` | Missions, Task-Confirm, Outreach |
 | `SUPABASE_ANON_KEY` | ✅ eingetragen (in .env) | Supabase Auth |
 | `GOOGLE_MAPS_API_KEY` | ⬜ optional | outreach_sniper.py |
