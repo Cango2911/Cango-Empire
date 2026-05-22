@@ -1,7 +1,8 @@
 # Cursor Handoff — CanGo Daily Todo Master
 
 **Stand:** Mai 2026 | Branch: `claude/cango-todo-master-expand-huosk`
-**Zuletzt aktualisiert:** Neuer Telegram-Bot + Nanobana-Klärung + .env.example vollständig
+**Speicherort:** `website/intern/` — internes Feature, nicht öffentlich zugänglich
+**Zuletzt aktualisiert:** Umstrukturierung → intern/ Ordner + Neuer Telegram-Bot + Nanobana-Klärung
 
 ---
 
@@ -17,14 +18,16 @@ Kein Framework — reines HTML/CSS/JS + n8n Automations-Backend.
 ## Kern-Dateien
 
 ```
-website/daily-todo-master.html   ← Hauptseite (3465 Zeilen, self-contained)
-scripts/n8n_jarvis_analyzer.json ← Das Gehirn: Claude analysiert → JSON Missions
-scripts/n8n_brainstorm_bots.json ← 4-Flow Suite: Morgen/Abend/Woche/Gemini
-scripts/n8n_task_confirm.json    ← Telegram Queue: Start/Skip/Done + Micro-Step
-scripts/n8n_voice_report.json    ← Sprachnachricht → Whisper → Energie-Level
-scripts/n8n_escalation_workflow.json ← Block-Timer Eskalation
-scripts/n8n_avatar_pipeline.json ← HeyGen Video-Produktion
-scripts/.env                     ← API Keys (NIE committen, git-ignored)
+website/intern/daily-todo-master.html  ← Hauptseite (intern, noindex, self-contained)
+website/intern/index.html              ← Landing-Page für interne Tools
+website/intern/.htaccess               ← X-Robots-Tag: noindex,nofollow
+scripts/n8n_jarvis_analyzer.json       ← Das Gehirn: Claude analysiert → JSON Missions
+scripts/n8n_brainstorm_bots.json       ← 4-Flow Suite: Morgen/Abend/Woche/Gemini
+scripts/n8n_task_confirm.json          ← Telegram Queue: Start/Skip/Done + Micro-Step
+scripts/n8n_voice_report.json          ← Sprachnachricht → Whisper → Energie-Level
+scripts/n8n_escalation_workflow.json   ← Block-Timer Eskalation
+scripts/n8n_avatar_pipeline.json       ← HeyGen Video-Produktion
+scripts/.env                           ← API Keys (NIE committen, git-ignored)
 ```
 
 ---
@@ -253,7 +256,7 @@ CREATE TABLE outreach_leads (
 git checkout claude/cango-todo-master-expand-huosk
 
 # Commit
-git add website/daily-todo-master.html scripts/
+git add website/intern/ scripts/
 git commit -m "feat: ..."
 git push -u origin claude/cango-todo-master-expand-huosk
 ```

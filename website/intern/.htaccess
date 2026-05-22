@@ -1,0 +1,7 @@
+# Interner Bereich — CanGo App Empire
+# Nicht für Suchmaschinen / öffentlichen Zugriff bestimmt
+
+Header always set X-Robots-Tag "noindex, nofollow"
+
+# Optional: IP-Whitelist (aktivieren wenn nötig)
+# Require ip 88.99.0.0/16
