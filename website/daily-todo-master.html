@@ -508,6 +508,26 @@
     .ch-name { font-size: 11px; font-weight: 700; color: #fff; }
     .ch-status { font-size: 10px; color: var(--muted); margin-top: 2px; }
 
+    /* TAGES-ZEITPLAN */
+    .tagesplan { padding: 4px 20px 16px; }
+    .tagesplan-title { font-size:10px; font-family:var(--font-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+    .tp-blocks { display:flex; flex-direction:column; gap:4px; }
+    .tp-block { display:grid; grid-template-columns:64px 1fr; gap:8px; align-items:center; }
+    .tp-time { font-family:var(--font-mono); font-size:10px; color:var(--muted); text-align:right; flex-shrink:0; }
+    .tp-bar { border-radius:6px; padding:5px 10px; display:flex; justify-content:space-between; align-items:center; gap:8px; min-height:30px; }
+    .tp-bar.pillar1 { background:rgba(249,115,22,.12); border:1px solid rgba(249,115,22,.25); }
+    .tp-bar.pillar2 { background:rgba(99,102,241,.12); border:1px solid rgba(99,102,241,.25); }
+    .tp-bar.pillar3 { background:rgba(16,185,129,.12); border:1px solid rgba(16,185,129,.25); }
+    .tp-bar.pillar4 { background:rgba(59,130,246,.12); border:1px solid rgba(59,130,246,.25); }
+    .tp-bar.pause   { background:rgba(100,116,139,.08); border:1px solid rgba(100,116,139,.15); }
+    .tp-bar.review  { background:rgba(139,92,246,.12); border:1px solid rgba(139,92,246,.25); }
+    .tp-label { font-size:11px; font-weight:700; color:#fff; }
+    .tp-label.pause-lbl { font-size:11px; color:var(--muted); font-weight:400; }
+    .tp-tools { display:flex; gap:4px; flex-wrap:wrap; }
+    .tp-tool { font-size:9px; font-family:var(--font-mono); background:rgba(255,255,255,.06); border-radius:3px; padding:2px 5px; color:var(--muted); white-space:nowrap; }
+    .tool-tag { font-size:9px; font-family:var(--font-mono); background:rgba(249,115,22,.15); border-radius:3px; padding:1px 5px; color:var(--orange); margin-left:6px; white-space:nowrap; }
+    .tool-tag.ext { background:rgba(59,130,246,.15); color:#60a5fa; }
+
     /* APPSUMO TOOLBOX */
     .ltd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 10px; padding: 12px 20px 16px; }
     .ltd-card { background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px; transition: border-color .2s; }
@@ -706,6 +726,83 @@
         <a href="https://calendar.google.com/" target="_blank" class="cal-btn">📅 Gmail Kalender</a>
         <a href="https://mail.google.com/" target="_blank" class="cal-btn">✉️ Gmail öffnen</a>
         <a href="https://outlook.live.com/mail/" target="_blank" class="cal-btn">✉️ Outlook Mail</a>
+      </div>
+      <hr class="divider"/>
+      <!-- TAGES-ZEITPLAN -->
+      <div class="tagesplan">
+        <div class="tagesplan-title">🕐 Tages-Zeitplan · 4 Säulen · Pausen fest eingeplant</div>
+        <div class="tp-blocks">
+          <div class="tp-block">
+            <span class="tp-time">08:00</span>
+            <div class="tp-bar pillar1">
+              <span class="tp-label">☀️ Morgenroutine + Outreach-Setup</span>
+              <div class="tp-tools"><span class="tp-tool">Voilà</span><span class="tp-tool">BrowserAct</span><span class="tp-tool">Gemini</span></div>
+            </div>
+          </div>
+          <div class="tp-block">
+            <span class="tp-time">09:00</span>
+            <div class="tp-bar pillar1">
+              <span class="tp-label">🧠 Coaching · Website-Bau · Akquise</span>
+              <div class="tp-tools"><span class="tp-tool">Greta</span><span class="tp-tool">BrowserAct</span><span class="tp-tool">Feedspace</span><span class="tp-tool">Gemini</span></div>
+            </div>
+          </div>
+          <div class="tp-block">
+            <span class="tp-time">10:30</span>
+            <div class="tp-bar pause">
+              <span class="tp-label pause-lbl">☕ Pause · 15 Min · Kein Handy</span>
+              <span class="tp-tool" style="color:var(--green)">PFLICHT</span>
+            </div>
+          </div>
+          <div class="tp-block">
+            <span class="tp-time">10:45</span>
+            <div class="tp-bar pillar2">
+              <span class="tp-label">📣 Affiliate · Content · LinkedIn</span>
+              <div class="tp-tools"><span class="tp-tool">Reap</span><span class="tp-tool">NeuronWriter</span><span class="tp-tool">Sociamonials</span><span class="tp-tool">DepositPhotos</span></div>
+            </div>
+          </div>
+          <div class="tp-block">
+            <span class="tp-time">12:15</span>
+            <div class="tp-bar pause">
+              <span class="tp-label pause-lbl">🍽️ Mittagspause · 45 Min · Raus gehen</span>
+              <span class="tp-tool" style="color:var(--green)">PFLICHT</span>
+            </div>
+          </div>
+          <div class="tp-block">
+            <span class="tp-time">13:00</span>
+            <div class="tp-bar pillar3">
+              <span class="tp-label">🛒 E-Commerce · Content Creator</span>
+              <div class="tp-tools"><span class="tp-tool">Mootion</span><span class="tp-tool">Opus Clip</span><span class="tp-tool">Kie.ai</span><span class="tp-tool">Skillplate</span><span class="tp-tool">Yapper.so</span></div>
+            </div>
+          </div>
+          <div class="tp-block">
+            <span class="tp-time">14:30</span>
+            <div class="tp-bar pause">
+              <span class="tp-label pause-lbl">🚶 Bewegungs-Pause · 15 Min · Spazieren</span>
+              <span class="tp-tool" style="color:var(--green)">PFLICHT</span>
+            </div>
+          </div>
+          <div class="tp-block">
+            <span class="tp-time">14:45</span>
+            <div class="tp-bar pillar4">
+              <span class="tp-label">🤖 Bot-Empire · n8n · Engineering</span>
+              <div class="tp-tools"><span class="tp-tool">n8n</span><span class="tp-tool">Hostinger VPS</span><span class="tp-tool">RepoCloud</span><span class="tp-tool">NoCodeBackend</span></div>
+            </div>
+          </div>
+          <div class="tp-block">
+            <span class="tp-time">16:15</span>
+            <div class="tp-bar pillar2">
+              <span class="tp-label">💼 LinkedIn · Branding · Abschluss</span>
+              <div class="tp-tools"><span class="tp-tool">Sociamonials</span><span class="tp-tool">Gemini</span></div>
+            </div>
+          </div>
+          <div class="tp-block">
+            <span class="tp-time">16:45</span>
+            <div class="tp-bar review">
+              <span class="tp-label">🌙 Abend-Review · Einnahmen · Plan morgen</span>
+              <div class="tp-tools"><span class="tp-tool">Bot-Report lesen</span><span class="tp-tool">Telegram</span></div>
+            </div>
+          </div>
+        </div>
       </div>
       <hr class="divider"/>
       <div id="tasks-morning"></div>
@@ -1436,91 +1533,100 @@
 // ============================================================
 const TASK_GROUPS = {
   'morning': [
-    { id:'m-outlook', label:'Outlook & Gmail gecheckt', hint:'E-Mails lesen, Wichtiges markieren', pflicht:true },
-    { id:'m-linkedin-check', label:'LinkedIn-Feed 5 Min. (kommentieren & liken)', hint:'Netzwerk pflegen, Sichtbarkeit erhöhen', pflicht:false },
-    { id:'m-top3', label:'Top 3 Aufgaben für heute festgelegt', hint:'Felder oben ausfüllen', pflicht:true },
-    { id:'m-finance', label:'Finanz-Ziel-Check: aktueller Monatstand', hint:'Monatsziel €2.870 – wo stehst du?', pflicht:false },
-    { id:'m-energie', label:'Energielevel heute einschätzen (1–10)', hint:'Passt die Aufgabenlast dazu?', pflicht:false },
+    { id:'m-briefing',       label:'Brainstorm-Bot-Report gelesen (Telegram 07:30)', hint:'Bot sendet täglich Top-3-Vorschläge + Tool des Tages · [n8n Morgen-Bot]', pflicht:true },
+    { id:'m-outlook',        label:'Outlook & Gmail gecheckt + zusammengefasst', hint:'Wichtiges markieren · [Voilà] Browser-KI für schnelle Mail-Zusammenfassung nutzen', pflicht:true },
+    { id:'m-top3',           label:'Top 3 Aufgaben für heute festgelegt', hint:'Felder oben ausfüllen · Bot-Vorschläge als Basis nehmen', pflicht:true },
+    { id:'m-finance',        label:'Finanz-Ziel-Check: aktueller Monatstand', hint:'Monatsziel €2.870 – wo stehst du? · Abend-Bot trackt automatisch', pflicht:false },
+    { id:'m-energie',        label:'Energielevel heute (1–10) → Tagesplan anpassen', hint:'Energie <5 → [⚡ Energie-Low Modus] aktivieren · nur Top-3 bearbeiten', pflicht:false },
+    { id:'m-linkedin-check', label:'LinkedIn-Feed 5 Min. (kommentieren & liken)', hint:'[Voilà] für schnelle Kommentar-Ideen direkt im Browser · Netzwerk pflegen', pflicht:false },
   ],
   'coaching-akquise': [
-    { id:'ca-outreach', label:'1 Mittelständler via Google Maps / Branchenbuch kontaktiert', hint:'Identifikation: kein Impressum, veraltete Website', pflicht:true, tag:'KPI: 1/Woche = €2.000/Monat' },
-    { id:'ca-follow', label:'Follow-up bei offenen Outreach-Kontakten', hint:'Nach 2–3 Tagen nachfassen', pflicht:false },
-    { id:'ca-email-done', label:'Outreach-Tracker aktualisiert', hint:'Neue Zeile im Tracker oben eintragen', pflicht:false },
+    { id:'ca-outreach', label:'1 Mittelständler kontaktiert (Outreach-Sniper oder manuell)', hint:'[BrowserAct] für Automation · [outreach_sniper.py] für Google Maps Leads · [Gemini] für E-Mail-Text', pflicht:true, tag:'KPI: 1/Tag = €2.000/Monat' },
+    { id:'ca-website',  label:'Website-Angebot erstellt (Greta oder Custom)', hint:'[Greta Stufe 3] für schnellen Website-Build für Kunden · Festpreis €500 präsentieren', pflicht:false },
+    { id:'ca-follow',   label:'Follow-up bei offenen Outreach-Kontakten', hint:'Nach 2–3 Tagen nachfassen · [Gemini] für Follow-up-Text · [Feedspace] für Referenzen zeigen', pflicht:false },
+    { id:'ca-email-done', label:'Outreach-Tracker aktualisiert', hint:'Tracker oben eintragen · n8n-Workflow speichert automatisch in Supabase', pflicht:false },
   ],
   'coaching-main': [
-    { id:'cm-angebot', label:'Angebot erstellt oder Rechnung gestellt', hint:'€150/Std · €500 Website · €500/Mon Retainer', pflicht:false },
-    { id:'cm-retainer', label:'Retainer-Kunde: Session vorbereitet/durchgeführt', hint:'4 Sessions/Monat + Chat-Begleitung', pflicht:false },
-    { id:'cm-website', label:'Website-Projekt: Fortschritt dokumentiert', hint:'Projektdurchführung Schritt für Schritt', pflicht:false },
-    { id:'cm-steuer', label:'Einnahme gebucht / Belege gesichert', hint:'Für Steuerberater vorbereiten', pflicht:false },
+    { id:'cm-angebot',  label:'Angebot erstellt oder Rechnung gestellt', hint:'€150/Std · €500 Website · €500/Mon Retainer · [Gemini] für Angebots-Formulierung', pflicht:false },
+    { id:'cm-retainer', label:'Retainer-Kunde: Session vorbereitet/durchgeführt', hint:'4 Sessions/Monat + Chat-Begleitung · [Voilà] für Session-Notizen im Browser', pflicht:false },
+    { id:'cm-website',  label:'Website-Projekt: Fortschritt dokumentiert', hint:'[Greta] Website bauen · [DepositPhotos] Bilder beschaffen · Schritt dokumentieren', pflicht:false },
+    { id:'cm-feedspace', label:'Feedspace: Kunden-Testimonial nach Session eingeholt', hint:'[Feedspace] Link senden → Video-Review oder Text-Bewertung → Social Proof', pflicht:false },
+    { id:'cm-steuer',   label:'Einnahme gebucht / Belege gesichert', hint:'Für Steuerberater · Abend-Bot trackt Tageseinnahmen automatisch', pflicht:false },
   ],
   'aff-saas': [
-    { id:'as-share', label:'Neuen SaaS-Affiliate-Link geteilt (LinkedIn / E-Mail)', hint:'n8n Cloud · Notion · ActiveCampaign · Pipedrive · Make.com', pflicht:false },
-    { id:'as-check', label:'Affiliate-Provisionen gecheckt', hint:'Dashboards der Programme öffnen', pflicht:false },
-    { id:'as-content', label:'SaaS-Tool-Content-Idee notiert', hint:'Blog, Reel, LinkedIn-Post zu einem Tool', pflicht:false },
+    { id:'as-content',  label:'SaaS-Tool-Content erstellt oder geplant', hint:'[Reap] → 1 Longform → 5 Posts repurposen · [NeuronWriter] für SEO-Artikel', pflicht:false },
+    { id:'as-share',    label:'Affiliate-Link auf LinkedIn oder E-Mail geteilt', hint:'n8n Cloud · Make.com · ActiveCampaign · [Sociamonials] für Scheduling', pflicht:false },
+    { id:'as-check',    label:'Affiliate-Provisionen gecheckt', hint:'Dashboards öffnen · [Gemini] für Optimierungsideen wenn Klicks ohne Conversion', pflicht:false },
   ],
   'aff-amazon': [
-    { id:'aa-research', label:'1 Amazon-Produkt recherchiert & geprüft', hint:'Nische: DACH-relevant, gute Bewertungen, hohe Provision', pflicht:false },
-    { id:'aa-content', label:'Content-Idee für Amazon-Produkt vorbereitet', hint:'Blog-Post / Instagram-Reel / YouTube-Short Idee', pflicht:false },
-    { id:'aa-link', label:'Affiliate-Link erstellt & in Content eingebaut', hint:'Amazon Partnerprogramm → Link generieren', pflicht:false },
-    { id:'aa-stats', label:'Amazon-Affiliate-Stats gecheckt', hint:'Klicks, Conversions, Provisionen prüfen', pflicht:false },
+    { id:'aa-research', label:'1 Amazon-Produkt recherchiert', hint:'[Gemini] für Trend-Analyse · DACH-Nische · BSR checken · [DepositPhotos] für Content-Bilder', pflicht:false },
+    { id:'aa-content',  label:'Content-Idee für Amazon-Produkt erstellt', hint:'[Reap] → Blog-Post repurposen · [Kie.ai] Thumbnail · [Mootion] für kurzes Produkt-Video', pflicht:false },
+    { id:'aa-link',     label:'Affiliate-Link eingebaut & getrackt', hint:'Amazon Partnerprogramm → [NeuronWriter] SEO-Artikel mit Link', pflicht:false },
+    { id:'aa-stats',    label:'Amazon Stats gecheckt', hint:'Klicks, Conversions, Provisionen · Weekly Brainstorm-Bot analysiert Performance', pflicht:false },
   ],
   'aff-booking': [
-    { id:'ab-deal', label:'Reise-Deal oder Hotel-Angebot recherchiert', hint:'Booking.com · Airbnb · CHECK24 Reisen', pflicht:false },
-    { id:'ab-content', label:'Content-Idee für Reise-Affiliate notiert', hint:'Zielgruppe: KMU-Inhaber, Business-Reisen, Urlaub DACH', pflicht:false },
-    { id:'ab-link', label:'Booking-Affiliate-Link erstellt & eingebaut', hint:'Booking.com Partnerprogramm oder CHECK24', pflicht:false },
+    { id:'ab-deal',    label:'Reise-Deal recherchiert', hint:'[Gemini] für Trend-Destinations · Booking.com / CHECK24 Partnerprogramm', pflicht:false },
+    { id:'ab-content', label:'Reise-Affiliate Content erstellt', hint:'[Reap] bestehenden Content repurposen · [DepositPhotos] Reise-Bilder · [Yapper.so] Video', pflicht:false },
+    { id:'ab-link',    label:'Booking-Link eingebaut', hint:'[Sociamonials] für Scheduling · [NeuronWriter] für SEO-Travel-Artikel', pflicht:false },
   ],
   'ecom': [
-    { id:'ec-nische', label:'Produkt-Nische recherchiert (1 Idee)', hint:'Trend-Produkte, Amazon BSR, Google Trends', pflicht:false },
-    { id:'ec-listing', label:'Website / Listing optimiert oder aktualisiert', hint:'SEO, Bilder, Beschreibung verbessern', pflicht:false },
-    { id:'ec-orders', label:'Bestellungen / Anfragen bearbeitet', hint:'Kundenservice, Versand, Rückmeldungen', pflicht:false },
+    { id:'ec-nische',   label:'Produkt-Nische recherchiert (1 Idee)', hint:'[Gemini] für Marktanalyse · Google Trends · Amazon BSR · Weekly Bot liefert Ideen', pflicht:false },
+    { id:'ec-listing',  label:'Website / Listing optimiert', hint:'[Greta] für Landing Page · [DepositPhotos] Produktbilder · [Gemini] Beschreibungstext', pflicht:false },
+    { id:'ec-content',  label:'Produkt-Content erstellt', hint:'[Kie.ai] Produktvisualisierung · [Skillplate] Template · [Mootion] Produkt-Animation', pflicht:false },
+    { id:'ec-orders',   label:'Bestellungen / Anfragen bearbeitet', hint:'Kundenservice, Versand · [NoCodeBackend] für Order-Tracking', pflicht:false },
   ],
   'content': [
-    { id:'ct-video', label:'Video / Reel aufgenommen oder geplant', hint:'15–60 Sekunden Inhalt für Instagram / YouTube Shorts', pflicht:false },
-    { id:'ct-upload', label:'Content hochgeladen oder geplant', hint:'Instagram, YouTube, TikTok oder LinkedIn', pflicht:false },
-    { id:'ct-thumb', label:'Thumbnail / Titel optimiert', hint:'A/B-Ideen testen, Klickrate verbessern', pflicht:false },
-    { id:'ct-idea', label:'Neue Content-Idee in Ideen-Liste eingetragen', hint:'Notiz-App, Notion oder Aufgaben-Backlog', pflicht:false },
+    { id:'ct-video',   label:'Video / Reel aufgenommen oder geplant', hint:'[Mootion] Animation · [Yapper.so] Avatar-Video · [Opus Clip] aus Long-Video schneiden', pflicht:false },
+    { id:'ct-upload',  label:'Content hochgeladen oder via Sociamonials geplant', hint:'[Sociamonials] für Scheduling · [Reap] 1 Video → 5 Plattformen automatisch', pflicht:false },
+    { id:'ct-thumb',   label:'Thumbnail / Titel optimiert', hint:'[Kie.ai] KI-Thumbnail generieren · [Skillplate] Template · [Gemini] Titel-Variationen', pflicht:false },
+    { id:'ct-idea',    label:'Content-Idee aus Weekly Bot übernommen', hint:'Weekly Brainstorm-Bot (So 19:00) liefert 10 Ideen · Telegram lesen & umsetzen', pflicht:false },
   ],
   'linkedin': [
-    { id:'li-post', label:'LinkedIn-Beitrag erstellt & gepostet', hint:'3×/Woche KPI · Themen: Prozesse, KI, Coaching, Nischen', pflicht:false, tag:'KPI: 3×/Woche' },
-    { id:'li-comment', label:'5 Kommentare bei Zielgruppe hinterlassen', hint:'KMU-Inhaber, Agenturen, DACH-Unternehmer', pflicht:false, tag:'KPI: täglich' },
-    { id:'li-connect', label:'3 neue Verbindungsanfragen gesendet', hint:'Persönliche Nachricht, kein Spam', pflicht:false },
-    { id:'li-dm', label:'1 DM an potenziellen Coaching-Kunden gesendet', hint:'Warm ansprechen, kein Cold-Pitch', pflicht:false },
+    { id:'li-post',    label:'LinkedIn-Beitrag erstellt & gepostet', hint:'[Reap] anderen Content repurposen · [Gemini] für Ideenanstoß · [Sociamonials] für Scheduling', pflicht:false, tag:'KPI: 3×/Woche' },
+    { id:'li-comment', label:'5 Kommentare bei Zielgruppe hinterlassen', hint:'[Voilà] Kommentar-Ideen direkt im Browser generieren · KMU-Inhaber, DACH-Unternehmer', pflicht:false, tag:'KPI: täglich' },
+    { id:'li-connect', label:'3 neue Verbindungsanfragen gesendet', hint:'Persönliche Nachricht · kein Spam · [BrowserAct] für systematisches Netzwerken', pflicht:false },
+    { id:'li-dm',      label:'1 DM an potenziellen Coaching-Kunden gesendet', hint:'Warm ansprechen · [Gemini] für DM-Text · kein Cold-Pitch', pflicht:false },
+    { id:'li-visual',  label:'LinkedIn-Visual erstellt (Carousel oder Infografik)', hint:'[Skillplate] Template · [Kie.ai] KI-Bild · [DepositPhotos] Stockfoto', pflicht:false },
   ],
   'avgs': [
-    { id:'av-azav', label:'AZAV-Zertifizierungsstatus geprüft (TÜV/DEKRA)', hint:'Akkreditierungsstelle beauftragen Q2/Q3 2026', pflicht:false },
-    { id:'av-qm', label:'Qualitätsmanagementsystem-Dokument aktualisiert', hint:'Maßnahmenkonzept einreichen', pflicht:false },
-    { id:'av-afa', label:'AfA Celle Kontakt gepflegt', hint:'Sachbearbeiter Herr Bachmann · Termin oder Status-Update', pflicht:false },
-    { id:'av-ihk', label:'IHK Hannover: Frau Baude informiert', hint:'Tragfähigkeitsprüfung Fortschritt', pflicht:false },
+    { id:'av-azav', label:'AZAV-Zertifizierungsstatus geprüft (TÜV/DEKRA)', hint:'Akkreditierungsstelle beauftragen Q2/Q3 2026 · [Gemini] für Dokumenten-Checkliste', pflicht:false },
+    { id:'av-qm',   label:'Qualitätsmanagementsystem-Dokument aktualisiert', hint:'[Gemini] für QM-Formulierungen · Maßnahmenkonzept einreichen', pflicht:false },
+    { id:'av-afa',  label:'AfA Celle Kontakt gepflegt', hint:'Sachbearbeiter Herr Bachmann · Termin oder Status-Update · [TidyCal] wenn repariert', pflicht:false },
+    { id:'av-ihk',  label:'IHK Hannover: Frau Baude informiert', hint:'Tragfähigkeitsprüfung Fortschritt · [Gemini] für professionelle E-Mail-Formulierung', pflicht:false },
   ],
   'admin': [
-    { id:'ad-outlook', label:'Outlook-Kalender synchronisiert & Termine gecheckt', hint:'Erinnerungen eingestellt, wichtige Termine markiert', pflicht:false },
-    { id:'ad-gmail', label:'Gmail-Kalender synchronisiert', hint:'Outlook ↔ Gmail Sync prüfen', pflicht:false },
-    { id:'ad-steuer', label:'Steuerberater-Unterlagen vorbereitet / abgeheftet', hint:'Belege, Rechnungen, Einnahmen-Dokumente', pflicht:false },
-    { id:'ad-gewrebe', label:'Gewerbeanmeldung / Behördenkram erledigt', hint:'AfA Celle, Finanzamt, IHK', pflicht:false },
-    { id:'ad-gzcheck', label:'Gründungszuschuss-Status gecheckt', hint:'§93 SGB III · Sachbearbeiter Bachmann · €1.518/Mon', pflicht:false },
+    { id:'ad-outlook', label:'Outlook ↔ Gmail synchronisiert & Termine gecheckt', hint:'Outlook + Gmail verknüpfen · Erinnerungen eingestellt', pflicht:false },
+    { id:'ad-steuer',  label:'Steuerberater-Unterlagen vorbereitet', hint:'Belege, Rechnungen · Abend-Bot trackt Einnahmen täglich automatisch', pflicht:false },
+    { id:'ad-gewrebe', label:'Gewerbeanmeldung / Behördenkram erledigt', hint:'AfA Celle, Finanzamt, IHK · [Gemini] für Behörden-Schriftstücke', pflicht:false },
+    { id:'ad-gzcheck', label:'Gründungszuschuss-Status gecheckt', hint:'§93 SGB III · Sachbearbeiter Bachmann · €1.518/Mon · Antragsunterlagen vollständig?', pflicht:false },
   ],
   'bio-daily': [
-    { id:'bio-sport', label:'Sport-Einheit absolviert (Haken = Streak +1)', hint:'3×/Woche Ziel · Zählt zur wöchentlichen Pflicht-Erfüllung', pflicht:true },
-    { id:'bio-wasser', label:'Mindestens 2 Liter Wasser getrunken', hint:'Basis für Fokus und Energie', pflicht:false },
-    { id:'bio-schlaf', label:'7–8 Stunden Schlaf letzte Nacht', hint:'Kein nächtliches Prokrastinieren – Schlaf ist Betriebsmittel', pflicht:false },
-    { id:'bio-handy', label:'Handy 1h vor Schlaf wegelegen', hint:'Blaues Licht blockiert Tief-Schlaf → weniger Fokus morgen', pflicht:false },
+    { id:'bio-sport',  label:'Sport-Einheit absolviert (Streak +1)', hint:'3×/Woche Pflicht · Unverhandelbarer Anker · Pause = Leistung · [Bewegungs-Pause 14:30]', pflicht:true },
+    { id:'bio-pause1', label:'10:30 Uhr Pause eingehalten (15 Min. Kein Handy)', hint:'Tagesplan-Block 1 Pflicht-Pause · Handy weg · Fenster auf · kurzer Walk', pflicht:true },
+    { id:'bio-pause2', label:'12:15 Uhr Mittagspause eingehalten (45 Min.)', hint:'Rausgehen · echtes Essen · kein "schnell noch was erledigen" · Energie für Nachmittag', pflicht:true },
+    { id:'bio-pause3', label:'14:30 Uhr Bewegungs-Pause eingehalten (15 Min.)', hint:'Spazieren · Dehnen · Luft schnappen · Verhindert Nachmittags-Crash', pflicht:false },
+    { id:'bio-wasser', label:'Mindestens 2 Liter Wasser getrunken', hint:'Basis für Fokus und Energie · Flasche auf den Tisch stellen', pflicht:false },
+    { id:'bio-schlaf', label:'7–8 Stunden Schlaf letzte Nacht', hint:'Schlaf ist Betriebsmittel · kein nächtliches Prokrastinieren', pflicht:false },
+    { id:'bio-handy',  label:'Handy 1h vor Schlaf wegelegen', hint:'Blaues Licht blockiert Tiefschlaf → weniger Fokus morgen', pflicht:false },
   ],
   'appsumo-daily': [
-    { id:'ap-neuron', label:'NeuronWriter: Heute 1 SEO-Artikel oder Affiliate-Content erstellt', hint:'SEO-optimiert → Blog → Affiliate-Links → Organischer Traffic', pflicht:false },
-    { id:'ap-tidycal', label:'TidyCal: Coaching-Terminlink aktiv & geteilt', hint:'Ersetzt Calendly · In LinkedIn-Bio und E-Mail-Signatur eingebaut?', pflicht:false },
-    { id:'ap-socio', label:'Sociamonials: Social-Media-Post geplant / geteilt', hint:'Instagram, LinkedIn, Facebook – Scheduling nutzen', pflicht:false },
-    { id:'ap-katteb', label:'Katteb: AI-Content für Blog oder Outreach generiert', hint:'Multilingual, Fakten-geprüft · Für DACH-Markt optimieren', pflicht:false },
-    { id:'ap-mootion', label:'Mootion: 1 Reel / Animations-Video erstellt oder geplant', hint:'Für Instagram/YouTube Shorts · Spart Videoschnittprogramme', pflicht:false },
-    { id:'ap-feedspace', label:'Feedspace: Kunden-Testimonial eingeholt oder angezeigt', hint:'Coaching-Kunden um Feedback bitten → Social Proof aufbauen', pflicht:false },
+    { id:'ap-reap',      label:'Reap: 1 Longform-Content in mehrere Formate aufgeteilt', hint:'[Reap LTD] LinkedIn-Post, Thread, Reel aus Blog/Podcast/Video · Stufe 2 nutzen', pflicht:false },
+    { id:'ap-socio',     label:'Sociamonials: Post geplant oder geteilt', hint:'[Sociamonials] Scheduling · Instagram, LinkedIn, Facebook · Analytics prüfen', pflicht:false },
+    { id:'ap-mootion',   label:'Mootion: Animations-Reel erstellt oder geplant', hint:'[Mootion Stufe 3] für Instagram/YouTube Shorts · Produkt-Demos automatisch', pflicht:false },
+    { id:'ap-opusclip',  label:'Opus Clip: Aus einem Long-Video Clips geschnitten', hint:'[Opus Clip] YouTube-Video hochladen → KI schneidet 10 virale Clips automatisch', pflicht:false },
+    { id:'ap-kieai',     label:'Kie.ai: Thumbnail oder Marketing-Visual erstellt', hint:'[Kie.ai] KI-Bildgenerierung für Thumbnails, Covers, Social-Visuals · kostenlos nutzen', pflicht:false },
+    { id:'ap-neuron',    label:'NeuronWriter: SEO-Artikel oder Affiliate-Content', hint:'[NeuronWriter] SEO-Score + KI-Artikel · Für Blog + Affiliate-Backlinks', pflicht:false },
+    { id:'ap-feedspace', label:'Feedspace: Testimonial eingeholt oder Display eingerichtet', hint:'[Feedspace Stufe 1] nach jeder Coaching-Session Link senden → Social Proof aufbauen', pflicht:false },
+    { id:'ap-deposit',   label:'DepositPhotos: Bilder für Content oder Kundenprojekt genutzt', hint:'[DepositPhotos] für alle Kanäle · kein Canva-Stock-Limit mehr · Bilder lokal speichern', pflicht:false },
   ],
   'bot-daily': [
-    { id:'bt-logs', label:'Log-Dateien geprüft (Hostinger VPS / Mac Terminal)', hint:'SSH: tail -f /var/log/... · Fehler identifiziert & dokumentiert', pflicht:true },
-    { id:'bt-n8n', label:'n8n-Workflows Statuscheck (alle grün?)', hint:'n8n Dashboard öffnen → fehlgeschlagene Executions prüfen', pflicht:true },
-    { id:'bt-api', label:'API-Keys & Credentials validiert', hint:'Abgelaufene Tokens, Rate-Limits gecheckt', pflicht:false },
-    { id:'bt-metrics', label:'Bot-Performance-Metriken notiert', hint:'Leads generiert / Provisionen / Zeit gespart → in Tabelle eintragen', pflicht:false },
-    { id:'bt-cron', label:'Cron-Jobs aktiv? (Hostinger / Mac launchd)', hint:'Scheduler-Status prüfen · Skripte laufen pünktlich?', pflicht:false },
-    { id:'bt-hour', label:'Bot-Tuning-Hour (30 Min. Code-Optimierung)', hint:'Refactoring, neue Features, Fehler beheben – kein Multi-Tasking', pflicht:false },
-    { id:'bt-backup', label:'Skript-Backup auf GitHub gepusht', hint:'git push origin main – Code nie nur lokal lassen', pflicht:false },
+    { id:'bt-morning-report', label:'Morgen-Bot-Report gelesen & Top-3 übernommen', hint:'[n8n Brainstorm-Bot] sendet 07:30 per Telegram · Vorschläge bewerten & umsetzen', pflicht:true },
+    { id:'bt-logs',    label:'Log-Dateien geprüft (Hostinger VPS)', hint:'SSH: tail -f /var/log/ · [Hostinger VPS] Statuscheck · Fehler dokumentieren', pflicht:true },
+    { id:'bt-n8n',     label:'n8n-Workflows alle grün?', hint:'Dashboard öffnen → fehlgeschlagene Executions → sofort fixen · [RepoCloud] für Deployment', pflicht:true },
+    { id:'bt-gemini',  label:'Gemini API für heutige Content-Ideen genutzt', hint:'[Gemini] Recherche · Keyword-Listen · Produktbeschreibungen · Behörden-Texte', pflicht:false },
+    { id:'bt-metrics', label:'Bot-Performance-Metriken notiert', hint:'Leads generiert / Provisionen / Zeit gespart → Abend-Report-Bot sammelt automatisch', pflicht:false },
+    { id:'bt-neuer-bot', label:'Neuen Brainstorming-Bot gebaut oder weiterentwickelt', hint:'Bot arbeitet voraus: Ideen, Reports, Marktanalysen · [n8n + Claude + Gemini]', pflicht:false },
+    { id:'bt-backup',  label:'Code-Backup auf GitHub gepusht', hint:'git push · [RepoCloud] für 1-Klick-Deployment · Code nie nur lokal lassen', pflicht:false },
   ],
 };
 
