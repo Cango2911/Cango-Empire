@@ -177,11 +177,13 @@ CREATE TABLE outreach_leads (
 ### Priorität 1 — Aktivierung (ohne diese läuft nichts live)
 
 - [x] **Supabase anlegen**: `kekmslytyttcipanwdop` · eu-central-1 · 8 Tabellen ✅
-- [x] **TELEGRAM_CHAT_ID**: `7396952825` (Canberk) — `/start` bestätigt ✅
+- [x] **TELEGRAM_CHAT_ID**: `7396952825` (Canberk) — Testnachricht erfolgreich ✅
 - [x] **Supabase-Keys in `.env`**: URL + Anon Key gesetzt ✅
-- [ ] **ANTHROPIC_API_KEY**: `console.anthropic.com → API Keys → Create Key` → in n8n Env-Vars
-- [ ] **n8n Jarvis-Webhook-URL** in `website/intern/daily-todo-master.html` Jarvis-Block eintragen
-- [ ] **n8n Env-Vars vollständig**: alle Werte aus `docs/n8n/n8n-env-vars.env` eintragen
+- [x] **ANTHROPIC_API_KEY**: aus altem Cango-Empire Projekt übernommen ✅
+- [x] **OPENAI_API_KEY / PERPLEXITY_API_KEY / N8N_API_KEY**: aus altem Projekt übernommen ✅
+- [ ] **n8n Workflows importieren**: alle 5 JSONs aus `scripts/` → Active (Anleitung: `docs/n8n/n8n-setup-guide.md`)
+- [ ] **n8n Env-Vars eintragen**: Werte aus `docs/n8n/n8n-env-vars.env` in n8n → Settings → Environment Variables
+- [ ] **n8n Jarvis-Webhook-URL** in `website/intern/daily-todo-master.html` Jarvis-Block speichern
 
 ### Priorität 2 — Dashboard-Verbesserungen
 
@@ -213,20 +215,16 @@ CREATE TABLE outreach_leads (
 | `TELEGRAM_BOT_TOKEN` | ✅ `@CanGo_ToDo_Master_bot` (NEU) | Jarvis Task-Queue, Briefings |
 | `TELEGRAM_BOT_TOKEN_OLD` | ✅ `@Cango_master_bot` (ALT) | Eskalation, Avatar-Pipeline |
 | `TELEGRAM_CHAT_ID` | ✅ `7396952825` (Canberk) | Beide Bots senden hierhin |
-| `ANTHROPIC_API_KEY` | ⬜ **FEHLT** — `console.anthropic.com → API Keys` | Jarvis Claude-Analyse |
+| `ANTHROPIC_API_KEY` | ✅ aus altem Cango-Empire Projekt übernommen | Jarvis Claude-Analyse (`claude-opus-4-7`) |
 | `SUPABASE_URL` | ✅ `https://kekmslytyttcipanwdop.supabase.co` | Missions, Task-Confirm, Outreach |
 | `SUPABASE_ANON_KEY` | ✅ eingetragen (in .env) | Supabase Auth |
+| `OPENAI_API_KEY` | ✅ übernommen | Whisper Voice-to-Text |
+| `PERPLEXITY_API_KEY` | ✅ übernommen | Research-Queries |
+| `N8N_API_KEY` | ✅ übernommen | n8n API-Zugriff |
 | `GOOGLE_MAPS_API_KEY` | ⬜ optional | outreach_sniper.py |
-| `OPENAI_API_KEY` | ⬜ optional | Whisper Voice-to-Text |
 | `GSHEETS_SERVICE_ACCOUNT_JSON` | ⬜ lokal auf Mac | Agency Funnel Sync |
 
-### TELEGRAM_CHAT_ID holen (30 Sekunden)
-1. Telegram → `@CanGo_ToDo_Master_bot` → `/start` senden
-2. Im Browser aufrufen:
-   ```
-   https://api.telegram.org/bot<TOKEN>/getUpdates
-   ```
-3. `result[0].message.chat.id` — diese Zahl in `.env` und n8n eintragen
+**Alle kritischen Keys sind gesetzt.** Nächster Schritt: n8n (siehe `docs/n8n/n8n-setup-guide.md`).
 
 ---
 
