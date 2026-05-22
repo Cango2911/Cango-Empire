@@ -545,6 +545,36 @@
     .ltd-status-sel.s-abgelaufen{ border-color: var(--red); color: var(--red); }
     .ltd-card.expired           { border-color: rgba(239,68,68,.35); background: rgba(239,68,68,.04); }
     .ltd-expired-badge          { font-size:10px; font-family:var(--font-mono); color:var(--red); background:rgba(239,68,68,.12); border-radius:3px; padding:2px 6px; margin-bottom:6px; display:inline-block; }
+
+    /* JARVIS INTELLIGENCE LAYER */
+    .jarvis-block { background: linear-gradient(135deg, rgba(249,115,22,.08) 0%, rgba(139,92,246,.06) 100%); border: 1px solid rgba(249,115,22,.3); border-radius: var(--radius-lg); padding: 20px 24px; margin-bottom: 20px; }
+    .jarvis-header { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .jarvis-icon { width:38px; height:38px; background:linear-gradient(135deg,#F97316,#9333ea); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+    .jarvis-title { font-size:15px; font-weight:800; color:#fff; }
+    .jarvis-sub   { font-size:11px; color:var(--orange); font-family:var(--font-mono); margin-top:2px; }
+    .jarvis-status{ font-size:11px; font-family:var(--font-mono); color:var(--muted); margin-left:auto; }
+    .jarvis-missions { display:flex; flex-direction:column; gap:10px; }
+    .jarvis-mission { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); border-radius:10px; padding:14px 16px; }
+    .jm-top { display:flex; align-items:flex-start; gap:10px; margin-bottom:6px; }
+    .jm-rank { font-size:20px; font-weight:900; color:var(--orange); font-family:var(--font-mono); min-width:28px; line-height:1; }
+    .jm-task { font-size:14px; font-weight:700; color:#fff; line-height:1.3; }
+    .jm-pillar{ font-size:10px; font-family:var(--font-mono); padding:2px 7px; border-radius:3px; background:rgba(249,115,22,.15); color:var(--orange); white-space:nowrap; margin-left:auto; flex-shrink:0; }
+    .jm-why  { font-size:12px; color:#94a3b8; line-height:1.5; margin-bottom:6px; }
+    .jm-tools{ display:flex; gap:5px; flex-wrap:wrap; }
+    .jm-tool { font-size:10px; font-family:var(--font-mono); background:rgba(99,102,241,.15); color:#818cf8; border-radius:3px; padding:2px 6px; }
+    .jarvis-loading { text-align:center; padding:24px; color:var(--muted); font-family:var(--font-mono); font-size:12px; }
+    .jarvis-loading .dot { animation: blink 1.2s infinite; }
+    .jarvis-loading .dot:nth-child(2){ animation-delay:.2s; }
+    .jarvis-loading .dot:nth-child(3){ animation-delay:.4s; }
+    @keyframes blink { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
+    .jarvis-cfg { margin-top:14px; padding-top:12px; border-top:1px solid rgba(255,255,255,.06); display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .jarvis-cfg input { background:var(--navy-800); border:1px solid var(--border); border-radius:var(--radius); padding:6px 10px; font-size:11px; color:var(--text); flex:1; min-width:160px; }
+    .jarvis-cfg label { font-size:11px; color:var(--muted); font-family:var(--font-mono); white-space:nowrap; }
+    .jarvis-refresh { background:rgba(249,115,22,.15); border:1px solid rgba(249,115,22,.3); color:var(--orange); padding:7px 14px; border-radius:var(--radius); font-size:12px; font-weight:700; cursor:pointer; white-space:nowrap; transition:all .2s; }
+    .jarvis-refresh:hover { background:rgba(249,115,22,.25); }
+    .jarvis-context-bar { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+    .jctx { font-size:11px; font-family:var(--font-mono); padding:3px 9px; border-radius:4px; background:rgba(255,255,255,.05); color:var(--muted); }
+    .jctx span { color:#fff; font-weight:700; }
   </style>
 </head>
 <body>
@@ -642,6 +672,30 @@
         <div class="ms-label">Aktueller Meilenstein</div>
         <div class="ms-title" id="msTitle">—</div>
         <div class="ms-sub" id="msSub">—</div>
+      </div>
+    </div>
+
+    <!-- JARVIS INTELLIGENCE LAYER -->
+    <div class="jarvis-block" id="jarvisBlock">
+      <div class="jarvis-header">
+        <div class="jarvis-icon">🧠</div>
+        <div>
+          <div class="jarvis-title">Jarvis · Tages-Mission</div>
+          <div class="jarvis-sub">KI analysiert deinen Status → gibt dir genau das was heute zählt</div>
+        </div>
+        <div class="jarvis-status" id="jarvisStatus">⏳ Wird analysiert…</div>
+      </div>
+      <div class="jarvis-context-bar" id="jarvisContextBar"></div>
+      <div id="jarvisMissions" class="jarvis-missions">
+        <div class="jarvis-loading">
+          <span class="dot">●</span><span class="dot">●</span><span class="dot">●</span>
+          <span style="margin-left:8px">Jarvis liest deinen aktuellen Stand…</span>
+        </div>
+      </div>
+      <div class="jarvis-cfg">
+        <label>n8n Jarvis-Webhook:</label>
+        <input type="url" id="jarvisWebhook" placeholder="https://n8n.deine-domain.de/webhook/jarvis-analyze" oninput="saveJarvisCfg()"/>
+        <button class="jarvis-refresh" onclick="loadJarvisMissions(true)">🔄 Neu analysieren</button>
       </div>
     </div>
 
@@ -1697,6 +1751,7 @@ document.addEventListener('DOMContentLoaded', function() {
   loadKPIInputs();
   renderAssets();
   initBlockButtons();
+  loadJarvisMissions(false);
 });
 
 // ============================================================
@@ -2816,6 +2871,161 @@ function saveLtdStatus_(id, sel) {
   st[id] = sel.value;
   saveLtdStatus(st);
   sel.className = 'ltd-status-sel s-' + sel.value;
+}
+
+// ============================================================
+// JARVIS INTELLIGENCE LAYER
+// ============================================================
+const JARVIS_CFG_KEY  = 'cango_jarvis_cfg';
+const JARVIS_CACHE_KEY = 'cango_jarvis_cache_' + TODAY;
+
+function saveJarvisCfg() {
+  localStorage.setItem(JARVIS_CFG_KEY, JSON.stringify({
+    webhookUrl: (document.getElementById('jarvisWebhook')?.value || '').trim()
+  }));
+}
+function loadJarvisCfg() {
+  try { return JSON.parse(localStorage.getItem(JARVIS_CFG_KEY) || '{}'); } catch(e){ return {}; }
+}
+
+function buildJarvisContext() {
+  const finance   = loadFinance();
+  const monthPct  = Math.round((finance.total / 2870) * 100);
+  const today     = new Date();
+  const daysLeft  = new Date(today.getFullYear(), today.getMonth()+1, 0).getDate() - today.getDate();
+  const dayName   = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'][today.getDay()];
+  const outreach  = loadOutreach();
+  const lastOutreach = outreach.length ? outreach[outreach.length-1]?.datum || '—' : 'noch keiner';
+  const streak    = loadStreak();
+  const st        = loadState();
+  const doneTasks = Object.values(st).filter(Boolean).length;
+  const totalT    = Object.values(TASK_GROUPS).flat().length;
+
+  return {
+    date:        TODAY,
+    dayName,
+    daysLeft,
+    monthRevenue:   finance.total,
+    monthGoal:      2870,
+    monthPct,
+    revenueGap:     Math.max(0, 2870 - finance.total),
+    streak:         streak.current,
+    lastOutreach,
+    doneTodayPct:   Math.round((doneTasks / totalT) * 100),
+    pillars:        ['Prozess-Coaching (€500 Website/€500 Retainer)', 'Affiliate (SaaS/Amazon/Booking)', 'E-Commerce + Content', 'Bot-Empire (n8n/Python)'],
+    tools_active:   ['BrowserAct','Reap','Greta','Mootion','NoCodeBackend','Voilà','Sociamonials','DepositPhotos','Opus Clip','Kie.ai','NeuronWriter','Feedspace','Yapper.so','Gemini'],
+    tools_expired:  ['TidyCal','Unmixr AI','Katteb'],
+  };
+}
+
+function renderJarvisContext(ctx) {
+  const bar = document.getElementById('jarvisContextBar');
+  if (!bar) return;
+  const urgency = ctx.monthPct < 30 && ctx.daysLeft < 15 ? '🔴' : ctx.monthPct < 60 ? '🟡' : '🟢';
+  bar.innerHTML = `
+    <span class="jctx">📅 <span>${ctx.dayName}</span></span>
+    <span class="jctx">💰 Monat: <span>${urgency} €${ctx.monthRevenue} / €2870 (${ctx.monthPct}%)</span></span>
+    <span class="jctx">⏰ Noch <span>${ctx.daysLeft} Tage</span> im Monat</span>
+    <span class="jctx">🔥 Streak: <span>${ctx.streak} Tage</span></span>
+    <span class="jctx">📤 Letzter Outreach: <span>${ctx.lastOutreach}</span></span>
+  `;
+}
+
+async function loadJarvisMissions(forceRefresh) {
+  // Try cache first (avoid re-calling API on every page reload)
+  if (!forceRefresh) {
+    const cached = localStorage.getItem(JARVIS_CACHE_KEY);
+    if (cached) {
+      try {
+        const data = JSON.parse(cached);
+        renderJarvisMissions(data);
+        renderJarvisContext(buildJarvisContext());
+        document.getElementById('jarvisStatus').textContent = '✓ Analysiert (gecacht)';
+        return;
+      } catch(e) {}
+    }
+  }
+
+  const cfg = loadJarvisCfg();
+  document.getElementById('jarvisWebhook').value = cfg.webhookUrl || '';
+
+  const ctx = buildJarvisContext();
+  renderJarvisContext(ctx);
+
+  if (!cfg.webhookUrl) {
+    renderJarvisOffline(ctx);
+    return;
+  }
+
+  document.getElementById('jarvisStatus').textContent = '⏳ Analysiert…';
+  document.getElementById('jarvisMissions').innerHTML = `<div class="jarvis-loading"><span class="dot">●</span><span class="dot">●</span><span class="dot">●</span><span style="margin-left:8px">Jarvis denkt…</span></div>`;
+
+  try {
+    const res = await fetch(cfg.webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(ctx),
+      signal: AbortSignal.timeout(20000)
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    localStorage.setItem(JARVIS_CACHE_KEY, JSON.stringify(data));
+    renderJarvisMissions(data);
+    document.getElementById('jarvisStatus').textContent = '✓ Frisch analysiert ' + new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+  } catch(e) {
+    renderJarvisOffline(ctx);
+    document.getElementById('jarvisStatus').textContent = '⚠️ Offline-Modus';
+  }
+}
+
+function renderJarvisOffline(ctx) {
+  // Smart offline fallback: rule-based priority logic
+  const missions = [];
+  const gap  = ctx.revenueGap;
+  const days = ctx.daysLeft;
+
+  if (gap > 1500 && days < 20) {
+    missions.push({ rank:1, task:'🔴 Outreach: 3 Mittelständler heute kontaktieren', pillar:'Coaching', why:`Nur €${ctx.monthRevenue} von €2870 erreicht. ${days} Tage verbleiben. Outreach ist der direkteste Hebel.`, tools:['BrowserAct','outreach_sniper.py','Gemini'] });
+  } else if (gap > 500) {
+    missions.push({ rank:1, task:'Coaching-Angebot erstellen oder Follow-up senden', pillar:'Coaching', why:`€${gap} fehlen noch. Ein Abschluss deckt den Rest.`, tools:['Greta','Feedspace','Gemini'] });
+  } else {
+    missions.push({ rank:1, task:'LinkedIn-Post veröffentlichen (Expertise zeigen)', pillar:'Branding', why:'Monatsziel fast erreicht – jetzt Sichtbarkeit für nächsten Monat aufbauen.', tools:['Reap','Sociamonials','Kie.ai'] });
+  }
+
+  if (ctx.streak < 3) {
+    missions.push({ rank:2, task:`Sport-Einheit absolvieren (Streak: ${ctx.streak} → ${ctx.streak+1})`, pillar:'Bio-Struktur', why:'Streak unter 3. Körper ist das Fundament – ohne ihn brechen alle anderen Säulen.', tools:['14:30 Pause'] });
+  } else {
+    missions.push({ rank:2, task:'Affiliate-Content erstellen (Reap: 1 Longform → 5 Posts)', pillar:'Affiliate', why:'Passiv-Einnahmen brauchen Content-Volumen. Heute investieren = nächsten Monat ernten.', tools:['Reap','Sociamonials','NeuronWriter'] });
+  }
+
+  missions.push({ rank:3, task:'n8n-Workflows prüfen + 1 Bot verbessern', pillar:'Bot-Empire', why:'Bots arbeiten für dich während du schläfst. Jede Stunde Investition = Dauerhafter Hebel.', tools:['Hostinger VPS','n8n','NoCodeBackend'] });
+
+  if (ctx.dayName === 'Montag' || ctx.dayName === 'Mittwoch' || ctx.dayName === 'Freitag') {
+    missions.push({ rank:4, task:'Opus Clip: Video schneiden + via Sociamonials planen', pillar:'Content', why:`${ctx.dayName} = Content-Tag. 1 Video jetzt = organische Reichweite für 7 Tage.`, tools:['Opus Clip','Mootion','Sociamonials'] });
+  }
+
+  renderJarvisMissions({ missions });
+}
+
+function renderJarvisMissions(data) {
+  const el = document.getElementById('jarvisMissions');
+  if (!el) return;
+  const missions = data.missions || data;
+  if (!Array.isArray(missions) || !missions.length) {
+    el.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:8px 0">Keine Missions verfügbar.</div>';
+    return;
+  }
+  el.innerHTML = missions.slice(0, 5).map(m => `
+    <div class="jarvis-mission">
+      <div class="jm-top">
+        <span class="jm-rank">${m.rank}</span>
+        <span class="jm-task">${m.task}</span>
+        <span class="jm-pillar">${m.pillar || ''}</span>
+      </div>
+      <div class="jm-why">${m.why || ''}</div>
+      <div class="jm-tools">${(m.tools||[]).map(t=>`<span class="jm-tool">${t}</span>`).join('')}</div>
+    </div>
+  `).join('');
 }
 
 // ============================================================
