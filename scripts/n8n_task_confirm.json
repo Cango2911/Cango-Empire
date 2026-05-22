@@ -284,7 +284,7 @@
           "options": {},
           "conditions": [
             {
-              "leftValue": "={{ $('Calc-Skip berechnen').item.json.isMicroStep }}",
+              "leftValue": "={{ $('Skip-Count berechnen').item.json.isMicroStep }}",
               "rightValue": true,
               "operator": { "type": "boolean", "operation": "equals" }
             }
@@ -321,7 +321,7 @@
     {
       "parameters": {
         "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
-        "text": "=⏩ *Geskippt* ({{ $('Calc-Skip berechnen').item.json.skipCount }}/3)\n\n_Kein Problem. Aufgabe kommt in 2 Stunden zurück._\n\nJetzt: kurze Pause oder nächste Mission?",
+        "text": "=⏩ *Geskippt* ({{ $('Skip-Count berechnen').item.json.skipCount }}/3)\n\n_Kein Problem. Aufgabe kommt in 2 Stunden zurück._\n\nJetzt: kurze Pause oder nächste Mission?",
         "additionalFields": {
           "parse_mode": "Markdown",
           "reply_markup": {
@@ -574,8 +574,8 @@
     "Supabase: Noch offen?":        { "main": [[{ "node": "Filter: Noch active?",            "type": "main", "index": 0 }]] },
     "Filter: Noch active?":         { "main": [[{ "node": "Telegram: 45-Min Check-in",       "type": "main", "index": 0 }]] },
 
-    "Supabase: Skip-Count laden":   { "main": [[{ "node": "Calc-Skip berechnen",             "type": "main", "index": 0 }]] },
-    "Calc-Skip berechnen":          { "main": [[{ "node": "Supabase: Skip loggen",           "type": "main", "index": 0 }]] },
+    "Supabase: Skip-Count laden":   { "main": [[{ "node": "Skip-Count berechnen",             "type": "main", "index": 0 }]] },
+    "Skip-Count berechnen":         { "main": [[{ "node": "Supabase: Skip loggen",           "type": "main", "index": 0 }]] },
     "Supabase: Skip loggen":        { "main": [[{ "node": "Filter: Micro-Step nötig?",       "type": "main", "index": 0 }]] },
     "Filter: Micro-Step nötig?":    {
       "main": [
