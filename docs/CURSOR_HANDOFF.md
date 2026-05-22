@@ -1,6 +1,7 @@
 # Cursor Handoff — CanGo Daily Todo Master
 
 **Stand:** Mai 2026 | Branch: `claude/cango-todo-master-expand-huosk`
+**Zuletzt aktualisiert:** Neuer Telegram-Bot + Nanobana-Klärung + .env.example vollständig
 
 ---
 
@@ -199,17 +200,49 @@ CREATE TABLE outreach_leads (
 
 ---
 
-## Aktuelle API Keys (in .env, nie ins Repo)
+## Aktuelle API Keys (in .env, NIE ins Repo committen)
 
-| Key | Status |
-|-----|--------|
-| `GEMINI_API_KEY` | ✅ eingetragen |
-| `TELEGRAM_BOT_TOKEN` | ✅ eingetragen |
-| `TELEGRAM_CHAT_ID` | ⬜ fehlt |
-| `SUPABASE_URL` | ⬜ fehlt |
-| `SUPABASE_ANON_KEY` | ⬜ fehlt |
-| `GOOGLE_MAPS_API_KEY` | ⬜ optional |
-| `OPENAI_API_KEY` | ⬜ optional (Whisper) |
+| Key | Wert/Status | Bot |
+|-----|-------------|-----|
+| `GEMINI_API_KEY` | ✅ eingetragen | Brainstorm + Content-Ideen |
+| `TELEGRAM_BOT_TOKEN` | ✅ `@CanGo_ToDo_Master_bot` (NEU) | Jarvis Task-Queue, Briefings |
+| `TELEGRAM_BOT_TOKEN_OLD` | ✅ `@Cango_master_bot` (ALT) | Eskalation, Avatar-Pipeline |
+| `TELEGRAM_CHAT_ID` | ⬜ **FEHLT — Priorität 1** | Beide Bots senden hierhin |
+| `SUPABASE_URL` | ⬜ **FEHLT — Priorität 1** | Missions, Task-Confirm, Outreach |
+| `SUPABASE_ANON_KEY` | ⬜ **FEHLT — Priorität 1** | Supabase Auth |
+| `GOOGLE_MAPS_API_KEY` | ⬜ optional | outreach_sniper.py |
+| `OPENAI_API_KEY` | ⬜ optional | Whisper Voice-to-Text |
+| `GSHEETS_SERVICE_ACCOUNT_JSON` | ⬜ lokal auf Mac | Agency Funnel Sync |
+
+### TELEGRAM_CHAT_ID holen (30 Sekunden)
+1. Telegram → `@CanGo_ToDo_Master_bot` → `/start` senden
+2. Im Browser aufrufen:
+   ```
+   https://api.telegram.org/bot<TOKEN>/getUpdates
+   ```
+3. `result[0].message.chat.id` — diese Zahl in `.env` und n8n eintragen
+
+---
+
+## Nanobana — Geklärt
+
+**"Nanobana"** = **Nano-Banana** — ein Blog-Cover-Generator-Workflow.
+- Generiert automatisch Titelbild-Thumbnails für Blog-Posts
+- Ist Content-Tool, kein Teil des Todo-Masters
+- Optional: Mit Montags-Content-Posts verknüpfen (Gemini generiert Post → Nano-Banana generiert Bild)
+- Liegt in Cursor-Workspace als `docs/n8n/nano-banana-blog-cover-workflow.json`
+
+---
+
+## Zwei Repos — Klare Trennung
+
+| Repo | Inhalt | Git-Branch |
+|------|--------|-----------|
+| `Cango-Empire` (dieses) | daily-todo-master.html, n8n Workflows, Jarvis | `claude/cango-todo-master-expand-huosk` |
+| `Cango-Empire` (lokal Mac) | Agency Funnel Python, GSheets Sync, outreach_sniper.py | `main` (Cursor) |
+
+**Problem:** Cursor hat `daily-todo-master.html` und n8n-JSONs ins Python-Repo gelegt.
+**Fix:** Die HTML-Datei gehört ins Website-Repo (dieses hier), nicht ins Python-Repo.
 
 ---
 
