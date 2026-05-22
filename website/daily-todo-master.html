@@ -600,6 +600,29 @@
     .jarvis-refresh:hover { background:rgba(249,115,22,.25); }
     .jarvis-context-bar { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
     .jctx { font-size:11px; font-family:var(--font-mono); padding:3px 9px; border-radius:4px; background:rgba(255,255,255,.05); color:var(--muted); }
+
+    /* NAVI-MODUS (Ein-Aufgaben-Modus) */
+    .navi-wrap { display:none; flex-direction:column; gap:0; }
+    .navi-wrap.active { display:flex; }
+    .navi-single { background:linear-gradient(135deg,rgba(249,115,22,.12),rgba(139,92,246,.08)); border:2px solid rgba(249,115,22,.5); border-radius:14px; padding:22px 24px; text-align:center; }
+    .navi-counter { font-size:11px; font-family:var(--font-mono); color:var(--muted); margin-bottom:10px; letter-spacing:.08em; }
+    .navi-task { font-size:20px; font-weight:900; color:#fff; line-height:1.3; margin-bottom:8px; }
+    .navi-why { font-size:13px; color:#94a3b8; margin-bottom:16px; line-height:1.5; }
+    .navi-tools { display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-bottom:20px; }
+    .navi-btn-done { background:var(--orange); border:none; color:#fff; font-size:16px; font-weight:900; padding:14px 40px; border-radius:10px; cursor:pointer; letter-spacing:.03em; transition:all .2s; width:100%; }
+    .navi-btn-done:hover { background:#ea6900; transform:scale(1.02); }
+    .navi-btn-done.done-state { background:var(--green); }
+    .navi-progress { display:flex; gap:6px; justify-content:center; margin-top:14px; }
+    .navi-dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.1); transition:all .3s; }
+    .navi-dot.done { background:var(--green); }
+    .navi-dot.active { background:var(--orange); transform:scale(1.3); }
+    .navi-all-done { padding:24px; text-align:center; }
+    .navi-all-done .navi-win { font-size:32px; margin-bottom:8px; }
+    .navi-all-done p { font-size:14px; color:var(--muted); }
+    .navi-mode-toggle { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+    .navi-toggle-btn { font-size:11px; font-family:var(--font-mono); padding:4px 10px; border-radius:20px; border:1px solid rgba(249,115,22,.4); background:rgba(249,115,22,.1); color:var(--orange); cursor:pointer; transition:all .2s; }
+    .navi-toggle-btn.on { background:var(--orange); color:#fff; border-color:var(--orange); }
+    .navi-toggle-lbl { font-size:11px; color:var(--muted); font-family:var(--font-mono); }
     .jctx span { color:#fff; font-weight:700; }
   </style>
 </head>
@@ -722,12 +745,24 @@
         </div>
       </div>
       <div class="jarvis-context-bar" id="jarvisContextBar"></div>
+
+      <!-- NAVI-MODUS TOGGLE -->
+      <div class="navi-mode-toggle">
+        <button class="navi-toggle-btn" id="naviToggleBtn" onclick="toggleNaviMode()">🧭 Navi-Modus</button>
+        <span class="navi-toggle-lbl" id="naviToggleLbl">Alle Missions anzeigen</span>
+      </div>
+
+      <!-- STANDARD: Alle Missions -->
       <div id="jarvisMissions" class="jarvis-missions">
         <div class="jarvis-loading">
           <span class="dot">●</span><span class="dot">●</span><span class="dot">●</span>
           <span style="margin-left:8px">Jarvis liest deinen aktuellen Stand…</span>
         </div>
       </div>
+
+      <!-- NAVI-MODUS: Eine Aufgabe -->
+      <div id="jarvisNavi" class="navi-wrap"></div>
+
       <div class="jarvis-cfg">
         <label>n8n Jarvis-Webhook:</label>
         <input type="url" id="jarvisWebhook" placeholder="https://n8n.deine-domain.de/webhook/jarvis-analyze" oninput="saveJarvisCfg()"/>
@@ -1802,6 +1837,7 @@ document.addEventListener('DOMContentLoaded', function() {
   loadKPIInputs();
   renderAssets();
   initBlockButtons();
+  applyNaviModeUI();
   loadJarvisMissions(false);
 });
 
@@ -3173,25 +3209,118 @@ function renderJarvisOffline(ctx) {
   });
 }
 
+// ============================================================
+// JARVIS MISSIONS RENDERING + NAVI-MODUS
+// ============================================================
+const NAVI_KEY      = 'cango_navi_mode';
+const NAVI_IDX_KEY  = 'cango_navi_idx_' + TODAY;
+let   _naviMissions = [];
+
+function isNaviMode() {
+  return localStorage.getItem(NAVI_KEY) === '1';
+}
+
+function toggleNaviMode() {
+  const on = !isNaviMode();
+  localStorage.setItem(NAVI_KEY, on ? '1' : '0');
+  applyNaviModeUI();
+  if (_naviMissions.length) renderNaviSingle();
+}
+
+function applyNaviModeUI() {
+  const on  = isNaviMode();
+  const btn = document.getElementById('naviToggleBtn');
+  const lbl = document.getElementById('naviToggleLbl');
+  const all = document.getElementById('jarvisMissions');
+  const nav = document.getElementById('jarvisNavi');
+  if (btn) { btn.textContent = on ? '🧭 Navi an' : '🧭 Navi-Modus'; btn.classList.toggle('on', on); }
+  if (lbl) lbl.textContent = on ? 'Eine Aufgabe · dann die nächste' : 'Alle Missions anzeigen';
+  if (all) all.style.display = on ? 'none' : 'flex';
+  if (nav) nav.classList.toggle('active', on);
+}
+
 function renderJarvisMissions(data) {
+  _naviMissions = (data.missions || data || []).slice(0, 5);
   const el = document.getElementById('jarvisMissions');
-  if (!el) return;
-  const missions = data.missions || data;
-  if (!Array.isArray(missions) || !missions.length) {
-    el.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:8px 0">Keine Missions verfügbar.</div>';
-    return;
+
+  // Standard-Liste
+  if (el) {
+    if (!Array.isArray(_naviMissions) || !_naviMissions.length) {
+      el.innerHTML = '<div style="color:var(--muted);font-size:13px;padding:8px 0">Keine Missions verfügbar.</div>';
+    } else {
+      if (data.alert) {
+        el.innerHTML = `<div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:8px;padding:10px 14px;font-size:12px;color:#f87171;font-family:var(--font-mono);margin-bottom:8px">${data.alert}</div>`;
+      } else { el.innerHTML = ''; }
+      el.innerHTML += _naviMissions.map(m => `
+        <div class="jarvis-mission">
+          <div class="jm-top">
+            <span class="jm-rank">${m.rank}</span>
+            <span class="jm-task">${m.task}</span>
+            <span class="jm-pillar">${m.pillar || ''}</span>
+          </div>
+          <div class="jm-why">${m.why || ''}</div>
+          <div class="jm-tools">${(m.tools||[]).map(t=>`<span class="jm-tool">${t}</span>`).join('')}</div>
+        </div>
+      `).join('');
+    }
   }
-  el.innerHTML = missions.slice(0, 5).map(m => `
-    <div class="jarvis-mission">
-      <div class="jm-top">
-        <span class="jm-rank">${m.rank}</span>
-        <span class="jm-task">${m.task}</span>
-        <span class="jm-pillar">${m.pillar || ''}</span>
-      </div>
-      <div class="jm-why">${m.why || ''}</div>
-      <div class="jm-tools">${(m.tools||[]).map(t=>`<span class="jm-tool">${t}</span>`).join('')}</div>
+
+  // Navi-Modus
+  applyNaviModeUI();
+  if (isNaviMode()) renderNaviSingle();
+}
+
+function renderNaviSingle() {
+  const nav = document.getElementById('jarvisNavi');
+  if (!nav || !_naviMissions.length) return;
+  const total = _naviMissions.length;
+  let idx = parseInt(localStorage.getItem(NAVI_IDX_KEY) || '0');
+  if (idx >= total) { renderNaviDone(nav, total); return; }
+
+  const m = _naviMissions[idx];
+  const dots = _naviMissions.map((_, i) =>
+    `<div class="navi-dot ${i < idx ? 'done' : i === idx ? 'active' : ''}"></div>`
+  ).join('');
+
+  nav.innerHTML = `
+    <div class="navi-single">
+      <div class="navi-counter">AUFGABE ${idx + 1} VON ${total} · ${m.pillar || ''}</div>
+      <div class="navi-task">${m.task}</div>
+      <div class="navi-why">${m.why || ''}</div>
+      <div class="navi-tools">${(m.tools||[]).map(t=>`<span class="jm-tool">${t}</span>`).join('')}</div>
+      <button class="navi-btn-done" id="naviBtnDone" onclick="naviAdvance()">
+        ✅ Erledigt – nächste Aufgabe
+      </button>
+      <div class="navi-progress">${dots}</div>
     </div>
-  `).join('');
+  `;
+}
+
+function naviAdvance() {
+  const btn = document.getElementById('naviBtnDone');
+  if (btn) { btn.textContent = '✓'; btn.classList.add('done-state'); btn.disabled = true; }
+  setTimeout(() => {
+    let idx = parseInt(localStorage.getItem(NAVI_IDX_KEY) || '0');
+    idx++;
+    localStorage.setItem(NAVI_IDX_KEY, idx);
+    renderNaviSingle();
+  }, 500);
+}
+
+function renderNaviDone(nav, total) {
+  nav.innerHTML = `
+    <div class="navi-single navi-all-done">
+      <div class="navi-win">🏆</div>
+      <div class="navi-task" style="font-size:18px">Alle ${total} Missions erledigt!</div>
+      <p style="margin-top:8px">Jarvis ist stolz. 9.9M wartet nicht – du auch nicht.</p>
+      <button class="navi-btn-done" style="margin-top:16px" onclick="naviReset()">🔄 Tag abschließen</button>
+    </div>
+  `;
+}
+
+function naviReset() {
+  localStorage.removeItem(NAVI_IDX_KEY);
+  renderNaviSingle();
 }
 
 // ============================================================

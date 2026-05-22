@@ -1,0 +1,332 @@
+{
+  "name": "CanGo · Telegram Task-Confirm (Ein-Aufgaben-Push)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 8 * * 1-5" }] },
+        "options": {}
+      },
+      "id": "cron-task-push",
+      "name": "Cron Mo–Fr 08:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300],
+      "notes": "Sendet täglich genau EINE Aufgabe an Telegram. Kein Dashboard öffnen nötig."
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/jarvis_missions?select=missions,daily_focus&date=eq.{{ $now.format('YYYY-MM-DD') }}&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_ANON_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_ANON_KEY }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-mission-1",
+      "name": "Supabase: Mission #1 laden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 300],
+      "notes": "Lädt nur Mission #1 des heutigen Tages aus Supabase"
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = $input.first().json?.[0];\nconst missions = typeof row?.missions === 'string'\n  ? JSON.parse(row.missions) : (row?.missions || []);\nconst m = missions[0];\nif (!m) return [{ json: { task: 'Kein Outreach heute noch gemacht – jetzt einen Kontakt schreiben.', pillar: 'Coaching', why: 'Kein Jarvis-Eintrag für heute. Default-Mission aktiv.', tools: ['outreach_sniper.py', 'BrowserAct'] } }];\nreturn [{ json: m }];"
+      },
+      "id": "extract-task-1",
+      "name": "Mission #1 extrahieren",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [720, 300],
+      "notes": "Fallback wenn keine Jarvis-Mission für heute: Default-Outreach-Aufgabe"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=🎯 *Deine EINE Aufgabe heute:*\n\n`{{ $json.task }}`\n\n📋 {{ $json.why }}\n🔧 {{ $json.tools?.join(' · ') || '' }}\n\n━━━━━━━━━━━━━━━\n✅ Tippe *ja* wenn erledigt\n⏭ Tippe *weiter* für nächste Aufgabe\n⚡ Tippe *low* wenn Energie niedrig",
+        "additionalFields": {
+          "parse_mode": "Markdown",
+          "reply_markup": {
+            "inline_keyboard": [[
+              { "text": "✅ Erledigt", "callback_data": "done_1" },
+              { "text": "⏭ Nächste", "callback_data": "next_1" },
+              { "text": "⚡ Energie low", "callback_data": "low_energy" }
+            ]]
+          }
+        }
+      },
+      "id": "tg-send-task",
+      "name": "Telegram: Eine Aufgabe senden",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [960, 300],
+      "notes": "Sendet eine einzige Aufgabe mit Inline-Buttons: Erledigt / Nächste / Energie-Low"
+    },
+
+    {
+      "parameters": {
+        "updates": ["callback_query"],
+        "additionalFields": {}
+      },
+      "id": "tg-callback-trigger",
+      "name": "Telegram: Button-Antwort empfangen",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 560],
+      "notes": "Empfängt Inline-Button Klicks (done_1, next_1, low_energy)"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {},
+          "conditions": [
+            {
+              "leftValue": "={{ $json.callback_query?.data }}",
+              "rightValue": "done_1",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ]
+        }
+      },
+      "id": "filter-done",
+      "name": "Filter: Erledigt?",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [480, 480]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {},
+          "conditions": [
+            {
+              "leftValue": "={{ $json.callback_query?.data }}",
+              "rightValue": "next_1",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ]
+        }
+      },
+      "id": "filter-next",
+      "name": "Filter: Nächste?",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [480, 620]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {},
+          "conditions": [
+            {
+              "leftValue": "={{ $json.callback_query?.data }}",
+              "rightValue": "low_energy",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ]
+        }
+      },
+      "id": "filter-low",
+      "name": "Filter: Energie-Low?",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [480, 760]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": { "__rl": true, "value": "public", "mode": "list" },
+        "table": { "__rl": true, "value": "task_confirmations", "mode": "list" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "values": [
+            { "column": "date",        "value": "={{ $now.format('YYYY-MM-DD') }}" },
+            { "column": "task_rank",   "value": "=1" },
+            { "column": "status",      "value": "done" },
+            { "column": "confirmed_at","value": "={{ $now }}" }
+          ]
+        },
+        "matchingColumns": ["date", "task_rank"]
+      },
+      "id": "supabase-log-done",
+      "name": "Supabase: Erledigt loggen",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [720, 480],
+      "notes": "Tabelle task_confirmations: date, task_rank, status, confirmed_at"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=🔥 *Stark!* Aufgabe 1 erledigt.\n\n{{ $now.format('HH:mm') }} Uhr · Ein Schritt näher an den 9.9M.\n\nKommt gleich Aufgabe 2…",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-confirm-done",
+      "name": "Telegram: Erledigt bestätigen",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [960, 480]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/jarvis_missions?select=missions&date=eq.{{ $now.format('YYYY-MM-DD') }}&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_ANON_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_ANON_KEY }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-mission-2",
+      "name": "Supabase: Mission #2 laden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1200, 480]
+    },
+    {
+      "parameters": {
+        "jsCode": "const row = $input.first().json?.[0];\nconst missions = typeof row?.missions === 'string'\n  ? JSON.parse(row.missions) : (row?.missions || []);\nconst m = missions[1] || missions[0];\nreturn [{ json: m || { task: 'Heute abschließen: Abend-Review machen', pillar: 'Review', why: 'Alle Missions für heute erledigt.', tools: [] } }];"
+      },
+      "id": "extract-task-2",
+      "name": "Mission #2 extrahieren",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1440, 480]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=➡️ *Aufgabe 2:*\n\n`{{ $json.task }}`\n\n📋 {{ $json.why }}\n\n✅ *ja* = erledigt",
+        "additionalFields": {
+          "parse_mode": "Markdown",
+          "reply_markup": {
+            "inline_keyboard": [[
+              { "text": "✅ Erledigt", "callback_data": "done_2" },
+              { "text": "⏭ Für heute reicht's", "callback_data": "done_day" }
+            ]]
+          }
+        }
+      },
+      "id": "tg-send-task-2",
+      "name": "Telegram: Aufgabe 2 senden",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1680, 480]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=⚡ *Energie-Low erkannt.*\n\nJarvis passt heute auf dich auf. Nur eine einzige Sache:\n\n`Sport oder Spaziergang · 20 Minuten · Kein Handy`\n\nAlles andere kann warten. Du bist wichtiger als die Tasks.",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-low-energy",
+      "name": "Telegram: Energie-Low Antwort",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [720, 760],
+      "notes": "Bei Energie-Low: Sport-Mission + Pause. Kein Druck."
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": { "__rl": true, "value": "public", "mode": "list" },
+        "table": { "__rl": true, "value": "jarvis_missions", "mode": "list" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "values": [
+            { "column": "date", "value": "={{ $now.format('YYYY-MM-DD') }}" },
+            {
+              "column": "context",
+              "value": "={{ JSON.stringify({ energyLevel: 2, moodCheck: false, deepRestNeeded: true, source: 'telegram_low_button', updatedAt: $now }) }}"
+            }
+          ]
+        },
+        "matchingColumns": ["date"]
+      },
+      "id": "supabase-log-low",
+      "name": "Supabase: Energie-Low speichern",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [960, 760],
+      "notes": "Setzt energyLevel=2 → morgen früh reduziert Energie-Check automatisch das Pensum"
+    },
+
+    {
+      "parameters": {},
+      "id": "error-trigger",
+      "name": "Fehler-Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [240, 960]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=⚠️ *Task-Confirm Fehler*\n`{{ $json.execution.lastNodeExecuted }}`: {{ $json.execution.error.message }}",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-error",
+      "name": "Telegram: Fehler",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [480, 960]
+    }
+  ],
+  "connections": {
+    "Cron Mo–Fr 08:00": {
+      "main": [[{ "node": "Supabase: Mission #1 laden", "type": "main", "index": 0 }]]
+    },
+    "Supabase: Mission #1 laden": {
+      "main": [[{ "node": "Mission #1 extrahieren", "type": "main", "index": 0 }]]
+    },
+    "Mission #1 extrahieren": {
+      "main": [[{ "node": "Telegram: Eine Aufgabe senden", "type": "main", "index": 0 }]]
+    },
+    "Telegram: Button-Antwort empfangen": {
+      "main": [[
+        { "node": "Filter: Erledigt?", "type": "main", "index": 0 },
+        { "node": "Filter: Nächste?", "type": "main", "index": 0 },
+        { "node": "Filter: Energie-Low?", "type": "main", "index": 0 }
+      ]]
+    },
+    "Filter: Erledigt?": {
+      "main": [[{ "node": "Supabase: Erledigt loggen", "type": "main", "index": 0 }]]
+    },
+    "Supabase: Erledigt loggen": {
+      "main": [[{ "node": "Telegram: Erledigt bestätigen", "type": "main", "index": 0 }]]
+    },
+    "Telegram: Erledigt bestätigen": {
+      "main": [[{ "node": "Supabase: Mission #2 laden", "type": "main", "index": 0 }]]
+    },
+    "Supabase: Mission #2 laden": {
+      "main": [[{ "node": "Mission #2 extrahieren", "type": "main", "index": 0 }]]
+    },
+    "Mission #2 extrahieren": {
+      "main": [[{ "node": "Telegram: Aufgabe 2 senden", "type": "main", "index": 0 }]]
+    },
+    "Filter: Energie-Low?": {
+      "main": [[
+        { "node": "Telegram: Energie-Low Antwort", "type": "main", "index": 0 },
+        { "node": "Supabase: Energie-Low speichern", "type": "main", "index": 0 }
+      ]]
+    },
+    "Fehler-Trigger": {
+      "main": [[{ "node": "Telegram: Fehler", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "errorWorkflow": ""
+  },
+  "meta": {
+    "instanceId": "cango-empire",
+    "templateId": "cango-task-confirm-v1",
+    "notes": "KONZEPT: Kein Dashboard öffnen nötig.\nJarvis sendet 08:00 Uhr genau EINE Aufgabe per Telegram.\nCanberk tippt nur: ✅ / ⏭ / ⚡\n\nFLOW:\n1. Cron 08:00 → Supabase Mission #1 → Telegram (1 Aufgabe + 3 Buttons)\n2. ✅ Erledigt → Supabase loggen → 'Stark!' → Aufgabe 2 senden\n3. ⏭ Nächste → direkt Aufgabe 2 senden\n4. ⚡ Energie-Low → Sport-Mission + energyLevel=2 in Supabase → morgen reduziertes Pensum\n\nNEUE TABELLE:\nCREATE TABLE task_confirmations (\n  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,\n  date date,\n  task_rank int,\n  status text,\n  confirmed_at timestamptz DEFAULT now(),\n  UNIQUE(date, task_rank)\n);\n\nSETUP:\n- SUPABASE_URL, SUPABASE_ANON_KEY\n- TELEGRAM_CHAT_ID\n- Telegram Bot muss Inline-Keyboard unterstützen\n- Bot muss Webhook aktiviert haben (nicht Polling)\n\nWARUM ES FUNKTIONIERT:\n- Kein Dashboard öffnen = keine kognitive Reibung\n- Nur 1 Tap nötig = unter der Entscheidungsschwelle\n- Energie-Low Button = Schutz ohne Scham\n- Aufgabe kommt ZU dir, nicht du zur Aufgabe"
+  }
+}
