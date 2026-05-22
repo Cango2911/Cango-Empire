@@ -298,6 +298,32 @@
     .evening-item textarea { width: 100%; resize: vertical; min-height: 70px; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 10px; font-size: 13px; }
     @media(max-width:600px) { .evening-grid { grid-template-columns: 1fr; } }
 
+    /* ENERGIE & MOOD CHECK */
+    .mood-row { display: flex; align-items: center; gap: 16px; padding: 10px 20px 4px; flex-wrap: wrap; }
+    .mood-label { font-size: 11px; color: var(--muted); font-family: var(--font-mono); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+    .mood-slider-wrap { flex: 1; min-width: 160px; display: flex; align-items: center; gap: 10px; }
+    .mood-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 5px; background: var(--navy-700); border-radius: 3px; outline: none; cursor: pointer; }
+    .mood-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--orange); cursor: pointer; }
+    .mood-value { font-size: 22px; min-width: 28px; text-align: center; }
+    .mood-check-tag { font-size: 11px; font-family: var(--font-mono); padding: 3px 9px; border-radius: 20px; border: 1px solid; transition: all .2s; }
+    .mood-check-tag.ok   { border-color: var(--green); color: var(--green); background: rgba(34,197,94,.08); }
+    .mood-check-tag.warn { border-color: var(--yellow); color: var(--yellow); background: rgba(234,179,8,.08); }
+    .mood-check-tag.low  { border-color: var(--red); color: var(--red); background: rgba(239,68,68,.08); }
+    .deep-rest-banner { display:none; margin: 0 20px 10px; padding: 10px 14px; background: rgba(139,92,246,.1); border: 1px solid rgba(139,92,246,.3); border-radius: var(--radius); font-size: 12px; color: #a78bfa; font-family: var(--font-mono); }
+    .deep-rest-banner.visible { display: flex; align-items: center; gap: 8px; }
+
+    /* 9.9M KPI TRACKER */
+    .kpi-track { padding: 4px 20px 14px; }
+    .kpi-track-title { font-size: 11px; font-family: var(--font-mono); color: var(--orange); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+    .kpi-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .kpi-pill { background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; flex: 1; min-width: 120px; text-align: center; }
+    .kpi-pill .kp-val { font-size: 18px; font-weight: 900; font-family: var(--font-mono); color: #fff; }
+    .kpi-pill .kp-lbl { font-size: 10px; color: var(--muted); margin-top: 2px; }
+    .kpi-pill.kp-gap  { border-color: rgba(239,68,68,.3); }
+    .kpi-pill.kp-gap .kp-val { color: #f87171; }
+    .kpi-pill.kp-focus { border-color: rgba(249,115,22,.35); }
+    .kpi-pill.kp-focus .kp-val { font-size: 13px; color: var(--orange); }
+
     /* CALENDAR BUTTONS */
     .cal-row { display: flex; gap: 10px; padding: 12px 20px; flex-wrap: wrap; }
     .cal-btn {
@@ -684,6 +710,16 @@
           <div class="jarvis-sub">KI analysiert deinen Status → gibt dir genau das was heute zählt</div>
         </div>
         <div class="jarvis-status" id="jarvisStatus">⏳ Wird analysiert…</div>
+      </div>
+      <!-- 9.9M KPI TRACKER -->
+      <div class="kpi-track" id="jarvisKpiTrack">
+        <div class="kpi-track-title">9.9M Fokus-Filter · Nur was das Delta schließt zählt</div>
+        <div class="kpi-row" id="jarvisKpiRow">
+          <div class="kpi-pill"><div class="kp-val" id="kpiYearRev">€0</div><div class="kp-lbl">Jahresumsatz bisher</div></div>
+          <div class="kpi-pill kp-gap"><div class="kp-val" id="kpiDelta">€9,9M</div><div class="kp-lbl">Delta zum Ziel</div></div>
+          <div class="kpi-pill"><div class="kp-val" id="kpiMonthNeed">€—</div><div class="kp-lbl">∅ pro Monat nötig</div></div>
+          <div class="kpi-pill kp-focus"><div class="kp-val" id="kpiFocusToday">Lädt…</div><div class="kp-lbl">Fokus heute</div></div>
+        </div>
       </div>
       <div class="jarvis-context-bar" id="jarvisContextBar"></div>
       <div id="jarvisMissions" class="jarvis-missions">
@@ -1086,6 +1122,21 @@
           <div class="progress-bar-fill green" id="monthBar" style="width:0%"></div>
         </div>
       </div>
+      <!-- ENERGIE / MOOD CHECK -->
+      <div class="mood-row">
+        <span class="mood-label">Energie-Level heute Abend:</span>
+        <div class="mood-slider-wrap">
+          <input type="range" id="moodSlider" class="mood-slider" min="1" max="10" value="7" oninput="saveMood()"/>
+          <span class="mood-value" id="moodEmoji">😊</span>
+        </div>
+        <span class="mood-check-tag ok" id="moodTag">Gut · Normal</span>
+        <span style="font-size:11px;color:var(--muted);font-family:var(--font-mono)">→ Morgen-Pensum:</span>
+        <span style="font-size:11px;color:#fff;font-family:var(--font-mono)" id="moodPensum">Vollpensum (5 Tasks)</span>
+      </div>
+      <div class="deep-rest-banner" id="deepRestBanner">
+        🛡️ <strong>Deep-Rest-Slot erzwungen:</strong>&nbsp;Jarvis reduziert morgen auf 2 Kern-Aufgaben. Erst 30 Min. Pause, dann erster Outreach.
+      </div>
+
       <div class="evening-grid">
         <div class="evening-item">
           <label>Was lief heute gut?</label>
@@ -1996,6 +2047,60 @@ function saveNotes() {
 }
 
 // ============================================================
+// MOOD / ENERGIE CHECK
+// ============================================================
+const MOOD_KEY = 'cango_mood_' + TODAY;
+
+function saveMood() {
+  const val = parseInt(document.getElementById('moodSlider')?.value || 7);
+  localStorage.setItem(MOOD_KEY, val);
+  renderMood(val);
+}
+
+function loadMood() {
+  const saved = localStorage.getItem(MOOD_KEY);
+  const val = saved ? parseInt(saved) : 7;
+  const slider = document.getElementById('moodSlider');
+  if (slider) slider.value = val;
+  renderMood(val);
+  return val;
+}
+
+function renderMood(val) {
+  const emoji = document.getElementById('moodEmoji');
+  const tag   = document.getElementById('moodTag');
+  const pensum= document.getElementById('moodPensum');
+  const banner= document.getElementById('deepRestBanner');
+  if (!emoji) return;
+
+  if (val >= 8) {
+    emoji.textContent = '🔥';
+    tag.textContent = 'Hoch · Top-Form';
+    tag.className = 'mood-check-tag ok';
+    pensum.textContent = 'Vollpensum (5 Tasks)';
+    banner.classList.remove('visible');
+  } else if (val >= 5) {
+    emoji.textContent = '😊';
+    tag.textContent = 'Gut · Normal';
+    tag.className = 'mood-check-tag ok';
+    pensum.textContent = 'Vollpensum (5 Tasks)';
+    banner.classList.remove('visible');
+  } else if (val >= 3) {
+    emoji.textContent = '😐';
+    tag.textContent = 'Mittel · Aufpassen';
+    tag.className = 'mood-check-tag warn';
+    pensum.textContent = 'Reduziert (3 Tasks)';
+    banner.classList.remove('visible');
+  } else {
+    emoji.textContent = '🛡️';
+    tag.textContent = 'Niedrig · Deep-Rest';
+    tag.className = 'mood-check-tag low';
+    pensum.textContent = '⚠️ Nur 2 Kern-Tasks!';
+    banner.classList.add('visible');
+  }
+}
+
+// ============================================================
 // LOAD INPUTS
 // ============================================================
 function loadInputs() {
@@ -2007,6 +2112,7 @@ function loadInputs() {
   if (state.notesGood) document.getElementById('notesGood').value = state.notesGood;
   if (state.notesTomorrow) document.getElementById('notesTomorrow').value = state.notesTomorrow;
   if (state.outreachToday) document.getElementById('outreachToday').value = state.outreachToday;
+  loadMood();
 }
 
 // ============================================================
@@ -2901,17 +3007,45 @@ function buildJarvisContext() {
   const doneTasks = Object.values(st).filter(Boolean).length;
   const totalT    = Object.values(TASK_GROUPS).flat().length;
 
+  // 9.9M Fokus-Filter
+  const energyLevel   = parseInt(localStorage.getItem(MOOD_KEY) || '7');
+  const moodCheck     = energyLevel >= 5;
+  const maxTasksPensum = energyLevel >= 8 ? 5 : energyLevel >= 5 ? 5 : energyLevel >= 3 ? 3 : 2;
+  const deepRestNeeded = energyLevel < 3;
+
+  // 9.9M KPI
+  const vision9_9M    = 9900000;
+  const yearRevenue   = parseFloat(localStorage.getItem('cango_vision') || '0');
+  const monthsLeft    = 12 - today.getMonth();
+  const delta99       = Math.max(0, vision9_9M - yearRevenue);
+  const monthlyNeed   = monthsLeft > 0 ? Math.round(delta99 / monthsLeft) : delta99;
+  const focusSignal   = delta99 > 5000000 ? 'Aufbau: Sichtbarkeit + Systeme' :
+                        delta99 > 1000000 ? 'Skalierung: Hebel multiplizieren' :
+                        delta99 > 100000  ? 'Closing: High-Ticket + Retainer' : '🏆 Ziel erreicht';
+
   return {
-    date:        TODAY,
+    date:            TODAY,
     dayName,
     daysLeft,
-    monthRevenue:   finance.total,
-    monthGoal:      2870,
+    monthRevenue:    finance.total,
+    monthGoal:       2870,
     monthPct,
-    revenueGap:     Math.max(0, 2870 - finance.total),
-    streak:         streak.current,
+    revenueGap:      Math.max(0, 2870 - finance.total),
+    streak:          streak.current,
     lastOutreach,
-    doneTodayPct:   Math.round((doneTasks / totalT) * 100),
+    doneTodayPct:    Math.round((doneTasks / totalT) * 100),
+    energyLevel,
+    moodCheck,
+    deepRestNeeded,
+    maxTasksPensum,
+    vision: {
+      goal:       vision9_9M,
+      yearRevenue,
+      delta:      delta99,
+      monthlyNeed,
+      focusSignal,
+      monthsLeft,
+    },
     pillars:        ['Prozess-Coaching (€500 Website/€500 Retainer)', 'Affiliate (SaaS/Amazon/Booking)', 'E-Commerce + Content', 'Bot-Empire (n8n/Python)'],
     tools_active:   ['BrowserAct','Reap','Greta','Mootion','NoCodeBackend','Voilà','Sociamonials','DepositPhotos','Opus Clip','Kie.ai','NeuronWriter','Feedspace','Yapper.so','Gemini'],
     tools_expired:  ['TidyCal','Unmixr AI','Katteb'],
@@ -2920,15 +3054,29 @@ function buildJarvisContext() {
 
 function renderJarvisContext(ctx) {
   const bar = document.getElementById('jarvisContextBar');
-  if (!bar) return;
-  const urgency = ctx.monthPct < 30 && ctx.daysLeft < 15 ? '🔴' : ctx.monthPct < 60 ? '🟡' : '🟢';
-  bar.innerHTML = `
-    <span class="jctx">📅 <span>${ctx.dayName}</span></span>
-    <span class="jctx">💰 Monat: <span>${urgency} €${ctx.monthRevenue} / €2870 (${ctx.monthPct}%)</span></span>
-    <span class="jctx">⏰ Noch <span>${ctx.daysLeft} Tage</span> im Monat</span>
-    <span class="jctx">🔥 Streak: <span>${ctx.streak} Tage</span></span>
-    <span class="jctx">📤 Letzter Outreach: <span>${ctx.lastOutreach}</span></span>
-  `;
+  if (bar) {
+    const urgency = ctx.monthPct < 30 && ctx.daysLeft < 15 ? '🔴' : ctx.monthPct < 60 ? '🟡' : '🟢';
+    const moodIcon = ctx.energyLevel >= 8 ? '🔥' : ctx.energyLevel >= 5 ? '😊' : ctx.energyLevel >= 3 ? '😐' : '🛡️';
+    bar.innerHTML = `
+      <span class="jctx">📅 <span>${ctx.dayName}</span></span>
+      <span class="jctx">💰 Monat: <span>${urgency} €${ctx.monthRevenue} / €2870 (${ctx.monthPct}%)</span></span>
+      <span class="jctx">⏰ Noch <span>${ctx.daysLeft} Tage</span></span>
+      <span class="jctx">🔥 Streak: <span>${ctx.streak} Tage</span></span>
+      <span class="jctx">📤 Outreach: <span>${ctx.lastOutreach}</span></span>
+      <span class="jctx">${moodIcon} Energie: <span>${ctx.energyLevel}/10${ctx.deepRestNeeded ? ' · ⚠️ Deep-Rest!' : ''}</span></span>
+    `;
+  }
+
+  // 9.9M KPI Pills
+  const v = ctx.vision;
+  if (v) {
+    const fmt = n => n >= 1000000 ? (n/1000000).toFixed(2)+'M' : n >= 1000 ? Math.round(n/1000)+'K' : n;
+    const el = id => document.getElementById(id);
+    if (el('kpiYearRev'))   el('kpiYearRev').textContent   = '€' + fmt(v.yearRevenue);
+    if (el('kpiDelta'))     el('kpiDelta').textContent      = '€' + fmt(v.delta);
+    if (el('kpiMonthNeed')) el('kpiMonthNeed').textContent  = '€' + fmt(v.monthlyNeed) + '/Mo';
+    if (el('kpiFocusToday'))el('kpiFocusToday').textContent = v.focusSignal;
+  }
 }
 
 async function loadJarvisMissions(forceRefresh) {
@@ -2979,15 +3127,26 @@ async function loadJarvisMissions(forceRefresh) {
 }
 
 function renderJarvisOffline(ctx) {
-  // Smart offline fallback: rule-based priority logic
   const missions = [];
   const gap  = ctx.revenueGap;
   const days = ctx.daysLeft;
+  const maxT = ctx.maxTasksPensum || 5;
+
+  // Deep-Rest: erzwinge Pause als Mission #1
+  if (ctx.deepRestNeeded) {
+    missions.push({ rank:1, task:'🛡️ Deep-Rest-Slot: 30 Min. Pause vor ALLEM', pillar:'Bio-Struktur', why:`Energie-Level ${ctx.energyLevel}/10 – Jarvis erzwingt Pause. Danach max. 2 Kern-Tasks. Kein Outreach heute.`, tools:['Kein Handy','Spaziergang','Atemübung'] });
+    missions.push({ rank:2, task:'Nur: Morgen-Plan schreiben (10 Min.)', pillar:'Bio-Struktur', why:'Bei niedrigem Energie-Level kostet Outreach mehr als es bringt. Investiere in morgen.', tools:['Notizen'] });
+    renderJarvisMissions({ missions, alert:'⚠️ Deep-Rest-Modus: Nur 2 Tasks. Körper geht vor.', daily_focus:'Erholen und morgen stärker zurückkommen.' });
+    return;
+  }
+
+  // 9.9M Fokus-Filter: Rauschen ans Ende
+  const isContentDay = ['Montag','Mittwoch','Freitag'].includes(ctx.dayName);
 
   if (gap > 1500 && days < 20) {
-    missions.push({ rank:1, task:'🔴 Outreach: 3 Mittelständler heute kontaktieren', pillar:'Coaching', why:`Nur €${ctx.monthRevenue} von €2870 erreicht. ${days} Tage verbleiben. Outreach ist der direkteste Hebel.`, tools:['BrowserAct','outreach_sniper.py','Gemini'] });
+    missions.push({ rank:1, task:'🔴 ALARM: 3 Mittelständler heute kontaktieren', pillar:'Coaching', why:`€${gap} fehlen, ${days} Tage verbleiben. 9.9M-Filter: Outreach = direktester Hebel. Alles andere ist Rauschen.`, tools:['BrowserAct','outreach_sniper.py','Gemini'] });
   } else if (gap > 500) {
-    missions.push({ rank:1, task:'Coaching-Angebot erstellen oder Follow-up senden', pillar:'Coaching', why:`€${gap} fehlen noch. Ein Abschluss deckt den Rest.`, tools:['Greta','Feedspace','Gemini'] });
+    missions.push({ rank:1, task:'Coaching-Angebot erstellen oder Follow-up senden', pillar:'Coaching', why:`€${gap} fehlen. Ein Abschluss deckt den Rest. 9.9M-Delta: jeder Retainer zählt.`, tools:['Greta','Feedspace','Gemini'] });
   } else {
     missions.push({ rank:1, task:'LinkedIn-Post veröffentlichen (Expertise zeigen)', pillar:'Branding', why:'Monatsziel fast erreicht – jetzt Sichtbarkeit für nächsten Monat aufbauen.', tools:['Reap','Sociamonials','Kie.ai'] });
   }
@@ -2998,13 +3157,20 @@ function renderJarvisOffline(ctx) {
     missions.push({ rank:2, task:'Affiliate-Content erstellen (Reap: 1 Longform → 5 Posts)', pillar:'Affiliate', why:'Passiv-Einnahmen brauchen Content-Volumen. Heute investieren = nächsten Monat ernten.', tools:['Reap','Sociamonials','NeuronWriter'] });
   }
 
-  missions.push({ rank:3, task:'n8n-Workflows prüfen + 1 Bot verbessern', pillar:'Bot-Empire', why:'Bots arbeiten für dich während du schläfst. Jede Stunde Investition = Dauerhafter Hebel.', tools:['Hostinger VPS','n8n','NoCodeBackend'] });
-
-  if (ctx.dayName === 'Montag' || ctx.dayName === 'Mittwoch' || ctx.dayName === 'Freitag') {
-    missions.push({ rank:4, task:'Opus Clip: Video schneiden + via Sociamonials planen', pillar:'Content', why:`${ctx.dayName} = Content-Tag. 1 Video jetzt = organische Reichweite für 7 Tage.`, tools:['Opus Clip','Mootion','Sociamonials'] });
+  if (missions.length < maxT) {
+    missions.push({ rank:3, task:'n8n-Workflows prüfen + 1 Bot verbessern', pillar:'Bot-Empire', why:'Bots arbeiten für dich während du schläfst. Jede Stunde Investition = Dauerhafter Hebel.', tools:['Hostinger VPS','n8n','NoCodeBackend'] });
   }
 
-  renderJarvisMissions({ missions });
+  if (missions.length < maxT && isContentDay) {
+    missions.push({ rank:4, task:'Opus Clip: Video schneiden + via Sociamonials planen', pillar:'Content', why:`${ctx.dayName} = Content-Tag. 1 Video = organische Reichweite für 7 Tage.`, tools:['Opus Clip','Mootion','Sociamonials'] });
+  }
+
+  const energyNote = ctx.energyLevel <= 4 ? ' · ⚠️ Reduziertes Pensum (Energie niedrig)' : '';
+  renderJarvisMissions({
+    missions: missions.slice(0, maxT),
+    daily_focus: ctx.vision?.focusSignal || 'Umsatz-Lücke schließen',
+    alert: gap > 2000 ? `🔴 ALARM: €${gap} fehlen bei ${days} Tagen verbleibend${energyNote}` : null
+  });
 }
 
 function renderJarvisMissions(data) {
