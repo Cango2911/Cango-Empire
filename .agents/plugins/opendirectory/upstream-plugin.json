@@ -1,0 +1,19 @@
+{
+  "name": "opendirectory-gtm-skills",
+  "version": "1.0.1",
+  "description": "A collection of 57 agent skills for founders who hate marketing",
+  "author": {
+    "name": "Varnan"
+  },
+  "homepage": "https://github.com/Varnan-Tech/opendirectory",
+  "repository": "https://github.com/Varnan-Tech/opendirectory",
+  "license": "MIT",
+  "keywords": [
+    "gtm",
+    "marketing",
+    "growth",
+    "claude-code",
+    "skills",
+    "ai-agents"
+  ]
+}
