@@ -1,0 +1,40 @@
+{
+  "name": "heygen-skills",
+  "version": "3.2.0",
+  "description": "HeyGen agent skills — Avatar creation (persistent digital identity / digital twin from photo), presenter video generation (v3 Video Agent pipeline), and video translation/dubbing (175+ languages, voice cloning, lip-sync). Requires HEYGEN_API_KEY or HeyGen MCP server.",
+  "type": "agent-skills",
+  "source": "https://github.com/heygen-com/skills",
+  "license": "MIT",
+  "author": "HeyGen (heygen.com)",
+  "requires": {
+    "runtime": "none",
+    "env": {
+      "required": [
+        "HEYGEN_API_KEY"
+      ],
+      "optional": []
+    }
+  },
+  "skills": [
+    {
+      "name": "heygen-video",
+      "path": ".agents/skills/heygen-video",
+      "description": "Generate HeyGen presenter videos via v3 Video Agent pipeline"
+    },
+    {
+      "name": "heygen-avatar",
+      "path": ".agents/skills/heygen-avatar",
+      "description": "Create persistent HeyGen avatar identities (prompt-based or photo upload)"
+    },
+    {
+      "name": "heygen-translate",
+      "path": ".agents/skills/heygen-translate",
+      "description": "Translate and dub videos into 175+ languages with voice cloning and lip-sync"
+    }
+  ],
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "update-check.sh lädt via curl nur eine Versionsnummer von github.com/heygen-com/skills/master/VERSION, validiert gegen ^[0-9]+\\.[0-9.]+$ und führt sie nicht aus. Kein eval(), kein shell=True, kein curl|sh, kein pickle.loads, keine verschleierte Code-Ausführung."
+  }
+}
