@@ -1,0 +1,79 @@
+{
+  "name": "bfl-flux2",
+  "version": "latest",
+  "description": "Black Forest Labs FLUX.2 — nächste Generation von Frontier-Bildgenerierung und -bearbeitung. Umfasst FLUX.2 [dev] (32B Parameter, Hochqualitäts-T2I + Multi-Referenz-Bearbeitung) sowie die FLUX.2 [klein] Familie (4B/9B, sub-sekunden Inferenz auf Consumer-GPUs, Apache-2.0 für 4B-Modelle). Alle Modelle unterstützen Text-to-Image, Single-Reference- und Multi-Reference-Bildbearbeitung.",
+  "type": "library",
+  "source": "https://github.com/black-forest-labs/flux2",
+  "license": "Apache-2.0 (4B-Modelle); FLUX Non-Commercial License (9B- und dev-Modelle)",
+  "author": "Black Forest Labs",
+  "requires": {
+    "runtime": "python>=3.12",
+    "env": {
+      "required": [],
+      "optional": [
+        "FLUX2_MODEL_PATH",
+        "AE_MODEL_PATH",
+        "KLEIN_4B_MODEL_PATH",
+        "KLEIN_4B_BASE_MODEL_PATH",
+        "KLEIN_9B_MODEL_PATH",
+        "KLEIN_9B_KV_MODEL_PATH",
+        "KLEIN_9B_BASE_MODEL_PATH",
+        "OPENROUTER_API_KEY",
+        "HF_TOKEN"
+      ]
+    }
+  },
+  "models": [
+    {
+      "name": "FLUX.2 [klein] 4B",
+      "hf_repo": "black-forest-labs/FLUX.2-klein-4B",
+      "license": "apache-2.0",
+      "distilled": true,
+      "vram": "~8GB",
+      "use_case": "Echtzeit-T2I + Bearbeitung auf Consumer-GPUs"
+    },
+    {
+      "name": "FLUX.2 [klein] 9B",
+      "hf_repo": "black-forest-labs/FLUX.2-klein-9B",
+      "license": "FLUX Non-Commercial",
+      "distilled": true,
+      "use_case": "Hochqualitäts-T2I + Bildbearbeitung"
+    },
+    {
+      "name": "FLUX.2 [klein] 9B KV",
+      "hf_repo": "black-forest-labs/FLUX.2-klein-9b-kv",
+      "license": "FLUX Non-Commercial",
+      "distilled": true,
+      "use_case": "Multi-Referenz-Bearbeitung mit KV-Cache (bis zu 2.66x schneller)"
+    },
+    {
+      "name": "FLUX.2 [klein] 4B Base",
+      "hf_repo": "black-forest-labs/FLUX.2-klein-base-4B",
+      "license": "apache-2.0",
+      "distilled": false,
+      "use_case": "Fine-Tuning / LoRA-Training auf begrenzter Hardware"
+    },
+    {
+      "name": "FLUX.2 [klein] 9B Base",
+      "hf_repo": "black-forest-labs/FLUX.2-klein-base-9B",
+      "license": "FLUX Non-Commercial",
+      "distilled": false,
+      "use_case": "Forschung, LoRA-Training, maximale Ausgabevielfalt"
+    },
+    {
+      "name": "FLUX.2 [dev]",
+      "hf_repo": "black-forest-labs/FLUX.2-dev",
+      "license": "FLUX Non-Commercial",
+      "distilled": false,
+      "params": "32B",
+      "vram": "80GB+ (H100); 4-Bit-Quantisierung für RTX 4090",
+      "use_case": "Maximale Qualität, T2I + Multi-Referenz-Bearbeitung"
+    }
+  ],
+  "skill": ".agents/skills/bfl-flux2",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "model.eval() / ae.eval() / text_encoder.eval() sind PyTorch-Evaluierungsmodus, kein Code-Exec. base64.b64encode kodiert nur Ausgabe-Bilder. Kein shell=True, kein eval(), kein pickle.loads von Remote, kein curl|sh, keine verschleierte Code-Ausführung."
+  }
+}
