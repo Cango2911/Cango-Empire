@@ -1,0 +1,28 @@
+{
+  "name": "digital-pr-link-building",
+  "version": "1.0.0",
+  "description": "Digital PR und Link Building Guide — Earned Media Links durch Linkable Assets (Original Research, Interactive Tools, Datenvisualisierungen, Benchmarks). 5-Schritte Campaign Prozess: Asset-Typ wählen, glaubwürdige Quellen, Journalist-Liste aufbauen, Pitches schreiben, Link-Qualität messen. PR Automation, Häufige Fehler, Outreach-Kanäle und ROI-Benchmarks.",
+  "license": "proprietary",
+  "author": "Cango Empire",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/digital-pr-link-building",
+  "source": "internal — erstellt aus Blogartikel 'Digital PR earns high-quality backlinks through editorial coverage'",
+  "covers": [
+    "Digital PR vs. traditionelles Link Building",
+    "Linkable Asset Typen (Research, Tools, Visualisierungen, Benchmarks, Newsjacking)",
+    "5-Schritte Campaign Prozess",
+    "Journalist-Liste aufbauen (30-50 targeted)",
+    "Pitch-Struktur und Subject Line Best Practices",
+    "Link-Qualität messen (quantitativ + qualitativ)",
+    "PR Automation Workflows",
+    "Häufige Fehler und Lösungen",
+    "Outreach-Kanäle (HARO, Qwoted, E-Mail, Social)",
+    "ROI und Business Case"
+  ],
+  "key_benchmarks": {
+    "avg_links_per_campaign": "15-20 hochwertige Backlinks",
+    "top_performer": "50+ Domains",
+    "agency_cost": "$5.000-25.000 pro Campaign",
+    "manual_campaign_hours": "30-40 Stunden"
+  }
+}
