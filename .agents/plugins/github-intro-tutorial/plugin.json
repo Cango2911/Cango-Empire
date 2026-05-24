@@ -1,0 +1,22 @@
+{
+  "name": "github-intro-tutorial",
+  "version": "latest",
+  "description": "GitHub Skills interactive tutorial — Introduction to GitHub. Teaches new developers the four core GitHub workflows: creating branches, committing files, opening pull requests, and merging. Originally a GitHub Actions-powered template repo from github.com/skills.",
+  "type": "tutorial",
+  "source": "https://github.com/skills/introduction-to-github",
+  "license": "MIT",
+  "author": "GitHub Skills",
+  "requires": {
+    "runtime": "none",
+    "env": {
+      "required": [],
+      "optional": []
+    }
+  },
+  "skill": ".agents/skills/github-intro",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Pure markdown steps, PNG screenshots, and GitHub Actions workflow YAML that calls pinned Actions (actions/checkout@v4, GrantBirki/comment@v2.1.1) via GITHUB_TOKEN. No scripts, no executables, no eval, no shell injection."
+  }
+}
