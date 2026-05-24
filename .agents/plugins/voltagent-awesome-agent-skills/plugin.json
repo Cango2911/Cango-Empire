@@ -1,0 +1,22 @@
+{
+  "name": "voltagent-awesome-agent-skills",
+  "version": "latest",
+  "description": "Curated list of 1100+ official and community Agent Skills by VoltAgent — hand-picked, not AI-slop generated. Covers official skills from Anthropic, VoltAgent, Angular, Composio, Supabase, Google Gemini, Stripe, Expo, Better Auth, Tinybird, HashiCorp/Terraform, Sanity, Firecrawl, Neon, ClickHouse, Remotion, Replicate, Vercel, Cloudflare, Netlify, Google Labs/Stitch, Google Workspace CLI, Hugging Face, Trail of Bits (security), Sentry, Microsoft (133 Azure skills), fal.ai, WordPress, OpenAI, Figma, Binance, Apollo GraphQL, Auth0, Brave, Browserbase, CodeRabbit, Coinbase, Datadog Labs, Firebase, Flutter, Venice.ai, Redis, and more. Community: Corey Haines (marketing), Kim Barrett (advertising), Dean Peters (46 PM skills), Paweł Huryn (65 PM skills), MiniMax, DuckDB, GSAP, Garry Tan, Notion, Resend, Addy Osmani, MongoDB.",
+  "type": "reference-collection",
+  "source": "https://github.com/VoltAgent/awesome-agent-skills",
+  "license": "MIT",
+  "author": "VoltAgent",
+  "requires": {
+    "runtime": "none",
+    "env": {
+      "required": [],
+      "optional": []
+    }
+  },
+  "skill": ".agents/skills/voltagent-awesome-agent-skills",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Pure markdown README.md + CONTRIBUTING.md + LICENSE + .gitignore. No scripts, no executables, no code, no shell commands. Curated skill reference list only."
+  }
+}
