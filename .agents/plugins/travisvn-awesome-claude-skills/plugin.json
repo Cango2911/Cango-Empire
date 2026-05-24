@@ -1,0 +1,22 @@
+{
+  "name": "travisvn-awesome-claude-skills",
+  "version": "latest",
+  "description": "travisvn/awesome-claude-skills — Kuratierte Awesome List für Claude Skills. Offizielle Skills (Anthropic docx/pdf/pptx/xlsx/algorithmic-art/canvas-design/frontend-design/mcp-builder/webapp-testing/brand-guidelines/skill-creator), Community Skills (obra/superpowers, ios-simulator, ffuf, playwright, d3js, Trail of Bits Security, Expo, shadcn/ui), Vergleichstabellen (Skills vs MCP, Skills vs System Prompts), Sicherheitsrichtlinien, Tutorials, FAQ.",
+  "license": "MIT",
+  "source": "https://github.com/travisvn/awesome-claude-skills",
+  "author": "travisvn",
+  "type": "reference-collection",
+  "highlights": [
+    "Vergleichstabelle: Skills vs MCP vs System Prompts vs Subagents vs Projects",
+    "Progressive Disclosure Architektur erklärt (~100 Token Metadata, <5k Token full load)",
+    "Sicherheitsrichtlinien inkl. Link zu Weaponizing-Analyse",
+    "Troubleshooting: bekannte Bugs (Linux path bug Oct 2025), Enterprise-Einschränkungen",
+    "FAQ: Token-Usage, Monetarisierung, Team-Sharing, API-Kosten"
+  ],
+  "official_skills": ["docx", "pdf", "pptx", "xlsx", "algorithmic-art", "canvas-design", "slack-gif-creator", "frontend-design", "web-artifacts-builder", "mcp-builder", "webapp-testing", "brand-guidelines", "internal-comms", "skill-creator"],
+  "community_skills": ["obra/superpowers", "ios-simulator-skill", "ffuf-web-fuzzing", "playwright-skill", "claude-d3js-skill", "claude-scientific-skills", "web-asset-generator", "loki-mode", "Trail of Bits Security", "frontend-slides", "Expo Skills", "shadcn/ui", "get-shit-done"],
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "Nur README.md, CONTRIBUTING.md, .gitignore — kein ausführbarer Code."
+  }
+}
