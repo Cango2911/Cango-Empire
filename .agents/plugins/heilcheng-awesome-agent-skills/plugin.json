@@ -1,0 +1,31 @@
+{
+  "name": "heilcheng-awesome-agent-skills",
+  "version": "latest",
+  "description": "heilcheng/awesome-agent-skills — Agent Skill Index mit 212 kuratierten Skills in 6 Sprachen (EN/ZH-TW/ZH-CN/JA/KO/ES). Kategorien: AI Platforms (Anthropic, OpenAI, Google, HuggingFace, fal.ai, MiniMax), Cloud (Cloudflare, Netlify, Vercel, HashiCorp, Neon, Supabase), Dev Tools (VoltAgent, Expo, Remotion, DuckDB, GSAP, Figma), Google Ecosystem, Business (Stripe, Composio, Notion, Sanity), Security (Trail of Bits, Sentry, Firecrawl, Microsoft), Community Skills. Website: agent-skill.co",
+  "license": "MIT",
+  "source": "https://github.com/heilcheng/awesome-agent-skills",
+  "website": "https://agent-skill.co",
+  "author": "Hailey Cheng (heilcheng)",
+  "type": "reference-collection",
+  "total_entries": 212,
+  "languages": ["en", "zh-TW", "zh-CN", "ja", "ko", "es"],
+  "categories": {
+    "AI Platforms & Models": ["Anthropic", "OpenAI Codex", "Google Gemini", "Hugging Face", "Replicate", "fal.ai", "MiniMax"],
+    "Cloud & Infrastructure": ["Cloudflare", "Netlify", "Vercel", "HashiCorp/Terraform", "Neon", "ClickHouse", "Supabase", "Tinybird"],
+    "Developer Tools & Frameworks": ["VoltAgent", "CallStack", "Expo", "Remotion", "DuckDB", "GSAP", "WordPress", "Figma"],
+    "Google Ecosystem": ["Google Labs/Stitch", "Google Workspace CLI"],
+    "Business, Productivity & Marketing": ["Stripe", "Courier", "Typefully", "Composio", "Notion", "Resend", "Sanity", "Better Auth"],
+    "Security & Web Intelligence": ["Trail of Bits", "Sentry", "Firecrawl", "Microsoft", "Binance"],
+    "Community": ["Vector Databases", "Marketing (Corey Haines)", "Product Management (Dean Peters, Pawel Huryn, Garry Tan)", "Development & Testing", "Context Engineering"]
+  },
+  "marketplaces": {
+    "skillsmp": "https://skillsmp.com",
+    "skills_sh": "https://skills.sh",
+    "cli": "npx skills"
+  },
+  "compatible_agents": ["Claude Code", "Claude.ai", "Codex", "GitHub Copilot", "Antigravity", "Gemini CLI", "Cursor", "Windsurf", "Kiro", "Junie"],
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "dangerouslySetInnerHTML in website/layout.tsx: hardcodiertes Dark-Mode-Skript (localStorage.theme), standard Next.js FOUC-Muster. Keine externen Inhalte."
+  }
+}
