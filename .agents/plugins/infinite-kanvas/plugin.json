@@ -1,0 +1,44 @@
+{
+  "name": "infinite-kanvas",
+  "version": "1.0.0",
+  "description": "Infinite canvas image editor with AI transformations powered by fal.ai. Next.js 15 app with React Konva, tRPC, real-time streaming, 20+ style presets (Flux Kontext LoRA), background removal, image/video generation, and auto-save.",
+  "type": "nextjs-web-app",
+  "source": "https://github.com/fal-ai-community/infinite-kanvas",
+  "license": "MIT",
+  "author": "fal-ai-community",
+  "requires": {
+    "runtime": "Node.js 20+",
+    "env": {
+      "required": ["FAL_KEY"],
+      "optional": ["KV_REST_API_URL", "KV_REST_API_TOKEN", "NEXT_PUBLIC_APP_URL"]
+    }
+  },
+  "stack": {
+    "framework": "Next.js 15 (App Router)",
+    "canvas": "React Konva",
+    "api": "tRPC",
+    "styling": "Tailwind CSS + shadcn/ui",
+    "storage": "IndexedDB (browser auto-save)",
+    "ai": "fal.ai (Flux Kontext, BiRefNet, Kling, Wan)",
+    "ratelimit": "Upstash KV (optional)"
+  },
+  "install": {
+    "step1": "cd .agents/plugins/infinite-kanvas && npm install",
+    "step2": "Fill in .env with FAL_KEY (get from https://fal.ai/dashboard/keys)",
+    "step3": "npm run dev  # starts at http://localhost:3000"
+  },
+  "features": {
+    "canvas": ["infinite pan/zoom", "drag-drop upload", "multi-select", "crop", "undo/redo", "IndexedDB auto-save"],
+    "ai_image": ["style transfer (20+ styles)", "background removal", "face retouch", "text-to-image"],
+    "ai_video": ["image-to-video", "video-to-video", "video extend"],
+    "styles": ["anime", "ghibli", "pixel", "clay", "lego", "watercolor", "charcoal", "3d", "abstract", "cubist", "impressionist", "minimalist", "pencil_drawing", "simpsons", "snoopy", "wojak", "jojo", "plushie", "fluffy", "glassprism", "mosaicart", "lowpoly", "bighead", "overlay", "lightfix", "detailer", "faceretoucher"],
+    "rate_limiting": "3-tier (per-minute/hour/day) for users without own API key"
+  },
+  "env_file": ".env (template with empty values — fill in FAL_KEY)",
+  "skill": ".agents/skills/infinite-kanvas",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Standard Next.js 15 app. No eval(), no child_process, no shell exec. fal.ai proxy at /api/fal for file uploads. tRPC for type-safe API. CI: lint/format/typecheck only. .env.example had empty placeholders only — no real keys committed."
+  }
+}
