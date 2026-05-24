@@ -1,0 +1,69 @@
+{
+  "name": "fal-sdk",
+  "version": "latest",
+  "description": "Official fal.ai Python monorepo. Three packages: `fal` (serverless Python runtime — deploy ML apps with a CLI), `fal-client` (lightweight Python client for calling fal.ai model endpoints), and `isolate-proto` (gRPC protobuf definitions for the isolate service). Supports sync/async, streaming, realtime WebSocket, file upload, queuing, and secrets management.",
+  "type": "python-sdk",
+  "source": "https://github.com/fal-ai/fal",
+  "license": "MIT",
+  "author": "fal-ai (Features & Labels)",
+  "requires": {
+    "runtime": "Python 3.8+",
+    "env": {
+      "required": ["FAL_KEY"],
+      "optional": []
+    }
+  },
+  "packages": {
+    "fal": {
+      "pypi": "fal",
+      "install": "pip install fal",
+      "source": "projects/fal",
+      "description": "Serverless Python SDK + CLI for deploying apps to fal.ai",
+      "entrypoint": "fal"
+    },
+    "fal_client": {
+      "pypi": "fal-client",
+      "install": "pip install fal-client",
+      "source": "projects/fal_client",
+      "description": "Lightweight Python client for calling fal.ai model endpoints"
+    },
+    "isolate_proto": {
+      "pypi": "isolate-proto",
+      "install": "pip install isolate-proto",
+      "source": "projects/isolate_proto",
+      "description": "gRPC protobuf definitions for the fal isolate service"
+    }
+  },
+  "install": {
+    "fal_client": "pip install fal-client",
+    "fal_sdk": "pip install fal",
+    "from_source": "pip install -e 'projects/fal[dev]'",
+    "auth": "export FAL_KEY=your_key  # or: fal auth login"
+  },
+  "features": {
+    "fal_client": [
+      "sync/async run",
+      "submit (queue) + poll",
+      "stream (SSE)",
+      "realtime WebSocket",
+      "file upload to fal.media CDN",
+      "encode_file / encode_image (data URLs)",
+      "cancel, status, result"
+    ],
+    "fal_sdk": [
+      "serverless function decorator (@fal.function)",
+      "app class (fal.App + @fal.endpoint)",
+      "realtime WebSocket endpoints",
+      "CLI: run, deploy, auth, keys, secrets, files, queue, runners",
+      "GPU/CPU machine selection",
+      "auto-scaling to zero",
+      "toolkit: Image, Audio, Video, File, KV store"
+    ]
+  },
+  "skill": ".agents/skills/fal-sdk",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Official fal.ai Python SDK. subprocess.run used only for 'python -m build' and 'nvidia-smi' with fixed lists (no shell=True). pickle.loads reads only local IPC error files, not remote data. No eval() of remote content, no shell injection. Published on PyPI."
+  }
+}

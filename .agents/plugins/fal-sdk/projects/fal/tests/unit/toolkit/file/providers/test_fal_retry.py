@@ -1,0 +1,143 @@
+from __future__ import annotations
+
+from unittest import mock
+from urllib.error import HTTPError, URLError
+from urllib.request import Request
+
+import pytest
+
+from fal.toolkit.file.providers.fal import _maybe_retry_request
+
+
+class MockResponse:
+    """Mock response object that mimics urllib.response.addinfourl"""
+
+    def __init__(self, data: str = '{"result": "success"}', status: int = 200):
+        self.data = data.encode()
+        self.status = status
+        self.headers = {"Content-Type": "application/json"}
+
+    def read(self):
+        return self.data
+
+    def close(self):
+        pass
+
+
+URLOPEN = "fal.toolkit.file.providers.fal.urlopen"
+SLEEP = "fal.toolkit.utils.retry.time.sleep"
+
+
+def test_retries_on_transient_error():
+    """Smoke test: retry is wired up — a transient 500 is retried and succeeds."""
+    request = Request("https://example.com/test")
+    call_count = 0
+
+    def side_effect(*args, **kwargs):
+        nonlocal call_count
+        call_count += 1
+        if call_count == 1:
+            raise HTTPError("https://example.com/test", 500, "Server Error", {}, None)
+        return MockResponse()
+
+    with mock.patch(URLOPEN, side_effect=side_effect):
+        with mock.patch(SLEEP):
+            with _maybe_retry_request(request) as response:
+                assert response is not None
+
+    assert call_count == 2
+
+
+def test_retry_on_url_error():
+    request = Request("https://example.com/test")
+    call_count = 0
+
+    def side_effect(*args, **kwargs):
+        nonlocal call_count
+        call_count += 1
+        if call_count < 3:
+            raise URLError("[SSL: UNEXPECTED_EOF_WHILE_READING]")
+        return MockResponse()
+
+    with mock.patch(URLOPEN, side_effect=side_effect):
+        with mock.patch(SLEEP):
+            with _maybe_retry_request(request) as response:
+                assert response is not None
+
+    assert call_count == 3
+
+
+def test_retry_on_timeout_error():
+    request = Request("https://example.com/test")
+    call_count = 0
+
+    def side_effect(*args, **kwargs):
+        nonlocal call_count
+        call_count += 1
+        if call_count == 1:
+            raise TimeoutError("Connection timed out")
+        return MockResponse()
+
+    with mock.patch(URLOPEN, side_effect=side_effect):
+        with mock.patch(SLEEP):
+            with _maybe_retry_request(request) as response:
+                assert response is not None
+
+    assert call_count == 2
+
+
+def test_no_retry_on_client_error():
+    """_should_retry negative path: a 400 is not retried."""
+    request = Request("https://example.com/test")
+
+    with mock.patch(URLOPEN) as mock_urlopen:
+        mock_urlopen.side_effect = HTTPError(
+            "https://example.com/test", 400, "Bad Request", {}, None
+        )
+
+        with pytest.raises(HTTPError) as exc_info:
+            with _maybe_retry_request(request):
+                pass
+
+    assert exc_info.value.code == 400
+    assert mock_urlopen.call_count == 1
+
+
+def test_response_closed_on_caller_exception():
+    """response.close() is called even when the caller raises inside the with block."""
+    request = Request("https://example.com/test")
+
+    with mock.patch(URLOPEN) as mock_urlopen:
+        mock_response = MockResponse()
+        mock_response.close = mock.Mock()
+        mock_urlopen.return_value = mock_response
+
+        with pytest.raises(RuntimeError):
+            with _maybe_retry_request(request):
+                raise RuntimeError("unexpected error occurred")
+
+        mock_response.close.assert_called_once()
+
+
+def test_custom_timeout_forwarded():
+    request = Request("https://example.com/test")
+
+    with mock.patch(URLOPEN) as mock_urlopen:
+        mock_urlopen.return_value = MockResponse()
+
+        with _maybe_retry_request(request, timeout=300) as response:
+            assert response is not None
+
+        mock_urlopen.assert_called_once_with(request, timeout=300)
+
+
+def test_default_timeout():
+    request = Request("https://example.com/test")
+
+    with mock.patch(URLOPEN) as mock_urlopen:
+        mock_urlopen.return_value = MockResponse()
+
+        with _maybe_retry_request(request) as response:
+            assert response is not None
+
+        mock_urlopen.assert_called_once_with(request, timeout=10)
