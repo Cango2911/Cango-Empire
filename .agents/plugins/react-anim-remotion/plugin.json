@@ -1,0 +1,18 @@
+{
+  "name": "react-anim-remotion",
+  "version": "latest",
+  "description": "Remotion — Videos programmatisch mit React erstellen. Nutzt HTML, CSS, SVG, Canvas, WebGL. Frames werden zu echten Video-Dateien gerendert. Audio-Support, schnelles Editing. Kostenlos für Einzelpersonen, Firmenlizenz erforderlich für kommerzielle Nutzung. 18.1K GitHub Stars.",
+  "type": "library",
+  "source": "https://github.com/remotion-dev/remotion",
+  "license": "Remotion License (kostenlos für Einzelpersonen, Firmenlizenz für Unternehmen)",
+  "author": "remotion-dev",
+  "install": "npx create-video@latest",
+  "docs": "https://www.remotion.dev/docs",
+  "requires": { "runtime": "node", "env": { "required": [], "optional": [] } },
+  "skill": ".agents/skills/react-anim-remotion",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "eval(str) in packages/cli/src/load-config.ts lädt Entwickler-Konfigurationsdateien vom lokalen Filesystem — Standardmuster für Build-Tools (webpack/vite/rollup nutzen dasselbe). Kein Remote-Code, kein Nutzer-Input. image.eval() in Skia-Shadern ist die GPU-Shader-API von @shopify/react-native-skia, kein JS-Code-Exec."
+  }
+}
