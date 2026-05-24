@@ -1,0 +1,32 @@
+{
+  "name": "kling-watermark-enhancer",
+  "version": "1.0.0",
+  "description": "Python CLI tool to remove watermarks from KLing AI videos and enhance video quality using STTN (inpainting) and Real-ESRGAN/GFPGAN (super-resolution + face enhancement). NOT an agent skill — requires Python + ffmpeg + GPU.",
+  "author": {
+    "name": "chenwr727",
+    "url": "https://github.com/chenwr727/KLing-Video-WatermarkRemover-Enhancer"
+  },
+  "type": "python-cli",
+  "license": "MIT",
+  "submodules": {
+    "STTN": "https://github.com/researchmm/STTN.git",
+    "Real-ESRGAN": "https://github.com/xinntao/Real-ESRGAN.git"
+  },
+  "install": {
+    "step1": "git submodule update --init --recursive",
+    "step2": "pip install -r requirements.txt",
+    "requires": ["ffmpeg", "ffprobe", "CUDA (optional)"]
+  },
+  "weights_required": {
+    "sttn.pth": "STTN inpainting model — download separately",
+    "RealESRGAN_x2plus.pth": "Real-ESRGAN super-resolution model",
+    "GFPGANv1.4.pth": "GFPGAN face enhancement model"
+  },
+  "usage": {
+    "remove_watermark": "python main.py --input video.mp4 --remove-watermark",
+    "enhance": "python main.py --input video.mp4 --enhance-video",
+    "both": "python main.py --input video.mp4 --remove-watermark --enhance-video",
+    "batch": "python main.py --input /path/to/folder/ --remove-watermark --enhance-video"
+  },
+  "watermark_config": "Edit config.yaml: set watermark.position to [xmin, ymin, xmax, ymax] of the watermark area"
+}
