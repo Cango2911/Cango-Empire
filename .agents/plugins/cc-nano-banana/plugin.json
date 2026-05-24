@@ -1,0 +1,27 @@
+{
+  "name": "cc-nano-banana",
+  "version": "latest",
+  "description": "Claude Code Skill für Bildgenerierung und -bearbeitung via Gemini CLI nanobanana-Extension. Unterstützt Text-to-Image, Bildbearbeitung, Foto-Restaurierung, Icon-Generierung, Diagramme, Muster und sequenzielle Bilder. Erfordert Gemini CLI + GEMINI_API_KEY.",
+  "type": "skill",
+  "source": "https://github.com/kkoppenhaver/cc-nano-banana",
+  "license": "MIT",
+  "author": "kkoppenhaver",
+  "requires": {
+    "runtime": "gemini-cli",
+    "env": {
+      "required": [
+        "GEMINI_API_KEY"
+      ],
+      "optional": [
+        "NANOBANANA_MODEL",
+        "NANOBANANA_GEMINI_API_KEY"
+      ]
+    }
+  },
+  "skill": ".agents/skills/cc-nano-banana",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Nur 3 Dateien: LICENSE, README.md, SKILL.md. Kein ausführbarer Code. SKILL.md dokumentiert gemini --yolo CLI-Aufrufe als externe CLI-Befehle. Kein eval(), kein shell=True, kein subprocess, kein curl|sh."
+  }
+}
