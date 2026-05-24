@@ -1,0 +1,56 @@
+{
+  "name": "agent-leaderboard",
+  "version": "2026-05-24",
+  "description": "Agent Leaderboard — Live-Ranking der beliebtesten KI-Agent-Repositories auf GitHub. Trackt 5 Kategorien: Agent Skills (1785), MCP Server (1569), Prompt Libraries (1146), AI Frameworks (1251), Auto Research (705). Daten aus GitHub-API, täglich aktualisiert. Website: agentskills.media",
+  "license": "MIT",
+  "source": "https://github.com/jaychempan/Agent-Leaderboard",
+  "website": "https://agentskills.media",
+  "author": "jaychempan",
+  "type": "leaderboard-data",
+  "data": {
+    "agent_skills": {
+      "file": "./data/data.json",
+      "total": 1785,
+      "categories": {
+        "Claude": 1085,
+        "Codex": 378,
+        "Cursor": 211,
+        "Copilot": 133,
+        "Gemini": 152,
+        "DeepSeek": 30,
+        "Other": 399
+      }
+    },
+    "mcp_servers": {
+      "file": "./data/mcp_data.json",
+      "total": 1569
+    },
+    "prompt_libraries": {
+      "file": "./data/prompts_data.json",
+      "total": 1146
+    },
+    "ai_frameworks": {
+      "file": "./data/frameworks_data.json",
+      "total": 1251
+    },
+    "auto_research": {
+      "file": "./data/auto_research_data.json",
+      "total": 705
+    }
+  },
+  "scripts": {
+    "fetch_skills": "python3 scripts/fetch_data.py --token $GITHUB_TOKEN",
+    "fetch_mcp": "python3 scripts/fetch_mcp.py --token $GITHUB_TOKEN",
+    "fetch_frameworks": "python3 scripts/fetch_frameworks.py --token $GITHUB_TOKEN",
+    "fetch_prompts": "python3 scripts/fetch_prompts.py --token $GITHUB_TOKEN",
+    "fetch_research": "python3 scripts/fetch_auto_research.py --token $GITHUB_TOKEN"
+  },
+  "requires": {
+    "runtime": "python3",
+    "packages": ["requests"]
+  },
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "Python-Scripts verwenden ausschließlich GitHub-REST-API via requests. Kein shell=True, kein eval(), kein os.system. GitHub Actions nur mit secrets.GH_TOKEN."
+  }
+}
