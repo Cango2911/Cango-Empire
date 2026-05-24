@@ -1,0 +1,41 @@
+{
+  "name": "moviepy",
+  "version": "2.2.0",
+  "description": "MoviePy v2 — Python Video Editing Library (MIT). Schneiden, Verketten, Compositing, TextClip, GIF-Export, 34 Video-FX, 7 Audio-FX. FFmpeg-basiert, numpy-Arrays für pixel-genaue Kontrolle. Python 3.9+.",
+  "license": "MIT",
+  "author": "Zulko et al. (Open Source)",
+  "source": "https://github.com/Zulko/moviepy",
+  "pypi": "https://pypi.org/project/moviepy/",
+  "docs": "https://zulko.github.io/moviepy/",
+  "type": "agent-skill",
+  "skills": [
+    "moviepy"
+  ],
+  "covers": [
+    "VideoFileClip, AudioFileClip, ImageClip, ColorClip, TextClip",
+    "Schneiden (subclipped), Verketten (concatenate_videoclips), Grid (clips_array)",
+    "Compositing: CompositeVideoClip mit Layering und Transparenz",
+    "34 Video-FX: FadeIn/Out, Crop, Resize, Rotate, Mirror, BlackAndWhite, LumContrast, Scroll, SlideIn/Out, Loop, Freeze, TimeMirror, Margin, Painting, Blink, HeadBlur u.v.m.",
+    "7 Audio-FX: AudioFadeIn/Out, AudioNormalize, AudioDelay, MultiplyVolume, MultiplyStereoVolume",
+    "Export: MP4 (libx264/libx265/vp9), GIF, Audio, Einzelframe",
+    "FFmpeg-Tools: ffmpeg_extract_subclip, ffmpeg_merge_video_audio, ffmpeg_version",
+    "Eigene Effekte via Effect-Basisklasse + image_transform/time_transform",
+    "Jupyter Notebook Vorschau (ipython_display)",
+    "Migration v1 → v2 Cheat Sheet"
+  ],
+  "install": "pip install moviepy",
+  "requires": {
+    "python": ">=3.9",
+    "ffmpeg": "automatisch via imageio_ffmpeg"
+  },
+  "dependencies": [
+    "imageio>=2.5,<3.0",
+    "imageio_ffmpeg>=0.2.0",
+    "numpy>=1.25.0",
+    "pillow>=9.2.0",
+    "opencv-python-headless>=4.0.0",
+    "decorator>=4.0.2,<6.0",
+    "proglog<=1.0.0",
+    "python-dotenv>=0.10"
+  ]
+}
