@@ -1,0 +1,55 @@
+{
+  "name": "yapper",
+  "version": "2.0",
+  "description": "Free medical interview simulation game for healthcare students (nursing, PA, medical). Styled like a 16-bit GBA game. Players practice patient interviews in timed sessions against an AI-powered simulated patient (Alex Morgan) running on a local SLM (Llama2-based, 29 MB, ~112–120 tokens/sec on i5/8GB RAM). Runs on Windows, macOS, and Linux via Java.",
+  "type": "java-app",
+  "source": "https://github.com/02developer/yapper",
+  "license": "see LICENSE",
+  "author": "02developer (ohtwodeveloper@gmail.com)",
+  "requires": {
+    "runtime": "Java/OpenJDK 21+",
+    "env": {
+      "required": [],
+      "optional": []
+    }
+  },
+  "download": {
+    "jar": "https://github.com/02developer/yapper/raw/main/yapper.jar",
+    "note": "yapper.jar is 80 MB (includes embedded Llama2 SLM model.bin). Download directly from GitHub — not stored in this repo due to binary size."
+  },
+  "install": {
+    "step1": "Download yapper.jar from https://github.com/02developer/yapper/raw/main/yapper.jar",
+    "step2": "java -jar yapper.jar",
+    "requirements": "Java 21+ (OpenJDK recommended). No API key needed — fully local SLM."
+  },
+  "features": {
+    "game": [
+      "16-bit GBA-style visual aesthetic (Zelda: Minish Cap inspired)",
+      "Interactive back-and-forth medical interview format",
+      "User-configurable interview timer",
+      "Sex-variable patient for sex-specific history practice"
+    ],
+    "patient": [
+      "Alex Morgan, 34-year-old, 6-month heartburn history (7/10 severity)",
+      "Worsens with stress and large meals; occasionally nausea/sour taste",
+      "Graphic designer, married, no significant PMH",
+      "Responds to open/closed questions, ROS, social history, etc."
+    ],
+    "ai": [
+      "Local SLM (Llama2-based, 29 MB model.bin + tokenizer.bin)",
+      "Runs via embedded Llama2App.jar subprocess (ProcessBuilder)",
+      "~112–120 tokens/sec on 8th-gen i5 with 8 GB RAM",
+      "No internet connection required"
+    ]
+  },
+  "legacy": {
+    "note": "yapper-legacy/ contains older macOS .app bundles (v2.0) in English, German, and Spanish. Not cross-platform.",
+    "files": ["interview_game-2.0-mac.zip", "german_interview_game-2.0-mac.zip", "spanish_interview_game-2.0-mac.zip"]
+  },
+  "skill": ".agents/skills/yapper",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "JAR inspected via jar tf + javap + strings. ProcessBuilder only launches 'java -jar Llama2App.jar' locally — no outbound HTTP/socket calls. model.bin is a 29MB local SLM weight file. script.sh only does chmod+x for legacy macOS app. No eval, no remote code fetch."
+  }
+}
