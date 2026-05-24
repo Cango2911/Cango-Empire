@@ -1,0 +1,73 @@
+{
+  "name": "comfyui-fal-api",
+  "version": "1.0.12",
+  "description": "ComfyUI custom nodes for fal.ai API — 70+ nodes covering image generation (Flux, NanoBanana, Recraft, Ideogram, Imagen4, Wan, Seedream), video generation (Kling v1-v3/O3, Veo2/3, Wan 2.x, Runway, Luma, Sora, Seedance), LLMs, VLMs, LoRA trainers, video upscalers. One FAL_KEY for all.",
+  "type": "comfyui-custom-nodes",
+  "source": "https://github.com/gokayfem/ComfyUI-fal-API",
+  "comfy_registry": "https://registry.comfy.org/publishers/gokayfem/nodes/fal-api",
+  "license": "MIT",
+  "author": "gokayfem",
+  "requires": {
+    "platform": "ComfyUI",
+    "python": ">=3.9",
+    "packages": ["fal-client", "torch", "opencv-python"],
+    "env": ["FAL_KEY"]
+  },
+  "install": {
+    "comfyui_manager": "Search 'ComfyUI-fal-API' in ComfyUI Manager",
+    "manual": [
+      "cd ComfyUI/custom_nodes",
+      "git clone https://github.com/gokayfem/ComfyUI-fal-API.git",
+      "cd ComfyUI-fal-API && pip install -r requirements.txt"
+    ],
+    "config": "Edit config.ini: FAL_KEY = your_key  (or export FAL_KEY=...)"
+  },
+  "nodes": {
+    "image": [
+      "FluxPro", "FluxDev", "FluxSchnell", "FluxPro11", "FluxPro1Fill",
+      "FluxUltra", "FluxLora", "FluxGeneral", "FluxProKontext", "FluxProKontextMulti",
+      "FluxProKontextTextToImage", "NanoBananaPro", "NanoBanana2", "NanoBananaTextToImage",
+      "NanoBananaEdit", "Recraft", "Ideogramv3", "HidreamFull", "Sana",
+      "Imagen4PreviewNode", "QwenImageEdit", "QwenImageEditPlusLoRA",
+      "SeedEditV3", "SeedreamV4Edit", "ReveTextToImage"
+    ],
+    "video": [
+      "FalKling21ProImageToVideo", "FalKling25TurboProImageToVideo", "FalKling26ProVideo",
+      "FalKlingV3StandardVideo", "FalKlingV3ProVideo", "FalKlingV3StandardMotionControl",
+      "FalKlingV3ProMotionControl", "FalKlingO3StandardVideo", "FalKlingO3ProVideo",
+      "KlingOmniReferenceToVideoNode", "KlingOmniVideoToVideoEditNode", "KlingOmniVideoToVideoReferenceNode",
+      "Veo2ImageToVideoNode", "Veo3Node", "FalVeo31FirstLastFrameToVideo", "FalVeo31FastFirstLastFrameToVideo",
+      "WanProNode", "Wan25Node", "FalWan26Video", "FalWan26ReferenceToVideo",
+      "WanVACEVideoEditNode", "Wan2214bAnimateReplaceNode", "Wan2214bAnimateMoveNode",
+      "Wan22VACEFun14bNode", "DYWanFun22Node", "KreaWan14bVideoToVideoNode",
+      "RunwayGen3Node", "LumaDreamMachineNode", "FalSora2ProImageToVideo",
+      "SeedanceImageToVideoNode", "SeedanceTextToVideoNode", "SeedanceProImageToVideoNode",
+      "InfinityStarTextToVideoNode", "PixverseSwapNode", "CombinedVideoGenerationNode"
+    ],
+    "upscale": [
+      "UpscalerNode", "SeedvrUpscalerNode", "SeedvrUpscaleVideoNode",
+      "BriaVideoIncreaseResolutionNode", "TopazUpscaleVideoNode",
+      "VideoUpscalerNode", "DYWanUpscalerNode"
+    ],
+    "trainer": [
+      "FluxLoraTrainerNode", "HunyuanVideoLoraTrainerNode",
+      "WanLoraTrainerNode", "LtxVideoTrainerNode"
+    ],
+    "llm_vlm": ["LLMNode", "VLMNode"],
+    "utility": ["UploadVideoNode", "UploadFileNode", "LoadVideoURL"]
+  },
+  "example_workflows": [
+    "Flux-Kontext-Workflow.json",
+    "Flux-v1-Fill.json",
+    "Nano-Banana-Pro-14_Images.json",
+    "Video-Bria-Increase-Resolution.json",
+    "Video-Seedvr-Upscale.json",
+    "Video-Workflow-Veo2.json"
+  ],
+  "skill": ".agents/skills/comfyui-fal-api",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Standard ComfyUI custom nodes. importlib.import_module() loads only local package modules. No eval(), no subprocess shell=True, no remote code execution. fal-client SDK used for all API calls. CI only publishes to Comfy Registry."
+  }
+}
