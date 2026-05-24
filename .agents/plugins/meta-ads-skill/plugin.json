@@ -1,0 +1,30 @@
+{
+  "name": "meta-ads-skill",
+  "version": "latest",
+  "description": "Varnan-Tech/meta-ads-skill — Claude Agent Skill für Meta Ads API (Facebook/Instagram) via MCP-Server. Expert Media Buyer Persona mit OAuth-Authentifizierung (lokale SQLite-Datenbank), Campaign-Management, Ad-Set-Verwaltung, Insights-Analyse, Targeting. Enthält Workflow-Guides, Report-Templates und Python-Hilfsskripte.",
+  "license": "MIT",
+  "source": "https://github.com/Varnan-Tech/meta-ads-skill",
+  "author": "Varnan Tech",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/meta-ads-expert",
+  "requires_mcp": "Meta Ads MCP Server",
+  "capabilities": [
+    "Campaign Management (create, update, list)",
+    "Ad Set Management",
+    "Ad Creative Management",
+    "Insights & Performance Analytics",
+    "Audience Targeting",
+    "OAuth Token Management (lokale SQLite-DB)",
+    "Report Generation (Tabellen-Templates)",
+    "Orchestration Workflows"
+  ],
+  "guardrails": [
+    "Pagination default: limit=10",
+    "Date range default: last_7d",
+    "Explicit user confirmation vor state-changing actions"
+  ],
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "Nur Markdown und harmlose Python-Skripte (print-Statements, String-Formatierung). Kein subprocess, kein eval, kein exec, kein os.system."
+  }
+}
