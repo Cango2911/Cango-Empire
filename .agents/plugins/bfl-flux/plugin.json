@@ -1,0 +1,91 @@
+{
+  "name": "bfl-flux",
+  "version": "latest",
+  "description": "Black Forest Labs FLUX — open-weight text-to-image, image editing, inpainting/outpainting, structural conditioning, and image variation models. Includes FLUX.1 [schnell] (Apache-2.0), FLUX.1 [dev], Kontext, Fill, Canny, Depth, Redux, and Krea variants. PyTorch inference library with CLI, Gradio/Streamlit demos, diffusers integration, and optional TensorRT acceleration.",
+  "type": "library",
+  "source": "https://github.com/black-forest-labs/flux",
+  "license": "Apache-2.0 (schnell model); FLUX.1-dev Non-Commercial License (all other models)",
+  "author": "Black Forest Labs",
+  "requires": {
+    "runtime": "python>=3.10",
+    "env": {
+      "required": [],
+      "optional": [
+        "BFL_API_KEY",
+        "FLUX_MODEL",
+        "FLUX_AE",
+        "FLUX_REDUX",
+        "FLUX_LORA",
+        "HF_TOKEN"
+      ]
+    }
+  },
+  "models": [
+    {
+      "name": "FLUX.1 [schnell]",
+      "hf_repo": "black-forest-labs/FLUX.1-schnell",
+      "license": "apache-2.0",
+      "use_case": "text-to-image (fast, 4 steps)"
+    },
+    {
+      "name": "FLUX.1 [dev]",
+      "hf_repo": "black-forest-labs/FLUX.1-dev",
+      "license": "FLUX.1-dev Non-Commercial",
+      "use_case": "text-to-image (high quality)"
+    },
+    {
+      "name": "FLUX.1 Krea [dev]",
+      "hf_repo": "black-forest-labs/FLUX.1-Krea-dev",
+      "license": "FLUX.1-dev Non-Commercial",
+      "use_case": "text-to-image (Krea variant)"
+    },
+    {
+      "name": "FLUX.1 Kontext [dev]",
+      "hf_repo": "black-forest-labs/FLUX.1-Kontext-dev",
+      "license": "FLUX.1-dev Non-Commercial",
+      "use_case": "image editing with text guidance"
+    },
+    {
+      "name": "FLUX.1 Fill [dev]",
+      "hf_repo": "black-forest-labs/FLUX.1-Fill-dev",
+      "license": "FLUX.1-dev Non-Commercial",
+      "use_case": "inpainting and outpainting"
+    },
+    {
+      "name": "FLUX.1 Canny [dev]",
+      "hf_repo": "black-forest-labs/FLUX.1-Canny-dev",
+      "license": "FLUX.1-dev Non-Commercial",
+      "use_case": "structural conditioning via edge maps"
+    },
+    {
+      "name": "FLUX.1 Depth [dev]",
+      "hf_repo": "black-forest-labs/FLUX.1-Depth-dev",
+      "license": "FLUX.1-dev Non-Commercial",
+      "use_case": "structural conditioning via depth maps"
+    },
+    {
+      "name": "FLUX.1 Canny [dev] LoRA",
+      "hf_repo": "black-forest-labs/FLUX.1-Canny-dev-lora",
+      "license": "FLUX.1-dev Non-Commercial",
+      "use_case": "canny edge LoRA adapter for FLUX.1 [dev]"
+    },
+    {
+      "name": "FLUX.1 Depth [dev] LoRA",
+      "hf_repo": "black-forest-labs/FLUX.1-Depth-dev-lora",
+      "license": "FLUX.1-dev Non-Commercial",
+      "use_case": "depth map LoRA adapter for FLUX.1 [dev]"
+    },
+    {
+      "name": "FLUX.1 Redux [dev]",
+      "hf_repo": "black-forest-labs/FLUX.1-Redux-dev",
+      "license": "FLUX.1-dev Non-Commercial",
+      "use_case": "image variation adapter"
+    }
+  ],
+  "skill": ".agents/skills/bfl-flux",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "subprocess.run(shell=True) in src/flux/trt/trt_config/base_trt_config.py:167 runs 'polygraphy convert {onnx_path}' — TRT engine builder using developer-controlled file paths, not user input. No eval(), no pickle.loads from remote, no obfuscated code, no curl|sh patterns. PyTorch .eval() is model evaluation mode, not code execution."
+  }
+}
