@@ -1,0 +1,44 @@
+{
+  "name": "recammaster",
+  "version": "1.0.0",
+  "description": "ReCamMaster — Camera-Controlled Generative Rendering from a Single Video (ICCV'25 Oral, Best Paper Finalist). Re-captured In-the-Wild-Videos mit neuen Kamera-Trajektorien. 10 Kamera-Typen: Pan, Tilt, Zoom, Translate, Arc. Baut auf Wan2.1 + DiffSynth-Studio. MultiCamVideo Dataset: 136K Videos, 13.6K UE5-gerenderte Szenen.",
+  "license": "Apache-2.0",
+  "author": "KlingAIResearch / KwaiVGI (Kuaishou Technology, Zhejiang University)",
+  "source": "https://github.com/KlingAIResearch/ReCamMaster",
+  "paper": "https://arxiv.org/abs/2503.11647",
+  "type": "agent-skill",
+  "skills": [
+    "recammaster"
+  ],
+  "covers": [
+    "Camera-Controlled Video Re-Rendering (neue Kamera-Trajektorie für bestehendes Video)",
+    "10 Kamera-Bewegungstypen: Pan Right/Left, Tilt Up/Down, Zoom In/Out, Translate Up/Down, Arc Left/Right",
+    "Inference mit Wan2.1 T2V + DiffSynth-Studio",
+    "Training auf MultiCamVideo Dataset (136K Videos, UE5)",
+    "VAE Feature Extraction für Training",
+    "Multi-GPU Training (8xGPU Beispiel-Setup)",
+    "Custom Video-Dataset Support (metadata.csv)",
+    "Kamera-Visualisierung (vis_cam.py)"
+  ],
+  "requires": {
+    "python": ">=3.10",
+    "cuda": ">=11.8 (empfohlen)",
+    "rust": "required (für DiffSynth Extensions)",
+    "storage": "~50GB (Wan2.1 Checkpoints)"
+  },
+  "models": {
+    "base_model": "Wan2.1-T2V-1.3B (Wan-AI/Wan2.1-T2V-1.3B)",
+    "recammaster_checkpoint": "https://huggingface.co/KwaiVGI/ReCamMaster-Wan2.1"
+  },
+  "dataset": {
+    "name": "MultiCamVideo Dataset",
+    "url": "https://huggingface.co/datasets/KwaiVGI/MultiCamVideo-Dataset",
+    "size": "136K Videos, 13.6K Szenen (Unreal Engine 5)"
+  },
+  "entry_points": {
+    "inference": "inference_recammaster.py",
+    "train": "train_recammaster.py",
+    "download_base_model": "download_wan2.1.py",
+    "visualize_camera": "vis_cam.py"
+  }
+}
