@@ -1,0 +1,68 @@
+{
+  "name": "shinchven-nano-banana-skills",
+  "version": "latest",
+  "description": "ShinChven Nano Banana Pro Skills — Sammlung von 9 Bildgenerierungs-Skills für Nano Banana (Gemini Image). Enthält: Anime-to-Life, Character Reference Sheet, Figure-to-Life, IMAX Portrait, J-Cover, J-Idol, J-Poses, Photo Restoration, Real Mecha. Alle Skills sind prompt-basiert und benötigen keinen API-Key direkt — werden über Gemini App oder Nano Banana Pro verwendet.",
+  "type": "agent-skills",
+  "source": "https://github.com/ShinChven/nano-banana-skills",
+  "license": "MIT",
+  "author": "ShinChven",
+  "requires": {
+    "runtime": "none",
+    "env": {
+      "required": [],
+      "optional": []
+    }
+  },
+  "skills": [
+    {
+      "name": "nbs-anime-to-life",
+      "path": ".agents/skills/nbs-anime-to-life",
+      "description": "Anime/3D-Bilder in fotorealistische Cosplay-Fotos umwandeln"
+    },
+    {
+      "name": "nbs-character-reference-sheet",
+      "path": ".agents/skills/nbs-character-reference-sheet",
+      "description": "3:2 Charakter-Referenzblatt mit Portrait, Front- und Rückansicht"
+    },
+    {
+      "name": "nbs-figure-to-life",
+      "path": ".agents/skills/nbs-figure-to-life",
+      "description": "Figuren-Fotos in fotorealistische Cosplayer-Bilder umwandeln"
+    },
+    {
+      "name": "nbs-imax-portrait",
+      "path": ".agents/skills/nbs-imax-portrait",
+      "description": "Bilder auf IMAX 70mm Portrait-Stil (1.43:1) erweitern — Christopher Nolan-Ästhetik"
+    },
+    {
+      "name": "nbs-j-cover",
+      "path": ".agents/skills/nbs-j-cover",
+      "description": "J-Media / Gravure Magazine Cover-Designs mit 20% Outpainting und Typografie"
+    },
+    {
+      "name": "nbs-j-idol",
+      "path": ".agents/skills/nbs-j-idol",
+      "description": "Fotorealistische J-Idol Gravure Portraits (2:3, Bokeh, Rim Lighting)"
+    },
+    {
+      "name": "nbs-j-poses",
+      "path": ".agents/skills/nbs-j-poses",
+      "description": "Bibliothek japanischer Fotografie-Poses"
+    },
+    {
+      "name": "nbs-photo-restoration",
+      "path": ".agents/skills/nbs-photo-restoration",
+      "description": "Vintage- und unscharfe Fotos auf 8K restaurieren"
+    },
+    {
+      "name": "nbs-real-mecha",
+      "path": ".agents/skills/nbs-real-mecha",
+      "description": "2D/Anime Mecha-Kunst in fotorealistische 3D-Visualisierungen umwandeln"
+    }
+  ],
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Nur Markdown-Dateien (SKILL.md, README.md, GEMINI.md) und eine gemini-extension.json. Kein ausführbarer Code, kein eval(), kein shell=True, kein subprocess, kein curl|sh."
+  }
+}
