@@ -1,0 +1,38 @@
+{
+  "name": "generative-media-core",
+  "version": "1.0.0",
+  "description": "SamurAIGPT Generative Media Skills — muapi.ai platform core scripts for AI image, video, audio and workflow generation",
+  "type": "core-scripts",
+  "source": "https://github.com/SamurAIGPT/Generative-Media-Skills",
+  "license": "MIT",
+  "platform": "muapi.ai",
+  "requires": {
+    "cli": "muapi",
+    "env": ["MUAPI_KEY"]
+  },
+  "structure": {
+    "core/platform/setup.sh": "Configure muapi API key and test auth",
+    "core/platform/check-result.sh": "Poll or wait for async prediction results",
+    "core/media/generate-image.sh": "Text-to-image generation (flux-dev, etc.)",
+    "core/media/generate-video.sh": "Text-to-video generation",
+    "core/media/image-to-video.sh": "Image-to-video animation",
+    "core/media/create-music.sh": "AI music generation",
+    "core/media/upload.sh": "Upload media assets to muapi CDN",
+    "core/edit/edit-image.sh": "AI image editing with prompt",
+    "core/edit/enhance-image.sh": "Image enhancement / upscaling",
+    "core/edit/lipsync.sh": "Lip-sync audio to video",
+    "core/edit/video-effects.sh": "Apply visual effects to video",
+    "schema_data.json": "Model registry with endpoints, parameters and capabilities"
+  },
+  "install": {
+    "step1": "Install muapi CLI: npm install -g muapi (or pip install muapi)",
+    "step2": "Run: ./core/platform/setup.sh --add-key YOUR_MUAPI_KEY",
+    "step3": "Test: ./core/platform/setup.sh --test",
+    "step4": "Set env: export MUAPI_KEY=your_key (or add to .env)"
+  },
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "All scripts are thin CLI wrappers around muapi binary. No remote code execution, no eval of network content, no obfuscated code. python3 calls are safe JSON encoding only."
+  }
+}
