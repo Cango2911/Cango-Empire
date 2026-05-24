@@ -1,0 +1,22 @@
+{
+  "name": "automated-ad-platforms",
+  "version": "1.0.0",
+  "description": "Strategischer Guide für automatisierte Werbeplattformen (Google Ads Smart Campaigns, Meta Ads, AdRoll, Programmatic DSPs). Erklärt Platform-Vergleiche, Tracking-Anforderungen, Budget-Learning-Thresholds, Scaling-Framework, häufige Fehler und Lösungen. Nutze wenn Fragen zu AI Paid Media Automation, Plattformauswahl, Setup-Strategie oder Skalierung gestellt werden.",
+  "license": "proprietary",
+  "author": "Cango Empire",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/automated-ad-platforms",
+  "source": "internal — erstellt aus Blogartikel 'Automated Ad Platforms Guide'",
+  "covers": [
+    "Google Ads Smart Campaigns",
+    "Meta Ads Manager (Facebook/Instagram)",
+    "AdRoll",
+    "Programmatic DSPs (Real-Time Bidding)",
+    "Tracking-Anforderungen & Conversion Signale",
+    "Budget Learning Thresholds",
+    "Scaling-Framework",
+    "Platform-Vergleiche nach Business-Typ",
+    "Häufige Fehler & Lösungen",
+    "Automation vs. manuelle Kontrolle"
+  ]
+}
