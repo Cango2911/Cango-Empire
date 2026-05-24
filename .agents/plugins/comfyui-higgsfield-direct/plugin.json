@@ -1,0 +1,21 @@
+{
+  "name": "comfyui-higgsfield-direct",
+  "version": "1.0.0",
+  "description": "ComfyUI custom node for direct Higgsfield API integration — multi-model image and video generation (Soul 2.0, Seedream 4, Kling 2.1). NOT an agent skill — requires ComfyUI installation.",
+  "author": {
+    "name": "jeremieLouvaert",
+    "url": "https://github.com/jeremieLouvaert/ComfyUI-Higgsfield-Direct"
+  },
+  "type": "comfyui-node",
+  "install": {
+    "method": "copy to ComfyUI/custom_nodes/comfyui-higgsfield-direct/",
+    "deps": "pip install -r requirements.txt"
+  },
+  "nodes": [
+    "HiggsFieldTextToImage",
+    "HiggsFieldImageEdit",
+    "HiggsFieldImageToVideo",
+    "HiggsFieldModelInfo"
+  ],
+  "license": "MIT"
+}
