@@ -1,0 +1,34 @@
+{
+  "name": "awesome-design-md",
+  "version": "1.0.0",
+  "description": "Awesome DESIGN.md — Kuratierte Sammlung von 73 DESIGN.md-Dateien im Google Stitch-Format für AI-Agents. Farbpaletten (Hex-Token: primary, ink, canvas, hairline, muted, surface-*), Typographie-Hierarchien, Komponenten-Styling, Layout-Prinzipien, Depth-System, Responsive Behavior, Agent-Prompt-Guides. Kategorien: AI/LLM, Developer Tools, Backend/DB, Productivity, Design, Fintech/Crypto, E-Commerce, Media/Consumer Tech, Automotive.",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/awesome-design-md",
+  "docs": "https://getdesign.md/",
+  "type": "agent-skill",
+  "skills": [
+    "awesome-design-md"
+  ],
+  "covers": [
+    "73 DESIGN.md-Dateien: Farbpalette + Typographie + Komponenten + Layout + Responsive",
+    "AI & LLM: Claude, Cohere, ElevenLabs, Minimax, Mistral AI, Ollama, OpenCode AI, Replicate, Runway, Together AI, VoltAgent, xAI",
+    "Developer Tools: Cursor, Expo, Lovable, Raycast, Superhuman, Vercel, Warp",
+    "Backend/DB/DevOps: ClickHouse, Composio, HashiCorp, MongoDB, PostHog, Sanity, Sentry, Supabase",
+    "Productivity/SaaS: Cal.com, Intercom, Linear, Mintlify, Notion, Resend, Zapier",
+    "Design/Creative: Airtable, Clay, Figma, Framer, Miro, Webflow",
+    "Fintech/Crypto: Binance, Coinbase, Kraken, Mastercard, Revolut, Stripe, Wise",
+    "E-Commerce/Retail: Airbnb, Meta, Nike, Shopify, Starbucks",
+    "Media/Consumer Tech: Apple, IBM, NVIDIA, Pinterest, PlayStation, Slack, SpaceX, Spotify, The Verge, Uber, Vodafone, WIRED",
+    "Automotive: BMW, BMW M, Bugatti, Ferrari, Lamborghini, Renault, Tesla",
+    "Google Stitch DESIGN.md-Format (version: alpha)",
+    "Semantische Farb-Token: primary, ink, canvas, hairline, muted, surface-*, on-primary",
+    "Typographie-Hierarchie: display-xxl → display-xl → display-lg → heading-lg → body → caption",
+    "DESIGN.md-Sektionen 1-9: Atmosphere, Colors, Typography, Components, Layout, Depth, Do/Don'ts, Responsive, Agent Prompts"
+  ],
+  "usage": {
+    "copy_to_project": "cp design-md/<brand>/DESIGN.md ./DESIGN.md",
+    "agent_prompt": "Build me a page that looks like this (referencing DESIGN.md)",
+    "google_stitch": "https://stitch.withgoogle.com/docs/design-md/overview/"
+  }
+}
