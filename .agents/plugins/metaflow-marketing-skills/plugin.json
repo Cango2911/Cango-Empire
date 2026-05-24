@@ -1,0 +1,52 @@
+{
+  "name": "metaflow-marketing-skills",
+  "version": "0.1.0",
+  "description": "narayan-metaflow/metaflow-marketing-skills — Vollständiger Marketing-Agent-Skills-Stack von Metaflow AI. 27 Skills in 4 Kategorien: Meta Ads (Optimizer, Account Audit, Creative Engine, Campaign Builder, Playbook, Tracking Setup), Google Ads (Optimizer, Account Audit, Campaign Builder, Keyword Engine, Scripts, Merchant Center), Paid Media (Ad Spend Allocator, Campaign Analyzer, Paid Search Playbook, Paid Media Reporter), SEO/AEO (Content Strategy, Keyword Research, On-Page, Technical, BOFU, Link Building, Local SEO, AI Search Visibility, Reporting, Prompt Picker).",
+  "license": "MIT",
+  "source": "https://github.com/narayan-metaflow/metaflow-marketing-skills",
+  "author": "Metaflow AI (narayan-metaflow)",
+  "type": "agent-skill-collection",
+  "skill_prefix": "metaflow-",
+  "categories": {
+    "Meta Ads": [
+      "metaflow-meta-ads-optimizer",
+      "metaflow-meta-ads-account-audit",
+      "metaflow-meta-ads-creative-engine",
+      "metaflow-meta-ads-campaign-builder",
+      "metaflow-meta-ads-playbook",
+      "metaflow-meta-ads-tracking-setup"
+    ],
+    "Google Ads": [
+      "metaflow-google-ads-optimizer",
+      "metaflow-google-ads-account-audit",
+      "metaflow-google-ads-campaign-builder",
+      "metaflow-google-ads-keyword-engine",
+      "metaflow-google-ads-scripts",
+      "metaflow-google-merchant-center"
+    ],
+    "Paid Media": [
+      "metaflow-ad-spend-allocator",
+      "metaflow-campaign-analyzer",
+      "metaflow-paid-search-ads-playbook",
+      "metaflow-paid-media-reporter"
+    ],
+    "SEO / AEO": [
+      "metaflow-seo-aeo-content-strategy",
+      "metaflow-seo-keyword-research-intent-mapping",
+      "metaflow-on-page-seo-aeo-optimization",
+      "metaflow-technical-seo-ai-crawler-audit",
+      "metaflow-bofu-seo-aeo-strategy",
+      "metaflow-link-building-digital-pr",
+      "metaflow-local-seo-google-business-profile",
+      "metaflow-ai-search-visibility-aeo-geo-llmo",
+      "metaflow-seo-reporting-measurement",
+      "metaflow-seo-max-kt",
+      "metaflow-prompt-picker"
+    ]
+  },
+  "article_context": "Referenziert in Blog-Artikel über Meta Ads operational arbitrage (CPA Diagnostics, Wasted Spend Finder, Creative Fatigue Detection, Budget Scenario Planner, Client Report Narratives)",
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "Nur Markdown-Dateien. validate-skills.sh prüft lediglich ob SKILL.md-Dateien existieren — kein ausführbarer Code, kein eval, kein subprocess."
+  }
+}
