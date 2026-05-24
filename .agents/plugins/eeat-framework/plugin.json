@@ -1,0 +1,25 @@
+{
+  "name": "eeat-framework",
+  "version": "1.0.0",
+  "description": "E-E-A-T Implementierungs-Guide (Experience, Expertise, Authoritativeness, Trustworthiness) für SEO und Content-Qualität 2026. 7-Schritte Playbook: Author Bios, Citations Policy, First-Hand Evidence, Editorial QA, YMYL-Optimierung, externe Autoritäts-Signale, fortlaufende Expertise. Business-Typ-spezifische Umsetzung (E-Commerce, Services, Publisher, Local), Fehler-Checkliste und AI Overviews Optimierung.",
+  "license": "proprietary",
+  "author": "Cango Empire",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/eeat-framework",
+  "source": "internal — erstellt aus Blogartikel 'E-E-A-T: What It Is, Why It Matters, and How to Implement It'",
+  "covers": [
+    "E-E-A-T Dimensionen (Experience, Expertise, Authoritativeness, Trustworthiness)",
+    "YMYL (Your Money or Your Life) Optimierung",
+    "Author Bio Standards und Byline Markup",
+    "Citations und Sources Policy",
+    "First-Hand Experience Beweise",
+    "Editorial Review und QA Prozesse",
+    "Externe Autoritäts-Signale",
+    "E-E-A-T Messung (Engagement, Search Performance, Business Impact)",
+    "Häufige Fehler und Lösungen",
+    "Business-Typ-spezifische Umsetzung",
+    "People-First vs. Search Engine-First Content",
+    "AI Overviews und LLM-Zitationen",
+    "Zukunft von E-E-A-T"
+  ]
+}
