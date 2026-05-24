@@ -1,0 +1,149 @@
+/**
+ * Model definitions index
+ */
+
+import type {
+  ModelDefinition,
+  PricingParams,
+  ProviderPricing,
+} from "../../core/schema/types";
+
+export { definition as elevenlabsTts } from "./elevenlabs";
+export { definition as flux } from "./flux";
+export { definition as heygenAvatar } from "./heygen";
+export {
+  definition as kling,
+  kling4kDefinition as kling4k,
+  kling4kRefDefinition as kling4kRef,
+  klingRefDefinition as klingRef,
+  klingV2VRefDefinition as klingV2VRef,
+  klingV3MotionDefinition as klingV3Motion,
+  klingV3MotionStdDefinition as klingV3MotionStd,
+} from "./kling";
+export { definition as llama } from "./llama";
+export { definition as ltxA2v } from "./ltx-a2v";
+export { definition as nanoBanana2 } from "./nano-banana-2";
+export { definition as nanoBananaPro } from "./nano-banana-pro";
+export { definition as omnihuman } from "./omnihuman";
+export {
+  photaDefinition as phota,
+  photaEditDefinition as photaEdit,
+  photaEnhanceDefinition as photaEnhance,
+} from "./phota";
+export { definition as qwenImage2 } from "./qwen-image-2";
+export { definition as recraftV4 } from "./recraft-v4";
+export { definition as reve } from "./reve";
+export {
+  definition as seedance2Preview,
+  fastDefinition as seedance2FastPreview,
+} from "./seedance";
+export { definition as sonauto } from "./sonauto";
+export { definition as soul } from "./soul";
+export { definition as veedFabric } from "./veed-fabric";
+export { definition as wan } from "./wan";
+export { definition as whisper } from "./whisper";
+
+// All model definitions for auto-loading
+import { definition as elevenlabsDefinition } from "./elevenlabs";
+import { definition as fluxDefinition } from "./flux";
+import { definition as heygenAvatarDefinition } from "./heygen";
+import {
+  kling4kDefinition,
+  kling4kRefDefinition,
+  definition as klingDefinition,
+  klingRefDefinition,
+  klingV2VRefDefinition,
+  klingV3MotionDefinition,
+  klingV3MotionStdDefinition,
+} from "./kling";
+import { definition as llamaDefinition } from "./llama";
+import { definition as ltxA2vDefinition } from "./ltx-a2v";
+import { definition as nanoBanana2Definition } from "./nano-banana-2";
+import { definition as nanoBananaProDefinition } from "./nano-banana-pro";
+import { definition as omnihumanDefinition } from "./omnihuman";
+import {
+  photaDefinition,
+  photaEditDefinition,
+  photaEnhanceDefinition,
+} from "./phota";
+import { definition as qwenImage2Definition } from "./qwen-image-2";
+import { definition as recraftV4Definition } from "./recraft-v4";
+import { definition as reveDefinition } from "./reve";
+import {
+  fastDefinition as seedance2FastPreviewDefinition,
+  definition as seedance2PreviewDefinition,
+} from "./seedance";
+import { definition as sonautoDefinition } from "./sonauto";
+import { definition as soulDefinition } from "./soul";
+import { definition as veedFabricDefinition } from "./veed-fabric";
+import { definition as wanDefinition } from "./wan";
+import { definition as whisperDefinition } from "./whisper";
+
+export const allModels = [
+  klingDefinition,
+  kling4kDefinition,
+  klingRefDefinition,
+  kling4kRefDefinition,
+  klingV2VRefDefinition,
+  klingV3MotionDefinition,
+  klingV3MotionStdDefinition,
+  fluxDefinition,
+  nanoBananaProDefinition,
+  nanoBanana2Definition,
+  qwenImage2Definition,
+  recraftV4Definition,
+  photaDefinition,
+  photaEditDefinition,
+  photaEnhanceDefinition,
+  reveDefinition,
+  wanDefinition,
+  omnihumanDefinition,
+  ltxA2vDefinition,
+  veedFabricDefinition,
+  whisperDefinition,
+  elevenlabsDefinition,
+  soulDefinition,
+  seedance2PreviewDefinition,
+  seedance2FastPreviewDefinition,
+  sonautoDefinition,
+  llamaDefinition,
+  heygenAvatarDefinition,
+];
+
+// ---------------------------------------------------------------------------
+// Pricing utilities
+// ---------------------------------------------------------------------------
+
+/** Look up the ProviderPricing formula for a model+provider pair. */
+export function getModelPricing(
+  modelName: string,
+  provider: string,
+): ProviderPricing | null {
+  const model = allModels.find((m) => m.name === modelName);
+  return model?.pricing?.[provider] ?? null;
+}
+
+/**
+ * Calculate the raw provider cost (USD) for a model+provider given params.
+ * Returns null if the model has no pricing formula for the given provider.
+ */
+export function calculateProviderCost(
+  modelName: string,
+  provider: string,
+  params: PricingParams,
+): number | null {
+  const pricing = getModelPricing(modelName, provider);
+  return pricing ? pricing.calculate(params) : null;
+}
+
+/**
+ * Get the pricing bounds (min/max USD) for a model+provider.
+ * Useful for UI estimation and x402 payment headers.
+ */
+export function getModelPricingBounds(
+  modelName: string,
+  provider: string,
+): { minUsd: number; maxUsd: number } | null {
+  const pricing = getModelPricing(modelName, provider);
+  return pricing ? { minUsd: pricing.minUsd, maxUsd: pricing.maxUsd } : null;
+}
