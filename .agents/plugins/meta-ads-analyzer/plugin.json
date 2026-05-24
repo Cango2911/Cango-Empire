@@ -1,0 +1,46 @@
+{
+  "name": "meta-ads-analyzer",
+  "version": "latest",
+  "description": "mathiaschu/meta-ads-analyzer — Expert-Level Meta Ads Analyse & Diagnose Skill. Spezialisiert auf den 'Breakdown Effect', Marginal-CPA-Analyse, Learning Phase, Ad Relevance Diagnostics, Auction Overlap, Pacing, Bid-Strategien und Performance-Schwankungen. Enthält 9 Referenz-Dokumente, standardisierte Metrik-Namenskonventionen und einen strukturierten 5-Schritt-Analyse-Workflow.",
+  "license": "MIT",
+  "source": "https://github.com/mathiaschu/meta-ads-analyzer",
+  "author": "mathiaschu",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/meta-ads-analyzer",
+  "requires_mcp": "meta-ads-mcp (npx -y meta-ads-mcp)",
+  "references": [
+    "breakdown_effect.md",
+    "core_concepts.md",
+    "learning_phase.md",
+    "ad_relevance_diagnostics.md",
+    "auction_overlap.md",
+    "pacing.md",
+    "bid_strategies.md",
+    "ad_auctions.md",
+    "performance_fluctuations.md"
+  ],
+  "analysis_workflow": [
+    "Step 1: Evaluation Level identifizieren (Campaign vs. Ad Set)",
+    "Step 2: Learning Phase Status prüfen",
+    "Step 3: Meta-spezifische Analyse (Marginal Efficiency, Relevance, Auction Overlap, Pacing)",
+    "Step 4: Breakdown Effect Lens anwenden",
+    "Step 5: Report generieren (Executive Summary → Diagnosis → Recommendations)"
+  ],
+  "key_concepts": [
+    "Breakdown Effect (WICHTIGSTER Grundsatz)",
+    "Marginal CPA vs. Average CPA",
+    "Learning Phase (~50 Optimization Events)",
+    "Ad Relevance Diagnostics (Quality/Engagement/Conversion Rankings)",
+    "Auction Overlap & Cannibalization",
+    "Budget Pacing",
+    "Bid Strategies (Spend-based, Goal-based, Manual)"
+  ],
+  "setup": {
+    "script": "bash scripts/setup.sh",
+    "refresh": "bash scripts/refresh_token.sh (alle 55 Tage)"
+  },
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "Shell-Skripte sind Setup-Utilities mit read -p für User-Credentials-Eingabe und curl zu Meta Graph API mit festen Argumenten. Kein eval, kein shell=True, kein Code-Injection."
+  }
+}
