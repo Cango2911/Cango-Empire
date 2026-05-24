@@ -1,0 +1,40 @@
+{
+  "name": "liveportrait",
+  "version": "1.0.0",
+  "description": "LivePortrait — Efficient Portrait Animation with Stitching and Retargeting Control (PyTorch). Animiert Portraits (Menschen + Tiere) via Driving-Video oder -Bild. Stitching, Retargeting, Image-Driven Mode, Regional Control, V2V Portrait Editing, Gradio Web-Interface. Eingesetzt von Kuaishou, Douyin, Jianying, WeChat Channels.",
+  "license": "MIT",
+  "author": "KlingAIResearch (Kuaishou Technology)",
+  "source": "https://github.com/KlingAIResearch/LivePortrait",
+  "type": "agent-skill",
+  "skills": [
+    "liveportrait"
+  ],
+  "covers": [
+    "Portrait Animation: Menschen und Tiere (Katzen, Hunde)",
+    "Stitching & Retargeting Control",
+    "Image-Driven Mode (Einzelbild als Driving-Quelle)",
+    "Portrait Video Editing V2V (Video-to-Video)",
+    "Regional Control für selektive Gesichtsregionen",
+    "Motion Template (.pkl) für Privacy + Speed",
+    "Gradio Web-Interface für interaktives Editing",
+    "Auto-Crop Driving Video",
+    "Pose Editing im Source-Portrait",
+    "Animals Mode: Katzen & Hunde (Linux/Windows + NVIDIA)"
+  ],
+  "requires": {
+    "python": ">=3.10",
+    "cuda": ">=11.8 (empfohlen)",
+    "ffmpeg": "required",
+    "gpu": "NVIDIA GPU (empfohlen)"
+  },
+  "models": {
+    "pretrained_weights": "https://huggingface.co/KlingTeam/LivePortrait",
+    "alternative": "Google Drive / Baidu Yun"
+  },
+  "entry_points": {
+    "humans": "inference.py",
+    "animals": "inference_animals.py",
+    "gradio_humans": "app.py",
+    "gradio_animals": "app_animals.py"
+  }
+}
