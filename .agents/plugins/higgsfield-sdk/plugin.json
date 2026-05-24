@@ -1,0 +1,23 @@
+{
+  "name": "higgsfield-sdk",
+  "version": "0.0.3",
+  "description": "Official Higgsfield AI Python SDK for distributed LLM training (LLaMA, Mistral) on GPU clusters via SSH. NOT an agent skill — requires pip install and remote GPU nodes.",
+  "author": {
+    "name": "Higgsfield AI",
+    "url": "https://github.com/higgsfield-ai/higgsfield"
+  },
+  "type": "python-sdk",
+  "license": "Apache-2.0",
+  "install": {
+    "method": "pip install higgsfield",
+    "or": "pip install git+https://github.com/higgsfield-ai/higgsfield.git"
+  },
+  "cli": "higgsfield",
+  "commands": [
+    "higgsfield init <project>",
+    "higgsfield build-experiments",
+    "higgsfield ci setup-nodes",
+    "higgsfield run --experiment_name <name> --run_name <run>"
+  ],
+  "supports": ["LLaMA", "Mistral", "FSDP", "distributed-training", "RL"]
+}
