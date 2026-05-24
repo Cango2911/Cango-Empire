@@ -1,0 +1,50 @@
+{
+  "name": "videoalign",
+  "version": "1.0.0",
+  "description": "VideoAlign / VideoReward — Improving Video Generation with Human Feedback (arXiv 2025). VLM-basiertes Reward-Modell (Qwen2-VL-2B-Instruct + LoRA) bewertet Videos auf VQ (Visual Quality), MQ (Motion Quality), TA (Text Alignment). Für Data Filtering, Reject Sampling, DPO, RL. VideoGen-RewardBench Leaderboard. DeepSpeed ZeRO Training.",
+  "license": "MIT",
+  "author": "KlingAIResearch / KwaiVGI (Kuaishou Technology)",
+  "source": "https://github.com/KlingAIResearch/VideoAlign",
+  "paper": "https://arxiv.org/abs/2501.13918",
+  "type": "agent-skill",
+  "skills": [
+    "videoalign"
+  ],
+  "covers": [
+    "Video Reward Scoring: VQ (Visual Quality), MQ (Motion Quality), TA (Text Alignment)",
+    "VLM-basiertes Reward-Modell auf Qwen2-VL-2B-Instruct + LoRA",
+    "Pairwise Preference Training mit BTT (Bradley-Terry-Thurstone) Loss",
+    "DeepSpeed ZeRO Training (Stage 0/2/3)",
+    "VideoGen-RewardBench Evaluation + Leaderboard",
+    "Eval Prompt-Sets: VBench (946), VideoGen-Eval (400), TA-Hard (72)",
+    "Data Filtering, Reject Sampling, DPO, RL für Video-Generierungsmodelle",
+    "5 Prompt-Templates inkl. detailed_special mit Special Reward Tokens",
+    "Flow-DPO für Text-to-Image (separates Repo)"
+  ],
+  "requires": {
+    "python": ">=3.10",
+    "cuda": ">=11.8 (empfohlen)",
+    "flash_attn": "==2.5.8",
+    "deepspeed": "required (Training)"
+  },
+  "models": {
+    "base_model": "Qwen/Qwen2-VL-2B-Instruct",
+    "videoreward_checkpoint": "https://huggingface.co/KwaiVGI/VideoReward"
+  },
+  "eval_benchmark": {
+    "name": "VideoGen-RewardBench",
+    "url": "https://huggingface.co/datasets/KwaiVGI/VideoGen-RewardBench",
+    "leaderboard": "https://huggingface.co/spaces/KwaiVGI/VideoGen-RewardBench"
+  },
+  "dimensions": {
+    "VQ": "Visual Quality — Klarheit, Ästhetik, biologische/logische Korrektheit",
+    "MQ": "Motion Quality — Stabilität, Natürlichkeit, Bewegungsfluss",
+    "TA": "Text Alignment — Relevanz zwischen Prompt und Video-Inhalt"
+  },
+  "entry_points": {
+    "inference": "inference.py — Video-Scoring (VQ/MQ/TA)",
+    "eval": "eval_videogen_rewardbench.py — VideoGen-RewardBench Eval",
+    "calc_accuracy": "calc_accuracy.py — Accuracy-Berechnung",
+    "train": "train.sh / train_reward.py — LoRA Fine-Tuning"
+  }
+}
