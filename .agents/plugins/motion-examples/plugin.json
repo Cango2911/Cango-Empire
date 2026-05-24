@@ -1,0 +1,26 @@
+{
+  "name": "motion-examples",
+  "version": "1.0.0",
+  "description": "Offizielle Motion (Framer Motion) Beispiele — 153 React-Beispieldateien aus dem motiondivision/motion Repository. Kategorien: AnimatePresence, Animation, Drag, Events, Layout, Shared Layout, SVG, WAAPI, Hooks und mehr.",
+  "license": "MIT",
+  "source": "https://github.com/motiondivision/motion",
+  "examples_url": "https://motion.dev/examples",
+  "total_examples": 153,
+  "categories": {
+    "AnimatePresence": 10,
+    "Animation": 30,
+    "Drag": 15,
+    "Events": 10,
+    "Layout": 9,
+    "Shared-layout": 14,
+    "SVG": 6,
+    "WAAPI": 4,
+    "LazyMotion": 2,
+    "Hooks": 10,
+    "Transition": 2,
+    "Benchmark": 2,
+    "Other": 39
+  },
+  "stack": ["React", "TypeScript", "motion/react"],
+  "examples_path": "./examples/"
+}
