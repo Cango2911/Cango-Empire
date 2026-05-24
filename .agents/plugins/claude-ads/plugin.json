@@ -1,0 +1,48 @@
+{
+  "name": "claude-ads",
+  "version": "latest",
+  "description": "AgriciDaniel/claude-ads — Vollständiges Paid Advertising Agent-System für Claude. 1 Orchestrator-Skill + 22 Sub-Skills + 10 Subagents + 25 Referenzdateien + 12 Branchen-Templates. Plattformen: Google Ads, Meta (Facebook/Instagram), Microsoft Ads, LinkedIn, TikTok, YouTube, Amazon, Apple Search Ads. Funktionen: Audit, Budget-Planung, Creative-Strategie, GAQL-Queries, Tracking/Attribution, A/B-Testing, Competitor-Analyse, Landing-Page-Analyse, PDF-Reports, KI-Bildgenerierung.",
+  "license": "MIT",
+  "source": "https://github.com/AgriciDaniel/claude-ads",
+  "author": "Daniel Agrici",
+  "type": "agent-skill",
+  "main_skill": ".agents/skills/ads",
+  "sub_skills": [
+    "ads-amazon", "ads-apple", "ads-attribution", "ads-audit",
+    "ads-budget", "ads-competitor", "ads-create", "ads-creative",
+    "ads-dna", "ads-generate", "ads-google", "ads-landing",
+    "ads-linkedin", "ads-math", "ads-meta", "ads-microsoft",
+    "ads-photoshoot", "ads-plan", "ads-server-side-tracking",
+    "ads-test", "ads-tiktok", "ads-youtube"
+  ],
+  "agents": [
+    "audit-budget", "audit-compliance", "audit-creative",
+    "audit-google", "audit-meta", "audit-tracking",
+    "copy-writer", "creative-strategist", "format-adapter", "visual-designer"
+  ],
+  "platforms": [
+    "Google Ads", "Meta (Facebook/Instagram)", "Microsoft Ads",
+    "LinkedIn", "TikTok", "YouTube", "Amazon", "Apple Search Ads"
+  ],
+  "industry_templates": [
+    "agency", "b2b-enterprise", "ecommerce", "ecommerce-creative",
+    "finance", "generic", "healthcare", "info-products",
+    "local-service", "mobile-app", "real-estate", "saas"
+  ],
+  "python_scripts": [
+    "analyze_landing.py", "capture_screenshot.py", "fetch_page.py",
+    "generate_image.py", "generate_report.py", "url_utils.py"
+  ],
+  "commands": [
+    "/ads audit", "/ads plan", "/ads google", "/ads meta",
+    "/ads linkedin", "/ads tiktok", "/ads youtube", "/ads microsoft",
+    "/ads amazon", "/ads apple", "/ads budget", "/ads dna",
+    "/ads create", "/ads creative", "/ads generate", "/ads photoshoot",
+    "/ads landing", "/ads test", "/ads math", "/ads attribution",
+    "/ads tracking", "/ads competitor"
+  ],
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "subprocess.run() mit Listenargumenten (kein shell=True) für Mermaid-CLI-Renderer. base64.b64decode() für OpenAI API-Bilddekodierung. Install.sh mit strikter Target-Whitelist und Path-Injection-Validierung."
+  }
+}
