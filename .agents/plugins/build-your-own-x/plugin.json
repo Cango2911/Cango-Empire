@@ -1,0 +1,19 @@
+{
+  "name": "build-your-own-x",
+  "version": "1.0.0",
+  "description": "Build Your Own X — 300+ kuratierte Step-by-Step-Tutorials zum Nachbauen bekannter Technologien von Grund auf. 30 Kategorien: 3D Renderer, AI Model, BitTorrent, Blockchain, Bot, CLI, Database, Docker, Emulator, Frontend Framework, Game, Git, Memory Allocator, Network Stack, Neural Network, OS, Physics Engine, Processor, Programming Language, Regex Engine, Search Engine, Shell, Template Engine, Text Editor, Visual Recognition, Voxel Engine, Web Browser, Web Server, Augmented Reality, Distributed Systems.",
+  "license": "MIT",
+  "author": "codecrafters-io",
+  "source": "https://github.com/codecrafters-io/build-your-own-x",
+  "type": "agent-skill",
+  "skills": ["build-your-own-x"],
+  "covers": [
+    "300+ Tutorials in 30 Kategorien",
+    "Viele Sprachen: C, C++, Go, Rust, Python, JavaScript, Java, Haskell, und mehr",
+    "Kategorien: 3D Renderer, AI Model, BitTorrent, Blockchain, Bot, CLI, Database, Docker, Distributed Systems",
+    "Kategorien: Emulator/VM, Frontend Framework, Game, Git, Memory Allocator, Network Stack, Neural Network",
+    "Kategorien: OS, Physics Engine, Processor, Programming Language, Regex, Search Engine, Shell",
+    "Kategorien: Template Engine, Text Editor, Visual Recognition, Voxel Engine, Web Browser, Web Server, AR"
+  ],
+  "stars": "350000+"
+}
