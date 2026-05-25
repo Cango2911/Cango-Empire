@@ -1,0 +1,27 @@
+{
+  "name": "skillx",
+  "version": "1.0.0",
+  "description": "SkillX.sh — AI Agent Skills Marketplace. Web-Marketplace + CLI (skillx-sh) + Hybrid Search (FTS5 + Vectorize bge-base-en-v1.5 + RRF). 500+ Skills mit Leaderboard, Ratings, Semantic Search. CLI: search, find, use, report, publish. 2 Claude Code Plugins: skill-creator (Eval-Driven, Skillmark-Benchmark-Optimiert) + skillx (Marketplace-CLI-Integration). Cloudflare Workers + D1 + KV + R2.",
+  "license": "MIT",
+  "author": "nextlevelbuilder",
+  "source": "https://github.com/nextlevelbuilder/skillx",
+  "type": "agent-skill",
+  "skills": ["skillx", "skill-creator"],
+  "covers": [
+    "CLI: npx skillx-sh search/find/use/report/publish/config",
+    "Hybrid Search: FTS5 + Vectorize (768-dim bge-base-en-v1.5) + Reciprocal Rank Fusion",
+    "Leaderboard: Composite Scoring (Install + Quality + Signal Score)",
+    "Plugin: skill-creator v3.0.0 — Eval-Driven, Skillmark-Benchmarks, 17 References",
+    "Plugin: skillx v1.0.0 — Marketplace-CLI-Integration für Claude Code",
+    "Tech: React Router v7 + Cloudflare Workers + D1 + KV + R2 + Workers AI",
+    "Auth: Better Auth + GitHub OAuth + API Keys",
+    "CLI Commands: search, find, use (single/multi), report, publish"
+  ],
+  "install": {
+    "npm": "npm install -g skillx-sh",
+    "npx": "npx skillx-sh search <query>",
+    "plugin_marketplace": "/plugin marketplace add nextlevelbuilder/skillx",
+    "plugin_install": "/plugin install skillx@skillx-marketplace"
+  },
+  "homepage": "https://skillx.sh"
+}
