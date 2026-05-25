@@ -1,0 +1,18 @@
+{
+  "name": "awesome-nemoclaw",
+  "version": "1.0.0",
+  "description": "Awesome NemoClaw — YAML-Presets für NemoClaw (NVIDIA OpenShell Sandbox-Runtime für OpenClaw). 18 Network-Policy-Presets (Least-Privilege): Stripe, AWS, GCP, Cloudflare, Vercel, GitLab, Google Workspace, HubSpot, Confluence, Sentry, Airtable, Notion, Linear, Algolia, Neon, Supabase, Zendesk, Teams.",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/awesome-nemoclaw",
+  "type": "agent-skill",
+  "skills": ["awesome-nemoclaw"],
+  "covers": [
+    "18 YAML Network-Policy-Presets: stripe, aws, gcp, cloudflare, vercel, gitlab, google-workspace, hubspot, confluence, sentry, airtable, notion, linear, algolia, neon, supabase, zendesk, teams",
+    "Least-Privilege: Nur explizit erlaubte Endpoints/Methoden",
+    "NemoClaw: NVIDIA OpenShell Sandbox für OpenClaw"
+  ],
+  "install": {
+    "nemoclaw": "curl -fsSL https://nvidia.com/nemoclaw.sh | bash"
+  }
+}

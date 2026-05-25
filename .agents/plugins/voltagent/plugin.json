@@ -1,0 +1,24 @@
+{
+  "name": "voltagent",
+  "version": "1.0.0",
+  "description": "VoltAgent — Open-Source TypeScript AI-Agent-Engineering-Plattform (9.127 Stars). Core Framework: Memory, RAG, Guardrails, Tools, MCP, Voice, Workflow Engine, Supervisor/Sub-Agents, Resumable Streaming. VoltOps Console: Observability, Evals, Prompts, Deployment. 19 Packages: core, cli, server-hono, rag, libsql, postgres, logger, evals, mcp-server, vercel-ai, anthropic-ai, google-ai, groq-ai, cloudflare-d1, ag-ui, a2a-server, langfuse-exporter, resumable-streams, docs-mcp.",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/voltagent",
+  "type": "agent-skill",
+  "skills": ["voltagent"],
+  "covers": [
+    "Core: @voltagent/core — Agent Runtime, Workflow, Memory, Tools, Guardrails, RAG",
+    "Providers: vercel-ai, anthropic-ai, google-ai, groq-ai",
+    "Storage: libsql, postgres, cloudflare-d1",
+    "Server: server-hono, a2a-server",
+    "Tooling: cli, logger, evals, mcp-server, docs-mcp",
+    "Integrations: ag-ui, langfuse-exporter, resumable-streams",
+    "Quick Start: npm create voltagent-app@latest"
+  ],
+  "install": {
+    "create": "npm create voltagent-app@latest",
+    "core": "npm install @voltagent/core",
+    "mcp_docs": "npx -y @voltagent/mcp-docs-server"
+  }
+}

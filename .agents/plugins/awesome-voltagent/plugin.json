@@ -1,0 +1,14 @@
+{
+  "name": "awesome-voltagent",
+  "version": "1.0.0",
+  "description": "Awesome VoltAgent — Kuratierte Ressourcenliste für das VoltAgent TypeScript AI-Agent-Framework. Tutorials, Beispiele, Integrationen, Community-Projekte, Blog-Posts, Tools.",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/awesome-voltagent",
+  "type": "agent-skill",
+  "skills": ["awesome-voltagent"],
+  "covers": [
+    "VoltAgent Framework Ressourcen: Tutorials, Beispiele, Integrationen, Community",
+    "TypeScript AI-Agent-Framework: Memory, RAG, MCP, Workflows, Observability"
+  ]
+}
