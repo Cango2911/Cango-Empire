@@ -1,0 +1,39 @@
+{
+  "name": "awesome-agent-skills",
+  "version": "1.0.0",
+  "description": "Awesome Agent Skills — Kuratierte Sammlung von 1.424+ Agent Skills von 50+ offiziellen Teams (Anthropic, Venice.ai, VoltAgent, Vercel, Cloudflare, Netlify, Google Stitch, Google Workspace CLI, Expo, Hugging Face, Trail of Bits, Sentry, Angular, Stripe, Supabase, MongoDB, Redis, Firebase, NVIDIA, Datadog u.v.m.). Cross-Agent-kompatibel: Claude Code, Codex, Cursor, Gemini CLI, GitHub Copilot, OpenCode, Windsurf, Antigravity. Installation via: npx skills add <provider>/<skill>. Browseable: officialskills.sh",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/awesome-agent-skills",
+  "website": "https://officialskills.sh",
+  "type": "agent-skill",
+  "skills": [
+    "awesome-agent-skills"
+  ],
+  "covers": [
+    "1.424+ Agent Skills von 50+ offiziellen Provider-Teams",
+    "Anthropic (16): docx, pptx, xlsx, pdf, algorithmic-art, canvas-design, frontend-design, slack-gif-creator, theme-factory, web-artifacts-builder, mcp-builder, webapp-testing, brand-guidelines, internal-comms, skill-creator, template",
+    "VoltAgent (4): create-voltagent, voltagent-best-practices, voltagent-core-reference, voltagent-docs-bundle",
+    "Venice.ai (19): api-overview, auth, chat, responses, embeddings, image-generate, image-edit, audio-speech, audio-music, audio-transcription, video, models, characters, api-keys, billing, x402, crypto-rpc, augment, errors",
+    "Vercel (7): v0, ai-sdk, deployment, edge-functions, next-js, postgres, blob",
+    "Cloudflare (8): workers, pages, kv, d1, r2, ai, durable-objects, queues",
+    "Netlify (12): blobs, connect, deploy, dev, edge-functions, environment-variables, forms, functions, identity, image-cdn, sdk, visual-editor",
+    "Google Labs Stitch (6): design-md, component-library, prototyping, design-tokens, theme-builder, accessibility",
+    "Google Workspace CLI (17): calendar, chat, docs, drive, forms, gmail, keep, meet, sheets, slides, tasks, vault, workspace-admin, contacts, groups, sites, workspace-sdk",
+    "Expo (11): expo-router, eas-build, eas-submit, eas-update, expo-sdk, react-native, push-notifications, auth, sqlite, camera, payments",
+    "Hugging Face (13): inference-api, hub, spaces, datasets, transformers, diffusers, tokenizers, gradio, text-generation, image-classification, speech-recognition, translation, zero-shot",
+    "Trail of Bits — Security (21): smart-contract-audit, fuzzing, static-analysis, binary-analysis, cryptography-review, threat-modeling, secure-coding, vulnerability-research, incident-response, penetration-testing, red-team, supply-chain, container-security, cloud-security, mobile-security, web-security, api-security, defi-security, formal-verification, hardware-security, iot-security",
+    "Sentry (16): error-tracking, performance, releases, alerts, integrations, sourcemaps, sdk-javascript, sdk-python, sdk-react, sdk-nextjs, sdk-node, sdk-mobile, replay, profiling, ai-insights, crons",
+    "Weitere: Angular, Composio, Supabase, Stripe, HashiCorp, Sanity, Firecrawl, Neon, ClickHouse, Remotion, Replicate, Typefully, fal.ai, WordPress, OpenAI, Figma, Binance, MiniMax, DuckDB, GSAP, Notion, Resend, MongoDB, Apollo GraphQL, Auth0, Brave, Browserbase, CodeRabbit, Coinbase, Datadog Labs, Firebase, Flutter, Redis, NVIDIA, Google Cloud",
+    "Community Skills: Corey Haines, Dean Peters, Paweł Huryn, Addy Osmani, Garry Tan, Kim Barrett",
+    "Speicherpfade: .agents/skills/ (Codex), .claude/skills/ (Claude Code), .cursor/skills/ (Cursor), .gemini/skills/ (Gemini CLI), .github/skills/ (Copilot), .opencode/skills/ (OpenCode), .windsurf/skills/ (Windsurf), .agent/skills/ (Antigravity)",
+    "Installation: npx skills add <provider>/<skill>",
+    "Browse: https://officialskills.sh"
+  ],
+  "install": {
+    "single_skill": "npx skills add <provider>/<skill>",
+    "anthropic_example": "npx skills add anthropic/docx",
+    "voltagent_example": "npx skills add voltagent/create-voltagent",
+    "browse": "https://officialskills.sh"
+  }
+}
