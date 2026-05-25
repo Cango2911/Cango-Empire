@@ -1,0 +1,23 @@
+{
+  "name": "github-ranking",
+  "version": "1.0.0",
+  "description": "GitHub Ranking — Täglich auto-aktualisierte Top-100-Listen der meistgestarteten und geforteten GitHub-Repositories. 34 Programmiersprachen + Gesamt-Rankings (Stars/Forks). Datenquelle: GitHub GraphQL API v4.",
+  "license": "MIT",
+  "author": "EvanLi",
+  "source": "https://github.com/EvanLi/Github-Ranking",
+  "type": "agent-skill",
+  "skills": ["github-ranking"],
+  "covers": [
+    "Top 100 Stars (alle Sprachen)",
+    "Top 100 Forks (alle Sprachen)",
+    "34 Sprachen-Rankings: Python, JavaScript, TypeScript, Go, Rust, Java, C, C++, C#, Swift, Kotlin, PHP, Ruby, Scala, Shell, HTML, CSS, Dart, Lua, R, Julia, MATLAB, Haskell, Elixir, Clojure, Groovy, Perl, PowerShell, TeX, CoffeeScript, ActionScript, DM, Vim script, Objective-C",
+    "GitHub GraphQL API v4 Scraper (source/process.py)",
+    "CSV-Daten-Export (Data/github-ranking-YYYY-MM-DD.csv)"
+  ],
+  "data": {
+    "update_frequency": "daily",
+    "api": "GitHub GraphQL API v4",
+    "languages": 34,
+    "rankings": ["stars", "forks", "per-language-stars"]
+  }
+}
