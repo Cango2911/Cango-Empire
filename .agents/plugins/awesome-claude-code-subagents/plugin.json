@@ -1,0 +1,33 @@
+{
+  "name": "awesome-claude-code-subagents",
+  "version": "1.0.0",
+  "description": "Awesome Claude Code Subagents — 131+ spezialisierte Claude Code Subagenten in 10 Kategorien (VoltAgent, MIT). YAML-Frontmatter (name/description/tools/model) + System-Prompt. Smart Model Routing: opus (Security/Architektur), sonnet (Coding), haiku (Docs/Search). Installation: ~/.claude/agents/ oder .claude/agents/. Plugin-Namen: voltagent-core-dev, voltagent-lang, voltagent-infra, voltagent-qa, voltagent-data, voltagent-dx, voltagent-domain, voltagent-biz, voltagent-meta, voltagent-research.",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/awesome-claude-code-subagents",
+  "type": "agent-skill",
+  "skills": [
+    "awesome-claude-code-subagents"
+  ],
+  "covers": [
+    "01-core-development (voltagent-core-dev): api-designer, backend-developer, design-bridge, electron-pro, frontend-developer, fullstack-developer, graphql-architect, microservices-architect, mobile-developer, ui-designer, websocket-engineer",
+    "02-language-specialists (voltagent-lang): angular, cpp, csharp, django, dotnet-core, dotnet-4.8, elixir, expo-react-native, fastapi, flutter, golang, java, javascript, kotlin, laravel, nextjs, node, php, powershell-5.1, powershell-7, python, rails, react, rust, spring-boot, sql, swift, symfony, typescript, vue",
+    "03-infrastructure (voltagent-infra): azure, cloud-architect, database-admin, deployment, devops, devops-incident, docker, incident-responder, kubernetes, network, platform, security, sre, terraform, terragrunt, windows-infra",
+    "04-quality-security (voltagent-qa): accessibility, ad-security, ai-writing-auditor, architect-reviewer, chaos, code-reviewer, compliance, debugger, error-detective, penetration-tester, performance, powershell-hardening, qa, security-auditor, test-automator, ui-ux-tester",
+    "05-data-ai (voltagent-data): ai-engineer, data-analyst, data-engineer, data-scientist, database-optimizer, llm-architect, ml-engineer, machine-learning-engineer, mlops, nlp, postgres-pro, prompt-engineer, reinforcement-learning",
+    "06-developer-experience (voltagent-dx): build-engineer, cli-developer, dependency-manager, documentation-engineer, dx-optimizer, git-workflow, legacy-modernizer, mcp-developer, powershell-module-architect, powershell-ui-architect, readme-generator, refactoring, slack-expert, tooling",
+    "07-specialized-domains (voltagent-domain): api-documenter, blockchain, embedded-systems, fintech, game-developer, healthcare, iot, m365-admin, mobile-app, payment-integration, quant-analyst, risk-manager, seo",
+    "08-business-product (voltagent-biz): business-analyst, content-marketer, customer-success, legal-advisor, license-engineer, product-manager, project-manager, sales-engineer, scrum-master, technical-writer, ux-researcher, wordpress-master",
+    "09-meta-orchestration (voltagent-meta): agent-installer, agent-organizer, codebase-orchestrator, context-manager, error-coordinator, it-ops-orchestrator, knowledge-synthesizer, multi-agent-coordinator, performance-monitor, task-distributor, workflow-orchestrator",
+    "10-research-analysis (voltagent-research): competitive-analyst, data-researcher, market-researcher, project-idea-validator, research-analyst, scientific-literature-researcher, search-specialist, trend-analyst",
+    "subagent-catalog Slash Commands: /subagent-catalog:search, :fetch, :list, :invalidate",
+    "install-agents.sh: interaktiver Installer (local + remote GitHub-Modus)",
+    "Smart Model Routing: opus/sonnet/haiku je nach Aufgabe"
+  ],
+  "install": {
+    "single_agent": "cp categories/<category>/<agent>.md ~/.claude/agents/",
+    "interactive": "./install-agents.sh",
+    "plugin": "claude plugin marketplace add VoltAgent/awesome-claude-code-subagents",
+    "catalog_commands": "cp -r tools/subagent-catalog ~/.claude/commands/"
+  }
+}
