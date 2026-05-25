@@ -1,0 +1,12 @@
+{
+  "name": "ai-website-cloner-template",
+  "version": "1.0.0",
+  "description": "AI Website Cloner — 13.000-Sterne Claude Code Skill zum Klonen beliebiger Websites",
+  "author": "JCodesMore",
+  "category": "design",
+  "tags": ["website-cloner", "next-js", "multi-agent", "design-tokens", "screenshot", "component-builder"],
+  "skills": ["clone-website"],
+  "source": "https://github.com/JCodesMore/ai-website-cloner-template",
+  "stars": 13000,
+  "language": "markdown"
+}

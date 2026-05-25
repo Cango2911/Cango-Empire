@@ -1,0 +1,1 @@
+Awesome Claude Design (rohitg00) — DESIGN.md Prompts nach Ästhetik-Familien, Remix-Rezepte, Skills, Video-Teardowns. 11 Rezepte: Landing Page in 20 Min, Web-Capture-to-Prototype, Figma-to-DESIGN.md, Wireframe-to-HiFi, Tweaks-Panel, Brand-Extraction, Pitch-Deck, Repo-to-Design-System, Slack-Docs-Connector, 3D-Shaders.

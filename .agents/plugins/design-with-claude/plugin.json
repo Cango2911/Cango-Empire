@@ -1,0 +1,12 @@
+{
+  "name": "design-with-claude",
+  "version": "1.0.0",
+  "description": "Design With Claude — 37 spezialisierte Design-Agents + 1 Master Command für Claude Code",
+  "author": "imsaif",
+  "category": "design",
+  "tags": ["ui", "ux", "design-agents", "information-architecture", "dark-mode", "typography", "accessibility", "motion", "color-theory", "component-design", "ux-writing"],
+  "skills": ["design-with-claude"],
+  "source": "https://github.com/imsaif/design-with-claude",
+  "stars": 0,
+  "language": "markdown"
+}

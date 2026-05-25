@@ -1,0 +1,12 @@
+{
+  "name": "awesome-claude-skills-travis",
+  "version": "1.0.0",
+  "description": "Awesome Claude Skills (travisvn) — Kuratierte Liste von Claude Skills, Ressourcen und Tools",
+  "author": "travisvn",
+  "category": "meta",
+  "tags": ["awesome-list", "claude-skills", "resources", "curated"],
+  "skills": ["awesome-claude-skills-travis"],
+  "source": "https://github.com/travisvn/awesome-claude-skills",
+  "stars": 0,
+  "language": "markdown"
+}

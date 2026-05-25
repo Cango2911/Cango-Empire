@@ -1,0 +1,12 @@
+{
+  "name": "open-design",
+  "version": "1.0.0",
+  "description": "Open Design — Open-Source Claude Design Alternative (nexu-io). 19 Skills, 71 Brand Design Systeme",
+  "author": "nexu-io",
+  "category": "design",
+  "tags": ["open-source", "brand-design", "prototyping", "html", "pdf", "pptx", "mp4", "cross-agent"],
+  "skills": ["ad-creative", "after-hours-editorial-template", "agent-browser", "ai-music-album", "algorithmic-art", "apple-hig", "article-magazine", "artifacts-builder", "brainstorming", "brand-guidelines", "canvas-design", "color-expert", "competitive-ads-extractor", "copywriting", "creative-director"],
+  "source": "https://github.com/nexu-io/open-design",
+  "stars": 0,
+  "language": "markdown"
+}

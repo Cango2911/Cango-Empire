@@ -1,0 +1,12 @@
+{
+  "name": "huashu-design",
+  "version": "1.0.0",
+  "description": "Huashu Design — HTML-natives Design-Skill für Claude Code. Reverse-Engineered Claude Design mit 20 Philosophien.",
+  "author": "alchaincyf",
+  "category": "design",
+  "tags": ["html", "prototypes", "animations", "dashboards", "slides", "infographics", "mp4-export", "design-philosophy"],
+  "skills": ["huashu-design"],
+  "source": "https://github.com/alchaincyf/huashu-design",
+  "license": "MIT",
+  "language": "markdown"
+}

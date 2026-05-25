@@ -1,0 +1,12 @@
+{
+  "name": "awesome-claude-skills-composio",
+  "version": "1.0.0",
+  "description": "Awesome Claude Skills (ComposioHQ/Anthropic) — Offizielle Anthropic Skills Collection. 30+ Skills",
+  "author": "ComposioHQ",
+  "category": "meta",
+  "tags": ["anthropic", "official", "composio", "artifacts-builder", "brand-guidelines", "canvas-design", "document-skills", "image-enhancer", "mcp-builder", "theme-factory", "webapp-testing"],
+  "skills": ["artifacts-builder", "brand-guidelines", "canvas-design", "composio-skills", "connect", "document-skills", "image-enhancer", "internal-comms", "mcp-builder", "skill-creator", "theme-factory", "webapp-testing", "video-downloader"],
+  "source": "https://github.com/ComposioHQ/awesome-claude-skills",
+  "stars": 0,
+  "language": "markdown"
+}

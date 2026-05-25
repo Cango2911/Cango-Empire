@@ -1,0 +1,1 @@
+Awesome Claude Skills (ComposioHQ/Anthropic) — Offizielle Anthropic Skills Collection. 30+ Skills: artifacts-builder, brand-guidelines, canvas-design, composio-skills (150+ Integrationen), document-skills (DOCX/PPTX/XLSX), image-enhancer, internal-comms, mcp-builder, skill-creator, theme-factory, webapp-testing, video-downloader und mehr.

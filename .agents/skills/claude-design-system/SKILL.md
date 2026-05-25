@@ -1,0 +1,1 @@
+Claude Design System — Transformiert Amateur-UIs in professionelle Designs. 4 Slash Commands: /design-it (generiert vollständiges Design-System), /extract-it (extrahiert Design-Token aus Screenshot/URL), /expand-it (erweitert bestehendes System), /merge-it (kombiniert Design-Systeme). Basiert auf bewährten Mustern erfolgreicher Apps.

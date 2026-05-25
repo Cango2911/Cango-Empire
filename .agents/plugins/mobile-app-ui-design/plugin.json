@@ -1,0 +1,11 @@
+{
+  "name": "mobile-app-ui-design",
+  "version": "1.0.0",
+  "description": "Mobile App UI Design Skill — Professionelle Mobile App UI/UX-Designs inspiriert von Top-Apps",
+  "author": "ceorkm",
+  "category": "mobile",
+  "tags": ["mobile", "react-native", "flutter", "swiftui", "airbnb", "duolingo", "spotify", "revolut", "onboarding", "navigation"],
+  "skills": ["mobile-app-ui-design"],
+  "source": "https://github.com/ceorkm/mobile-app-ui-design",
+  "language": "markdown"
+}
