@@ -1,0 +1,12 @@
+{
+  "name": "ton-auditor-skills",
+  "version": "1.0.0",
+  "description": "Built on the v2 packaging and workflow model from [pashov/skills](https://github.com/pashov/skills), then adapted for TON-specific execution and audit work.",
+  "license": "MIT",
+  "author": "sanbir",
+  "source": "https://github.com/sanbir/ton-auditor-skills",
+  "type": "agent-skill",
+  "skills": [
+    "ton-auditor-skills"
+  ]
+}

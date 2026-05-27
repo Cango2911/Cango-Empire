@@ -1,0 +1,12 @@
+{
+  "name": "claude-skills-marketplace",
+  "version": "1.0.0",
+  "description": "A curated marketplace of Claude Code plugins for software engineering workflows.",
+  "license": "Apache-2.0",
+  "author": "mhattingpete",
+  "source": "https://github.com/mhattingpete/claude-skills-marketplace",
+  "type": "agent-skill",
+  "skills": [
+    "claude-skills-marketplace"
+  ]
+}

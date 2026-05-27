@@ -1,0 +1,12 @@
+{
+  "name": "awesome-web3-security",
+  "version": "1.0.0",
+  "description": "A curated list of Web3 Security materials and resources for Pentesters and Bug Hunters.",
+  "license": "MIT",
+  "author": "gmh5225",
+  "source": "https://github.com/gmh5225/awesome-web3-security",
+  "type": "agent-skill",
+  "skills": [
+    "awesome-web3-security"
+  ]
+}

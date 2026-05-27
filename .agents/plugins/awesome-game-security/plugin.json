@@ -1,0 +1,12 @@
+{
+  "name": "awesome-game-security",
+  "version": "1.0.0",
+  "description": "``` If you find that some links are not working, you can simply replace the username with gmh5225.",
+  "license": "MIT",
+  "author": "gmh5225",
+  "source": "https://github.com/gmh5225/awesome-game-security",
+  "type": "agent-skill",
+  "skills": [
+    "awesome-game-security"
+  ]
+}

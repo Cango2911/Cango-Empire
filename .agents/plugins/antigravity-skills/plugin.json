@@ -1,0 +1,12 @@
+{
+  "name": "antigravity-skills",
+  "version": "1.0.0",
+  "description": "Antigravity Awesome Skills is an installable GitHub library and npm installer for reusable `SKILL.md` playbooks. It is designed for Claude Code, Cursor, Codex CLI, Gemini CLI, Antigravity, Kiro, OpenC",
+  "license": "MIT",
+  "author": "sickn33",
+  "source": "https://github.com/sickn33/antigravity-awesome-skills",
+  "type": "agent-skill",
+  "skills": [
+    "antigravity-skills"
+  ]
+}

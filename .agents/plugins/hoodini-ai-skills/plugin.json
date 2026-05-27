@@ -1,0 +1,12 @@
+{
+  "name": "hoodini-ai-skills",
+  "version": "1.0.0",
+  "description": "```bash",
+  "license": "MIT",
+  "author": "hoodini",
+  "source": "https://github.com/hoodini/ai-agents-skills",
+  "type": "agent-skill",
+  "skills": [
+    "hoodini-ai-skills"
+  ]
+}

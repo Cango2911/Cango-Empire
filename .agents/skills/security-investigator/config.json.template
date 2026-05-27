@@ -1,0 +1,24 @@
+{
+  "sentinel_workspace_id": "YOUR_WORKSPACE_ID_HERE",
+  "tenant_id": "YOUR_TENANT_ID_HERE",
+  "subscription_id": "YOUR_SUBSCRIPTION_ID_HERE",
+  "azure_mcp": {
+    "resource_group": "YOUR_LOG_ANALYTICS_RESOURCE_GROUP",
+    "workspace_name": "YOUR_LOG_ANALYTICS_WORKSPACE_NAME",
+    "tenant": "YOUR_TENANT_ID_HERE",
+    "subscription": "YOUR_SUBSCRIPTION_ID_HERE"
+  },
+  "ipinfo_token": null,
+  "abuseipdb_token": null,
+  "vpnapi_token": null,
+  "shodan_token": null,
+  "output_dir": "reports",
+  "sit_mapping": {
+    "__comment": "Optional: SIT GUID-to-Name mapping for data-security-analysis skill. Resolved via Get-DlpSensitiveInformationType. Skill auto-populates after first PowerShell resolution.",
+    "EXAMPLE-GUID-0000-0000-000000000000": "Example Custom SIT Name"
+  },
+  "label_mapping": {
+    "__comment": "Optional: Sensitivity Label GUID-to-Name mapping for data-security-analysis skill. Resolved via Get-Label. Microsoft default sub-labels (defa4170-*) are embedded in the skill; custom labels and tenant-specific parent label GUIDs go here.",
+    "EXAMPLE-GUID-0000-0000-000000000001": "Your Custom Label Name"
+  }
+}

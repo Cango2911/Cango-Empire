@@ -1,0 +1,12 @@
+{
+  "name": "jup-agent-skills",
+  "version": "1.0.0",
+  "description": "Skills for AI coding agents to integrate with the Jupiter ecosystem.",
+  "license": "MIT",
+  "author": "jup-ag",
+  "source": "https://github.com/jup-ag/agent-skills",
+  "type": "agent-skill",
+  "skills": [
+    "jup-agent-skills"
+  ]
+}

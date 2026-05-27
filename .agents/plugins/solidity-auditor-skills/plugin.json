@@ -1,0 +1,12 @@
+{
+  "name": "solidity-auditor-skills",
+  "version": "1.0.0",
+  "description": "This fork explicitly builds on [pashov/skills](https://github.com/pashov/skills) v2, extending the upstream Solidity workflow with additional EVM vectors and repo-specific coverage.",
+  "license": "MIT",
+  "author": "sanbir",
+  "source": "https://github.com/sanbir/solidity-auditor-skills",
+  "type": "agent-skill",
+  "skills": [
+    "solidity-auditor-skills"
+  ]
+}

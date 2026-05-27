@@ -1,0 +1,12 @@
+{
+  "name": "anthropic-cybersecurity-skills",
+  "version": "1.0.0",
+  "description": "A junior analyst knows which Volatility3 plugin to run on a suspicious memory dump, which Sigma rules catch Kerberoasting, and how to scope a cloud breach across three providers. **Your AI agent doesn",
+  "license": "Apache-2.0",
+  "author": "mukul975",
+  "source": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
+  "type": "agent-skill",
+  "skills": [
+    "anthropic-cybersecurity-skills"
+  ]
+}

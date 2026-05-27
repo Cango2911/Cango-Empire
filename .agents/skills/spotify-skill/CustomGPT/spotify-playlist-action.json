@@ -1,0 +1,865 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Spotify Web API for Custom GPT",
+    "description": "Direct integration with Spotify Web API for playlist management, music search, playback control, and personalization. Includes user library management, top artists/tracks, recently played, and queue control.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.spotify.com/v1",
+      "description": "Spotify Web API"
+    }
+  ],
+  "paths": {
+    "/me": {
+      "get": {
+        "operationId": "getCurrentUser",
+        "summary": "Get current user profile",
+        "description": "Get detailed profile information about the current user",
+        "responses": {
+          "200": {
+            "description": "User profile information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {"type": "string"},
+                    "display_name": {"type": "string"},
+                    "email": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/me/playlists": {
+      "get": {
+        "operationId": "getCurrentUserPlaylists",
+        "summary": "Get current user's playlists",
+        "description": "Get playlists owned or followed by user. PAGINATION REQUIRED if >20 playlists: offset=0,limit=20 → check 'next' field → if exists, offset=20 → repeat incrementing offset by 20 until 'next' is null.",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50
+            },
+            "description": "Maximum number of playlists to return (1-50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Index of first playlist to return. For pagination: Start with 0, then increment by limit (0→20→40→60...) until 'next' field is null in response."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of playlists"
+          }
+        }
+      },
+      "post": {
+        "operationId": "createPlaylist",
+        "summary": "Create a playlist",
+        "description": "Create playlist with sensible defaults: public=false (private) unless user says public, auto-generate description. Returns playlist_id for adding tracks. Save the playlist_id and add tracks immediately after creation. When selecting tracks, avoid songs over 15 minutes long to maintain playlist flow.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the playlist"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Playlist description"
+                  },
+                  "public": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, playlist will be public. Defaults to false (private)."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Playlist created"
+          }
+        }
+      }
+    },
+    "/me/tracks": {
+      "get": {
+        "operationId": "getUserSavedTracks",
+        "summary": "Get user's saved tracks",
+        "description": "Get user's library of saved/liked tracks. PAGINATION REQUIRED if >20 saved tracks: offset=0,limit=20 → check 'next' field → if exists, offset=20 → continue until 'next' is null.",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50
+            },
+            "description": "Maximum number of tracks to return (1-50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Index of first track to return. For pagination: Start with 0, then increment by limit (0→20→40→60...) until 'next' field is null."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of saved tracks"
+          }
+        }
+      },
+      "put": {
+        "operationId": "saveTracksToLibrary",
+        "summary": "Save tracks to library",
+        "description": "Add tracks to user's Liked Songs library. Max 50 track IDs per request (comma-separated). Tracks can then be retrieved via getUserSavedTracks.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["ids"],
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Array of Spotify track IDs (not URIs). Max 50.",
+                    "maxItems": 50
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tracks saved to library"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "removeTracksFromLibrary",
+        "summary": "Remove tracks from library",
+        "description": "Remove tracks from user's Liked Songs. Max 50 track IDs per request. ALWAYS confirm with user before removing.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["ids"],
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Array of Spotify track IDs (not URIs). Max 50.",
+                    "maxItems": 50
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tracks removed from library"
+          }
+        }
+      }
+    },
+    "/me/top/artists": {
+      "get": {
+        "operationId": "getUserTopArtists",
+        "summary": "Get user's top artists",
+        "description": "Get user's most listened-to artists over time periods (short=4 weeks, medium=6 months, long=years). PAGINATION: If requesting >50 artists, paginate with offset. Essential for building personalized playlists.",
+        "parameters": [
+          {
+            "name": "time_range",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["short_term", "medium_term", "long_term"],
+              "default": "medium_term"
+            },
+            "description": "Time period: short_term (4 weeks), medium_term (6 months), long_term (years)"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50
+            },
+            "description": "Maximum number of artists to return (1-50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Index for pagination"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User's top artists"
+          }
+        }
+      }
+    },
+    "/me/top/tracks": {
+      "get": {
+        "operationId": "getUserTopTracks",
+        "summary": "Get user's top tracks",
+        "description": "Get user's most played tracks over time periods. PAGINATION: If requesting >50 tracks, paginate with offset. Use to seed playlists with user's proven favorites.",
+        "parameters": [
+          {
+            "name": "time_range",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["short_term", "medium_term", "long_term"],
+              "default": "medium_term"
+            },
+            "description": "Time period: short_term (4 weeks), medium_term (6 months), long_term (years)"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50
+            },
+            "description": "Maximum number of tracks to return (1-50)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Index for pagination"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User's top tracks"
+          }
+        }
+      }
+    },
+    "/playlists/{playlist_id}": {
+      "get": {
+        "operationId": "getPlaylist",
+        "summary": "Get playlist",
+        "description": "Get a playlist owned by a Spotify user",
+        "parameters": [
+          {
+            "name": "playlist_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Playlist details"
+          }
+        }
+      },
+      "put": {
+        "operationId": "updatePlaylist",
+        "summary": "Update playlist",
+        "description": "Change a playlist's name and public/private state",
+        "parameters": [
+          {
+            "name": "playlist_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "public": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Playlist updated"
+          }
+        }
+      }
+    },
+    "/playlists/{playlist_id}/followers": {
+      "delete": {
+        "operationId": "unfollowPlaylist",
+        "summary": "Unfollow playlist",
+        "description": "Unfollow (remove) a playlist from the user's library. For playlists owned by the user, this effectively deletes the playlist. CRITICAL: ALWAYS confirm with user before executing this action as it cannot be undone.",
+        "parameters": [
+          {
+            "name": "playlist_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Playlist unfollowed"
+          }
+        }
+      }
+    },
+    "/playlists/{playlist_id}/tracks": {
+      "get": {
+        "operationId": "getPlaylistTracks",
+        "summary": "Get playlist tracks",
+        "description": "Get full details of tracks in playlist. PAGINATION REQUIRED if >20 tracks: offset=0,limit=20 → check 'next' → if exists, offset=20 → repeat (offset=40,60...) until 'next' is null.",
+        "parameters": [
+          {
+            "name": "playlist_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 100
+            },
+            "description": "Maximum number of tracks to return (1-100)"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Index of first track to return. For pagination: Start with 0, then increment by limit (0→20→40→60...) until 'next' field is null."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of tracks"
+          }
+        }
+      },
+      "post": {
+        "operationId": "addTracksToPlaylist",
+        "summary": "Add tracks to playlist",
+        "description": "Add tracks to a playlist using Spotify URIs (spotify:track:{id}). Max 100 tracks per request. Extract track IDs from search results and convert to URI format before adding. Prefer tracks under 15 minutes to maintain playlist flow and engagement.",
+        "parameters": [
+          {
+            "name": "playlist_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["uris"],
+                "properties": {
+                  "uris": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Array of Spotify URIs to add. Maximum 100 tracks per request. (e.g., [\"spotify:track:4iV5W9uYEdYUVa79Axb7Rh\"])",
+                    "maxItems": 100
+                  },
+                  "position": {
+                    "type": "integer",
+                    "description": "Position to insert tracks (optional)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Tracks added"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "removeTracksFromPlaylist",
+        "summary": "Remove tracks from playlist",
+        "description": "Remove tracks from a playlist. Each track must be an object with 'uri' property (spotify:track:{id}). Max 100 per request. ALWAYS confirm with user before removing.",
+        "parameters": [
+          {
+            "name": "playlist_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["tracks"],
+                "properties": {
+                  "tracks": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "description": "Array of track objects to remove. Maximum 100 tracks per request.",
+                    "maxItems": 100
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tracks removed"
+          }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "operationId": "search",
+        "summary": "Search for items",
+        "description": "Search Spotify for tracks, artists, albums, or playlists. CRITICAL: Use limit=10-15 to avoid response size errors. For pagination: increment offset (0→15→30) and check 'next' field. For variety: make multiple focused searches with different keywords.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Search query with operators. Available filters: artist:name, album:name, track:name, genre:genre, year:YYYY or year:YYYY-YYYY, isrc:code, upc:code, tag:new, tag:hipster. Operators: NOT (-), OR, AND (space). Examples: 'rock year:1970-1979 -live', 'artist:Beatles genre:rock', 'workout genre:electronic OR genre:pop'."
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated list of item types to search (track, artist, album, playlist)"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "maximum": 50
+            },
+            "description": "Maximum number of results to return per type (1-50). RECOMMENDED: Use 10-15 to prevent response size errors. Spotify responses include extensive metadata that can exceed Custom GPT processing limits with larger values."
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Index of first result to return. For pagination: Start with 0, increment by limit (0→15→30→45...) until 'next' is null. Check 'next' field in response."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results"
+          }
+        }
+      }
+    },
+    "/artists/{id}": {
+      "get": {
+        "operationId": "getArtist",
+        "summary": "Get artist",
+        "description": "Get Spotify catalog information for a single artist",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Artist information"
+          }
+        }
+      }
+    },
+    "/artists/{id}/top-tracks": {
+      "get": {
+        "operationId": "getArtistTopTracks",
+        "summary": "Get artist's top tracks",
+        "description": "Get an artist's top tracks by country",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "market",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "US"
+            },
+            "description": "ISO 3166-1 alpha-2 country code"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Artist's top tracks"
+          }
+        }
+      }
+    },
+    "/artists/{id}/related-artists": {
+      "get": {
+        "operationId": "getRelatedArtists",
+        "summary": "Get related artists",
+        "description": "Get artists similar to a given artist. Returns up to 20 related artists based on Spotify's artist similarity analysis. Use to discover new artists similar to user's favorites or build 'If you like X, try Y' recommendations.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Spotify ID of the artist"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of related artists with genres, popularity, and follower counts"
+          }
+        }
+      }
+    },
+    "/audio-features/{id}": {
+      "get": {
+        "operationId": "getAudioFeatures",
+        "summary": "Get audio features for a track",
+        "description": "Get audio analysis: danceability, energy, valence, acousticness, instrumentalness, tempo (BPM), key, mode. Values 0.0-1.0 except tempo/key. Use for mood/energy filtering. REQUIRES user-read-private scope. 403 error = re-authenticate.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Spotify track ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Audio features object with danceability, energy, key, loudness, mode, speechiness, acousticness, instrumentalness, liveness, valence, tempo, duration_ms, time_signature"
+          },
+          "403": {
+            "description": "Missing user-read-private scope. User must reset authentication and reconnect."
+          }
+        }
+      }
+    },
+    "/audio-features": {
+      "get": {
+        "operationId": "getMultipleAudioFeatures",
+        "summary": "Get audio features for multiple tracks",
+        "description": "Get audio features for up to 100 tracks in a single request. More efficient than calling getAudioFeatures repeatedly. Use to analyze search results or playlist tracks for filtering by energy, mood, tempo, etc. REQUIRES: user-read-private scope. If 403 error occurs, user must re-authenticate.",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated list of Spotify track IDs (max 100). Example: '4iV5W9uYEdYUVa79Axb7Rh,1301WleyT98MSxVHPZCA6M'"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of audio features objects in same order as requested IDs"
+          },
+          "403": {
+            "description": "Missing user-read-private scope. User must reset authentication and reconnect."
+          }
+        }
+      }
+    },
+    "/me/player": {
+      "get": {
+        "operationId": "getPlaybackState",
+        "summary": "Get playback state",
+        "description": "Get information about the user's current playback",
+        "responses": {
+          "200": {
+            "description": "Playback state"
+          }
+        }
+      }
+    },
+    "/me/player/play": {
+      "put": {
+        "operationId": "startPlayback",
+        "summary": "Start/resume playback",
+        "description": "Start playback on user's active device or resume paused playback. Provide EITHER context_uri (for album/artist/playlist) OR uris array (for specific tracks). Use Spotify URI format: spotify:track:{id}, spotify:album:{id}, spotify:playlist:{id}. Requires an active Spotify device.",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "context_uri": {
+                    "type": "string",
+                    "description": "Spotify URI of the context (album, artist, playlist)"
+                  },
+                  "uris": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Array of track URIs to play"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Playback started"
+          }
+        }
+      }
+    },
+    "/me/player/pause": {
+      "put": {
+        "operationId": "pausePlayback",
+        "summary": "Pause playback",
+        "description": "Pause playback on the user's account",
+        "responses": {
+          "204": {
+            "description": "Playback paused"
+          }
+        }
+      }
+    },
+    "/me/player/next": {
+      "post": {
+        "operationId": "skipToNext",
+        "summary": "Skip to next",
+        "description": "Skip to the next track",
+        "responses": {
+          "204": {
+            "description": "Skipped to next"
+          }
+        }
+      }
+    },
+    "/me/player/previous": {
+      "post": {
+        "operationId": "skipToPrevious",
+        "summary": "Skip to previous",
+        "description": "Skip to the previous track",
+        "responses": {
+          "204": {
+            "description": "Skipped to previous"
+          }
+        }
+      }
+    },
+    "/me/player/recently-played": {
+      "get": {
+        "operationId": "getRecentlyPlayedTracks",
+        "summary": "Get recently played tracks",
+        "description": "Get user's 50 most recently played tracks with play timestamps. Use to understand current listening context and build 'more like this' playlists.",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50
+            },
+            "description": "Maximum number of tracks to return (1-50)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recently played tracks"
+          }
+        }
+      }
+    },
+    "/me/player/queue": {
+      "post": {
+        "operationId": "addToQueue",
+        "summary": "Add track to queue",
+        "description": "Add track to user's playback queue (plays after current track). Requires active device and Spotify Premium. Use Spotify URI format (spotify:track:{id}).",
+        "parameters": [
+          {
+            "name": "uri",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Spotify URI of track to queue (e.g., spotify:track:4iV5W9uYEdYUVa79Axb7Rh)"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Track added to queue"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://accounts.spotify.com/authorize",
+            "tokenUrl": "https://accounts.spotify.com/api/token",
+            "scopes": {
+              "user-read-private": "Read access to user's private data",
+              "user-read-email": "Read access to user's email address",
+              "playlist-read-private": "Read access to user's private playlists",
+              "playlist-read-collaborative": "Include collaborative playlists when requesting a user's playlists",
+              "playlist-modify-public": "Write access to user's public playlists",
+              "playlist-modify-private": "Write access to user's private playlists",
+              "user-library-read": "Read access to user's library",
+              "user-library-modify": "Write/delete access to user's library",
+              "user-top-read": "Read access to user's top artists and tracks",
+              "user-read-playback-state": "Read access to user's playback state",
+              "user-modify-playback-state": "Write access to user's playback state",
+              "user-read-currently-playing": "Read access to user's currently playing content",
+              "user-read-recently-played": "Read access to user's recently played tracks"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2": [
+        "user-read-private",
+        "user-read-email",
+        "playlist-read-private",
+        "playlist-read-collaborative",
+        "playlist-modify-public",
+        "playlist-modify-private",
+        "user-library-read",
+        "user-library-modify",
+        "user-top-read",
+        "user-read-playback-state",
+        "user-modify-playback-state",
+        "user-read-currently-playing",
+        "user-read-recently-played"
+      ]
+    }
+  ]
+}

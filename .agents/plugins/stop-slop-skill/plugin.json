@@ -1,0 +1,12 @@
+{
+  "name": "stop-slop-skill",
+  "version": "1.0.0",
+  "description": "name: stop-slop",
+  "license": "MIT",
+  "author": "hardikpandya",
+  "source": "https://github.com/hardikpandya/stop-slop",
+  "type": "agent-skill",
+  "skills": [
+    "stop-slop-skill"
+  ]
+}

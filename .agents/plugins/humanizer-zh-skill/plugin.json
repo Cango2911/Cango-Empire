@@ -1,0 +1,12 @@
+{
+  "name": "humanizer-zh-skill",
+  "version": "1.0.0",
+  "description": "name: humanizer-zh",
+  "license": "MIT",
+  "author": "op7418",
+  "source": "https://github.com/op7418/Humanizer-zh",
+  "type": "agent-skill",
+  "skills": [
+    "humanizer-zh-skill"
+  ]
+}

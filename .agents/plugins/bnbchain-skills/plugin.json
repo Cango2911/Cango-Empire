@@ -1,0 +1,12 @@
+{
+  "name": "bnbchain-skills",
+  "version": "1.0.0",
+  "description": "BNB Chain Skills helps AI agents (e.g. Cursor, Claude) install and use the BNB Chain MCP server effectively. It provides structured knowledge on how to connect the MCP server, configure credentials, a",
+  "license": "MIT",
+  "author": "bnb-chain",
+  "source": "https://github.com/bnb-chain/bnbchain-skills",
+  "type": "agent-skill",
+  "skills": [
+    "bnbchain-skills"
+  ]
+}

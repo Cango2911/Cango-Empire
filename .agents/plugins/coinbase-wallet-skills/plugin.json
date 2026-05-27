@@ -1,0 +1,12 @@
+{
+  "name": "coinbase-wallet-skills",
+  "version": "1.0.0",
+  "description": "A single skill \u2014 [`agentic-wallet`](./skills/agentic-wallet/SKILL.md) \u2014 that routes the agent to topic-specific reference docs in [`./skills/agentic-wallet/references/`](./skills/agentic-wallet/refere",
+  "license": "MIT",
+  "author": "coinbase",
+  "source": "https://github.com/coinbase/agentic-wallet-skills",
+  "type": "agent-skill",
+  "skills": [
+    "coinbase-wallet-skills"
+  ]
+}

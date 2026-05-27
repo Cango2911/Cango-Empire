@@ -1,0 +1,12 @@
+{
+  "name": "solana-dev-skill",
+  "version": "1.0.0",
+  "description": "A comprehensive Claude Code skill for modern Solana development (January 2026 best practices).",
+  "license": "MIT",
+  "author": "GuiBibeau",
+  "source": "https://github.com/GuiBibeau/solana-dev-skill",
+  "type": "agent-skill",
+  "skills": [
+    "solana-dev-skill"
+  ]
+}

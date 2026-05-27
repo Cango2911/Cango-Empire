@@ -1,0 +1,12 @@
+{
+  "name": "web3-bug-bounty-skills",
+  "version": "1.0.0",
+  "description": "Smart contract bug bounty skills for Claude Code, Claude AI, and other AI tools.",
+  "license": "MIT",
+  "author": "shuvonsec",
+  "source": "https://github.com/shuvonsec/web3-bug-bounty-hunting-ai-skills",
+  "type": "agent-skill",
+  "skills": [
+    "web3-bug-bounty-skills"
+  ]
+}

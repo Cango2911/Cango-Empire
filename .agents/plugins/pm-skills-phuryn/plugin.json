@@ -1,0 +1,12 @@
+{
+  "name": "pm-skills-phuryn",
+  "version": "1.0.0",
+  "description": "Designed for Claude Code and Cowork. Skills compatible with other AI assistants.",
+  "license": "MIT",
+  "author": "phuryn",
+  "source": "https://github.com/phuryn/pm-skills",
+  "type": "agent-skill",
+  "skills": [
+    "pm-skills-phuryn"
+  ]
+}

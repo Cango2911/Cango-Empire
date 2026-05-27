@@ -1,0 +1,12 @@
+{
+  "name": "epub-skill",
+  "version": "1.0.0",
+  "description": "A Claude agent skill that converts markdown documents and chat summaries into professional EPUB ebook files. Perfect for creating portable, device-agnostic ebooks from research documents, blog posts, ",
+  "license": "MIT",
+  "author": "smerchek",
+  "source": "https://github.com/smerchek/claude-epub-skill",
+  "type": "agent-skill",
+  "skills": [
+    "epub-skill"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "webgpu-claude-skill",
+  "version": "1.0.0",
+  "description": "An Agent Skill for developing WebGPU-enabled Three.js applications using TSL (Three.js Shading Language).",
+  "license": "MIT",
+  "author": "dgreenheck",
+  "source": "https://github.com/dgreenheck/webgpu-claude-skill",
+  "type": "agent-skill",
+  "skills": [
+    "webgpu-claude-skill"
+  ]
+}

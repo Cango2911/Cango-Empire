@@ -1,0 +1,12 @@
+{
+  "name": "skills-best-practices",
+  "version": "1.0.0",
+  "description": "This guide explains how to write professional-grade skills for agents, validate them using LLMs, and maintain a lean context window.",
+  "license": "MIT",
+  "author": "mgechev",
+  "source": "https://github.com/mgechev/skills-best-practices",
+  "type": "agent-skill",
+  "skills": [
+    "skills-best-practices"
+  ]
+}

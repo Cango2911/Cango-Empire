@@ -1,0 +1,12 @@
+{
+  "name": "openzeppelin-skills",
+  "version": "1.0.0",
+  "description": "Agent skills for secure smart contract development with OpenZeppelin Contracts libraries.",
+  "license": "GPL-3.0",
+  "author": "OpenZeppelin",
+  "source": "https://github.com/OpenZeppelin/openzeppelin-skills",
+  "type": "agent-skill",
+  "skills": [
+    "openzeppelin-skills"
+  ]
+}

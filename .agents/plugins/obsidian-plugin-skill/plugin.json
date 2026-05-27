@@ -1,0 +1,12 @@
+{
+  "name": "obsidian-plugin-skill",
+  "version": "1.0.0",
+  "description": "A comprehensive agent skill for developing high-quality Obsidian plugins that follow best practices, pass code review, and adhere to official submission guidelines.",
+  "license": "MIT",
+  "author": "gapmiss",
+  "source": "https://github.com/gapmiss/obsidian-plugin-skill",
+  "type": "agent-skill",
+  "skills": [
+    "obsidian-plugin-skill"
+  ]
+}

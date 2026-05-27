@@ -1,0 +1,12 @@
+{
+  "name": "ios-simulator-skill",
+  "version": "1.0.0",
+  "description": "Production-ready skill for building, testing, and automating iOS apps. 27 scripts optimized for both human developers and AI agents.",
+  "license": "MIT",
+  "author": "conorluddy",
+  "source": "https://github.com/conorluddy/ios-simulator-skill",
+  "type": "agent-skill",
+  "skills": [
+    "ios-simulator-skill"
+  ]
+}

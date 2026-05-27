@@ -1,0 +1,12 @@
+{
+  "name": "obra-superpowers",
+  "version": "1.0.0",
+  "description": "Superpowers is a complete software development methodology for your coding agents, built on top of a set of composable skills and some initial instructions that make sure your agent uses them.",
+  "license": "MIT",
+  "author": "obra",
+  "source": "https://github.com/obra/superpowers",
+  "type": "agent-skill",
+  "skills": [
+    "obra-superpowers"
+  ]
+}

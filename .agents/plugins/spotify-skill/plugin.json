@@ -1,0 +1,12 @@
+{
+  "name": "spotify-skill",
+  "version": "1.0.0",
+  "description": "Whether you want to **use** the Spotify skill or **create your own skills**, this project provides everything you need.",
+  "license": "Apache-2.0",
+  "author": "fabioc-aloha",
+  "source": "https://github.com/fabioc-aloha/spotify-skill",
+  "type": "agent-skill",
+  "skills": [
+    "spotify-skill"
+  ]
+}

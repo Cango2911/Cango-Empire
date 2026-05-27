@@ -1,0 +1,12 @@
+{
+  "name": "bug-hunter-skill",
+  "version": "1.0.0",
+  "description": "name: bug-hunter",
+  "license": "MIT",
+  "author": "codexstar69",
+  "source": "https://github.com/codexstar69/bug-hunter",
+  "type": "agent-skill",
+  "skills": [
+    "bug-hunter-skill"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "claude-bug-bounty",
+  "version": "1.0.0",
+  "description": "name: bug-bounty",
+  "license": "MIT",
+  "author": "shuvonsec",
+  "source": "https://github.com/shuvonsec/claude-bug-bounty",
+  "type": "agent-skill",
+  "skills": [
+    "claude-bug-bounty"
+  ]
+}

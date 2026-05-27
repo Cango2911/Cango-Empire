@@ -1,0 +1,12 @@
+{
+  "name": "security-investigator",
+  "version": "1.0.0",
+  "description": "An investigation automation framework that combines **GitHub Copilot**, **VS Code Agent Skills**, and **Model Context Protocol (MCP) servers** to enable natural language security investigations. Ask q",
+  "license": "MIT",
+  "author": "SCStelz",
+  "source": "https://github.com/SCStelz/security-investigator",
+  "type": "agent-skill",
+  "skills": [
+    "security-investigator"
+  ]
+}
