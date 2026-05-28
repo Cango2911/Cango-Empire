@@ -1,5 +1,5 @@
 {
-  "name": "CanGo Jarvis · Tages-Missions-Analyse",
+  "name": "CanGo Jarvis · Tages-Missions-Analyse v2 (Gemini)",
   "nodes": [
     {
       "parameters": {
@@ -13,78 +13,90 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [240, 300],
-      "notes": "Empfängt Kontext vom Daily-Todo-Master bei Seitenaufruf.\nPayload: { date, dayName, daysLeft, monthRevenue, monthGoal, monthPct, revenueGap, streak, lastOutreach, pillars, tools_active, tools_expired }"
+      "notes": "Empfängt Kontext vom Daily-Todo-Master.\nPayload: { date, dayName, daysLeft, monthRevenue, monthGoal, monthPct, revenueGap, streak, energyLevel, doneTodayPct }"
     },
     {
       "parameters": {
-        "model": "claude-opus-4-7",
-        "messages": {
-          "values": [
-            {
-              "role": "system",
-              "content": "Du bist Jarvis – der persönliche KI-Stratege von Canberk Kivilcim (CanGo App Empire, Wathlingen/Celle, Deutschland).\n\nDein Ziel: Analysiere den aktuellen Unternehmensstand und liefere TÄGLICH die 3–5 wichtigsten, spezifischen Aufgaben mit Begründung.\n\nCanberk hat 4 Säulen:\n1. Prozess-Coaching & Website-Bau (€500 Website, €500/Monat Retainer, €150/Std)\n2. Affiliate Marketing (SaaS-Tools, Amazon, Booking.com)\n3. E-Commerce + Content Creator (eigene Shops, Reels, YouTube)\n4. Bot-Empire (n8n-Automatisierungen, Python-Bots, KI-Workflows)\n\nMonatsziel: €2.870\n\nVerfügbare Tools: BrowserAct, Reap, Greta (Stufe 3), Mootion, NoCodeBackend, Voilà, Sociamonials, DepositPhotos, Opus Clip, Kie.ai, NeuronWriter, Feedspace, Yapper.so, Gemini, Hostinger VPS, n8n, outreach_sniper.py\n\nRegeln:\n- Gib NUR JSON zurück – kein Text drumherum\n- Maximal 5 Missions\n- Jede Mission: konkret, umsetzbar, mit klarer Begründung basierend auf den Zahlen\n- Priorität: Umsatz-Lücke schließen > Streak erhalten > Content > Bots\n- Wenn daysLeft < 10 und monthPct < 50: ALARM-Modus – nur Umsatz-Aufgaben\n- Wochentagslogik: Mo/Mi/Fr = Content-Post-Tag, Di/Do = Deep-Work-Tag\n- Immer 1 Bio/Pause-Mission einbauen wenn streak < 3\n\nJSON-Format:\n{\n  \"missions\": [\n    {\n      \"rank\": 1,\n      \"task\": \"Kurze, handlungsorientierte Aufgabe (max 80 Zeichen)\",\n      \"pillar\": \"Coaching|Affiliate|E-Commerce|Bot-Empire|Bio-Struktur|Branding\",\n      \"why\": \"Begründung mit konkreten Zahlen aus dem Kontext (1-2 Sätze)\",\n      \"tools\": [\"Tool1\", \"Tool2\"]\n    }\n  ],\n  \"daily_focus\": \"Ein Satz: Was ist das EINE Thema des Tages?\",\n  \"alert\": null\n}"
-            },
-            {
-              "role": "user",
-              "content": "=Analysiere meinen heutigen Stand und gib mir die wichtigsten Missions:\n\nDatum: {{ $json.dayName }}, {{ $json.date }}\nMonats-Einnahmen: €{{ $json.monthRevenue }} von €{{ $json.monthGoal }} ({{ $json.monthPct }}%)\nNoch fehlend: €{{ $json.revenueGap }}\nVerbleibende Tage im Monat: {{ $json.daysLeft }}\nAktueller Streak: {{ $json.streak }} Tage\nLetzter Outreach: {{ $json.lastOutreach }}\nHeutige Fortschritt: {{ $json.doneTodayPct }}% Tasks erledigt\n\nAktive Tools: {{ $json.tools_active.join(', ') }}\nAbgelaufene Tools (Support nötig): {{ $json.tools_expired.join(', ') }}\n\nBitte analysiere und liefere exakt das JSON-Format aus den System-Anweisungen."
-            }
+        "jsCode": "const ctx = $input.first().json;\n\nconst systemPrompt = 'Du bist Jarvis – der persönliche KI-Stratege von Canberk Kivilcim (CanGo App Empire, Wathlingen/Celle, Deutschland).\\n\\nDein Ziel: Analysiere den aktuellen Unternehmensstand und liefere TÄGLICH die 3–5 wichtigsten, spezifischen Aufgaben mit Begründung.\\n\\nCanberk hat 4 Säulen:\\n1. Prozess-Coaching & Website-Bau (€500 Website, €500/Monat Retainer, €150/Std)\\n2. Affiliate Marketing (SaaS-Tools, Amazon, Booking.com)\\n3. E-Commerce + Content Creator (eigene Shops, Reels, YouTube)\\n4. Bot-Empire (n8n-Automatisierungen, Python-Bots, KI-Workflows)\\n\\nMonatsziel: €2.870\\n\\nVerfügbare Tools: BrowserAct, Reap, Greta, Mootion, NoCodeBackend, Voilà, Sociamonials, DepositPhotos, Opus Clip, Kie.ai, NeuronWriter, Feedspace, Yapper.so, Gemini, Hostinger VPS, n8n, outreach_sniper.py\\n\\nRegeln:\\n- Gib NUR JSON zurück – KEIN Text drumherum, KEIN Markdown-Block\\n- Maximal 5 Missions\\n- Jede Mission: konkret, umsetzbar, mit klarer Begründung basierend auf den Zahlen\\n- Priorität: Umsatz-Lücke schließen > Streak > Content > Bots\\n- Wenn daysLeft < 10 und monthPct < 50: ALARM-Modus – nur Umsatz-Aufgaben\\n- Mo/Mi/Fr = Content-Post-Tag, Di/Do = Deep-Work-Tag\\n- Immer 1 Bio/Pause-Mission einbauen wenn streak < 3\\n\\nJSON-Format:\\n{\"missions\":[{\"rank\":1,\"task\":\"Aufgabe max 80 Zeichen\",\"pillar\":\"Coaching\",\"why\":\"Begründung mit Zahlen (1-2 Sätze)\",\"tools\":[]}],\"daily_focus\":\"Ein Satz\",\"alert\":null}';\n\nconst userPrompt = 'Analysiere meinen heutigen Stand:\\n\\nDatum: ' + (ctx.dayName || 'Heute') + ', ' + (ctx.date || new Date().toISOString().split('T')[0]) + '\\nMonats-Einnahmen: \\u20ac' + (ctx.monthRevenue || 0) + ' von \\u20ac' + (ctx.monthGoal || 2870) + ' (' + (ctx.monthPct || 0) + '%)\\nNoch fehlend: \\u20ac' + (ctx.revenueGap || ctx.monthGoal || 2870) + '\\nVerbleibende Tage im Monat: ' + (ctx.daysLeft || 15) + '\\nAktueller Streak: ' + (ctx.streak || 0) + ' Tage\\nLetzter Outreach: ' + (ctx.lastOutreach || 'Unbekannt') + '\\nHeutiger Fortschritt: ' + (ctx.doneTodayPct || 0) + '% Tasks erledigt\\nEnergie-Level: ' + (ctx.energyLevel || 7) + '/10\\n\\nBitte NUR das JSON zurückgeben – kein erklärender Text.';\n\nconst requestBody = JSON.stringify({\n  systemInstruction: { parts: [{ text: systemPrompt }] },\n  contents: [{ role: 'user', parts: [{ text: userPrompt }] }],\n  generationConfig: { temperature: 0.3, maxOutputTokens: 800 }\n});\n\nreturn [{ json: { requestBody, context: ctx } }];"
+      },
+      "id": "prepare-request",
+      "name": "Gemini-Anfrage bauen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300],
+      "notes": "Baut den Gemini-Request aus dem Webhook-Kontext.\nSystem-Prompt + User-Prompt → requestBody JSON-String."
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={{ $env.GEMINI_API_KEY }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
           ]
         },
-        "options": { "maxTokens": 800, "temperature": 0.3 }
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json.requestBody }}",
+        "options": {}
       },
-      "id": "claude-analyze",
-      "name": "Claude: Tages-Missions analysieren",
-      "type": "n8n-nodes-base.anthropic",
-      "typeVersion": 1,
-      "position": [480, 300],
-      "notes": "Claude claude-opus-4-7 analysiert den Stand und generiert priorisierte Tages-Missions.\nTemperature 0.3 = konsistente, sachliche Analyse (kein Kreativ-Modus)."
+      "id": "gemini-analyze",
+      "name": "Gemini: Missions analysieren",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [720, 300],
+      "notes": "Ruft Gemini 2.0 Flash auf.\nBenötigt: GEMINI_API_KEY in n8n Settings → Environment Variables."
     },
     {
       "parameters": {
-        "jsCode": "// Parse Claude's JSON response\nconst raw = $input.first().json.content[0].text;\nlet parsed;\ntry {\n  // Extract JSON from response (Claude sometimes adds explanation)\n  const match = raw.match(/\\{[\\s\\S]*\\}/);\n  parsed = JSON.parse(match ? match[0] : raw);\n} catch(e) {\n  // Fallback if JSON parse fails\n  parsed = {\n    missions: [{\n      rank: 1,\n      task: 'Jarvis konnte nicht parsen – manuell priorisieren',\n      pillar: 'System',\n      why: 'JSON-Fehler: ' + e.message,\n      tools: []\n    }],\n    daily_focus: 'Manuelle Priorisierung heute',\n    alert: null\n  };\n}\nreturn [{ json: parsed }];"
+        "jsCode": "const geminiRes = $input.first().json;\nconst ctx = $('Gemini-Anfrage bauen').first().json.context;\nconst today = (ctx && ctx.date) ? ctx.date : new Date().toISOString().split('T')[0];\n\nlet text = '';\ntry {\n  text = geminiRes.candidates[0].content.parts[0].text || '{}';\n} catch(e) {\n  text = '{}';\n}\n\nlet parsed;\ntry {\n  // Strip markdown code blocks if present\n  text = text.replace(/```json\\s*/gi, '').replace(/```\\s*/g, '').trim();\n  const match = text.match(/\\{[\\s\\S]*\\}/);\n  parsed = JSON.parse(match ? match[0] : text);\n  if (!parsed.missions || !Array.isArray(parsed.missions) || parsed.missions.length === 0) {\n    throw new Error('Empty missions array');\n  }\n} catch(e) {\n  // Regel-basierter Fallback\n  const gap = (ctx && ctx.revenueGap) ? ctx.revenueGap : ((ctx && ctx.monthGoal) ? ctx.monthGoal : 2870);\n  const pct = (ctx && ctx.monthPct) ? ctx.monthPct : 0;\n  const daysLeft = (ctx && ctx.daysLeft) ? ctx.daysLeft : 15;\n  const streak = (ctx && ctx.streak) ? ctx.streak : 0;\n  const missions = [];\n  let rank = 1;\n  if (gap > 500) {\n    missions.push({ rank: rank++, task: '3 Mittelständler via Google Maps ansprechen', pillar: 'Coaching', why: '\\u20ac' + gap + ' fehlen noch – direkter Outreach bringt am schnellsten neue Kunden', tools: ['outreach_sniper.py'] });\n    missions.push({ rank: rank++, task: 'LinkedIn-Post: Expertise zu Prozess-Coaching teilen', pillar: 'Branding', why: 'Regelmäßige Sichtbarkeit baut Inbound-Pipeline auf', tools: ['Sociamonials'] });\n  }\n  if (streak < 3) {\n    missions.push({ rank: rank++, task: '20 Min Pause + kurzer Spaziergang', pillar: 'Bio-Struktur', why: 'Streak unter 3 – Regeneration verhindert Burnout und erhöht Fokus', tools: [] });\n  }\n  missions.push({ rank: rank++, task: 'n8n Jarvis-Workflow testen und validieren', pillar: 'Bot-Empire', why: 'Automatisiertes Tages-Briefing spart täglich 15 Min und skaliert Einnahmen', tools: ['n8n'] });\n  if (missions.length < 3) {\n    missions.push({ rank: rank++, task: 'Amazon Affiliate: 1 Produkt identifizieren und Link erstellen', pillar: 'Affiliate', why: 'Passives Einkommen aufbauen parallel zu aktivem Coaching', tools: ['NeuronWriter'] });\n  }\n  parsed = {\n    missions: missions.slice(0, 5),\n    daily_focus: gap > 1000 ? 'Umsatz-Lücke schließen – Coaching-Outreach ist Priorität 1' : 'Wachstum über Automatisierung + Content skalieren',\n    alert: (daysLeft < 10 && pct < 50) ? '\\u26a0\\ufe0f Alarm: Nur noch ' + daysLeft + ' Tage – erst ' + pct + '% des Monatsziels erreicht!' : null,\n    _source: 'offline-fallback'\n  };\n}\n\nconst savePayload = JSON.stringify([{\n  date: today,\n  missions: parsed.missions,\n  daily_focus: parsed.daily_focus,\n  context: ctx || {},\n  created_at: new Date().toISOString()\n}]);\n\nreturn [{\n  json: {\n    missions: parsed.missions,\n    daily_focus: parsed.daily_focus,\n    alert: parsed.alert || null,\n    _source: parsed._source || 'gemini',\n    _savePayload: savePayload\n  }\n}];"
       },
       "id": "parse-missions",
       "name": "JSON parsen + validieren",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [720, 300],
-      "notes": "Parst Claudes JSON-Antwort robust. Fallback bei Parse-Fehler."
+      "position": [960, 300],
+      "notes": "Parst Gemini-Antwort robust.\nFallback bei Parse-Fehler: Regel-basierte Missions aus Kontext-Daten.\nBaut auch _savePayload für Supabase."
     },
     {
       "parameters": {
-        "operation": "upsert",
-        "schema": { "__rl": true, "value": "public", "mode": "list" },
-        "table": { "__rl": true, "value": "jarvis_missions", "mode": "list" },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "values": [
-            { "column": "date",        "value": "={{ $('Jarvis-Anfrage empfangen').item.json.date }}" },
-            { "column": "missions",    "value": "={{ JSON.stringify($json.missions) }}" },
-            { "column": "daily_focus", "value": "={{ $json.daily_focus }}" },
-            { "column": "context",     "value": "={{ JSON.stringify($('Jarvis-Anfrage empfangen').item.json) }}" },
-            { "column": "created_at",  "value": "={{ $now }}" }
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/jarvis_missions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_ANON_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_ANON_KEY }}" },
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "Prefer", "value": "resolution=merge-duplicates,return=minimal" }
           ]
         },
-        "matchingColumns": ["date"]
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ $json._savePayload }}",
+        "options": {}
       },
-      "id": "supabase-save-missions",
+      "id": "supabase-save",
       "name": "Supabase: Missions speichern",
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [960, 200],
-      "notes": "Speichert täglich die Missions in Supabase (Jarvis-Gedächtnis).\nTabelle 'jarvis_missions' muss existieren (SQL unten in meta.notes)."
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1200, 200],
+      "notes": "Speichert Missions via Supabase REST API (kein Credential nötig).\nBenötigt: SUPABASE_URL + SUPABASE_ANON_KEY als n8n Env-Vars."
     },
     {
       "parameters": {
         "respondWith": "json",
-        "responseBody": "={{ JSON.stringify($('JSON parsen + validieren').item.json) }}"
+        "responseBody": "={{ JSON.stringify({ missions: $('JSON parsen + validieren').item.json.missions, daily_focus: $('JSON parsen + validieren').item.json.daily_focus, alert: $('JSON parsen + validieren').item.json.alert }) }}"
       },
       "id": "webhook-response",
       "name": "Missions zurückgeben",
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1,
-      "position": [960, 400],
-      "notes": "Gibt die analysierten Missions als JSON an die HTML-Seite zurück.\nDie Seite rendert sie direkt im Jarvis Intelligence Block."
+      "position": [1200, 400],
+      "notes": "Gibt missions, daily_focus, alert als JSON an daily-todo-master.html zurück."
     },
     {
       "parameters": {
@@ -95,12 +107,13 @@
       "name": "Cron Mo–Fr 07:30 (Auto-Push)",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.1,
-      "position": [240, 520],
-      "notes": "Alternativer Trigger: Generiert Missions Mo–Fr um 07:30 automatisch und sendet sie per Telegram, bevor Canberk die Seite öffnet."
+      "position": [240, 540],
+      "notes": "Sendet täglich Mo–Fr um 07:30 Uhr ein Briefing via Telegram, bevor Canberk die Seite öffnet."
     },
     {
       "parameters": {
-        "url": "=https://supabase-url/rest/v1/jarvis_missions?date=eq.{{ $now.format('YYYY-MM-DD') }}&select=*",
+        "method": "GET",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/jarvis_missions?date=eq.{{ $now.toFormat('yyyy-MM-dd') }}&select=*",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -110,42 +123,44 @@
         },
         "options": {}
       },
-      "id": "fetch-yesterday",
-      "name": "Gestern's Missions laden",
+      "id": "fetch-today",
+      "name": "Heute's Missions laden",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [480, 520]
+      "position": [480, 540]
     },
     {
       "parameters": {
-        "model": "claude-haiku-4-5-20251001",
-        "messages": {
-          "values": [
-            {
-              "role": "user",
-              "content": "=Generiere das Morgen-Telegram-Briefing für Canberk.\n\nHeute: {{ $now.format('dddd DD.MM.YYYY') }}\nTages-Missions (generiert):\n{{ $('JSON parsen + validieren').item.json.missions?.map((m,i) => (i+1)+'. '+m.task+' ['+m.pillar+']').join('\\n') || 'Nicht verfügbar' }}\n\nFokus des Tages: {{ $('JSON parsen + validieren').item.json.daily_focus }}\n\nSchreibe 3 Sätze max. Direkt, motivierend, mit den konkreten Aufgaben. Format für Telegram Markdown."
-            }
+        "jsCode": "const rows = $input.first().json;\nconst record = Array.isArray(rows) && rows.length > 0 ? rows[0] : null;\n\nif (!record || !record.missions) {\n  return [{ json: { text: '🧠 Jarvis: Keine Missions für heute gefunden. Seite öffnen um neue zu generieren!' } }];\n}\n\nconst topMissions = record.missions.slice(0, 3).map((m, i) => (i + 1) + '. ' + m.task).join('\\n');\nconst focus = record.daily_focus || '';\nconst date = new Date().toLocaleDateString('de-DE', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' });\n\nconst text = '\\ud83e\\udde0 *Jarvis Morgen-Briefing*\\n' + date + '\\n\\n\\ud83d\\udccb *Heute\\'s Missions:*\\n' + topMissions + (focus ? '\\n\\n\\ud83c\\udfaf *Fokus:* ' + focus : '') + '\\n\\n\\u2600\\ufe0f Guten Morgen, Canberk! Let\\'s go.';\n\nreturn [{ json: { text } }];"
+      },
+      "id": "format-briefing",
+      "name": "Briefing formatieren",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [720, 540]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $env.TELEGRAM_BOT_TOKEN }}/sendMessage",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
           ]
         },
-        "options": { "maxTokens": 200, "temperature": 0.6 }
-      },
-      "id": "claude-briefing",
-      "name": "Claude Haiku: Telegram-Briefing",
-      "type": "n8n-nodes-base.anthropic",
-      "typeVersion": 1,
-      "position": [720, 520]
-    },
-    {
-      "parameters": {
-        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
-        "text": "=🧠 *Jarvis Morgen-Briefing*\n{{ $now.format('dddd, DD.MM.YYYY') }}\n\n{{ $json.content[0].text }}\n\n📋 *Heute's Missions:*\n{{ $('JSON parsen + validieren').item.json.missions?.slice(0,3).map((m,i) => (i+1)+'. '+m.task).join('\\n') }}\n\n🎯 *Fokus:* {{ $('JSON parsen + validieren').item.json.daily_focus }}",
-        "additionalFields": { "parse_mode": "Markdown" }
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ chat_id: $env.TELEGRAM_CHAT_ID, text: $json.text, parse_mode: 'Markdown' }) }}",
+        "options": {}
       },
       "id": "tg-morning",
       "name": "Telegram: Morgen-Briefing",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1,
-      "position": [960, 520]
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [960, 540],
+      "notes": "Sendet Briefing an Telegram.\nBenötigt: TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID als n8n Env-Vars."
     },
     {
       "parameters": {},
@@ -153,29 +168,40 @@
       "name": "Fehler-Trigger",
       "type": "n8n-nodes-base.errorTrigger",
       "typeVersion": 1,
-      "position": [240, 740]
+      "position": [240, 760]
     },
     {
       "parameters": {
-        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
-        "text": "=⚠️ *Jarvis-Fehler*\nNode: `{{ $json.execution.lastNodeExecuted }}`\nFehler: `{{ $json.execution.error.message }}`\nZeit: {{ $now.format('HH:mm') }} Uhr",
-        "additionalFields": { "parse_mode": "Markdown" }
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $env.TELEGRAM_BOT_TOKEN }}/sendMessage",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ chat_id: $env.TELEGRAM_CHAT_ID, text: '\\u26a0\\ufe0f *Jarvis-Fehler*\\nNode: `' + (($json.execution || {}).lastNodeExecuted || 'unbekannt') + '`\\nFehler: `' + ((($json.execution || {}).error || {}).message || 'unbekannt') + '`', parse_mode: 'Markdown' }) }}",
+        "options": {}
       },
       "id": "tg-error",
       "name": "Telegram: Fehler",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1,
-      "position": [480, 740]
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 760]
     }
   ],
   "connections": {
-    "Jarvis-Anfrage empfangen":         { "main": [[{ "node": "Claude: Tages-Missions analysieren", "type": "main", "index": 0 }]] },
-    "Claude: Tages-Missions analysieren":{ "main": [[{ "node": "JSON parsen + validieren",           "type": "main", "index": 0 }]] },
-    "JSON parsen + validieren":          { "main": [[{ "node": "Supabase: Missions speichern", "type": "main", "index": 0 }, { "node": "Missions zurückgeben", "type": "main", "index": 0 }]] },
-    "Cron Mo–Fr 07:30 (Auto-Push)":      { "main": [[{ "node": "Gestern's Missions laden",    "type": "main", "index": 0 }]] },
-    "Gestern's Missions laden":          { "main": [[{ "node": "Claude: Tages-Missions analysieren", "type": "main", "index": 0 }]] },
-    "Claude Haiku: Telegram-Briefing":   { "main": [[{ "node": "Telegram: Morgen-Briefing",   "type": "main", "index": 0 }]] },
-    "Fehler-Trigger":                    { "main": [[{ "node": "Telegram: Fehler",             "type": "main", "index": 0 }]] }
+    "Jarvis-Anfrage empfangen":         { "main": [[{ "node": "Gemini-Anfrage bauen",             "type": "main", "index": 0 }]] },
+    "Gemini-Anfrage bauen":             { "main": [[{ "node": "Gemini: Missions analysieren",     "type": "main", "index": 0 }]] },
+    "Gemini: Missions analysieren":     { "main": [[{ "node": "JSON parsen + validieren",          "type": "main", "index": 0 }]] },
+    "JSON parsen + validieren":         { "main": [[{ "node": "Supabase: Missions speichern",      "type": "main", "index": 0 }, { "node": "Missions zurückgeben", "type": "main", "index": 0 }]] },
+    "Cron Mo–Fr 07:30 (Auto-Push)":     { "main": [[{ "node": "Heute's Missions laden",           "type": "main", "index": 0 }]] },
+    "Heute's Missions laden":           { "main": [[{ "node": "Briefing formatieren",              "type": "main", "index": 0 }]] },
+    "Briefing formatieren":             { "main": [[{ "node": "Telegram: Morgen-Briefing",         "type": "main", "index": 0 }]] },
+    "Fehler-Trigger":                   { "main": [[{ "node": "Telegram: Fehler",                  "type": "main", "index": 0 }]] }
   },
   "settings": {
     "executionOrder": "v1",
@@ -184,7 +210,7 @@
   },
   "meta": {
     "instanceId": "cango-empire",
-    "templateId": "cango-jarvis-analyzer-v1",
-    "notes": "SETUP:\n1) Anthropic Credentials (claude-opus-4-7 + claude-haiku)\n2) Supabase Credentials\n3) Telegram Bot Token (@Cango_master_bot)\n4) TELEGRAM_CHAT_ID + SUPABASE_ANON_KEY als n8n Env-Vars\n5) Webhook-URL in daily-todo-master.html Jarvis-Block eintragen\n6) Workflow aktivieren (Production Mode!)\n\nSupabase SQL:\nCREATE TABLE jarvis_missions (\n  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,\n  date date UNIQUE,\n  missions jsonb,\n  daily_focus text,\n  context jsonb,\n  created_at timestamptz DEFAULT now()\n);\n\nGedächtnis-Tabelle (für spätere RAG-Erweiterung):\nCREATE TABLE knowledge_base (\n  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,\n  date date,\n  category text,\n  content text,\n  source text,\n  sentiment text,\n  bot_relevance text[],\n  created_at timestamptz DEFAULT now()\n);\n-- Später: pgvector Extension für semantische Suche\n-- ALTER TABLE knowledge_base ADD COLUMN embedding vector(1536);\n\nOHNE n8n WEBHOOK:\nDie Seite hat einen intelligenten Offline-Fallback:\n→ Regel-basierte Priorisierung nach Umsatz-Lücke + Streak + Wochentag\n→ Funktioniert sofort ohne API-Key"
+    "templateId": "cango-jarvis-analyzer-v2-gemini",
+    "notes": "SETUP v2 – KEINE n8n Credentials nötig, alles via HTTP Request + Env-Vars:\n\n1) n8n → Settings → Environment Variables – folgende eintragen:\n   GEMINI_API_KEY     = AIzaSyA-XoFVW5JdWQkMCrExNSXbhhdwI_2lRAM\n   SUPABASE_URL       = https://kekmslytyttcipanwdop.supabase.co\n   SUPABASE_ANON_KEY  = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\n   TELEGRAM_BOT_TOKEN = 8964673248:AAHVuB13ECDoZTdVmxH6KVw5Yl_dysXCSFI\n   TELEGRAM_CHAT_ID   = 7396952825\n\n2) Altes Jarvis-Workflow löschen (oder deaktivieren)\n\n3) Dieses JSON importieren: n8n → New Workflow → Import from JSON\n\n4) Workflow aktivieren (Production Mode)\n\n5) Webhook-URL kopieren: https://[n8n-domain]/webhook/jarvis-analyze\n   → In daily-todo-master.html im Jarvis-Block eintragen\n\nCHANGES vs v1:\n- Anthropic/Claude Nodes → HTTP Request Nodes (Gemini 2.0 Flash)\n- Kein Credential-Setup nötig\n- Intelligenter Offline-Fallback bei Gemini-Fehler\n- Telegram-Briefing ohne Claude Haiku (Einsparung)\n- Supabase via REST API statt Supabase-Node"
   }
 }

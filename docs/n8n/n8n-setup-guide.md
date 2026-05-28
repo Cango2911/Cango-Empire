@@ -2,116 +2,131 @@
 
 **Ziel:** 5 Workflows importieren → aktivieren → Jarvis denkt wirklich
 
----
-
-## 0. Voraussetzungen
-
-- n8n läuft (Hostinger VPS oder n8n Cloud)
-- Alle Env-Vars aus `docs/n8n/n8n-env-vars.env` eingetragen
-- Supabase Tabellen existieren (bereits erledigt: `kekmslytyttcipanwdop`)
+**Stand:** Mai 2026 · Jarvis v2 (Gemini 2.0 Flash, keine Credentials nötig)
 
 ---
 
-## 1. Anthropic API Key holen (5 Minuten)
+## SCHRITT 0 — n8n Environment Variables setzen (ZUERST!)
 
-1. `console.anthropic.com` → API Keys → **+ Create Key**
-2. Name: `cango-jarvis`
-3. Key kopieren → in n8n: Settings → Environment Variables:
-   ```
-   ANTHROPIC_API_KEY = sk-ant-...
-   ```
+**n8n → Settings (Zahnrad) → Environment Variables → folgende 5 eintragen:**
+
+| Variable | Wert |
+|---------|------|
+| `GEMINI_API_KEY` | `AIzaSyA-XoFVW5JdWQkMCrExNSXbhhdwI_2lRAM` |
+| `SUPABASE_URL` | `https://kekmslytyttcipanwdop.supabase.co` |
+| `SUPABASE_ANON_KEY` | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtla21zbHl0eXR0Y2lwYW53ZG9wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0NDk3ODEsImV4cCI6MjA5NTAyNTc4MX0.hMXgc_4Ok294nAY6NlfnZoLtbRONn5woNo4fQyfDViI` |
+| `TELEGRAM_BOT_TOKEN` | `8964673248:AAHVuB13ECDoZTdVmxH6KVw5Yl_dysXCSFI` |
+| `TELEGRAM_CHAT_ID` | `7396952825` |
+
+> **Warum wichtig?** Die Workflows verwenden `{{ $env.GEMINI_API_KEY }}` etc. als Platzhalter.
+> Diese Platzhalter werden NUR aufgelöst, wenn die Werte in n8n selbst eingetragen sind —
+> `scripts/.env` auf dem Mac ist für n8n unsichtbar.
+
+Nach dem Eintragen: n8n **neu starten** oder kurz warten (1–2 Min) damit die Vars aktiv sind.
 
 ---
 
-## 2. Workflows importieren (Reihenfolge wichtig)
+## SCHRITT 1 — Jarvis Analyzer importieren (Pflicht)
 
-### Workflow 1 — Jarvis Analyzer (Pflicht)
 ```
 scripts/n8n_jarvis_analyzer.json
 ```
-- In n8n: **New Workflow → Import from JSON**
-- Nach Import: **Activate** (oben rechts)
-- Webhook-URL kopieren (Production URL):
+
+**n8n → New Workflow → Import from JSON → Datei hochladen → Active (oben rechts)**
+
+- Kein Credential-Setup nötig (v2 nutzt HTTP Request + Env-Vars)
+- Webhook-URL nach Aktivierung:
   ```
-  https://DEINE-N8N-DOMAIN/webhook/jarvis-analyze
+  https://n8n.automation-cango-app-empire.com/webhook/jarvis-analyze
   ```
-- Diese URL in `website/intern/daily-todo-master.html` im Jarvis-Block eintragen:
-  - Seite öffnen → Jarvis-Block ganz oben → Webhook-URL-Feld → eintragen → **Webhook speichern**
+- Diese URL in `website/intern/daily-todo-master.html` eintragen:
+  → Seite öffnen → Jarvis-Block ganz oben → Webhook-URL-Feld → **Webhook speichern**
 
-### Workflow 2 — Task Queue (Telegram Start/Skip/Done)
-```
-scripts/n8n_task_confirm.json
-```
-- Importieren → Aktivieren
-- Callback-Trigger URL nicht ändern (ist intern)
-
-### Workflow 3 — Brainstorm Bots (Morgen/Abend/Woche)
-```
-scripts/n8n_brainstorm_bots.json
-```
-- Importieren → Aktivieren
-- Läuft automatisch per Cron (07:30, 18:00, Sonntag 19:00)
-
-### Workflow 4 — Voice Report (Whisper → Energie)
-```
-scripts/n8n_voice_report.json
-```
-- Importieren → Aktivieren
-- Sprachnachricht an `@CanGo_ToDo_Master_bot` → Whisper transkribiert → energyLevel gespeichert
-
-### Workflow 5 — Eskalation (Block-Timer)
-```
-scripts/n8n_escalation_workflow.json
-```
-- Importieren → Aktivieren (optional, nach den anderen)
-
----
-
-## 3. n8n Credentials einrichten
-
-In n8n → **Credentials** → folgende anlegen:
-
-| Credential | Typ | Wert |
-|-----------|-----|------|
-| Anthropic | Anthropic API | `ANTHROPIC_API_KEY` |
-| Supabase | HTTP Header Auth | URL + Anon Key |
-| Telegram Bot | Telegram Bot API | `TELEGRAM_BOT_TOKEN` |
-
----
-
-## 4. Testen
-
-```
-# 1. Jarvis Analyzer manuell triggern:
-curl -X POST https://DEINE-N8N-DOMAIN/webhook/jarvis-analyze \
+### Testen (nach Aktivierung):
+```bash
+curl -X POST https://n8n.automation-cango-app-empire.com/webhook/jarvis-analyze \
   -H "Content-Type: application/json" \
-  -d '{"date":"2026-05-22","monthRevenue":0,"monthGoal":2870,"energyLevel":7}'
+  -d '{"date":"2026-05-28","dayName":"Donnerstag","daysLeft":3,"monthRevenue":0,"monthGoal":2870,"monthPct":0,"revenueGap":2870,"streak":1,"energyLevel":7,"doneTodayPct":0}'
+```
 
-# 2. Erwartete Antwort:
+**Erwartete Antwort:**
+```json
 {
-  "missions": [{"rank":1,"task":"...","pillar":"...","why":"..."}],
-  "daily_focus": "...",
+  "missions": [{"rank":1,"task":"...","pillar":"Coaching","why":"...","tools":[]}],
+  "daily_focus": "Umsatz-Lücke schließen...",
   "alert": null
 }
 ```
 
 ---
 
-## 5. In der Seite aktivieren
+## SCHRITT 2 — Task Queue importieren (Telegram Start/Skip/Done)
 
-1. `https://automation-cango-app-empire.com/intern/daily-todo-master.html` öffnen
-2. Jarvis-Block → Webhook-URL eintragen → **Webhook speichern**
-3. Seite neu laden → Status sollte wechseln von `Regel-Engine` auf `Jarvis via n8n/Claude`
+```
+scripts/n8n_task_confirm.json
+```
+
+- Importieren → Aktivieren
+- Benötigt: `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` (bereits in Env-Vars aus Schritt 0)
 
 ---
 
-## Env-Vars Übersicht (alles was n8n braucht)
+## SCHRITT 3 — Brainstorm Bots importieren (Morgen/Abend/Woche)
 
-| Variable | Wert | Status |
-|---------|------|--------|
-| `SUPABASE_URL` | `https://kekmslytyttcipanwdop.supabase.co` | ✅ |
-| `SUPABASE_ANON_KEY` | `eyJhbGci...` | ✅ |
-| `TELEGRAM_BOT_TOKEN` | `8964673248:AAH...` | ✅ |
-| `TELEGRAM_CHAT_ID` | Deine Chat-ID | ⬜ noch offen |
-| `ANTHROPIC_API_KEY` | `sk-ant-...` | ⬜ noch offen |
-| `GEMINI_API_KEY` | `AIzaSyA-...` | ✅ |
+```
+scripts/n8n_brainstorm_bots.json
+```
+
+- Importieren → Aktivieren
+- Läuft automatisch per Cron (07:30, 18:00, Sonntag 19:00)
+- Benötigt: `GEMINI_API_KEY` (bereits in Env-Vars)
+
+---
+
+## SCHRITT 4 — Voice Report (optional)
+
+```
+scripts/n8n_voice_report.json
+```
+
+- Importieren → Aktivieren
+- Sprachnachricht an `@CanGo_ToDo_Master_bot` → Energie-Level wird gespeichert
+
+---
+
+## SCHRITT 5 — Eskalation (optional, nach den anderen)
+
+```
+scripts/n8n_escalation_workflow.json
+```
+
+---
+
+## Fehlerbehebung
+
+### "Jarvis antwortet nicht" / leere Response
+
+1. **Env-Vars prüfen:** n8n → Settings → Environment Variables → alle 5 vorhanden?
+2. **Workflow aktiv?** Oben rechts muss "Active" (grün) stehen, nicht "Inactive"
+3. **Execution Logs prüfen:** n8n → Executions → letzte Ausführung anklicken → welcher Node ist rot?
+4. **Gemini-Node rot?** → `GEMINI_API_KEY` in Env-Vars falsch/fehlt
+5. **Supabase-Node rot?** → `SUPABASE_URL` / `SUPABASE_ANON_KEY` in Env-Vars prüfen
+
+### Seite zeigt "Regel-Engine" statt "Jarvis via n8n"
+
+→ Webhook-URL noch nicht in der Seite gespeichert:
+Seite öffnen → Jarvis-Block → Webhook-URL-Feld ausfüllen → **Webhook speichern** klicken
+
+---
+
+## Env-Vars Übersicht (alle in n8n Settings eingetragen)
+
+| Variable | Status |
+|---------|--------|
+| `GEMINI_API_KEY` | ✅ eingetragen (Schritt 0) |
+| `SUPABASE_URL` | ✅ eingetragen (Schritt 0) |
+| `SUPABASE_ANON_KEY` | ✅ eingetragen (Schritt 0) |
+| `TELEGRAM_BOT_TOKEN` | ✅ eingetragen (Schritt 0) |
+| `TELEGRAM_CHAT_ID` | ✅ eingetragen (Schritt 0) |
+
+> **Hinweis:** Kein Anthropic-Key nötig. Jarvis v2 läuft mit Gemini 2.0 Flash (kostenlos im Free Tier).
