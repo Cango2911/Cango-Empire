@@ -1,0 +1,435 @@
+{
+  "name": "CanGo Brainstorm & Briefing Bots · 4-Flow Suite v2",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "30 7 * * 1-5" }] },
+        "options": {}
+      },
+      "id": "cron-morning",
+      "name": "Cron Mo–Fr 07:30",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300],
+      "notes": "Flow 1: Morgen-Briefing · Mo–Fr 07:30"
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/outreach_leads?select=id,company,status,created_at&order=created_at.desc&limit=5",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_ANON_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_ANON_KEY }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-leads-morning",
+      "name": "Supabase: Letzte Leads laden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 220],
+      "notes": "5 neueste Outreach-Leads für Kontext"
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/jarvis_missions?select=missions,daily_focus,context&order=date.desc&limit=2",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_ANON_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_ANON_KEY }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-jarvis-missions",
+      "name": "Supabase: Jarvis Missions laden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 380],
+      "notes": "Letzte 2 Missions inkl. context.energyLevel"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Mood-Check: Lese energyLevel aus gestrigem context\n// Falls < 5 → reduziertes Pensum, deep-rest-slot erzwingen\nconst missions = $('Supabase: Jarvis Missions laden').all();\nconst yesterdayCtx = missions[0]?.json?.[0]?.context || {};\nconst energyLevel  = parseInt(yesterdayCtx.energyLevel || 7);\nconst moodCheck    = energyLevel >= 5;\nconst deepRest     = energyLevel < 3;\nconst maxTasks     = deepRest ? 2 : energyLevel < 5 ? 3 : 5;\n\nconst leads = $('Supabase: Letzte Leads laden').all();\nconst leadSummary = leads[0]?.json?.map?.(l => l.company + ' (' + l.status + ')').join(', ') || 'Keine Daten';\nconst lastFocus   = missions[0]?.json?.[0]?.daily_focus || 'Kein Vortags-Fokus';\n\nreturn [{ json: {\n  energyLevel,\n  moodCheck,\n  deepRest,\n  maxTasks,\n  leadSummary,\n  lastFocus,\n  deepRestNote: deepRest ? '⚠️ DEEP-REST-SLOT: 30 Min. Pause VOR erstem Outreach. Nur 2 Kern-Tasks heute.' : ''\n}}];"
+      },
+      "id": "mood-check",
+      "name": "Energie-Check: Pensum berechnen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [720, 300],
+      "notes": "Liest energyLevel aus gestrigem Jarvis-Kontext. Reduziert Pensum bei Energie < 5."
+    },
+    {
+      "parameters": {
+        "model": "claude-opus-4-7",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Du bist Jarvis – persönlicher KI-Stratege von Canberk Kivilcim (CanGo App Empire, Wathlingen).\n\n9.9M FOKUS-FILTER:\n- Jahresumsatz-Ziel: €9.900.000\n- Alles was NICHT signifikant auf das 9.9M-Ziel einzahlt, markiere als 'Rauschen' → ans Ende\n- Priorisierung: Umsatz-Hebel > System-Aufbau > Content > Verwaltung\n\n4 SÄULEN:\n1. Prozess-Coaching & Website-Bau (€500 Website, €500/Mo Retainer, €150/Std)\n2. Affiliate Marketing (SaaS, Amazon, Booking.com)\n3. E-Commerce & Content Creator\n4. Bot-Empire (n8n, Python, KI-Workflows)\n\nMonatsziel: €2.870\n\nBIOSTRUKTUR-REGEL:\n- Wenn deepRest=true: NUR 2 Tasks, ERSTEN Task = 30 Min Pause, kein Outreach\n- Wenn maxTasks <= 3: Nur Kern-Aufgaben, keine Nice-to-haves\n- Immer 1 Pausen-Reminder einbauen\n\nFORMAT:\n- Max {{ $json.maxTasks }} Sätze / Aufgaben\n- Telegram Markdown\n- Kein Blabla, nur das Wesentliche\n- Wenn deepRest: Mit Schutz-Hinweis beginnen"
+            },
+            {
+              "role": "user",
+              "content": "=Heute: {{ $now.format('dddd DD.MM.YYYY') }}\nEnergie-Level gestern Abend: {{ $json.energyLevel }}/10\nPensum heute: max {{ $json.maxTasks }} Tasks\n{{ $json.deepRestNote }}\n\nGestriger Fokus: {{ $json.lastFocus }}\nLetzte Outreach-Aktivität: {{ $json.leadSummary }}\n\n9.9M Status: Aktuell wird aus Vision-Input berechnet. Fokus: Direkter Umsatz-Hebel.\n\nGeneriere das Morgen-Briefing mit 9.9M Fokus-Filter."
+            }
+          ]
+        },
+        "options": { "maxTokens": 400, "temperature": 0.4 }
+      },
+      "id": "claude-morning-briefing",
+      "name": "Claude: Morgen-Briefing generieren",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [960, 300],
+      "notes": "Claude Opus mit 9.9M-Filter + Biostruktur-Regel + mood_check Pensum"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "={{ $('Energie-Check: Pensum berechnen').item.json.deepRest ? '🛡️' : '🌅' }} *Jarvis · Morgen-Briefing*\n{{ $now.format('dddd, DD.MM.YYYY') }}\n⚡ Energie: {{ $('Energie-Check: Pensum berechnen').item.json.energyLevel }}/10 · Pensum: {{ $('Energie-Check: Pensum berechnen').item.json.maxTasks }} Tasks\n\n{{ $json.content[0].text }}\n\n━━━━━━━━━━━━━━━\n_9.9M Vision · Jeden Tag ein Schritt näher 🚀_",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-morning-briefing",
+      "name": "Telegram: Morgen-Briefing senden",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1200, 300],
+      "notes": "Zeigt Energie-Level + Pensum im Header. Schutz-Emoji bei Deep-Rest."
+    },
+
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 18 * * 1-5" }] },
+        "options": {}
+      },
+      "id": "cron-evening",
+      "name": "Cron Mo–Fr 18:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 580],
+      "notes": "Flow 2: Abend-Report · Mo–Fr 18:00"
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/jarvis_missions?select=missions,daily_focus,context&date=eq.{{ $now.format('YYYY-MM-DD') }}&select=*",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_ANON_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_ANON_KEY }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-today-missions",
+      "name": "Supabase: Heutige Missions laden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 580]
+    },
+    {
+      "parameters": {
+        "model": "claude-haiku-4-5-20251001",
+        "messages": {
+          "values": [
+            {
+              "role": "user",
+              "content": "=Abend-Report für Canberk (CanGo App Empire · 9.9M Vision).\n\nHeute: {{ $now.format('dddd DD.MM.YYYY') }}\nHeutige Missions: {{ JSON.stringify($('Supabase: Heutige Missions laden').item.json[0]?.missions || []) }}\n\nGeneriere Abend-Report (3 Sätze max):\n1. Was heute auf das 9.9M-Ziel einzahlte\n2. Was morgen als erstes\n3. Energie-Frage: 'Wie ist dein Energie-Level heute? (1-10)' → Canberk antwortet → wird für morgen gespeichert\n\nTelegram Markdown."
+            }
+          ]
+        },
+        "options": { "maxTokens": 200, "temperature": 0.6 }
+      },
+      "id": "claude-evening-report",
+      "name": "Claude Haiku: Abend-Report",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [720, 580]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=🌆 *Jarvis · Abend-Report*\n{{ $now.format('dddd, DD.MM.YYYY') }}\n\n{{ $json.content[0].text }}\n\n━━━━━━━━━━━━━━━\n_Trag deinen Energie-Level im Daily-Todo-Master ein → Jarvis passt morgen das Pensum an_ 🛡️",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-evening-report",
+      "name": "Telegram: Abend-Report senden",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [960, 580]
+    },
+
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 19 * * 0" }] },
+        "options": {}
+      },
+      "id": "cron-weekly",
+      "name": "Cron Sonntag 19:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 860],
+      "notes": "Flow 3: Wöchentlicher Brainstorm · Sonntag 19:00"
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/jarvis_missions?select=missions,daily_focus,context&order=date.desc&limit=7",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey", "value": "={{ $env.SUPABASE_ANON_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_ANON_KEY }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-week-missions",
+      "name": "Supabase: Wochen-Missions laden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 860]
+    },
+    {
+      "parameters": {
+        "model": "claude-opus-4-7",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Du bist Jarvis – strategischer KI-Berater von Canberk Kivilcim (CanGo App Empire).\n\n9.9M FOKUS-FILTER:\n- Ziel: €9.900.000 Jahresumsatz\n- Identifiziere in der Wochen-Analyse: Welche Nische / welcher Content / welches System performte am besten?\n- Diese Top-Nische → proaktiv Montag Content-Ideen triggern\n\n4 Säulen:\n1. Prozess-Coaching & Website-Bau\n2. Affiliate Marketing (SaaS, Amazon, Booking)\n3. E-Commerce & Content Creator\n4. Bot-Empire\n\nGeneriere:\n- Wochen-Rückblick (1-2 Sätze)\n- 2 Ideen pro Säule für nächste Woche\n- 1 LinkedIn-Idee\n- 1 Bot-Idee (vorausarbeitend)\n- TOP_NISCHE: Die eine Nische die diese Woche am meisten Potenzial zeigte (für Gemini)\n\nJSON am Ende:\n{\"top_nische\": \"...\", \"top_pillar\": \"...\"}\n\nFormat: Telegram Markdown + JSON-Block am Ende."
+            },
+            {
+              "role": "user",
+              "content": "=KW: {{ $now.format('WW/YYYY') }}\nNächste Woche: {{ $now.plus({days:1}).startOf('week').format('DD.MM.') }}–{{ $now.plus({days:1}).endOf('week').format('DD.MM.YYYY') }}\n\nLetzte Missions:\n{{ $json?.map(m => m.daily_focus).filter(Boolean).join('\\n') || 'Keine Daten' }}\n\nGeneriere Wochen-Brainstorm + identifiziere TOP_NISCHE."
+            }
+          ]
+        },
+        "options": { "maxTokens": 900, "temperature": 0.7 }
+      },
+      "id": "claude-weekly-brainstorm",
+      "name": "Claude: Wochen-Brainstorm",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [720, 860]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extrahiere TOP_NISCHE aus Claude-Antwort für proaktiven Gemini-Trigger\nconst text = $input.first().json.content[0].text;\nlet topNische = 'Digitale Automatisierung';\nlet topPillar = 'Bot-Empire';\ntry {\n  const match = text.match(/\\{[^{}]*\\\"top_nische\\\"[^{}]*\\}/);\n  if (match) {\n    const parsed = JSON.parse(match[0]);\n    topNische = parsed.top_nische || topNische;\n    topPillar = parsed.top_pillar || topPillar;\n  }\n} catch(e) {}\nreturn [{ json: { text, topNische, topPillar } }];"
+      },
+      "id": "parse-top-nische",
+      "name": "TOP_NISCHE extrahieren",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [960, 860],
+      "notes": "Parst Claude-Antwort → extrahiert Top-Nische für proaktiven Gemini-Content-Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=🧠 *Jarvis · Wochen-Brainstorm*\nKW {{ $now.format('WW/YYYY') }}\n\n{{ $json.text }}\n\n━━━━━━━━━━━━━━━\n_Top-Nische erkannt: {{ $json.topNische }} · Gemini generiert morgen Content-Ideen_ 🎯",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-weekly-brainstorm",
+      "name": "Telegram: Wochen-Brainstorm",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1200, 780]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [{ "name": "key", "value": "={{ $env.GEMINI_API_KEY }}" }]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={ \"contents\": [{ \"parts\": [{ \"text\": \"Du bist ein Content-Stratege für CanGo App Empire (Canberk Kivilcim, Wathlingen, Deutschland). Jarvis hat diese Woche die Top-Nische identifiziert.\\n\\nTop-Nische: {{ $json.topNische }}\\nSäule: {{ $json.topPillar }}\\n\\nGeneriere 3 LinkedIn-Posts für Montag früh (sofort umsetzbar):\\n- Hook-Zeile\\n- 3 Punkte\\n- CTA\\n\\nFormat: Direkt, auf Deutsch, für B2B-Entscheider Mittelstand.\\nGib NUR JSON zurück: {\\\"posts\\\": [{\\\"hook\\\": \\\"...\\\", \\\"body\\\": \\\"...\\\", \\\"cta\\\": \\\"...\\\"}]}\" }] }], \"generationConfig\": { \"temperature\": 0.8, \"maxOutputTokens\": 700 } }",
+        "options": {}
+      },
+      "id": "gemini-proactive-content",
+      "name": "Gemini: Proaktive Montag-Content-Ideen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1200, 940],
+      "notes": "Gemini generiert proaktiv 3 LinkedIn-Posts für Montag basierend auf Top-Nische der Woche"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json?.candidates?.[0]?.content?.parts?.[0]?.text || '{\"posts\":[]}';\nlet posts;\ntry {\n  const match = raw.match(/\\{[\\s\\S]*\\}/);\n  posts = JSON.parse(match ? match[0] : raw).posts || [];\n} catch(e) { posts = []; }\nconst formatted = posts.map((p, i) =>\n  `*Post ${i+1}:*\\n🎯 ${p.hook}\\n${p.body}\\n\\n📢 ${p.cta}`\n).join('\\n\\n━━━━━━━━━━━━━━━\\n');\nreturn [{ json: { formatted, count: posts.length } }];"
+      },
+      "id": "format-proactive-content",
+      "name": "Content-Posts formatieren",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1440, 940]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=✨ *Jarvis · Montag Content-Vorschau*\n{{ $now.plus({days:1}).startOf('week').format('DD.MM.YYYY') }}\nTop-Nische: {{ $('TOP_NISCHE extrahieren').item.json.topNische }}\n\n{{ $json.formatted }}\n\n━━━━━━━━━━━━━━━\n_{{ $json.count }} Posts bereit · Montag früh direkt posten 🚀_",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-proactive-content",
+      "name": "Telegram: Montag Content-Vorschau",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1680, 940],
+      "notes": "Sendet Sonntag Abend die 3 fertigen LinkedIn-Posts für Montag direkt ans Handy"
+    },
+
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "content-ideas",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-content-ideas",
+      "name": "Webhook: Content-Ideen",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 1200],
+      "notes": "Flow 4: On-Demand Content-Ideen via Gemini · POST { topic, pillar, format }"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [{ "name": "key", "value": "={{ $env.GEMINI_API_KEY }}" }]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={ \"contents\": [{ \"parts\": [{ \"text\": \"Du bist ein Content-Stratege für CanGo App Empire (Canberk Kivilcim, Deutschland). Jarvis-Gedächtnis: 4 Säulen (Coaching, Affiliate, E-Commerce, Bot-Empire), Ziel €9.9M Jahresumsatz.\\n\\nErstelle 5 Content-Ideen für:\\nThema: {{ $json.topic || 'Digitale Automatisierung' }}\\nSäule: {{ $json.pillar || 'Bot-Empire' }}\\nFormat: {{ $json.format || 'LinkedIn Post' }}\\n\\nGib NUR JSON zurück:\\n{\\\"ideas\\\": [{\\\"title\\\": \\\"...\\\", \\\"hook\\\": \\\"...\\\", \\\"format\\\": \\\"...\\\", \\\"cta\\\": \\\"...\\\", \\\"kpi_impact\\\": \\\"hoch|mittel|niedrig\\\"}]}\" }] }], \"generationConfig\": { \"temperature\": 0.8, \"maxOutputTokens\": 700 } }",
+        "options": {}
+      },
+      "id": "gemini-content-ideas",
+      "name": "Gemini: Content-Ideen generieren",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [480, 1200],
+      "notes": "Gemini 1.5 Flash · kennt 9.9M-Ziel + 4-Säulen-Kontext · liefert kpi_impact pro Idee"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json?.candidates?.[0]?.content?.parts?.[0]?.text || '{\"ideas\":[]}';\nlet parsed;\ntry {\n  const match = raw.match(/\\{[\\s\\S]*\\}/);\n  parsed = JSON.parse(match ? match[0] : raw);\n} catch(e) {\n  parsed = { ideas: [{ title: 'Parse-Fehler', hook: e.message, format: 'Error', cta: '', kpi_impact: 'niedrig' }] };\n}\n// 9.9M Filter: sortiere nach kpi_impact\nconst order = { 'hoch': 0, 'mittel': 1, 'niedrig': 2 };\nparsed.ideas.sort((a, b) => (order[a.kpi_impact] || 2) - (order[b.kpi_impact] || 2));\nreturn [{ json: parsed }];"
+      },
+      "id": "parse-gemini-ideas",
+      "name": "JSON parsen + 9.9M-Filter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [720, 1200],
+      "notes": "Sortiert Ideen nach kpi_impact (hoch → mittel → niedrig) = 9.9M-Fokus-Filter"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}"
+      },
+      "id": "webhook-response-ideas",
+      "name": "Content-Ideen zurückgeben",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [960, 1200]
+    },
+
+    {
+      "parameters": {},
+      "id": "error-trigger",
+      "name": "Fehler-Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [240, 1440]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=⚠️ *Brainstorm-Bot Fehler*\nFlow: `{{ $json.execution.workflowData.name }}`\nNode: `{{ $json.execution.lastNodeExecuted }}`\nFehler: `{{ $json.execution.error.message }}`\nZeit: {{ $now.format('HH:mm') }} Uhr",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-error",
+      "name": "Telegram: Fehler",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [480, 1440]
+    }
+  ],
+  "connections": {
+    "Cron Mo–Fr 07:30": {
+      "main": [[
+        { "node": "Supabase: Letzte Leads laden", "type": "main", "index": 0 },
+        { "node": "Supabase: Jarvis Missions laden", "type": "main", "index": 0 }
+      ]]
+    },
+    "Supabase: Letzte Leads laden": {
+      "main": [[{ "node": "Energie-Check: Pensum berechnen", "type": "main", "index": 0 }]]
+    },
+    "Supabase: Jarvis Missions laden": {
+      "main": [[{ "node": "Energie-Check: Pensum berechnen", "type": "main", "index": 0 }]]
+    },
+    "Energie-Check: Pensum berechnen": {
+      "main": [[{ "node": "Claude: Morgen-Briefing generieren", "type": "main", "index": 0 }]]
+    },
+    "Claude: Morgen-Briefing generieren": {
+      "main": [[{ "node": "Telegram: Morgen-Briefing senden", "type": "main", "index": 0 }]]
+    },
+    "Cron Mo–Fr 18:00": {
+      "main": [[{ "node": "Supabase: Heutige Missions laden", "type": "main", "index": 0 }]]
+    },
+    "Supabase: Heutige Missions laden": {
+      "main": [[{ "node": "Claude Haiku: Abend-Report", "type": "main", "index": 0 }]]
+    },
+    "Claude Haiku: Abend-Report": {
+      "main": [[{ "node": "Telegram: Abend-Report senden", "type": "main", "index": 0 }]]
+    },
+    "Cron Sonntag 19:00": {
+      "main": [[{ "node": "Supabase: Wochen-Missions laden", "type": "main", "index": 0 }]]
+    },
+    "Supabase: Wochen-Missions laden": {
+      "main": [[{ "node": "Claude: Wochen-Brainstorm", "type": "main", "index": 0 }]]
+    },
+    "Claude: Wochen-Brainstorm": {
+      "main": [[{ "node": "TOP_NISCHE extrahieren", "type": "main", "index": 0 }]]
+    },
+    "TOP_NISCHE extrahieren": {
+      "main": [[
+        { "node": "Telegram: Wochen-Brainstorm", "type": "main", "index": 0 },
+        { "node": "Gemini: Proaktive Montag-Content-Ideen", "type": "main", "index": 0 }
+      ]]
+    },
+    "Gemini: Proaktive Montag-Content-Ideen": {
+      "main": [[{ "node": "Content-Posts formatieren", "type": "main", "index": 0 }]]
+    },
+    "Content-Posts formatieren": {
+      "main": [[{ "node": "Telegram: Montag Content-Vorschau", "type": "main", "index": 0 }]]
+    },
+    "Webhook: Content-Ideen": {
+      "main": [[{ "node": "Gemini: Content-Ideen generieren", "type": "main", "index": 0 }]]
+    },
+    "Gemini: Content-Ideen generieren": {
+      "main": [[{ "node": "JSON parsen + 9.9M-Filter", "type": "main", "index": 0 }]]
+    },
+    "JSON parsen + 9.9M-Filter": {
+      "main": [[{ "node": "Content-Ideen zurückgeben", "type": "main", "index": 0 }]]
+    },
+    "Fehler-Trigger": {
+      "main": [[{ "node": "Telegram: Fehler", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "errorWorkflow": ""
+  },
+  "meta": {
+    "instanceId": "cango-empire",
+    "templateId": "cango-brainstorm-bots-v2",
+    "notes": "v2 – Biostrukturelle Balance + 9.9M Fokus-Filter + Proaktiver Gemini-Content\n\nNEU in v2:\n1. Energie-Check Node: Liest energyLevel aus gestrigem Jarvis-Kontext\n   → < 3: Deep-Rest-Slot erzwungen (nur 2 Tasks, Pause vor Outreach)\n   → < 5: Reduziertes Pensum (3 Tasks)\n   → >= 5: Vollpensum (5 Tasks)\n\n2. 9.9M Fokus-Filter in allen Claude-Prompts:\n   → Nur Tasks die Delta zum 9.9M-Ziel schließen\n   → Rauschen wird ans Ende verschoben\n\n3. Proaktiver Gemini-Trigger:\n   → Sonntags analysiert Claude die Top-Nische der Woche\n   → Gemini generiert automatisch 3 LinkedIn-Posts für Montag\n   → Direkt ans Handy → Montag früh sofort posten\n\n4. kpi_impact-Sortierung in Content-Ideen (hoch→mittel→niedrig)\n\nFLOWS:\nFlow 1: Morgen-Briefing (Mo–Fr 07:30)\n→ Supabase Leads + Missions → Energie-Check → Claude Opus → Telegram\n\nFlow 2: Abend-Report (Mo–Fr 18:00)\n→ Supabase heutige Missions → Claude Haiku → Telegram\n\nFlow 3: Wochen-Brainstorm (Sonntag 19:00)\n→ Supabase Wochen-Missions → Claude Opus → TOP_NISCHE extrahieren\n→ Telegram Brainstorm + Gemini Content-Ideen → Telegram Montag-Vorschau\n\nFlow 4: On-Demand Content-Ideen (POST /content-ideas)\n→ Gemini 1.5 Flash → kpi_impact sortiert → Response\n\nSETUP ENV-VARS in n8n:\n- SUPABASE_URL, SUPABASE_ANON_KEY\n- TELEGRAM_CHAT_ID\n- GEMINI_API_KEY (aistudio.google.com → kostenlos)\n\nTabellen:\n- jarvis_missions (context-Feld enthält energyLevel)\n- outreach_leads"
+  }
+}

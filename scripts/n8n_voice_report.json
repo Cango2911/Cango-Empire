@@ -1,0 +1,220 @@
+{
+  "name": "CanGo · Voice → Abend-Report (Telegram Sprachnachricht → Whisper → Jarvis)",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": ["message"],
+        "additionalFields": {}
+      },
+      "id": "tg-trigger-voice",
+      "name": "Telegram: Sprachnachricht empfangen",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300],
+      "notes": "Empfängt Telegram-Sprachnachrichten von Canberk (voice message = .oga/.mp3)\nFilter: Nur wenn message.voice oder message.audio vorhanden"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true },
+          "conditions": [
+            {
+              "leftValue": "={{ !!$json.message?.voice || !!$json.message?.audio }}",
+              "rightValue": true,
+              "operator": { "type": "boolean", "operation": "equals" }
+            }
+          ]
+        }
+      },
+      "id": "filter-voice-only",
+      "name": "Filter: Nur Sprachnachrichten",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [480, 300],
+      "notes": "Ignoriert Text-Nachrichten, verarbeitet nur voice/audio"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/bot{{ $env.TELEGRAM_BOT_TOKEN }}/getFile?file_id={{ $json.message.voice?.file_id || $json.message.audio?.file_id }}",
+        "options": {}
+      },
+      "id": "tg-get-file-path",
+      "name": "Telegram: File-Path holen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [720, 300],
+      "notes": "Holt den Download-Pfad der Sprachdatei von Telegram API"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.telegram.org/file/bot{{ $env.TELEGRAM_BOT_TOKEN }}/{{ $json.result.file_path }}",
+        "options": { "response": { "response": { "responseFormat": "file" } } }
+      },
+      "id": "tg-download-voice",
+      "name": "Telegram: Sprachdatei downloaden",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [960, 300],
+      "notes": "Lädt die Audiodatei als Binary herunter"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/audio/transcriptions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "=Bearer {{ $env.OPENAI_API_KEY }}" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            { "name": "model", "value": "whisper-1" },
+            { "name": "language", "value": "de" },
+            { "name": "file", "value": "={{ $binary.data }}", "parameterType": "formBinaryData", "inputDataFieldName": "data" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "whisper-transcribe",
+      "name": "Whisper: Sprache → Text",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1200, 300],
+      "notes": "OpenAI Whisper-1 transkribiert Sprachnachricht auf Deutsch\nAlternativ: lokaler Whisper auf Hostinger VPS (kostenfrei)"
+    },
+    {
+      "parameters": {
+        "model": "claude-haiku-4-5-20251001",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Du bist Jarvis – KI-Assistent von Canberk Kivilcim (CanGo App Empire).\n\nCanberk hat dir eine Sprachnachricht geschickt, weil er zu müde zum Tippen ist.\nExtrahiere daraus strukturiert:\n1. Energie-Level (1-10, aus Kontext schätzen wenn nicht explizit genannt)\n2. Was heute gut lief\n3. Was morgen als erstes getan wird\n4. Eventuelle Todos oder Ideen\n\nAntworte auf Deutsch. Format:\n{\n  \"energy_level\": 1-10,\n  \"mood_check\": true/false (true wenn >= 5),\n  \"notes_good\": \"...\",\n  \"notes_tomorrow\": \"...\",\n  \"extra_todos\": [\"...\"],\n  \"summary\": \"1-Satz Zusammenfassung\"\n}"
+            },
+            {
+              "role": "user",
+              "content": "=Sprachnachricht von Canberk (transkribiert):\n\n{{ $json.text }}\n\nStrukturiere dies als Abend-Report."
+            }
+          ]
+        },
+        "options": { "maxTokens": 300, "temperature": 0.3 }
+      },
+      "id": "claude-structure-voice",
+      "name": "Claude Haiku: Sprachnotiz strukturieren",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [1440, 300],
+      "notes": "Haiku extrahiert energy_level + notes aus der Transkription"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json.content[0].text;\nlet parsed;\ntry {\n  const match = raw.match(/\\{[\\s\\S]*\\}/);\n  parsed = JSON.parse(match ? match[0] : raw);\n} catch(e) {\n  parsed = { energy_level: 5, mood_check: true, notes_good: raw, notes_tomorrow: '', extra_todos: [], summary: 'Sprachnotiz verarbeitet' };\n}\nreturn [{ json: parsed }];"
+      },
+      "id": "parse-voice-report",
+      "name": "JSON parsen: Voice-Report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1680, 300]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": { "__rl": true, "value": "public", "mode": "list" },
+        "table": { "__rl": true, "value": "jarvis_missions", "mode": "list" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "values": [
+            { "column": "date", "value": "={{ $now.format('YYYY-MM-DD') }}" },
+            {
+              "column": "context",
+              "value": "={{ JSON.stringify({ energyLevel: $json.energy_level, moodCheck: $json.mood_check, notesGood: $json.notes_good, notesTomorrow: $json.notes_tomorrow, source: 'voice_message', updatedAt: $now }) }}"
+            }
+          ]
+        },
+        "matchingColumns": ["date"]
+      },
+      "id": "supabase-save-voice",
+      "name": "Supabase: Voice-Report speichern",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [1920, 300],
+      "notes": "Speichert energyLevel in jarvis_missions.context → wird morgen früh von Energie-Check gelesen"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=✅ *Jarvis · Sprachnotiz verarbeitet*\n\n📊 Energie-Level: {{ $('JSON parsen: Voice-Report').item.json.energy_level }}/10{{ $('JSON parsen: Voice-Report').item.json.energy_level < 3 ? ' · ⚠️ Morgen Deep-Rest-Modus' : '' }}\n\n✓ {{ $('JSON parsen: Voice-Report').item.json.summary }}\n\nMorgen-Briefing wird angepasst. Gute Nacht! 🌙",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-confirm-voice",
+      "name": "Telegram: Bestätigung senden",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [2160, 300],
+      "notes": "Bestätigt Canberk dass die Sprachnotiz verarbeitet wurde + zeigt Energie-Level + morgen-Anpassung"
+    },
+
+    {
+      "parameters": {},
+      "id": "error-trigger",
+      "name": "Fehler-Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [240, 520]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=⚠️ *Voice-Report Fehler*\nNode: `{{ $json.execution.lastNodeExecuted }}`\nFehler: `{{ $json.execution.error.message }}`",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-error",
+      "name": "Telegram: Fehler",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [480, 520]
+    }
+  ],
+  "connections": {
+    "Telegram: Sprachnachricht empfangen": {
+      "main": [[{ "node": "Filter: Nur Sprachnachrichten", "type": "main", "index": 0 }]]
+    },
+    "Filter: Nur Sprachnachrichten": {
+      "main": [[{ "node": "Telegram: File-Path holen", "type": "main", "index": 0 }]]
+    },
+    "Telegram: File-Path holen": {
+      "main": [[{ "node": "Telegram: Sprachdatei downloaden", "type": "main", "index": 0 }]]
+    },
+    "Telegram: Sprachdatei downloaden": {
+      "main": [[{ "node": "Whisper: Sprache → Text", "type": "main", "index": 0 }]]
+    },
+    "Whisper: Sprache → Text": {
+      "main": [[{ "node": "Claude Haiku: Sprachnotiz strukturieren", "type": "main", "index": 0 }]]
+    },
+    "Claude Haiku: Sprachnotiz strukturieren": {
+      "main": [[{ "node": "JSON parsen: Voice-Report", "type": "main", "index": 0 }]]
+    },
+    "JSON parsen: Voice-Report": {
+      "main": [[
+        { "node": "Supabase: Voice-Report speichern", "type": "main", "index": 0 },
+        { "node": "Telegram: Bestätigung senden", "type": "main", "index": 0 }
+      ]]
+    },
+    "Fehler-Trigger": {
+      "main": [[{ "node": "Telegram: Fehler", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "errorWorkflow": ""
+  },
+  "meta": {
+    "instanceId": "cango-empire",
+    "templateId": "cango-voice-report-v1",
+    "notes": "Telegram Sprachnachricht → Jarvis Abend-Report\n\nWIE ES FUNKTIONIERT:\n1. Canberk schickt Sprachnachricht an @Cango_master_bot (zu müde zum Tippen)\n2. n8n empfängt die Nachricht via Telegram Trigger\n3. Whisper transkribiert die Audiodatei auf Deutsch\n4. Claude Haiku extrahiert: energy_level, notes_good, notes_tomorrow\n5. Supabase speichert energyLevel in jarvis_missions.context\n6. Morgen früh liest Energie-Check den Wert → passt Pensum an\n7. Canberk bekommt Bestätigung + Energie-Level zurück\n\nTEILNEHMER:\n- @Cango_master_bot → als Telegram Trigger Bot konfigurieren\n- Bot muss Webhook aktiviert haben (Production Mode in n8n)\n\nKOSTEN WHISPER:\n- OpenAI Whisper-1: ~$0.006/Minute Audio\n- Alternative kostenlos: Whisper auf Hostinger VPS\n  → pip install openai-whisper\n  → whisper audio.oga --language German --model small\n  → Via HTTP Request an lokalen Endpoint\n\nSETUP ENV-VARS:\n- TELEGRAM_BOT_TOKEN (für File-Download)\n- TELEGRAM_CHAT_ID\n- OPENAI_API_KEY (für Whisper) oder lokaler Endpoint\n- SUPABASE_URL, SUPABASE_ANON_KEY\n\nALTERNATIVE ohne OpenAI:\nErsetze Whisper-Node durch:\n- AssemblyAI (kostenlose Stufe, Deutsch)\n- Deepgram (kostenlose 200h/Monat)\n- Lokaler Whisper auf VPS (einmalig setup, danach kostenlos)"
+  }
+}

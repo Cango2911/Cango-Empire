@@ -1,0 +1,295 @@
+{
+  "name": "CanGo Avatar-Pipeline · Claude → HeyGen → Supabase → Telegram",
+  "nodes": [
+
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "avatar-trigger",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "webhook-avatar",
+      "name": "Avatar-Trigger (Webhook)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "notes": "Empfängt Trigger vom Daily-Todo-Master (Block 13 Avatar-Regie).\nErwarteter Payload: { avatarId, avatarName, topic, tone, targetAudience, language, date }\nWebhook-URL in daily-todo-master.html Block 13 eintragen."
+    },
+
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "cronExpression", "expression": "0 9 * * 1,3,5" }]
+        },
+        "options": {}
+      },
+      "id": "cron-avatar",
+      "name": "Cron Mo/Mi/Fr 09:00 Uhr",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 500],
+      "notes": "Alternativer Trigger: Startet Avatar-Produktion automatisch Mo/Mi/Fr um 9 Uhr.\nKann parallel zum Webhook-Trigger genutzt werden."
+    },
+
+    {
+      "parameters": {
+        "model": "claude-opus-4-7",
+        "messages": {
+          "values": [
+            {
+              "role": "system",
+              "content": "Du bist ein professioneller Content-Stratege für CanGo App Empire. Du schreibst präzise, motivierende Video-Skripte für KI-Avatare (HeyGen). Stil: authentisch, direkt, kein Bullshit, auf den Punkt. Zielgruppe: Inhaber kleiner Unternehmen im DACH-Raum. Sprache: Deutsch. Länge: 45–90 Sekunden (ca. 120–230 Wörter)."
+            },
+            {
+              "role": "user",
+              "content": "=Erstelle ein Avatar-Video-Skript für das Thema: '{{ $json.topic || 'Warum dein Unternehmen jetzt eine Website braucht' }}'.\n\nAvatar: {{ $json.avatarName || 'Canberk' }}\nTon: {{ $json.tone || 'professionell, motivierend' }}\nZielgruppe: {{ $json.targetAudience || 'KMU-Inhaber ohne Website im DACH-Raum' }}\n\nFormat:\n1. Hook (erste 5 Sekunden – aufmerksamkeitsstarker Einstieg)\n2. Problem (10 Sek. – der Schmerz der Zielgruppe)\n3. Lösung (20 Sek. – CanGo App Empire als Antwort)\n4. CTA (10 Sek. – konkreter nächster Schritt)\n\nGib NUR den gesprochenen Text zurück, keine Regieanweisungen. Kein Intro wie 'Hier ist das Skript'."
+            }
+          ]
+        },
+        "options": { "maxTokens": 600, "temperature": 0.75 }
+      },
+      "id": "claude-script",
+      "name": "Claude: Skript generieren",
+      "type": "n8n-nodes-base.anthropic",
+      "typeVersion": 1,
+      "position": [500, 300],
+      "notes": "Generiert personalisiertes Avatar-Skript via Claude claude-opus-4-7.\nAnthropics API-Credentials in n8n hinterlegen."
+    },
+
+    {
+      "parameters": {
+        "url": "https://api.heygen.com/v2/video/generate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "X-Api-Key",    "value": "={{ $env.HEYGEN_API_KEY }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"video_inputs\": [{\n    \"character\": {\n      \"type\": \"avatar\",\n      \"avatar_id\": \"{{ $('Avatar-Trigger (Webhook)').item.json.avatarId || $env.HEYGEN_DEFAULT_AVATAR_ID }}\",\n      \"avatar_style\": \"normal\"\n    },\n    \"voice\": {\n      \"type\": \"text\",\n      \"input_text\": {{ JSON.stringify($json.content[0].text) }},\n      \"voice_id\": \"{{ $env.HEYGEN_VOICE_ID || 'de-DE-KatjaNeural' }}\"\n    },\n    \"background\": {\n      \"type\": \"color\",\n      \"value\": \"#05070c\"\n    }\n  }],\n  \"dimension\": { \"width\": 1280, \"height\": 720 },\n  \"aspect_ratio\": \"16:9\",\n  \"test\": false\n}",
+        "options": {}
+      },
+      "id": "heygen-generate",
+      "name": "HeyGen: Video-Job starten",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [760, 200],
+      "notes": "Startet async Video-Generierung via HeyGen API v2.\nEnv-Variablen: HEYGEN_API_KEY, HEYGEN_DEFAULT_AVATAR_ID, HEYGEN_VOICE_ID\nGibt video_id zurück → wird für Status-Polling benötigt."
+    },
+
+    {
+      "parameters": {
+        "amount": 30,
+        "unit": "seconds"
+      },
+      "id": "wait-render",
+      "name": "Warten: 30 Sek. (Render-Zeit)",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [1000, 200],
+      "notes": "HeyGen braucht typisch 20–90 Sek. Erster Poll nach 30 Sek."
+    },
+
+    {
+      "parameters": {
+        "url": "=https://api.heygen.com/v1/video_status.get?video_id={{ $('HeyGen: Video-Job starten').item.json.data.video_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "X-Api-Key", "value": "={{ $env.HEYGEN_API_KEY }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "heygen-status",
+      "name": "HeyGen: Status prüfen",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1240, 200],
+      "notes": "Pollt den Video-Status. Mögliche Werte: processing, completed, failed.\nBei 'processing' → weiterer Wait-Node → erneut prüfen (max. 3×)."
+    },
+
+    {
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            {
+              "id": "is-completed",
+              "leftValue": "={{ $json.data.status }}",
+              "rightValue": "completed",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "or"
+        }
+      },
+      "id": "filter-completed",
+      "name": "Video fertig?",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [1480, 200]
+    },
+
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": { "__rl": true, "value": "public", "mode": "list" },
+        "table": { "__rl": true, "value": "avatar_productions", "mode": "list" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "values": [
+            { "column": "video_id",      "value": "={{ $('HeyGen: Video-Job starten').item.json.data.video_id }}" },
+            { "column": "avatar_id",     "value": "={{ $('Avatar-Trigger (Webhook)').item.json.avatarId || $env.HEYGEN_DEFAULT_AVATAR_ID }}" },
+            { "column": "topic",         "value": "={{ $('Avatar-Trigger (Webhook)').item.json.topic }}" },
+            { "column": "script_text",   "value": "={{ $('Claude: Skript generieren').item.json.content[0].text }}" },
+            { "column": "video_url",     "value": "={{ $json.data.video_url }}" },
+            { "column": "thumbnail_url", "value": "={{ $json.data.thumbnail_url || '' }}" },
+            { "column": "duration_sec",  "value": "={{ $json.data.duration || 0 }}" },
+            { "column": "status",        "value": "completed" },
+            { "column": "created_at",    "value": "={{ $now }}" }
+          ]
+        },
+        "matchingColumns": ["video_id"]
+      },
+      "id": "supabase-log-success",
+      "name": "Supabase: Erfolg loggen",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [1720, 120],
+      "notes": "Speichert Produktionsdaten in Supabase.\nTabelle 'avatar_productions' muss existieren (SQL unten).\nSupabase-Credentials in n8n hinterlegen."
+    },
+
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=✅ *Avatar-Video fertig!*\n\n🎬 *Thema:* {{ $('Avatar-Trigger (Webhook)').item.json.topic || '—' }}\n⏱ *Dauer:* {{ $('HeyGen: Status prüfen').item.json.data.duration || '?' }} Sek.\n📅 *Erstellt:* {{ $now.format('DD.MM.YYYY HH:mm') }} Uhr\n\n🔗 [Video ansehen]({{ $('HeyGen: Status prüfen').item.json.data.video_url }})\n\n_Skript-Vorschau:_\n{{ $('Claude: Skript generieren').item.json.content[0].text.substring(0,200) }}…",
+        "additionalFields": {
+          "parse_mode": "Markdown",
+          "disable_web_page_preview": false
+        }
+      },
+      "id": "tg-success",
+      "name": "Telegram: Video-Link senden",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1720, 280],
+      "notes": "Sendet fertigen Video-Link + Skript-Preview direkt an @Cango_master_bot.\nTELEGRAM_CHAT_ID als Umgebungsvariable setzen."
+    },
+
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, video_id: $('HeyGen: Video-Job starten').item.json.data.video_id, video_url: $('HeyGen: Status prüfen').item.json.data.video_url }) }}"
+      },
+      "id": "webhook-response-ok",
+      "name": "Webhook: OK-Antwort",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1960, 200]
+    },
+
+    {
+      "parameters": {},
+      "id": "error-trigger",
+      "name": "Fehler-Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [240, 700],
+      "notes": "Fängt alle unerwarteten Fehler im Workflow ab und leitet sie weiter."
+    },
+
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": { "__rl": true, "value": "public", "mode": "list" },
+        "table": { "__rl": true, "value": "avatar_productions", "mode": "list" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "values": [
+            { "column": "video_id",    "value": "=error_{{ $now.toMillis() }}" },
+            { "column": "topic",       "value": "={{ $json.workflow.name }}" },
+            { "column": "status",      "value": "failed" },
+            { "column": "script_text", "value": "={{ $json.execution.error.message }}" },
+            { "column": "created_at",  "value": "={{ $now }}" }
+          ]
+        },
+        "matchingColumns": ["video_id"]
+      },
+      "id": "supabase-log-error",
+      "name": "Supabase: Fehler loggen",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [500, 700]
+    },
+
+    {
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "=🚨 *Avatar-Pipeline Fehler*\n\n*Workflow:* {{ $json.workflow.name }}\n*Node:* {{ $json.execution.lastNodeExecuted }}\n*Fehler:* `{{ $json.execution.error.message }}`\n*Zeit:* {{ $now.format('DD.MM.YYYY HH:mm') }} Uhr\n\n→ n8n öffnen und Ausführung prüfen.",
+        "additionalFields": { "parse_mode": "Markdown" }
+      },
+      "id": "tg-error",
+      "name": "Telegram: Fehler melden",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [760, 700],
+      "notes": "Sendet sofortige Fehlermeldung per Telegram bei Pipeline-Absturz."
+    }
+
+  ],
+
+  "connections": {
+    "Avatar-Trigger (Webhook)": {
+      "main": [[{ "node": "Claude: Skript generieren", "type": "main", "index": 0 }]]
+    },
+    "Cron Mo/Mi/Fr 09:00 Uhr": {
+      "main": [[{ "node": "Claude: Skript generieren", "type": "main", "index": 0 }]]
+    },
+    "Claude: Skript generieren": {
+      "main": [[{ "node": "HeyGen: Video-Job starten", "type": "main", "index": 0 }]]
+    },
+    "HeyGen: Video-Job starten": {
+      "main": [[{ "node": "Warten: 30 Sek. (Render-Zeit)", "type": "main", "index": 0 }]]
+    },
+    "Warten: 30 Sek. (Render-Zeit)": {
+      "main": [[{ "node": "HeyGen: Status prüfen", "type": "main", "index": 0 }]]
+    },
+    "HeyGen: Status prüfen": {
+      "main": [[{ "node": "Video fertig?", "type": "main", "index": 0 }]]
+    },
+    "Video fertig?": {
+      "main": [[
+        { "node": "Supabase: Erfolg loggen",     "type": "main", "index": 0 },
+        { "node": "Telegram: Video-Link senden", "type": "main", "index": 0 }
+      ]]
+    },
+    "Supabase: Erfolg loggen": {
+      "main": [[{ "node": "Webhook: OK-Antwort", "type": "main", "index": 0 }]]
+    },
+    "Telegram: Video-Link senden": {
+      "main": [[{ "node": "Webhook: OK-Antwort", "type": "main", "index": 0 }]]
+    },
+    "Fehler-Trigger": {
+      "main": [[
+        { "node": "Supabase: Fehler loggen", "type": "main", "index": 0 },
+        { "node": "Telegram: Fehler melden", "type": "main", "index": 0 }
+      ]]
+    }
+  },
+
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+
+  "meta": {
+    "instanceId": "cango-empire",
+    "templateId": "cango-avatar-pipeline-v1",
+    "notes": "SETUP-CHECKLISTE:\n\n1) Credentials in n8n:\n   - Anthropic API Key (claude-opus-4-7)\n   - HeyGen API Key (HEYGEN_API_KEY Umgebungsvariable)\n   - Supabase URL + Key\n   - Telegram Bot Token (@Cango_master_bot)\n\n2) Umgebungsvariablen in n8n:\n   HEYGEN_API_KEY=...\n   HEYGEN_DEFAULT_AVATAR_ID=... (in HeyGen Dashboard nachsehen)\n   HEYGEN_VOICE_ID=de-DE-KatjaNeural (oder andere DE-Stimme)\n   TELEGRAM_CHAT_ID=... (via @userinfobot ermitteln)\n\n3) Supabase-Tabelle anlegen:\n   CREATE TABLE avatar_productions (\n     id uuid DEFAULT gen_random_uuid() PRIMARY KEY,\n     video_id text UNIQUE,\n     avatar_id text,\n     topic text,\n     script_text text,\n     video_url text,\n     thumbnail_url text,\n     duration_sec integer DEFAULT 0,\n     status text DEFAULT 'processing',\n     created_at timestamptz DEFAULT now()\n   );\n\n4) Webhook-URL (Production Mode!) in daily-todo-master.html Block 13 eintragen\n\n5) Fehler-Trigger ist automatisch aktiv — kein weiteres Setup nötig\n\nHINWEIS: HeyGen API kann bei langen Videos >60 Sek. mehr Renderzeit brauchen.\nFüge bei Bedarf einen zweiten Wait+Status-Poll-Loop (IF node) ein."
+  }
+}
