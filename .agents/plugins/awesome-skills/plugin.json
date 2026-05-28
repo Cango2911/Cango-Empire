@@ -1,0 +1,45 @@
+{
+  "name": "awesome-skills",
+  "version": "latest",
+  "description": "Curated list of Agent Skills, resources, and tools for AI coding agents (Claude Code, Codex, Gemini CLI, GitHub Copilot, Cursor, Goose, Windsurf, and more). Includes 8 guide skills covering: skill creation, multi-platform compatibility, Claude Code specifics, AI/LLM development, development tools, marketing, security, and the full awesome-skills overview.",
+  "type": "reference-collection",
+  "source": "https://github.com/gmh5225/awesome-skills",
+  "license": "MIT",
+  "author": "gmh5225",
+  "requires": {
+    "runtime": "none",
+    "env": {
+      "required": [],
+      "optional": []
+    }
+  },
+  "skills": {
+    "awesome-skills-overview": "Project overview — categorization rules, contribution guide, duplicate policy",
+    "awesome-skills-claude-code": "Claude Code paths, installation, official skills reference",
+    "awesome-skills-platforms": "Multi-platform compatibility matrix (14 agents) and path guide",
+    "awesome-skills-skill-creation": "SKILL.md format, best practices, token efficiency, quality checklist",
+    "awesome-skills-ai-llm": "AI/LLM development — RAG, multi-agent, memory, context engineering",
+    "awesome-skills-dev-tools": "Dev tools — document processing, browser automation, testing, visualization",
+    "awesome-skills-marketing": "Marketing & growth — SEO, CRO, copywriting, paid ads, launch strategy",
+    "awesome-skills-security": "Security — pentest, code auditing, threat hunting, smart contract security"
+  },
+  "highlights": {
+    "official_skills": ["Anthropic", "OpenAI Codex", "HuggingFace"],
+    "team_skills": ["Vercel", "Trail of Bits", "Sentry", "Expo"],
+    "community_highlights": [
+      "borghei/Claude-Skills (47 expert skills)",
+      "mukul975/Anthropic-Cybersecurity-Skills (754 skills, MITRE ATT&CK)",
+      "VoltAgent/awesome-clawdbot-skills (565+ skills)",
+      "jeremylongshore/claude-code-plugins-plus-skills (270+ plugins, 739+ skills)",
+      "aj-geddes/useful-ai-prompts (488+ prompts, 260+ skills)",
+      "yaklang/hack-skills (offensive security knowledge base)",
+      "sanbir/* (Solidity/Solana/Move/TON auditor skills)"
+    ],
+    "marketplaces": ["skillsmp.com", "agentskills.me", "skills.rest", "TokRepo", "Learn Skills"]
+  },
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Pure markdown SKILL.md files only. No scripts, no executables, no code, no shell commands. Curated link list and guide skills for navigating the agent skills ecosystem."
+  }
+}

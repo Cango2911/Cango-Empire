@@ -1,0 +1,12 @@
+{
+  "name": "android-reverse-engineering-skill",
+  "version": "1.0.0",
+  "description": "A Claude Code skill that decompiles Android APK/XAPK/JAR/AAR files and **extracts the HTTP APIs** used by the app \u2014 Retrofit endpoints, OkHttp calls, hardcoded URLs, authentication patterns \u2014 so you c",
+  "license": "Apache-2.0",
+  "author": "gmh5225",
+  "source": "https://github.com/gmh5225/android-reverse-engineering-skill",
+  "type": "agent-skill",
+  "skills": [
+    "android-reverse-engineering-skill"
+  ]
+}

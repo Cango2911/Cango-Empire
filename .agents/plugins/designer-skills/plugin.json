@@ -1,0 +1,11 @@
+{
+  "name": "designer-skills",
+  "version": "1.0.0",
+  "description": "Designer Skills Collection — 91 Skills und 28 Commands in 9 Plugins für Claude Code (Marie Claire Dean)",
+  "author": "Owl-Listener (Marie Claire Dean)",
+  "category": "design",
+  "tags": ["design-research", "ux-strategy", "design-systems", "ui-design", "interaction-design", "prototyping", "design-ops", "visual-critique"],
+  "skills": ["design-ops", "design-research", "design-systems", "designer-toolkit", "interaction-design", "prototyping-testing", "ui-design", "ux-strategy", "visual-critique"],
+  "source": "https://github.com/Owl-Listener/designer-skills",
+  "language": "markdown"
+}

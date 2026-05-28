@@ -1,0 +1,12 @@
+{
+  "name": "skyvern-skill",
+  "version": "1.0.0",
+  "description": "\ud83d\udc09 Automate Browser-based workflows using LLMs and Computer Vision \ud83d\udc09",
+  "license": "GPL-3.0",
+  "author": "Skyvern-AI",
+  "source": "https://github.com/Skyvern-AI/skyvern",
+  "type": "agent-skill",
+  "skills": [
+    "skyvern-skill"
+  ]
+}

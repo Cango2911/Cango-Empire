@@ -1,0 +1,12 @@
+{
+  "name": "cloudflare-skill",
+  "version": "1.0.0",
+  "description": "Comprehensive Cloudflare platform reference docs for AI/LLM consumption. Covers Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), networking, security, and infrastructure-a",
+  "license": "MIT",
+  "author": "dmmulroy",
+  "source": "https://github.com/dmmulroy/cloudflare-skill",
+  "type": "agent-skill",
+  "skills": [
+    "cloudflare-skill"
+  ]
+}

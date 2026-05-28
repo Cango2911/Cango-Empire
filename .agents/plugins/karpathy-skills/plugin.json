@@ -1,0 +1,10 @@
+{
+  "name": "karpathy-skills",
+  "version": "1.0.0",
+  "description": "A single `CLAUDE.md` file to improve Claude Code behavior, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls. English | [简体中",
+  "license": "MIT",
+  "author": "forrestchang",
+  "source": "https://github.com/forrestchang/andrej-karpathy-skills",
+  "type": "agent-skill",
+  "skills": ["karpathy-skills"]
+}

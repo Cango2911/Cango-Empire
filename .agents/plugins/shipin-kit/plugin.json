@@ -1,0 +1,50 @@
+{
+  "name": "shipin-kit",
+  "version": "1.0.0",
+  "description": "ShipinKit — unified Swift SDK (视频 = shipin = video) for AI video generation on Apple platforms. Integrates LumaAI Dream Machine and RunwayML Gen-3 Alpha via Swift async/await.",
+  "type": "swift-package",
+  "source": "https://github.com/rryam/ShipinKit",
+  "license": "MIT",
+  "author": "rryam (Rudrank Riyam)",
+  "requires": {
+    "swift": "6.0+",
+    "platforms": {
+      "iOS": "16.0+",
+      "macOS": "14.0+",
+      "tvOS": "16.0+",
+      "watchOS": "9.0+",
+      "visionOS": "1.0+"
+    },
+    "dependencies": ["swift-docc-plugin (doc generation only)"],
+    "env_one_of": ["LUMA_API_KEY", "RUNWAY_API_KEY"]
+  },
+  "install": {
+    "spm": "Add .package(url: \"https://github.com/rryam/ShipinKit.git\", from: \"1.0.0\") to Package.swift",
+    "local": "Add .package(path: \".agents/plugins/shipin-kit\") to Package.swift",
+    "xcode": "File → Add Package Dependencies → https://github.com/rryam/ShipinKit.git"
+  },
+  "capabilities": {
+    "lumaai": {
+      "api": "https://api.lumalabs.ai/dream-machine/v1",
+      "features": ["text-to-video", "keyframe-based generation", "loop videos", "list/delete generations"],
+      "get_key": "https://lumalabs.ai/dream-machine/api"
+    },
+    "runwayml": {
+      "api": "RunwayML Gen-3 Alpha",
+      "features": ["image-to-video from UIImage or URL", "duration control (5s/10s)", "aspect ratio (16:9/9:16)", "watermark toggle", "seed for reproducibility", "task cancel/delete"],
+      "get_key": "https://app.runwayml.com/account/api-keys"
+    }
+  },
+  "api_surface": {
+    "ShipinKit": "Unified actor — ShipinKit(service: .lumaAI(apiKey:) | .runwayML(apiKey:)) + .generate(...)",
+    "LumaAI": "Direct actor — createGeneration, getGeneration, listGenerations, deleteGeneration",
+    "RunwayML": "Direct actor — generateVideo, getTask, processTask, cancelTask, deleteTask",
+    "ShipinImage": "Cross-platform image wrapper (UIImage on iOS, NSImage on macOS, URL)"
+  },
+  "skill": ".agents/skills/shipin-kit",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Swift 6 actor-based SDK. Uses only URLSession for HTTPS API calls. No Process(), no shell execution, no eval of remote content. Build script uses standard xcodebuild. CI uploads to EmergeTools (size analysis service)."
+  }
+}

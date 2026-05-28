@@ -1,0 +1,12 @@
+{
+  "name": "revealjs-skill",
+  "version": "1.0.0",
+  "description": "A coding agent skill for creating polished, professional [Reveal.js](https://revealjs.com/) HTML presentations using natural language.",
+  "license": "MIT",
+  "author": "ryanbbrown",
+  "source": "https://github.com/ryanbbrown/revealjs-skill",
+  "type": "agent-skill",
+  "skills": [
+    "revealjs-skill"
+  ]
+}

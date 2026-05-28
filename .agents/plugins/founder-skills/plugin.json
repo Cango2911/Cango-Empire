@@ -1,0 +1,12 @@
+{
+  "name": "founder-skills",
+  "version": "1.0.0",
+  "description": "This repository contains 20+ Claude skills that will help you turn Claude into a Fortune 500 growth team.",
+  "license": "MIT",
+  "author": "ognjengt",
+  "source": "https://github.com/ognjengt/founder-skills",
+  "type": "agent-skill",
+  "skills": [
+    "founder-skills"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    // Environment setup & latest features
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "jsxImportSource": "vargai",
+    "allowJs": true,
+
+    // Bundler mode
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+
+    // Best practices
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    // Some stricter flags (disabled by default)
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false,
+
+    // Base URL for imports
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "vargai/jsx-runtime": ["./src/react/runtime/jsx-runtime.ts"],
+      "vargai/jsx-dev-runtime": ["./src/react/runtime/jsx-dev-runtime.ts"]
+    }
+  },
+  "include": ["src/**/*", "launch-videos/**/*"],
+  "exclude": [
+    "node_modules",
+    "action",
+    "lib",
+    "cli",
+    "service",
+    "utilities",
+    "pipeline",
+    "src/cli"
+  ]
+}

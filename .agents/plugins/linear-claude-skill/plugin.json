@@ -1,0 +1,12 @@
+{
+  "name": "linear-claude-skill",
+  "version": "1.0.0",
+  "description": "name: Linear",
+  "license": "MIT",
+  "author": "wrsmith108",
+  "source": "https://github.com/wrsmith108/linear-claude-skill",
+  "type": "agent-skill",
+  "skills": [
+    "linear-claude-skill"
+  ]
+}

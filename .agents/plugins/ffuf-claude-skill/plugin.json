@@ -1,0 +1,12 @@
+{
+  "name": "ffuf-claude-skill",
+  "version": "1.0.0",
+  "description": "A Claude Code skill that integrates the powerful web fuzzer [ffuf](https://github.com/ffuf/ffuf) (Fuzz Faster U Fool) for web security testing and reconnaissance tasks.",
+  "license": "MIT",
+  "author": "jthack",
+  "source": "https://github.com/jthack/ffuf_claude_skill",
+  "type": "agent-skill",
+  "skills": [
+    "ffuf-claude-skill"
+  ]
+}

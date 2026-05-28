@@ -1,0 +1,39 @@
+{
+  "name": "nano-banana-pro",
+  "version": "latest",
+  "description": "Nano Banana Pro — Bildgenerierung und -bearbeitung via Google Gemini Image API. Unterstützt Gemini 3.1 Flash Image, Gemini 3 Pro Image und Gemini 2.5 Flash Image. Features: Text-to-Image, Bildbearbeitung, Multi-Image-Komposition, Presets, Kostensteuerung, Auflösungen bis 4K, alle gängigen Seitenverhältnisse. Erfordert GOOGLE_API_KEY.",
+  "type": "skill",
+  "source": "https://github.com/jlouage/Nano-Banana-Pro-Claude-Skills",
+  "license": "MIT",
+  "author": "jlouage",
+  "requires": {
+    "runtime": "uv (python>=3.10)",
+    "env": {
+      "required": [
+        "GOOGLE_API_KEY"
+      ],
+      "optional": []
+    }
+  },
+  "models": [
+    {
+      "id": "gemini-3.1-flash-image-preview",
+      "default": true,
+      "cost_per_1k_px": "$0.067"
+    },
+    {
+      "id": "gemini-3-pro-image-preview",
+      "cost_per_1k_px": "$0.101+"
+    },
+    {
+      "id": "gemini-2.5-flash-image",
+      "cost_per_1k_px": "$0.039"
+    }
+  ],
+  "skill": ".agents/skills/nano-banana-pro",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "generate_image.py nutzt google-genai SDK und Pillow. Kein shell=True, kein eval(), kein exec(), kein subprocess, kein pickle.loads, kein curl|sh. Reines API-Client-Skript mit argparse."
+  }
+}

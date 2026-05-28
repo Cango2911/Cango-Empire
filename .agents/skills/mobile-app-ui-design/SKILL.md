@@ -1,0 +1,1 @@
+Mobile App UI Design Skill — Professionelle Mobile App UI/UX-Designs für Claude Code. Inspiriert von Top-Apps: Airbnb, Duolingo, Spotify, Revolut, Phantom. Für: React Native, Flutter, SwiftUI Interfaces, App Mockups, Onboarding Flows, Mobile Navigation.

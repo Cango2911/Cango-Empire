@@ -1,0 +1,511 @@
+from __future__ import annotations
+
+import os
+from base64 import b64encode
+from pathlib import Path
+from typing import Any, Optional
+from unittest.mock import patch
+
+import pytest
+from pydantic import BaseModel
+
+from fal.toolkit.file.file import (
+    File,
+    GoogleStorageRepository,
+    _get_object_lifecycle_preference_from_context,
+    _try_with_fallback,
+)
+from fal.toolkit.file.types import FileData, FileRepository
+
+
+def test_binary_content_matches():
+    content = b"Hello World"
+    content_base64 = b64encode(content).decode("utf-8")
+    file = File.from_bytes(content, repository="in_memory")
+    assert file.url.endswith(content_base64)
+    assert file.as_bytes() == content
+
+
+def test_default_content_type():
+    file = File.from_bytes(b"Hello World", repository="in_memory")
+    assert file.content_type == "application/octet-stream"
+    assert file.file_name
+    assert file.file_name.endswith(".bin")
+
+
+def test_file_name_from_content_type():
+    file = File.from_bytes(
+        b"Hello World", content_type="text/plain", repository="in_memory"
+    )
+    assert file.content_type == "text/plain"
+    assert file.file_name
+    assert file.file_name.endswith(".txt")
+
+
+def test_content_type_from_file_name():
+    file = File.from_bytes(
+        b"Hello World", file_name="hello.txt", repository="in_memory"
+    )
+    assert file.content_type == "text/plain"
+    assert file.file_name == "hello.txt"
+
+
+def test_file_size():
+    content = b"Hello World"
+    file = File.from_bytes(content, repository="in_memory")
+    assert file.file_size == len(content)
+
+
+def test_in_memory_repository_url():
+    content = b"Hello World"
+    file = File.from_bytes(content, repository="in_memory")
+    assert file.url.startswith("data:application/octet-stream;base64,")
+    assert file.url.endswith(b64encode(content).decode("utf-8"))
+
+
+@pytest.mark.asyncio
+async def test_file_from_bytes_async():
+    content = b"Hello World"
+    file = await File.from_bytes_async(content, repository="in_memory")
+
+    assert isinstance(file, File)
+    assert file.as_bytes() == content
+    assert file.url.endswith(b64encode(content).decode("utf-8"))
+
+
+@pytest.mark.asyncio
+async def test_file_from_path_async(tmp_path: Path):
+    file_path = tmp_path / "hello.txt"
+    file_path.write_text("Hello from async path", encoding="utf-8")
+
+    file = await File.from_path_async(
+        file_path, content_type="text/plain", repository="in_memory"
+    )
+
+    assert isinstance(file, File)
+    assert file.file_name == "hello.txt"
+    assert file.content_type == "text/plain"
+    assert file.file_size == file_path.stat().st_size
+
+
+@pytest.mark.asyncio
+async def test_file_save_async(tmp_path: Path):
+    content = b"Hello save async"
+    file = File.from_bytes(content, repository="in_memory")
+
+    output_path = tmp_path / "saved.bin"
+    saved_path = await file.save_async(output_path)
+
+    assert saved_path == output_path.resolve()
+    assert output_path.read_bytes() == content
+
+    with pytest.raises(FileExistsError):
+        await file.save_async(output_path)
+
+    overwritten_path = await file.save_async(output_path, overwrite=True)
+    assert overwritten_path == output_path.resolve()
+    assert output_path.read_bytes() == content
+
+
+def test_gcp_storage_if_available():
+    gcp_sa_json = os.environ.get("GCLOUD_SA_JSON")
+    if gcp_sa_json is None:
+        pytest.skip(reason="GCLOUD_SA_JSON environment variable is not set")
+
+    gcp_storage = GoogleStorageRepository(
+        gcp_account_json=gcp_sa_json, bucket_name="fal_registry_image_results"
+    )
+    file = File.from_bytes(b"Hello GCP Storage!", repository=gcp_storage)
+    assert file.url.startswith(
+        "https://storage.googleapis.com/fal_registry_image_results/"
+    )
+
+
+def test_load_nested():
+    class Input(BaseModel):
+        file: File
+
+    assert (
+        Input(file="https://example.com/somefile.txt").file.url
+        == "https://example.com/somefile.txt"
+    )
+
+    with pytest.raises(ValueError, match="value must be a valid URL"):
+        Input(file="not_a_valid_url")
+
+    file_dict = {
+        "url": "https://example.com/somefile.txt",
+        "content_type": "text/plain",
+        "file_name": "somefile.txt",
+    }
+
+    parsed_input = Input(file=file_dict)
+    assert parsed_input.file.url == file_dict["url"]
+    assert parsed_input.file.content_type == file_dict["content_type"]
+    assert parsed_input.file.file_name == file_dict["file_name"]
+
+
+class MockRepository(FileRepository):
+    """Mock repository for testing that can be configured to succeed or fail"""
+
+    def __init__(
+        self,
+        name: str,
+        should_fail: bool = False,
+        failure_exception: Optional[Exception] = None,
+    ):
+        self.name = name
+        self.should_fail = should_fail
+        self.failure_exception = failure_exception or Exception(
+            f"Mock failure for {name}"
+        )
+        self.calls: list[tuple[str, Any, dict[str, Any]]] = []
+
+    def save(self, data: FileData, **kwargs: Any) -> str:
+        self.calls.append(("save", data, kwargs))
+        if self.should_fail:
+            raise self.failure_exception
+        return f"success_url_from_{self.name}"
+
+    def save_file(self, file_path: Path, **kwargs: Any) -> tuple[str, FileData]:
+        self.calls.append(("save_file", file_path, kwargs))
+        if self.should_fail:
+            raise self.failure_exception
+        return f"success_url_from_{self.name}", FileData(
+            b"mock_data", "text/plain", "mock.txt"
+        )
+
+
+class TestTryWithFallback:
+    """Test cases for the _try_with_fallback function"""
+
+    def test_success_on_first_attempt(self):
+        """Test successful execution on the first repository"""
+        mock_repo = MockRepository("primary", should_fail=False)
+
+        with patch(
+            "fal.toolkit.file.file.get_builtin_repository", return_value=mock_repo
+        ):
+            result = _try_with_fallback(
+                func="save",
+                args=[FileData(b"test_data", "text/plain", "test.txt")],
+                repository="primary",
+                fallback_repository=None,
+                save_kwargs={"key1": "value1"},
+                fallback_save_kwargs={},
+            )
+
+        assert result == "success_url_from_primary"
+        assert len(mock_repo.calls) == 1
+        assert mock_repo.calls[0][0] == "save"
+
+    def test_fallback_on_first_failure(self):
+        """Test fallback to second repository when first fails"""
+        primary_repo = MockRepository("primary", should_fail=True)
+        fallback_repo = MockRepository("fallback", should_fail=False)
+
+        with patch("fal.toolkit.file.file.get_builtin_repository") as mock_get_repo:
+            mock_get_repo.side_effect = [primary_repo, fallback_repo]
+
+            result = _try_with_fallback(
+                func="save",
+                args=[FileData(b"test_data", "text/plain", "test.txt")],
+                repository="primary",
+                fallback_repository="fallback",
+                save_kwargs={"key1": "value1"},
+                fallback_save_kwargs={"key2": "value2"},
+            )
+
+        assert result == "success_url_from_fallback"
+        assert len(primary_repo.calls) == 1
+        assert len(fallback_repo.calls) == 1
+        assert primary_repo.calls[0][2] == {"key1": "value1"}
+        assert fallback_repo.calls[0][2] == {"key2": "value2"}
+
+    def test_fallback_with_list_of_repositories(self):
+        """Test fallback through a list of repositories"""
+        repo1 = MockRepository("repo1", should_fail=True)
+        repo2 = MockRepository("repo2", should_fail=True)
+        repo3 = MockRepository("repo3", should_fail=False)
+
+        with patch("fal.toolkit.file.file.get_builtin_repository") as mock_get_repo:
+            mock_get_repo.side_effect = [repo1, repo2, repo3]
+
+            result = _try_with_fallback(
+                func="save",
+                args=[FileData(b"test_data", "text/plain", "test.txt")],
+                repository="repo1",
+                fallback_repository=["repo2", "repo3"],
+                save_kwargs={"key1": "value1"},
+                fallback_save_kwargs={"key2": "value2"},
+            )
+
+        assert result == "success_url_from_repo3"
+        assert len(repo1.calls) == 1
+        assert len(repo2.calls) == 1
+        assert len(repo3.calls) == 1
+
+    def test_all_repositories_fail(self):
+        """Test that exception is raised when all repositories fail"""
+        repo1 = MockRepository("repo1", should_fail=True)
+        repo2 = MockRepository("repo2", should_fail=True)
+
+        with patch("fal.toolkit.file.file.get_builtin_repository") as mock_get_repo:
+            mock_get_repo.side_effect = [repo1, repo2]
+
+            with pytest.raises(Exception, match="Mock failure for repo2"):
+                _try_with_fallback(
+                    func="save",
+                    args=[FileData(b"test_data", "text/plain", "test.txt")],
+                    repository="repo1",
+                    fallback_repository="repo2",
+                    save_kwargs={},
+                    fallback_save_kwargs={},
+                )
+
+    def test_no_fallback_repository(self):
+        """Test behavior when no fallback repository is provided"""
+        repo = MockRepository("primary", should_fail=True)
+
+        with patch("fal.toolkit.file.file.get_builtin_repository", return_value=repo):
+            with pytest.raises(Exception, match="Mock failure for primary"):
+                _try_with_fallback(
+                    func="save",
+                    args=[FileData(b"test_data", "text/plain", "test.txt")],
+                    repository="primary",
+                    fallback_repository=None,
+                    save_kwargs={},
+                    fallback_save_kwargs={},
+                )
+
+    def test_save_file_function(self):
+        """Test with save_file function instead of save"""
+        mock_repo = MockRepository("primary", should_fail=False)
+        test_path = Path("/tmp/test.txt")
+
+        with patch(
+            "fal.toolkit.file.file.get_builtin_repository", return_value=mock_repo
+        ):
+            result = _try_with_fallback(
+                func="save_file",
+                args=[test_path],
+                repository="primary",
+                fallback_repository=None,
+                save_kwargs={"content_type": "text/plain"},
+                fallback_save_kwargs={},
+            )
+
+        assert result[0] == "success_url_from_primary"
+        assert isinstance(result[1], FileData)
+        assert result[1].data == b"mock_data"
+        assert result[1].content_type == "text/plain"
+        assert result[1].file_name == "mock.txt"
+        assert len(mock_repo.calls) == 1
+        assert mock_repo.calls[0][0] == "save_file"
+        assert mock_repo.calls[0][1] == test_path
+
+    def test_custom_exception_types(self):
+        """Test with different types of exceptions"""
+        custom_exception = ValueError("Custom error message")
+        repo1 = MockRepository(
+            "repo1", should_fail=True, failure_exception=custom_exception
+        )
+        repo2 = MockRepository("repo2", should_fail=False)
+
+        with patch("fal.toolkit.file.file.get_builtin_repository") as mock_get_repo:
+            mock_get_repo.side_effect = [repo1, repo2]
+
+            result = _try_with_fallback(
+                func="save",
+                args=[FileData(b"test_data", "text/plain", "test.txt")],
+                repository="repo1",
+                fallback_repository="repo2",
+                save_kwargs={},
+                fallback_save_kwargs={},
+            )
+
+        assert result == "success_url_from_repo2"
+
+    def test_empty_fallback_list(self):
+        """Test with empty fallback list"""
+        repo = MockRepository("primary", should_fail=True)
+
+        with patch("fal.toolkit.file.file.get_builtin_repository", return_value=repo):
+            with pytest.raises(Exception, match="Mock failure for primary"):
+                _try_with_fallback(
+                    func="save",
+                    args=[FileData(b"test_data", "text/plain", "test.txt")],
+                    repository="primary",
+                    fallback_repository=[],
+                    save_kwargs={},
+                    fallback_save_kwargs={},
+                )
+
+    def test_repository_id_vs_object(self):
+        """Test that both repository IDs and repository objects work"""
+        mock_repo = MockRepository("test_repo", should_fail=False)
+
+        # Test with repository ID
+        with patch(
+            "fal.toolkit.file.file.get_builtin_repository", return_value=mock_repo
+        ):
+            result1 = _try_with_fallback(
+                func="save",
+                args=[FileData(b"test_data", "text/plain", "test.txt")],
+                repository="test_repo",
+                fallback_repository=None,
+                save_kwargs={},
+                fallback_save_kwargs={},
+            )
+
+        # Test with repository object
+        result2 = _try_with_fallback(
+            func="save",
+            args=[FileData(b"test_data", "text/plain", "test.txt")],
+            repository=mock_repo,
+            fallback_repository=None,
+            save_kwargs={},
+            fallback_save_kwargs={},
+        )
+
+        assert result1 == "success_url_from_test_repo"
+        assert result2 == "success_url_from_test_repo"
+
+    def test_traceback_and_print_output(self):
+        """Test that traceback and print statements are called on failure"""
+        repo1 = MockRepository("repo1", should_fail=True)
+        repo2 = MockRepository("repo2", should_fail=False)
+
+        with patch(
+            "fal.toolkit.file.file.get_builtin_repository"
+        ) as mock_get_repo, patch(
+            "fal.toolkit.file.file.traceback.print_exc"
+        ) as mock_traceback, patch("builtins.print") as mock_print:
+            mock_get_repo.side_effect = [repo1, repo2]
+
+            result = _try_with_fallback(
+                func="save",
+                args=[FileData(b"test_data", "text/plain", "test.txt")],
+                repository="repo1",
+                fallback_repository="repo2",
+                save_kwargs={},
+                fallback_save_kwargs={},
+            )
+
+        assert result == "success_url_from_repo2"
+        mock_traceback.assert_called_once()
+        mock_print.assert_called_once()
+        # Check that the print message contains the expected text
+        print_call_args = mock_print.call_args[0][0]
+        assert "Failed to save to repository repo1" in print_call_args
+        assert "falling back to repo2" in print_call_args
+
+
+# ============================================================================
+# Tests for _get_object_lifecycle_preference_from_context
+# ============================================================================
+
+
+class TestGetObjectLifecyclePreferenceFromContext:
+    """Tests for context-based lifecycle preference retrieval."""
+
+    def test_returns_none_when_no_current_app(self):
+        """Test that None is returned when there is no current app."""
+        with patch("fal.toolkit.file.file.get_current_app", return_value=None):
+            result = _get_object_lifecycle_preference_from_context()
+            assert result is None
+
+    def test_returns_none_when_current_request_is_none(self):
+        """Test that None is returned when current_request is None."""
+        mock_app = type("MockApp", (), {"current_request": None})()
+        with patch("fal.toolkit.file.file.get_current_app", return_value=mock_app):
+            result = _get_object_lifecycle_preference_from_context()
+            assert result is None
+
+    def test_returns_lifecycle_preference_from_context(self):
+        """Test that lifecycle_preference is returned from current request context."""
+        expected_preference = {"owner": "test-owner", "lifecycle": "request"}
+        mock_request_context = type(
+            "MockRequestContext",
+            (),
+            {"lifecycle_preference": expected_preference},
+        )()
+        mock_app = type("MockApp", (), {"current_request": mock_request_context})()
+
+        with patch("fal.toolkit.file.file.get_current_app", return_value=mock_app):
+            result = _get_object_lifecycle_preference_from_context()
+            assert result == expected_preference
+
+    def test_returns_none_lifecycle_preference_when_not_set(self):
+        """Test that None is returned when lifecycle_preference is None in context."""
+        mock_request_context = type(
+            "MockRequestContext",
+            (),
+            {"lifecycle_preference": None},
+        )()
+        mock_app = type("MockApp", (), {"current_request": mock_request_context})()
+
+        with patch("fal.toolkit.file.file.get_current_app", return_value=mock_app):
+            result = _get_object_lifecycle_preference_from_context()
+            assert result is None
+
+
+class TestContextBasedLifecyclePreference:
+    """Tests for File.from_bytes using context-based lifecycle preference."""
+
+    def test_from_bytes_uses_context_lifecycle_when_no_request(self):
+        """Test that from_bytes uses context-based lifecycle when request is None."""
+        expected_preference = {"expiration_duration_seconds": 3600}
+        mock_request_context = type(
+            "MockRequestContext",
+            (),
+            {"lifecycle_preference": expected_preference},
+        )()
+        mock_app = type("MockApp", (), {"current_request": mock_request_context})()
+
+        with patch(
+            "fal.toolkit.file.file.get_current_app", return_value=mock_app
+        ), patch("fal.toolkit.file.file._try_with_fallback") as mock_try:
+            mock_try.return_value = "https://example.com/file.bin"
+
+            File.from_bytes(b"test data", repository="in_memory")
+
+            call_args = mock_try.call_args
+            save_kwargs = call_args.kwargs.get("save_kwargs") or call_args[1].get(
+                "save_kwargs", {}
+            )
+            assert save_kwargs.get("object_lifecycle_preference") == expected_preference
+
+    def test_from_bytes_explicit_request_takes_precedence(self):
+        """Test that explicit request parameter takes precedence over context."""
+        from unittest.mock import MagicMock
+
+        context_preference = {"expiration_seconds": 100}
+        request_preference = {"expiration_seconds": 200}
+
+        mock_request = MagicMock()
+        mock_request.headers.get.return_value = '{"expiration_seconds": 200}'
+
+        mock_request_context = type(
+            "MockRequestContext",
+            (),
+            {"lifecycle_preference": context_preference},
+        )()
+        mock_app = type("MockApp", (), {"current_request": mock_request_context})()
+
+        with patch(
+            "fal.toolkit.file.file.get_current_app", return_value=mock_app
+        ), patch(
+            "fal.toolkit.file.file.request_lifecycle_preference",
+            return_value=request_preference,
+        ), patch("fal.toolkit.file.file._try_with_fallback") as mock_try:
+            mock_try.return_value = "https://example.com/file.bin"
+
+            File.from_bytes(b"test data", repository="in_memory", request=mock_request)
+
+            call_args = mock_try.call_args
+            save_kwargs = call_args.kwargs.get("save_kwargs") or call_args[1].get(
+                "save_kwargs", {}
+            )
+            # Should use request preference, not context preference
+            assert save_kwargs.get("object_lifecycle_preference") == request_preference

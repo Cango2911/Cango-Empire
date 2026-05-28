@@ -1,0 +1,57 @@
+{
+  "name": "jezweb-claude-skills",
+  "version": "latest",
+  "description": "jezweb/claude-skills — 65 Claude Code Skills in 10 Kategorien: Cloudflare (Workers, D1, Drizzle, Hono), Design Assets (Favicon, Icons, Color Palette), Dev Tools (UX-Audit, Git-Workflow, Project Health, Brains Trust), Frontend (React, shadcn/ui, Tailwind, TanStack, React Native), Integrations (ElevenLabs, Stripe, MCP Builder, Google Chat), Shopify, Social Media, Web Design (SEO), WordPress, Writing (Business English AU/NZ/UK/US, Proposals, CVs).",
+  "license": "MIT",
+  "source": "https://github.com/jezweb/claude-skills",
+  "author": "jezweb (Marcus Webb)",
+  "type": "multi-plugin-collection",
+  "total_skills": 65,
+  "plugins": {
+    "cloudflare": {
+      "skills": 8,
+      "list": ["cloudflare-api", "cloudflare-worker-builder", "d1-drizzle-schema", "d1-migration", "db-seed", "hono-api-scaffolder", "tanstack-start", "vite-flare-starter"]
+    },
+    "design-assets": {
+      "skills": 5,
+      "list": ["ai-image-generator", "color-palette", "favicon-gen", "icon-set-generator", "image-processing"]
+    },
+    "dev-tools": {
+      "skills": 17,
+      "list": ["app-docs", "brains-trust", "codex-review", "deep-research", "fork-discipline", "git-workflow", "github-release", "onboarding-ux", "project-docs", "project-health", "responsiveness-check", "roadmap", "team-update", "ux-audit", "ux-compare", "ux-extract", "vitest"]
+    },
+    "frontend": {
+      "skills": 10,
+      "list": ["design-loop", "design-review", "design-system", "landing-page", "product-showcase", "react-native", "react-patterns", "shadcn-ui", "tailwind-theme-builder", "walkthrough-video"]
+    },
+    "integrations": {
+      "skills": 9,
+      "list": ["elevenlabs-agents", "google-apps-script", "google-chat-messages", "gws-install", "gws-setup", "mcp-builder", "nemoclaw-setup", "parcel-tracking", "stripe-payments"]
+    },
+    "shopify": {
+      "skills": 3,
+      "list": ["shopify-content", "shopify-products", "shopify-setup"]
+    },
+    "social-media": {
+      "skills": 1,
+      "list": ["social-media-posts"]
+    },
+    "web-design": {
+      "skills": 1,
+      "list": ["seo-local-business"]
+    },
+    "wordpress": {
+      "skills": 3,
+      "list": ["wordpress-content", "wordpress-elementor", "wordpress-setup"]
+    },
+    "writing": {
+      "skills": 8,
+      "list": ["aussie-business-english", "award-application", "nz-business-english", "proposal-writer", "resume-cover-letter", "strategy-document", "uk-business-english", "us-business-english"]
+    }
+  },
+  "security_review": {
+    "status": "CLEAN",
+    "excluded": ".claude/settings.json (lokaler Hook-Pfad des Autors — /Users/marcuswebb/.../heartbeat-context.sh)",
+    "notes": "Keine eval(), shell=True, curl|sh, new Function(). Python/Bash-Scripts sind harmlose Lint- und Fetch-Hilfsprogramme."
+  }
+}

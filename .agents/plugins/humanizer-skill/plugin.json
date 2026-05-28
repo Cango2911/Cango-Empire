@@ -1,0 +1,12 @@
+{
+  "name": "humanizer-skill",
+  "version": "1.0.0",
+  "description": "name: humanizer",
+  "license": "MIT",
+  "author": "blader",
+  "source": "https://github.com/blader/humanizer",
+  "type": "agent-skill",
+  "skills": [
+    "humanizer-skill"
+  ]
+}

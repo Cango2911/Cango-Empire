@@ -1,0 +1,40 @@
+{
+  "name": "alirezarezvani-claude-skills",
+  "version": "latest",
+  "description": "Claude Skills Library by alirezarezvani — 395 production-quality skills organized across 15 domains. Covers engineering (ship-gate, chaos-engineering, dependency-auditor, rag-architect, autoresearch-agent, k8s, slo-architect, playwright, security pen-testing, api-design, feature-flags), C-level advisor suite (CEO, CTO, CFO, CISO, CMO, CPO, COO, CDO, CAIO, CCO, CRO, General Counsel, VPE), business operations (capacity-planner, process-mapper, vendor-management, procurement-optimizer, knowledge-ops), business growth (customer-success, revenue-operations, sales-engineer), marketing (content-creator, content-strategy, SEO, AEO, campaign-analytics, app-store-optimization), product team (agile-product-owner, product-analyst, growth, UX), finance (CFO-advisor, financial-analyst), compliance (AI Act, ISO 42001, EU GDPR, SOC 2, AIMS audit), research, and many more. All skills installed with cs- prefix to avoid conflicts.",
+  "type": "skill-collection",
+  "source": "https://github.com/alirezarezvani/claude-skills",
+  "license": "MIT",
+  "author": "alirezarezvani",
+  "requires": {
+    "runtime": "none",
+    "env": {
+      "required": [],
+      "optional": ["ANTHROPIC_API_KEY"]
+    }
+  },
+  "skill_prefix": "cs-",
+  "skill_count": 395,
+  "domains": [
+    "business-growth",
+    "business-operations",
+    "c-level-advisor",
+    "commercial",
+    "compliance-os",
+    "engineering",
+    "engineering-team",
+    "finance",
+    "marketing",
+    "marketing-skill",
+    "product-team",
+    "productivity",
+    "project-management",
+    "ra-qm-team",
+    "research"
+  ],
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Python scripts are security scanners/analyzers — flagged pattern strings are detection rules, not actual dangerous usage. Subprocess calls use hardcoded list args only (git, claude, pip). Shell scripts are local cp-based install helpers, no curl|sh or eval. No shell=True, no eval(), no pickle.loads from remote, no base64+exec. 547 Python files all audited."
+  }
+}

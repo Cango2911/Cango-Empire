@@ -1,0 +1,10 @@
+{
+  "name": "hegelian-dialectic-skill",
+  "version": "1.0.0",
+  "description": "*Named after Douglas Adams' machines built to believe things for you* **An agent skill that helps you think better by automating the brutally expensive parts of deep reasoning.** Two AI subagents — ",
+  "license": "MIT",
+  "author": "KyleAMathews",
+  "source": "https://github.com/KyleAMathews/hegelian-dialectic-skill",
+  "type": "agent-skill",
+  "skills": ["hegelian-dialectic-skill"]
+}

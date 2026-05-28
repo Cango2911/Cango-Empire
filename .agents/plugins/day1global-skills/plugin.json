@@ -1,0 +1,12 @@
+{
+  "name": "day1global-skills",
+  "version": "1.0.0",
+  "description": "Investment Analysis Skills for AI Agents \u2014 covering tech earnings, value investing, market sentiment, macro liquidity, and Bitcoin cycle analysis.",
+  "license": "MIT",
+  "author": "star23",
+  "source": "https://github.com/star23/Day1Global-Skills",
+  "type": "agent-skill",
+  "skills": [
+    "day1global-skills"
+  ]
+}

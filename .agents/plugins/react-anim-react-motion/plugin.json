@@ -1,0 +1,18 @@
+{
+  "name": "react-anim-react-motion",
+  "version": "latest",
+  "description": "React Motion — physics-basierte Animations-Library für React. Animationen über Federsteifigkeit (stiffness) und Dämpfung (damping) statt festen Kurven. 21.6K GitHub Stars. Unterstützt React Native v0.18+.",
+  "type": "library",
+  "source": "https://github.com/chenglou/react-motion",
+  "license": "MIT",
+  "author": "chenglou",
+  "install": "npm install react-motion",
+  "docs": "https://github.com/chenglou/react-motion",
+  "requires": { "runtime": "node", "env": { "required": [], "optional": [] } },
+  "skill": ".agents/skills/react-anim-react-motion",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Kein eval(), kein shell=True, kein subprocess. Reines JS/TypeScript Animations-Framework."
+  }
+}

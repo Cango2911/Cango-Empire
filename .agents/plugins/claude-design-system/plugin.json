@@ -1,0 +1,11 @@
+{
+  "name": "claude-design-system",
+  "version": "1.0.0",
+  "description": "Claude Design System — 4 Slash Commands zum Transformieren von Amateur-UIs in professionelle Designs",
+  "author": "ceorkm",
+  "category": "design",
+  "tags": ["design-system", "design-tokens", "slash-commands", "extract", "expand", "merge", "prototype"],
+  "commands": ["/design-it", "/extract-it", "/expand-it", "/merge-it"],
+  "source": "https://github.com/ceorkm/claude-design-system",
+  "language": "markdown"
+}

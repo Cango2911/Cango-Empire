@@ -1,0 +1,1 @@
+Designer Skills Collection — 91 Skills und 28 Commands in 9 Plugins für Claude Code (Marie Claire Dean). Kategorien: design-research, ux-strategy, design-systems, ui-design, interaction-design, prototyping-testing, design-ops, designer-toolkit, visual-critique. Abdeckt den gesamten Design-Zyklus von Research bis Delivery.

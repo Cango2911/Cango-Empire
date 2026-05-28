@@ -1,0 +1,60 @@
+---
+layout: null
+---
+{
+  "name": "Useful AI Prompts",
+  "short_name": "AI Prompts",
+  "description": "A comprehensive collection of practical, ready-to-use AI prompts for professionals across all industries and workflows.",
+  "start_url": "{{ site.baseurl }}/",
+  "scope": "{{ site.baseurl }}/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["productivity", "business", "education", "developer tools"],
+  "icons": [
+    {
+      "src": "{{ site.baseurl }}/assets/images/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "{{ site.baseurl }}/assets/images/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Search Prompts",
+      "short_name": "Search",
+      "description": "Search through AI prompts",
+      "url": "{{ site.baseurl }}/search/",
+      "icons": [
+        {
+          "src": "{{ site.baseurl }}/assets/images/search-icon.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Browse Categories",
+      "short_name": "Categories",
+      "description": "Browse prompt categories",
+      "url": "{{ site.baseurl }}/categories/",
+      "icons": [
+        {
+          "src": "{{ site.baseurl }}/assets/images/category-icon.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false
+}

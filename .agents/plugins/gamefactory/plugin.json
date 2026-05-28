@@ -1,0 +1,40 @@
+{
+  "name": "gamefactory",
+  "version": "1.0.0",
+  "description": "GameFactory — Creating New Games with Generative Interactive Videos (arXiv 2025). Framework für action-controllable Game-Video-Generierung via Pre-trained T2V-Modelle + Action-Control-Modul. GF-Minecraft Dataset: 70h Gameplay, 2000+ Clips, Minecraft mit WASD+Maus-Actions. Utility-Scripts: Invalid-Jump/Collision-Detection, WASD+Maus-Visualisierung.",
+  "license": "MIT",
+  "author": "KlingAIResearch / KwaiVGI (Kuaishou Technology, University of Hong Kong)",
+  "source": "https://github.com/KlingAIResearch/GameFactory",
+  "paper": "https://arxiv.org/abs/2501.08325",
+  "type": "agent-skill",
+  "skills": [
+    "gamefactory"
+  ],
+  "covers": [
+    "Action-controllable Game-Video-Generierung (neue Spielumgebungen via T2V)",
+    "GF-Minecraft Dataset: 70h Gameplay, 2000+ Clips, WASD+Maus Actions",
+    "Action-Format: ws/ad/scs + pitch/yaw + pos (JSON Metadata)",
+    "Invalid Jump Detection: Erkennt ineffektive Jump-Actions in Gameplay",
+    "Collision Detection: Detektiert Kollisionen mit Umgebungsobjekten",
+    "Action Visualization: WASD-Overlay + Maus-Cursor auf Video (visualize.py)",
+    "Multi-Phase Training-Strategie (Decoupling Stil vs. Action-Kontrolle)",
+    "World Model Potential: Autonomes Fahren, Embodied AI"
+  ],
+  "dataset": {
+    "name": "GF-Minecraft Dataset",
+    "url": "https://huggingface.co/datasets/KwaiVGI/GameFactory-Dataset",
+    "size": "70h Gameplay, 2000+ Clips, 2000 Frames/Clip",
+    "platform": "Minecraft (MineDojo API)",
+    "annotations": "MiniCPM-V (multimodal LLM)"
+  },
+  "note": "Trainings-/Inferenz-Code nicht open-source (Firmen-Policy). Enthält Dataset + Utility-Scripts.",
+  "entry_points": {
+    "detection": "detection.py — Invalid Jump + Collision Detection",
+    "visualize": "visualize.py — WASD + Maus Action Overlay auf Video"
+  },
+  "related": {
+    "recammaster": "Video Re-Rendering (ICCV 2025 Oral)",
+    "syncammaster": "Multi-Kamera Video (ICLR 2025)",
+    "liveportrait": "Portrait Animation"
+  }
+}

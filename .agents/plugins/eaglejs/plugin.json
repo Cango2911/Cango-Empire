@@ -1,0 +1,33 @@
+{
+  "name": "eaglejs",
+  "version": "0.6.1",
+  "description": "Eagle.js — Slideshow Framework für Hacker (Vue 2, ISC). Programmatische Präsentationen als Vue SFCs. Slideshow-Mixin + Slide-Komponente, 8 Widgets (Modal, CodeBlock, Toggle, RadioButton, Timer, ImageSlide, CodeComment, TriggeredMessage), 2 Plugins (Presenter, Zoom), 4 Themes (gourmet, agrume, refuel-dark). Tastatur/Maus/Touch, animate.css, highlight.js, Permalinks via vue-router.",
+  "license": "ISC",
+  "author": "Zulko et al. (Open Source)",
+  "source": "https://github.com/Zulko/eagle.js",
+  "npm": "https://www.npmjs.com/package/eagle.js",
+  "type": "agent-skill",
+  "skills": [
+    "eaglejs"
+  ],
+  "covers": [
+    "Slideshow-Mixin + Slide-Komponente für Vue 2 Präsentationen",
+    "Steps-System: v-if='step >= N' für animierte Bullet-Erscheinungen",
+    "Animationen via animate.css (enter/leave, enterPrev/Next/leavePrev/Next)",
+    "8 Widgets: Modal, CodeBlock (highlight.js), CodeComment, Toggle, RadioButton, TriggeredMessage, Timer, ImageSlide",
+    "Presenter Plugin: Zwei synchronisierte Fenster mit Referenten-Notizen",
+    "Zoom Plugin: Alt+Click Zoom",
+    "4 Themes: gourmet, agrume, refuel-dark + Base-SCSS",
+    "Nested Slideshows: embedded (in Slide) + inserted (in Slideshow)",
+    "Mobile-Support via Hammer.js (swiperight/swipeleft)",
+    "Permalinks via vue-router (/:slide/:step)",
+    "Storybook Development Setup"
+  ],
+  "note": "Feature-complete, nicht aktiv gewartet. Vue 3: Slidev empfohlen.",
+  "install": "npm install --save eagle.js animate.css",
+  "requires": {
+    "vue": "^2.x",
+    "animate.css": "peer dependency (Slide-Animationen)",
+    "highlight.js": "optional (für eg-code-block Widget)"
+  }
+}

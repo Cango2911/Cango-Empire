@@ -1,0 +1,44 @@
+{
+  "name": "video-starter-kit",
+  "version": "0.1.0",
+  "description": "AI-powered video studio built with Next.js 14, Remotion, and fal.ai. Browser-native video composition with timeline editor, multi-track support, and 20+ AI models for image, video, music, and voiceover generation. IndexedDB auto-save, optional file upload (UploadThing) and sharing (Upstash KV).",
+  "type": "nextjs-web-app",
+  "source": "https://github.com/fal-ai-community/video-starter-kit",
+  "license": "MIT",
+  "author": "fal-ai-community",
+  "requires": {
+    "runtime": "Node.js 20+",
+    "env": {
+      "required": ["FAL_KEY"],
+      "optional": ["UPLOADTHING_TOKEN", "KV_URL", "KV_REST_API_READ_ONLY_TOKEN", "KV_REST_API_TOKEN", "KV_REST_API_URL"]
+    }
+  },
+  "stack": {
+    "framework": "Next.js 14 (App Router)",
+    "video": "Remotion 4.x",
+    "styling": "Tailwind CSS + shadcn/ui",
+    "storage": "IndexedDB (idb — browser auto-save)",
+    "ai": "fal.ai (Flux, Minimax, Hunyuan, Kling, Luma, LTX, Veo2, MMAudio, PlayHT, PlayAI, F5-TTS, Stable Audio, Topaz)",
+    "upload": "UploadThing (optional)",
+    "share": "Upstash KV (optional)"
+  },
+  "install": {
+    "step1": "cd .agents/plugins/video-starter-kit && npm install",
+    "step2": "Fill in .env with FAL_KEY (get from https://fal.ai/dashboard/keys)",
+    "step3": "npm run dev  # starts at http://localhost:3000"
+  },
+  "features": {
+    "timeline": ["multi-track editor", "video/music/voiceover tracks", "keyframe system", "drag-and-drop clips"],
+    "ai_image": ["Flux Dev", "Flux Schnell", "Flux Pro 1.1 Ultra", "Stable Diffusion 3.5 Large"],
+    "ai_video": ["Minimax Video 01 Live", "Hunyuan", "Kling 1.5 Pro", "Kling 1.0 Standard", "Luma Dream Machine 1.5", "LTX Video v0.95", "Veo 2", "Topaz Video Upscale", "sync.so lipsync", "MMAudio V2"],
+    "ai_audio": ["Minimax Music", "Stable Audio", "PlayHT TTS v3", "PlayAI Dialog TTS", "F5 TTS"],
+    "storage": ["IndexedDB auto-save", "UploadThing file upload (optional)", "Upstash KV share links (optional)"]
+  },
+  "env_file": ".env (copy of .env.example — fill in FAL_KEY)",
+  "skill": ".agents/skills/video-starter-kit",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Standard Next.js 14 app. No eval(), no child_process, no shell exec. fal.ai proxy at /api/fal (server-side). Remotion for browser-native video rendering. IndexedDB via idb. .env.example has empty placeholders only."
+  }
+}

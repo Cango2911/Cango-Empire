@@ -1,0 +1,1 @@
+Open Design — Open-Source Claude Design Alternative (nexu-io). 19 Skills, 71 Brand Design Systeme. Generiert Web/Desktop/Mobile Prototypen, Slides, HyperFrames. Export: HTML/PDF/PPTX/MP4. Cross-Agent: Claude Code, Codex, Cursor, Gemini, OpenCode, Qwen, Copilot.

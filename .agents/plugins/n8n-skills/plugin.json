@@ -1,0 +1,12 @@
+{
+  "name": "n8n-skills",
+  "version": "1.0.0",
+  "description": "This repository contains **7 complementary Claude Code skills** that teach AI assistants how to build production-ready n8n workflows using the [n8n-mcp](https://github.com/czlonkowski/n8n-mcp) MCP ser",
+  "license": "MIT",
+  "author": "czlonkowski",
+  "source": "https://github.com/czlonkowski/n8n-skills",
+  "type": "agent-skill",
+  "skills": [
+    "n8n-skills"
+  ]
+}

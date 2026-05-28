@@ -1,0 +1,24 @@
+{
+  "name": "ad-stack-design-2026",
+  "version": "1.0.0",
+  "description": "Strategisches Framework für Advertising Tool-Stack Design 2026. Legacy (Control-first) vs. AI-native (Velocity-first) Plattformen, 3-Dimensions Entscheidungs-Framework (Growth Motion / Team-Reife / Automation-Philosophie), Integration Architecture ($2.3M Forrester), Essential Ad Stack, Tool-Kategorien (Fundamentals, AI-native, Attribution, Orchestration) und Growth Operating System Konzept.",
+  "license": "proprietary",
+  "author": "Cango Empire",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/ad-stack-design-2026",
+  "source": "internal — erstellt aus Blogartikel 'Best Advertising Tools 2026: A Strategic Framework'",
+  "key_benchmarks": {
+    "integration_cost": "$2.3M/Jahr pro 50-Personen-Team bei schlechter Integration (Forrester 2025)",
+    "tool_switching_waste": "11h/Woche (Forrester 2025)",
+    "ai_iteration_speed": "47% schneller mit AI Agents (Metadata.io 2026)",
+    "pipeline_blindness": "68% der B2B-Marketer können Spend nicht mit Pipeline verbinden (HubSpot 2026)",
+    "ai_roas": "2.8x höherer ROAS mit AI-native Plattformen (AdCreative.ai 2025)",
+    "creative_variants": "3x mehr Creative-Varianten mit Agent-Automation (Metadata.io Q1 2026)"
+  },
+  "tool_categories": {
+    "fundamentals": ["Google Ads", "Meta Ads", "LinkedIn Ads"],
+    "ai_native": ["Metadata", "Albert", "Smartly.io", "AdCreative.ai"],
+    "attribution": ["HockeyStack", "Hyros"],
+    "orchestration": ["Zapier", "Make", "Metaflow"]
+  }
+}

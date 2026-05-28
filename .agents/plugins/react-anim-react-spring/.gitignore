@@ -1,0 +1,51 @@
+node_modules/
+# production
+build/
+.react-router/
+dist/
+.cache/
+.parcel-cache/
+.next
+
+# testing
+/coverage
+__screenshots__/
+
+# misc
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.tgz
+
+npm-debug.log*
+pnpm-debug.log*
+
+
+Desktop.ini
+report.*.json
+.idea
+
+#
+# Changesets
+#
+**/CHANGELOG.md
+
+#
+# dot files
+#
+.cache
+.vercel
+.output
+.turbo
+
+#
+# Remix 
+#
+docs/public/build
+docs/api/*
+docs/vite.config.mts.timestamp-*.mjs

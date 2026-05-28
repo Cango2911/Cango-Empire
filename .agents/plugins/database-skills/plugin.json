@@ -1,0 +1,29 @@
+{
+  "name": "database-skills",
+  "version": "1.0.0",
+  "description": "PlanetScale Database Skills — 4 Expert-Level Skills für MySQL, PostgreSQL, Vitess und Neki. MySQL: Indexes, Query-Optimierung, Transactions, Online-DDL, Replication, JSON-Columns, Deadlocks, Connection Management, Partitioning, EXPLAIN-Analyse. PostgreSQL: MVCC, Vacuum, WAL, pgBouncer, Partitioning, Schema Design, Backup/Recovery, Monitoring, PlanetScale-Integration. Vitess: Architektur, VSchema, VReplication, Query-Serving, Schema-Changes. Neki: Sharding-Readiness.",
+  "license": "Apache-2.0",
+  "author": "PlanetScale",
+  "source": "https://github.com/planetscale/database-skills",
+  "type": "agent-skill",
+  "skills": [
+    "ps-mysql",
+    "ps-neki",
+    "ps-postgres",
+    "ps-vitess"
+  ],
+  "covers": [
+    "MySQL: Composite Indexes, Covering Indexes, Fulltext Indexes, Index Maintenance",
+    "MySQL: EXPLAIN ANALYZE, Query Optimization Pitfalls, N+1 Problem",
+    "MySQL: Transactions, Isolation Levels, Deadlocks, Row Locking",
+    "MySQL: Online DDL, Partitioning, Primary Keys, Data Types",
+    "MySQL: Replication Lag, Connection Management, JSON Column Patterns, Character Sets",
+    "PostgreSQL: MVCC, Vacuum, WAL Operations, Storage Layout, Process Architecture",
+    "PostgreSQL: Index Optimization, Indexing, Query Patterns, Schema Design",
+    "PostgreSQL: pgBouncer Configuration, Connection Pooling, Memory Management",
+    "PostgreSQL: Monitoring, Backup/Recovery, Replication, Partitioning",
+    "PostgreSQL: PlanetScale CLI, PS Insights, PS Connections, PS Extensions",
+    "Vitess: Architektur, VSchema, VReplication, Query Serving, Schema Changes",
+    "Neki: Sharding Readiness Assessment"
+  ]
+}

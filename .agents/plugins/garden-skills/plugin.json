@@ -1,0 +1,38 @@
+{
+  "name": "garden-skills",
+  "version": "latest",
+  "description": "ConardLi/garden-skills — 4 hochwertige Production-Ready Claude Code Skills: gpt-image-2 (80+ Bild-Templates, 18 Kategorien, OpenAI-kompatibel), kb-retriever (lokale Wissensbasis-Suche, PDF/Excel/grep), web-design-engineer (HTML/CSS/JS/React, Dashboards, Animationen, Datenvisualisierungen), web-video-presentation (Artikel → 16:9 Webpräsentation mit 23 Themes + TTS). Kompatibel mit Claude Code, Cursor, Codex, Gemini CLI.",
+  "license": "MIT",
+  "source": "https://github.com/ConardLi/garden-skills",
+  "author": "ConardLi",
+  "skills": {
+    "gpt-image-2": {
+      "version": "1.0.3",
+      "category": "Image Generation / Prompt Engineering",
+      "description": "GPT Image 2 Bildgenerierung — 3 Modi (Garden-Lokal, Host-Native, Advisor), 18 Kategorien, 80+ Templates",
+      "requires_env": ["OPENAI_API_KEY"],
+      "path": "./skills/gpt-image-2"
+    },
+    "kb-retriever": {
+      "category": "Knowledge Retrieval",
+      "description": "Lokale Wissensbasis-Suche — hierarchisches Index-Navigation, PDF/Excel via pdfplumber/pandas, grep",
+      "path": "./skills/kb-retriever"
+    },
+    "web-design-engineer": {
+      "category": "Frontend / Design",
+      "description": "Polished Web-Artefakte mit HTML/CSS/JS/React — Dashboards, Prototypen, Slideshows, Datenvisualisierungen",
+      "path": "./skills/web-design-engineer"
+    },
+    "web-video-presentation": {
+      "version": "1.2.1",
+      "category": "Web Video / Presentation",
+      "description": "Artikel → 16:9 Webpräsentation, 23 Themes, TTS (MiniMax, OpenAI, ElevenLabs, edge-tts)",
+      "path": "./skills/web-video-presentation"
+    }
+  },
+  "compatibility": ["claude-code", "claude-ai", "cursor", "codex-cli", "gemini-cli", "opencode"],
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "base64 in gpt-image-2/scripts/shared.js: Standard API-Bildkodierung (Upload lokaler Dateien) und -Dekodierung (API-Antwort). Kein eval(), kein shell=True, kein curl|sh."
+  }
+}

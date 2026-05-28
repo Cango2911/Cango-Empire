@@ -1,0 +1,70 @@
+{
+  "name": "elevenlabs-skills",
+  "version": "latest",
+  "description": "ElevenLabs AI Audio Skills — Text-to-Speech (70+ Sprachen, 6 Modelle), Speech-to-Text (Scribe v2, 90+ Sprachen, Echtzeit-Streaming), Musik-Generierung, Sound-Effekte, Voice Changer, Voice Isolator, Speech Engine (Sprach-Agenten), und API-Key-Setup. Erfordert ELEVENLABS_API_KEY.",
+  "type": "agent-skills",
+  "source": "https://github.com/elevenlabs/skills",
+  "license": "MIT",
+  "author": "ElevenLabs (elevenlabs.io)",
+  "requires": {
+    "runtime": "python>=3.8 oder node",
+    "env": {
+      "required": [
+        "ELEVENLABS_API_KEY"
+      ],
+      "optional": []
+    }
+  },
+  "skills": [
+    {
+      "name": "elevenlabs-text-to-speech",
+      "path": ".agents/skills/elevenlabs-text-to-speech",
+      "description": "Text zu Sprache konvertieren — 70+ Sprachen, Streaming, Voice Settings, Request Stitching"
+    },
+    {
+      "name": "elevenlabs-speech-to-text",
+      "path": ".agents/skills/elevenlabs-speech-to-text",
+      "description": "Audio/Video transkribieren — Scribe v2, 90+ Sprachen, Speaker Diarization, Echtzeit"
+    },
+    {
+      "name": "elevenlabs-music",
+      "path": ".agents/skills/elevenlabs-music",
+      "description": "Musik aus Text-Prompts generieren — Instrumentals, Songs mit Lyrics, Composition Plans"
+    },
+    {
+      "name": "elevenlabs-sound-effects",
+      "path": ".agents/skills/elevenlabs-sound-effects",
+      "description": "Sound-Effekte aus Text-Beschreibungen generieren"
+    },
+    {
+      "name": "elevenlabs-voice-changer",
+      "path": ".agents/skills/elevenlabs-voice-changer",
+      "description": "Stimme in Echtzeit oder per Datei in eine andere Stimme umwandeln"
+    },
+    {
+      "name": "elevenlabs-voice-isolator",
+      "path": ".agents/skills/elevenlabs-voice-isolator",
+      "description": "Hintergrundgeräusche aus Audio entfernen, Stimme isolieren"
+    },
+    {
+      "name": "elevenlabs-speech-engine",
+      "path": ".agents/skills/elevenlabs-speech-engine",
+      "description": "Sprach-Agenten bauen — ElevenLabs Conversational AI, Python & JS SDK"
+    },
+    {
+      "name": "elevenlabs-agents",
+      "path": ".agents/skills/elevenlabs-agents",
+      "description": "Conversational AI Agenten konfigurieren — Outbound Calls, Client Tools, Widget Embedding"
+    },
+    {
+      "name": "elevenlabs-setup-api-key",
+      "path": ".agents/skills/elevenlabs-setup-api-key",
+      "description": "ElevenLabs API-Key einrichten und validieren"
+    }
+  ],
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "subprocess in evals/run_all.py nutzt Listen-Argumente (kein shell=True), startet nur claude CLI für Eval-Tests. transcribe.sh setzt Python-venv auf, keine Shell-Injection, set -euo pipefail. base64.b64encode in transcribe.py kodiert Audio-Chunks für API-Upload. .env.example enthält nur Platzhalter 'your_api_key_here' — kein echter Key im Repo."
+  }
+}

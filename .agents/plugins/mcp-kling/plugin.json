@@ -1,0 +1,54 @@
+{
+  "name": "mcp-kling",
+  "version": "5.2.0",
+  "description": "MCP server for Kling AI — 12 tools for video generation, image generation, lip-sync, video effects, virtual try-on, and account management. Integrates directly with Claude Desktop via Model Context Protocol.",
+  "type": "mcp-server",
+  "source": "https://github.com/199-mcp/mcp-kling",
+  "npm": "mcp-kling",
+  "license": "MIT",
+  "author": "Boris Djordjevic / 199 Longevity",
+  "requires": {
+    "runtime": "Node.js 18+",
+    "env": {
+      "required": ["KLING_ACCESS_KEY", "KLING_SECRET_KEY"],
+      "optional": ["KLING_AUTO_DOWNLOAD", "KLING_DOWNLOAD_PATH"]
+    }
+  },
+  "install": {
+    "npx": "npx -y mcp-kling@latest (add to Claude Desktop config)",
+    "local": "npm install && npm run build",
+    "get_keys": "https://app.klingai.com/global/dev/api-key"
+  },
+  "tools": [
+    "generate_video",
+    "generate_image_to_video",
+    "check_video_status",
+    "extend_video",
+    "apply_video_effect",
+    "generate_image",
+    "check_image_status",
+    "create_lipsync",
+    "virtual_try_on",
+    "get_account_balance",
+    "get_resource_packages",
+    "list_tasks"
+  ],
+  "models": {
+    "video": ["kling-v1", "kling-v1.5", "kling-v1.6", "kling-v2-master"],
+    "image": ["Kolors"]
+  },
+  "claude_desktop_config": {
+    "command": "npx",
+    "args": ["-y", "mcp-kling@latest"],
+    "env": {
+      "KLING_ACCESS_KEY": "YOUR_ACCESS_KEY",
+      "KLING_SECRET_KEY": "YOUR_SECRET_KEY"
+    }
+  },
+  "skill": ".agents/skills/mcp-kling",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "TypeScript MCP server using @modelcontextprotocol/sdk, axios, jose for JWT. No eval(), no child_process, no shell execution. JWT auto-generated per request from HMAC-HS256. NOTE: repo .env was committed with author's real API keys — NOT copied into this plugin (only .env.example included)."
+  }
+}

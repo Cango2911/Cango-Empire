@@ -1,0 +1,29 @@
+{
+  "name": "server-side-tracking",
+  "version": "1.0.0",
+  "description": "Server-Side Tracking Guide — Client vs. Server-Side Architektur, 10-30% Datenverlust durch Ad Blocker und ITP, 2 Haupt-Attributionsfehler (Safari In-App Browser, Cross-Browser-Tracking), Hash-basierte First-Party Client-IDs (GDPR-konform), Single-Stream-Architektur, CRM-Anreicherung, Meta CAPI, Google Enhanced Conversions, TikTok Events API.",
+  "license": "proprietary",
+  "author": "Cango Empire",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/server-side-tracking",
+  "source": "internal — erstellt aus Artikel 'What is Server-Side Tracking?' (tracklution.com)",
+  "key_benchmarks": {
+    "tracking_data_loss": "10-30% Datenverlust durch Ad Blocker und ITP",
+    "main_problem": "Cross-Browser-Attributionsfehler: Kauf wird Thank-You-Page statt Ad-Kampagne zugeschrieben",
+    "solution": "Server-Side Cloud Delivery — Transaction-Daten mit Session-Daten matchen"
+  },
+  "covers": [
+    "Client-Side vs. Server-Side Tracking Architektur",
+    "Ad Blocker und ITP Datenverlust (10-30%)",
+    "Safari In-App Browser Attributionsfehler",
+    "Cross-Browser-Tracking-Problem (Chrome vs. Samsung Internet)",
+    "Hash-basierte anonyme Client-IDs (GDPR-konform)",
+    "First-Party Data Ownership",
+    "Single-Stream Event Distribution",
+    "CRM-Datenanreicherung",
+    "Meta Conversions API (CAPI)",
+    "Google Enhanced Conversions / Measurement Protocol",
+    "TikTok / LinkedIn / Snapchat Events APIs",
+    "Thank-You-Page Attributions-Test"
+  ]
+}

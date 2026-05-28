@@ -1,0 +1,12 @@
+{
+  "name": "aj-useful-ai-prompts",
+  "version": "1.0.0",
+  "description": "Transform ChatGPT, Claude, and other AI assistants into expert consultants. Every prompt in this library passes 11 quality validation checks, ensuring consistent structure, clear deliverables, and mea",
+  "license": "MIT",
+  "author": "aj-geddes",
+  "source": "https://github.com/aj-geddes/useful-ai-prompts",
+  "type": "agent-skill",
+  "skills": [
+    "aj-useful-ai-prompts"
+  ]
+}

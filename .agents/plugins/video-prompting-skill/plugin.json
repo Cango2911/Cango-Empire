@@ -1,0 +1,37 @@
+{
+  "name": "video-prompting-skill",
+  "version": "latest",
+  "description": "Square-Zero-Labs/video-prompting-skill — Claude Agent Skill zum Erstellen modellspezifischer Video-Prompts (Text-to-Video und Image-to-Video) sowie Character-Sheet-Prompts für konsistente Charaktere. Unterstützte Modelle: Ovi 1.0/1.1, Sora 2/2-Pro, Veo 3/3.1, Wan 2.2, Seedance 2.0, LTX-2, LTX-2.3. Enthält Beispiel-Prompts (CSV), Prompting-Guides und einen Character-Sheets-Workflow.",
+  "license": "MIT",
+  "source": "https://github.com/Square-Zero-Labs/video-prompting-skill",
+  "author": "Square Zero Labs",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/video-prompting",
+  "supported_models": [
+    "Ovi 1.0",
+    "Ovi 1.1",
+    "Sora 2",
+    "Sora 2-Pro",
+    "Veo 3",
+    "Veo 3.1",
+    "Wan 2.2 (T2V/I2V/TI2V)",
+    "Seedance 2.0",
+    "LTX-2",
+    "LTX-2.3"
+  ],
+  "capabilities": [
+    "Text-to-Video Prompts",
+    "Image-to-Video Prompts",
+    "Character Sheet Prompts (für Bildmodelle)",
+    "Audio-Direktiven (Dialogue, SFX, Ambient)",
+    "Model-spezifische Formate (Token-Syntax, Parameter)",
+    "Beispiel-Prompts aus offiziellen Quellen (Ovi CSV)"
+  ],
+  "workflows": [
+    "character-sheets"
+  ],
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "Nur Markdown und CSV-Dateien. Kein ausführbarer Code. eval-Treffer waren natürliche Dialogtexte in Beispiel-CSVs, kein Code."
+  }
+}

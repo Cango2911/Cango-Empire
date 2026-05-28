@@ -1,0 +1,1 @@
+UX Designer Skill — Umfassende UX/UI Design-Guidance basierend auf modernen Best Practices 2026. 22 Referenz-Dokumente: Laws of UX, Visual Design, Mobile UX, Forms, AI UX Patterns, Canvas Navigation, Notifications, Onboarding, Data Visualization, Performance UX, Emotional Design und mehr. Trigger: Interface-Design, Accessibility, Usability, Interaction Design.

@@ -1,0 +1,14 @@
+{
+  "name": "ai-agent-platform",
+  "version": "1.0.0",
+  "description": "VoltAgent AI Agent Platform — Konzeptionelle Architektur-Referenz für produktionsreife AI-Agent-Systeme. 11 Infrastruktur-Kategorien: Core Runtime, Workflow Engine, Multi-Agent Orchestration, Tool Registry & MCP, LLM Compatibility, Memory/RAG, Safety/Guardrails, Observability, Deployment, Monitoring, Voice.",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/ai-agent-platform",
+  "type": "agent-skill",
+  "skills": ["ai-agent-platform"],
+  "covers": [
+    "11 AI-Agent Infrastruktur-Kategorien",
+    "Core Runtime, Workflow Engine, Multi-Agent, Tool Registry, LLM Compat, Memory, RAG, Guardrails, Observability, Deployment, Monitoring"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "notebooklm-skill",
+  "version": "1.0.0",
+  "description": "name: notebooklm",
+  "license": "MIT",
+  "author": "PleasePrompto",
+  "source": "https://github.com/PleasePrompto/notebooklm-skill",
+  "type": "agent-skill",
+  "skills": [
+    "notebooklm-skill"
+  ]
+}

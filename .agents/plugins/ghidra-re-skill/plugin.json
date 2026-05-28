@@ -1,0 +1,12 @@
+{
+  "name": "ghidra-re-skill",
+  "version": "1.0.0",
+  "description": "name: ghidra-re",
+  "license": "MIT",
+  "author": "OwenPawl",
+  "source": "https://github.com/OwenPawl/ghidra-re-skill",
+  "type": "agent-skill",
+  "skills": [
+    "ghidra-re-skill"
+  ]
+}

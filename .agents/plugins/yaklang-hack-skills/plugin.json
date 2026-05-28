@@ -1,0 +1,12 @@
+{
+  "name": "yaklang-hack-skills",
+  "version": "1.0.0",
+  "description": "One master entry, six category entries, and <strong>101</strong> deep topic skills across <strong>14 security domains</strong>.",
+  "license": "MIT",
+  "author": "yaklang",
+  "source": "https://github.com/yaklang/hack-skills",
+  "type": "agent-skill",
+  "skills": [
+    "yaklang-hack-skills"
+  ]
+}

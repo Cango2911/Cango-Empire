@@ -1,0 +1,18 @@
+{
+  "name": "react-anim-react-move",
+  "version": "latest",
+  "description": "React Move — datengetriebene Animationen für React. Nur 3.5kb (gzipped). Animiert HTML, SVG und React Native. Feine Kontrolle über Delay, Duration, Easing, Animation-Lifecycle-Events (start/interrupt/end) und eigene Tween-Funktionen. TypeScript-kompatibel. 6.6K GitHub Stars.",
+  "type": "library",
+  "source": "https://github.com/sghall/react-move",
+  "license": "MIT",
+  "author": "sghall",
+  "install": "npm install react-move",
+  "docs": "https://react-move-docs.netlify.app",
+  "requires": { "runtime": "node", "env": { "required": [], "optional": [] } },
+  "skill": ".agents/skills/react-anim-react-move",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Kein eval(), kein shell=True, kein subprocess, kein pickle.loads, kein curl|sh. Reines JS/TypeScript Animations-Framework."
+  }
+}

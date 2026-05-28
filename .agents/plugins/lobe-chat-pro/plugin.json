@@ -1,0 +1,66 @@
+{
+  "name": "lobe-chat-pro",
+  "version": "2026-05-21",
+  "description": "lobe-chat-pro — Chinese fork of LobeChat with commercial backend: user management, billing, payments (WeChat/Stripe), AI image/video canvas (Midjourney, Kling, Doubao), music (Suno), admin panel.",
+  "type": "web-application",
+  "source": "https://github.com/vual/lobe-chat-pro",
+  "upstream": "https://github.com/lobehub/lobe-chat",
+  "license": "Apache-2.0",
+  "stack": {
+    "frontend": "Next.js 15, React 19, TypeScript, Ant Design, antd-style",
+    "state": "Zustand, SWR",
+    "database": "PostgreSQL, PGLite, Drizzle ORM",
+    "runtime": "pnpm (monorepo), bun for scripts",
+    "testing": "Vitest, Testing Library",
+    "auth": "Casdoor / Zitadel / Logto",
+    "storage": "MinIO (S3-compatible)"
+  },
+  "features": {
+    "admin": [
+      "User management (groups, billing rates, invite rewards)",
+      "Model management (providers, pricing per token/request, API keys)",
+      "Payment integrations (WeChat Pay, Yipay, HuPiJiao, Stripe)",
+      "Billing system (topup, redeem, consumption, refund)",
+      "Order & consumption history",
+      "Chat/image/music/video message logs",
+      "Announcements"
+    ],
+    "ai_canvas": [
+      "Image generation: Google, OpenAI, Midjourney, Kling, Doubao",
+      "Video generation: Google, OpenAI, Kling, Doubao",
+      "Continuous conversation with image design",
+      "Image editing: upscale, background removal, layer extraction, inpainting, expansion",
+      "Web search integration",
+      "Mobile-compatible canvas"
+    ],
+    "drawing_panel": "Midjourney, Kling, OpenAI, Doubao with custom parameters and inpainting",
+    "music_panel": "Suno with custom parameters"
+  },
+  "deploy": {
+    "quick_start": "bash <(curl -fsSL https://lobe.li/setup.sh)",
+    "docker_compose": "docker-compose/local/docker-compose.yml",
+    "setup_script": "docker-compose/setup.sh",
+    "required_services": ["PostgreSQL", "MinIO (S3)", "Casdoor (auth)"],
+    "ports": {
+      "lobe_chat": 3210,
+      "minio_api": 9000,
+      "minio_console": 9001,
+      "casdoor": 8000
+    }
+  },
+  "env": {
+    "example_file": ".env.example",
+    "key_vars": [
+      "DATABASE_URL",
+      "S3_ENDPOINT / S3_ACCESS_KEY_ID / S3_SECRET_ACCESS_KEY",
+      "AUTH_CASDOOR_ISSUER / AUTH_CASDOOR_SECRET",
+      "APP_URL",
+      "OPENAI_API_KEY (and other model provider keys)"
+    ]
+  },
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Standard Next.js web app. docker-compose/setup.sh downloads config files from GitHub via wget (no eval of content). No eval() of remote content in TypeScript source. No curl|bash patterns. CLAUDE.md/AGENTS.md are developer guidelines only — not copied as project settings."
+  }
+}

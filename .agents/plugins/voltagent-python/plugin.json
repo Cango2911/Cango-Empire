@@ -1,0 +1,20 @@
+{
+  "name": "voltagent-python",
+  "version": "1.0.0",
+  "description": "VoltAgent Python SDK — Async/Sync Python SDK für AI-Agent-Observability und Tracing. Async Context Manager API: VoltAgentSDK → sdk.trace() → trace.add_agent() → agent.add_tool()/add_memory()/add_retriever(). Token-Tracking, Multi-Agent-Hierarchien, Custom Events. pip install voltagent",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/voltagent-python",
+  "type": "agent-skill",
+  "skills": ["voltagent-python"],
+  "covers": [
+    "Python SDK für VoltAgent Observability",
+    "Async Context Manager: VoltAgentSDK, TraceContextManager, AgentContextManager",
+    "Sub-Context: ToolContextManager, MemoryContextManager, RetrieverContextManager",
+    "Token-Usage-Tracking, Custom Events, Tags, Metadata",
+    "Auto-Flush, Batch-Sending, Type-Safe TypedDicts"
+  ],
+  "install": {
+    "pip": "pip install voltagent"
+  }
+}

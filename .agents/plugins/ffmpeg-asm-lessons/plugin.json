@@ -1,0 +1,36 @@
+{
+  "name": "ffmpeg-asm-lessons",
+  "version": "1.0.0",
+  "description": "FFmpeg School of Assembly Language — 3 Lektionen für x86-64 SIMD-Assembly im FFmpeg/x264/dav1d-Stil. Themen: GPR/SIMD-Register (xmm/ymm/zmm), x86inc.asm-Abstraktionsschicht, cglobal/INIT_XMM/RET-Makros, paddb/movu/pxor/paddb SIMD-Instruktionen, Schleifen mit FLAGS und Sprungmnemonics, Konstanten (SECTION_RODATA), Memory-Addressing, LEA, Pointer-Offset-Trick, Alignment (mova/movu), Range Extension (punpcklbw/punpckhbw/pcmpgtb), Packing (packuswb/packsswb), Shuffles (pshufb). Instruktions-Sets: MMX→SSE2→SSSE3→AVX2→AVX512ICL.",
+  "license": "unknown",
+  "author": "FFmpeg Project (Open Source)",
+  "source": "https://github.com/FFmpeg/asm-lessons",
+  "type": "agent-skill",
+  "skills": [
+    "ffmpeg-asm-lessons"
+  ],
+  "covers": [
+    "Lektion 1: Was ist SIMD-Assembly, GPR-Register (r0q..rNq), SIMD-Register (mm/xmm/ymm/zmm), x86inc.asm Abstraktionsschicht",
+    "Lektion 1: cglobal, INIT_XMM, RET Makros — C-Funktionen in Assembly",
+    "Lektion 1: movu (Load/Store), paddb (packed add bytes), m0/m1 Vektorregister",
+    "Lektion 2: Labels (.loop:) und Sprünge (jmp/jg/jl/je/jne/jge/jle)",
+    "Lektion 2: FLAGS-Register (Zero/Sign/Overflow), dec/cmp/inc/xor für Loop-Control",
+    "Lektion 2: Konstanten SECTION_RODATA, db/dw/times N, Read-Only-Daten",
+    "Lektion 2: Memory Addressing [base + scale*index + disp], mmsize-Konstante",
+    "Lektion 2: LEA — Load Effective Address, Multiplikation und Addition in einer Instruktion",
+    "Lektion 3: Instruktions-Set-Geschichte MMX/SSE/SSE2/SSE3/SSSE3/SSE4/AVX/AVX2/AVX512/AVX512ICL",
+    "Lektion 3: CPU-Runtime-Detection in FFmpeg (Funktionszeiger)",
+    "Lektion 3: Pointer-Offset-Trick — widthq als Offset UND Loop-Counter (spart cmp)",
+    "Lektion 3: Alignment — mova (aligned) vs movu (unaligned), av_malloc, DECLARE_ALIGNED",
+    "Lektion 3: Range Extension — punpcklbw/punpckhbw für Zero-Extension (unsigned bytes → words)",
+    "Lektion 3: Sign Extension — pcmpgtb für signed Bytes",
+    "Lektion 3: Packing — packuswb/packsswb (Words → Bytes, saturiert)",
+    "Lektion 3: pshufb (SSSE3) — wichtigste Video-Processing-Instruktion, Byte-Permutation via Maske"
+  ],
+  "requires": {
+    "knowledge": "C mit Zeigern, Schulmathematik",
+    "assembler": "nasm oder yasm (für x86inc.asm)",
+    "platform": "x86-64 Linux/macOS/Windows"
+  },
+  "discord": "https://discord.com/invite/Ks5MhUhqfB"
+}

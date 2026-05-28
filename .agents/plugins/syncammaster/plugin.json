@@ -1,0 +1,56 @@
+{
+  "name": "syncammaster",
+  "version": "1.0.0",
+  "description": "SynCamMaster — Synchronizing Multi-Camera Video Generation from Diverse Viewpoints (ICLR 2025). Generiert synchronisierte Multi-Kamera-Videos aus verschiedenen Blickwinkeln via Wan2.1 + DiffSynth-Studio. 3 Kamera-Typen: Azimuth, Elevation, Distance. SynCamVideo Dataset: 34K Videos, 3.4K UE5-Szenen, stationäre Kameras.",
+  "license": "Apache-2.0",
+  "author": "KlingAIResearch / KwaiVGI (Kuaishou Technology, Zhejiang University, Tsinghua University, CUHK)",
+  "source": "https://github.com/KlingAIResearch/SynCamMaster",
+  "paper": "https://arxiv.org/abs/2412.07760",
+  "type": "agent-skill",
+  "skills": [
+    "syncammaster"
+  ],
+  "covers": [
+    "Multi-Kamera synchronisierte Video-Generierung aus diversen Blickwinkeln",
+    "3 Kamera-Typen: Azimuth (az), Elevation (el), Distance (dis)",
+    "Stationäre Kameras — im Gegensatz zu ReCamMaster (bewegte Trajektorien)",
+    "Text-to-Multi-View-Video mit Wan2.1 + DiffSynth-Studio",
+    "WanVideoSynCamMasterPipeline — Pose Conditioning im DiT",
+    "Training auf SynCamVideo Dataset (34K Videos, UE5)",
+    "VAE Feature Extraction für Training",
+    "Multi-GPU Training (8xGPU Setup)",
+    "Camera Extrinsics Verarbeitung (C2W → Relative Poses)",
+    "Kamera-Visualisierung (vis_cam.py)"
+  ],
+  "requires": {
+    "python": ">=3.10",
+    "cuda": ">=11.8 (empfohlen)",
+    "rust": "required (für DiffSynth Extensions)",
+    "storage": "~50GB (Wan2.1 Checkpoints)"
+  },
+  "models": {
+    "base_model": "Wan2.1-T2V-1.3B (Wan-AI/Wan2.1-T2V-1.3B)",
+    "syncammaster_checkpoint": "https://huggingface.co/KwaiVGI/SynCamMaster-Wan2.1"
+  },
+  "dataset": {
+    "name": "SynCamVideo Dataset",
+    "url": "https://huggingface.co/datasets/KwaiVGI/SynCamVideo-Dataset",
+    "size": "34K Videos, 3.4K Szenen (Unreal Engine 5, stationäre Kameras)"
+  },
+  "cam_types": {
+    "az": "Azimuth — horizontale Kamerawinkel um die Szene",
+    "el": "Elevation — vertikale Kamerawinkel (Höhenpositionen)",
+    "dis": "Distance — verschiedene Abstände zur Szene"
+  },
+  "entry_points": {
+    "inference": "inference_syncammaster.py",
+    "train": "train_syncammaster.py",
+    "download_base_model": "download_wan2.1.py",
+    "generate_sample_list": "generate_sample_list.py",
+    "visualize_camera": "vis_cam.py"
+  },
+  "related": {
+    "recammaster": "Re-Rendering mit bewegten Kamera-Trajektorien (Nachfolgeprojekt, ICCV 2025 Oral)",
+    "liveportrait": "Portrait Animation (selbes Labor — Kuaishou Technology)"
+  }
+}

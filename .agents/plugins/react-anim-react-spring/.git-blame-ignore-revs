@@ -1,0 +1,9 @@
+# Bulk reformat commits — ignore in `git blame` to keep line history meaningful.
+# Configure once locally with:
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# chore(format): consolidate prettier configs — reformat sandboxes + __tests__ to root style
+5e92d007
+
+# chore(format): replace prettier with oxfmt — repo-wide reformat
+4c496c8b

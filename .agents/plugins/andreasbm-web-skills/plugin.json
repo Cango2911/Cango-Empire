@@ -1,0 +1,43 @@
+{
+  "name": "andreasbm-web-skills",
+  "version": "latest",
+  "description": "andreasbm/web-skills — Visuelle Web-Entwickler Roadmap von Andreas Mehlsen. 14 Hauptkategorien mit hunderten kuratierten Ressourcen: Fundamentals (HTML, CSS, JavaScript, Browser), Accessibility, Web Components, Progressive Web Apps, Build Tools, Frameworks & Libraries, Testing, Architecture & Paradigms, Team Collaboration, Design & UX, The Modern Web, Algorithms & Data Structures, Databases & Servers.",
+  "license": "MIT",
+  "source": "https://github.com/andreasbm/web-skills",
+  "website": "https://andreasbm.github.io/web-skills",
+  "author": "Andreas Mehlsen",
+  "type": "reference-collection",
+  "categories": [
+    "Fundamentals",
+    "Accessibility",
+    "Web Components",
+    "Progressive Webapps",
+    "Build tools",
+    "Frameworks & Libraries",
+    "Testing",
+    "Architecture & paradigms",
+    "Team Collaboration",
+    "Design & UX",
+    "The Modern Web",
+    "Algorithms & Data structures",
+    "Databases & Servers"
+  ],
+  "fundamentals": {
+    "html": ["Syntax", "Forms", "SEO", "SVG", "Best Practices"],
+    "css": ["Syntax", "Selectors", "Box Model", "Colors", "Calc", "Layout", "Transforms", "Responsive Design", "CSS Variables", "Best Practices"],
+    "javascript": ["Syntax", "DOM", "Events", "Objects", "Regex", "Template Literals", "Promises", "Web Animations", "Modules", "Intl", "Canvas", "Documentation", "Best Practices"],
+    "browser": ["Standardization", "Browser Engines", "HTTP", "The Internet", "Polyfills", "Debugging"]
+  },
+  "tech_stack": {
+    "framework": "Lit Element / Lit HTML (Web Components)",
+    "deploy": "Firebase Hosting",
+    "bundler": "Snowpack v1",
+    "features": ["PWA", "Service Worker", "Google Sign-In", "Skill tracking"]
+  },
+  "content_file": "blueprint.md",
+  "content_lines": 3274,
+  "security_review": {
+    "status": "CLEAN",
+    "notes": "innerHTML used only for clearing container with empty string literal — no user input involved. No eval(), no shell exec, no dangerous patterns."
+  }
+}

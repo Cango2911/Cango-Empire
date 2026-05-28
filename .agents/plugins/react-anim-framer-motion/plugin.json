@@ -1,0 +1,18 @@
+{
+  "name": "react-anim-framer-motion",
+  "version": "latest",
+  "description": "Motion (ehem. Framer Motion) — mächtigste React/JS/Vue Animations-Library. Deklarative Animationen, Gestures, Springs, Layout-Transitions, Scroll-linked Effects, Timelines. 120fps GPU-beschleunigt via Hybrid-Engine. 20.8K GitHub Stars, 2.5M+ weekly downloads.",
+  "type": "library",
+  "source": "https://github.com/framer/motion",
+  "license": "MIT",
+  "author": "Framer",
+  "install": "npm install motion",
+  "docs": "https://motion.dev/docs/react",
+  "requires": { "runtime": "node", "env": { "required": [], "optional": [] } },
+  "skill": ".agents/skills/react-anim-framer-motion",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Kein eval(), kein shell=True, kein subprocess, kein pickle.loads, kein curl|sh. Reines TypeScript Animations-Framework."
+  }
+}

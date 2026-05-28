@@ -1,0 +1,12 @@
+{
+  "name": "borghei-claude-skills",
+  "version": "1.0.0",
+  "description": "```bash",
+  "license": "MIT",
+  "author": "borghei",
+  "source": "https://github.com/borghei/Claude-Skills",
+  "type": "agent-skill",
+  "skills": [
+    "borghei-claude-skills"
+  ]
+}

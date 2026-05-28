@@ -1,0 +1,12 @@
+{
+  "name": "aws-skills",
+  "version": "1.0.0",
+  "description": "Claude Code plugins for AWS development with specialized knowledge and MCP server integrations, including CDK, serverless architecture, cost optimization, and Bedrock AgentCore for AI agent deployment",
+  "license": "MIT",
+  "author": "zxkane",
+  "source": "https://github.com/zxkane/aws-skills",
+  "type": "agent-skill",
+  "skills": [
+    "aws-skills"
+  ]
+}

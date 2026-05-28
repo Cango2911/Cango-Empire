@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Leaderboard</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <style>html{background:#0d1117}html[data-theme="light"]{background:#f6f8fa}</style>
+  <script>(function(){var t=localStorage.getItem('st_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+  <link rel="stylesheet" href="src/shared.css" />
+</head>
+<body>
+
+<!-- ── Page loader / skeleton ── -->
+<div id="pageLoader">
+  <div class="skel-navbar">
+    <div class="skel skel-navbar-logo"></div>
+    <div class="skel-navbar-right">
+      <div class="skel skel-navbar-btn"></div>
+      <div class="skel skel-navbar-btn"></div>
+      <div class="skel skel-navbar-btn"></div>
+    </div>
+  </div>
+  <div class="skel-hero">
+    <div class="skel skel-hero-title"></div>
+    <div class="skel skel-hero-sub"></div>
+    <div class="skel-pills">
+      <div class="skel skel-pill"></div>
+      <div class="skel skel-pill"></div>
+      <div class="skel skel-pill"></div>
+      <div class="skel skel-pill"></div>
+    </div>
+  </div>
+  <div class="skel-grid">
+    <div class="skel skel-card"></div><div class="skel skel-card"></div>
+    <div class="skel skel-card"></div><div class="skel skel-card"></div>
+    <div class="skel skel-card"></div><div class="skel skel-card"></div>
+    <div class="skel skel-card"></div><div class="skel skel-card"></div>
+    <div class="skel skel-card"></div>
+  </div>
+</div>
+
+<!-- ── Navbar ── -->
+<nav class="navbar" id="navbar"></nav>
+
+<!-- ── Hero ── -->
+<div class="hero" id="hero"></div>
+
+<div class="container">
+
+  <!-- No data warning -->
+  <div id="noData" class="no-data" style="display:none"></div>
+
+  <!-- Category tabs -->
+  <div class="tabs-wrap">
+    <button class="tabs-scroll-btn tabs-scroll-btn--left hidden" id="tabsScrollBtnLeft" onclick="scrollTabsLeft()" aria-label="Scroll left">‹</button>
+    <div class="tabs" id="tabs"></div>
+    <button class="tabs-scroll-btn hidden" id="tabsScrollBtn" onclick="scrollTabsRight()" aria-label="Scroll right">›</button>
+  </div>
+
+  <!-- Brand spotlight (shown when a specific agent tab is active) -->
+  <div id="brandSpotlight"></div>
+
+  <!-- Filter bar -->
+  <div id="filterBar"></div>
+
+  <!-- Active filters -->
+  <div class="active-filters hidden" id="activeFilters"></div>
+
+  <!-- Use-case chips -->
+  <div class="uc-scroller-wrap">
+    <button class="uc-scroll-btn uc-scroll-btn--left hidden" id="ucScrollBtnLeft" onclick="scrollUCLeft()" aria-label="Scroll left">‹</button>
+    <div class="uc-scroller" id="ucScroller"></div>
+    <button class="uc-scroll-btn" id="ucScrollBtn" onclick="scrollUCRight()" aria-label="Scroll right">›</button>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid" id="grid"></div>
+
+  <!-- List table -->
+  <table class="list-table" id="listTable" style="display:none"></table>
+
+  <!-- Pagination -->
+  <div class="pagination" id="pagination"></div>
+
+  <!-- Visit counter -->
+  <div class="visit-badge" id="visitBadge"></div>
+
+</div>
+
+<div class="footer">
+  Data sourced from <a href="https://docs.github.com/en/rest/search" target="_blank">GitHub Search API</a> · Updated weekly ·
+  <a href="#" id="ghFooterLink" target="_blank" rel="noopener noreferrer">GitHub</a>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('ghFooterLink');
+    if (el && typeof GITHUB_REPO !== 'undefined') el.href = GITHUB_REPO;
+  });
+</script>
+
+<script src="data/data.js?v=202605240820"></script>
+<script src="data/mcp_data.js?v=202605240816"></script>
+<script src="data/frameworks_data.js?v=202605240823"></script>
+<script src="data/prompts_data.js?v=202605240814"></script>
+<script src="data/auto_research_data.js?v=202605240818"></script>
+<script src="src/shared.js"></script>
+</body>
+</html>

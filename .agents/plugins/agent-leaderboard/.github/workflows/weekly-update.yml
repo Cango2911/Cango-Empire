@@ -1,0 +1,48 @@
+name: Update All (Manual)
+
+on:
+  workflow_dispatch:   # Manual trigger only — daily updates are handled by per-section workflows
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch all data
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          python3 scripts/fetch_data.py
+          python3 scripts/fetch_frameworks.py
+          python3 scripts/fetch_mcp.py
+          python3 scripts/fetch_prompts.py
+          python3 scripts/fetch_auto_research.py
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/data.json data/data.js \
+                  data/auto_research_data.json data/auto_research_data.js \
+                  data/mcp_data.json data/mcp_data.js \
+                  data/prompts_data.json data/prompts_data.js \
+                  data/frameworks_data.json data/frameworks_data.js \
+                  index.html
+          if git diff --cached --quiet; then
+            echo "No changes — skipping commit"
+          else
+            S=$(python3 -c "import json; print(json.load(open('data/data.json'))['meta']['total'])")
+            R=$(python3 -c "import json; print(json.load(open('data/auto_research_data.json'))['meta']['total'])")
+            M=$(python3 -c "import json; print(json.load(open('data/mcp_data.json'))['meta']['total'])")
+            P=$(python3 -c "import json; print(json.load(open('data/prompts_data.json'))['meta']['total'])")
+            F=$(python3 -c "import json; print(json.load(open('data/frameworks_data.json'))['meta']['total'])")
+            git commit -m "chore: full data update [skills=${S}, research=${R}, mcp=${M}, prompts=${P}, frameworks=${F}]"
+            git push
+          fi

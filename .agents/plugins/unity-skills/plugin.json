@@ -1,0 +1,12 @@
+{
+  "name": "unity-skills",
+  "version": "1.0.0",
+  "description": "\ud83c\udf89 We are now indexed by <b>DeepWiki</b>!<br>",
+  "license": "MIT",
+  "author": "Besty0728",
+  "source": "https://github.com/Besty0728/Unity-Skills",
+  "type": "agent-skill",
+  "skills": [
+    "unity-skills"
+  ]
+}

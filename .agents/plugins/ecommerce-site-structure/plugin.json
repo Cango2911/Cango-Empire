@@ -1,0 +1,23 @@
+{
+  "name": "ecommerce-site-structure",
+  "version": "1.0.0",
+  "description": "SEO-Guide für E-Commerce Website-Architektur. Pyramid-Struktur (Homepage → Kategorien → Subkategorien → Produkte), interne Verlinkung, Breadcrumbs SEO, URL-Hierarchie, Faceted Navigation Crawl Traps (Canonicalization, Robots.txt, Noindex), Schema Markup, AI Shopping Assistant Optimierung und 5-Schritte Audit-Prozess.",
+  "license": "proprietary",
+  "author": "Cango Empire",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/ecommerce-site-structure",
+  "source": "internal — erstellt aus Blogartikel 'When you're running an online business, your website structure...'",
+  "covers": [
+    "E-Commerce Site Hierarchy (Homepage → Kategorie → Subkategorie → Produkt)",
+    "PageRank Flow durch interne Verlinkung",
+    "Kategorie-Seiten SEO Optimierung",
+    "Produkt-Seiten SEO",
+    "URL-Struktur Best Practices",
+    "Breadcrumbs + BreadcrumbList Schema",
+    "Faceted Navigation Crawl Traps & Lösungen",
+    "AI Shopping Assistant Optimierung",
+    "JSON-LD Schema Markup (Product, BreadcrumbList, Organization)",
+    "5-Schritte Audit-Plan",
+    "Häufige Fehler (Orphan Pages, Duplicate Content, Mobile Navigation)"
+  ]
+}

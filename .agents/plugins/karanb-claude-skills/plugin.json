@@ -1,0 +1,12 @@
+{
+  "name": "karanb-claude-skills",
+  "version": "1.0.0",
+  "description": "\ud83c\udfaf **Why this list?** Verified skills \u2713 | Active maintenance \u2713 | Clear use cases \u2713 | Community-driven \u2713 | 50+ Skills \u2713",
+  "license": "MIT",
+  "author": "karanb192",
+  "source": "https://github.com/karanb192/awesome-claude-skills",
+  "type": "agent-skill",
+  "skills": [
+    "karanb-claude-skills"
+  ]
+}

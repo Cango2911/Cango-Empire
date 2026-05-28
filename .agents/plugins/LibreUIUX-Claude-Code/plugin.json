@@ -1,0 +1,11 @@
+{
+  "name": "LibreUIUX-Claude-Code",
+  "version": "1.0.0",
+  "description": "LibreUIUX Claude Code — Komplettes UI/UX-System mit 67 spezialisierten Agenten, Design-Vokabular und getesteten Prompts",
+  "author": "HermeticOrmus",
+  "category": "design",
+  "tags": ["ui", "ux", "agents", "beginner", "intermediate", "advanced", "accessibility", "mobile", "hooks", "templates"],
+  "skills": ["beginner", "intermediate", "advanced"],
+  "source": "https://github.com/HermeticOrmus/LibreUIUX-Claude-Code",
+  "language": "markdown"
+}

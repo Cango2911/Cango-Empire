@@ -1,0 +1,14 @@
+{
+  "name": "opendirectory-marketplace",
+  "description": "Official marketplace of opendirectory skills, for founders who hate marketing",
+  "owner": {
+    "name": "Varnan"
+  },
+  "plugins": [
+    {
+      "name": "opendirectory-gtm-skills",
+      "source": "./",
+      "description": "A collection of 57 agent skills for founders who hate marketing"
+    }
+  ]
+}

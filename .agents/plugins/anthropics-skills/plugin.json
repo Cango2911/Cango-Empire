@@ -1,0 +1,46 @@
+{
+  "name": "anthropics-skills",
+  "version": "latest",
+  "description": "Official Anthropic Agent Skills — 17 production-quality skills for Claude Code covering document creation (docx, pptx, xlsx, pdf), design (canvas-design with 30 bundled fonts, algorithmic-art, frontend-design), communication (internal-comms, doc-coauthoring), MCP server development (mcp-builder), web app testing with Playwright (webapp-testing), web artifact bundling (web-artifacts-builder with shadcn/ui), Slack GIF creation (slack-gif-creator), theming (theme-factory with 10 built-in themes), Claude API reference in 7 languages (claude-api), and skill authoring tools (skill-creator).",
+  "type": "official-skill-collection",
+  "source": "https://github.com/anthropics/skills",
+  "license": "MIT",
+  "author": "Anthropic",
+  "requires": {
+    "runtime": "none",
+    "env": {
+      "required": [],
+      "optional": ["ANTHROPIC_API_KEY"]
+    }
+  },
+  "skills": [
+    "algorithmic-art",
+    "brand-guidelines",
+    "canvas-design",
+    "claude-api",
+    "doc-coauthoring",
+    "docx",
+    "frontend-design",
+    "internal-comms",
+    "mcp-builder",
+    "pdf",
+    "pptx",
+    "skill-creator",
+    "slack-gif-creator",
+    "theme-factory",
+    "web-artifacts-builder",
+    "webapp-testing",
+    "xlsx"
+  ],
+  "skill_count": 17,
+  "extras": {
+    "spec": "spec/agent-skills-spec.md",
+    "template": "template/SKILL.md",
+    "marketplace": ".claude-plugin/marketplace.json"
+  },
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Official Anthropic repo. Python scripts use subprocess with hardcoded list args only (soffice, claude --print) — no shell=True, no eval(), no pickle from remote. Shell scripts (web-artifacts-builder) use pnpm/vite tooling with no curl|sh patterns. Font TTFs are OFL-licensed. shadcn-components.tar.gz extracts to local src/ only."
+  }
+}

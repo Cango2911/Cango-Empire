@@ -1,0 +1,11 @@
+{
+  "name": "ux-designer-skill",
+  "version": "1.0.0",
+  "description": "UX Designer Skill — Umfassende UX/UI Design-Guidance basierend auf modernen Best Practices 2026 mit 22 Referenz-Dokumenten",
+  "author": "szilu",
+  "category": "ux",
+  "tags": ["ux", "ui", "laws-of-ux", "mobile-ux", "forms", "ai-patterns", "accessibility", "onboarding", "data-visualization", "emotional-design"],
+  "skills": ["ux-designer"],
+  "source": "https://github.com/szilu/ux-designer-skill",
+  "language": "markdown"
+}

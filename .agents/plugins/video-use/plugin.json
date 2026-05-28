@@ -1,0 +1,35 @@
+{
+  "name": "video-use",
+  "version": "1.0.0",
+  "description": "Video-Use von browser-use — Video per Konversation editieren: Transkribieren, Schneiden, Color Grading, Overlay-Animationen (Manim), Untertitel brennen. Für Talking Heads, Montagen, Tutorials, Travel, Interviews. Manim-Video Skill: 14 Referenzen für mathematische/wissenschaftliche Animations-Videos. Helper-Scripts: render.py (ffmpeg), grade.py (Color Grading), transcribe.py (ElevenLabs), timeline_view.py, pack_transcripts.py.",
+  "license": "MIT",
+  "author": "browser-use",
+  "source": "https://github.com/browser-use/video-use",
+  "type": "agent-skill",
+  "skills": [
+    "video-use-manim"
+  ],
+  "helpers": {
+    "render": "helpers/render.py — ffmpeg Video-Rendering (list-args, kein shell=True)",
+    "grade": "helpers/grade.py — Color Grading",
+    "transcribe": "helpers/transcribe.py — ElevenLabs Transkription",
+    "transcribe_batch": "helpers/transcribe_batch.py — Batch-Transkription",
+    "timeline_view": "helpers/timeline_view.py — Timeline-Visualisierung",
+    "pack_transcripts": "helpers/pack_transcripts.py — Phrase-Level Transcript Packing"
+  },
+  "env": {
+    "ELEVENLABS_API_KEY": "Für Transkription benötigt"
+  },
+  "covers": [
+    "Video-Editing per Konversation (kein GUI)",
+    "Manim-Video: Mathematische und wissenschaftliche Animations-Videos",
+    "Manim: Mobjects, Animations, Scenes, Camera/3D, Equations, Graphs",
+    "Manim: Visual Design, Decorations, Updaters/Trackers, Production Quality",
+    "Manim: Paper Explainer, Scene Planning, Rendering, Troubleshooting",
+    "ffmpeg Video-Rendering (Preview 1080p + Final)",
+    "Color Grading mit EDL-Grading-Filtern",
+    "ElevenLabs Transkription (batch + single)",
+    "Timeline-Visualisierung",
+    "Talking Head Editing, Montage, Tutorial, Travel, Interview"
+  ]
+}

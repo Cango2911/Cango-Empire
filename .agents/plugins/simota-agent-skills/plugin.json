@@ -1,0 +1,38 @@
+{
+  "name": "simota-agent-skills",
+  "version": "latest",
+  "description": "A comprehensive collection of 141 specialist AI agent skills by simota. Covers multi-agent orchestration (nexus, titan, rally), software development (builder, architect, atlas, forge, scaffold), security (breach, crypt, sentinel, guardian, warden), UX/design (canvas, pixel, palette, sketch, vision), data & analytics (gauge, lens, harvest, stratum, schema), content (scribe, quill, prose, lyric, riff), research (researcher, oracle, grok, lore, compass), and many more.",
+  "type": "agent-skill-collection",
+  "source": "https://github.com/simota/agent-skills",
+  "license": "see LICENSE",
+  "author": "simota",
+  "requires": {
+    "runtime": "none",
+    "env": {
+      "required": [],
+      "optional": []
+    }
+  },
+  "skills": [
+    "accord", "aether", "anvil", "architect", "arena", "artisan", "atelier", "atlas", "attest",
+    "beacon", "bolt", "breach", "builder", "canon", "canvas", "cast", "chain", "clause", "clay",
+    "cloak", "compass", "compete", "comply", "crest", "crypt", "cue", "darwin", "dawn", "dial",
+    "director", "dot", "drill", "echo", "experiment", "flow", "flux", "forge", "fossil", "frame",
+    "funnel", "gateway", "gauge", "gear", "grok", "grove", "growth", "guardian", "harvest", "haul",
+    "hearth", "helm", "hex", "hone", "horizon", "husk", "ink", "judge", "latch", "launch", "ledger",
+    "lens", "levy", "loom", "lore", "lure", "lyric", "magi", "matrix", "mend", "mint", "morph",
+    "muse", "native", "navigator", "nest", "nexus", "omen", "oracle", "orbit", "palette", "pipe",
+    "pixel", "plea", "polyglot", "port", "prism", "probe", "prose", "pulse", "quest", "quill",
+    "radar", "rally", "rank", "realm", "reel", "relay", "researcher", "retain", "riff", "ripple",
+    "saga", "sage", "scaffold", "schema", "scout", "scribe", "seek", "sentinel", "shard", "sherpa",
+    "shift", "showcase", "siege", "sigil", "sketch", "spark", "specter", "spider", "stage", "stratum",
+    "stream", "sweep", "tempo", "titan", "tome", "tone", "trace", "trail", "triage", "tuner",
+    "vigil", "vision", "vista", "voice", "void", "voyager", "warden", "weave", "zen", "zine"
+  ],
+  "skill_count": 141,
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Pure markdown SKILL.md files with references/. Shell scripts in .loops/ only invoke 'claude --print' CLI — no curl|sh, no eval, no remote code execution. Python scripts in _scripts/ do pure file manipulation (os.remove, re.sub, open/write). JS files in harvest/ use execSync for git CLI and puppeteer for PDF — standard tooling. No malicious patterns."
+  }
+}

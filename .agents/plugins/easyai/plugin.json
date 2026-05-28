@@ -1,0 +1,31 @@
+{
+  "name": "easyai",
+  "version": "1.0.0",
+  "description": "easyAI — Pure-Python KI-Framework für Zwei-Spieler-Brettspiele (MIT). Negamax mit Alpha-Beta Pruning + Transpositionstabellen. TwoPlayerGame Basisklasse + 13 Beispielspiele (TicTacToe, ConnectFour, Reversi, Nim, Hexapawn, Awele...). Solving: solve_with_iterative_deepening + solve_with_depth_first_search. Zusätzlich: SSS*, NonRecursiveNegamax, DUAL.",
+  "license": "MIT",
+  "author": "Zulko et al. (Open Source)",
+  "source": "https://github.com/Zulko/easyAI",
+  "pypi": "https://pypi.org/project/easyAI/",
+  "docs": "http://zulko.github.io/easyAI",
+  "type": "agent-skill",
+  "skills": [
+    "easyai"
+  ],
+  "covers": [
+    "TwoPlayerGame Basisklasse: possible_moves, make_move, is_over, scoring, unmake_move, ttentry",
+    "Negamax mit Alpha-Beta Pruning und optionalen Transpositionstabellen",
+    "SSS* (State Space Search) Algorithmus",
+    "NonRecursiveNegamax (iterativ, kein Stack-Overflow)",
+    "DUAL Transformation für symmetrische Spiele",
+    "solve_with_iterative_deepening — findet optimale Strategie",
+    "solve_with_depth_first_search — für kleine Zustandsräume",
+    "DictTranspositionTable + HashTranspositionTable (Zobrist)",
+    "Human_Player + AI_Player",
+    "13 Beispielspiele: TicTacToe, ConnectFour, Reversi, Nim, GameOfBones, Hexapawn, Awele, AweleTactical, Cram, Knights, Chopsticks, ThreeMusketeers"
+  ],
+  "install": "pip install easyAI",
+  "requires": {
+    "python": ">=3.x",
+    "numpy": "optional (einige Beispielspiele)"
+  }
+}

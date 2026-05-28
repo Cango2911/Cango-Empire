@@ -1,0 +1,31 @@
+{
+  "name": "goclaw",
+  "version": "1.0.0",
+  "description": "GoClaw — Multi-Tenant AI Agent Platform in Go. 8-Stage Agent Pipeline, 4-Mode Prompt System, 3-Tier Memory (Working/Episodic/Semantic), Knowledge Vault (pgvector), Agent Teams & Orchestration, Self-Evolution. 20+ LLM Provider (Anthropic, OpenAI, Groq, DeepSeek, Gemini, Claude CLI, Codex). 7 Channels (Telegram, Discord, Slack, WhatsApp, Zalo, Feishu). PostgreSQL Multi-Tenant, AES-256-GCM, RBAC. Single Binary ~25MB. Built-in Skills: docx, pdf, pptx, xlsx, skill-creator.",
+  "license": "CC BY-NC 4.0",
+  "author": "nextlevelbuilder",
+  "source": "https://github.com/nextlevelbuilder/goclaw",
+  "type": "agent-skill",
+  "skills": ["goclaw", "goclaw-docx", "goclaw-pdf", "goclaw-pptx", "goclaw-xlsx", "goclaw-skill-creator"],
+  "covers": [
+    "8-Stage Agent Pipeline: context → history → prompt → think → act → observe → memory → summarize",
+    "20+ LLM Provider: Anthropic (native), OpenAI, OpenRouter, Groq, DeepSeek, Gemini, Mistral, xAI, Claude CLI, Codex, ACP",
+    "7 Messaging Channels: Telegram, Discord, Slack, WhatsApp, Zalo OA, Zalo Personal, Feishu/Lark",
+    "3-Tier Memory: Working → Episodic → Semantic (pgvector Knowledge Graph)",
+    "Multi-Tenant PostgreSQL: AES-256-GCM, RBAC, Per-User Workspaces, Isolated Sessions",
+    "Built-in Skills: docx (Track Changes), pdf (Forms), pptx (Thumbnails), xlsx (Recalc), skill-creator (Eval-Driven)",
+    "Desktop Edition: Wails v2 + SQLite, Single Binary, no Docker/PostgreSQL needed",
+    "Observability: LLM Call Tracing + OpenTelemetry OTLP Export"
+  ],
+  "stack": {
+    "backend": "Go 1.26",
+    "database": "PostgreSQL 18 + pgvector",
+    "frontend": "React 19 + TypeScript + Tailwind CSS 4",
+    "desktop": "Wails v2 + SQLite"
+  },
+  "install": {
+    "docker": "docker compose up -d",
+    "setup": "./prepare-env.sh && make up",
+    "dashboard": "http://localhost:18790"
+  }
+}

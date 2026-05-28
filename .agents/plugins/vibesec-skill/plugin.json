@@ -1,0 +1,12 @@
+{
+  "name": "vibesec-skill",
+  "version": "1.0.0",
+  "description": "name: VibeSec-Skill",
+  "license": "Apache-2.0",
+  "author": "BehiSecc",
+  "source": "https://github.com/BehiSecc/VibeSec-Skill",
+  "type": "agent-skill",
+  "skills": [
+    "vibesec-skill"
+  ]
+}

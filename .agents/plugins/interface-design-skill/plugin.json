@@ -1,0 +1,12 @@
+{
+  "name": "interface-design-skill",
+  "version": "1.0.0",
+  "description": "Build interfaces with intention. Remember decisions across sessions. Maintain systematic consistency.",
+  "license": "MIT",
+  "author": "Dammyjay93",
+  "source": "https://github.com/Dammyjay93/interface-design",
+  "type": "agent-skill",
+  "skills": [
+    "interface-design-skill"
+  ]
+}

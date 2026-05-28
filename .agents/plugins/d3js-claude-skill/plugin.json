@@ -1,0 +1,10 @@
+{
+  "name": "d3js-claude-skill",
+  "version": "1.0.0",
+  "description": "--- name: d3-viz description: Creating interactive data visualisations using d3.js. This skill should be used when creating custom charts, graphs, network diagrams, geographic visualisations, or any c",
+  "license": "MIT",
+  "author": "chrisvoncsefalvay",
+  "source": "https://github.com/chrisvoncsefalvay/claude-d3js-skill",
+  "type": "agent-skill",
+  "skills": ["d3js-claude-skill"]
+}

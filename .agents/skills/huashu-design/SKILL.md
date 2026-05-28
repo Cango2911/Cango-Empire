@@ -1,0 +1,1 @@
+Huashu Design — HTML-natives Design-Skill für Claude Code (MIT, Open Source). Reverse-Engineered Claude Design. Features: Hochauflösende Prototypen, Präsentationen, Animationen, 20 Design-Philosophien, 5-dimensionale Reviews, MP4-Export. Für: Websites, Dashboards, Slide Decks, Infografiken.

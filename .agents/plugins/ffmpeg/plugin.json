@@ -1,0 +1,41 @@
+{
+  "name": "ffmpeg",
+  "version": "8.0",
+  "description": "FFmpeg — führendes Open-Source-Multimedia-Framework (LGPL/GPL). CLI-Tools: ffmpeg (konvertieren/filtern/streamen), ffprobe (analysieren), ffplay (abspielen). Bibliotheken: libavcodec, libavformat, libavfilter, libavutil, libavdevice, libswresample, libswscale. Hunderte Codecs/Container/Filter. Python-Integration via subprocess, python-ffmpeg oder ffmpeg-python.",
+  "license": "LGPL-2.1+ / GPL-2.0+",
+  "author": "FFmpeg Project (Open Source)",
+  "source": "https://github.com/FFmpeg/FFmpeg",
+  "docs": "https://ffmpeg.org/ffmpeg.html",
+  "wiki": "https://trac.ffmpeg.org/wiki",
+  "type": "agent-skill",
+  "skills": [
+    "ffmpeg"
+  ],
+  "covers": [
+    "ffmpeg CLI: -i, -c:v, -c:a, -vf, -af, -filter_complex, -ss, -t, -to, -crf, -b:v, -b:a, -map, -movflags",
+    "ffprobe: JSON-Metadaten, Stream-Info, Dauer, Bitrate",
+    "Format-Konvertierung: MP4/MKV/WebM/GIF/HLS/RTMP",
+    "Video-Codecs: libx264, libx265, libvpx-vp9, libaom-av1, prores_ks, dnxhd",
+    "Audio-Codecs: aac, libmp3lame, libopus, flac, pcm_s16le",
+    "Video-Filter: scale, crop, pad, rotate, transpose, hflip, overlay, drawtext, thumbnail, yadif, nlmeans, eq",
+    "Audio-Filter: loudnorm, volume, afade, atempo, equalizer, anlmdn, pan, aresample",
+    "Complex Filtergraph: hstack, vstack, overlay, split, concat, amix",
+    "Streaming: RTMP, HLS, UDP, WebRTC-Input, Screen-Capture",
+    "Python-Integration: subprocess mit List-Args, python-ffmpeg (typed), ffmpeg-python",
+    "Encoding-Presets: ultrafast→veryslow, CRF, 2-Pass",
+    "Hardware-Encoding: NVENC (h264_nvenc), VideoToolbox (h264_videotoolbox), QSV",
+    "Audio-Normalisierung: tools/normalize.py (EBU R128 / loudnorm)",
+    "Presets: libvpx-ffpresets (360p/720p/1080p/50-60fps)",
+    "libavcodec, libavformat, libavfilter, libavutil, libavdevice, libswresample, libswscale"
+  ],
+  "install": {
+    "macOS": "brew install ffmpeg",
+    "debian_ubuntu": "sudo apt-get install ffmpeg",
+    "windows": "choco install ffmpeg",
+    "conda": "conda install -c conda-forge ffmpeg"
+  },
+  "python_bindings": {
+    "python-ffmpeg": "pip install python-ffmpeg",
+    "ffmpeg-python": "pip install ffmpeg-python"
+  }
+}

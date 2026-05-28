@@ -1,0 +1,1 @@
+AI Website Cloner — 13.000-Sterne Claude Code Skill zum Klonen beliebiger Websites mit einem Command. Next.js Multi-Agent-Architektur: Screenshot-Capture → Design-Token-Extraktion → Parallele Component-Builder → Diff-Check und Fix. Trigger: /clone-website <URL>. Funktioniert bei: Landing Pages, Corporate Showcases, SaaS-Marketing-Sites.

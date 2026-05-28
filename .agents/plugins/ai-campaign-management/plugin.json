@@ -1,0 +1,21 @@
+{
+  "name": "ai-campaign-management",
+  "version": "1.0.0",
+  "description": "Strategischer Framework für AI Campaign Management System Design. Das Drei-Kategorien-Modell (Execution / Orchestration / Intelligence), Platform-Vergleichstabellen, 5-Schritte Workflow-Audit, Tool-Auswahl-Entscheidungsbaum, Marketing Automation vs. AI Agents, Performance-Benchmarks und was AI nicht kann. Nutze wenn Fragen zu Martech Stack Design, Tool Sprawl, Campaign Orchestration, AI Marketing Agents oder System-Design für Marketing-Teams gestellt werden.",
+  "license": "proprietary",
+  "author": "Cango Empire",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/ai-campaign-management",
+  "source": "internal — erstellt aus Blogartikel 'AI Campaign Management Tools: Building Systems, Not Stacks'",
+  "framework": {
+    "category_1_execution": ["Jasper", "Copy.ai", "Canva AI", "Buffer", "Mailchimp", "Klaviyo"],
+    "category_2_orchestration": ["Zapier", "Make", "Workato", "Tray.io", "Metaflow"],
+    "category_3_intelligence": ["Google Performance Max", "HubSpot AI", "6sense", "Metaflow"]
+  },
+  "key_benchmarks": {
+    "campaign_deployment_speed": "+32% mit Orchestration (McKinsey 2025)",
+    "attribution_accuracy": "+27% mit Intelligence (McKinsey 2025)",
+    "coordination_time_saved": "40-60% weniger (Forrester 2026)",
+    "ai_adoption_marketing": "61% (HubSpot 2026, war 29% in 2023)"
+  }
+}

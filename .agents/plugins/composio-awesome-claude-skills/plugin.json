@@ -1,0 +1,34 @@
+{
+  "name": "composio-awesome-claude-skills",
+  "version": "latest",
+  "description": "ComposioHQ/awesome-claude-skills — 860+ Claude Skills: 28 handgefertigte Production-Skills (Canvas Design, Artifacts Builder, Connect Apps, MCP Builder, Brand Guidelines, Changelog, Webapp Testing, Resume, Slack GIF...) + 832 Composio-Automation-Skills für 500+ Apps (Slack, GitHub, Notion, Linear, Stripe, HubSpot...) via Rube MCP.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/ComposioHQ/awesome-claude-skills",
+  "author": "ComposioHQ",
+  "total_skills": 860,
+  "hand_crafted_skills": 28,
+  "composio_automation_skills": 832,
+  "hand_crafted": [
+    "artifacts-builder", "brand-guidelines", "canvas-design", "changelog-generator",
+    "competitive-ads-extractor", "connect", "connect-apps", "content-research-writer",
+    "developer-growth-analysis", "domain-name-brainstormer", "file-organizer",
+    "image-enhancer", "internal-comms", "invoice-organizer", "langsmith-fetch",
+    "lead-research-assistant", "mcp-builder", "meeting-insights-analyzer",
+    "raffle-winner-picker", "skill-creator", "skill-share", "slack-gif-creator",
+    "tailored-resume-generator", "template-skill", "theme-factory",
+    "twitter-algorithm-optimizer", "video-downloader", "webapp-testing"
+  ],
+  "composio_skills_path": "./composio-skills/",
+  "composio_setup": {
+    "mcp": "https://rube.app/mcp",
+    "dashboard": "https://dashboard.composio.dev",
+    "description": "832 App-Automations via Rube MCP — kein API-Key nötig, nur MCP-Endpoint hinzufügen"
+  },
+  "security_review": {
+    "status": "CLEAN",
+    "notes": [
+      "shell=True in webapp-testing/scripts/with_server.py: legitim — Dev-Tool startet lokale Server (npm run dev, cd frontend && ...). Befehle kommen vom CLI-Nutzer.",
+      "GitHub Actions: PR-Metadaten sicher als Env-Vars übergeben, kein direktes Shell-Interpolieren."
+    ]
+  }
+}

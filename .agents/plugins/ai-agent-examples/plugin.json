@@ -1,0 +1,20 @@
+{
+  "name": "ai-agent-examples",
+  "version": "1.0.0",
+  "description": "VoltAgent AI Agent Examples — Referenz-Implementierungen für das VoltAgent TypeScript-Framework. RAG & Retrieval, Typed Tools, Memory Systems, Multi-Agent Orchestration, Deployments (Next.js, Cloudflare Workers, Netlify). Bootstrap: npm create voltagent@latest -- --example <name>",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/ai-agent-examples",
+  "type": "agent-skill",
+  "skills": ["ai-agent-examples"],
+  "covers": [
+    "RAG & Retrieval: Pinecone, Chroma, Qdrant, Postgres",
+    "Typed Tools: Zod-Tools, MCP Server, External APIs",
+    "Memory Systems: Working Memory, Persistent Storage",
+    "Multi-Agent: Supervisor-Patterns, Sub-Agents, Workflows",
+    "Deployments: Next.js, Cloudflare Workers, Netlify Functions"
+  ],
+  "install": {
+    "bootstrap": "npm create voltagent@latest -- --example <example-name>"
+  }
+}

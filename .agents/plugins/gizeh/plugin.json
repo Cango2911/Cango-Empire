@@ -1,0 +1,43 @@
+{
+  "name": "gizeh",
+  "version": "0.1.12",
+  "description": "gizeh — Cairo für Touristen. Einfache Vektorgrafik-Bibliothek auf Basis von cairocffi. Surface/PDFSurface, 10 Shape-Funktionen (circle, rectangle, square, arc, polyline, regular_polygon, bezier_curve, ellipse, star, text), immutable Transformationen (rotate/translate/scale), ColorGradient, ImagePattern, Group. MoviePy-kompatibel für Animationen.",
+  "license": "MIT",
+  "author": "Zulko et al. (Open Source)",
+  "source": "https://github.com/Zulko/gizeh",
+  "pypi": "https://pypi.org/project/gizeh/",
+  "type": "agent-skill",
+  "skills": [
+    "gizeh"
+  ],
+  "covers": [
+    "Surface(width, height, bg_color) — Zeichenfläche, PNG/numpy Export",
+    "PDFSurface — PDF-Ausgabe",
+    "Surface.from_image(numpy_array) — aus Bild initialisieren",
+    "circle(r, xy, fill, stroke, stroke_width, angle)",
+    "rectangle(lx, ly, xy, fill, stroke, stroke_width, angle)",
+    "square(l, xy, fill, stroke, stroke_width, angle)",
+    "arc(r, a1, a2, xy, fill, stroke, stroke_width)",
+    "polyline(points, stroke_width, stroke, fill)",
+    "regular_polygon(r, n, angle, xy, fill, stroke, stroke_width)",
+    "bezier_curve(points, stroke_width, stroke, fill)",
+    "ellipse(rx, ry, xy, fill, stroke, stroke_width, angle)",
+    "star(r1, r2, n, xy, fill, stroke, stroke_width, angle)",
+    "text(txt, fontfamily, fontsize, fill, xy, angle, h_align, v_align)",
+    "Element.rotate(angle, center) / translate(xy) / scale(rx, ry, center) — immutable",
+    "Group([elements]) — Gruppierung + gemeinsame Transformationen",
+    "ColorGradient(type, begin, end, stops_colors) — linear + radial",
+    "ImagePattern(surface_or_array) — Bild als Fill/Stroke",
+    "MoviePy-Integration: surface.get_npimage() als VideoClip-Frame"
+  ],
+  "install": "pip install gizeh",
+  "system_requires": {
+    "macOS": "brew install cairo pkg-config",
+    "debian_ubuntu": "sudo apt-get install -y libcairo2-dev pkg-config"
+  },
+  "requires": {
+    "python": ">=3.7",
+    "cairocffi": "Cairo-Bindings",
+    "numpy": "required"
+  }
+}

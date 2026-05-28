@@ -1,0 +1,12 @@
+{
+  "name": "ui-ux-pro-max-skill",
+  "version": "1.0.0",
+  "description": "UI/UX Pro Max — 71.000-Sterne Design-Skill für Claude Code mit 6 spezialisierten Skills",
+  "author": "nextlevelbuilder",
+  "category": "design",
+  "tags": ["ui", "ux", "design-system", "shadcn", "fintech", "saas", "mobile", "banner", "brand", "slides"],
+  "skills": ["design", "ui-styling", "banner-design", "brand", "slides", "design-system"],
+  "source": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+  "stars": 71000,
+  "language": "markdown"
+}

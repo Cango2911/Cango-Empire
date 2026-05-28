@@ -1,0 +1,49 @@
+{
+  "name": "motiondivision-motion",
+  "version": "12.40.0",
+  "description": "Motion — Open Source Animations-Library für JavaScript, React und Vue. Hybrid-Engine: JavaScript + native Browser-APIs für 120fps GPU-beschleunigte Animationen. Enthält Gesten, Springs, Layout-Transitions, Scroll-Effekte und Timelines.",
+  "license": "MIT",
+  "source": "https://github.com/motiondivision/motion",
+  "docs": "https://motion.dev/docs",
+  "packages": {
+    "motion": {
+      "npm": "motion",
+      "description": "Kern-Library für JavaScript und React",
+      "install": "npm install motion"
+    },
+    "framer-motion": {
+      "npm": "framer-motion",
+      "description": "Legacy-Package (jetzt motion) — weiterhin kompatibel",
+      "install": "npm install framer-motion"
+    },
+    "motion-v": {
+      "npm": "motion-v",
+      "description": "Vue-Integration",
+      "install": "npm install motion-v"
+    },
+    "motion-dom": {
+      "npm": "motion-dom",
+      "description": "DOM-Layer ohne Framework-Binding",
+      "install": "npm install motion-dom"
+    }
+  },
+  "platforms": ["React", "JavaScript", "Vue"],
+  "features": [
+    "Deklarative Animationen",
+    "120fps GPU-beschleunigt",
+    "Spring-Physik",
+    "Gesten (Hover, Tap, Drag, Pan, Focus)",
+    "Layout-Animationen (automatisch bei DOM-Änderungen)",
+    "Scroll-linked Animationen",
+    "AnimatePresence (Mount/Unmount)",
+    "Shared Layout (layoutId)",
+    "Timelines und Sequenzen",
+    "LazyMotion (Tree-Shaking)",
+    "Pfad-Animationen (path option, arc())",
+    "TypeScript",
+    "SSR-Support",
+    "Tree-Shakable"
+  ],
+  "weekly_downloads": "2500000+",
+  "stars": "20800+"
+}

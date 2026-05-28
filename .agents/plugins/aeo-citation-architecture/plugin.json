@@ -1,0 +1,30 @@
+{
+  "name": "aeo-citation-architecture",
+  "version": "1.0.0",
+  "description": "Answer Engine Optimization (AEO) und Citation Architecture Guide. Reddit (#1, 3.11% Citation Rate) und Wikipedia (#3, 1.35%) dominieren AI-Search wegen epistemischem Vertrauen. 4-Layer Source Stack Modell, 5-Schritte Playbook, Reddit-Engagement-Guidelines, Citation-worthy Content-Struktur und SEO→AEO→GEO Evolutionslinie.",
+  "license": "proprietary",
+  "author": "Cango Empire",
+  "type": "agent-skill",
+  "skill_path": ".agents/skills/aeo-citation-architecture",
+  "source": "internal — erstellt aus Blogartikel 'Reddit is the #1 cited domain across all major platforms'",
+  "key_benchmarks": {
+    "reddit_citation_rate": "3.11% aller AI-Citations (Profound, 4+ Mrd. Citations)",
+    "wikipedia_citation_rate": "1.35% (#3 zitierte Domain)",
+    "avg_reddit_post_age": "1 Jahr (Evergreen Authority)",
+    "zero_click_rate": "60% aller Suchen enden ohne Klick (SearchEngineLand 2024)",
+    "reddit_presence_lift": "3x höhere Citation Rates in Perplexity (Metaflow-Analyse)",
+    "balanced_sentiment": "5% positive vs. 6.1% negative Citations (nahezu identisch)"
+  },
+  "covers": [
+    "Reddit und Wikipedia Citation-Dominanz Gründe",
+    "Source Stack Modell (4 Layer: Faktisch/Konversation/Multimedia/Professionell)",
+    "Platform-spezifische Stack-Gewichtung (ChatGPT/Perplexity/Google Overviews)",
+    "SEO vs. AEO Paradigma-Vergleich",
+    "Was Content citation-worthy macht",
+    "5-Schritte Citation Architecture Playbook",
+    "Reddit Engagement Guidelines (Do's und Don'ts)",
+    "Von Traffic Acquisition zu Answer Ownership",
+    "SEO → AEO → GEO Evolutionslinie",
+    "Häufige AEO-Fehler"
+  ]
+}

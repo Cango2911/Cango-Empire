@@ -1,0 +1,19 @@
+{
+  "name": "voltagent-skills",
+  "version": "1.0.0",
+  "description": "VoltAgent Official Agent Skills — 4 offizielle Skills für das VoltAgent TypeScript-Framework: create-voltagent (Projekt-Setup), voltagent-best-practices (Architektur-Muster), voltagent-core-reference (API-Referenz), voltagent-docs-bundle (eingebettete Docs). Installation: npx skills add VoltAgent/skills",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/skills",
+  "type": "agent-skill",
+  "skills": ["voltagent-skills"],
+  "covers": [
+    "create-voltagent: CLI-Setup und manuelles Bootstrapping",
+    "voltagent-best-practices: Architektur- und Nutzungsmuster",
+    "voltagent-core-reference: VoltAgent-Klassen-Optionen und Lifecycle",
+    "voltagent-docs-bundle: Eingebettete @voltagent/core Dokumentation"
+  ],
+  "install": {
+    "skills": "npx skills add VoltAgent/skills"
+  }
+}

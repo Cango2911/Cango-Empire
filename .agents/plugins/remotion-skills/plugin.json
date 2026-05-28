@@ -1,0 +1,10 @@
+{
+  "name": "remotion-skills",
+  "version": "1.0.0",
+  "description": "This is an internal package and has no documentation. ",
+  "license": "MIT",
+  "author": "remotion-dev",
+  "source": "https://github.com/remotion-dev/skills",
+  "type": "agent-skill",
+  "skills": ["remotion-skills"]
+}

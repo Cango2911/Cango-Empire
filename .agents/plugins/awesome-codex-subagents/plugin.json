@@ -1,0 +1,32 @@
+{
+  "name": "awesome-codex-subagents",
+  "version": "1.0.0",
+  "description": "Awesome Codex Subagents — 136 spezialisierte OpenAI-Codex-Subagenten in 10 Kategorien (VoltAgent, MIT). TOML-Format (name/description/model/sandbox_mode/developer_instructions). Smart Model Routing: gpt-5.4 (Security/Architektur), gpt-5.3-codex-spark (Suche/Docs). Explizite Delegation erforderlich. Installation: ~/.codex/agents/ oder .codex/agents/.",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/awesome-codex-subagents",
+  "type": "agent-skill",
+  "skills": [
+    "awesome-codex-subagents"
+  ],
+  "covers": [
+    "01-core-development (12): api-designer, backend-developer, code-mapper, electron-pro, frontend-developer, fullstack-developer, graphql-architect, microservices-architect, mobile-developer, ui-designer, ui-fixer, websocket-engineer",
+    "02-language-specialists (27): angular-architect, cpp-pro, csharp-developer, django-developer, dotnet-core-expert, dotnet-framework-4.8-expert, elixir-expert, erlang-expert, flutter-expert, golang-pro, java-architect, javascript-pro, kotlin-specialist, laravel-specialist, nextjs-developer, php-pro, powershell-5.1-expert, powershell-7-expert, python-pro, rails-expert, react-specialist, rust-engineer, spring-boot-engineer, sql-pro, swift-expert, typescript-pro, vue-expert",
+    "03-infrastructure (16): azure-infra-engineer, cloud-architect, database-administrator, deployment-engineer, devops-engineer, devops-incident-responder, docker-expert, incident-responder, kubernetes-specialist, network-engineer, platform-engineer, security-engineer, sre-engineer, terraform-engineer, terragrunt-expert, windows-infra-admin",
+    "04-quality-security (16): accessibility-tester, ad-security-reviewer, architect-reviewer, browser-debugger, chaos-engineer, code-reviewer, compliance-auditor, debugger, error-detective, penetration-tester, performance-engineer, powershell-security-hardening, qa-expert, reviewer, security-auditor, test-automator",
+    "05-data-ai (12): ai-engineer, data-analyst, data-engineer, data-scientist, database-optimizer, llm-architect, machine-learning-engineer, ml-engineer, mlops-engineer, nlp-engineer, postgres-pro, prompt-engineer",
+    "06-developer-experience (13): build-engineer, cli-developer, dependency-manager, documentation-engineer, dx-optimizer, git-workflow-manager, legacy-modernizer, mcp-developer, powershell-module-architect, powershell-ui-architect, refactoring-specialist, slack-expert, tooling-engineer",
+    "07-specialized-domains (12): api-documenter, blockchain-developer, embedded-systems, fintech-engineer, game-developer, iot-engineer, m365-admin, mobile-app-developer, payment-integration, quant-analyst, risk-manager, seo-specialist",
+    "08-business-product (11): business-analyst, content-marketer, customer-success-manager, legal-advisor, product-manager, project-manager, sales-engineer, scrum-master, technical-writer, ux-researcher, wordpress-master",
+    "09-meta-orchestration (10): agent-installer, agent-organizer, context-manager, error-coordinator, it-ops-orchestrator, knowledge-synthesizer, multi-agent-coordinator, performance-monitor, task-distributor, workflow-orchestrator",
+    "10-research-analysis (7): competitive-analyst, data-researcher, docs-researcher, market-researcher, research-analyst, search-specialist, trend-analyst",
+    "Smart Model Routing: gpt-5.4 (deep reasoning) / gpt-5.3-codex-spark (fast tasks)",
+    "Sandbox-Modi: read-only (Reviewer/Auditoren) / workspace-write (Developer)",
+    "TOML-Format: name + description + model + model_reasoning_effort + sandbox_mode + developer_instructions",
+    "Kein Auto-Spawn — explizite Delegation im Prompt erforderlich"
+  ],
+  "install": {
+    "global": "cp categories/<category>/<agent>.toml ~/.codex/agents/",
+    "project": "cp categories/<category>/<agent>.toml .codex/agents/"
+  }
+}

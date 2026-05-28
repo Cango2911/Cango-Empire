@@ -1,0 +1,18 @@
+{
+  "name": "react-anim-react-spring",
+  "version": "latest",
+  "description": "React Spring — spring-physics-first cross-platform Animations-Library für React. Unterstützt react-dom, react-native, react-three-fiber, react-konva, react-zdog. TypeScript, SSR, keine unnötigen Re-Renders. 26.8K GitHub Stars, 726K weekly downloads.",
+  "type": "library",
+  "source": "https://github.com/pmndrs/react-spring",
+  "license": "MIT",
+  "author": "pmndrs",
+  "install": "npm install @react-spring/web",
+  "docs": "https://www.react-spring.dev",
+  "requires": { "runtime": "node", "env": { "required": [], "optional": [] } },
+  "skill": ".agents/skills/react-anim-react-spring",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": ".exec() Aufrufe sind Standard Regex-API (RegExp.prototype.exec) für CSS-Farb-Parsing, kein Code-Exec. Kein eval(), kein shell=True, kein subprocess."
+  }
+}

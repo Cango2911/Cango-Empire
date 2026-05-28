@@ -1,0 +1,20 @@
+{
+  "name": "awesome-claude-design",
+  "version": "1.0.0",
+  "description": "Awesome Claude Design — 68 DESIGN.md-Dateien speziell für Claude Design (claude.ai/design). Jede Datei scaffoldet bei Upload ein vollständiges Design-System: Farb-Tokens, Typographie, Komponenten, Preview Assets. Google Stitch DESIGN.md-Format.",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/awesome-claude-design",
+  "type": "agent-skill",
+  "skills": ["awesome-claude-design"],
+  "covers": [
+    "68 DESIGN.md-Dateien im Google Stitch-Format",
+    "Optimiert für claude.ai/design (persistentes Design-System)",
+    "Workflow: DESIGN.md hochladen → vollständiges UI-Kit in einem Schuss"
+  ],
+  "usage": {
+    "claude_design": "Datei bei claude.ai/design hochladen",
+    "option_a": "Create new design system → Add assets → DESIGN.md",
+    "option_b": "New prototype → DESIGN.md anhängen → 'Create a design system from this DESIGN.md'"
+  }
+}

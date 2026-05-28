@@ -1,0 +1,124 @@
+{
+  "name": "vargai",
+  "module": "src/index.ts",
+  "type": "module",
+  "bin": {
+    "vargai": "./src/cli/index.ts"
+  },
+  "scripts": {
+    "check": "biome check . && tsc --noEmit",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky || true",
+    "size": "size-limit",
+    "studio": "bun run src/studio/index.ts"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "biome check --write --no-errors-on-unmatched"
+    ],
+    "*.json": [
+      "biome format --write"
+    ]
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.7",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@size-limit/preset-small-lib": "^11.2.0",
+    "@types/bun": "latest",
+    "@types/opentype.js": "^1.3.9",
+    "@types/react": "^19.2.7",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5",
+    "ai": "^6.0.0",
+    "zod": "^3.25.76 || ^4.1.8"
+  },
+  "dependencies": {
+    "@ai-sdk/fal": "^1.0.23",
+    "@ai-sdk/fireworks": "^2.0.16",
+    "@ai-sdk/google": "^3.0.13",
+    "@ai-sdk/groq": "^3.0.12",
+    "@ai-sdk/openai": "^3.0.9",
+    "@ai-sdk/provider": "^3.0.2",
+    "@ai-sdk/provider-utils": "^4.0.4",
+    "@ai-sdk/replicate": "^2.0.5",
+    "@aws-sdk/client-s3": "^3.937.0",
+    "@aws-sdk/s3-request-presigner": "^3.937.0",
+    "@elevenlabs/elevenlabs-js": "^2.28.0",
+    "@fal-ai/client": "^1.7.2",
+    "@google/genai": "^1.0.0",
+    "@higgsfield/client": "^0.1.2",
+    "@inkjs/ui": "^2.0.0",
+    "@remotion/cli": "^4.0.377",
+    "@types/fluent-ffmpeg": "^2.1.28",
+    "ai": "^6.0.26",
+    "apify-client": "^2.20.0",
+    "citty": "^0.1.6",
+    "fflate": "^0.8.2",
+    "fluent-ffmpeg": "^2.1.3",
+    "groq-sdk": "^0.36.0",
+    "ink": "^6.5.1",
+    "opentype.js": "^1.3.4",
+    "p-limit": "^6.2.0",
+    "p-map": "^7.0.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "^4.0.377",
+    "replicate": "^1.4.0",
+    "sharp": "^0.34.5",
+    "zod": "^4.2.1"
+  },
+  "description": "AI video generation SDK — JSX for videos. Generate, compose and render AI videos with Kling, Flux, ElevenLabs, and more through one API. Built on Vercel AI SDK.",
+  "keywords": [
+    "ai-video",
+    "video-generation",
+    "ai-sdk",
+    "typescript",
+    "jsx",
+    "text-to-video",
+    "image-to-video",
+    "ai-video-api",
+    "kling",
+    "flux",
+    "elevenlabs",
+    "vercel-ai-sdk",
+    "video-editing",
+    "ai-tools",
+    "generative-ai",
+    "video-api",
+    "text-to-speech",
+    "music-generation",
+    "lipsync",
+    "video-rendering"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vargHQ/sdk.git"
+  },
+  "homepage": "https://varg.ai",
+  "bugs": {
+    "url": "https://github.com/vargHQ/sdk/issues"
+  },
+  "license": "Apache-2.0",
+  "author": "varg.ai <hello@varg.ai> (https://varg.ai)",
+  "sideEffects": false,
+  "version": "0.4.0-alpha113",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ai": "./src/ai-sdk/index.ts",
+    "./core": "./src/core/index.ts",
+    "./providers": "./src/providers/index.ts",
+    "./definitions": "./src/definitions/index.ts",
+    "./react": "./src/react/index.ts",
+    "./studio": "./src/studio/index.ts",
+    "./jsx-runtime": "./src/react/runtime/jsx-runtime.ts",
+    "./jsx-dev-runtime": "./src/react/runtime/jsx-dev-runtime.ts",
+    "./editly": "./src/ai-sdk/providers/editly/index.ts",
+    "./file": "./src/ai-sdk/file.ts"
+  }
+}

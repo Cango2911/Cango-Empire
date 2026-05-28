@@ -1,0 +1,16 @@
+{
+  "name": "vercel-ai-sdk-observability",
+  "version": "1.0.0",
+  "description": "VoltAgent + Vercel AI SDK Observability — TypeScript-Beispiel für VoltAgent-Observability in Vercel AI SDK-Apps. OpenTelemetry + VoltAgentExporter + experimental_telemetry. Trackt AI-Calls, Tool-Usage, Multi-Agent-Workflows. Setup: VoltAgentExporter + NodeSDK + isEnabled: true.",
+  "license": "MIT",
+  "author": "VoltAgent (Open Source)",
+  "source": "https://github.com/VoltAgent/vercel-ai-sdk-observability",
+  "type": "agent-skill",
+  "skills": ["vercel-ai-sdk-observability"],
+  "covers": [
+    "VoltAgentExporter für OpenTelemetry",
+    "Vercel AI SDK experimental_telemetry Integration",
+    "Trackt: AI-Calls, Tool-Usage, Multi-Agent-Workflows, Token-Usage, Latenz",
+    "Environment: VOLTAGENT_PUBLIC_KEY, VOLTAGENT_SECRET_KEY, OPENAI_API_KEY"
+  ]
+}

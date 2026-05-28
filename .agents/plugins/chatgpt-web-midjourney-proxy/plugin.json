@@ -1,0 +1,34 @@
+{
+  "name": "chatgpt-web-midjourney-proxy",
+  "version": "2.26.5",
+  "description": "Full-stack web UI combining ChatGPT + Midjourney/image generation APIs. Vue.js frontend + Node.js backend with Vercel serverless API proxy. NOT an agent skill — requires Node.js/pnpm and API keys.",
+  "author": {
+    "name": "Dooy",
+    "url": "https://github.com/Dooy/chatgpt-web-midjourney-proxy"
+  },
+  "type": "web-application",
+  "license": "MIT",
+  "install": {
+    "frontend": "pnpm install && pnpm run build",
+    "backend": "cd service && pnpm install && pnpm start",
+    "docker": "docker compose up -d",
+    "vercel": "vercel deploy"
+  },
+  "api_endpoints": {
+    "/api/proxy": "Proxies /mjapi/* → MJ_SERVER and /openapi/* → OPENAI_API_BASE_URL",
+    "/api/session": "Returns app configuration from environment variables",
+    "/api/verify": "Verifies AUTH_SECRET_KEY tokens",
+    "/api/webdav-proxy": "WebDAV CORS proxy for cloud storage sync"
+  },
+  "env_vars_required": {
+    "MJ_SERVER": "Midjourney proxy server URL",
+    "MJ_API_SECRET": "Midjourney API secret",
+    "OPENAI_API_BASE_URL": "OpenAI API base URL (default: https://api.openai.com)",
+    "OPENAI_API_KEY": "Your OpenAI API key",
+    "AUTH_SECRET_KEY": "Optional: access password for the UI"
+  },
+  "supports": [
+    "ChatGPT", "GPT-4", "Midjourney", "DALL-E", "Suno", "Luma",
+    "Viggle", "Kling", "Veo", "WebDAV", "TTS", "Whisper", "GPTs"
+  ]
+}

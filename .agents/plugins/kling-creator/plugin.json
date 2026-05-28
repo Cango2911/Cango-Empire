@@ -1,0 +1,42 @@
+{
+  "name": "kling-creator",
+  "version": "0.6.0",
+  "description": "Python reverse-engineered API client for Kling AI (klingai.com / klingai.kuaishou.com) — text-to-image, image-to-image, text-to-video, image-to-video, video extend. Supports Kling 1.0–2.1 and Kolors image models.",
+  "type": "python-sdk",
+  "source": "https://github.com/yihong0618/klingCreator",
+  "pypi": "kling-creator",
+  "license": "MIT",
+  "author": "yihong0618",
+  "requires": {
+    "python": ">=3.9",
+    "packages": ["requests", "rich", "fake-useragent>=2.0.3"],
+    "env": {
+      "required_one_of": ["KLING_COOKIE"],
+      "optional": ["KLING_EMAIL", "KLING_PASSWORD"]
+    }
+  },
+  "install": {
+    "pypi": "pip install -U kling-creator",
+    "local": "pip install -r .agents/plugins/kling-creator/requirements.txt"
+  },
+  "capabilities": {
+    "image_generation": "Text-to-image with Kolors models (1.0, 1.5, 2.0, 2.1), 1–9 images, ratios 1:1 to 21:9",
+    "image_to_image": "Image-to-image generation from local file or URL",
+    "video_generation": "Text-to-video with Kling models (1.0, 1.5, 1.6, 2.1), standard or high-quality",
+    "image_to_video": "Animate a still image into a video clip",
+    "video_extend": "Extend a generated video from 5s to 10s",
+    "auth": "Cookie-based (browser copy) or email+password login"
+  },
+  "api": {
+    "auth": "klingai.com/klingai.kuaishou.com (auto-detected from cookie)",
+    "image_upload": "upload.kuaishouzt.com (CN) / upload.uvfuns.com (international)",
+    "task_submit": "/api/task/submit",
+    "task_status": "/api/task/status"
+  },
+  "skill": ".agents/skills/kling-creator",
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "Pure Python HTTP client using requests library. No eval(), no subprocess shell=True, no remote code execution. Cookie-based auth against klingai.com APIs. Standard image/video download to local files."
+  }
+}

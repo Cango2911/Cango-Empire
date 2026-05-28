@@ -1,0 +1,50 @@
+{
+  "name": "varg-sdk",
+  "version": "1.0.0",
+  "description": "vargHQ SDK — declarative React/JSX engine for AI video generation. Compose videos using <Image>, <Video>, <Speech>, <Music>, <Captions> components backed by fal.ai, ElevenLabs, Replicate, Groq.",
+  "type": "typescript-sdk",
+  "source": "https://github.com/vargHQ/sdk",
+  "license": "MIT",
+  "runtime": "bun",
+  "platform": "vargai",
+  "requires": {
+    "runtime": "bun >= 1.0",
+    "cli": "bunx vargai",
+    "env": {
+      "required": ["FAL_KEY"],
+      "optional": ["ELEVENLABS_API_KEY", "REPLICATE_API_TOKEN", "GROQ_API_KEY"]
+    }
+  },
+  "install": {
+    "step1": "Install bun: curl -fsSL https://bun.sh/install | bash",
+    "step2": "Init project: bunx vargai init",
+    "step3": "Install deps: bun install vargai ai",
+    "step4": "Add FAL_KEY to .env (get from https://fal.ai/dashboard/keys)",
+    "step5": "Render a video: bunx vargai render video.tsx"
+  },
+  "capabilities": {
+    "image-generation": "fal.ai Flux models (flux-pro, nano-banana-pro) + Higgsfield Soul",
+    "video-generation": "Kling v2.5, Wan 2.5 via fal.ai (text-to-video, image-to-video)",
+    "voice-synthesis": "ElevenLabs text-to-speech with multiple voices",
+    "music-generation": "ElevenLabs music + sound effects from prompts",
+    "lipsync": "Replicate wav2lip / sync-v2-pro",
+    "captions": "Auto-generated subtitles via Groq/Fireworks transcription",
+    "video-editing": "ffmpeg-based resize, trim, concat, social media format prep",
+    "web-scraping": "Apify actors (TikTok trends, Google Maps, social media)"
+  },
+  "jsx_syntax": {
+    "pragma": "/** @jsxImportSource vargai */",
+    "root": "<Render width={1080} height={1920}>",
+    "components": ["Render", "Clip", "Image", "Video", "Speech", "Music", "Captions"],
+    "aspect_ratios": ["9:16 (TikTok/Reels)", "16:9 (YouTube)", "1:1 (Instagram)"]
+  },
+  "skills": [
+    ".agents/skills/varg-video-generation",
+    ".agents/skills/varg-talking-character-pipeline"
+  ],
+  "security_review": {
+    "status": "CLEAN",
+    "reviewed_at": "2026-05-24",
+    "notes": "TypeScript SDK. Shell scripts are pure ffmpeg wrappers. Bun.spawn used only for local test execution and browser URL opening. No remote code execution, no eval of network content, no obfuscated code. Developer .claude/settings.local.json NOT copied."
+  }
+}

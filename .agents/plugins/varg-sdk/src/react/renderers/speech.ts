@@ -1,0 +1,77 @@
+import type { experimental_generateSpeech } from "ai";
+import { File } from "../../ai-sdk/file";
+import { ResolvedElement } from "../resolved-element";
+import type { SpeechProps, VargElement } from "../types";
+import type { RenderContext } from "./context";
+import { addTask, completeTask, startTask } from "./progress";
+import { computeCacheKey, getTextContent } from "./utils";
+
+export async function renderSpeech(
+  element: VargElement<"speech">,
+  ctx: RenderContext,
+): Promise<File> {
+  // If already resolved via `await Speech(...)`, reuse the pre-generated file
+  if (element instanceof ResolvedElement) {
+    ctx.generatedFiles.push(element.meta.file);
+    return element.meta.file;
+  }
+
+  const props = element.props as SpeechProps;
+  const text = getTextContent(element.children);
+
+  if (!text) {
+    throw new Error("Speech element requires text content");
+  }
+
+  const model = props.model ?? ctx.defaults?.speech;
+  if (!model) {
+    throw new Error("Speech requires 'model' prop (or set defaults.speech)");
+  }
+
+  const cacheKey = computeCacheKey(element);
+  const cacheKeyStr = JSON.stringify(cacheKey);
+
+  // Deduplicate concurrent renders of the same speech element
+  const pendingRender = ctx.pendingFiles.get(cacheKeyStr);
+  if (pendingRender) {
+    return pendingRender;
+  }
+
+  const renderPromise = (async () => {
+    const modelId = typeof model === "string" ? model : model.modelId;
+    const taskId = ctx.progress
+      ? addTask(ctx.progress, "speech", modelId)
+      : null;
+    if (taskId && ctx.progress) startTask(ctx.progress, taskId);
+
+    const { audio } = await ctx.generateSpeech({
+      model,
+      text,
+      voice: props.voice ?? "rachel",
+      cacheKey,
+    } as Parameters<typeof experimental_generateSpeech>[0]);
+
+    if (taskId && ctx.progress) completeTask(ctx.progress, taskId);
+
+    const mediaType =
+      (audio as { mediaType?: string }).mediaType ?? "audio/mpeg";
+
+    const file = File.fromGenerated({
+      uint8Array: audio.uint8Array,
+      mediaType,
+      url: (audio as { url?: string }).url,
+    }).withMetadata({
+      type: "speech",
+      model: modelId,
+      prompt: text,
+    });
+
+    ctx.generatedFiles.push(file);
+
+    return file;
+  })();
+
+  ctx.pendingFiles.set(cacheKeyStr, renderPromise);
+
+  return renderPromise;
+}

@@ -1,0 +1,10 @@
+{
+  "name": "llm-sast-scanner",
+  "version": "1.0.0",
+  "description": "A general-purpose **Static Application Security Testing (SAST) skill** for LLM-based code vulnerability analysis. Designed to be loaded by AI coding agents (Claude Code, OpenAI Codex, etc.) to perform",
+  "license": "MIT",
+  "author": "SunWeb3Sec",
+  "source": "https://github.com/SunWeb3Sec/llm-sast-scanner",
+  "type": "agent-skill",
+  "skills": ["llm-sast-scanner"]
+}

@@ -1,0 +1,41 @@
+name: Bundle-size
+
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  size:
+    name: 'Bundle Size'
+    if: github.repository == 'pmndrs/react-spring'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build --filter=!@react-spring/docs
+
+      - uses: preactjs/compressed-size-action@v2
+        with:
+          pattern: '{**/dist/**/*.{mjs,js},packages/types/*.{js,d.ts}}'
